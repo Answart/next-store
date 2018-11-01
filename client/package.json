@@ -1,0 +1,35 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Next Store client-side",
+  "author": "Alexandra Swart",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next -p 7272",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Answart/next-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Answart/next-store/issues"
+  },
+  "homepage": "https://github.com/Answart/next-store#readme",
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "next/babel"
+        ]
+      }
+    }
+  }
+}

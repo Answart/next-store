@@ -91,12 +91,12 @@ Getting Started
 $ cd client;npm install;cd ../server;npm install;cd ..;
 
 #Create a variables.env file in server directory that has the following:
-CLIENT_URL="http://localhost:7777"
+CLIENT_URL="http://localhost:7272"
 PRISMA_ENDPOING="https://us1.prisma.sh/<ACCOUNTNAME>/<DBNAME>/dev"
 PRISMA_SECRET="<PRISMASECRETSTRING>"
 APP_SECRET="<SECRETSTRINGOFYOURCHOICE>"
 STRIPE_SECRET="<STRIPESECRETSTRING"
-PORT=4444
+PORT=4242
 MAIL_HOST="<MAILTRAPHOSTNAME>"
 MAIL_PORT="<MAILTRAPPORTNUMBER>"
 MAIL_USER="<MAILTRAPUSER>"

@@ -5,3 +5,4 @@ node_modules/
 .build/
 layout.md
 variables.env
+steps.md
