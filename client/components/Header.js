@@ -1,7 +1,11 @@
 import Link from 'next/link';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Nav from './Nav.js';
 import Search from './Search.js';
+import Signin from './Signin.js';
+import Signup from './Signup.js';
+import User from './User.js';
+import Cart from './Cart.js';
 
 
 const StyledHeader = styled.header`
@@ -35,15 +39,16 @@ const Banner = styled.nav`
   left: auto;
   width: auto;
   margin: auto 2.875rem;
-  .account {
-    position: absolute;
-    top: 2.5rem;
-    right: 2.3rem !important;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    z-index: 20;
-  }
+`;
+
+const Account = styled.ul`
+  position: absolute;
+  top: 2.5rem;
+  right: 2.3rem !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 20;
 `;
 
 const Header = () => (
@@ -57,26 +62,18 @@ const Header = () => (
     <Banner>
       <Search />
 
-      <div className="account">
-        <Link href="/login">
-          <a>Sign In</a>
-        </Link>
+      <Account>
+        <Signin />
         |
-        <Link href="/signup">
-          <a>Sign Up</a>
-        </Link>
+        <Signup />
+        ||
+        <User />
         |
-        <Link href="/account">
-          <a>Account</a>
-        </Link>
-        |
-        <Link href="/login">
-          <a>Cart</a>
-        </Link>
-      </div>
-    </Banner>
+        <Cart />
+      </Account>
 
-    <Nav />
+      <Nav />
+    </Banner>
   </StyledHeader>
 )
 
