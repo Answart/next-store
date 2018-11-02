@@ -19,15 +19,41 @@
   },
   "homepage": "https://github.com/Answart/next-store#readme",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-styled-components": "^1.8.0",
     "next": "^7.0.2",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "styled-components": "^3.4.9"
   },
   "babel": {
     "env": {
       "development": {
         "presets": [
           "next/babel"
+        ],
+        "plugins": [
+          [
+            "styled-components",
+            {
+              "ssr": true,
+              "displayName": true
+            }
+          ]
+        ]
+      },
+      "production": {
+        "presets": [
+          "next/babel"
+        ],
+        "plugins": [
+          [
+            "styled-components",
+            {
+              "ssr": true,
+              "displayName": true
+            }
+          ]
         ]
       }
     }
