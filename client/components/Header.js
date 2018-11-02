@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Nav from './Nav.js';
 
 
@@ -28,6 +28,55 @@ const Logo = styled.div`
   }
 `;
 
+const glow = keyframes`
+  from {
+    box-shadow: 0 0 0px white;
+  }
+
+  to {
+    box-shadow: 0 0 10px 1px white;
+  }
+`;
+
+const Banner = styled.nav`
+  position: static;
+  top: 0;
+  left: auto;
+  width: auto;
+  margin: auto 2.875rem;
+  .search {
+    position: absolute;
+    top: 1.8rem;
+    left: 2.3rem !important;
+    height: auto;
+    max-height: 36px;
+    width: 200px;
+    margin: 0;
+    color: ${props => props.theme.textGrey};
+    z-index: 2;
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 0;
+      border-bottom: 1px solid ${props => props.theme.lightGrey};
+      background-color: transparent;
+      &.loading {
+        animation: ${glow} 0.5s ease-in-out infinite alternate;
+      }
+    }
+  }
+  .account {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.3rem !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 20;
+  }
+`;
+
 const Header = () => (
   <StyledHeader>
     <Logo>
@@ -36,18 +85,33 @@ const Header = () => (
       </Link>
     </Logo>
 
-    <div>
-      <Link href="/search">
-        <a>Search</a>
-      </Link>
-      <Link href="/">
-        <a>Next Store</a>
-      </Link>
-      <Link href="/account">
-        <a>Account</a>
-      </Link>
-      <div>Cart</div>
-    </div>
+    <Banner>
+      <div className='search'>
+        <input
+          type='search'
+          placeholder='Search'
+          id='search'
+        />
+      </div>
+
+      <div className="account">
+        <Link href="/login">
+          <a>Sign In</a>
+        </Link>
+        |
+        <Link href="/signup">
+          <a>Sign Up</a>
+        </Link>
+        |
+        <Link href="/account">
+          <a>Account</a>
+        </Link>
+        |
+        <Link href="/login">
+          <a>Cart</a>
+        </Link>
+      </div>
+    </Banner>
 
     <Nav />
   </StyledHeader>
