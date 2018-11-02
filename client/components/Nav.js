@@ -43,8 +43,8 @@ const Nav = () => (
     <Link href="/accessories">
       <a>Accessories</a>
     </Link>
-    <Link href="/gifts">
-      <a>Home & Gifts</a>
+    <Link href="/decor">
+      <a>Decor</a>
     </Link>
     <Link href="/wedding">
       <a>Wedding</a>
