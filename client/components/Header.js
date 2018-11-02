@@ -18,8 +18,24 @@ const StyledHeader = styled.header`
   }
 `;
 
+const Logo = styled.div`
+  font-family: 'guttenbg';
+  text-align: center;
+  margin: 0;
+  a {
+    font-size: 4rem !important;
+    font-weight: normal;
+  }
+`;
+
 const Header = () => (
   <StyledHeader>
+    <Logo>
+      <Link href="/">
+        <a>NextStore</a>
+      </Link>
+    </Logo>
+
     <div>
       <Link href="/search">
         <a>Search</a>
