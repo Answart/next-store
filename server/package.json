@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Next Store server side",
+  "main": "index.js",
+  "author": "Alexandra Swart",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.1.0",
+    "graphql": "^0.13.2",
+    "graphql-yoga": "1.16.7",
+    "jsonwebtoken": "^8.3.0",
+    "nodemon": "1.18.5"
+  },
+  "devDependencies": {},
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}
