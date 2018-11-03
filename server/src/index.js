@@ -3,30 +3,12 @@ const bcrypt = require('bcryptjs');
 
 let dummys = [
   {
-    id: '101010',
+    id: 101010,
     name: 'First dummy',
     email: 'dummy@dummy.com',
     password: 'dummydummy'
   }
 ];
-
-const typeDefs = `
-type Query {
-  users: [User!]!
-  user(id: ID!): User
-}
-
-type Mutation {
-  createUser(name: String!, email: String!, password: String!): User!
-}
-
-type User {
-  id: ID!
-  name: String!
-  email: String! @unique
-  password: String!
-}
-`
 
 const resolvers = {
   Query: {
@@ -34,7 +16,7 @@ const resolvers = {
       return dummys;
     },
     user(parent, args) {
-      const dummy = dummys.find(x =>  x.id === args.id );
+      const dummy = dummys.find(x => x.id.toString() === args.id.toString());
       return dummy;
     }
   },
@@ -56,7 +38,7 @@ const resolvers = {
 }
 
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: './src/schema.graphql',
   resolvers,
 })
 server.start(() => console.log(`Server is running on http://localhost:4000`));
