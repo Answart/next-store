@@ -1,10 +1,16 @@
+# import * from './generated/prisma.graphql'
+
 type Query {
   users: [User!]!
   user(id: ID!): User
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item!]!
+  item(where: ItemWhereUniqueInput!): Item
 }
 
 type Mutation {
   createUser(name: String!, email: String!, password: String!): User!
+  createItem(department: String!, category: String, title: String!, description: String!, image: String, largeImage: String, size: String, sale: Boolean!, price: Int!, salePrice: Int, availability: String): Item
+  deleteItem(id: ID!): Item
 }
 
 type User {
@@ -12,4 +18,19 @@ type User {
   name: String!
   email: String!
   password: String!
+}
+
+type Item {
+  id: ID!
+  department: String!
+  category: String
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  size: String
+  sale: Boolean!
+  price: Int!
+  salePrice: Int
+  availability: String
 }

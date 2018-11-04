@@ -6,3 +6,20 @@ type User {
   createdAt: DateTime!
   updatedAt: DateTime!
 }
+
+type Item {
+  id: ID! @unique
+  department: String!
+  category: String
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  size: String
+  sale: Boolean!
+  price: Int!
+  salePrice: Int
+  availability: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
