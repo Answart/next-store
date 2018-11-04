@@ -1,23 +1,16 @@
 const { GraphQLServer } = require('graphql-yoga')
 const bcrypt = require('bcryptjs');
+const db = require('./db');
 
-let dummys = [
-  {
-    id: 101010,
-    name: 'First dummy',
-    email: 'dummy@dummy.com',
-    password: 'dummydummy'
-  }
-];
 
 const resolvers = {
   Query: {
     async users(parent, args) {
-      return dummys;
+      return db.users;
     },
     user(parent, args) {
-      const dummy = dummys.find(x => x.id.toString() === args.id.toString());
-      return dummy;
+      const user = db.users.find(x => x.id.toString() === args.id.toString());
+      return user;
     }
   },
   Mutation: {
@@ -31,7 +24,7 @@ const resolvers = {
         email: args.email,
         password
       };
-      dummys.push(user);
+      db.users.push(user);
       return user;
     },
   }
