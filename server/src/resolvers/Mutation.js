@@ -6,14 +6,16 @@ const Mutation = {
     const id = Math.floor(Math.random() * Math.floor(999999));
     args.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
-    const user = {
-      id,
-      name: args.name,
-      email: args.email,
-      password
-    };
-    ctx.db.users.push(user);
-    
+    const user = await ctx.db.mutation.createUser(
+      {
+        data: {
+          ...args,
+          password
+        },
+      },
+      info
+    );
+
     return user;
   }
 };
