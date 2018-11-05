@@ -1,19 +1,23 @@
 import App, { Container } from 'next/app';
 import Page from '../components/Page.js';
+import { ApolloProvider } from 'react-apollo';
+import withApollo from '../lib/withApollo';
 
 
 class MyApp extends App {
   render() {
-    const { Component } = this.props;
+    const { Component, pageProps, apollo } = this.props;
 
     return (
       <Container>
-        <Page>
-          <Component />
-        </Page>
+        <ApolloProvider client={apollo}>
+          <Page>
+            <Component {...pageProps}/>
+          </Page>
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default withApollo(MyApp);
