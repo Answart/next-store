@@ -12,6 +12,8 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
+    pageProps.query = ctx.query;
+
     return { pageProps };
   }
   render() {
