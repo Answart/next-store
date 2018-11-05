@@ -2,23 +2,14 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 
-const StyledNav = styled.ul`
-  z-index: 1;
-  margin-top: 0;
-  left: 0;
-  margin: .625rem auto 0;
-  text-align: center;
-  width: 100%;
-  display: -ms-flexbox;
+const StyledNav = styled.div`
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
   a {
-    padding: 0 2.5rem 0.7rem 2.5rem !important;
+    padding: 0 3rem 0.5rem 3rem !important;
     -webkit-font-smoothing: antialiased;
     outline: medium none;
     overflow: hidden;
-    transition: all .25s ease;
     border-bottom: 1px solid ${props => props.theme.beige};
   }
   a:hover {
