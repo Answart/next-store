@@ -9,7 +9,7 @@ const CartStyles = styled.div`
 const Cart = () => (
   <CartStyles>
     <Link href="/cart">
-      <a>Cart</a>
+      <a><img src="/static/images/cart.svg" alt="Cart" width="18" /></a>
     </Link>
   </CartStyles>
 );
