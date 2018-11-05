@@ -9,71 +9,61 @@ import Cart from './Cart.js';
 
 
 const StyledHeader = styled.header`
-  position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  transition: top .2s ease-in-out;
-  background: ${props => props.theme.beige};
-  z-index: 100;
+  background-color: ${props => props.theme.beige};
   a {
-    padding: 0.25rem 0.5rem;
     color: ${props => props.theme.textGrey};
-    text-decoration: none;
   }
-`;
-
-const Logo = styled.div`
-  font-family: 'guttenbg';
-  text-align: center;
-  margin: 0;
-  a {
-    font-size: 4rem !important;
-    font-weight: normal;
+  .header-banner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    justify-content: center;
+    padding: 1rem 11rem;
   }
-`;
-
-const Banner = styled.nav`
-  position: static;
-  top: 0;
-  left: auto;
-  width: auto;
-  margin: auto 2.875rem;
-`;
-
-const Account = styled.ul`
-  position: absolute;
-  top: 2.5rem;
-  right: 2.3rem !important;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  z-index: 20;
+  .header-logo {
+    display: grid;
+    place-items: center center;
+    font-family: 'guttenbg';
+    a {
+      font-size: 4rem !important;
+      font-weight: normal;
+    }
+  }
+  .header-account {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 1fr auto 2rem;
+    place-items: center end;
+    color: ${props => props.theme.textGrey};
+    a {
+      padding: 0px 3px;
+    }
+  }
 `;
 
 const Header = () => (
   <StyledHeader>
-    <Logo>
-      <Link href="/">
-        <a>NextStore</a>
-      </Link>
-    </Logo>
-
-    <Banner>
+    <div className="header-banner">
       <Search />
 
-      <Account>
-        <Signin />
-        |
-        <Signup />
-        ||
-        <User />
-        |
-        <Cart />
-      </Account>
+      <div className="header-logo">
+        <Link href="/">
+          <a>NextStore</a>
+        </Link>
+      </div>
 
-      <Nav />
-    </Banner>
+      <div className="header-account">
+        <User />
+        <div>
+          <Signin />
+          <Signup />
+        </div>
+        <Cart />
+      </div>
+    </div>
+
+    <Nav />
   </StyledHeader>
 )
 

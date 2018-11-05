@@ -2,7 +2,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 
-const CartStyles = styled.span`
+const CartStyles = styled.div`
+  padding-top: 5px;
 `;
 
 const Cart = () => (

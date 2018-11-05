@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 
 const SigninStyles = styled.span`
+  text-alight: right;
 `;
 
 const Signin = () => (
   <SigninStyles>
-    <Link href="/login">
+    <Link href="/account">
       <a>Sign In</a>
     </Link>
   </SigninStyles>

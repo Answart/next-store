@@ -27,7 +27,7 @@ const StyledPage = styled.div`
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 11rem;
 `;
 
 injectGlobal`
@@ -59,19 +59,11 @@ injectGlobal`
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.50rem;
-    line-height: 1.5;
+    font-size: 1.5rem;
+    letter-spacing: 0.07rem;
     font-family: 'mank_sans_medium';
     color: ${theme.textGrey};
     -webkit-font-smoothing: antialiased;
-    @media (min-width: 1024px) {
-      grid-template-columns: 1fr;
-      justify-content: center;
-    }
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr;
-      justify-content: center;
-    }
   }
   div {
     display: block;
@@ -81,10 +73,10 @@ injectGlobal`
     color: ${theme.textBlack};
   }
   a {
-    text-decoration: none;
     padding: 0.5rem 3.5rem;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: bold;
+    text-decoration: none;
   }
   button {
     font-family: 'mank_sans_medium';
