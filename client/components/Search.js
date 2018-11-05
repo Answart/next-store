@@ -1,44 +1,42 @@
 import styled, { keyframes } from 'styled-components';
 
 
-const glow = keyframes`
-  from {
-    box-shadow: 0 0 0px white;
-  }
-
-  to {
-    box-shadow: 0 0 10px 1px white;
-  }
-`;
-
 const SearchStyles = styled.div`
-  position: absolute;
-  top: 1.8rem;
-  left: 2.3rem !important;
-  height: auto;
-  max-height: 36px;
-  width: 200px;
-  margin: 0;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: 20px auto;
+  place-items: center start;
   color: ${props => props.theme.textGrey};
-  z-index: 2;
-  input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
+  img.search-img {
+    padding-top: 0.3rem;
+    line-height: 1.7rem;
+  }
+  input.search-input {
+    width: 85%;
+    width: calc(100% - 3rem);
+    line-height: 2rem;
     border: 0;
-    border-bottom: 1px solid ${props => props.theme.lightGrey};
+    font-size: 1rem;
+    font-weight: bold;
+    color: ${props => props.theme.textBlack};
     background-color: transparent;
-    &.loading {
-      animation: ${glow} 0.5s ease-in-out infinite alternate;
-    }
+  }
+  input.search-input:hover {
+    border-bottom: 1px solid ${props => props.theme.lightGrey};
+  }
+  input.search-input:focus {
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid ${props => props.theme.lightGrey};
   }
 `;
 
 const Search = () => (
   <SearchStyles>
+    Search
     <input
+      className='search-input'
       type='search'
-      placeholder='Search'
       id='search'
     />
   </SearchStyles>
