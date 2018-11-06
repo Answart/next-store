@@ -28,16 +28,18 @@ const StyledHeader = styled.header`
     a {
       font-size: 4rem !important;
       font-weight: normal;
+      color: ${props => props.theme.darkblue};
     }
   }
   .header-account {
     display: grid;
     grid-gap: 2px;
-    grid-template-columns: 1fr auto 2rem;
+    grid-template-columns: 1fr auto 1.4rem;
     place-items: center end;
     color: ${props => props.theme.textGrey};
+    padding-top: 0.4rem;
     a {
-      padding: 0px 3px;
+      padding: 0;
     }
   }
 `;

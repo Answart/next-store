@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const SignupStyles = styled.span`
   text-alight: right;
+  padding: 0px 5px;
 `;
 
 const Signup = () => (

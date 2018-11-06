@@ -18,7 +18,7 @@ const SearchStyles = styled.div`
     border: 0;
     font-size: 1rem;
     font-weight: bold;
-    color: ${props => props.theme.textBlack};
+    color: ${props => props.theme.darkblue};
     background-color: transparent;
   }
   input.search-input:hover {

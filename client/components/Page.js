@@ -9,7 +9,7 @@ const theme = {
   orange: '#fe8b72',
   darkblue: '#47505f',
   beige: '#f9f6f4',
-  textGrey: '#5C5C5C',
+  textGrey: '#6d6c6c',
   lightGrey: '#cbc9c7',
   textBlack: '#3d3d3d',
   offWhite: '#EDEDED',
@@ -27,7 +27,7 @@ const StyledPage = styled.div`
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 2rem 11rem;
+  padding: 2rem 5rem;
 `;
 
 injectGlobal`
@@ -59,9 +59,9 @@ injectGlobal`
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
-    letter-spacing: 0.07rem;
-    font-family: 'mank_sans_medium';
+    font-size: 1.2rem;
+    letter-spacing: 0.02rem;
+    font-family: 'Tahoma', 'Geneva', sans-serif;
     color: ${theme.textGrey};
     -webkit-font-smoothing: antialiased;
   }
@@ -69,18 +69,26 @@ injectGlobal`
     display: block;
   }
   h1, h2, h3, h4, h5 {
-    font-family: 'mank_sans';
-    color: ${theme.textBlack};
+    color: ${theme.darkblue};
   }
   a {
     padding: 0.5rem 3.5rem;
-    font-size: 1.15rem;
+    font-size: 0.85rem;
     font-weight: bold;
     text-decoration: none;
   }
   button {
-    font-family: 'mank_sans_medium';
+    font-family: 'Tahoma', 'Geneva', sans-serif;
     text-decoration: none;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  button:focus {
+    outline: none;
+    font-weight: bold;
+  }
+  .line-through {
+    text-decoration: line-through ${theme.orange};
   }
 `;
 
