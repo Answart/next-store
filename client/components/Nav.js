@@ -19,25 +19,25 @@ const StyledNav = styled.div`
 
 const Nav = () => (
   <StyledNav>
-    <Link href="/tops">
+    <Link href="/shop/tops">
       <a>Tops</a>
     </Link>
-    <Link href="/bottoms" >
+    <Link href="/shop/bottoms" >
       <a>Bottoms</a>
     </Link>
-    <Link href="/shoes">
+    <Link href="/shop/shoes">
       <a>Shoes</a>
     </Link>
-    <Link href="/outwear">
+    <Link href="/shop/outwear">
       <a>Outwear</a>
     </Link>
-    <Link href="/accessories">
+    <Link href="/shop/accessories">
       <a>Accessories</a>
     </Link>
-    <Link href="/decor">
+    <Link href="/shop/decor">
       <a>Decor</a>
     </Link>
-    <Link href="/wedding">
+    <Link href="/shop/wedding">
       <a>Wedding</a>
     </Link>
   </StyledNav>
