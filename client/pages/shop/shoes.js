@@ -1,10 +1,11 @@
+import Items from '../../components/Items';
 import ShopStyles from '../../components/styles/ShopStyles.js';
 
 
 const Shoes = props => {
   return (
     <ShopStyles>
-      shoes
+      <Items category='shoes' />
     </ShopStyles>
   );
 };
