@@ -1,8 +1,11 @@
+import ShopStyles from '../../components/styles/ShopStyles.js';
+
+
 const Wedding = props => {
   return (
-    <div>
+    <ShopStyles>
       wedding
-    </div>
+    </ShopStyles>
   );
 };
 

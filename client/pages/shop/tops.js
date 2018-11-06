@@ -1,8 +1,11 @@
+import ShopStyles from '../../components/styles/ShopStyles.js';
+
+
 const Tops = props => {
   return (
-    <div>
+    <ShopStyles>
       tops
-    </div>
+    </ShopStyles>
   );
 };
 
