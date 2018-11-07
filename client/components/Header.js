@@ -15,13 +15,16 @@ const StyledHeader = styled.header`
   a {
     color: ${props => props.theme.textGrey};
   }
-  .header-banner {
+  a:hover {
+    color: ${props => props.theme.darkblue};
+  }
+  .hdr-banner {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
     justify-content: center;
     padding: 1rem 11rem;
   }
-  .header-logo {
+  .hdr-logo {
     display: grid;
     place-items: center center;
     font-family: 'guttenbg';
@@ -31,37 +34,49 @@ const StyledHeader = styled.header`
       color: ${props => props.theme.darkblue};
     }
   }
-  .header-account {
-    display: grid;
-    grid-gap: 2px;
-    grid-template-columns: 1fr auto 1.4rem;
-    place-items: center end;
+  .hdr-account {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2.45rem;
     color: ${props => props.theme.textGrey};
-    padding-top: 0.4rem;
     a {
-      padding: 0;
+      padding-top: 0;
+      padding-left: 0.4rem;
+      padding-bottom: 0;
+      padding-right: 0.4rem;
     }
+  }
+  .hdr-pad {
+    padding-top: 0.23rem !important;
   }
 `;
 
+const authed = true;
+
 const Header = () => (
   <StyledHeader>
-    <div className="header-banner">
+    <div className="hdr-banner">
       <Search />
 
-      <div className="header-logo">
+      <div className="hdr-logo">
         <Link href="/">
           <a>NextStore</a>
         </Link>
       </div>
 
-      <div className="header-account">
-        <User />
-        <div>
-          <Signin />
-          <Signup />
-        </div>
-        <Cart />
+      <div className="hdr-account">
+        {authed ? (
+          <>
+            <User />
+            <Cart />
+          </>
+        ) : (
+          <>
+            <Signin />
+            |
+            <Signup />>
+          </>
+        )}
       </div>
     </div>
 
