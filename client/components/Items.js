@@ -1,44 +1,10 @@
 import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Item from './Item';
 
-
-const items = [
-  {
-    id: 1,
-    title: 'title 1title 1title 1title 1title 1',
-    price: 44.45,
-    sale: 14.45,
-    description: 'description 1',
-    available: 'In Stock',
-    image: 'asldfksjf',
-    largeImage: 'asldfksjf'
-  }, {
-    id: 2,
-    title: 'title 2title 2title 2',
-    price: 110.90,
-    description: 'description 2',
-    image: 'asldfksjf',
-    largeImage: 'asldfksjf'
-  }, {
-    id: 3,
-    title: 'title 3',
-    price: 110.90,
-    description: 'description 3',
-    image: 'asldfksjf',
-    available: '3 left',
-    largeImage: 'asldfksjf'
-  }, {
-    id: 4,
-    title: 'title 4',
-    price: 110.90,
-    description: 'description 4',
-    image: 'asldfksjf',
-    largeImage: 'asldfksjf'
-  }
-];
-let data = { items };
 
 const ItemsListStyles = styled.div`
   display: grid;
@@ -71,11 +37,32 @@ const List = styled.div`
   height: 100%;
 `;
 
+let ITEMS_DEPT_QUERY = null;
+
 class Items extends Component {
   render() {
+
+    const dept = this.props.department;
+
+    ITEMS_DEPT_QUERY = gql`
+      query ITEMS_DEPT_QUERY {
+        items(where: { department: "${dept}" }) {
+          id
+          category
+          title
+          image
+          size
+          sale
+          price
+          salePrice
+          availability
+        }
+      }
+    `;
+
     return (
       <ItemsListStyles>
-        <i>{this.props.category}</i>
+        <i>{dept}</i>
 
         <Filters>
           Filters
@@ -86,14 +73,26 @@ class Items extends Component {
         </Pagination>
 
         <List>
-          {data.items.length && data.items.map(item =>
-            <Item item={item} key={item.id} />
-          )}
+          <Query
+            query={ITEMS_DEPT_QUERY}
+          >
+            {({ data, error, loading }) => {
+              if (loading) return <p>Loading...</p>;
+              if (error) return <p>Error: {error.message}</p>;
+              return (
+                <div>
+                  {data.items.length && data.items.map(item =>
+                    <Item item={item} key={item.id} />
+                  )}
+                </div>
+              );
+            }}
+          </Query>
         </List>
       </ItemsListStyles>
     );
   }
 }
 
-
 export default Items;
+export { ITEMS_DEPT_QUERY };
