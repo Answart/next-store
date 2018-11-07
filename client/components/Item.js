@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -64,6 +65,10 @@ const ItemActions = styled.div`
 `
 
 export default class Item extends Component {
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+  };
+
   render() {
     const { item } = this.props;
     return (
@@ -96,7 +101,7 @@ export default class Item extends Component {
                   ${item.price}
                 </span>
                 <span className='item-price item-sale'>
-                  ${item.sale}
+                  ${item.salePrice}
                 </span>
               </div>
             ) : (
