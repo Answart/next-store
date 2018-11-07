@@ -2,10 +2,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav.js';
 import Search from './Search.js';
-import Signin from './Signin.js';
-import Signup from './Signup.js';
-import User from './User.js';
-import Cart from './Cart.js';
 
 
 const StyledHeader = styled.header`
@@ -51,8 +47,6 @@ const StyledHeader = styled.header`
   }
 `;
 
-const authed = true;
-
 const Header = () => (
   <StyledHeader>
     <div className="hdr-banner">
@@ -68,13 +62,35 @@ const Header = () => (
         {authed ? (
           <>
             <User />
-            <Cart />
+            <Link href="/sell">
+              <a>
+                <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
+              </a>
+            </Link>
+            <Link href="/account/sell">
+              <a className="hdr-pad">
+                <img src="/static/images/package.svg" alt="Sell" height="14" width="14" />
+              </a>
+            </Link>
+            <Link href="/account/cart">
+              <a className="hdr-pad">
+                <img src="/static/images/cart.svg" alt="Cart" height="13" width="13" />
+              </a>
+            </Link>
           </>
         ) : (
           <>
-            <Signin />
+            <Link href="/account">
+              <a className="hdr-pad">
+                Sign In
+              </a>
+            </Link>
             |
-            <Signup />>
+            <Link href="/signup">
+              <a className="hdr-pad">
+                Join
+              </a>
+            </Link>
           </>
         )}
       </div>
