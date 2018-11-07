@@ -5,7 +5,7 @@ import ShopStyles from '../../components/styles/ShopStyles.js';
 const Wedding = props => {
   return (
     <ShopStyles>
-      <Items category='wedding' />
+      <Items department='wedding' />
     </ShopStyles>
   );
 };
