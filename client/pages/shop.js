@@ -1,7 +1,10 @@
+import Products from '../components/Products';
+
+
 const Shop = props => {
   return (
     <div>
-      shop page
+      <Products dept={props.query.department} />
     </div>
   );
 };

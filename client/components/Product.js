@@ -71,11 +71,12 @@ export default class Product extends Component {
 
   render() {
     const { product } = this.props;
+    const firstProductVariant = product.productVariants[0];
     return (
       <ProductStyles>
         <Link
           href={{
-            pathname: '/product',
+            pathname: `/product/buy`,
             query: { id: product.id }
           }}
         >
@@ -87,7 +88,7 @@ export default class Product extends Component {
         <ProductInfo>
           <Link
             href={{
-              pathname: '/product',
+              pathname: `/product/buy`,
               query: { id: product.id }
             }}
           >
@@ -95,25 +96,25 @@ export default class Product extends Component {
           </Link>
 
           <div className='product-price'>
-            {product.sale ? (
+            {firstProductVariant.sale ? (
               <div>
                 <span className='line-through'>
-                  ${product.price}
+                  ${firstProductVariant.price}
                 </span>
                 <span className='product-price product-sale'>
-                  ${product.salePrice}
+                  ${firstProductVariant.salePrice}
                 </span>
               </div>
             ) : (
               <div>
-                ${product.price}
+                ${firstProductVariant.price}
               </div>
             )}
           </div>
 
-          {product.available && (
+          {product.status && (
             <div className="product-availability">
-              {product.available}
+              {product.status}
             </div>
           )}
         </ProductInfo>
@@ -122,7 +123,7 @@ export default class Product extends Component {
           <ProductActions>
             <Link
               href={{
-                pathname: 'update',
+                pathname: `/product/update`,
                 query: { id: product.id }
               }}
             >

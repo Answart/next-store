@@ -37,29 +37,32 @@ const List = styled.div`
   height: 100%;
 `;
 
-let PRODUCTS_DEPT_QUERY = null;
+const PRODUCTS_DEPT_QUERY = gql`
+  query PRODUCTS_DEPT_QUERY($dept: String!) {
+    products(where: { department: $dept }) {
+      id
+      department
+      title
+      description
+      image
+      category
+      brand
+      status
+      url
+      productVariants {
+        id
+        quantity
+        color
+        size
+        price
+      }
+    }
+  }
+`;
 
 class Products extends Component {
   render() {
-
-    const dept = this.props.department;
-
-    PRODUCTS_DEPT_QUERY = gql`
-      query PRODUCTS_DEPT_QUERY {
-        products(where: { department: "${dept}" }) {
-          id
-          category
-          title
-          image
-          size
-          sale
-          price
-          salePrice
-          availability
-        }
-      }
-    `;
-
+    const dept = this.props.dept;
     return (
       <ProductsListStyles>
         <i>{dept}</i>
@@ -75,6 +78,7 @@ class Products extends Component {
         <List>
           <Query
             query={PRODUCTS_DEPT_QUERY}
+            variables={{ dept }}
           >
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
