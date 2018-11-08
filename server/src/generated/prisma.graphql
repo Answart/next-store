@@ -1,7 +1,7 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sun Nov 04 2018 01:58:27 GMT-0700 (Pacific Daylight Time)
+# timestamp: Wed Nov 07 2018 23:52:39 GMT-0800 (Pacific Standard Time)
 
-type AggregateItem {
+type AggregateProduct {
   count: Int!
 }
 
@@ -16,120 +16,155 @@ type BatchPayload {
 
 scalar DateTime
 
-type Item implements Node {
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createProduct(data: ProductCreateInput!): Product!
+  createUser(data: UserCreateInput!): User!
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteUser(where: UserWhereUniqueInput!): User
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Product implements Node {
   id: ID!
   department: String!
-  category: String
   title: String!
   description: String!
-  image: String
-  largeImage: String
-  size: String
-  sale: Boolean!
-  price: Int!
-  salePrice: Int
-  availability: String
+  image: String!
+  category: String
+  brand: String
+  status: String
+  url: String
+  user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
-type ItemConnection {
+type ProductConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [ItemEdge]!
-  aggregate: AggregateItem!
+  edges: [ProductEdge]!
+  aggregate: AggregateProduct!
 }
 
-input ItemCreateInput {
+input ProductCreateInput {
   department: String!
-  category: String
   title: String!
   description: String!
-  image: String
-  largeImage: String
-  size: String
-  sale: Boolean!
-  price: Int!
-  salePrice: Int
-  availability: String
+  image: String!
+  category: String
+  brand: String
+  status: String
+  url: String
+  user: UserCreateOneInput!
 }
 
 """An edge in a connection."""
-type ItemEdge {
+type ProductEdge {
   """The item at the end of the edge."""
-  node: Item!
+  node: Product!
 
   """A cursor for use in pagination."""
   cursor: String!
 }
 
-enum ItemOrderByInput {
+enum ProductOrderByInput {
   id_ASC
   id_DESC
   department_ASC
   department_DESC
-  category_ASC
-  category_DESC
   title_ASC
   title_DESC
   description_ASC
   description_DESC
   image_ASC
   image_DESC
-  largeImage_ASC
-  largeImage_DESC
-  size_ASC
-  size_DESC
-  sale_ASC
-  sale_DESC
-  price_ASC
-  price_DESC
-  salePrice_ASC
-  salePrice_DESC
-  availability_ASC
-  availability_DESC
+  category_ASC
+  category_DESC
+  brand_ASC
+  brand_DESC
+  status_ASC
+  status_DESC
+  url_ASC
+  url_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
 
-type ItemPreviousValues {
+type ProductPreviousValues {
   id: ID!
   department: String!
-  category: String
   title: String!
   description: String!
-  image: String
-  largeImage: String
-  size: String
-  sale: Boolean!
-  price: Int!
-  salePrice: Int
-  availability: String
+  image: String!
+  category: String
+  brand: String
+  status: String
+  url: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type ItemSubscriptionPayload {
+type ProductSubscriptionPayload {
   mutation: MutationType!
-  node: Item
+  node: Product
   updatedFields: [String!]
-  previousValues: ItemPreviousValues
+  previousValues: ProductPreviousValues
 }
 
-input ItemSubscriptionWhereInput {
+input ProductSubscriptionWhereInput {
   """Logical AND on all given filters."""
-  AND: [ItemSubscriptionWhereInput!]
+  AND: [ProductSubscriptionWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [ItemSubscriptionWhereInput!]
+  OR: [ProductSubscriptionWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [ItemSubscriptionWhereInput!]
+  NOT: [ProductSubscriptionWhereInput!]
 
   """
   The subscription event gets dispatched when it's listed in mutation_in
@@ -150,46 +185,41 @@ input ItemSubscriptionWhereInput {
   The subscription event gets only dispatched when some of the field names included in this list have been updated
   """
   updatedFields_contains_some: [String!]
-  node: ItemWhereInput
+  node: ProductWhereInput
 }
 
-input ItemUpdateInput {
+input ProductUpdateInput {
   department: String
-  category: String
   title: String
   description: String
   image: String
-  largeImage: String
-  size: String
-  sale: Boolean
-  price: Int
-  salePrice: Int
-  availability: String
+  category: String
+  brand: String
+  status: String
+  url: String
+  user: UserUpdateOneRequiredInput
 }
 
-input ItemUpdateManyMutationInput {
+input ProductUpdateManyMutationInput {
   department: String
-  category: String
   title: String
   description: String
   image: String
-  largeImage: String
-  size: String
-  sale: Boolean
-  price: Int
-  salePrice: Int
-  availability: String
+  category: String
+  brand: String
+  status: String
+  url: String
 }
 
-input ItemWhereInput {
+input ProductWhereInput {
   """Logical AND on all given filters."""
-  AND: [ItemWhereInput!]
+  AND: [ProductWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [ItemWhereInput!]
+  OR: [ProductWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [ItemWhereInput!]
+  NOT: [ProductWhereInput!]
   id: ID
 
   """All values that are not equal to given value."""
@@ -270,46 +300,6 @@ input ItemWhereInput {
 
   """All values not ending with the given string."""
   department_not_ends_with: String
-  category: String
-
-  """All values that are not equal to given value."""
-  category_not: String
-
-  """All values that are contained in given list."""
-  category_in: [String!]
-
-  """All values that are not contained in given list."""
-  category_not_in: [String!]
-
-  """All values less than the given value."""
-  category_lt: String
-
-  """All values less than or equal the given value."""
-  category_lte: String
-
-  """All values greater than the given value."""
-  category_gt: String
-
-  """All values greater than or equal the given value."""
-  category_gte: String
-
-  """All values containing the given string."""
-  category_contains: String
-
-  """All values not containing the given string."""
-  category_not_contains: String
-
-  """All values starting with the given string."""
-  category_starts_with: String
-
-  """All values not starting with the given string."""
-  category_not_starts_with: String
-
-  """All values ending with the given string."""
-  category_ends_with: String
-
-  """All values not ending with the given string."""
-  category_not_ends_with: String
   title: String
 
   """All values that are not equal to given value."""
@@ -430,174 +420,166 @@ input ItemWhereInput {
 
   """All values not ending with the given string."""
   image_not_ends_with: String
-  largeImage: String
+  category: String
 
   """All values that are not equal to given value."""
-  largeImage_not: String
+  category_not: String
 
   """All values that are contained in given list."""
-  largeImage_in: [String!]
+  category_in: [String!]
 
   """All values that are not contained in given list."""
-  largeImage_not_in: [String!]
+  category_not_in: [String!]
 
   """All values less than the given value."""
-  largeImage_lt: String
+  category_lt: String
 
   """All values less than or equal the given value."""
-  largeImage_lte: String
+  category_lte: String
 
   """All values greater than the given value."""
-  largeImage_gt: String
+  category_gt: String
 
   """All values greater than or equal the given value."""
-  largeImage_gte: String
+  category_gte: String
 
   """All values containing the given string."""
-  largeImage_contains: String
+  category_contains: String
 
   """All values not containing the given string."""
-  largeImage_not_contains: String
+  category_not_contains: String
 
   """All values starting with the given string."""
-  largeImage_starts_with: String
+  category_starts_with: String
 
   """All values not starting with the given string."""
-  largeImage_not_starts_with: String
+  category_not_starts_with: String
 
   """All values ending with the given string."""
-  largeImage_ends_with: String
+  category_ends_with: String
 
   """All values not ending with the given string."""
-  largeImage_not_ends_with: String
-  size: String
+  category_not_ends_with: String
+  brand: String
 
   """All values that are not equal to given value."""
-  size_not: String
+  brand_not: String
 
   """All values that are contained in given list."""
-  size_in: [String!]
+  brand_in: [String!]
 
   """All values that are not contained in given list."""
-  size_not_in: [String!]
+  brand_not_in: [String!]
 
   """All values less than the given value."""
-  size_lt: String
+  brand_lt: String
 
   """All values less than or equal the given value."""
-  size_lte: String
+  brand_lte: String
 
   """All values greater than the given value."""
-  size_gt: String
+  brand_gt: String
 
   """All values greater than or equal the given value."""
-  size_gte: String
+  brand_gte: String
 
   """All values containing the given string."""
-  size_contains: String
+  brand_contains: String
 
   """All values not containing the given string."""
-  size_not_contains: String
+  brand_not_contains: String
 
   """All values starting with the given string."""
-  size_starts_with: String
+  brand_starts_with: String
 
   """All values not starting with the given string."""
-  size_not_starts_with: String
+  brand_not_starts_with: String
 
   """All values ending with the given string."""
-  size_ends_with: String
+  brand_ends_with: String
 
   """All values not ending with the given string."""
-  size_not_ends_with: String
-  sale: Boolean
+  brand_not_ends_with: String
+  status: String
 
   """All values that are not equal to given value."""
-  sale_not: Boolean
-  price: Int
-
-  """All values that are not equal to given value."""
-  price_not: Int
+  status_not: String
 
   """All values that are contained in given list."""
-  price_in: [Int!]
+  status_in: [String!]
 
   """All values that are not contained in given list."""
-  price_not_in: [Int!]
+  status_not_in: [String!]
 
   """All values less than the given value."""
-  price_lt: Int
+  status_lt: String
 
   """All values less than or equal the given value."""
-  price_lte: Int
+  status_lte: String
 
   """All values greater than the given value."""
-  price_gt: Int
+  status_gt: String
 
   """All values greater than or equal the given value."""
-  price_gte: Int
-  salePrice: Int
-
-  """All values that are not equal to given value."""
-  salePrice_not: Int
-
-  """All values that are contained in given list."""
-  salePrice_in: [Int!]
-
-  """All values that are not contained in given list."""
-  salePrice_not_in: [Int!]
-
-  """All values less than the given value."""
-  salePrice_lt: Int
-
-  """All values less than or equal the given value."""
-  salePrice_lte: Int
-
-  """All values greater than the given value."""
-  salePrice_gt: Int
-
-  """All values greater than or equal the given value."""
-  salePrice_gte: Int
-  availability: String
-
-  """All values that are not equal to given value."""
-  availability_not: String
-
-  """All values that are contained in given list."""
-  availability_in: [String!]
-
-  """All values that are not contained in given list."""
-  availability_not_in: [String!]
-
-  """All values less than the given value."""
-  availability_lt: String
-
-  """All values less than or equal the given value."""
-  availability_lte: String
-
-  """All values greater than the given value."""
-  availability_gt: String
-
-  """All values greater than or equal the given value."""
-  availability_gte: String
+  status_gte: String
 
   """All values containing the given string."""
-  availability_contains: String
+  status_contains: String
 
   """All values not containing the given string."""
-  availability_not_contains: String
+  status_not_contains: String
 
   """All values starting with the given string."""
-  availability_starts_with: String
+  status_starts_with: String
 
   """All values not starting with the given string."""
-  availability_not_starts_with: String
+  status_not_starts_with: String
 
   """All values ending with the given string."""
-  availability_ends_with: String
+  status_ends_with: String
 
   """All values not ending with the given string."""
-  availability_not_ends_with: String
+  status_not_ends_with: String
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -642,67 +624,20 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  user: UserWhereInput
 }
 
-input ItemWhereUniqueInput {
+input ProductWhereUniqueInput {
   id: ID
 }
 
-"""
-The `Long` scalar type represents non-fractional signed whole numeric values.
-Long can represent values between -(2^63) and 2^63 - 1.
-"""
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  createItem(data: ItemCreateInput!): Item!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteItem(where: ItemWhereUniqueInput!): Item
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyItems(where: ItemWhereInput): BatchPayload!
-}
-
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-"""An object with an ID"""
-interface Node {
-  """The id of the object."""
-  id: ID!
-}
-
-"""Information about pagination in a connection."""
-type PageInfo {
-  """When paginating forwards, are there more items?"""
-  hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
-  hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
-  startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
-  endCursor: String
-}
-
 type Query {
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
+  product(where: ProductWhereUniqueInput!): Product
   user(where: UserWhereUniqueInput!): User
-  item(where: ItemWhereUniqueInput!): Item
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -712,8 +647,8 @@ type Query {
 }
 
 type Subscription {
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
 }
 
 type User implements Node {
@@ -739,6 +674,11 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -813,6 +753,12 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
+input UserUpdateDataInput {
+  name: String
+  email: String
+  password: String
+}
+
 input UserUpdateInput {
   name: String
   email: String
@@ -823,6 +769,18 @@ input UserUpdateManyMutationInput {
   name: String
   email: String
   password: String
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserWhereInput {

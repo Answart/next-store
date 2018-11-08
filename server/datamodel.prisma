@@ -7,19 +7,17 @@ type User {
   updatedAt: DateTime!
 }
 
-type Item {
+type Product {
   id: ID! @unique
   department: String!
-  category: String
   title: String!
   description: String!
-  image: String
-  largeImage: String
-  size: String
-  sale: Boolean!
-  price: Int!
-  salePrice: Int
-  availability: String
+  image: String!
+  category: String
+  brand: String
+  status: String @default(value: "Out of Stock")
+  url: String
+  user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
