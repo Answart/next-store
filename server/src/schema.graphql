@@ -5,12 +5,17 @@ type Query {
   users: [User!]!
   product(id: ID!): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product!]!
+  productVariant(id: ID!): ProductVariant
+  productVariants(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [ProductVariant]!
 }
 
 type Mutation {
   createUser(name: String!, email: String!, password: String!): User!
   createProduct(department: String!, title: String!, description: String!, image: String!, category: String, brand: String, status: String, url: String): Product
   deleteProduct(id: ID!): Product
+  createProductVariant(price: Int!, quantity: Int!, color: String!, sale: Boolean!, salePrice: Int, size: String, productId: String!): ProductVariant
+  removeFromProduct(id: ID!, quantity: Int!): ProductVariant
+  deleteProductVariant(id: ID!): ProductVariant
 }
 
 type User {

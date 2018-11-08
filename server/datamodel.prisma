@@ -17,7 +17,19 @@ type Product {
   brand: String
   status: String @default(value: "Out of Stock")
   url: String
+  productVariants: [ProductVariant!]!
   user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type ProductVariant {
+  id: ID! @unique
+  price: Int!
+  quantity: Int! @default(value: 1)
+  color: String
+  size: String
+  sale: Boolean! @default(value: false)
+  salePrice: Int
+  product: Product!
 }
