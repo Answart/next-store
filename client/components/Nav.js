@@ -20,52 +20,45 @@ const StyledNav = styled.div`
 const Nav = () => (
   <StyledNav>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'tops' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'tops' }
+    }}>
       <a>Tops</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'bottoms' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'bottoms' }
+    }}>
       <a>Bottoms</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'shoes' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'shoes' }
+    }}>
       <a>Shoes</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'outwear' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'outwear' }
+    }}>
       <a>Outwear</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'accessories' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'accessories' }
+    }}>
       <a>Accessories</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'decor' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'decor' }
+    }}>
       <a>Decor</a>
     </Link>
     <Link href={{
-        pathname: `/shop`,
-        query: { department: 'wedding' }
-      }}
-    >
+      pathname: `/shop`,
+      query: { department: 'wedding' }
+    }}>
       <a>Wedding</a>
     </Link>
   </StyledNav>
