@@ -3,10 +3,10 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
 import styled from 'styled-components';
-import Item from './Item';
+import Product from './Product';
 
 
-const ItemsListStyles = styled.div`
+const ProductsListStyles = styled.div`
   display: grid;
   grid-template-rows: 0.5rem 5rem 10fr;
   grid-template-columns: 1fr 6fr;
@@ -37,16 +37,16 @@ const List = styled.div`
   height: 100%;
 `;
 
-let ITEMS_DEPT_QUERY = null;
+let PRODUCTS_DEPT_QUERY = null;
 
-class Items extends Component {
+class Products extends Component {
   render() {
 
     const dept = this.props.department;
 
-    ITEMS_DEPT_QUERY = gql`
-      query ITEMS_DEPT_QUERY {
-        items(where: { department: "${dept}" }) {
+    PRODUCTS_DEPT_QUERY = gql`
+      query PRODUCTS_DEPT_QUERY {
+        products(where: { department: "${dept}" }) {
           id
           category
           title
@@ -61,7 +61,7 @@ class Items extends Component {
     `;
 
     return (
-      <ItemsListStyles>
+      <ProductsListStyles>
         <i>{dept}</i>
 
         <Filters>
@@ -74,25 +74,25 @@ class Items extends Component {
 
         <List>
           <Query
-            query={ITEMS_DEPT_QUERY}
+            query={PRODUCTS_DEPT_QUERY}
           >
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
               if (error) return <p>Error: {error.message}</p>;
               return (
                 <div>
-                  {data.items.length && data.items.map(item =>
-                    <Item item={item} key={item.id} />
+                  {data.products.length && data.products.map(product =>
+                    <Product product={product} key={product.id} />
                   )}
                 </div>
               );
             }}
           </Query>
         </List>
-      </ItemsListStyles>
+      </ProductsListStyles>
     );
   }
 }
 
-export default Items;
-export { ITEMS_DEPT_QUERY };
+export default Products;
+export { PRODUCTS_DEPT_QUERY };

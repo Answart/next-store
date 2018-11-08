@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 
-const ItemStyles = styled.div`
+const ProductStyles = styled.div`
   padding: 1rem;
   img {
     display: grid;
@@ -18,37 +18,37 @@ const ItemStyles = styled.div`
   }
 `;
 
-const ItemInfo = styled.div`
+const ProductInfo = styled.div`
   padding: 0.2rem 0;
   a {
     padding: 0.2rem 0;
     text-transform: none;
     color: ${props => props.theme.darkblue};
   }
-  .item-title {
+  .product-title {
     padding: 0.2rem 0;
     font-size: 1.1rem;
     text-align: left;
     font-weight: bold;
   }
-  .item-price {
+  .product-price {
     padding: 0.4rem 0;
     font-size: 0.85rem;
     font-weight: bold;
     color: ${props => props.theme.textGrey};
   }
-  .item-sale {
+  .product-sale {
     padding-left: 0.5rem;
     color: ${props => props.theme.orange};
   }
-  .item-availability {
+  .product-availability {
     font-style: italic;
     font-size: 1rem;
     color: ${props => props.theme.orange};
   }
 `;
 
-const ItemActions = styled.div`
+const ProductActions = styled.div`
   padding: 0.2rem 0;
   a {
     padding: 0 0.3rem 0 0;
@@ -64,75 +64,75 @@ const ItemActions = styled.div`
   }
 `
 
-export default class Item extends Component {
+export default class Product extends Component {
   static propTypes = {
-    item: PropTypes.object.isRequired,
+    product: PropTypes.object.isRequired,
   };
 
   render() {
-    const { item } = this.props;
+    const { product } = this.props;
     return (
-      <ItemStyles>
+      <ProductStyles>
         <Link
           href={{
-            pathname: '/item',
-            query: { id: item.id }
+            pathname: '/product',
+            query: { id: product.id }
           }}
         >
-          <a>{item.image && (
-            <img src={item.image} alt={item.title} />
+          <a>{product.image && (
+            <img src={product.image} alt={product.title} />
           )}</a>
         </Link>
 
-        <ItemInfo>
+        <ProductInfo>
           <Link
             href={{
-              pathname: '/item',
-              query: { id: item.id }
+              pathname: '/product',
+              query: { id: product.id }
             }}
           >
-            <a className='item-title'>{item.title}</a>
+            <a className='product-title'>{product.title}</a>
           </Link>
 
-          <div className='item-price'>
-            {item.sale ? (
+          <div className='product-price'>
+            {product.sale ? (
               <div>
                 <span className='line-through'>
-                  ${item.price}
+                  ${product.price}
                 </span>
-                <span className='item-price item-sale'>
-                  ${item.salePrice}
+                <span className='product-price product-sale'>
+                  ${product.salePrice}
                 </span>
               </div>
             ) : (
               <div>
-                ${item.price}
+                ${product.price}
               </div>
             )}
           </div>
 
-          {item.available && (
-            <div className="item-availability">
-              {item.available}
+          {product.available && (
+            <div className="product-availability">
+              {product.available}
             </div>
           )}
-        </ItemInfo>
+        </ProductInfo>
 
-        {item.id && (
-          <ItemActions>
+        {product.id && (
+          <ProductActions>
             <Link
               href={{
                 pathname: 'update',
-                query: { id: item.id }
+                query: { id: product.id }
               }}
             >
               <a>Edit</a>
             </Link>
 
-            <button id={item.id}>Remove</button>
-          </ItemActions>
+            <button id={product.id}>Remove</button>
+          </ProductActions>
         )}
-      </ItemStyles>
+      </ProductStyles>
     );
   }
 }
