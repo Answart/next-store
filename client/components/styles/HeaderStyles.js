@@ -11,6 +11,10 @@ const StyledHeader = styled.header`
   a:hover {
     color: ${props => props.theme.darkblue};
   }
+  button {
+    border: none;
+    background-color: transparent;
+  }
   .hdr-banner {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
@@ -42,19 +46,7 @@ const StyledHeader = styled.header`
   .hdr-pad {
     padding-top: 0.23rem !important;
   }
-  .hdr-dropbtn {
-    border: none;
-    color: ${props => props.theme.textGrey};
-    background-color: transparent;
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .hdr-dropbtn:hover {
-    color: ${props => props.theme.darkblue};
-  }
-  .hdr-dropdown {
+  .hdr-inline {
     position: relative;
     display: inline-block;
   }
@@ -82,6 +74,18 @@ const StyledHeader = styled.header`
   }
   .show {
     display: block;
+  }
+  .hdr-btn {
+    border: none;
+    color: ${props => props.theme.textGrey};
+    background-color: transparent;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .hdr-btn:hover {
+    color: ${props => props.theme.darkblue};
   }
 `;
 

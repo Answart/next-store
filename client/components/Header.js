@@ -13,6 +13,7 @@ class Header extends Component {
       acctDrpdwn: false
     };
     this.toggAcctDrpdwn = this.toggAcctDrpdwn.bind(this);
+    this.toggleCart = this.toggleCart.bind(this);
   }
   toggAcctDrpdwn = e => {
     if (!!e && e.preventDefault) e.preventDefault();
@@ -20,6 +21,10 @@ class Header extends Component {
 
     this.setState({ acctDrpdwn: !currentState });
   };
+  toggleCart = e => {
+    if (!!e && e.preventDefault) e.preventDefault();
+    console.log('toggling cart');
+  }
   render() {
     const authed = true;
     return (
@@ -36,8 +41,8 @@ class Header extends Component {
           <div className="hdr-account">
             {authed ? (
               <>
-                <span className="hdr-dropdown">
-                  <button className="hdr-dropbtn" onClick={(e) => this.toggAcctDrpdwn(e)}>
+                <span className="hdr-inline">
+                  <button className="hdr-btn" onClick={(e) => this.toggAcctDrpdwn(e)}>
                     Firstname
                   </button>
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
@@ -58,11 +63,12 @@ class Header extends Component {
                     <img src="/static/images/package.svg" alt="Sell" height="14" width="14" />
                   </a>
                 </Link>
-                <Link href="/account/cart">
-                  <a className="hdr-pad">
-                    <img src="/static/images/cart.svg" alt="Cart" height="13" width="13" />
-                  </a>
-                </Link>
+
+                <span className="hdr-inline hdr-pad">
+                  <button className="hdr-btnn" onClick={(e) => this.toggleCart(e)}>
+                    <img src="/static/images/cart.svg" alt="Cart" height="14" width="14" />
+                  </button>
+                </span>
               </>
             ) : (
               <>
