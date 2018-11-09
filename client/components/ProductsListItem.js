@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 
-const ProductStyles = styled.div`
+const StyledProductsListItem = styled.div`
   padding: 1rem;
   img {
     display: grid;
@@ -73,7 +73,7 @@ export default class Product extends Component {
     const { product } = this.props;
     const firstProductVariant = product.productVariants[0];
     return (
-      <ProductStyles>
+      <StyledProductsListItem>
         <Link
           href={{
             pathname: `/product/buy`,
@@ -133,7 +133,7 @@ export default class Product extends Component {
             <button id={product.id}>Remove</button>
           </ProductActions>
         )}
-      </ProductStyles>
+      </StyledProductsListItem>
     );
   }
 }

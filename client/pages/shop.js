@@ -1,10 +1,10 @@
-import Products from '../components/Products';
+import ProductsList from '../components/ProductsList';
 
 
 const Shop = props => {
   return (
     <div>
-      <Products dept={props.query.department} />
+      <ProductsList shopQuery={props.query} />
     </div>
   );
 };

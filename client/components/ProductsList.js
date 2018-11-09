@@ -3,10 +3,10 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
 import styled from 'styled-components';
-import Product from './Product';
+import ProductsListItem from './ProductsListItem';
 
 
-const ProductsListStyles = styled.div`
+const StyledProductsList = styled.div`
   display: grid;
   grid-template-rows: 0.5rem 5rem 10fr;
   grid-template-columns: 1fr 6fr;
@@ -60,11 +60,11 @@ const PRODUCTS_DEPT_QUERY = gql`
   }
 `;
 
-class Products extends Component {
+class ProductsList extends Component {
   render() {
     const dept = this.props.dept;
     return (
-      <ProductsListStyles>
+      <StyledProductsList>
         <i>{dept}</i>
 
         <Filters>
@@ -86,17 +86,17 @@ class Products extends Component {
               return (
                 <div>
                   {data.products.length && data.products.map(product =>
-                    <Product product={product} key={product.id} />
+                    <ProductsListItem product={product} key={product.id} />
                   )}
                 </div>
               );
             }}
           </Query>
         </List>
-      </ProductsListStyles>
+      </StyledProductsList>
     );
   }
 }
 
-export default Products;
+export default ProductsList;
 export { PRODUCTS_DEPT_QUERY };
