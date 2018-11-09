@@ -6,7 +6,7 @@ const StyledNav = styled.div`
   display: flex;
   justify-content: center;
   a {
-    padding: 0 3rem 0.5rem 3rem !important;
+    padding: 0 3rem 0.7rem 3rem !important;
     -webkit-font-smoothing: antialiased;
     outline: medium none;
     overflow: hidden;

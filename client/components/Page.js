@@ -5,7 +5,7 @@ import Header from './Header.js';
 
 
 const theme = {
-  red: '#f84248',
+  red: '#e86c52',
   orange: '#fe8b72',
   darkblue: '#47505f',
   beige: '#f9f6f4',
@@ -27,7 +27,7 @@ const StyledPage = styled.div`
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 2rem 5rem;
+  padding: 2rem;
 `;
 
 injectGlobal`
@@ -70,6 +70,8 @@ injectGlobal`
   }
   h1, h2, h3, h4, h5 {
     color: ${theme.darkblue};
+    padding: 0;
+    margin: 0;
   }
   a {
     padding: 0.5rem 3.5rem;
