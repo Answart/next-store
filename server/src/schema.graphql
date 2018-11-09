@@ -3,10 +3,10 @@
 type Query {
   user(id: ID!): User
   users: [User!]!
-  product(id: ID!): Product
+  product(where: ProductWhereInput): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product!]!
-  productVariant(id: ID!): ProductVariant
-  productVariants(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [ProductVariant]!
+  productVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
+  productVariants(where: ProductVariantWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [ProductVariant]!
 }
 
 type Mutation {
