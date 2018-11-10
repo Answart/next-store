@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-const StyledSelectProduct = styled.div`
+const StyledProduct = styled.div`
   display: grid;
   grid-auto-columns: 1fr 1fr;
   grid-gap: 3rem;
@@ -38,7 +38,7 @@ const StyledSelectProduct = styled.div`
   }
 `;
 
-const StyledSelectProductVariant = styled.div`
+const StyledProductVariants = styled.div`
   width: 100%;
   bottom: 0;
   .buy-prdct-slct {
@@ -61,5 +61,5 @@ const StyledSelectProductVariant = styled.div`
   }
 `;
 
-export default StyledSelectProduct;
-export { StyledSelectProductVariant };
+export default StyledProduct;
+export { StyledProductVariants };

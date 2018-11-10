@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import styled from 'styled-components';
-import Head from 'next/head';
-import { StyledSelectProductVariant } from './styles/SelectProductStyles';
+import { StyledProductVariants } from './styles/ProductStyles';
 
 
-class SelectProductVariant extends Component {
+class ProductVariants extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,7 +89,7 @@ class SelectProductVariant extends Component {
     let addToCrtBtnDisabled = !(currentVariants.length == 1);
     let availability = currentVariant ? `${currentVariant.quantity} in Stock!` : "Out of Stock";
     return (
-      <StyledSelectProductVariant>
+      <StyledProductVariants>
         {currentVariant && (
           <div className='product-price buy-prdct-price buy-prdct-padding'>
             {currentVariant.salePrice ? (
@@ -149,9 +145,9 @@ class SelectProductVariant extends Component {
             Add To Cart
           </button>
         </div>
-      </StyledSelectProductVariant>
+      </StyledProductVariants>
     );
   }
 }
 
-export default SelectProductVariant;
+export default ProductVariants;

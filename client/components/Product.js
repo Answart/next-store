@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import styled from 'styled-components';
 import Link from 'next/link';
-import Head from 'next/head';
-import SelectProductVariant from './SelectProductVariant';
-import StyledSelectProduct from './styles/SelectProductStyles';
+import StyledProduct from './styles/ProductStyles';
+import ProductVariants from './ProductVariants';
 
 
 const product = {
@@ -42,11 +38,11 @@ const product = {
   ]
 }
 
-class SelectProduct extends Component {
+class Product extends Component {
   render() {
     const id = this.props.id;
     return (
-      <StyledSelectProduct>
+      <StyledProduct>
         <div className="buy-prdct-imgs">
           <img src={product.image} alt={product.title} />
         </div>
@@ -66,8 +62,8 @@ class SelectProduct extends Component {
             </Link>
           </div>
 
-          {product.productVariants.length &&
-            <SelectProductVariant
+          {product.productVariants && product.productVariants.length &&
+            <ProductVariants
               productId={product.id}
               allVariants={product.productVariants}
             />
@@ -84,9 +80,9 @@ class SelectProduct extends Component {
             )}
           </div>
         </div>
-      </StyledSelectProduct>
+      </StyledProduct>
     );
   }
 }
 
-export default SelectProduct;
+export default Product;

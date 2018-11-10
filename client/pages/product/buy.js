@@ -1,10 +1,10 @@
-import SelectProduct from '../../components/SelectProduct';
+import Product from '../../components/Product';
 
 
 const BuyProductPage = props => {
   return (
     <div>
-      <SelectProduct id={props.query.id} />
+      <Product id={props.query.id} />
     </div>
   );
 };
