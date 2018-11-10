@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Link from 'next/link';
 import styled from 'styled-components';
 import ProductsListItem from './ProductsListItem';
 
 
 const StyledProductsList = styled.div`
   display: grid;
-  grid-template-rows: 0.5rem 5rem 10fr;
+  grid-template-rows: 1.9rem 5rem 10fr;
   grid-template-columns: 1fr 6fr;
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
+  .prod-lst-title {
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+  }
 `;
 
 const Filters = styled.div`
@@ -37,9 +40,9 @@ const List = styled.div`
   height: 100%;
 `;
 
-const PRODUCTS_DEPT_QUERY = gql`
-  query PRODUCTS_DEPT_QUERY($dept: String!) {
-    products(where: { department: $dept }) {
+const ALL_PRODUCTS_QUERY = gql`
+  query ALL_PRODUCTS_QUERY {
+    products {
       id
       department
       title
@@ -49,6 +52,64 @@ const PRODUCTS_DEPT_QUERY = gql`
       brand
       status
       url
+      user {
+        id
+        name
+      }
+      productVariants {
+        id
+        quantity
+        color
+        size
+        price
+      }
+    }
+  }
+`;
+
+const DEPT_PRODUCTS_QUERY = gql`
+  query DEPT_PRODUCTS_QUERY($department: String!) {
+    products(where: { department: $department }) {
+      id
+      department
+      title
+      description
+      image
+      category
+      brand
+      status
+      url
+      user {
+        id
+        name
+      }
+      productVariants {
+        id
+        quantity
+        color
+        size
+        price
+      }
+    }
+  }
+`;
+
+const SELLERS_PRODUCTS_QUERY = gql`
+  query SELLERS_PRODUCTS_QUERY($name: String) {
+    products(where: { user: { name: $name }}) {
+      id
+      department
+      title
+      description
+      image
+      category
+      brand
+      status
+      url
+      user {
+        id
+        name
+      }
       productVariants {
         id
         quantity
@@ -62,10 +123,23 @@ const PRODUCTS_DEPT_QUERY = gql`
 
 class ProductsList extends Component {
   render() {
-    const dept = this.props.dept;
+    const queryHash = {
+      department: DEPT_PRODUCTS_QUERY,
+      name: SELLERS_PRODUCTS_QUERY,
+      all: ALL_PRODUCTS_QUERY
+    };
+    const variables = this.props.shopQuery;
+    const key = Object.keys(variables)[0];
+    const query = key ? queryHash[key] : queryHash['all'];
     return (
       <StyledProductsList>
-        <i>{dept}</i>
+        <div className="prod-lst-title">
+          {key && (
+            <div>
+              {key}: <i>{variables[key]}</i>
+            </div>
+          )}
+        </div>
 
         <Filters>
           Filters
@@ -77,8 +151,8 @@ class ProductsList extends Component {
 
         <List>
           <Query
-            query={PRODUCTS_DEPT_QUERY}
-            variables={{ dept }}
+            query={query}
+            variables={variables}
           >
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
@@ -99,4 +173,8 @@ class ProductsList extends Component {
 }
 
 export default ProductsList;
-export { PRODUCTS_DEPT_QUERY };
+export {
+  ALL_PRODUCTS_QUERY,
+  DEPT_PRODUCTS_QUERY,
+  SELLERS_PRODUCTS_QUERY
+};
