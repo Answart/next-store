@@ -1,77 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { StyledProductsListItem } from './styles/ProductStyles';
 import styled from 'styled-components';
 
 
-const StyledProductsListItem = styled.div`
-  padding: 1rem;
-  img {
-    display: grid;
-    grid-auto-columns: 1fr;
-    min-height: 32rem;
-    min-width: 100%;
-  }
-  a {
-    padding: 0;
-    text-transform: none;
-  }
-`;
-
-const ProductInfo = styled.div`
-  padding: 0.2rem 0;
-  a {
-    padding: 0.2rem 0;
-    text-transform: none;
-    color: ${props => props.theme.darkblue};
-  }
-  .product-title {
-    padding: 0.2rem 0;
-    font-size: 1.1rem;
-    text-align: left;
-    font-weight: bold;
-  }
-  .product-price {
-    padding: 0.4rem 0;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: ${props => props.theme.textGrey};
-  }
-  .product-sale {
-    padding-left: 0.5rem;
-    color: ${props => props.theme.orange};
-  }
-  .product-availability {
-    font-style: italic;
-    font-size: 1rem;
-    color: ${props => props.theme.orange};
-  }
-`;
-
-const ProductActions = styled.div`
-  padding: 0.2rem 0;
-  a {
-    padding: 0 0.3rem 0 0;
-    font-size: 0.85rem;
-    color: ${props => props.theme.textGrey};
-  }
-  button {
-    padding: 0.3rem;
-    border: 0;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: ${props => props.theme.textGrey};
-  }
-`
-
 export default class Product extends Component {
   static propTypes = {
-    product: PropTypes.object.isRequired,
+    product: PropTypes.object.isRequired
   };
 
   render() {
     const { product } = this.props;
     const firstProductVariant = product.productVariants[0];
+    const availability = !firstProductVariant
+      ? "Out of Stock"
+      : "";
     return (
       <StyledProductsListItem>
         <Link
@@ -85,42 +29,42 @@ export default class Product extends Component {
           )}</a>
         </Link>
 
-        <ProductInfo>
+        <div className="prdct-itm-info">
           <Link
             href={{
               pathname: `/product/buy`,
               query: { id: product.id }
             }}
           >
-            <a className='product-title'>{product.title}</a>
+            <a className='prdct-itm-title'>{product.title}</a>
           </Link>
 
-          <div className='product-price'>
-            {firstProductVariant.sale ? (
-              <div>
-                <span className='line-through'>
+          {firstProductVariant && (
+            <div className='prdct-itm-price'>
+              {firstProductVariant.sale ? (
+                <div>
+                  <span className='line-through'>
+                    ${firstProductVariant.price}
+                  </span>
+                  <span className='prdct-itm-price prdct-itm-sale'>
+                    ${firstProductVariant.salePrice}
+                  </span>
+                </div>
+              ) : (
+                <div>
                   ${firstProductVariant.price}
-                </span>
-                <span className='product-price product-sale'>
-                  ${firstProductVariant.salePrice}
-                </span>
-              </div>
-            ) : (
-              <div>
-                ${firstProductVariant.price}
-              </div>
-            )}
-          </div>
-
-          {product.status && (
-            <div className="product-availability">
-              {product.status}
+                </div>
+              )}
             </div>
           )}
-        </ProductInfo>
+
+          <div className="prdct-itm-availability">
+            {availability}
+          </div>
+        </div>
 
         {product.id && (
-          <ProductActions>
+          <div className="prdct-itm-actions">
             <Link
               href={{
                 pathname: `/product/update`,
@@ -131,7 +75,7 @@ export default class Product extends Component {
             </Link>
 
             <button id={product.id}>Remove</button>
-          </ProductActions>
+          </div>
         )}
       </StyledProductsListItem>
     );

@@ -104,8 +104,75 @@ const StyledProductsList = styled.div`
   }
 `;
 
+const StyledProductsListItem = styled.div`
+  padding: 1rem;
+  background-color: white;
+  img {
+    display: grid;
+    grid-auto-columns: 1fr;
+    min-height: 32rem;
+    min-width: 100%;
+  }
+  a {
+    padding: 0.2rem 0;
+    text-transform: none;
+  }
+  .prdct-itm-info {
+    padding: 0.2rem 0;
+    a {
+      color: ${props => props.theme.darkblue};
+    }
+    .prdct-itm-title {
+      padding: 0.2rem 0;
+      font-size: 1.1rem;
+      text-align: left;
+      font-weight: bold;
+    }
+    .prdct-itm-price {
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: ${props => props.theme.textGrey};
+    }
+    .prdct-itm-sale {
+      padding-left: 0.5rem;
+      color: ${props => props.theme.orange};
+    }
+    .prdct-itm-availability {
+      padding: 0.25rem 0;
+      font-style: italic;
+      font-size: 1rem;
+      color: ${props => props.theme.orange};
+    }
+  }
+  .prdct-itm-actions {
+    padding: 0.2rem 0;
+    a {
+      padding-right: 0.3rem;
+      font-size: 0.85rem;
+      color: ${props => props.theme.textGrey};
+      &:hover {
+        color: ${props => props.theme.darkblue};
+        text-decoration: underline ${props => props.theme.orange};
+      }
+    }
+    button {
+      padding: 0.3rem;
+      border: 0;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: ${props => props.theme.textGrey};
+      &:hover {
+        color: ${props => props.theme.darkblue};
+        text-decoration: underline ${props => props.theme.orange};
+      }
+    }
+  }
+`;
+
 export default StyledProduct;
 export {
   StyledProductVariants,
-  StyledProductsList
+  StyledProductsList,
+  StyledProductsListItem
 };
