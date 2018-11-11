@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
+import StyledForm from './styles/FormStyles';
+import StyledProduct, { StyledProductVariant } from './styles/ProductStyles';
 import { user } from '../lib/dummyData';
 
 
@@ -57,7 +60,7 @@ class CreateProduct extends Component {
       ? categoriesByDept[department]
       : categoriesByDept['Tops'];
     return (
-      <form
+      <StyledForm
         data-test="form"
         onSubmit={async e => {
           e.preventDefault();
@@ -65,13 +68,15 @@ class CreateProduct extends Component {
         }}
       >
         <fieldset disabled={false} aria-busy={false}>
-          <div>
-            <div>
-              img preview here
+          <StyledProduct>
+            <div className="buy-prdct-imgs">
+              {image && (
+                <img width="200" src={image} alt="Upload Preview" />
+              )}
             </div>
 
-            <div>
-              <label htmlFor="title">
+            <div className="buy-prdct-content">
+              <label htmlFor="title" className="buy-prdct-title buy-prdct-padding">
                 Title:
                 <input
                   type="text"
@@ -84,7 +89,7 @@ class CreateProduct extends Component {
                 />
               </label>
 
-              <div>
+              <div className="buy-prdct-creator buy-prdct-padding">
                 By <strong>{user.name}</strong>
               </div>
 
@@ -117,7 +122,7 @@ class CreateProduct extends Component {
                 </select>
               </label>
 
-              <label htmlFor="description">
+              <label htmlFor="description" className="buy-prdct-desc">
                 Description:
                 <textarea
                   id="description"
@@ -129,7 +134,7 @@ class CreateProduct extends Component {
                 />
               </label>
 
-              <label htmlFor="brand">
+              <label htmlFor="brand" className="buy-prdct-brand">
                 Brand:
                 <input
                   type="text"
@@ -153,13 +158,20 @@ class CreateProduct extends Component {
                 />
               </label>
             </div>
+          </StyledProduct>
+
+          <div className="form-actions buy-prdct-padding">
+            <button type="submit" className="buy-prdct-btn">Create</button>
           </div>
-
-          <button type="submit">Create</button>
-          <button type="cancel">Cancel</button>
-
+          <div className="form-actions buy-prdct-padding">
+            <button type="cancel">
+              <Link href="/">
+                <a>Cancel</a>
+              </Link>
+            </button>
+          </div>
         </fieldset>
-      </form>
+      </StyledForm>
     );
   }
 }
