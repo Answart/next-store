@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Wed Nov 07 2018 23:54:43 GMT-0800 (Pacific Standard Time)
+# timestamp: Sat Nov 10 2018 14:12:19 GMT-0800 (Pacific Standard Time)
 
 type AggregateProduct {
   count: Int!
@@ -80,9 +80,9 @@ type Product implements Node {
   title: String!
   description: String!
   image: String!
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant!]
   user: User!
@@ -105,9 +105,9 @@ input ProductCreateInput {
   title: String!
   description: String!
   image: String!
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   productVariants: ProductVariantCreateManyWithoutProductInput
   user: UserCreateOneInput!
@@ -123,9 +123,9 @@ input ProductCreateWithoutProductVariantsInput {
   title: String!
   description: String!
   image: String!
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   user: UserCreateOneInput!
 }
@@ -150,12 +150,12 @@ enum ProductOrderByInput {
   description_DESC
   image_ASC
   image_DESC
+  online_ASC
+  online_DESC
   category_ASC
   category_DESC
   brand_ASC
   brand_DESC
-  status_ASC
-  status_DESC
   url_ASC
   url_DESC
   createdAt_ASC
@@ -170,9 +170,9 @@ type ProductPreviousValues {
   title: String!
   description: String!
   image: String!
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -222,9 +222,9 @@ input ProductUpdateInput {
   title: String
   description: String
   image: String
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   productVariants: ProductVariantUpdateManyWithoutProductInput
   user: UserUpdateOneRequiredInput
@@ -235,9 +235,9 @@ input ProductUpdateManyMutationInput {
   title: String
   description: String
   image: String
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
 }
 
@@ -253,9 +253,9 @@ input ProductUpdateWithoutProductVariantsDataInput {
   title: String
   description: String
   image: String
+  online: Boolean
   category: String
   brand: String
-  status: String
   url: String
   user: UserUpdateOneRequiredInput
 }
@@ -1069,6 +1069,10 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   image_not_ends_with: String
+  online: Boolean
+
+  """All values that are not equal to given value."""
+  online_not: Boolean
   category: String
 
   """All values that are not equal to given value."""
@@ -1149,46 +1153,6 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   brand_not_ends_with: String
-  status: String
-
-  """All values that are not equal to given value."""
-  status_not: String
-
-  """All values that are contained in given list."""
-  status_in: [String!]
-
-  """All values that are not contained in given list."""
-  status_not_in: [String!]
-
-  """All values less than the given value."""
-  status_lt: String
-
-  """All values less than or equal the given value."""
-  status_lte: String
-
-  """All values greater than the given value."""
-  status_gt: String
-
-  """All values greater than or equal the given value."""
-  status_gte: String
-
-  """All values containing the given string."""
-  status_contains: String
-
-  """All values not containing the given string."""
-  status_not_contains: String
-
-  """All values starting with the given string."""
-  status_starts_with: String
-
-  """All values not starting with the given string."""
-  status_not_starts_with: String
-
-  """All values ending with the given string."""
-  status_ends_with: String
-
-  """All values not ending with the given string."""
-  status_not_ends_with: String
   url: String
 
   """All values that are not equal to given value."""

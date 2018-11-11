@@ -16,7 +16,7 @@ const Mutation = {
   },
   async createProduct(parent, args, ctx, info) {
     // Logged in?
-    const userId = ctx.request.userId || 'cjo8aso9c7nzr0a01h1uyykzc';
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to create a product');
 
     return await ctx.db.mutation.createProduct(
@@ -31,7 +31,7 @@ const Mutation = {
   async deleteProduct(parent, args, ctx, info) {
     const id = args.id;
     // Logged in?
-    const userId = ctx.request.userId || 'cjo8aso9c7nzr0a01h1uyykzc';
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to delete a product');
     // Existing product?
     const existingProduct = await ctx.db.query.product(
@@ -57,7 +57,7 @@ const Mutation = {
     const productId = args.productId;
     delete args.productId;
     // Logged in?
-    const userId = ctx.request.userId || 'cjo8aso9c7nzr0a01h1uyykzc';
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to add to a product');
     // Existing product?
     const existingProduct = await ctx.db.query.product(
@@ -109,7 +109,7 @@ const Mutation = {
     const id = args.id;
     const quantity = args.quantity;
     // Logged in?
-    const userId = ctx.request.userId || 'cjo8aso9c7nzr0a01h1uyykzc';
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to remove from product');
     // Existing productVariant?
     const [existingProductVariant] = await ctx.db.query.productVariants(

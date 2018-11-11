@@ -13,9 +13,9 @@ type Product {
   title: String!
   description: String!
   image: String!
+  online: Boolean @default(value: false)
   category: String
   brand: String
-  status: String @default(value: "Out of Stock")
   url: String
   productVariants: [ProductVariant!]!
   user: User!
