@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import StyledForm from './styles/FormStyles';
+import StyledProduct from './styles/ProductStyles';
 
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Brown', 'Black', 'Silver', 'White', 'Gold', 'Multi'];
@@ -42,7 +44,7 @@ class CreateProductVariant extends Component {
       salePrice
     } = this.state;
     return (
-      <form
+      <StyledForm
         data-test="form"
         onSubmit={async e => {
           e.preventDefault();
@@ -50,9 +52,9 @@ class CreateProductVariant extends Component {
         }}
       >
 
-        <fieldset aria-busy={false}>
-          <div>
-            <div>
+        <fieldset disabled={false} aria-busy={false}>
+          <StyledProduct>
+            <div className="buy-prdct-content">
 
               <label htmlFor="size">
                 Size:
@@ -81,7 +83,7 @@ class CreateProductVariant extends Component {
                 </select>
               </label>
 
-              <label htmlFor="quantity">
+              <label htmlFor="quantity" className="buy-prdct-brand">
                 Quantity:
                 <input
                   type="number"
@@ -95,7 +97,7 @@ class CreateProductVariant extends Component {
                 />
               </label>
 
-              <label htmlFor="price">
+              <label htmlFor="price" className="buy-prdct-title buy-prdct-padding">
                 Price per Item:
                 <input
                   type="number"
@@ -117,13 +119,13 @@ class CreateProductVariant extends Component {
                   value={sale}
                   onChange={this.handleChange}
                 />
-                <label htmlFor="sale">
+                <label htmlFor="sale" className="buy-prdct-padding">
                   Is this selection on sale?
                 </label>
               </div>
 
               {sale && (
-                <label htmlFor="salePrice">
+                <label htmlFor="salePrice" className="buy-prdct-title buy-prdct-padding">
                   Sale Price per Item:
                   <input
                     type="number"
@@ -139,14 +141,14 @@ class CreateProductVariant extends Component {
               )}
 
             </div>
-          </div>
+          </StyledProduct>
 
-          <div>
-            <button type="submit">Add Selection</button>
+          <div className="form-actions buy-prdct-padding">
+            <button type="submit" className="buy-prdct-btn">Add Selection</button>
           </div>
 
         </fieldset>
-      </form>
+      </StyledForm>
     );
   }
 }
