@@ -1,5 +1,6 @@
 export {
-  PRODUCT_QUERY
+  PRODUCT_QUERY,
+  CREATE_PRODUCT_MUTATION
 } from './product';
 export {
   PRODUCTS_QUERY,

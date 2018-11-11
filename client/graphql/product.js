@@ -28,6 +28,29 @@ const PRODUCT_QUERY = gql`
   }
 `;
 
+const CREATE_PRODUCT_MUTATION = gql`
+  mutation CREATE_PRODUCT_MUTATION(
+    $title: String!,
+    $department: String!,
+    $description: String!,
+    $image: String!,
+    $category: String,
+    $brand: String
+  ) {
+    createProduct(
+      title: $title,
+      department: $department,
+      description: $description,
+      image: $image,
+      category: $category,
+      brand: $brand,
+    ) {
+      id
+    }
+  }
+`;
+
 export {
-  PRODUCT_QUERY
+  PRODUCT_QUERY,
+  CREATE_PRODUCT_MUTATION
 }
