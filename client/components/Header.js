@@ -58,7 +58,10 @@ class Header extends Component {
                     <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
                   </a>
                 </Link>
-                <Link href="/account/sell">
+                <Link href={{
+                  pathname: `/shop`,
+                  query: { name: `${user.name}` }
+                }}>
                   <a className="hdr-pad">
                     <img src="/static/images/package.svg" alt="Sell" height="14" width="14" />
                   </a>

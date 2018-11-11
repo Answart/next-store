@@ -56,7 +56,10 @@ class Product extends Component {
             By
             <Link href={{
               pathname: `/shop`,
-              query: { name: `${product.user.name}` }
+              query: {
+                name: `${product.user.name}`,
+                online: true
+              }
             }}>
               <a> {product.user.name}</a>
             </Link>
