@@ -1,7 +1,10 @@
+import CreateProduct from '../../components/CreateProduct';
+
+
 const CreateProductPage = props => {
   return (
     <div>
-      Create Product Page
+      <CreateProduct />
     </div>
   );
 };
