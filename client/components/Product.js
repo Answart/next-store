@@ -2,41 +2,8 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import StyledProduct from './styles/ProductStyles';
 import ProductVariants from './ProductVariants';
+import product from '../lib/dummyData';
 
-
-const product = {
-  id: "cjo8aw4p37ov20a010z26ixi9",
-  department: "accessories",
-  title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
-  description: "Limited Edition watch from the 2018 Fall fashion line.",
-  image: "peggswatch.jpg",
-  category: "Sport",
-  brand: "Peggs",
-  status: "",
-  url: "",
-  user: { name: "alexy" },
-  productVariants: [
-    {
-      id: "cjo8awitz7ox30a01gbzxtr4y",
-      quantity: 3,
-      color: "Black",
-      size: "S",
-      price: 4400
-    }, {
-      id: "cjo8awitz7ox30a01gbzxtr4y",
-      quantity: 3,
-      color: "Black",
-      size: "M",
-      price: 4400
-    }, {
-      id: "cjo8awitz7ox30a01gbzxtr4y",
-      quantity: 2,
-      color: "Red",
-      size: "S",
-      price: 4000
-    }
-  ]
-}
 
 class Product extends Component {
   render() {
