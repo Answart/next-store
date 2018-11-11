@@ -13,8 +13,6 @@ class Header extends Component {
     this.state = {
       acctDrpdwn: false
     };
-    this.toggAcctDrpdwn = this.toggAcctDrpdwn.bind(this);
-    this.toggleCart = this.toggleCart.bind(this);
   }
   toggAcctDrpdwn = e => {
     if (!!e && e.preventDefault) e.preventDefault();
@@ -43,7 +41,7 @@ class Header extends Component {
             {authed ? (
               <>
                 <span className="hdr-inline">
-                  <button className="hdr-btn" onClick={(e) => this.toggAcctDrpdwn(e)}>
+                  <button className="hdr-btn" onClick={this.toggAcctDrpdwn}>
                     Hi, {user.name}!
                   </button>
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
@@ -70,7 +68,7 @@ class Header extends Component {
                 </Link>
 
                 <span className="hdr-inline hdr-pad">
-                  <button className="hdr-btnn" onClick={(e) => this.toggleCart(e)}>
+                  <button className="hdr-btnn" onClick={this.toggleCart}>
                     <img src="/static/images/cart.svg" alt="Cart" height="14" width="14" />
                   </button>
                 </span>
