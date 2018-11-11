@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Nav from './Nav.js';
 import Search from './Search.js';
 import StyledHeader from './styles/HeaderStyles.js';
+import { user } from '../lib/dummyData';
 
 
 class Header extends Component {
@@ -26,7 +27,7 @@ class Header extends Component {
     console.log('toggling cart');
   }
   render() {
-    const authed = true;
+    const authed = !!user ? !!user.name : false;
     return (
       <StyledHeader>
         <div className="hdr-banner">
@@ -43,16 +44,17 @@ class Header extends Component {
               <>
                 <span className="hdr-inline">
                   <button className="hdr-btn" onClick={(e) => this.toggAcctDrpdwn(e)}>
-                    Firstname
+                    Hi, {user.name}!
                   </button>
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
                     <a href="/account/sell">Create Sale</a>
-                    <a href="/account/sales">Current Sales</a>
+                    <a href={`/shop?name=${user.name}`}>My Products</a>
                     <a href="/account/orders">Order History</a>
                     <a href="/account/sold">Sale History</a>
                     <a href="/logout">Logout</a>
                   </div>
                 </span>
+
                 <Link href="/sell">
                   <a>
                     <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
@@ -63,7 +65,7 @@ class Header extends Component {
                   query: { name: `${user.name}` }
                 }}>
                   <a className="hdr-pad">
-                    <img src="/static/images/package.svg" alt="Sell" height="14" width="14" />
+                    <img src="/static/images/package.svg" alt="Products" height="14" width="14" />
                   </a>
                 </Link>
 
