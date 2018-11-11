@@ -73,7 +73,10 @@ class CreateProduct extends Component {
             onSubmit={async e => {
               e.preventDefault();
               const res = await createProduct();
-              console.log('onSubmit', res);
+              Router.push({
+                pathname: '/product/update',
+                query: { id: res.data.createProduct.id },
+              });
             }}
           >
 
