@@ -45,7 +45,7 @@ class Header extends Component {
                     Hi, {user.name}!
                   </button>
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
-                    <a href="/account/sell">Create Sale</a>
+                    <a href="/product/create">Create Product</a>
                     <a href={`/shop?name=${user.name}`}>My Products</a>
                     <a href="/account/orders">Order History</a>
                     <a href="/account/sold">Sale History</a>
@@ -53,7 +53,7 @@ class Header extends Component {
                   </div>
                 </span>
 
-                <Link href="/sell">
+                <Link href="/product/create">
                   <a>
                     <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
                   </a>
