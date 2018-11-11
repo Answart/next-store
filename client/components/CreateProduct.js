@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
+import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
 import StyledProduct, { StyledProductVariant } from './styles/ProductStyles';
 import { user } from '../lib/dummyData';
+import { CREATE_PRODUCT_MUTATION } from '../graphql';
 
 
 const departments = ['Tops', 'Bottoms', 'Shoes', 'Outwear', 'Accessories', 'Decor', 'Wedding'];
@@ -42,7 +45,7 @@ class CreateProduct extends Component {
 
     // Upload file and return url;
     const image = files.length
-      ? files[0]
+      ? files[0].name
       : '';
 
     this.setState({ image });
@@ -60,118 +63,130 @@ class CreateProduct extends Component {
       ? categoriesByDept[department]
       : categoriesByDept['Tops'];
     return (
-      <StyledForm
-        data-test="form"
-        onSubmit={async e => {
-          e.preventDefault();
-          console.log('onSubmit', this.state);
-        }}
+      <Mutation
+        mutation={CREATE_PRODUCT_MUTATION}
+        variables={this.state}
       >
-        <fieldset disabled={false} aria-busy={false}>
-          <StyledProduct>
-            <div className="buy-prdct-imgs">
-              {image && (
-                <img width="200" src={image} alt="Upload Preview" />
-              )}
-            </div>
+        {(createProduct, { loading, error }) => (
+          <StyledForm
+            data-test="form"
+            onSubmit={async e => {
+              e.preventDefault();
+              const res = await createProduct();
+              console.log('onSubmit', res);
+            }}
+          >
 
-            <div className="buy-prdct-content">
-              <label htmlFor="title" className="buy-prdct-title buy-prdct-padding">
-                Title:
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  placeholder="Title"
-                  value={title}
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
+            <fieldset disabled={false} aria-busy={false}>
+              <StyledProduct>
+                <div className="buy-prdct-imgs">
+                  {image && (
+                    <img width="200" src={image} alt="Upload Preview" />
+                  )}
+                </div>
 
-              <div className="buy-prdct-creator buy-prdct-padding">
-                By <strong>{user.name}</strong>
+                <div className="buy-prdct-content">
+                  <label htmlFor="title" className="buy-prdct-title buy-prdct-padding">
+                    Title:
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      placeholder="Title"
+                      value={title}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+
+                  <div className="buy-prdct-creator buy-prdct-padding">
+                    By <strong>{user.name}</strong>
+                  </div>
+
+                  <label htmlFor="department">
+                    Department:
+                    <select
+                      id="department"
+                      name="department"
+                      form="carform"
+                      placeholder="Department i.e. Shoes"
+                      value={department}
+                      onChange={this.handleChange}
+                      required
+                    >
+                      {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
+                    </select>
+                  </label>
+
+                  <label htmlFor="category">
+                    Category:
+                    <select
+                      id="category"
+                      name="category"
+                      form="carform"
+                      value={category}
+                      onChange={this.handleChange}
+                    >
+                      <option key={0} value={''}></option>
+                      {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
+                    </select>
+                  </label>
+
+                  <label htmlFor="description" className="buy-prdct-desc">
+                    Description:
+                    <textarea
+                      id="description"
+                      name="description"
+                      placeholder="Enter A Description"
+                      value={description}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+
+                  <label htmlFor="brand" className="buy-prdct-brand">
+                    Brand:
+                    <input
+                      type="text"
+                      id="brand"
+                      name="brand"
+                      placeholder="Brand"
+                      value={brand}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <label htmlFor="img">
+                    Image:
+                    <input
+                      type="file"
+                      id="img"
+                      name="img"
+                      placeholder="Upload an image"
+                      onChange={this.uploadFile}
+                      required
+                    />
+                  </label>
+                </div>
+              </StyledProduct>
+
+              <div className="form-actions buy-prdct-padding">
+                <button
+                  type="submit"
+                  className="buy-prdct-btn"
+                >Create</button>
               </div>
-
-              <label htmlFor="department">
-                Department:
-                <select
-                  id="department"
-                  name="department"
-                  form="carform"
-                  placeholder="Department i.e. Shoes"
-                  value={department}
-                  onChange={this.handleChange}
-                  required
-                >
-                  {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
-                </select>
-              </label>
-
-              <label htmlFor="category">
-                Category:
-                <select
-                  id="category"
-                  name="category"
-                  form="carform"
-                  value={category}
-                  onChange={this.handleChange}
-                >
-                  <option key={0} value={''}></option>
-                  {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
-                </select>
-              </label>
-
-              <label htmlFor="description" className="buy-prdct-desc">
-                Description:
-                <textarea
-                  id="description"
-                  name="description"
-                  placeholder="Enter A Description"
-                  value={description}
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
-
-              <label htmlFor="brand" className="buy-prdct-brand">
-                Brand:
-                <input
-                  type="text"
-                  id="brand"
-                  name="brand"
-                  placeholder="Brand"
-                  value={brand}
-                  onChange={this.handleChange}
-                />
-              </label>
-
-              <label htmlFor="img">
-                Image:
-                <input
-                  type="file"
-                  id="img"
-                  name="img"
-                  placeholder="Upload an image"
-                  onChange={this.uploadFile}
-                  required
-                />
-              </label>
-            </div>
-          </StyledProduct>
-
-          <div className="form-actions buy-prdct-padding">
-            <button type="submit" className="buy-prdct-btn">Create</button>
-          </div>
-          <div className="form-actions buy-prdct-padding">
-            <button type="cancel">
-              <Link href="/">
-                <a>Cancel</a>
-              </Link>
-            </button>
-          </div>
-        </fieldset>
-      </StyledForm>
+              <div className="form-actions buy-prdct-padding">
+                <button type="cancel">
+                  <Link href="/">
+                    <a>Cancel</a>
+                  </Link>
+                </button>
+              </div>
+            </fieldset>
+          </StyledForm>
+        )}
+      </Mutation>
     );
   }
 }
