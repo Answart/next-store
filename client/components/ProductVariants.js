@@ -86,8 +86,10 @@ class ProductVariants extends Component {
       colors
     } = this.state;
     let currentVariant = currentVariants[0];
-    let addToCrtBtnDisabled = !(currentVariants.length == 1);
-    let availability = currentVariant ? `${currentVariant.quantity} in Stock!` : "Out of Stock";
+    let addToCrtBtnDisabled = (!(currentVariants.length == 1)) || !(this.props.online);
+    let availability = currentVariant
+      ? `${currentVariant.quantity} in Stock!`
+      : "Out of Stock";
     return (
       <StyledProductVariants>
         {currentVariant && (
@@ -115,7 +117,7 @@ class ProductVariants extends Component {
             <select id="buy-prdct-size" name="size" className="buy-prdct-slct"
               onChange={this.updateFilter}
             >
-              {sizes.map(size => <option key={size}>{size}</option>)}
+              {sizes.map(sz => <option key={sz}>{sz}</option>)}
             </select>
           </div>
         )}
@@ -126,7 +128,7 @@ class ProductVariants extends Component {
             <select id="buy-prdct-color" name="color" className="buy-prdct-slct"
               onChange={this.updateFilter}
             >
-              {colors.map(color => <option key={color}>{color}</option>)}
+              {colors.map(clr => <option key={clr}>{clr}</option>)}
             </select>
           </div>
         )}
@@ -139,7 +141,7 @@ class ProductVariants extends Component {
         <div className="buy-prdct-padding">
           <button
             disabled={addToCrtBtnDisabled}
-            className="buy-prdct-add-btn"
+            className="buy-prdct-btn"
             onClick={this.addToCart}
             >
             Add To Cart
