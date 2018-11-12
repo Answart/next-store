@@ -3,21 +3,10 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
-import StyledProduct, { StyledProductVariant } from './styles/ProductStyles';
-import { user } from '../lib/dummyData';
+import ProductFormFields from './ProductFormFields';
 import { CREATE_PRODUCT_MUTATION } from '../graphql';
+import { user } from '../lib/dummyData';
 
-
-const departments = ['Tops', 'Bottoms', 'Shoes', 'Outwear', 'Accessories', 'Decor', 'Wedding'];
-const categoriesByDept = {
-  'Tops': ['Blouses', 'Cartigans', 'Casual', 'Sweaters', 'Sweatshirts'],
-  'Bottoms': ['Skirts', 'Pants', 'Jeans', 'Leggings', 'Shorts', 'Intimates'],
-  'Shoes': ['Heels', 'Flats', 'Sandals', 'Wedges', 'Boots', 'Booties', 'Sneakers'],
-  'Outwear': ['Jackets', 'Blazers', 'Coats', 'Cartigans'],
-  'Accessories': ['Jewelry', 'Bags', 'Wallets', 'Belts', 'Sunglasses', 'Makeup', 'Hair & Hats'],
-  'Decor': ['Home', 'Kitchen', 'Office', 'Lighting'],
-  'Wedding': ['Dresses', 'Shoes', 'Gifts', 'Accessories']
-};
 
 class CreateProduct extends Component {
   state = {
@@ -59,9 +48,6 @@ class CreateProduct extends Component {
       category,
       brand
     } = this.state;
-    let categories = department
-      ? categoriesByDept[department]
-      : categoriesByDept['Tops'];
     return (
       <Mutation
         mutation={CREATE_PRODUCT_MUTATION}
@@ -83,97 +69,17 @@ class CreateProduct extends Component {
             <div>{error}</div>
 
             <fieldset disabled={loading} aria-busy={loading}>
-              <StyledProduct>
-                <div className="buy-prdct-imgs">
-                  {image && (
-                    <img width="200" src={image} alt="Upload Preview" />
-                  )}
-                </div>
-
-                <div className="buy-prdct-content">
-                  <label htmlFor="title" className="buy-prdct-title buy-prdct-padding">
-                    Title:
-                    <input
-                      type="text"
-                      id="title"
-                      name="title"
-                      placeholder="Title"
-                      value={title}
-                      onChange={this.handleChange}
-                      required
-                    />
-                  </label>
-
-                  <div className="buy-prdct-creator buy-prdct-padding">
-                    By <strong>{user.name}</strong>
-                  </div>
-
-                  <label htmlFor="department">
-                    Department:
-                    <select
-                      id="department"
-                      name="department"
-                      form="carform"
-                      placeholder="Department i.e. Shoes"
-                      value={department}
-                      onChange={this.handleChange}
-                      required
-                    >
-                      {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
-                    </select>
-                  </label>
-
-                  <label htmlFor="category">
-                    Category:
-                    <select
-                      id="category"
-                      name="category"
-                      form="carform"
-                      value={category}
-                      onChange={this.handleChange}
-                    >
-                      <option key={0} value={''}></option>
-                      {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
-                    </select>
-                  </label>
-
-                  <label htmlFor="description" className="buy-prdct-desc">
-                    Description:
-                    <textarea
-                      id="description"
-                      name="description"
-                      placeholder="Enter A Description"
-                      value={description}
-                      onChange={this.handleChange}
-                      required
-                    />
-                  </label>
-
-                  <label htmlFor="brand" className="buy-prdct-brand">
-                    Brand:
-                    <input
-                      type="text"
-                      id="brand"
-                      name="brand"
-                      placeholder="Brand"
-                      value={brand}
-                      onChange={this.handleChange}
-                    />
-                  </label>
-
-                  <label htmlFor="img">
-                    Image:
-                    <input
-                      type="file"
-                      id="img"
-                      name="img"
-                      placeholder="Upload an image"
-                      onChange={this.uploadFile}
-                      required
-                    />
-                  </label>
-                </div>
-              </StyledProduct>
+              <ProductFormFields
+                title={title}
+                department={department}
+                description={description}
+                image={image}
+                category={category}
+                brand={brand}
+                handleChange={this.handleChange}
+                uploadFile={this.uploadFile}
+                previewImage={true}
+              />
 
               <div className="form-actions buy-prdct-padding">
                 <button
