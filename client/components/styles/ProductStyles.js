@@ -142,20 +142,20 @@ const StyledProductsListItem = styled.div`
       font-weight: bold;
     }
     .prdct-itm-price {
-      padding: 0.4rem 0;
+      padding: 0.4rem 0 0.2rem 0;
       font-size: 0.85rem;
       font-weight: bold;
-      color: ${props => props.theme.textGrey};
+      color: ${props => props.theme.lightGrey};
     }
     .prdct-itm-sale {
       padding-left: 0.5rem;
       color: ${props => props.theme.orange};
     }
     .prdct-itm-availability {
-      padding: 0.5rem 0 0.25rem 0;
+      padding: 0.2rem 0;
       font-style: italic;
       font-size: 1rem;
-      color: ${props => props.theme.orange};
+      color: ${props => props.theme.red};
     }
   }
   .prdct-itm-actions {

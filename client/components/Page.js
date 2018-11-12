@@ -10,7 +10,7 @@ const theme = {
   darkblue: '#47505f',
   beige: '#f9f6f4',
   textGrey: '#6d6c6c',
-  lightGrey: '#cbc9c7',
+  lightGrey: '#9A9A9A',
   textBlack: '#3d3d3d',
   offWhite: '#EDEDED',
   grey: '#3A3A3A',
