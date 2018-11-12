@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledProductsListItem } from './styles/ProductStyles';
 import styled from 'styled-components';
+import { user } from '../lib/dummyData';
 
 
 export default class Product extends Component {
@@ -12,10 +13,15 @@ export default class Product extends Component {
 
   render() {
     const { product } = this.props;
-    const firstProductVariant = product.productVariants[0];
-    const availability = !firstProductVariant
-      ? "Out of Stock"
-      : "";
+    const viewerIsCreator = product
+      ? product.user.id === user.id
+      : false;
+    const variant = product.productVariants.length
+      ? product.productVariants[0]
+      : null;
+    let availability = variant
+      ? `${variant.quantity} in Stock!`
+      : "Out of Stock";
     return (
       <StyledProductsListItem>
         <Link
@@ -39,32 +45,34 @@ export default class Product extends Component {
             <a className='prdct-itm-title'>{product.title}</a>
           </Link>
 
-          {firstProductVariant && (
+          {variant && variant.price && (
             <div className='prdct-itm-price'>
-              {firstProductVariant.sale ? (
+              {variant.sale ? (
                 <div>
                   <span className='line-through'>
-                    ${firstProductVariant.price}
+                    ${variant.price}
                   </span>
                   <span className='prdct-itm-price prdct-itm-sale'>
-                    ${firstProductVariant.salePrice}
+                    ${variant.salePrice}
                   </span>
                 </div>
               ) : (
                 <div>
-                  ${firstProductVariant.price}
+                  ${variant.price}
                 </div>
               )}
             </div>
           )}
 
-          <div className="prdct-itm-availability">
-            {availability}
-          </div>
+          {availability.length && (
+            <div className="prdct-itm-availability">
+              {availability}
+            </div>
+          )}
         </div>
 
-        {product.id && (
-          <div className="prdct-itm-actions">
+        {viewerIsCreator && product.id && (
+          <span className="prdct-itm-actions">
             <Link
               href={{
                 pathname: `/product/update`,
@@ -75,7 +83,11 @@ export default class Product extends Component {
             </Link>
 
             <button id={product.id}>Remove</button>
-          </div>
+          </span>
+        )}
+
+        {!product.online && (
+          <span><i className="prdct-itm-actions">(Offline)</i></span>
         )}
       </StyledProductsListItem>
     );

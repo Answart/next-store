@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import StyledProduct from './styles/ProductStyles';
 import ProductVariants from './ProductVariants';
-import product from '../lib/dummyData';
+import product, { user } from '../lib/dummyData';
 
 
 class Product extends Component {
   render() {
     const { id, demoView } = this.props;
+    const viewerIsCreator = product
+      ? product.user.id === user.id
+      : false;
     return (
       <StyledProduct>
         <div className="buy-prdct-imgs">
@@ -38,6 +41,10 @@ class Product extends Component {
               <a> {product.user.name}</a>
             </Link>
           </div>
+
+          {viewerIsCreator && !product.online && (
+            <i className="buy-prdct-padding">Offline</i>
+          )}
 
           {product.productVariants &&
             <ProductVariants
