@@ -80,7 +80,9 @@ class CreateProduct extends Component {
             }}
           >
 
-            <fieldset disabled={false} aria-busy={false}>
+            <div>{error}</div>
+
+            <fieldset disabled={loading} aria-busy={loading}>
               <StyledProduct>
                 <div className="buy-prdct-imgs">
                   {image && (
