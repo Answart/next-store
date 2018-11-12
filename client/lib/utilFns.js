@@ -64,9 +64,16 @@ const getFltrdObjs = function(objs, filter) {
   });
 }
 
+const capWord = function(string = "") {
+  return string.length
+    ? (string.charAt(0).toUpperCase() + string.slice(1))
+    : "";
+}
+
 
 export {
   objctsDiffer,
   getUniqKeyVals,
-  getFltrdObjs
+  getFltrdObjs,
+  capWord
 };

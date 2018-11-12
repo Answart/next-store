@@ -1,11 +1,6 @@
 import ProductsList from '../components/ProductsList';
+import { capWord } from '../lib/utilFns';
 
-
-function capWord(string = "") {
-  return string.length
-    ? (string.charAt(0).toUpperCase() + string.slice(1))
-    : "";
-}
 
 function getShopProps(variables = {}) {
   let pageLabel = '';
