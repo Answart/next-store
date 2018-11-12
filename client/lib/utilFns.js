@@ -40,6 +40,19 @@ const objctsDiffer = function(object1, object2) {
   return false;
 }
 
+const getUniqKeyVals = function(objs, key) {
+  let vals = [];
+
+  objs.map(obj => {
+    const val = obj[key];
+    if (!vals.includes(val)) vals.push(val);
+  });
+
+  return vals;
+}
+
+
 export {
-  objctsDiffer
+  objctsDiffer,
+  getUniqKeyVals
 };
