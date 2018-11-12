@@ -51,8 +51,22 @@ const getUniqKeyVals = function(objs, key) {
   return vals;
 }
 
+const getFltrdObjs = function(objs, filter) {
+  const filterKeys = Object.keys(filter);
+
+  return objs.filter(obj => {
+    for (let i = 0; i < filterKeys.length; i++) {
+      const key = filterKeys[i];
+      if (!obj[key]) return false;
+      if (obj[key] !== filter[key]) return false;
+    }
+    return true;
+  });
+}
+
 
 export {
   objctsDiffer,
-  getUniqKeyVals
+  getUniqKeyVals,
+  getFltrdObjs
 };
