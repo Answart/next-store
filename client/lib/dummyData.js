@@ -1,7 +1,8 @@
 
 const user = {
   id: "cjobtu6tgni0p0a010vdol4oy",
-  name: 'alexy'
+  name: 'alexy',
+  email: 'alexy@gmail.com'
 };
 
 const productVariants = [
@@ -28,7 +29,7 @@ const productVariants = [
 
 const product = {
   id: "cjoc0irhbo26r0a0121ub69i3",
-  department: "accessories",
+  department: "Accessories",
   title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
   description: "Limited Edition watch from the 2018 Fall fashion line.",
   image: "peggswatch.jpg",
@@ -45,7 +46,7 @@ const products = [
   product,
   {
     id: "cjoc0oaljo2kj0a01qmdo08ai",
-    department: "accessories",
+    department: "Accessories",
     title: "Pegggy",
     description: "Limited.",
     image: "peggswatch2.jpg",
