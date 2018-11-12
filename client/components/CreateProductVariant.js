@@ -17,7 +17,7 @@ class CreateProductVariant extends Component {
   handleChange = e => {
     const { name, type, value, checked } = e.target;
     let val = value;
-    if (type === 'number') val = parseFloat(value);
+    if (type === 'number') val = value ? parseFloat(value) : 0;
     if (type === 'checkbox') val = checked;
     if (name === 'sale') {
       this.setState({

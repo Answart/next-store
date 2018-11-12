@@ -19,7 +19,8 @@ class CreateProduct extends Component {
   };
   handleChange = e => {
     const { name, type, value } = e.target;
-    const val = type === 'number' ? parseFloat(value) : value;
+    let val = value;
+    if (type === 'number') val = value ? parseFloat(value) : 0;
     if (name === 'department') {
       this.setState({
         category: '',
