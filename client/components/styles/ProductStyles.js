@@ -84,8 +84,8 @@ const StyledProductVariants = styled.div`
 
 const StyledProductsList = styled.div`
   display: grid;
-  grid-template-rows: 1.9rem 5rem 10fr;
-  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1.9rem 5rem 1fr;
+  grid-template-columns: 18rem 1fr;
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
@@ -106,22 +106,25 @@ const StyledProductsList = styled.div`
   .prod-lst {
     grid-column: 2 / -1;
     grid-row: 3 / -1;
+  }
+  .prod-lst-itms {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-gap: 2.2rem;
     justify-content: space-between;
-    height: 100%;
   }
 `;
 
 const StyledProductsListItem = styled.div`
-  padding: 1rem;
-  background-color: white;
+  min-width: 16rem;
+  max-width: 27rem;
   img {
+    background-color: pink;
     display: grid;
     grid-auto-columns: 1fr;
-    min-height: 32rem;
-    min-width: 100%;
+    min-height: 25rem;
+    max-height: 34rem;
+    width: 100%;
   }
   a {
     padding: 0.2rem 0;
@@ -133,7 +136,7 @@ const StyledProductsListItem = styled.div`
       color: ${props => props.theme.darkblue};
     }
     .prdct-itm-title {
-      padding: 0.2rem 0;
+      padding: 0.3rem 0;
       font-size: 1.1rem;
       text-align: left;
       font-weight: bold;
@@ -149,7 +152,7 @@ const StyledProductsListItem = styled.div`
       color: ${props => props.theme.orange};
     }
     .prdct-itm-availability {
-      padding: 0.25rem 0;
+      padding: 0.5rem 0 0.25rem 0;
       font-style: italic;
       font-size: 1rem;
       color: ${props => props.theme.orange};
@@ -157,9 +160,10 @@ const StyledProductsListItem = styled.div`
   }
   .prdct-itm-actions {
     padding: 0.2rem 0;
+    font-size: 0.85rem;
+    color: ${props => props.theme.textGrey};
     a {
       padding-right: 0.3rem;
-      font-size: 0.85rem;
       color: ${props => props.theme.textGrey};
       &:hover {
         color: ${props => props.theme.darkblue};

@@ -56,7 +56,7 @@ class ProductsList extends Component {
               if (loading) return <p>Loading...</p>;
               if (error) return <p>Error: {error.message}</p>;
               return (
-                <div>
+                <div className="prod-lst-itms">
                   {data.products && data.products.map(prdct =>
                     <ProductsListItem product={prdct} key={prdct.id} />
                   )}
