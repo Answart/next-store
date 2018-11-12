@@ -61,7 +61,7 @@ class CreateProduct extends Component {
               e.preventDefault();
               const res = await createProduct();
               Router.push({
-                pathname: '/product/update',
+                pathname: '/product/edit',
                 query: { id: res.data.createProduct.id },
               });
             }}

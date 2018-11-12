@@ -74,7 +74,7 @@ export default class Product extends Component {
           <span className="prdct-itm-actns">
             <Link
               href={{
-                pathname: `/product/update`,
+                pathname: `/product/edit`,
                 query: { id: product.id }
               }}
             >
