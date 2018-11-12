@@ -77,7 +77,7 @@ class ProductVariants extends Component {
     const { demoView, online } = this.props;
     let availability = variant
       ? `${variant.quantity} in Stock!`
-      : "Out of Stock";
+      : "Out of Stock"
     let addToCrtBtnDisabled = variant ? !variant.id : true;
     return (
       <StyledProductVariants>
@@ -123,8 +123,14 @@ class ProductVariants extends Component {
         )}
 
         <div className="buy-prdct-avail buy-prdct-padding">
-          <strong>Available: </strong>
-          <i>{availability}</i>
+          {(demoView || (!demoView && online)) ? (
+            <span>
+              <strong>Available: </strong>
+              <i>{availability}</i>
+            </span>
+          ) : (
+            <i>Unavailable</i>
+          )}
         </div>
 
         {variant && (
