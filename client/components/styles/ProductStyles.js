@@ -21,6 +21,12 @@ const StyledProduct = styled.div`
   .buy-prdct-padding {
     padding: 0.35rem 0;
   }
+  .buy-prdct-title {
+    color: ${props => props.theme.darkblue};
+    font-size: 1.17em;
+    padding: 0;
+    font-weight: bold;
+  }
   .buy-prdct-creator {
     font-size: 1rem;
     a {
@@ -29,6 +35,10 @@ const StyledProduct = styled.div`
       font-weight: bold;
       font-size: 1rem;
       color: ${props => props.theme.textGrey};
+    }
+    a:hover {
+      color: ${props => props.theme.darkblue};
+      text-decoration: underline ${props => props.theme.orange};
     }
   }
   .buy-prdct-desc {

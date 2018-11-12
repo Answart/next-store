@@ -15,9 +15,16 @@ class Product extends Component {
         </div>
 
         <div className="buy-prdct-content">
-          <h3 className="buy-prdct-title buy-prdct-padding">
-            {product.title}
-          </h3>
+          <div className="buy-prdct-padding">
+            <Link href={{
+              pathname: `/product/buy`,
+              query: {
+                id: `${product.id}`
+              }
+            }}>
+              <a className="buy-prdct-title">{product.title}</a>
+            </Link>
+          </div>
 
           <div className="buy-prdct-creator buy-prdct-padding">
             By
