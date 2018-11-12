@@ -13,21 +13,38 @@ const StyledProduct = styled.div`
     height: 100%;
     object-fit: contain;
   }
-  .buy-prdct-imgs {
+  select {
+    height: 2rem;
+    min-width: 12rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    font-size: 1rem;
+    border: 1px solid ${props => props.theme.lightGrey};
+    background-color: transparent;
+    &:focus {
+      outline: ${props => props.theme.darkblue};
+      border-color: ${props => props.theme.darkblue};
+    }
+    &:active {
+      color: ${props => props.theme.darkblue};
+      border-color: ${props => props.theme.darkblue};
+    }
   }
-  .buy-prdct-content {
-    color: ${props => props.theme.textGrey};
-  }
-  .buy-prdct-padding {
+  .prdct-padding {
     padding: 0.35rem 0;
   }
-  .buy-prdct-title {
+  .prdct-imgs {
+  }
+  .prdct-content {
+    color: ${props => props.theme.textGrey};
+  }
+  .prdct-title {
     color: ${props => props.theme.darkblue};
     font-size: 1.17em;
     padding: 0;
     font-weight: bold;
   }
-  .buy-prdct-creator {
+  .prdct-creator {
     font-size: 1rem;
     a {
       text-decoration: none;
@@ -41,7 +58,7 @@ const StyledProduct = styled.div`
       text-decoration: underline ${props => props.theme.orange};
     }
   }
-  .buy-prdct-desc {
+  .prdct-desc {
     border-top: 1px solid ${props => props.theme.textGrey};
     padding: 1rem 0 0 0;
   }
@@ -50,20 +67,6 @@ const StyledProduct = styled.div`
 const StyledProductVariants = styled.div`
   width: 100%;
   bottom: 0;
-  .buy-prdct-slct {
-    width: 280px;
-  }
-  select {
-    width: 100%;
-    height: 2rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid ${props => props.theme.textGrey};
-    &:focus {
-      outline: 0;
-      border-color: ${props => props.theme.darkblue};
-    }
-  }
   button {
     text-decoration: none;
     background-color: ${props => props.theme.darkblue};
@@ -71,10 +74,10 @@ const StyledProductVariants = styled.div`
     border: none;
     padding: 0.5rem 1.2rem;
   }
-  .buy-prdct-price {
+  .prdct-var-price {
     padding-bottom: 2rem;
   }
-  .buy-prdct-btn {
+  .prdct-btn {
     padding: 0.6rem 3rem;
     font-family: 'Tahoma', 'Geneva', sans-serif;
     font-weight: bold;
@@ -89,25 +92,25 @@ const StyledProductsList = styled.div`
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  .prod-lst-title {
+  .prdct-lst-title {
     grid-column: 1 / -1;
     grid-row: 1 / 1;
   }
-  .prod-lst-filters {
+  .prdct-lst-filters {
     grid-column: 1 / 1;
     grid-row: 2 / -1;
     max-width: ${props => props.theme.maxWidth};
   }
-  .prod-lst-pagination {
+  .prdct-lst-pgntn {
     grid-column: 2 / -1;
     grid-row: 2 / 2;
     max-width: ${props => props.theme.maxWidth};
   }
-  .prod-lst {
+  .prdct-lst {
     grid-column: 2 / -1;
     grid-row: 3 / -1;
   }
-  .prod-lst-itms {
+  .prdct-lst-itms {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     grid-gap: 2.2rem;
@@ -151,14 +154,14 @@ const StyledProductsListItem = styled.div`
       padding-left: 0.5rem;
       color: ${props => props.theme.orange};
     }
-    .prdct-itm-availability {
+    .prdct-itm-avail {
       padding: 0.2rem 0;
       font-style: italic;
       font-size: 1rem;
       color: ${props => props.theme.red};
     }
   }
-  .prdct-itm-actions {
+  .prdct-itm-actns {
     padding: 0.2rem 0;
     font-size: 0.85rem;
     color: ${props => props.theme.textGrey};
@@ -181,6 +184,9 @@ const StyledProductsListItem = styled.div`
         text-decoration: underline ${props => props.theme.orange};
       }
     }
+  }
+  .edit-prdct-var {
+    color: ${props => props.theme.textGrey};
   }
 `;
 

@@ -13,23 +13,23 @@ class Product extends Component {
       : false;
     return (
       <StyledProduct>
-        <div className="buy-prdct-imgs">
+        <div className="prdct-imgs">
           <img src={product.image} alt={product.title} />
         </div>
 
-        <div className="buy-prdct-content">
-          <div className="buy-prdct-padding">
+        <div className="prdct-content">
+          <div className="prdct-padding">
             <Link href={{
               pathname: `/product/buy`,
               query: {
                 id: `${product.id}`
               }
             }}>
-              <a className="buy-prdct-title">{product.title}</a>
+              <a className="prdct-title">{product.title}</a>
             </Link>
           </div>
 
-          <div className="buy-prdct-creator buy-prdct-padding">
+          <div className="prdct-creator prdct-padding">
             By
             <Link href={{
               pathname: `/shop`,
@@ -43,7 +43,7 @@ class Product extends Component {
           </div>
 
           {viewerIsCreator && !product.online && (
-            <i className="buy-prdct-padding">Offline</i>
+            <i className="prdct-padding">Offline</i>
           )}
 
           {product.productVariants &&
@@ -54,12 +54,12 @@ class Product extends Component {
             />
           }
 
-          <div className="buy-prdct-desc buy-prdct-padding">
+          <div className="prdct-desc prdct-padding">
             <strong>Description:</strong>
             <p>{product.description}</p>
 
             {product.brand && (
-              <div className="buy-prdct-brand">
+              <div className="prdct-brand">
                 <strong>Brand: </strong>{product.brand}
               </div>
             )}

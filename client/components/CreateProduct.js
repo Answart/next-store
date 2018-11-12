@@ -82,13 +82,13 @@ class CreateProduct extends Component {
                 previewImage={true}
               />
 
-              <div className="form-actions buy-prdct-padding">
+              <div className="form-actions prdct-padding">
                 <button
                   type="submit"
-                  className="buy-prdct-btn"
+                  className="prdct-btn"
                 >Create</button>
               </div>
-              <div className="form-actions buy-prdct-padding">
+              <div className="form-actions prdct-padding">
                 <button type="cancel">
                   <Link href="/">
                     <a>Cancel</a>

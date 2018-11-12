@@ -10,7 +10,6 @@ export default class Product extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired
   };
-
   render() {
     const { product } = this.props;
     const viewerIsCreator = product
@@ -65,14 +64,14 @@ export default class Product extends Component {
           )}
 
           {availability.length && (
-            <div className="prdct-itm-availability">
+            <div className="prdct-itm-avail">
               {availability}
             </div>
           )}
         </div>
 
         {viewerIsCreator && product.id && (
-          <span className="prdct-itm-actions">
+          <span className="prdct-itm-actns">
             <Link
               href={{
                 pathname: `/product/update`,
@@ -81,13 +80,12 @@ export default class Product extends Component {
             >
               <a>Edit</a>
             </Link>
-
-            <button id={product.id}>Remove</button>
+            <button id={product.id}>Delete</button>
           </span>
         )}
 
         {!product.online && (
-          <span><i className="prdct-itm-actions">(Offline)</i></span>
+          <span><i className="prdct-itm-actns">(Offline)</i></span>
         )}
       </StyledProductsListItem>
     );

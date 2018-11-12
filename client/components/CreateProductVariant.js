@@ -48,8 +48,6 @@ class CreateProductVariant extends Component {
 
         <fieldset disabled={false} aria-busy={false}>
           <StyledProduct>
-            <div className="buy-prdct-content">
-
               <label htmlFor="size">
                 Size:
                 <select
@@ -77,7 +75,7 @@ class CreateProductVariant extends Component {
                 </select>
               </label>
 
-              <label htmlFor="quantity" className="buy-prdct-brand">
+              <label htmlFor="quantity">
                 Quantity:
                 <input
                   type="number"
@@ -91,7 +89,7 @@ class CreateProductVariant extends Component {
                 />
               </label>
 
-              <label htmlFor="price" className="buy-prdct-title buy-prdct-padding">
+              <label htmlFor="price" className="prdct-padding">
                 Price per Item:
                 <input
                   type="number"
@@ -113,13 +111,13 @@ class CreateProductVariant extends Component {
                   value={sale}
                   onChange={this.handleChange}
                 />
-                <label htmlFor="sale" className="buy-prdct-padding">
+                <label htmlFor="sale" className="prdct-padding">
                   Is this selection on sale?
                 </label>
               </div>
 
               {sale && (
-                <label htmlFor="salePrice" className="buy-prdct-title buy-prdct-padding">
+                <label htmlFor="salePrice" className="prdct-padding">
                   Sale Price per Item:
                   <input
                     type="number"
@@ -133,12 +131,10 @@ class CreateProductVariant extends Component {
                   />
                 </label>
               )}
-
-            </div>
           </StyledProduct>
 
-          <div className="form-actions buy-prdct-padding">
-            <button type="submit" className="buy-prdct-btn">Add Selection</button>
+          <div className="form-actions prdct-padding">
+            <button type="submit" className="prdct-btn">Add Selection</button>
           </div>
 
         </fieldset>

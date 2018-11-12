@@ -31,7 +31,7 @@ class ProductsList extends Component {
     const query = queries[queryType];
     return (
       <StyledProductsList>
-        <div className="prod-lst-title">
+        <div className="prdct-lst-title">
           {pageLabel && (
             <div>
               {pageLabel} <i>&#8811; BLANK</i>
@@ -39,15 +39,15 @@ class ProductsList extends Component {
           )}
         </div>
 
-        <div className="prod-lst-filters">
+        <div className="prdct-lst-filters">
           Filters
         </div>
 
-        <div className="prod-lst-pagination">
+        <div className="prdct-lst-pgntn">
           Pagination
         </div>
 
-        <div className="prod-lst">
+        <div className="prdct-lst">
           <Query
             query={query}
             variables={variables}
@@ -56,7 +56,7 @@ class ProductsList extends Component {
               if (loading) return <p>Loading...</p>;
               if (error) return <p>Error: {error.message}</p>;
               return (
-                <div className="prod-lst-itms">
+                <div className="prdct-lst-itms">
                   {data.products && data.products.map(prdct =>
                     <ProductsListItem product={prdct} key={prdct.id} />
                   )}

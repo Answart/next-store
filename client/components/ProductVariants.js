@@ -82,13 +82,13 @@ class ProductVariants extends Component {
     return (
       <StyledProductVariants>
         {variant && (
-          <div className='product-price buy-prdct-price buy-prdct-padding'>
+          <div className='prdct-var-price prdct-padding'>
             {variant.salePrice ? (
               <h3>
                 <span className='line-through'>
                   ${variant.price}
                 </span>
-                <span className='product-price product-sale'>
+                <span className='prdct-var-price'>
                   ${variant.salePrice}
                 </span>
               </h3>
@@ -101,9 +101,9 @@ class ProductVariants extends Component {
         )}
 
         {sizes && !!sizes.length && (
-          <div className="buy-prdct-size buy-prdct-padding">
+          <div className="prdct-padding">
             <div>Sizes:</div>
-            <select id="buy-prdct-size" name="size" className="buy-prdct-slct"
+            <select id="prdct-var-size" name="size"
               onChange={this.updateFilter}
             >
               {sizes.map(sz => <option key={sz}>{sz}</option>)}
@@ -112,9 +112,9 @@ class ProductVariants extends Component {
         )}
 
         {colors && !!colors.length && (
-          <div className="buy-prdct-color buy-prdct-padding">
+          <div className="prdct-padding">
             <div>Colors:</div>
-            <select id="buy-prdct-color" name="color" className="buy-prdct-slct"
+            <select id="prdct-var-color" name="color"
               onChange={this.updateFilter}
             >
               {colors.map(clr => <option key={clr}>{clr}</option>)}
@@ -122,7 +122,7 @@ class ProductVariants extends Component {
           </div>
         )}
 
-        <div className="buy-prdct-avail buy-prdct-padding">
+        <div className="prdct-padding">
           {(demoView || (!demoView && online)) ? (
             <span>
               <strong>Available: </strong>
@@ -134,11 +134,11 @@ class ProductVariants extends Component {
         </div>
 
         {variant && (
-          <div className="buy-prdct-padding">
+          <div className="prdct-padding">
             {online && !demoView && (
               <button
                 disabled={addToCrtBtnDisabled}
-                className="buy-prdct-btn"
+                className="prdct-btn"
                 onClick={this.addToCart}
               >Add To Cart
               </button>
