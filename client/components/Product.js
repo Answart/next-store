@@ -7,7 +7,7 @@ import product from '../lib/dummyData';
 
 class Product extends Component {
   render() {
-    const id = this.props.id;
+    const { id, demoView } = this.props;
     return (
       <StyledProduct>
         <div className="buy-prdct-imgs">
@@ -39,11 +39,12 @@ class Product extends Component {
             </Link>
           </div>
 
-          {product.productVariants && product.productVariants.length &&
+          {product.productVariants &&
             <ProductVariants
               productId={product.id}
               allVariants={product.productVariants}
               online={product.online}
+              demoView={demoView}
             />
           }
 
