@@ -1,117 +1,100 @@
 import React, { Component } from 'react';
 import { StyledProductVariants } from './styles/ProductStyles';
+import { getUniqKeyVals, getFltrdObjs } from '../lib/utilFns';
 
 
 class ProductVariants extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filterQuery: {},
-      currentVariants: [],
-      sizes: [],
-      colors: []
-    };
-    this.updateFilter = this.updateFilter.bind(this);
-    this.addToCart = this.addToCart.bind(this);
-  }
-  getKeyValues = (variants, key) => {
-    let vals = [];
-    variants.map(variant => {
-      const val = variant[key];
-      if (!vals.includes(val)) vals.push(val);
-    });
+    let newState = this.getStartState();
+    const sizes = getUniqKeyVals(this.props.variants, 'size');
+    newState.sizes = sizes;
 
-    return vals;
+    this.state = newState;
   }
-  getCurrentVariants = (variants, query) => {
-    return variants.filter(variant => {
-      const sizeMatch = query.size ? (query.size === variant.size) : true;
-      const colorMatch = query.color ? (query.color === variant.color) : true;
+  getStartState = (filterQuery = {}) => {
+    let variants = this.props.variants || [];
+    let currentVariants = [];
+    let variant;
 
-      return (sizeMatch && colorMatch);
-    });
-  }
-  resetState = (productVariants, filterQuery = {}) => {
-    const sizes = this.getKeyValues(productVariants, 'size');
-    let currentVariants, currentVariant;
+    let updating = Object.keys(filterQuery).length ? true : false;
+    if (variants.length) variant = variants[0];
 
-    if (!Object.keys(filterQuery).length) {
-      currentVariant = productVariants[0];
-      const size = currentVariant.size ? currentVariant.size : null;
-      const color = currentVariant.color ? currentVariant.color : null;
-      if (size) filterQuery.size = size;
-      if (color) filterQuery.color = color;
+    if (variant && !updating) {
+      if (variant.size) filterQuery.size = variant.size;
     }
 
-    let sanColorFilter = {};
-    if (filterQuery.size) sanColorFilter.size = filterQuery.size;
-    currentVariants = this.getCurrentVariants(productVariants, sanColorFilter);
-    const colors = this.getKeyValues(currentVariants, 'color');
+    currentVariants = getFltrdObjs(variants, filterQuery);
 
-    currentVariants = this.getCurrentVariants(productVariants, filterQuery);
+    const colors = getUniqKeyVals(currentVariants, 'color');
 
-    this.setState({
-      sizes,
-      colors,
+    if (variant && !updating) {
+      if (variant.color) filterQuery.color = variant.color;
+    }
+
+    if (filterQuery.color) currentVariants = getFltrdObjs(variants, filterQuery);
+
+    variant = currentVariants.length ? currentVariants[0] : null;
+
+    return {
       filterQuery,
-      currentVariants
-    });
-  }
-  componentWillMount = () => {
-    const allVariants = this.props.allVariants;
-    this.resetState(allVariants, {});
+      currentVariants,
+      variant,
+      colors
+    };
   }
   updateFilter = (e) => {
     if (!!e && e.preventDefault) e.preventDefault();
-    const key = e.currentTarget.name || "";
-    const val = e.currentTarget.value || "";
+    const { name, value } = e.currentTarget;
     let { filterQuery } = this.state;
-    delete filterQuery[key];
-    if (key && val.length) filterQuery[key] = val;
-    if (key === 'size') delete filterQuery['color'];
+    delete filterQuery[name];
+    if (name && value.length) filterQuery[name] = value;
+    if (name === 'size') delete filterQuery['color'];
 
-    this.resetState(this.props.allVariants, filterQuery);
+    const state = this.getStartState(filterQuery);
+    this.setState(state);
   }
-  addToCart = (e) => {
+  addToCart = e => {
     if (!!e && e.preventDefault) e.preventDefault();
-    const { currentVariants } = this.state;
-    const id = currentVariants[0].id;
-    console.log('addToCart1', id);
+    const { variant } = this.state;
+    const id = variant.id;
+    console.log('addToCart1', variant);
   }
   render() {
     const {
+      sizes,
       filterQuery,
       currentVariants,
-      sizes,
+      variant,
       colors
     } = this.state;
-    let currentVariant = currentVariants[0];
-    let addToCrtBtnDisabled = (!(currentVariants.length == 1)) || !(this.props.online);
-    let availability = currentVariant
-      ? `${currentVariant.quantity} in Stock!`
+    const { demoView, online } = this.props;
+    let availability = variant
+      ? `${variant.quantity} in Stock!`
       : "Out of Stock";
+    let addToCrtBtnDisabled = variant ? !variant.id : true;
     return (
       <StyledProductVariants>
-        {currentVariant && (
+        {variant && (
           <div className='product-price buy-prdct-price buy-prdct-padding'>
-            {currentVariant.salePrice ? (
+            {variant.salePrice ? (
               <h3>
                 <span className='line-through'>
-                  ${currentVariant.price}
+                  ${variant.price}
                 </span>
                 <span className='product-price product-sale'>
-                  ${currentVariant.salePrice}
+                  ${variant.salePrice}
                 </span>
               </h3>
             ) : (
               <h3>
-                ${currentVariant.price}
+                ${variant.price}
               </h3>
             )}
           </div>
         )}
 
-        {sizes.length && (
+        {sizes && !!sizes.length && (
           <div className="buy-prdct-size buy-prdct-padding">
             <div>Sizes:</div>
             <select id="buy-prdct-size" name="size" className="buy-prdct-slct"
@@ -122,7 +105,7 @@ class ProductVariants extends Component {
           </div>
         )}
 
-        {colors.length && (
+        {colors && !!colors.length && (
           <div className="buy-prdct-color buy-prdct-padding">
             <div>Colors:</div>
             <select id="buy-prdct-color" name="color" className="buy-prdct-slct"
@@ -138,15 +121,18 @@ class ProductVariants extends Component {
           <i>{availability}</i>
         </div>
 
-        <div className="buy-prdct-padding">
-          <button
-            disabled={addToCrtBtnDisabled}
-            className="buy-prdct-btn"
-            onClick={this.addToCart}
-            >
-            Add To Cart
-          </button>
-        </div>
+        {variant && (
+          <div className="buy-prdct-padding">
+            {online && !demoView && (
+              <button
+                disabled={addToCrtBtnDisabled}
+                className="buy-prdct-btn"
+                onClick={this.addToCart}
+              >Add To Cart
+              </button>
+            )}
+          </div>
+        )}
       </StyledProductVariants>
     );
   }

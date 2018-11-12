@@ -41,8 +41,7 @@ class Product extends Component {
 
           {product.productVariants &&
             <ProductVariants
-              productId={product.id}
-              allVariants={product.productVariants}
+              variants={product.productVariants}
               online={product.online}
               demoView={demoView}
             />
