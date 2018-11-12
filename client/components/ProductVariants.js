@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyledProductVariants } from './styles/ProductStyles';
 import { getUniqKeyVals, getFltrdObjs } from '../lib/utilFns';
 
 
 class ProductVariants extends Component {
+  static propTypes = {
+    variants: PropTypes.array.isRequired,
+    online: PropTypes.bool.isRequired,
+    demoView: PropTypes.bool
+  };
   constructor(props) {
     super(props);
     let newState = this.getStartState();
