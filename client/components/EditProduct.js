@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyledEditProduct } from './styles/ProductStyles';
 import { Query } from 'react-apollo';
+import UpdateProduct from './UpdateProduct';
 import CreateProductVariant from './CreateProductVariant';
 import { PRODUCT_QUERY } from '../graphql';
 
@@ -52,7 +53,9 @@ class EditProduct extends Component {
                   </div>
 
                   <div className="edt-prdct-cntnt">
-                    update here
+                    <UpdateProduct
+                      product={product}
+                    />
                   </div>
                 </div>
               )}
