@@ -83,16 +83,17 @@ class CreateProduct extends Component {
               />
 
               <div className="form-actions prdct-padding">
-                <button
+                <button className="big-btn"
                   type="submit"
-                  className="prdct-btn"
                 >Create</button>
               </div>
               <div className="form-actions prdct-padding">
-                <button type="cancel">
-                  <Link href="/">
-                    <a>Cancel</a>
-                  </Link>
+                <button className="undrln-btn"
+                  type="cancel"
+                >
+                  <Link href="/"><a>
+                    Cancel
+                  </a></Link>
                 </button>
               </div>
             </fieldset>

@@ -72,15 +72,15 @@ export default class Product extends Component {
 
         {viewerIsCreator && product.id && (
           <span className="prdct-itm-actns">
-            <Link
-              href={{
-                pathname: `/product/edit`,
-                query: { id: product.id }
-              }}
-            >
-              <a>Edit</a>
-            </Link>
-            <button id={product.id}>Delete</button>
+            <Link href={{
+              pathname: `/product/edit`,
+              query: { id: product.id }
+            }}><a>
+              Edit
+            </a></Link>
+            <button className="undrln-btn"
+              id={product.id}
+            >Delete</button>
           </span>
         )}
 

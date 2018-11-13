@@ -136,12 +136,10 @@ class ProductVariants extends Component {
         {variant && (
           <div className="prdct-padding">
             {online && !demoView && (
-              <button
+              <button className="big-btn"
                 disabled={addToCrtBtnDisabled}
-                className="prdct-btn"
                 onClick={this.addToCart}
-              >Add To Cart
-              </button>
+              >Add To Cart</button>
             )}
           </div>
         )}

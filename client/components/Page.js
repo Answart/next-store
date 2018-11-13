@@ -92,6 +92,47 @@ injectGlobal`
   .line-through {
     text-decoration: line-through ${theme.orange};
   }
+  button.big-btn {
+    width: auto;
+    padding: 0.5rem 1.4rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1.3rem;
+    text-decoration: none;
+    background-color: ${theme.darkblue};
+    &:hover {
+      color: white;
+      background-color: ${theme.textBlack};
+    }
+  }
+  button.undrln-btn {
+    background-color: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Tahoma','Geneva',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: ${theme.textGrey};
+    text-decoration: none;
+    border: none;
+    &:hover {
+      color: ${theme.darkblue};
+      text-decoration: underline ${theme.orange};
+    }
+  }
+  button.dlt-btn  {
+    background-color: inherit;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: ${theme.red};
+    text-decoration: none;
+    border: none;
+    &:hover {
+      color: ${theme.red};
+      font-weight: bold;
+    }
+  }
 `;
 
 class Page extends Component {

@@ -41,9 +41,10 @@ class Header extends Component {
             {authed ? (
               <>
                 <span className="hdr-inline">
-                  <button className="hdr-btn" onClick={this.toggAcctDrpdwn}>
-                    Hi, {user.name}!
-                  </button>
+                  <button className="undrln-btn hdr-btn"
+                    onClick={this.toggAcctDrpdwn}
+                  >Hi, {user.name}!</button>
+
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
                     <a href="/product/create">Create Product</a>
                     <a href={`/shop?name=${user.name}`}>My Products</a>
@@ -68,9 +69,9 @@ class Header extends Component {
                 </Link>
 
                 <span className="hdr-inline hdr-pad">
-                  <button className="hdr-btnn" onClick={this.toggleCart}>
-                    <img src="/static/images/cart.svg" alt="Cart" height="14" width="14" />
-                  </button>
+                  <button className="hdr-btn"
+                    onClick={this.toggleCart}
+                  ><img src="/static/images/cart.svg" alt="Cart" height="14" width="14" /></button>
                 </span>
               </>
             ) : (

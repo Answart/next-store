@@ -7,7 +7,10 @@ const StyledForm = styled.form`
   line-height: 1.5;
   font-weight: 600;
   color: ${props => props.theme.textGrey};
+  display: grid;
+  grid-template-columns: 1fr minmax(36rem, 1fr) 1fr;
   fieldset {
+    grid-column: 2 / 2;
     border: 0;
     padding: 0;
     &[disabled] {
@@ -28,6 +31,8 @@ const StyledForm = styled.form`
   select {
     width: 100%;
     padding: 0.5rem;
+    display: block;
+    max-width: 35rem;
     font-size: 1rem;
     border: 0;
     border-bottom: 1px solid ${props => props.theme.lightGrey};
@@ -41,6 +46,9 @@ const StyledForm = styled.form`
       border-color: ${props => props.theme.darkblue};
     }
   }
+  input[type='text'] {
+    min-width: 25rem;
+  }
   input[type='file'] {
     border: 0;
   }
@@ -49,6 +57,11 @@ const StyledForm = styled.form`
     width: 1.8rem;
     height: 1.8rem;
     float: left;
+  }
+  input[type=number] {
+    display: block;
+    min-width: 12rem;
+    width: auto;
   }
   textarea,
   select {
