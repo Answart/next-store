@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
+import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
-import StyledProduct from './styles/ProductStyles';
 import ProductVariantFormFields from './ProductVariantFormFields';
+import { CREATE_PROD_VARIANT_MUTATION } from '../graphql';
 
 
 class CreateProductVariant extends Component {
@@ -42,31 +44,42 @@ class CreateProductVariant extends Component {
       salePrice
     } = this.state;
     return (
-      <StyledForm
-        data-test="form"
-        onSubmit={async e => {
-          e.preventDefault();
-          console.log('onSubmit', this.state);
-        }}
+      <Mutation
+        mutation={CREATE_PROD_VARIANT_MUTATION}
+        variables={this.state}
       >
-        <fieldset disabled={false} aria-busy={false}>
-          <ProductVariantFormFields
-            price={price}
-            quantity={quantity}
-            color={color}
-            size={size}
-            sale={sale}
-            salePrice={salePrice}
-            handleChange={this.handleChange}
-          />
+        {(createProductVariant, { loading, error }) => (
+          <StyledForm
+            data-test="form"
+            onSubmit={async e => {
+              e.preventDefault();
+              const res = await createProductVariant();
+              Router.push({
+                pathname: '/product/buy',
+                query: { id },
+              });
+            }}
+          >
+            <fieldset disabled={false} aria-busy={false}>
+              <ProductVariantFormFields
+                price={price}
+                quantity={quantity}
+                color={color}
+                size={size}
+                sale={sale}
+                salePrice={salePrice}
+                handleChange={this.handleChange}
+              />
 
-          <div className="form-actions prdct-padding">
-            <button className="big-btn"
-              type="submit"
-            >Add Selection</button>
-          </div>
-        </fieldset>
-      </StyledForm>
+              <div className="form-actions prdct-padding">
+                <button className="big-btn"
+                  type="submit"
+                >Add Selection</button>
+              </div>
+            </fieldset>
+          </StyledForm>
+        )}
+      </Mutation>
     );
   }
 }
