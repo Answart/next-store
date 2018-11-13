@@ -48,8 +48,33 @@ const PROD_VARIANTS_QUERY = gql`
   }
 `;
 
+const CREATE_PROD_VARIANT_MUTATION = gql`
+  mutation CREATE_PROD_VARIANT_MUTATION(
+    $price: Int!
+    $quantity: Int!
+    $color: String
+    $size: String
+    $sale: Boolean!
+    $salePrice: Int
+    $productId: String!
+  ) {
+    createProductVariant(
+      price: $price
+      quantity: $quantity
+      color: $color
+      size: $size
+      sale: $sale
+      salePrice: $salePrice
+      productId: $productId
+    ) {
+      id
+    }
+  }
+`;
+
 
 export {
   PROD_VARIANT_QUERY,
-  PROD_VARIANTS_QUERY
+  PROD_VARIANTS_QUERY,
+  CREATE_PROD_VARIANT_MUTATION
 };
