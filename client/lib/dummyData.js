@@ -11,19 +11,25 @@ const productVariants = [
     quantity: 3,
     color: "Black",
     size: "S",
-    price: 4400
+    price: 4400,
+    sale: true,
+    salePrice: 2200
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
     color: "Black",
     size: "M",
-    price: 4400
+    price: 4400,
+    sale: false,
+    salePrice: 0
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 2,
     color: "Red",
     size: "S",
-    price: 4000
+    price: 4000,
+    sale: true,
+    salePrice: 20
   }
 ];
 
