@@ -1,9 +1,12 @@
-const UpdateProductPage = props => {
+import EditProduct from '../../components/EditProduct';
+
+
+const EditProductPage = props => {
   return (
     <div>
-      Update product page
+      <EditProduct id={props.query.id} />
     </div>
   );
 };
 
-export default UpdateProductPage;
+export default EditProductPage;

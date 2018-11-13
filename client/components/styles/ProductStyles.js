@@ -190,9 +190,53 @@ const StyledProductsListItem = styled.div`
   }
 `;
 
+const StyledEditProduct = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 3rem 1fr;
+  .edt-prdct-title {
+    grid-row: 1 / 1;
+    font-size: 1.1rem;
+    color: ${props => props.theme.textGrey};
+  }
+  .edt-prdct-title button {
+    padding-right: 1rem;
+    cursor: pointer;
+    color: ${props => props.theme.textGrey};
+    font-family: 'Tahoma','Geneva',sans-serif;
+    letter-spacing: 0.02rem;
+    font-size: 1.1rem;
+    background-color: inherit;
+    text-decoration: none;
+    border: none;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    &:hover {
+      color: ${props => props.theme.darkblue};
+    }
+  }
+  .edt-prdct-tab {
+    display: grid;
+    grid-template-columns: 1fr minmax(45rem, 1fr) 1fr;
+    grid-template-rows: 1fr minmax(50rem, 10fr);
+  }
+  .edt-prdct-navi {
+    grid-row: 1 / 1;
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+  }
+  .edt-prdct-cntnt {
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    justify-content: center;
+  }
+`
+
 export default StyledProduct;
 export {
   StyledProductVariants,
   StyledProductsList,
-  StyledProductsListItem
+  StyledProductsListItem,
+  StyledEditProduct
 };
