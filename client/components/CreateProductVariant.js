@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import StyledForm from './styles/FormStyles';
 import StyledProduct from './styles/ProductStyles';
 import ProductVariantFormFields from './ProductVariantFormFields';
 
 
 class CreateProductVariant extends Component {
+  static propTypes = {
+    productId: PropTypes.string.isRequired
+  };
   state = {
     price: 0,
     quantity: 1,
     color: '',
     size: '',
     sale: false,
-    salePrice: 0
+    salePrice: 0,
+    productId: this.props.productId
   };
   handleChange = e => {
     const { name, type, value, checked } = e.target;
