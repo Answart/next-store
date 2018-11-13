@@ -88,6 +88,7 @@ class ProductVariantFormFields extends Component {
             name="sale"
             value={sale}
             onChange={handleChange}
+            checked={sale ? "checked" : ""}
           />
           <label htmlFor="sale" className="prdct-padding">
             Is this selection on sale?

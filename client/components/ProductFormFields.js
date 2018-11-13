@@ -115,20 +115,17 @@ class ProductFormFields extends Component {
             />
           </label>
 
-          {(typeof online !== 'undefined') && (
-            <div className="field-padding">
-              <input
-                type="checkbox"
-                id="online"
-                name="online"
-                value={online}
-                onChange={handleChange}
-              />
-              <label htmlFor="online" className="chkbx-label">
-                Online
-              </label>
-            </div>
-          )}
+          <input
+            type="checkbox"
+            id="online"
+            name="online"
+            value={online}
+            onChange={handleChange}
+            checked={online ? "checked" : ""}
+          />
+          <label htmlFor="online" className="chkbx-label">
+            Online
+          </label>
 
           <label htmlFor="img">
             Image:
