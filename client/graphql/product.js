@@ -12,17 +12,19 @@ const PRODUCT_QUERY = gql`
       category
       brand
       online
-      url
       user {
         id
         name
       }
       productVariants {
         id
+        price
         quantity
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
