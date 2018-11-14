@@ -52,7 +52,34 @@ const CREATE_PRODUCT_MUTATION = gql`
   }
 `;
 
+const UPDATE_PRODUCT_MUTATION = gql`
+  mutation UPDATE_PRODUCT_MUTATION(
+    $id: ID!,
+    $title: String!,
+    $department: String!,
+    $description: String!,
+    $image: String!,
+    $category: String,
+    $brand: String
+    $online: Boolean!
+  ) {
+    updateProduct(
+      id: $id,
+      title: $title,
+      department: $department,
+      description: $description,
+      image: $image,
+      category: $category,
+      brand: $brand,
+      online: $online
+    ) {
+      id
+    }
+  }
+`;
+
 export {
   PRODUCT_QUERY,
-  CREATE_PRODUCT_MUTATION
+  CREATE_PRODUCT_MUTATION,
+  UPDATE_PRODUCT_MUTATION
 }
