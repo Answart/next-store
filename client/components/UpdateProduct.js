@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
 import ProductFormFields from './ProductFormFields';
+import { UPDATE_PRODUCT_MUTATION } from '../graphql';
 
 
 class UpdateProduct extends Component {
@@ -54,34 +56,46 @@ class UpdateProduct extends Component {
       online
     } = this.state;
     return (
-      <StyledForm
-        data-test="form"
-        onSubmit={async e => {
-          e.preventDefault();
-          console.log('this.state', this.state);
-        }}
+      <Mutation
+        mutation={UPDATE_PRODUCT_MUTATION}
+        variables={this.state}
       >
-        <fieldset disabled={false} aria-busy={false}>
-          <ProductFormFields
-            title={title}
-            department={department}
-            description={description}
-            image={image}
-            category={category}
-            brand={brand}
-            online={online}
-            handleChange={this.handleChange}
-            uploadFile={this.uploadFile}
-            previewImage={false}
-          />
+        {(updateProduct, { loading, error }) => (
+          <StyledForm
+            data-test="form"
+            onSubmit={async e => {
+              e.preventDefault();
+              const res = await updateProduct();
+              Router.push({
+                pathname: '/product/buy',
+                query: { id: res.data.updateProduct.id },
+              });
+            }}
+          >
+            <div>{error}</div>
+            <fieldset disabled={loading} aria-busy={loading}>
+              <ProductFormFields
+                title={title}
+                department={department}
+                description={description}
+                image={image}
+                category={category}
+                brand={brand}
+                online={online}
+                handleChange={this.handleChange}
+                uploadFile={this.uploadFile}
+                previewImage={false}
+              />
 
-          <div className="form-actions prdct-padding">
-            <button className="big-btn"
-              type="submit"
-            >Update Product</button>
-          </div>
-        </fieldset>
-      </StyledForm>
+              <div className="form-actions prdct-padding">
+                <button className="big-btn"
+                  type="submit"
+                >Update Product</button>
+              </div>
+            </fieldset>
+          </StyledForm>
+        )}
+      </Mutation>
     );
   }
 }
