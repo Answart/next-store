@@ -7,13 +7,13 @@ import { PRODUCT_QUERY } from '../graphql';
 
 
 class EditProduct extends Component {
-  state = { activeTab: 0 };
-  setActiveTab = (activeTab, e) => {
+  state = { tab: 0 };
+  setActiveTab = (tab, e) => {
     e.preventDefault();
-    this.setState({ activeTab });
+    this.setState({ tab });
   };
   render() {
-    const { activeTab } = this.state;
+    const { tab } = this.state;
     const { id } = this.props;
     return (
       <Query
@@ -27,78 +27,65 @@ class EditProduct extends Component {
           return (
             <StyledEditProduct>
               <div className="edt-prdct-title">
-                <button
+                Edit &#8811;
+                <button className="thn-btn"
                   onClick={this.setActiveTab.bind(this, 0)}
-                >{product.title}</button>
+                >{product ? product.title : ''}</button>
 
-                {activeTab !== 0 && (
+                {tab !== 0 && (
                   <span>&#8811;
-                    <button
+                    <button className="thn-btn"
                       onClick={this.setActiveTab.bind(this, 1)}
                     >Selections</button>
 
-                    {activeTab == 2 && (
-                      <span>&#8811;  Add Selection</span>
+                    {tab == 2 && (
+                      <span>&#8811; Add Selection</span>
                     )}
                   </span>
                 )}
               </div>
 
-              {activeTab == 0 && (
-                <div className="edt-prdct-tab">
-                  <div className="edt-prdct-navi">
+              <div className="edt-prdct-tab">
+                <div className="edt-prdct-navi">
+                  {product && tab == 0 && (
                     <button className="undrln-btn"
                       onClick={this.setActiveTab.bind(this, 1)}
                     >Selections &#8811;</button>
-                  </div>
-
-                  <div className="edt-prdct-cntnt">
-                    <UpdateProduct
-                      product={product}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {activeTab == 1 && (
-                <div className="edt-prdct-tab">
-                  <div className="edt-prdct-navi">
-                    <button className="undrln-btn"
-                      onClick={this.setActiveTab.bind(this, 0)}
-                    >&#8810; Product</button>
-                    <button className="undrln-btn"
-                      onClick={this.setActiveTab.bind(this, 2)}
-                    >Add Selection &#8811;</button>
-                  </div>
-
-                  <div className="edt-prdct-cntnt">
-                    {!!product.productVariants.length ? (
-                      <div>
-                        <i>{product.productVariants.length} unique Selections:</i>
-                        update variants here
-                      </div>
-                    ) : (
-                      <p>This product has no selections to remove.</p>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {activeTab == 2 && (
-                <div className="edt-prdct-tab">
-                  <div className="edt-prdct-navi">
+                  )}
+                  {tab == 1 && (
+                    <>
+                      <button className="undrln-btn"
+                        onClick={this.setActiveTab.bind(this, 0)}
+                      >&#8810; Product</button>
+                      <button className="undrln-btn"
+                        onClick={this.setActiveTab.bind(this, 2)}
+                      >Add Selection &#8811;</button>
+                    </>
+                  )}
+                  {tab == 2 && (
                     <button className="undrln-btn"
                       onClick={this.setActiveTab.bind(this, 1)}
                     >&#8810; Selections</button>
-                  </div>
-
-                  <div className="edt-prdct-cntnt">
-                    <CreateProductVariant
-                      productId={id}
-                    />
-                  </div>
+                  )}
                 </div>
-              )}
+
+                <div className="edt-prdct-cntnt">
+                  {!product && (
+                    <p>Could not find product with this id.</p>
+                  )}
+                  {product && tab == 0 && (
+                    <UpdateProduct product={product}
+                    />
+                  )}
+                  {product && tab == 1 && (
+                    <p>Update variants here</p>
+                  )}
+                  {product && tab == 2 && (
+                    <CreateProductVariant productId={product.id}
+                    />
+                  )}
+                </div>
+              </div>
             </StyledEditProduct>
           );
         }}
