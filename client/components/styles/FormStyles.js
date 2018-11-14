@@ -26,6 +26,14 @@ const StyledForm = styled.form`
     display: block;
     margin-bottom: 0.8rem;
   }
+  .image-lbl {
+    margin: 0;
+    block: inherit;
+    pading-left: 0.25rem;
+    font-size: 1rem;
+    font-weight: normal;
+    color: black;
+  }
   input,
   textarea,
   select {

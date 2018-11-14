@@ -127,13 +127,13 @@ class ProductFormFields extends Component {
             Online
           </label>
 
-          <label htmlFor="img">
-            Image:
+          <label htmlFor="image">
+            Image: {image && (<span className="image-lbl"> {image}</span>)}
             <input
               type="file"
-              id="img"
-              name="img"
-              placeholder="Upload an image"
+              id="image"
+              name="image"
+              placeholder={image}
               onChange={uploadFile}
               required
             />
