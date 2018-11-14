@@ -135,7 +135,7 @@ class ProductFormFields extends Component {
               name="image"
               placeholder={image}
               onChange={uploadFile}
-              required
+              required={!image}
             />
           </label>
         </div>
