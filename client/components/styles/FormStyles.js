@@ -70,34 +70,6 @@ const StyledForm = styled.form`
     border: 1px solid ${props => props.theme.lightGrey};
     margin: 0.25rem;
   }
-  button {
-    width: auto;
-    padding: 0.5rem 1.4rem;
-    align-items: center;
-    font-size: 1.3rem;
-    font-weight: 600;
-    border: 0;
-    &[disabled] {
-      opacity: 0.5;
-    }
-  }
-  button[type='submit'] {
-    color: white;
-    background: ${props => props.theme.darkblue};
-  }
-  button[type='cancel'] {
-    font-size: 1rem;
-    color: ${props => props.theme.textGrey};
-    background: transparent;
-    &:hover {
-      text-decoration: underline ${props => props.theme.orange};
-    }
-    a {
-      padding: 0;
-      font-size: 1rem;
-      color: ${props => props.theme.textGrey};
-    }
-  }
   textarea {
     display: block;
     height: 5rem;

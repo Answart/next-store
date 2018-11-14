@@ -46,18 +46,6 @@ const StyledProduct = styled.div`
   }
   .prdct-creator {
     font-size: 1rem;
-    a {
-      text-decoration: none;
-      padding: 0 0.1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      color: ${props => props.theme.textGrey};
-    }
-    a:hover {
-      color: ${props => props.theme.darkblue};
-      text-decoration: underline ${props => props.theme.orange};
-    }
-  }
   .prdct-desc {
     border-top: 1px solid ${props => props.theme.textGrey};
     padding: 1rem 0 0 0;
@@ -67,21 +55,8 @@ const StyledProduct = styled.div`
 const StyledProductVariants = styled.div`
   width: 100%;
   bottom: 0;
-  button {
-    text-decoration: none;
-    background-color: ${props => props.theme.darkblue};
-    color: white;
-    border: none;
-    padding: 0.5rem 1.2rem;
-  }
   .prdct-var-price {
     padding-bottom: 2rem;
-  }
-  .prdct-btn {
-    padding: 0.6rem 3rem;
-    font-family: 'Tahoma', 'Geneva', sans-serif;
-    font-weight: bold;
-    text-align: center;
   }
 `;
 
@@ -198,22 +173,6 @@ const StyledEditProduct = styled.div`
     grid-row: 1 / 1;
     font-size: 1.1rem;
     color: ${props => props.theme.textGrey};
-  }
-  .edt-prdct-title button {
-    padding-right: 1rem;
-    cursor: pointer;
-    color: ${props => props.theme.textGrey};
-    font-family: 'Tahoma','Geneva',sans-serif;
-    letter-spacing: 0.02rem;
-    font-size: 1.1rem;
-    background-color: inherit;
-    text-decoration: none;
-    border: none;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    &:hover {
-      color: ${props => props.theme.darkblue};
-    }
   }
   .edt-prdct-tab {
     display: grid;

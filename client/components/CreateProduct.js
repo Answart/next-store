@@ -88,13 +88,9 @@ class CreateProduct extends Component {
                 >Create</button>
               </div>
               <div className="form-actions prdct-padding">
-                <button className="undrln-btn"
-                  type="cancel"
-                >
-                  <Link href="/"><a>
-                    Cancel
-                  </a></Link>
-                </button>
+                <Link href="/"><a className="undrln-btn">
+                  Cancel
+                </a></Link>
               </div>
             </fieldset>
           </StyledForm>

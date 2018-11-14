@@ -22,6 +22,52 @@ const theme = {
 const StyledPage = styled.div`
   background: white;
   color: ${props => props.theme.black};
+  a.undrln-btn, button.undrln-btn {
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    &:hover {
+      color: ${theme.darkblue};
+      text-decoration: underline ${theme.orange};
+    }
+  }
+  a.big-btn, button.big-btn {
+    width: auto;
+    padding: 0.5rem 1.4rem;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: ${theme.darkblue};
+    &:hover {
+      color: white;
+      background-color: ${theme.textBlack};
+    }
+  }
+  a.dlt-btn, button.dlt-btn  {
+    padding: 0.5rem 1.4rem;
+    color: ${theme.red};
+    font-size: 1.1rem;
+    font-weight: normal;
+    &:hover {
+      color: ${theme.red};
+      font-weight: bold;
+    }
+  }
+  a.thn-btn, button.thn-btn {
+    padding-right: 1rem;
+    letter-spacing: 0.02rem;
+    font-size: 1.1rem;
+    color: inherit;
+    -webkit-font-smoothing: antialiased;
+    &:hover, &:active, &:focus {
+      color: ${theme.darkblue};
+      font-weight: normal;
+    }
+  }
+  .line-through {
+    text-decoration: line-through ${theme.orange};
+  }
 `;
 
 const Inner = styled.div`
@@ -74,66 +120,34 @@ injectGlobal`
     margin: 0;
   }
   a {
-    padding: 0.5rem 3.5rem;
     font-size: 0.85rem;
     font-weight: bold;
+    color: ${theme.textGrey};
     text-decoration: none;
+    &:hover, &:active, &:focus {
+      color: ${theme.darkblue};
+      outline: 0;
+    }
   }
   button {
     font-family: 'Tahoma', 'Geneva', sans-serif;
     text-decoration: none;
     font-weight: normal;
-    cursor: pointer;
-  }
-  button:focus {
-    outline: none;
-    font-weight: bold;
-  }
-  .line-through {
-    text-decoration: line-through ${theme.orange};
-  }
-  button.big-btn {
-    width: auto;
-    padding: 0.5rem 1.4rem;
-    color: white;
-    cursor: pointer;
-    font-size: 1.3rem;
-    text-decoration: none;
-    background-color: ${theme.darkblue};
-    &:hover {
-      color: white;
-      background-color: ${theme.textBlack};
-    }
-  }
-  button.undrln-btn {
-    background-color: inherit;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    font-family: 'Tahoma','Geneva',sans-serif;
-    -webkit-font-smoothing: antialiased;
     color: ${theme.textGrey};
-    text-decoration: none;
-    border: none;
-    &:hover {
-      color: ${theme.darkblue};
-      text-decoration: underline ${theme.orange};
-    }
-  }
-  button.dlt-btn  {
-    background-color: inherit;
     cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: normal;
-    color: ${theme.red};
+    border: 0;
     text-decoration: none;
-    border: none;
-    &:hover {
-      color: ${theme.red};
+    background-color: inherit;
+    &[disabled] {
+      opacity: 0.5;
+    }
+    &:hover, &:active, &:focus {
+      outline: 0;
       font-weight: bold;
     }
   }
 `;
+
 
 class Page extends Component {
   render() {

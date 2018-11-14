@@ -37,9 +37,9 @@ class Product extends Component {
                 name: `${product.user.name}`,
                 online: true
               }
-            }}>
-              <a> {product.user.name}</a>
-            </Link>
+            }}><a className="undrln-btn">
+              {product.user.name}
+            </a></Link>
           </div>
 
           {viewerIsCreator && !product.online && (

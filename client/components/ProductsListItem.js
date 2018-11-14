@@ -23,24 +23,20 @@ export default class Product extends Component {
       : "Out of Stock";
     return (
       <StyledProductsListItem>
-        <Link
-          href={{
-            pathname: `/product/buy`,
-            query: { id: product.id }
-          }}
-        >
+        <Link href={{
+          pathname: `/product/buy`,
+          query: { id: product.id }
+        }}>
           <a>{product.image && (
             <img src={product.image} alt={product.title} />
           )}</a>
         </Link>
 
         <div className="prdct-itm-info">
-          <Link
-            href={{
-              pathname: `/product/buy`,
-              query: { id: product.id }
-            }}
-          >
+          <Link href={{
+            pathname: `/product/buy`,
+            query: { id: product.id }
+          }}>
             <a className='prdct-itm-title'>{product.title}</a>
           </Link>
 

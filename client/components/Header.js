@@ -41,35 +41,32 @@ class Header extends Component {
             {authed ? (
               <>
                 <span className="hdr-inline">
-                  <button className="undrln-btn hdr-btn"
+                  <button className="hdr-pad hdr-btn undrln-btn"
                     onClick={this.toggAcctDrpdwn}
                   >Hi, {user.name}!</button>
 
                   <div id="myDropdown" className={this.state.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
-                    <a href="/product/create">Create Product</a>
-                    <a href={`/shop?name=${user.name}`}>My Products</a>
-                    <a href="/account/orders">Order History</a>
-                    <a href="/account/sold">Sale History</a>
-                    <a href="/logout">Logout</a>
+                    <a className="undrln-btn" href="/product/create">Create Product</a>
+                    <a className="undrln-btn" href={`/shop?name=${user.name}`}>My Products</a>
+                    <a className="undrln-btn" href="/account/orders">Order History</a>
+                    <a className="undrln-btn" href="/account/sales">Sale History</a>
+                    <a className="undrln-btn" href="/logout">Logout</a>
                   </div>
                 </span>
 
-                <Link href="/product/create">
-                  <a>
-                    <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
-                  </a>
-                </Link>
+                <Link href="/product/create"><a>
+                  <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
+                </a></Link>
+
                 <Link href={{
                   pathname: `/shop`,
                   query: { name: `${user.name}` }
-                }}>
-                  <a className="hdr-pad">
-                    <img src="/static/images/package.svg" alt="Products" height="14" width="14" />
-                  </a>
-                </Link>
+                }}><a className="hdr-pad">
+                  <img src="/static/images/package.svg" alt="Products" height="14" width="14" />
+                </a></Link>
 
                 <span className="hdr-inline hdr-pad">
-                  <button className="hdr-btn"
+                  <button
                     onClick={this.toggleCart}
                   ><img src="/static/images/cart.svg" alt="Cart" height="14" width="14" /></button>
                 </span>
@@ -77,13 +74,13 @@ class Header extends Component {
             ) : (
               <>
                 <Link href="/account">
-                  <a className="hdr-pad">
+                  <a className="hdr-btn hdr-pad">
                     Sign In
                   </a>
                 </Link>
                 |
                 <Link href="/signup">
-                  <a className="hdr-pad">
+                  <a className="hdr-btn hdr-pad">
                     Join
                   </a>
                 </Link>

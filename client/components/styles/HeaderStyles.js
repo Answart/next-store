@@ -5,16 +5,6 @@ const StyledHeader = styled.header`
   top: 0;
   left: 0;
   background-color: ${props => props.theme.beige};
-  a {
-    color: ${props => props.theme.textGrey};
-  }
-  a:hover {
-    color: ${props => props.theme.darkblue};
-  }
-  button {
-    border: none;
-    background-color: transparent;
-  }
   .hdr-banner {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
@@ -34,14 +24,14 @@ const StyledHeader = styled.header`
   .hdr-account {
     display: flex;
     justify-content: flex-end;
-    padding-top: 2.45rem;
+    padding-top: 2.1rem;
     color: ${props => props.theme.textGrey};
     a {
-      padding-top: 0;
-      padding-left: 0.4rem;
-      padding-bottom: 0;
-      padding-right: 0.4rem;
+      padding: 0 0.4rem;
     }
+  }
+  .hdr-btn {
+    font-size: 0.9rem !important;
   }
   .hdr-pad {
     padding-top: 0.23rem !important;
@@ -55,37 +45,16 @@ const StyledHeader = styled.header`
     display: none;
     padding: 10px 13px;
     background-color: white;
-    min-width: 10rem;
+    min-width: 12rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
   .hdr-dropdown-content a {
     display: block;
     padding: 6px 0;
-    color: ${props => props.theme.textGrey};
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .hdr-dropdown-content a:hover {
-    display: block;
-    color: ${props => props.theme.textGrey};
-    text-decoration: underline ${props => props.theme.orange};
   }
   .show {
     display: block;
-  }
-  .hdr-btn {
-    border: none;
-    color: ${props => props.theme.textGrey};
-    background-color: transparent;
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .hdr-btn:hover {
-    color: ${props => props.theme.darkblue};
   }
 `;
 
