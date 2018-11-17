@@ -29,29 +29,30 @@ const Mutation = {
     );
   },
   async deleteProduct(parent, args, ctx, info) {
-    const id = args.id;
+    const where = { id: args.id };
     // Logged in?
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to delete a product');
     // Existing product?
-    const existingProduct = await ctx.db.query.product(
-      { where: { id }}
+    const product = await ctx.db.query.product(
+      { where },
+      `{ id title user { id } }`
     );
-    if (!existingProduct) throw new Error('You cannot delete a product which does not exist');
-    // Creator of product?
-    if (existingProduct.user.id !== userId) throw new Error('You are not authorized to delete this product');
+    // Check if they own that product, or have the permissions
+    const ownsItem = product.user.id === userId;
+    if (!ownsItem) throw new Error("You don't have permission to do that!");
 
-    // Delete productVariations
-    const deletedVariants = await ctx.db.mutation.deleteManyProductVariants(
-      { where: {
-        product: { id }
-      }}
-    );
-    // Delete product
-    return await ctx.db.mutation.deleteProduct(
-      { where: { id }},
-      info
-    );
+    if (product.productVariants.length) {
+      await ctx.db.mutation.deleteManyProductVariants(
+        { where: {
+          product: where
+        }},
+        info
+      );
+      return await ctx.db.mutation.deleteProduct({ where }, info);
+    } else {
+      return await ctx.db.mutation.deleteProduct({ where }, info);
+    }
   },
   async updateProduct(parent, args, ctx, info) {
     // first take a copy of the updates
