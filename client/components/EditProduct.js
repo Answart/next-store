@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyledEditProduct } from './styles/ProductStyles';
 import { Query } from 'react-apollo';
 import UpdateProduct from './UpdateProduct';
+import DeleteProduct from './DeleteProduct';
 import CreateProductVariant from './CreateProductVariant';
 import { PRODUCT_QUERY } from '../graphql';
 
@@ -74,8 +75,11 @@ class EditProduct extends Component {
                     <p>Could not find product with this id.</p>
                   )}
                   {product && tab == 0 && (
-                    <UpdateProduct product={product}
-                    />
+                    <>
+                      <UpdateProduct product={product} />
+
+                      <DeleteProduct id={product.id}>Delete Product</DeleteProduct>
+                    </>
                   )}
                   {product && tab == 1 && (
                     <p>Update variants here</p>
