@@ -13,6 +13,8 @@ export {
 } from './products';
 export {
   PROD_VARIANT_QUERY,
-  PROD_VARIANTS_QUERY,
   CREATE_PROD_VARIANT_MUTATION
+} from './productVariant';
+export {
+  PROD_VARIANTS_QUERY,
 } from './productVariants';

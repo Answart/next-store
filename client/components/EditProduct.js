@@ -25,6 +25,7 @@ class EditProduct extends Component {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error: {error.message}</p>;
           const { product } = data;
+          const variants = product ? product.productVariants : [];
           return (
             <StyledEditProduct>
               <div className="edt-prdct-title">
@@ -72,7 +73,7 @@ class EditProduct extends Component {
 
                 <div className="edt-prdct-cntnt">
                   {!product && (
-                    <p>Could not find product with this id.</p>
+                    <p>Could not find a product with this id.</p>
                   )}
                   {product && tab == 0 && (
                     <>
@@ -82,7 +83,13 @@ class EditProduct extends Component {
                     </>
                   )}
                   {product && tab == 1 && (
-                    <p>Update variants here</p>
+                    <>
+                      {!variants.length ? (
+                        <p>This product does not have any selections.</p>
+                      ) : (
+                        <p>Update variants here</p>
+                      )}
+                    </>
                   )}
                   {product && tab == 2 && (
                     <CreateProductVariant productId={product.id}
