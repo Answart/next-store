@@ -41,7 +41,8 @@ class CreateProductVariant extends Component {
       color,
       size,
       sale,
-      salePrice
+      salePrice,
+      productId
     } = this.state;
     return (
       <Mutation
@@ -56,7 +57,7 @@ class CreateProductVariant extends Component {
               const res = await createProductVariant();
               Router.push({
                 pathname: '/product/buy',
-                query: { id },
+                query: { id: productId },
               });
             }}
           >
