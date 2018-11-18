@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import Router from 'next/router';
-import { DELETE_PRODUCT_MUTATION } from '../graphql';
+import { PRODUCTS_QUERY, DELETE_PRODUCT_MUTATION } from '../graphql';
 
 
 class DeleteProduct extends Component {
