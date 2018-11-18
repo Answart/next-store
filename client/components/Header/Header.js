@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav.js';
 import Search from './Search.js';
-import StyledHeader from './styles/HeaderStyles.js';
-import { user } from '../lib/dummyData';
+import StyledHeader from '../styles/HeaderStyles.js';
+import { user } from '../../lib/dummyData';
 
 
 class Header extends Component {
