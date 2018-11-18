@@ -107,7 +107,7 @@ class ProductVariants extends Component {
                 <span className='line-through'>
                   ${variant.price}
                 </span>
-                <span className='prdct-var-price'>
+                <span className='prdct-var-price prdct-var-sale-price'>
                   ${variant.salePrice}
                 </span>
               </h3>
