@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
 import ProductFormFields from './ProductFormFields';
