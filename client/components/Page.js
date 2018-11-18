@@ -55,11 +55,12 @@ const StyledPage = styled.div`
     }
   }
   a.thn-btn, button.thn-btn {
-    padding-right: 1rem;
+    padding: 0 1rem;
     letter-spacing: 0.02rem;
     font-size: 1.1rem;
     color: inherit;
     -webkit-font-smoothing: antialiased;
+    font-weight: normal;
     &:hover, &:active, &:focus {
       color: ${theme.darkblue};
       font-weight: normal;
