@@ -8,7 +8,10 @@ class ProductVariants extends Component {
   static propTypes = {
     variants: PropTypes.array.isRequired,
     online: PropTypes.bool.isRequired,
-    demoView: PropTypes.bool
+    demoView: PropTypes.bool,
+    VariantActionComponent: PropTypes.func,
+    variantAction: PropTypes.func,
+    variantActionLabel: PropTypes.string
   };
   constructor(props) {
     super(props);
@@ -60,25 +63,41 @@ class ProductVariants extends Component {
     const state = this.getStartState(filterQuery);
     this.setState(state);
   }
-  addToCart = e => {
-    if (!!e && e.preventDefault) e.preventDefault();
-    const { variant } = this.state;
-    const id = variant.id;
-    console.log('addToCart1', variant);
-  }
-  render() {
+  renderActionButton = () => {
     const {
-      sizes,
-      filterQuery,
-      currentVariants,
-      variant,
-      colors
-    } = this.state;
+      VariantActionComponent,
+      variantAction, variantActionLabel,
+      online, demoView
+    } = this.props;
+    const { variant } = this.state;
+    const addToCrtBtnDisabled = variant ? !variant.id : true;
+
+    if (online && !demoView) {
+      if (!!VariantActionComponent) {
+        return (
+          <VariantActionComponent
+            disabled={addToCrtBtnDisabled}
+            variant={variant}
+          />
+        );
+      } else if (variantAction && variantActionLabel) {
+        return (
+          <button className="big-btn"
+            disabled={addToCrtBtnDisabled}
+            onClick={this.variantAction.bind(this, variant)}
+          >{variantActionLabel}</button>
+        );
+      }
+    }
+    return (<div></div>)
+  }
+
+  render() {
+    const { sizes, colors, variant } = this.state;
     const { demoView, online } = this.props;
     let availability = variant
       ? `${variant.quantity} in Stock!`
       : "Out of Stock"
-    let addToCrtBtnDisabled = variant ? !variant.id : true;
     return (
       <StyledProductVariants>
         {variant && (
@@ -133,16 +152,9 @@ class ProductVariants extends Component {
           )}
         </div>
 
-        {variant && (
-          <div className="prdct-padding">
-            {online && !demoView && (
-              <button className="big-btn"
-                disabled={addToCrtBtnDisabled}
-                onClick={this.addToCart}
-              >Add To Cart</button>
-            )}
-          </div>
-        )}
+        <div className="prdct-padding">
+          {this.renderActionButton()}
+        </div>
       </StyledProductVariants>
     );
   }
