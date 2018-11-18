@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav.js';
 import Search from './Search.js';
+import Logout from '../Buttons/Logout.js';
 import StyledHeader from '../styles/HeaderStyles.js';
 import { user } from '../../lib/dummyData';
 
@@ -50,7 +51,7 @@ class Header extends Component {
                     <a className="undrln-btn" href={`/shop?name=${user.name}`}>My Products</a>
                     <a className="undrln-btn" href="/account/orders">Order History</a>
                     <a className="undrln-btn" href="/account/sales">Sale History</a>
-                    <a className="undrln-btn" href="/logout">Logout</a>
+                    <Logout />
                   </div>
                 </span>
 
