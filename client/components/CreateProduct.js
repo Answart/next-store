@@ -15,12 +15,14 @@ class CreateProduct extends Component {
     description: '',
     image: '',
     category: '',
-    brand: ''
+    brand: '',
+    online: false
   };
   handleChange = e => {
-    const { name, type, value } = e.target;
+    const { name, type, value, checked } = e.target;
     let val = value;
     if (type === 'number') val = value ? parseFloat(value) : 0;
+    if (type === 'checkbox') val = checked;
     if (name === 'department') {
       this.setState({
         category: '',
@@ -47,7 +49,8 @@ class CreateProduct extends Component {
       description,
       image,
       category,
-      brand
+      brand,
+      online
     } = this.state;
     return (
       <Mutation
@@ -77,6 +80,7 @@ class CreateProduct extends Component {
                 image={image}
                 category={category}
                 brand={brand}
+                online={online}
                 handleChange={this.handleChange}
                 uploadFile={this.uploadFile}
                 previewImage={true}
