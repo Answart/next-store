@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Query } from 'react-apollo';
 import StyledProduct from './styles/ProductStyles';
 import ProductVariants from './ProductVariants';
+import AddToCart from './AddToCart';
 import { user } from '../lib/dummyData';
 import { PRODUCT_QUERY } from '../graphql';
 
@@ -24,7 +25,6 @@ class Product extends Component {
           const viewerIsCreator = product
             ? product.user.id === user.id
             : false;
-          console.log('PRODUCT', product)
           return (
 
             <StyledProduct>
@@ -65,6 +65,7 @@ class Product extends Component {
                   variants={product.productVariants}
                   online={product.online}
                   demoView={demoView}
+                  VariantActionComponent={AddToCart}
                 />
 
                 <div className="prdct-desc prdct-padding">
