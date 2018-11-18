@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Query } from 'react-apollo';
 import StyledProduct from './styles/ProductStyles';
 import ProductVariants from './ProductVariants';
-import AddToCart from './AddToCart';
+import AddToCart from './Buttons/AddToCart';
 import { user } from '../lib/dummyData';
 import { PRODUCT_QUERY } from '../graphql';
 
