@@ -57,9 +57,11 @@ class Product extends Component {
                   </a></Link>
                 </div>
 
-                {viewerIsCreator && !product.online && (
-                  <i className="prdct-padding">Offline</i>
-                )}
+                <div className="prdct-padding">
+                  {!viewerIsCreator && !product.online && (
+                    <i>Offline</i>
+                  )}
+                </div>
 
                 <ProductVariants
                   variants={product.productVariants}

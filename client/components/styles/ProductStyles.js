@@ -46,6 +46,8 @@ const StyledProduct = styled.div`
   }
   .prdct-creator {
     font-size: 1rem;
+    padding-bottom: 1rem;
+  }
   .prdct-desc {
     border-top: 1px solid ${props => props.theme.textGrey};
     padding: 1rem 0 0 0;
@@ -56,7 +58,10 @@ const StyledProductVariants = styled.div`
   width: 100%;
   bottom: 0;
   .prdct-var-price {
-    padding-bottom: 2rem;
+    padding: 1rem 0.5rem;
+  }
+  .prdct-var-sale-price {
+    color: ${props => props.theme.red};
   }
 `;
 
