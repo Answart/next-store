@@ -80,11 +80,11 @@ class ProductVariants extends Component {
             variant={variant}
           />
         );
-      } else if (variantAction && variantActionLabel) {
+      } else if (!!variantAction && !!variantActionLabel) {
         return (
           <button className="big-btn"
             disabled={addToCrtBtnDisabled}
-            onClick={this.variantAction.bind(this, variant)}
+            onClick={(e) => variantAction(e, variant)}
           >{variantActionLabel}</button>
         );
       }
