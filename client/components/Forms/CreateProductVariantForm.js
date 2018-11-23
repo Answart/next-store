@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import StyledForm from './styles/FormStyles';
-import ProductVariantFormFields from './ProductVariantFormFields';
-import { CREATE_PROD_VARIANT_MUTATION } from '../graphql';
+import ProductVariantFormFields from '../ProductVariantFormFields';
+import StyledForm from '../styles/FormStyles';
+import { CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
 
 
-class CreateProductVariant extends Component {
+class CreateProductVariantForm extends Component {
   static propTypes = {
     productId: PropTypes.string.isRequired
   };
@@ -89,4 +89,4 @@ class CreateProductVariant extends Component {
   }
 }
 
-export default CreateProductVariant;
+export default CreateProductVariantForm;
