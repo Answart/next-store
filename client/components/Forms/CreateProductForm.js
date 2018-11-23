@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import StyledForm from './styles/FormStyles';
-import ProductFormFields from './ProductFormFields';
-import { CREATE_PRODUCT_MUTATION } from '../graphql';
-import { user } from '../lib/dummyData';
+import ProductFormFields from '../ProductFormFields';
+import StyledForm from '../styles/FormStyles';
+import { CREATE_PRODUCT_MUTATION } from '../../graphql';
+import { user } from '../../lib/dummyData';
 
 
 class CreateProduct extends Component {
