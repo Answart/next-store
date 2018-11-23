@@ -17,4 +17,5 @@ export {
 } from './productVariant';
 export {
   PROD_VARIANTS_QUERY,
+  PRODUCT_PROD_VARIANTS_QUERY
 } from './productVariants';
