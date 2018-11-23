@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
-import { StyledEditProduct } from './styles/ProductStyles';
+import { StyledEditProduct, StyledEditProductVariant } from './styles/ProductStyles';
 import CreateProductVariantForm from './Forms/CreateProductVariantForm';
 import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
 
 
 class EditProductVariant extends Component {
-  state = { tab: 0 };
+  state = {
+    tab: 0,
+    currentVariant: null
+  };
   setActiveTab = (tab, e) => {
     e.preventDefault();
     this.setState({ tab });
   };
+  selectVariant = (e, currentVariant) => {
+    e.preventDefault();
+    this.setState({ currentVariant });
+  }
   render() {
-    const { tab } = this.state;
+    const { tab, currentVariant } = this.state;
     const { id, productTitle } = this.props;
     return (
       <Query
@@ -75,9 +82,18 @@ class EditProductVariant extends Component {
                     <p>This product does not have any selections.</p>
                   )}
                   {!!productVariants.length && tab == 0 && (
-                    <div>
-                      <p>Update variants here</p>
-                    </div>
+                    <StyledEditProductVariant>
+                      <p>List product variants here</p>
+
+                      <div className='edt-prdct-updt'>
+                        {!currentVariant ? (
+                          <p>Choose a selection to update.</p>
+                        ) : (
+                          <p>Update selected variant here</p>
+                        )}
+                      </div>
+
+                    </StyledEditProductVariant>
                   )}
                   {tab == 1 && (
                     <CreateProductVariantForm productId={id} />
