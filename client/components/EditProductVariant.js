@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct } from './styles/ProductStyles';
+import CreateProductVariant from './CreateProductVariant';
 import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
 
 
@@ -79,7 +80,7 @@ class EditProductVariant extends Component {
                     </div>
                   )}
                   {tab == 1 && (
-                    <p>Create variants here</p>
+                    <CreateProductVariant productId={id} />
                   )}
                 </div>
               </div>
