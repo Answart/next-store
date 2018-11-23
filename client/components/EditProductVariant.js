@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct, StyledEditProductVariant } from './styles/ProductStyles';
 import CreateProductVariantForm from './Forms/CreateProductVariantForm';
+import DeleteProductVariant from './Buttons/DeleteProductVariant';
 import ProductVariants from './ProductVariants';
 import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
 
@@ -96,7 +97,10 @@ class EditProductVariant extends Component {
                         {!currentVariant ? (
                           <p>Choose a selection to update.</p>
                         ) : (
-                          <p>Update selected variant here</p>
+                          <>
+                            <DeleteProductVariant id={currentVariant.id}
+                            >Delete Selection</DeleteProductVariant>
+                          </>
                         )}
                       </div>
 
