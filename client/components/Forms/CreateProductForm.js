@@ -69,7 +69,7 @@ class CreateProductForm extends Component {
               });
             }}
           >
-            {error ? (
+            {error && (
               <div>{error}</div>
             )}
 
