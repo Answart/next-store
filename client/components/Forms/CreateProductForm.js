@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import ProductFormFields from '../ProductFormFields';
+import ProductFormFields from './ProductFormFields';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_PRODUCT_MUTATION } from '../../graphql';
 import { user } from '../../lib/dummyData';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import departments from '../lib/departments';
-import categoriesByDept from '../lib/categoriesByDept';
-import { user } from '../lib/dummyData';
+import departments from '../../lib/departments';
+import categoriesByDept from '../../lib/categoriesByDept';
+import { user } from '../../lib/dummyData';
 
 
 class ProductFormFields extends Component {
