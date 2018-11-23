@@ -47,8 +47,16 @@ const CREATE_PROD_VARIANT_MUTATION = gql`
   }
 `;
 
+const DELETE_PROD_VARIANT_MUTATION = gql`
+  mutation DELETE_PROD_VARIANT_MUTATION($id: ID!) {
+    deleteProductVariant(id: $id) {
+      id
+    }
+  }
+`;
+
 
 export {
-  PROD_VARIANT_QUERY,
-  CREATE_PROD_VARIANT_MUTATION
+  CREATE_PROD_VARIANT_MUTATION,
+  DELETE_PROD_VARIANT_MUTATION
 };
