@@ -61,7 +61,7 @@ class CreateProductVariant extends Component {
               });
             }}
           >
-            {error ? (
+            {error && (
               <div>{error}</div>
             )}
 

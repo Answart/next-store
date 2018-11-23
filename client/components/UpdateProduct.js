@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import StyledForm from './styles/FormStyles';
-import ProductFormFields from './ProductFormFields';
+import ProductFormFields from './Forms/ProductFormFields';
 import { UPDATE_PRODUCT_MUTATION } from '../graphql';
 
 
@@ -73,7 +73,7 @@ class UpdateProduct extends Component {
               });
             }}
           >
-            {error ? (
+            {error && (
               <div>{error}</div>
             )}
 
