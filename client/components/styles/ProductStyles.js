@@ -207,11 +207,21 @@ const StyledCreateProduct = styled.div`
   }
 `;
 
+const StyledEditProductVariant = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  .edt-prdct-updt {
+    grid-column: 2 / 2;
+    justify-content: center;
+  }
+`
+
 export default StyledProduct;
 export {
   StyledProductVariants,
   StyledProductsList,
   StyledProductsListItem,
   StyledEditProduct,
-  StyledCreateProduct
+  StyledCreateProduct,
+  StyledEditProductVariant
 };
