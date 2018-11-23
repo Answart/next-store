@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct, StyledEditProductVariant } from './styles/ProductStyles';
 import CreateProductVariantForm from './Forms/CreateProductVariantForm';
+import ProductVariants from './ProductVariants';
 import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
 
 
@@ -83,7 +84,13 @@ class EditProductVariant extends Component {
                   )}
                   {!!productVariants.length && tab == 0 && (
                     <StyledEditProductVariant>
-                      <p>List product variants here</p>
+                      <ProductVariants
+                        variants={productVariants}
+                        online={true}
+                        demoView={true}
+                        variantAction={this.selectVariant}
+                        variantActionLabel='Select'
+                      />
 
                       <div className='edt-prdct-updt'>
                         {!currentVariant ? (
