@@ -72,7 +72,7 @@ class ProductVariants extends Component {
     const { variant } = this.state;
     const addToCrtBtnDisabled = variant ? !variant.id : true;
 
-    if (online && !demoView) {
+    if (demoView || (online && !demoView)) {
       if (!!VariantActionComponent) {
         return (
           <VariantActionComponent
