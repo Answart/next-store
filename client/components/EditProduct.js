@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-import { StyledEditProduct } from './styles/ProductStyles';
+import Link from 'next/link';
 import { Query } from 'react-apollo';
+import { StyledEditProduct } from './styles/ProductStyles';
 import UpdateProduct from './UpdateProduct';
-import CreateProductVariant from './CreateProductVariant';
 import DeleteProduct from './Buttons/DeleteProduct';
 import { PRODUCT_QUERY } from '../graphql';
 
 
 class EditProduct extends Component {
-  state = { tab: 0 };
-  setActiveTab = (tab, e) => {
-    e.preventDefault();
-    this.setState({ tab });
-  };
   render() {
-    const { tab } = this.state;
     const { id } = this.props;
     return (
       <Query
@@ -25,75 +19,35 @@ class EditProduct extends Component {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error: {error.message}</p>;
           const { product } = data;
-          const variants = product ? product.productVariants : [];
+          const productTitle = product ? product.title : '';
           return (
             <StyledEditProduct>
               <div className="edt-prdct-title">
-                Edit &#8811;
-                <button className="thn-btn"
-                  onClick={this.setActiveTab.bind(this, 0)}
-                >{product ? product.title : ''}</button>
-
-                {tab !== 0 && (
-                  <span>&#8811;
-                    <button className="thn-btn"
-                      onClick={this.setActiveTab.bind(this, 1)}
-                    >Selections</button>
-
-                    {tab == 2 && (
-                      <span>&#8811; Add Selection</span>
-                    )}
-                  </span>
-                )}
+                Edit &#8811; {productTitle}
               </div>
 
               <div className="edt-prdct-tab">
                 <div className="edt-prdct-navi">
-                  {product && tab == 0 && (
-                    <button className="undrln-btn"
-                      onClick={this.setActiveTab.bind(this, 1)}
-                    >Selections &#8811;</button>
-                  )}
-                  {tab == 1 && (
-                    <>
-                      <button className="undrln-btn"
-                        onClick={this.setActiveTab.bind(this, 0)}
-                      >&#8810; Product</button>
-                      <button className="undrln-btn"
-                        onClick={this.setActiveTab.bind(this, 2)}
-                      >Add Selection &#8811;</button>
-                    </>
-                  )}
-                  {tab == 2 && (
-                    <button className="undrln-btn"
-                      onClick={this.setActiveTab.bind(this, 1)}
-                    >&#8810; Selections</button>
-                  )}
+                  <Link href={{
+                    pathname: `/product/selections/edit`,
+                    query: {
+                      id,
+                      title: productTitle
+                    }
+                  }}><a className="undrln-btn">
+                    Selections &#8811;
+                  </a></Link>
                 </div>
 
                 <div className="edt-prdct-cntnt">
-                  {!product && (
+                  {!product ? (
                     <p>Could not find a product with this id.</p>
-                  )}
-                  {product && tab == 0 && (
+                  ) : (
                     <>
                       <UpdateProduct product={product} />
 
                       <DeleteProduct id={product.id}>Delete Product</DeleteProduct>
                     </>
-                  )}
-                  {product && tab == 1 && (
-                    <>
-                      {!variants.length ? (
-                        <p>This product does not have any selections.</p>
-                      ) : (
-                        <p>Update variants here</p>
-                      )}
-                    </>
-                  )}
-                  {product && tab == 2 && (
-                    <CreateProductVariant productId={product.id}
-                    />
                   )}
                 </div>
               </div>
