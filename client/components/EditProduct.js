@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct } from './styles/ProductStyles';
-import UpdateProduct from './UpdateProduct';
+import UpdateProductForm from './Forms/UpdateProductForm';
 import DeleteProduct from './Buttons/DeleteProduct';
 import { PRODUCT_QUERY } from '../graphql';
 
@@ -44,7 +44,7 @@ class EditProduct extends Component {
                     <p>Could not find a product with this id.</p>
                   ) : (
                     <>
-                      <UpdateProduct product={product} />
+                      <UpdateProductForm product={product} />
 
                       <DeleteProduct id={product.id}>Delete Product</DeleteProduct>
                     </>

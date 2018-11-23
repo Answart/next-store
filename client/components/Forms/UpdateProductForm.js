@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import StyledForm from './styles/FormStyles';
-import ProductFormFields from './Forms/ProductFormFields';
-import { UPDATE_PRODUCT_MUTATION } from '../graphql';
+import StyledForm from '../styles/FormStyles';
+import ProductFormFields from './ProductFormFields';
+import { UPDATE_PRODUCT_MUTATION } from '../../graphql';
 
 
-class UpdateProduct extends Component {
+class UpdateProductForm extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired
   };
@@ -104,4 +104,4 @@ class UpdateProduct extends Component {
   }
 }
 
-export default UpdateProduct;
+export default UpdateProductForm;
