@@ -73,7 +73,10 @@ class UpdateProduct extends Component {
               });
             }}
           >
-            <div>{error}</div>
+            {error ? (
+              <div>{error}</div>
+            )}
+
             <fieldset disabled={loading} aria-busy={loading}>
               <ProductFormFields
                 title={title}

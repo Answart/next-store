@@ -61,6 +61,10 @@ class CreateProductVariant extends Component {
               });
             }}
           >
+            {error ? (
+              <div>{error}</div>
+            )}
+
             <fieldset disabled={false} aria-busy={false}>
               <ProductVariantFormFields
                 price={price}
