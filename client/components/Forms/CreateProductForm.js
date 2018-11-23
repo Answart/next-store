@@ -8,7 +8,7 @@ import { CREATE_PRODUCT_MUTATION } from '../../graphql';
 import { user } from '../../lib/dummyData';
 
 
-class CreateProduct extends Component {
+class CreateProductForm extends Component {
   state = {
     department: 'Tops',
     title: '',
@@ -100,4 +100,4 @@ class CreateProduct extends Component {
   }
 }
 
-export default CreateProduct;
+export default CreateProductForm;
