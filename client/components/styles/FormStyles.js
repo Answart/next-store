@@ -8,9 +8,7 @@ const StyledForm = styled.form`
   font-weight: 600;
   color: ${props => props.theme.textGrey};
   display: grid;
-  grid-template-columns: 1fr minmax(36rem, 1fr) 1fr;
   fieldset {
-    grid-column: 2 / 2;
     border: 0;
     padding: 0;
     &[disabled] {
@@ -116,5 +114,6 @@ const StyledForm = styled.form`
     text-align: right;
   }
 `;
+
 
 export default StyledForm;

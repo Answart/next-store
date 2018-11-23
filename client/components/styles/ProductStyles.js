@@ -197,10 +197,21 @@ const StyledEditProduct = styled.div`
   }
 `
 
+const StyledCreateProduct = styled.div`
+  display: grid;
+  grid-template-rows: 3rem minmax(36rem, 1fr);
+  grid-template-columns: 1fr minmax(36rem, 1fr) 1fr;
+  form {
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+  }
+`;
+
 export default StyledProduct;
 export {
   StyledProductVariants,
   StyledProductsList,
   StyledProductsListItem,
-  StyledEditProduct
+  StyledEditProduct,
+  StyledCreateProduct
 };

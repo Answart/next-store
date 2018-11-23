@@ -1,11 +1,12 @@
-import CreateProduct from '../../components/CreateProduct';
+import { StyledCreateProduct } from '../../components/styles/ProductStyles';
+import CreateProductForm from '../../components/Forms/CreateProductForm';
 
 
 const CreateProductPage = props => {
   return (
-    <div>
-      <CreateProduct />
-    </div>
+    <StyledCreateProduct>
+      <CreateProductForm />
+    </StyledCreateProduct>
   );
 };
 
