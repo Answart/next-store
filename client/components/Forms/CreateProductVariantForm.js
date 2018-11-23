@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import ProductVariantFormFields from '../ProductVariantFormFields';
+import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
 

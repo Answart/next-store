@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import colors from '../lib/colors';
-import sizes from '../lib/sizes';
+import colors from '../../lib/colors';
+import sizes from '../../lib/sizes';
 
 
 class ProductVariantFormFields extends Component {
