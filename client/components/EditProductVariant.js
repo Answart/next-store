@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { Query } from 'react-apollo';
 import { StyledEditProduct } from './styles/ProductStyles';
+import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
 
 
 class EditProductVariant extends Component {
@@ -12,8 +14,17 @@ class EditProductVariant extends Component {
   render() {
     const { tab } = this.state;
     const { id, productTitle } = this.props;
-    const productVariants = [];
     return (
+      <Query
+        query={PRODUCT_PROD_VARIANTS_QUERY}
+        variables={{ id }}
+      >
+        {({ data, error, loading }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error: {error.message}</p>;
+          const { productVariants } = data;
+          const variant = productVariants.length ? productVariants[0] : null;
+          return (
             <StyledEditProduct>
               <div className="edt-prdct-title">
                 Edit &#8811;
@@ -68,12 +79,15 @@ class EditProductVariant extends Component {
                     </div>
                   )}
                   {tab == 1 && (
-                    <p>Create product variant here</p>
+                    <p>Create variants here</p>
                   )}
                 </div>
               </div>
             </StyledEditProduct>
           );
+        }}
+      </Query>
+    )
   };
 };
 
