@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import StyledForm from './styles/FormStyles';
 
 
-class Login extends Component {
+class LoginForm extends Component {
   state = {
     name: '',
     password: '',
@@ -54,4 +54,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export { LoginForm };
