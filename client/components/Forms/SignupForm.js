@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import StyledForm from './styles/FormStyles';
+import StyledForm from '../styles/FormStyles';
 
 
-class Signup extends Component {
+class SignupForm extends Component {
   state = {
     name: '',
     email: '',
@@ -65,4 +65,5 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+
+export { SignupForm };

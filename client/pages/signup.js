@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Signup from '../components/Signup';
+import { SignupForm } from '../components/Forms';
 import Login from '../components/Login';
 
 
@@ -11,7 +11,7 @@ const StyledSignupPage = styled.div`
 
 const SignupPage = props => (
   <StyledSignupPage>
-    <Signup />
+    <SignupForm />
     <Login />
   </StyledSignupPage>
 );
