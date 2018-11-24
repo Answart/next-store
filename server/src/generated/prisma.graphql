@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sat Nov 10 2018 14:12:19 GMT-0800 (Pacific Standard Time)
+# timestamp: Sat Nov 24 2018 02:52:39 GMT-0800 (Pacific Standard Time)
 
 type AggregateProduct {
   count: Int!
@@ -272,7 +272,7 @@ type ProductVariant implements Node {
   color: String
   size: String
   sale: Boolean!
-  salePrice: Int
+  salePrice: Int!
   product: Product!
 }
 
@@ -347,7 +347,7 @@ type ProductVariantPreviousValues {
   color: String
   size: String
   sale: Boolean!
-  salePrice: Int
+  salePrice: Int!
 }
 
 input ProductVariantScalarWhereInput {
