@@ -104,4 +104,5 @@ class UpdateProductForm extends Component {
   }
 }
 
-export default UpdateProductForm;
+
+export { UpdateProductForm };

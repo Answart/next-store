@@ -100,4 +100,5 @@ class CreateProductForm extends Component {
   }
 }
 
-export default CreateProductForm;
+
+export { CreateProductForm };

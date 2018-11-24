@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct } from './styles/ProductStyles';
-import UpdateProductForm from './Forms/UpdateProductForm';
+import { UpdateProductForm } from './Forms';
 import DeleteProduct from './Buttons/DeleteProduct';
 import { PRODUCT_QUERY } from '../graphql';
 

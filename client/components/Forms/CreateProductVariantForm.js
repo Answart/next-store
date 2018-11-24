@@ -89,4 +89,5 @@ class CreateProductVariantForm extends Component {
   }
 }
 
-export default CreateProductVariantForm;
+
+export { CreateProductVariantForm };

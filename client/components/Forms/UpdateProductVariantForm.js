@@ -94,4 +94,4 @@ class UpdateProductVariantForm extends Component {
 }
 
 
-export default UpdateProductVariantForm;
+export { UpdateProductVariantForm };
