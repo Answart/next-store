@@ -1,3 +1,4 @@
+export { SignupForm } from './SignupForm.js';
 export { CreateProductForm } from './CreateProductForm.js';
 export { CreateProductVariantForm } from './CreateProductVariantForm.js';
 export { UpdateProductForm } from './UpdateProductForm.js';
