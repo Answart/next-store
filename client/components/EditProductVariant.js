@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct, StyledEditProductVariant } from './styles/ProductStyles';
-import CreateProductVariantForm from './Forms/CreateProductVariantForm';
+import { CreateProductVariantForm, UpdateProductVariantForm } from './Forms';
 import DeleteProductVariant from './Buttons/DeleteProductVariant';
 import ProductVariants from './ProductVariants';
 import { PRODUCT_PROD_VARIANTS_QUERY } from '../graphql';
@@ -98,6 +98,8 @@ class EditProductVariant extends Component {
                           <p>Choose a selection to update.</p>
                         ) : (
                           <>
+                            <UpdateProductVariantForm variant={currentVariant} />
+
                             <DeleteProductVariant id={currentVariant.id}
                             >Delete Selection</DeleteProductVariant>
                           </>
