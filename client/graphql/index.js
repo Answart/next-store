@@ -1,4 +1,9 @@
 export {
+  SIGNUP_MUTATION,
+  LOGIN_MUTATION,
+  LOG_OUT_MUTATION
+} from './user';
+export {
   PRODUCT_QUERY,
   CREATE_PRODUCT_MUTATION,
   UPDATE_PRODUCT_MUTATION,
@@ -13,6 +18,7 @@ export {
 } from './products';
 export {
   CREATE_PROD_VARIANT_MUTATION,
+  UPDATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 } from './productVariant';
 export {
