@@ -34,6 +34,8 @@ const PRODUCT_PROD_VARIANTS_QUERY = gql`
       color
       size
       price
+      sale
+      salePrice
       product {
         id
         department
