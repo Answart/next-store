@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
+import { UPDATE_PROD_VARIANT_MUTATION } from '../../graphql';
 import { user } from '../../lib/dummyData';
 
 
@@ -47,12 +49,26 @@ class UpdateProductVariantForm extends Component {
       productId
     } = this.state;
     return (
+      <Mutation
+        mutation={UPDATE_PROD_VARIANT_MUTATION}
+        variables={this.state}
+      >
+        {(updateProductVariant, { loading, error }) => (
           <StyledForm
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
+              const res = await updateProductVariant();
+              Router.push({
+                pathname: '/product/buy',
+                query: { id: res.data.updateProductVariant.product.id },
+              });
             }}
           >
+            {error && (
+              <div>{error}</div>
+            )}
+
             <fieldset disabled={loading} aria-busy={loading}>
               <ProductVariantFormFields
                 price={price}
@@ -71,6 +87,8 @@ class UpdateProductVariantForm extends Component {
               </div>
             </fieldset>
           </StyledForm>
+        )}
+      </Mutation>
     );
   }
 }
