@@ -30,6 +30,6 @@ type ProductVariant {
   color: String
   size: String
   sale: Boolean! @default(value: false)
-  salePrice: Int
+  salePrice: Int! @default(value: 0)
   product: Product!
 }
