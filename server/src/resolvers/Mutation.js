@@ -132,6 +132,31 @@ const Mutation = {
       return newProductVariant;
     }
   },
+  async updateProductVariant(parent, args, ctx, info) {
+    const data = { ...args };
+    delete data.id;
+    // Logged in?
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
+    if (!userId) throw new Error('You must be signed in to add to a product');
+    // Existing productVariant?
+    const [existingProductVariant] = await ctx.db.query.productVariants(
+      { where:
+        { id: args.id }
+      }
+    );
+
+    if (!existingProductVariant) {
+      throw new Error('ProductVariant by this id cannot be found');
+    } else {
+      return await ctx.db.mutation.updateProductVariant(
+        { where:
+          { id: existingProductVariant.id },
+          data
+        },
+        info
+      );
+    }
+  },
   async removeFromProduct(parent, args, ctx, info) {
     const id = args.id;
     const quantity = args.quantity;
