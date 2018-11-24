@@ -157,6 +157,20 @@ const Mutation = {
       );
     }
   },
+  async deleteProductVariant(parent, args, ctx, info) {
+    const where = { id: args.id };
+    // Logged in?
+    const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
+    if (!userId) throw new Error('You must be signed in to delete a product');
+    // Existing product?
+    const productVariant = await ctx.db.query.productVariant(
+      { where },
+      `{ id title user { id } }`
+    );
+    if (!productVariant) throw new Error('No selection with this id found')
+
+    return await ctx.db.mutation.deleteProductVariant({ where }, info);
+  },
   async removeFromProduct(parent, args, ctx, info) {
     const id = args.id;
     const quantity = args.quantity;
