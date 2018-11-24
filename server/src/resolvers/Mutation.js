@@ -164,8 +164,7 @@ const Mutation = {
     if (!userId) throw new Error('You must be signed in to delete a product');
     // Existing product?
     const productVariant = await ctx.db.query.productVariant(
-      { where },
-      `{ id title user { id } }`
+      { where }
     );
     if (!productVariant) throw new Error('No selection with this id found')
 
