@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
+import { Mutation } from 'react-apollo';
+import { DELETE_PROD_VARIANT_MUTATION } from '../../graphql';
 
 
 class DeleteProductVariant extends Component {
   render() {
     const { productId, id, children } = this.props;
     return (
+      <Mutation
+        mutation={DELETE_PROD_VARIANT_MUTATION}
+        variables={{ id }}
+      >
+        {(deleteProductVariant, { error }) => (
           <div className="form-actions prdct-padding">
             <button className="dlt-btn"
               disabled={!id}
@@ -13,12 +20,10 @@ class DeleteProductVariant extends Component {
                 if (confirm('Are you sure you want to delete this selection?')) {
                   deleteProductVariant()
                     .then((res) => {
-                      if (productId) {
-                        Router.push({
-                          pathname: '/edit',
-                          query: { id: productId }
-                        });
-                      }
+                      Router.push({
+                        pathname: '/product/edit',
+                        query: { id: productId }
+                      });
                     })
                     .catch(err => {
                       alert(err.message);
@@ -29,8 +34,11 @@ class DeleteProductVariant extends Component {
               {children}
             </button>
           </div>
+        )}
+      </Mutation>
     );
   }
 }
+
 
 export default DeleteProductVariant;

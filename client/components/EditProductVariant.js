@@ -100,7 +100,9 @@ class EditProductVariant extends Component {
                           <>
                             <UpdateProductVariantForm variant={currentVariant} />
 
-                            <DeleteProductVariant id={currentVariant.id}
+                            <DeleteProductVariant
+                              id={currentVariant.id}
+                              productId={currentVariant.product.id}
                             >Delete Selection</DeleteProductVariant>
                           </>
                         )}
