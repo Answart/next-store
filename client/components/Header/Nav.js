@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import departments from '../../lib/departments';
 
 
 const StyledNav = styled.div`
@@ -19,49 +20,16 @@ const StyledNav = styled.div`
 
 const Nav = () => (
   <StyledNav>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'tops' }
-    }}>
-      <a>Tops</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'bottoms' }
-    }}>
-      <a>Bottoms</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'shoes' }
-    }}>
-      <a>Shoes</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'outwear' }
-    }}>
-      <a>Outwear</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'accessories' }
-    }}>
-      <a>Accessories</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'decor' }
-    }}>
-      <a>Decor</a>
-    </Link>
-    <Link href={{
-      pathname: `/shop`,
-      query: { department: 'wedding' }
-    }}>
-      <a>Wedding</a>
-    </Link>
+    {departments.map(dept => (
+      <Link key={dept} href={{
+        pathname: `/shop`,
+        query: { department: dept.toLowerCase() }
+      }}>
+        <a>{dept}</a>
+      </Link>
+    ))}
   </StyledNav>
 );
+
 
 export default Nav;
