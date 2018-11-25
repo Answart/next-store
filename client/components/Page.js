@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import Meta from './Meta.js';
-import Header from './Header/Header.js';
+import Header from './Header';
 
 
 const theme = {
