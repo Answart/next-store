@@ -63,41 +63,19 @@ class ProductVariants extends Component {
     const state = this.getStartState(filterQuery);
     this.setState(state);
   }
-  renderActionButton = () => {
+  render() {
+    const { sizes, colors, variant } = this.state;
     const {
       VariantActionComponent,
       variantAction, variantActionLabel,
       online, demoView
     } = this.props;
-    const { variant } = this.state;
-    const addToCrtBtnDisabled = variant ? !variant.id : true;
-
-    if (demoView || (online && !demoView)) {
-      if (!!VariantActionComponent) {
-        return (
-          <VariantActionComponent
-            disabled={addToCrtBtnDisabled}
-            variant={variant}
-          />
-        );
-      } else if (!!variantAction && !!variantActionLabel) {
-        return (
-          <button className="big-btn"
-            disabled={addToCrtBtnDisabled}
-            onClick={(e) => variantAction(e, variant)}
-          >{variantActionLabel}</button>
-        );
-      }
-    }
-    return (<div></div>)
-  }
-
-  render() {
-    const { sizes, colors, variant } = this.state;
-    const { demoView, online } = this.props;
+    const live = online && !demoView
+    const accessible = (demoView || live);
     let availability = variant
       ? `${variant.quantity} in Stock!`
       : "Out of Stock"
+    if (!live) availability = "Unavailable";
     return (
       <StyledProductVariants>
         {variant && (
@@ -140,19 +118,25 @@ class ProductVariants extends Component {
         )}
 
         <div className="prdct-padding">
-          {(demoView || (!demoView && online)) ? (
-            <span>
-              <strong>Available: </strong>
-              <i>{availability}</i>
-            </span>
-          ) : (
-            <i>Unavailable</i>
-          )}
+          <i>{availability}</i>
         </div>
 
-        <div className="prdct-padding">
-          {this.renderActionButton()}
-        </div>
+        {accessible && (
+          <div className="prdct-padding">
+            {(!!VariantActionComponent) && (
+              <VariantActionComponent
+                disabled={!variant || !variant.id}
+                variant={variant}
+              />
+            )}
+            {(!!variantAction && !!variantActionLabel) && (
+              <button className="big-btn"
+                disabled={!variant || !variant.id}
+                onClick={(e) => variantAction(e, variant)}
+              >{variantActionLabel}</button>
+            )}
+          </div>
+        )}
       </StyledProductVariants>
     );
   }
