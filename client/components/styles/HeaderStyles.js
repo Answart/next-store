@@ -21,7 +21,50 @@ const StyledHeader = styled.header`
       color: ${props => props.theme.darkblue};
     }
   }
-  .hdr-account {
+  .hdr-search {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 20px auto;
+    place-items: center start;
+    color: ${props => props.theme.textGrey};
+    img.search-img {
+      padding-top: 0.3rem;
+      line-height: 1.7rem;
+    }
+    input.search-input {
+      width: 85%;
+      width: calc(100% - 3rem);
+      line-height: 2rem;
+      border: 0;
+      font-size: 1rem;
+      font-weight: bold;
+      color: ${props => props.theme.darkblue};
+      background-color: transparent;
+    }
+    input.search-input:hover {
+      border-bottom: 1px solid ${props => props.theme.lightGrey};
+    }
+    input.search-input:focus {
+      outline: none;
+      background-color: transparent;
+      border-bottom: 1px solid ${props => props.theme.lightGrey};
+    }
+  }
+  .hdr-nav {
+    display: flex;
+    justify-content: center;
+    a {
+      padding: 0 3rem 0.7rem 3rem !important;
+      -webkit-font-smoothing: antialiased;
+      outline: medium none;
+      overflow: hidden;
+      border-bottom: 1px solid ${props => props.theme.beige};
+    }
+    a:hover {
+      border-bottom: 1px solid ${props => props.theme.orange};
+    }
+  }
+  .hdr-menu {
     display: flex;
     justify-content: flex-end;
     padding-top: 2.1rem;
@@ -57,5 +100,6 @@ const StyledHeader = styled.header`
     display: block;
   }
 `;
+
 
 export default StyledHeader;
