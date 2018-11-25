@@ -112,9 +112,7 @@ class ProductVariants extends Component {
                 </span>
               </h3>
             ) : (
-              <h3>
-                ${variant.price}
-              </h3>
+              <h3>${variant.price}</h3>
             )}
           </div>
         )}

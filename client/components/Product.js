@@ -26,7 +26,6 @@ class Product extends Component {
             ? product.user.id === user.id
             : false;
           return (
-
             <StyledProduct>
               <div className="prdct-imgs">
                 <img src={product.image} alt={product.title} />
@@ -37,7 +36,7 @@ class Product extends Component {
                   <Link href={{
                     pathname: `/product/buy`,
                     query: {
-                      id: `${product.id}`
+                      id: product.id
                     }
                   }}>
                     <a className="prdct-title">{product.title}</a>
