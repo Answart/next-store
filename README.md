@@ -66,21 +66,25 @@ client/
     static/             Assets like logo, fonts, or extra css
     lib/                Files for utility and testing
         withData.js           Apollo client setup
+    graphql/            Client side graphql query/mutations
     components/         Component files called by pages and styles folder
         styles/               CSS for components using the styled-components package
     pages/              App page files
         _app.js               App root for navigating pages and persisting state between page changes
         _document.js          File to implement server side rendering for css-in-js libraries
         index.js              Home page
-        item.js               Singular product page
-        items.js              Catalog page
-        order.js              Current order page
-        orders.js             Order history page
+        signup.js             Signup page
         permissions.js        Permissions page
         reset.js              Reset password page
-        sell.js               Submit item to sell page
-        signup.js             Signup page
-        update.js             Update account page
+        shop.js               Catalog page
+        order.js              Current order page
+        orders.js             Order history page
+        product/
+            buy.js                Singular product page
+            create.js             Submit item to sell page
+            edit.js               Update product page
+            selections/
+                edit.js               Update productVariant page
 ```
 
 Getting Started
@@ -101,6 +105,11 @@ MAIL_HOST="<MAILTRAPHOSTNAME>"
 MAIL_PORT="<MAILTRAPPORTNUMBER>"
 MAIL_USER="<MAILTRAPUSER>"
 MAIL_PASS="<MAILTRAPPASSWORD>"
+
+# Initialize Prisma
+$ prisma init
+# Update .env file with given PRISMA_ENDPOINT then deploy prisma
+$ prisma deploy
 
 # Start the app locally by running the server and client side apps
 $ cd server
