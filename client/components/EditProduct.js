@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import { StyledEditProduct } from './styles/ProductStyles';
+import PageTitle from './PageTitle';
 import { UpdateProductForm } from './Forms';
 import DeleteProduct from './Buttons/DeleteProduct';
 import { PRODUCT_QUERY } from '../graphql';
@@ -22,9 +23,10 @@ class EditProduct extends Component {
           const productTitle = product ? product.title : '';
           return (
             <StyledEditProduct>
-              <div className="edt-prdct-title">
-                Edit &#8811; {productTitle}
-              </div>
+              <PageTitle
+                page='Edit'
+                titles={[{ label: productTitle }]}
+              />
 
               <div className="edt-prdct-tab">
                 <div className="edt-prdct-navi">
