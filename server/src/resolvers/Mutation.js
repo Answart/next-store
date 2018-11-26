@@ -11,18 +11,18 @@ const Mutation = {
     return await ctx.db.mutation.createUser({ data }, info);
   },
   async createProduct(parent, args, ctx, info) {
+    const data = { ...args };
     // Logged in?
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to create a product');
 
-    return await ctx.db.mutation.createProduct(
-      { data: {
-        ...args,
+    return await ctx.db.mutation.createProduct({
+      data: {
+        ...data,
         productVariants: {},
         user: { connect: { id: userId } }
-      }},
-      info
-    );
+      }
+    }, info);
   },
   async deleteProduct(parent, args, ctx, info) {
     const where = { id: args.id };
