@@ -25,26 +25,22 @@ const Mutation = {
     }, info);
   },
   async deleteProduct(parent, args, ctx, info) {
-    const where = { id: args.id };
     // Logged in?
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to delete a product');
     // Existing product?
-    const product = await ctx.db.query.product(
-      { where },
-      `{ id title user { id } }`
-    );
+    const product = await ctx.db.query.product({
+      where
+    }, `{ id title user { id } }`);
     // Check if they own that product, or have the permissions
     const ownsItem = product.user.id === userId;
     if (!ownsItem) throw new Error("You don't have permission to do that!");
 
     if (product.productVariants.length) {
-      await ctx.db.mutation.deleteManyProductVariants(
-        { where: {
-          product: where
-        }},
-        info
-      );
+      await ctx.db.mutation.deleteManyProductVariants({
+        where: { product: { id: args.id }}
+      });
+
       return await ctx.db.mutation.deleteProduct({ where }, info);
     } else {
       return await ctx.db.mutation.deleteProduct({ where }, info);
