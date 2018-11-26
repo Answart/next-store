@@ -5,12 +5,19 @@ import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
 import { UPDATE_PROD_VARIANT_MUTATION } from '../../graphql';
-import { user } from '../../lib/dummyData';
 
 
 class UpdateProductVariantForm extends Component {
   static propTypes = {
-    variant: PropTypes.object.isRequired
+    variant: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+      size: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      sale: PropTypes.bool.isRequired,
+      salePrice: PropTypes.number.isRequired
+    })
   };
   state = this.props.variant
     ? this.props.variant
