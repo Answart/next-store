@@ -12,18 +12,26 @@ class ProductVariantFormFields extends Component {
     color: PropTypes.string,
     sale: PropTypes.bool.isRequired,
     salePrice: PropTypes.number.isRequired,
-    handleChange: PropTypes.func.isRequired
+    saveToState: PropTypes.func.isRequired
+  };
+  handleChange = e => {
+    const { name, type, value, checked } = e.target;
+    let val = value;
+    let state = {};
+
+    if (type === 'number') {
+      val = (name == 'price' || name === 'salePrice')
+        ? parseFloat(value).toFixed(2)
+        : parseFloat(value)
+    }
+    if (type === 'checkbox') val = checked;
+    if (name === 'sale') state.salePrice = 1.00;
+    state[name] = val;
+
+    this.props.saveToState(state);
   };
   render() {
-    const {
-      price,
-      quantity,
-      size,
-      color,
-      sale,
-      salePrice,
-      handleChange
-    } = this.props;
+    const { sale } = this.props;
     return (
       <div>
         <label htmlFor="size">
@@ -31,8 +39,8 @@ class ProductVariantFormFields extends Component {
           <select
             id="size"
             name="size"
-            value={size}
-            onChange={handleChange}
+            value={this.props.size}
+            onChange={this.handleChange}
           >
             <option key={0} value={''}></option>
             {sizes.map(sz => <option key={sz} value={sz}>{sz}</option>)}
@@ -45,8 +53,8 @@ class ProductVariantFormFields extends Component {
             id="color"
             name="color"
             placeholder=""
-            value={color}
-            onChange={handleChange}
+            value={this.props.color}
+            onChange={this.handleChange}
           >
             <option key={0} value={''}></option>
             {colors.map(clr => <option key={clr} value={clr}>{clr}</option>)}
@@ -59,10 +67,10 @@ class ProductVariantFormFields extends Component {
             type="number"
             id="quantity"
             name="quantity"
-            placeholder="Quantity"
+            placeholder="1"
             min="1"
-            value={quantity}
-            onChange={handleChange}
+            value={this.props.quantity}
+            onChange={this.handleChange}
             required
           />
         </label>
@@ -76,8 +84,8 @@ class ProductVariantFormFields extends Component {
             placeholder="1.00"
             min="1.00"
             step="0.01"
-            value={price}
-            onChange={handleChange}
+            value={this.props.price}
+            onChange={this.handleChange}
             required
           />
         </label>
@@ -88,7 +96,7 @@ class ProductVariantFormFields extends Component {
             id="sale"
             name="sale"
             value={sale}
-            onChange={handleChange}
+            onChange={this.handleChange}
             checked={sale ? "checked" : ""}
           />
           <label htmlFor="sale" className="prdct-padding">
@@ -107,8 +115,8 @@ class ProductVariantFormFields extends Component {
               min="1.00"
               step="0.01"
               disabled={!sale}
-              value={salePrice}
-              onChange={handleChange}
+              value={this.props.salePrice}
+              onChange={this.handleChange}
             />
           </label>
         )}

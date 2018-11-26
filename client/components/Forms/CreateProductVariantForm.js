@@ -20,30 +20,10 @@ class CreateProductVariantForm extends Component {
     salePrice: 1.00,
     productId: this.props.productId
   };
-  handleChange = e => {
-    const { name, type, value, checked } = e.target;
-    let val = value;
-    if (type === 'number') val = value ? parseFloat(value) : 0;
-    if (type === 'checkbox') val = checked;
-    if (name === 'sale') {
-      this.setState({
-        salePrice: 0,
-        [name]: val
-      });
-    } else {
-      this.setState({ [name]: val });
-    }
+  saveToState = state => {
+    this.setState({ ...state });
   };
   render() {
-    const {
-      price,
-      quantity,
-      color,
-      size,
-      sale,
-      salePrice,
-      productId
-    } = this.state;
     return (
       <Mutation
         mutation={CREATE_PROD_VARIANT_MUTATION}
@@ -67,13 +47,13 @@ class CreateProductVariantForm extends Component {
 
             <fieldset disabled={false} aria-busy={false}>
               <ProductVariantFormFields
-                price={price}
-                quantity={quantity}
-                color={color}
-                size={size}
-                sale={sale}
-                salePrice={salePrice}
-                handleChange={this.handleChange}
+                price={this.state.price}
+                quantity={this.state.quantity}
+                color={this.state.color}
+                size={this.state.size}
+                sale={this.state.sale}
+                salePrice={this.state.salePrice}
+                saveToState={this.saveToState}
               />
 
               <div className="form-actions prdct-padding">
