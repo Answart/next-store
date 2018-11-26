@@ -143,43 +143,30 @@ const Mutation = {
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to delete a product');
     // Existing product?
-    const productVariant = await ctx.db.query.productVariant(
-      { where }
-    );
+    const productVariant = await ctx.db.query.productVariant({ where });
     if (!productVariant) throw new Error('No selection with this id found')
 
     return await ctx.db.mutation.deleteProductVariant({ where }, info);
   },
   async removeFromProduct(parent, args, ctx, info) {
-    const id = args.id;
+    const where = { id: args.id };
     const quantity = args.quantity;
     // Logged in?
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to remove from product');
     // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants(
-      { where: { id }},
-      info
-    );
+    const [existingProductVariant] = await ctx.db.query.productVariants({ where });
     if (!existingProductVariant) throw new Error('No productVariant found!');
 
     const existingQuantity = existingProductVariant.quantity;
     if (existingQuantity > quantity) {
       // Update productVariant with decreased quantity
-      return await ctx.db.mutation.updateProductVariant(
-        {
-          where: { id },
-          data: { quantity: existingQuantity - quantity }
-        },
-        info
-      );
+      return await ctx.db.mutation.updateProductVariant({
+        where,
+        data: { quantity: existingQuantity - quantity }
+      }, info);
     } else if (existingQuantity === quantity) {
-      console.log('blah', existingProductVariant);
-      // delete productVariant
-      return await ctx.db.mutation.deleteProductVariant(
-        { where: { id }},
-        info
-      );
+      return await ctx.db.mutation.deleteProductVariant({ where }, info);
     } else {
       throw new Error(`You cannot remove ${quantity} of ${existingQuantity} productVariants`);
     }
