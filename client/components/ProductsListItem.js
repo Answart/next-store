@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledProductsListItem } from './styles/ProductStyles';
 import styled from 'styled-components';
+import formatMoney from '../lib/formatMoney';
 import { user } from '../lib/dummyData';
 
 
@@ -42,15 +43,15 @@ export default class Product extends Component {
               {variant.sale ? (
                 <div>
                   <span className='line-through'>
-                    ${variant.price}
+                    {formatMoney(variant.price)}
                   </span>
                   <span className='prdct-itm-price prdct-itm-sale'>
-                    ${variant.salePrice}
+                    {formatMoney(variant.salePrice)}
                   </span>
                 </div>
               ) : (
                 <div>
-                  ${variant.price}
+                  {formatMoney(variant.price)}
                 </div>
               )}
             </div>

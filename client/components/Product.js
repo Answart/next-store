@@ -35,9 +35,7 @@ class Product extends Component {
                 <div className="prdct-padding">
                   <Link href={{
                     pathname: `/product/buy`,
-                    query: {
-                      id: product.id
-                    }
+                    query: { id: product.id }
                   }}>
                     <a className="prdct-title">{product.title}</a>
                   </Link>
