@@ -11,6 +11,7 @@ const PROD_VARIANTS_QUERY = gql`
       size
       sale
       salePrice
+      availability
       product {
         id
         department
@@ -36,6 +37,7 @@ const PRODUCT_PROD_VARIANTS_QUERY = gql`
       price
       sale
       salePrice
+      availability
       product {
         id
         department

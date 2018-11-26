@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sat Nov 24 2018 02:52:39 GMT-0800 (Pacific Standard Time)
+# timestamp: Sun Nov 25 2018 16:21:44 GMT-0800 (Pacific Standard Time)
 
 type AggregateProduct {
   count: Int!
@@ -269,6 +269,7 @@ type ProductVariant implements Node {
   id: ID!
   price: Int!
   quantity: Int!
+  availability: String
   color: String
   size: String
   sale: Boolean!
@@ -289,6 +290,7 @@ type ProductVariantConnection {
 input ProductVariantCreateInput {
   price: Int!
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -304,6 +306,7 @@ input ProductVariantCreateManyWithoutProductInput {
 input ProductVariantCreateWithoutProductInput {
   price: Int!
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -326,6 +329,8 @@ enum ProductVariantOrderByInput {
   price_DESC
   quantity_ASC
   quantity_DESC
+  availability_ASC
+  availability_DESC
   color_ASC
   color_DESC
   size_ASC
@@ -344,6 +349,7 @@ type ProductVariantPreviousValues {
   id: ID!
   price: Int!
   quantity: Int!
+  availability: String
   color: String
   size: String
   sale: Boolean!
@@ -443,6 +449,46 @@ input ProductVariantScalarWhereInput {
 
   """All values greater than or equal the given value."""
   quantity_gte: Int
+  availability: String
+
+  """All values that are not equal to given value."""
+  availability_not: String
+
+  """All values that are contained in given list."""
+  availability_in: [String!]
+
+  """All values that are not contained in given list."""
+  availability_not_in: [String!]
+
+  """All values less than the given value."""
+  availability_lt: String
+
+  """All values less than or equal the given value."""
+  availability_lte: String
+
+  """All values greater than the given value."""
+  availability_gt: String
+
+  """All values greater than or equal the given value."""
+  availability_gte: String
+
+  """All values containing the given string."""
+  availability_contains: String
+
+  """All values not containing the given string."""
+  availability_not_contains: String
+
+  """All values starting with the given string."""
+  availability_starts_with: String
+
+  """All values not starting with the given string."""
+  availability_not_starts_with: String
+
+  """All values ending with the given string."""
+  availability_ends_with: String
+
+  """All values not ending with the given string."""
+  availability_not_ends_with: String
   color: String
 
   """All values that are not equal to given value."""
@@ -593,6 +639,7 @@ input ProductVariantSubscriptionWhereInput {
 input ProductVariantUpdateInput {
   price: Int
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -603,6 +650,7 @@ input ProductVariantUpdateInput {
 input ProductVariantUpdateManyDataInput {
   price: Int
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -612,6 +660,7 @@ input ProductVariantUpdateManyDataInput {
 input ProductVariantUpdateManyMutationInput {
   price: Int
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -637,6 +686,7 @@ input ProductVariantUpdateManyWithWhereNestedInput {
 input ProductVariantUpdateWithoutProductDataInput {
   price: Int
   quantity: Int
+  availability: String
   color: String
   size: String
   sale: Boolean
@@ -747,6 +797,46 @@ input ProductVariantWhereInput {
 
   """All values greater than or equal the given value."""
   quantity_gte: Int
+  availability: String
+
+  """All values that are not equal to given value."""
+  availability_not: String
+
+  """All values that are contained in given list."""
+  availability_in: [String!]
+
+  """All values that are not contained in given list."""
+  availability_not_in: [String!]
+
+  """All values less than the given value."""
+  availability_lt: String
+
+  """All values less than or equal the given value."""
+  availability_lte: String
+
+  """All values greater than the given value."""
+  availability_gt: String
+
+  """All values greater than or equal the given value."""
+  availability_gte: String
+
+  """All values containing the given string."""
+  availability_contains: String
+
+  """All values not containing the given string."""
+  availability_not_contains: String
+
+  """All values starting with the given string."""
+  availability_starts_with: String
+
+  """All values not starting with the given string."""
+  availability_not_starts_with: String
+
+  """All values ending with the given string."""
+  availability_ends_with: String
+
+  """All values not ending with the given string."""
+  availability_not_ends_with: String
   color: String
 
   """All values that are not equal to given value."""

@@ -18,9 +18,6 @@ export default class Product extends Component {
     const variant = product.productVariants.length
       ? product.productVariants[0]
       : null;
-    let availability = variant
-      ? `${variant.quantity} in Stock!`
-      : "Out of Stock";
     return (
       <StyledProductsListItem>
         <Link href={{
@@ -59,9 +56,9 @@ export default class Product extends Component {
             </div>
           )}
 
-          {availability.length && (
+          {product.online && variant && (
             <div className="prdct-itm-avail">
-              {availability}
+              {variant.availability}
             </div>
           )}
         </div>

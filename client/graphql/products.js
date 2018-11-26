@@ -24,6 +24,7 @@ const PRODUCTS_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }
@@ -53,6 +54,7 @@ const ONLINE_PRODUCTS_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }
@@ -82,6 +84,7 @@ const SELLERS_PRODUCTS_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }
@@ -110,6 +113,7 @@ const ONLINE_SELLERS_PRODUCTS_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }
@@ -138,6 +142,7 @@ const ONLINE_DEPT_PRODUCTS_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }

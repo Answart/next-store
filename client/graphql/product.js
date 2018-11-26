@@ -25,6 +25,7 @@ const PRODUCT_QUERY = gql`
         price
         sale
         salePrice
+        availability
       }
     }
   }

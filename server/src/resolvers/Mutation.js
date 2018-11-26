@@ -96,7 +96,8 @@ const Mutation = {
       return await ctx.db.mutation.updateProductVariant({
         where: { id: existingProductVariant.id },
         data: {
-          quantity
+          quantity,
+          availability: `${quantity} in Stock!`
         }
       }, info);
     } else {
@@ -104,6 +105,7 @@ const Mutation = {
       const newProductVariant = await ctx.db.mutation.createProductVariant({
         data: {
           ...data,
+          availability: `${data.quantity} in Stock!`,
           product: { connect: { id: productId }}
         }
       }, info);
@@ -131,6 +133,7 @@ const Mutation = {
     if (!existingProductVariant) {
       throw new Error('ProductVariant by this id cannot be found');
     } else {
+      data.availability = `${data.quantity} in Stock!`;
       return await ctx.db.mutation.updateProductVariant({
         where: { id: existingProductVariant.id },
         data

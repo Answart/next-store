@@ -27,6 +27,7 @@ type ProductVariant {
   id: ID! @unique
   price: Int!
   quantity: Int! @default(value: 1)
+  availability: String @default(value: "1 in Stock!")
   color: String
   size: String
   sale: Boolean! @default(value: false)

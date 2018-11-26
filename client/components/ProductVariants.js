@@ -72,10 +72,7 @@ class ProductVariants extends Component {
     } = this.props;
     const live = online && !demoView
     const accessible = (demoView || live);
-    let availability = variant
-      ? `${variant.quantity} in Stock!`
-      : "Out of Stock"
-    if (!live) availability = "Unavailable";
+    let availability = accessible ? variant.availability : "Unavailable";
     return (
       <StyledProductVariants>
         {variant && (
