@@ -25,12 +25,12 @@ type Product {
 
 type ProductVariant {
   id: ID! @unique
-  price: Int!
+  price: Float!
   quantity: Int! @default(value: 1)
   availability: String @default(value: "1 in Stock!")
   color: String
   size: String
   sale: Boolean! @default(value: false)
-  salePrice: Int! @default(value: 0)
+  salePrice: Float! @default(value: 1.00)
   product: Product!
 }

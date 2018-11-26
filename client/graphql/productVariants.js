@@ -21,7 +21,6 @@ const PROD_VARIANTS_QUERY = gql`
         category
         brand
         online
-        url
       }
     }
   }

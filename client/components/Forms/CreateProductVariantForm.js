@@ -12,12 +12,12 @@ class CreateProductVariantForm extends Component {
     productId: PropTypes.string.isRequired
   };
   state = {
-    price: 0,
+    price: 1.00,
     quantity: 1,
     color: '',
     size: '',
     sale: false,
-    salePrice: 0,
+    salePrice: 1.00,
     productId: this.props.productId
   };
   handleChange = e => {

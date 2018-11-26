@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sun Nov 25 2018 16:21:44 GMT-0800 (Pacific Standard Time)
+# timestamp: Sun Nov 25 2018 20:38:18 GMT-0800 (Pacific Standard Time)
 
 type AggregateProduct {
   count: Int!
@@ -267,13 +267,13 @@ input ProductUpsertWithoutProductVariantsInput {
 
 type ProductVariant implements Node {
   id: ID!
-  price: Int!
+  price: Float!
   quantity: Int!
   availability: String
   color: String
   size: String
   sale: Boolean!
-  salePrice: Int!
+  salePrice: Float!
   product: Product!
 }
 
@@ -288,13 +288,13 @@ type ProductVariantConnection {
 }
 
 input ProductVariantCreateInput {
-  price: Int!
+  price: Float!
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
   product: ProductCreateOneWithoutProductVariantsInput!
 }
 
@@ -304,13 +304,13 @@ input ProductVariantCreateManyWithoutProductInput {
 }
 
 input ProductVariantCreateWithoutProductInput {
-  price: Int!
+  price: Float!
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
 }
 
 """An edge in a connection."""
@@ -347,13 +347,13 @@ enum ProductVariantOrderByInput {
 
 type ProductVariantPreviousValues {
   id: ID!
-  price: Int!
+  price: Float!
   quantity: Int!
   availability: String
   color: String
   size: String
   sale: Boolean!
-  salePrice: Int!
+  salePrice: Float!
 }
 
 input ProductVariantScalarWhereInput {
@@ -405,28 +405,28 @@ input ProductVariantScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Int
+  price: Float
 
   """All values that are not equal to given value."""
-  price_not: Int
+  price_not: Float
 
   """All values that are contained in given list."""
-  price_in: [Int!]
+  price_in: [Float!]
 
   """All values that are not contained in given list."""
-  price_not_in: [Int!]
+  price_not_in: [Float!]
 
   """All values less than the given value."""
-  price_lt: Int
+  price_lt: Float
 
   """All values less than or equal the given value."""
-  price_lte: Int
+  price_lte: Float
 
   """All values greater than the given value."""
-  price_gt: Int
+  price_gt: Float
 
   """All values greater than or equal the given value."""
-  price_gte: Int
+  price_gte: Float
   quantity: Int
 
   """All values that are not equal to given value."""
@@ -573,28 +573,28 @@ input ProductVariantScalarWhereInput {
 
   """All values that are not equal to given value."""
   sale_not: Boolean
-  salePrice: Int
+  salePrice: Float
 
   """All values that are not equal to given value."""
-  salePrice_not: Int
+  salePrice_not: Float
 
   """All values that are contained in given list."""
-  salePrice_in: [Int!]
+  salePrice_in: [Float!]
 
   """All values that are not contained in given list."""
-  salePrice_not_in: [Int!]
+  salePrice_not_in: [Float!]
 
   """All values less than the given value."""
-  salePrice_lt: Int
+  salePrice_lt: Float
 
   """All values less than or equal the given value."""
-  salePrice_lte: Int
+  salePrice_lte: Float
 
   """All values greater than the given value."""
-  salePrice_gt: Int
+  salePrice_gt: Float
 
   """All values greater than or equal the given value."""
-  salePrice_gte: Int
+  salePrice_gte: Float
 }
 
 type ProductVariantSubscriptionPayload {
@@ -637,34 +637,34 @@ input ProductVariantSubscriptionWhereInput {
 }
 
 input ProductVariantUpdateInput {
-  price: Int
+  price: Float
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
   product: ProductUpdateOneRequiredWithoutProductVariantsInput
 }
 
 input ProductVariantUpdateManyDataInput {
-  price: Int
+  price: Float
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
 }
 
 input ProductVariantUpdateManyMutationInput {
-  price: Int
+  price: Float
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
 }
 
 input ProductVariantUpdateManyWithoutProductInput {
@@ -684,13 +684,13 @@ input ProductVariantUpdateManyWithWhereNestedInput {
 }
 
 input ProductVariantUpdateWithoutProductDataInput {
-  price: Int
+  price: Float
   quantity: Int
   availability: String
   color: String
   size: String
   sale: Boolean
-  salePrice: Int
+  salePrice: Float
 }
 
 input ProductVariantUpdateWithWhereUniqueWithoutProductInput {
@@ -753,28 +753,28 @@ input ProductVariantWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Int
+  price: Float
 
   """All values that are not equal to given value."""
-  price_not: Int
+  price_not: Float
 
   """All values that are contained in given list."""
-  price_in: [Int!]
+  price_in: [Float!]
 
   """All values that are not contained in given list."""
-  price_not_in: [Int!]
+  price_not_in: [Float!]
 
   """All values less than the given value."""
-  price_lt: Int
+  price_lt: Float
 
   """All values less than or equal the given value."""
-  price_lte: Int
+  price_lte: Float
 
   """All values greater than the given value."""
-  price_gt: Int
+  price_gt: Float
 
   """All values greater than or equal the given value."""
-  price_gte: Int
+  price_gte: Float
   quantity: Int
 
   """All values that are not equal to given value."""
@@ -921,28 +921,28 @@ input ProductVariantWhereInput {
 
   """All values that are not equal to given value."""
   sale_not: Boolean
-  salePrice: Int
+  salePrice: Float
 
   """All values that are not equal to given value."""
-  salePrice_not: Int
+  salePrice_not: Float
 
   """All values that are contained in given list."""
-  salePrice_in: [Int!]
+  salePrice_in: [Float!]
 
   """All values that are not contained in given list."""
-  salePrice_not_in: [Int!]
+  salePrice_not_in: [Float!]
 
   """All values less than the given value."""
-  salePrice_lt: Int
+  salePrice_lt: Float
 
   """All values less than or equal the given value."""
-  salePrice_lte: Int
+  salePrice_lte: Float
 
   """All values greater than the given value."""
-  salePrice_gt: Int
+  salePrice_gt: Float
 
   """All values greater than or equal the given value."""
-  salePrice_gte: Int
+  salePrice_gte: Float
   product: ProductWhereInput
 }
 

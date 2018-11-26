@@ -3,12 +3,12 @@ import gql from 'graphql-tag';
 
 const CREATE_PROD_VARIANT_MUTATION = gql`
   mutation CREATE_PROD_VARIANT_MUTATION(
-    $price: Int!
+    $price: Float!
     $quantity: Int!
     $color: String
     $size: String
     $sale: Boolean!
-    $salePrice: Int
+    $salePrice: Float
     $productId: String!
   ) {
     createProductVariant(
@@ -28,12 +28,12 @@ const CREATE_PROD_VARIANT_MUTATION = gql`
 const UPDATE_PROD_VARIANT_MUTATION = gql`
   mutation UPDATE_PROD_VARIANT_MUTATION(
     $id: ID!,
-    $price: Int!
+    $price: Float!
     $quantity: Int!
     $color: String
     $size: String
     $sale: Boolean!
-    $salePrice: Int
+    $salePrice: Float
   ) {
     updateProductVariant(
       id: $id

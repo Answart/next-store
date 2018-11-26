@@ -16,12 +16,12 @@ class UpdateProductVariantForm extends Component {
     ? this.props.variant
     : {
       id: '1',
-      price: 1,
-      quantity: '1',
+      price: 1.00,
+      quantity: 1,
       size: '',
       color: '',
       sale: false,
-      salePrice: 0
+      salePrice: 1.00
     };
   handleChange = e => {
     const { name, type, value, checked } = e.target;

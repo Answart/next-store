@@ -11,7 +11,7 @@ class ProductVariantFormFields extends Component {
     size: PropTypes.string,
     color: PropTypes.string,
     sale: PropTypes.bool.isRequired,
-    salePrice: PropTypes.number,
+    salePrice: PropTypes.number.isRequired,
     handleChange: PropTypes.func.isRequired
   };
   render() {
@@ -73,8 +73,9 @@ class ProductVariantFormFields extends Component {
             type="number"
             id="price"
             name="price"
-            placeholder="42.99"
-            min="1"
+            placeholder="1.00"
+            min="1.00"
+            step="0.01"
             value={price}
             onChange={handleChange}
             required
@@ -102,8 +103,9 @@ class ProductVariantFormFields extends Component {
               type="number"
               id="salePrice"
               name="salePrice"
-              placeholder="22.50"
-              min="1"
+              placeholder="1.00"
+              min="1.00"
+              step="0.01"
               disabled={!sale}
               value={salePrice}
               onChange={handleChange}
