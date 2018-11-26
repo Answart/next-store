@@ -10,25 +10,39 @@ class ProductFormFields extends Component {
     title: PropTypes.string.isRequired,
     department: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    online: PropTypes.bool,
+    online: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
     category: PropTypes.string,
     brand: PropTypes.string,
-    handleChange: PropTypes.func.isRequired,
-    uploadFile: PropTypes.func.isRequired,
+    saveToState: PropTypes.func.isRequired,
     previewImage: PropTypes.bool
+  };
+  handleChange = e => {
+    const { name, type, value, checked } = e.target;
+    let state = {};
+    let val = value;
+
+    if (type === 'number') val = value ? parseFloat(value) : 0;
+    if (type === 'checkbox') val = checked;
+    if (name === 'department') state.category = '';
+    state[name] = val;
+
+    this.props.saveToState(state);
+  };
+  uploadFile = async e => {
+    const files = e.target.files;
+
+    // Upload file and return url;
+    const image = files.length
+      ? files[0].name
+      : '';
+
+    this.props.saveToState({ image });
   };
   render() {
     const {
-      title,
       department,
-      description,
-      online,
       image,
-      category,
-      brand,
-      handleChange,
-      uploadFile,
       previewImage
     } = this.props;
     let categories = department
@@ -52,8 +66,8 @@ class ProductFormFields extends Component {
               id="title"
               name="title"
               placeholder="Title"
-              value={title}
-              onChange={handleChange}
+              value={this.props.title}
+              onChange={this.handleChange}
               required
             />
           </label>
@@ -69,8 +83,8 @@ class ProductFormFields extends Component {
               name="department"
               form="carform"
               placeholder="Department i.e. Shoes"
-              value={department}
-              onChange={handleChange}
+              value={this.props.department}
+              onChange={this.handleChange}
               required
             >
               {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
@@ -83,8 +97,8 @@ class ProductFormFields extends Component {
               id="category"
               name="category"
               form="carform"
-              value={category}
-              onChange={handleChange}
+              value={this.props.category}
+              onChange={this.handleChange}
             >
               <option key={0} value={''}></option>
               {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
@@ -97,8 +111,8 @@ class ProductFormFields extends Component {
               id="description"
               name="description"
               placeholder="Enter A Description"
-              value={description}
-              onChange={handleChange}
+              value={this.props.description}
+              onChange={this.handleChange}
               required
             />
           </label>
@@ -110,8 +124,8 @@ class ProductFormFields extends Component {
               id="brand"
               name="brand"
               placeholder="Brand"
-              value={brand}
-              onChange={handleChange}
+              value={this.props.brand}
+              onChange={this.handleChange}
             />
           </label>
 
@@ -119,9 +133,9 @@ class ProductFormFields extends Component {
             type="checkbox"
             id="online"
             name="online"
-            value={online}
-            onChange={handleChange}
-            checked={online ? "checked" : ""}
+            value={this.props.online}
+            onChange={this.handleChange}
+            checked={this.props.online ? "checked" : ""}
           />
           <label htmlFor="online" className="chkbx-label">
             Online
@@ -134,7 +148,7 @@ class ProductFormFields extends Component {
               id="image"
               name="image"
               placeholder={image}
-              onChange={uploadFile}
+              onChange={this.uploadFile}
               required={!image}
             />
           </label>

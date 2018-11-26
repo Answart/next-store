@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductFormFields from './ProductFormFields';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_PRODUCT_MUTATION } from '../../graphql';
-import { user } from '../../lib/dummyData';
 
 
 class CreateProductForm extends Component {
@@ -18,40 +16,10 @@ class CreateProductForm extends Component {
     brand: '',
     online: false
   };
-  handleChange = e => {
-    const { name, type, value, checked } = e.target;
-    let val = value;
-    if (type === 'number') val = value ? parseFloat(value) : 0;
-    if (type === 'checkbox') val = checked;
-    if (name === 'department') {
-      this.setState({
-        category: '',
-        [name]: val
-      });
-    } else {
-      this.setState({ [name]: val });
-    }
-  };
-  uploadFile = async e => {
-    const files = e.target.files;
-
-    // Upload file and return url;
-    const image = files.length
-      ? files[0].name
-      : '';
-
-    this.setState({ image });
+  saveToState = state => {
+    this.setState({ ...state });
   };
   render() {
-    const {
-      title,
-      department,
-      description,
-      image,
-      category,
-      brand,
-      online
-    } = this.state;
     return (
       <Mutation
         mutation={CREATE_PRODUCT_MUTATION}
@@ -65,7 +33,7 @@ class CreateProductForm extends Component {
               const res = await createProduct();
               Router.push({
                 pathname: '/product/edit',
-                query: { id: res.data.createProduct.id },
+                query: { id: res.data.createProduct.id }
               });
             }}
           >
@@ -75,15 +43,14 @@ class CreateProductForm extends Component {
 
             <fieldset disabled={loading} aria-busy={loading}>
               <ProductFormFields
-                title={title}
-                department={department}
-                description={description}
-                image={image}
-                category={category}
-                brand={brand}
-                online={online}
-                handleChange={this.handleChange}
-                uploadFile={this.uploadFile}
+                title={this.state.title}
+                department={this.state.department}
+                description={this.state.description}
+                image={this.state.image}
+                category={this.state.category}
+                brand={this.state.brand}
+                online={this.state.online}
+                saveToState={this.saveToState}
                 previewImage={true}
               />
 
