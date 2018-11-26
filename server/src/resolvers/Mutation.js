@@ -72,52 +72,47 @@ const Mutation = {
   },
   async createProductVariant(parent, args, ctx, info) {
     const productId = args.productId;
-    delete args.productId;
+    const data = { ...args };
+    delete data.productId;
     // Logged in?
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to add to a product');
     // Existing product?
-    const existingProduct = await ctx.db.query.product(
-      { where: {
-        id: productId
-      }}
-    );
+    const existingProduct = await ctx.db.query.product({
+      where: { id: productId }
+    });
     if (!existingProduct) throw new Error('Cannot find product with this id');
     // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants(
-      { where: {
-        ...args,
+    const [existingProductVariant] = await ctx.db.query.productVariants({
+      where: {
+        ...data,
         product: { id: productId }
-      }}
-    );
+      }
+    });
 
     if (existingProductVariant) {
       console.log('This productVariant already exists for the product. Updating quantity.');
-      return await ctx.db.mutation.updateProductVariant(
-        {
-          where: { id: existingProductVariant.id },
-          data: { quantity: existingProductVariant.quantity + args.quantity }
-        },
-        info
-      );
+      const quantity = existingProductVariant.quantity + args.quantity;
+      return await ctx.db.mutation.updateProductVariant({
+        where: { id: existingProductVariant.id },
+        data: {
+          quantity
+        }
+      }, info);
     } else {
       console.log('Creating new productVariation and updating product with new connection.');
-      const newProductVariant = await ctx.db.mutation.createProductVariant(
-        { data: {
-          ...args,
+      const newProductVariant = await ctx.db.mutation.createProductVariant({
+        data: {
+          ...data,
           product: { connect: { id: productId }}
-        }},
-        info
-      );
-      const updatedProduct = await ctx.db.mutation.updateProduct(
-        {
-          where: { id: productId },
-          data: {
-            productVariants: { connect: { id: newProductVariant.id }}
-          }
-        },
-        info
-      );
+        }
+      }, info);
+      const updatedProduct = await ctx.db.mutation.updateProduct({
+        where: { id: productId },
+        data: {
+          productVariants: { connect: { id: newProductVariant.id }}
+        }
+      });
 
       return newProductVariant;
     }
