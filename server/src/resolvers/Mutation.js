@@ -124,22 +124,17 @@ const Mutation = {
     const userId = ctx.request.userId || 'cjobtu6tgni0p0a010vdol4oy';
     if (!userId) throw new Error('You must be signed in to add to a product');
     // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants(
-      { where:
-        { id: args.id }
-      }
-    );
+    const [existingProductVariant] = await ctx.db.query.productVariants({
+      where: { id: args.id }
+    });
 
     if (!existingProductVariant) {
       throw new Error('ProductVariant by this id cannot be found');
     } else {
-      return await ctx.db.mutation.updateProductVariant(
-        { where:
-          { id: existingProductVariant.id },
-          data
-        },
-        info
-      );
+      return await ctx.db.mutation.updateProductVariant({
+        where: { id: existingProductVariant.id },
+        data
+      }, info);
     }
   },
   async deleteProductVariant(parent, args, ctx, info) {
