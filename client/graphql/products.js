@@ -12,7 +12,6 @@ const PRODUCTS_QUERY = gql`
       category
       brand
       online
-      url
       user {
         id
         name
@@ -23,6 +22,8 @@ const PRODUCTS_QUERY = gql`
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
@@ -50,6 +51,8 @@ const ONLINE_PRODUCTS_QUERY = gql`
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
@@ -67,7 +70,6 @@ const SELLERS_PRODUCTS_QUERY = gql`
       category
       brand
       online
-      url
       user {
         id
         name
@@ -78,6 +80,8 @@ const SELLERS_PRODUCTS_QUERY = gql`
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
@@ -94,7 +98,6 @@ const ONLINE_SELLERS_PRODUCTS_QUERY = gql`
       category
       brand
       online
-      url
       user {
         id
         name
@@ -105,6 +108,8 @@ const ONLINE_SELLERS_PRODUCTS_QUERY = gql`
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
@@ -121,7 +126,6 @@ const ONLINE_DEPT_PRODUCTS_QUERY = gql`
       category
       brand
       online
-      url
       user {
         id
         name
@@ -132,6 +136,8 @@ const ONLINE_DEPT_PRODUCTS_QUERY = gql`
         color
         size
         price
+        sale
+        salePrice
       }
     }
   }
