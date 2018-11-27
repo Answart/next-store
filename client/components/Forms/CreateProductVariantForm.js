@@ -45,7 +45,9 @@ class CreateProductVariantForm extends Component {
               <div>{error}</div>
             )}
 
-            <fieldset disabled={false} aria-busy={false}>
+            <fieldset disabled={loading} aria-busy={loading}>
+              <h2>Add Selection</h2>
+
               <ProductVariantFormFields
                 price={this.state.price}
                 quantity={this.state.quantity}
@@ -56,11 +58,9 @@ class CreateProductVariantForm extends Component {
                 saveToState={this.saveToState}
               />
 
-              <div className="form-actions prdct-padding">
-                <button className="big-btn"
-                  type="submit"
-                >Add Selection</button>
-              </div>
+              <button className="big-btn"
+                type="submit"
+              >Add</button>
             </fieldset>
           </StyledForm>
         )}

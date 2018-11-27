@@ -7,7 +7,8 @@ const StyledForm = styled.form`
   line-height: 1.5;
   font-weight: 600;
   color: ${props => props.theme.textGrey};
-  display: grid;
+  background-color: ${props => props.theme.beige};
+  box-shadow: ${props => props.theme.bs};
   fieldset {
     border: 0;
     padding: 0;
@@ -18,6 +19,13 @@ const StyledForm = styled.form`
       display: block;
       height: 10px;
       content: '';
+    }
+    h2 {
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+    button {
+      float: right;
     }
   }
   label {
@@ -38,7 +46,6 @@ const StyledForm = styled.form`
     width: 100%;
     padding: 0.5rem;
     display: block;
-    max-width: 35rem;
     font-size: 1rem;
     border: 0;
     border-bottom: 1px solid ${props => props.theme.lightGrey};
@@ -81,8 +88,7 @@ const StyledForm = styled.form`
     height: 5rem;
     min-height: 5rem;
     max-height: 15rem;
-    min-width: 25rem;
-    max-width: 35rem;
+    resize: vertical;
   }
   select {
     display: block;
@@ -108,10 +114,6 @@ const StyledForm = styled.form`
   }
   .chkbx-label {
     padding: 0.2rem 0;
-  }
-  .form-actions {
-    display: block;
-    text-align: right;
   }
 `;
 

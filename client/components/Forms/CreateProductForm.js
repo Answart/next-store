@@ -42,6 +42,8 @@ class CreateProductForm extends Component {
             )}
 
             <fieldset disabled={loading} aria-busy={loading}>
+              <h2>Create Product</h2>
+
               <ProductFormFields
                 title={this.state.title}
                 department={this.state.department}
@@ -54,11 +56,9 @@ class CreateProductForm extends Component {
                 previewImage={true}
               />
 
-              <div className="form-actions prdct-padding">
-                <button className="big-btn"
-                  type="submit"
-                >Create Product</button>
-              </div>
+              <button className="big-btn"
+                type="submit"
+              >Create</button>
             </fieldset>
           </StyledForm>
         )}

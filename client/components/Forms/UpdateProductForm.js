@@ -56,6 +56,8 @@ class UpdateProductForm extends Component {
             )}
 
             <fieldset disabled={loading} aria-busy={loading}>
+              <h2>Update Product</h2>
+
               <ProductFormFields
                 title={this.state.title}
                 department={this.state.department}
@@ -68,11 +70,9 @@ class UpdateProductForm extends Component {
                 previewImage={false}
               />
 
-              <div className="form-actions prdct-padding">
-                <button className="big-btn"
-                  type="submit"
-                >Update Product</button>
-              </div>
+              <button className="big-btn"
+                type="submit"
+              >Update</button>
             </fieldset>
           </StyledForm>
         )}

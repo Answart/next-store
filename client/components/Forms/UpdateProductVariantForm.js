@@ -56,6 +56,8 @@ class UpdateProductVariantForm extends Component {
             )}
 
             <fieldset disabled={loading} aria-busy={loading}>
+              <h2>Update Selection</h2>
+
               <ProductVariantFormFields
                 price={this.state.price}
                 quantity={this.state.quantity}
@@ -66,11 +68,9 @@ class UpdateProductVariantForm extends Component {
                 saveToState={this.saveToState}
               />
 
-              <div className="form-actions prdct-padding">
-                <button className="big-btn"
-                  type="submit"
-                >Update Selection</button>
-              </div>
+              <button className="big-btn"
+                type="submit"
+              >Update</button>
             </fieldset>
           </StyledForm>
         )}
