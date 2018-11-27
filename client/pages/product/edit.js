@@ -24,7 +24,7 @@ const EditProductPage = props => {
 
             <div className="edit-pg-navi">
               <Link href={{
-                pathname: `/product/selections/edit`,
+                pathname: `/product/selections`,
                 query: { id }
               }}><a className="undrln-btn">
                 Selections &#8811;

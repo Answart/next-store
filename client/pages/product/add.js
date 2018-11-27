@@ -18,7 +18,7 @@ const CreateProductVariantPage = props => {
           }, {
             label: 'Selections',
             href: {
-              pathname: '/product/selections/edit',
+              pathname: '/product/selections',
               query: { id }
             }
           }, {
