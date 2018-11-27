@@ -37,6 +37,7 @@ const StyledProduct = styled.div`
   }
   .prdct-content {
     color: ${props => props.theme.textGrey};
+    padding-right: 2rem;
   }
   .prdct-title {
     color: ${props => props.theme.darkblue};
