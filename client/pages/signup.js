@@ -1,18 +1,18 @@
-import styled from 'styled-components';
+import { StyledSignupPage } from '../components/styles/PageStyles';
+import PageTitle from '../components/PageTitle';
 import { SignupForm, LoginForm } from '../components/Forms';
 
 
-const StyledSignupPage = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
-`;
-
 const SignupPage = props => (
   <StyledSignupPage>
-    <SignupForm />
-    <LoginForm />
+    <PageTitle page='Signup' />
+
+    <div className="signup-page-content">
+      <SignupForm />
+      <LoginForm />
+    </div>
   </StyledSignupPage>
 );
+
 
 export default SignupPage;
