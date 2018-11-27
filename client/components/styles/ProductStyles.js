@@ -146,43 +146,6 @@ const StyledProductsListItem = styled.div`
   }
 `;
 
-const StyledEditProduct = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 4rem 3rem 1fr;
-  .edt-prdct-title {
-    grid-row: 1 / 1;
-    font-size: 1.1rem;
-    color: ${props => props.theme.textGrey};
-  }
-  .edt-prdct-tab {
-    display: grid;
-    grid-template-columns: 1fr minmax(45rem, 1fr) 1fr;
-    grid-template-rows: 1fr minmax(50rem, 10fr);
-  }
-  .edt-prdct-navi {
-    grid-row: 1 / 1;
-    grid-column: 1 / -1;
-    width: 100%;
-    text-align: center;
-  }
-  .edt-prdct-cntnt {
-    grid-row: 2 / 2;
-    grid-column: 2 / 2;
-    justify-content: center;
-  }
-`
-
-const StyledCreateProduct = styled.div`
-  display: grid;
-  grid-template-rows: 3rem minmax(36rem, 1fr);
-  grid-template-columns: 1fr minmax(36rem, 1fr) 1fr;
-  form {
-    grid-row: 2 / 2;
-    grid-column: 2 / 2;
-  }
-`;
-
 const StyledEditProductVariant = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
@@ -200,7 +163,5 @@ export {
   StyledProductVariants,
   StyledProductsList,
   StyledProductsListItem,
-  StyledEditProduct,
-  StyledCreateProduct,
   StyledEditProductVariant
 };
