@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { StyledPageTitle } from './styles/PageStyles';
 
 
 const PageTitle = props => {
   const { page, titles } = props;
   return (
-    <div className="page-title edt-prdct-title">
+    <StyledPageTitle>
       {page}
-      {titles.map(title =>
+      {!!titles && titles.map(title =>
         <span key={title.label}> &#8811;
           {!!title.href && (
             <Link href={title.href}><a className="thn-btn">
@@ -24,7 +25,7 @@ const PageTitle = props => {
           )}
         </span>
       )}
-    </div>
+    </StyledPageTitle>
   )
 };
 
