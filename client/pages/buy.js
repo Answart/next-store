@@ -1,9 +1,8 @@
-
-import SingleProduct from '../../components/SingleProduct';
-import PageTitle from '../../components/PageTitle';
-import Product from '../../components/Product';
-import { StyledBuyPage } from '../../components/styles/PageStyles';
-import { user } from '../../lib/dummyData';
+import SingleProduct from '../components/SingleProduct';
+import PageTitle from '../components/PageTitle';
+import Product from '../components/Product';
+import { StyledBuyPage } from '../components/styles/PageStyles';
+import { user } from '../lib/dummyData';
 
 
 const BuyProductPage = props => {

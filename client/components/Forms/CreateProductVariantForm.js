@@ -36,7 +36,7 @@ class CreateProductVariantForm extends Component {
               e.preventDefault();
               const res = await createProductVariant();
               Router.push({
-                pathname: '/product/buy',
+                pathname: '/buy',
                 query: { id: this.props.productId }
               });
             }}

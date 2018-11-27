@@ -17,7 +17,7 @@ class Product extends Component {
         <div className="prdct-content">
           <div className="prdct-padding">
             <Link href={{
-              pathname: `/product/buy`,
+              pathname: `/buy`,
               query: { id: product.id }
             }}>
               <a className="prdct-title">{product.title}</a>

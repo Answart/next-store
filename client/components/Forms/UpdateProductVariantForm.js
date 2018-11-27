@@ -46,7 +46,7 @@ class UpdateProductVariantForm extends Component {
               e.preventDefault();
               const res = await updateProductVariant();
               Router.push({
-                pathname: '/product/buy',
+                pathname: '/buy',
                 query: { id: res.data.updateProductVariant.product.id },
               });
             }}

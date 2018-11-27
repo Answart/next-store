@@ -22,7 +22,7 @@ export default class Product extends Component {
     return (
       <StyledProductsListItem>
         <Link href={{
-          pathname: `/product/buy`,
+          pathname: `/buy`,
           query: { id: product.id }
         }}>
           <a>{product.image && (
@@ -32,7 +32,7 @@ export default class Product extends Component {
 
         <div className="prdct-itm-info">
           <Link href={{
-            pathname: `/product/buy`,
+            pathname: `/buy`,
             query: { id: product.id }
           }}>
             <a className='prdct-itm-title'>{product.title}</a>
