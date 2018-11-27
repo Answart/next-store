@@ -23,49 +23,31 @@ const queries = {
 class ProductsList extends Component {
   static propTypes = {
     variables: PropTypes.object.isRequired,
-    pageLabel: PropTypes.string.isRequired,
     queryType: PropTypes.string.isRequired
   };
   render() {
-    const { variables, pageLabel, queryType } = this.props;
+    const { variables, queryType } = this.props;
     const query = queries[queryType];
     return (
-      <StyledProductsList>
-        <div className="prdct-lst-title">
-          {pageLabel && (
-            <div>
-              {pageLabel} <i>&#8811; BLANK</i>
-            </div>
-          )}
-        </div>
-
-        <div className="prdct-lst-filters">
-          Filters
-        </div>
-
-        <div className="prdct-lst-pgntn">
-          Pagination
-        </div>
-
-        <div className="prdct-lst">
-          <Query
-            query={query}
-            variables={variables}
-          >
-            {({ data, error, loading }) => {
-              if (loading) return <p>Loading...</p>;
-              if (error) return <p>Error: {error.message}</p>;
-              return (
-                <div className="prdct-lst-itms">
-                  {data.products && data.products.map(prdct =>
-                    <ProductsListItem product={prdct} key={prdct.id} />
-                  )}
-                </div>
-              );
-            }}
-          </Query>
-        </div>
-      </StyledProductsList>
+      <Query
+        query={query}
+        variables={variables}
+      >
+        {({ data, error, loading }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error: {error.message}</p>;
+          return (
+            <StyledProductsList>
+              {data.products.map(prdct =>
+                <ProductsListItem
+                  key={prdct.id}
+                  product={prdct}
+                />
+              )}
+            </StyledProductsList>
+          );
+        }}
+      </Query>
     );
   }
 }
