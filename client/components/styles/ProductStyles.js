@@ -146,7 +146,7 @@ const StyledProductsListItem = styled.div`
   }
 `;
 
-const StyledEditProductVariant = styled.div`
+const StyledEditProductVariants = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-gap: 2.5rem;
@@ -163,5 +163,5 @@ export {
   StyledProductVariants,
   StyledProductsList,
   StyledProductsListItem,
-  StyledEditProductVariant
+  StyledEditProductVariants
 };

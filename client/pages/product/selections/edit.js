@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { StyledEditPage } from '../../../components/styles/PageStyles';
 import SingleProduct from '../../../components/SingleProduct';
-import EditProductVariant from '../../../components/EditProductVariant';
+import EditProductVariants from '../../../components/EditProductVariants';
 
 
 const EditProductVariantsPage = props => {
@@ -31,7 +31,7 @@ const EditProductVariantsPage = props => {
               {!product.productVariants.length ? (
                 <p>This product does not have any selections.</p>
               ) : (
-                <EditProductVariant
+                <EditProductVariants
                   productVariants={product.productVariants}
                   productId={id}
                 />

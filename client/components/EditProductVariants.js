@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { StyledEditProductVariant } from './styles/ProductStyles';
+import { StyledEditProductVariants } from './styles/ProductStyles';
 import ProductVariants from './ProductVariants';
 import { UpdateProductVariantForm } from './Forms';
 import DeleteProductVariant from './Buttons/DeleteProductVariant';
 
 
-class EditProductVariant extends Component {
+class EditProductVariants extends Component {
   state = { currentVariant: null };
   selectVariant = (e, currentVariant) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ class EditProductVariant extends Component {
     const { currentVariant } = this.state;
     const id = currentVariant ? currentVariant.id : null;
     return (
-      <StyledEditProductVariant>
+      <StyledEditProductVariants>
         <ProductVariants
           variants={this.props.productVariants}
           online={true}
@@ -36,9 +36,9 @@ class EditProductVariant extends Component {
           id={id}
           productId={this.props.productId}
         >Delete Selection</DeleteProductVariant>
-      </StyledEditProductVariant>
+      </StyledEditProductVariants>
     );
   };
 };
 
-export default EditProductVariant;
+export default EditProductVariants;
