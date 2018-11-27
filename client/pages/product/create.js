@@ -1,15 +1,19 @@
-import { StyledCreateProduct } from '../../components/styles/ProductStyles';
+import { StyledCreatePage } from '../../components/styles/PageStyles';
 import { CreateProductForm } from '../../components/Forms';
+import PageTitle from '../../components/PageTitle';
 
 
 const CreateProductPage = props => {
   return (
-    <StyledCreateProduct>
-      <div>Create Product</div>
+    <StyledCreatePage>
+      <PageTitle page='Create Product' />
 
-      <CreateProductForm />
-    </StyledCreateProduct>
+      <div className="create-pg-form">
+        <CreateProductForm />
+      </div>
+    </StyledCreatePage>
   );
 };
+
 
 export default CreateProductPage;
