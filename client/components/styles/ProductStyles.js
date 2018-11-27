@@ -211,11 +211,14 @@ const StyledCreateProduct = styled.div`
 const StyledEditProductVariant = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
-  .edt-prdct-updt {
+  grid-gap: 2.5rem;
+  .edit-prdct-var-form {
     grid-column: 2 / 2;
     justify-content: center;
+    background-color: ${props => props.theme.beige};
+    box-shadow: ${props => props.theme.bs};
   }
-`
+`;
 
 export default StyledProduct;
 export {
