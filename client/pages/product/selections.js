@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { StyledEditPage } from '../../../components/styles/PageStyles';
-import SingleProduct from '../../../components/SingleProduct';
-import EditProductVariants from '../../../components/EditProductVariants';
+import { StyledEditPage } from '../../components/styles/PageStyles';
+import SingleProduct from '../../components/SingleProduct';
+import EditProductVariants from '../../components/EditProductVariants';
 
 
 const EditProductVariantsPage = props => {
