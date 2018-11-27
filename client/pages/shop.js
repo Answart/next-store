@@ -1,3 +1,5 @@
+import { StyledShopPage } from '../components/styles/PageStyles';
+import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
 import { capWord } from '../lib/utilFns';
 
@@ -28,13 +30,27 @@ const Shop = props => {
   const shopProps = getShopProps(props.query);
   const { variables, pageLabel, queryType } = shopProps;
   return (
-    <div>
-      <ProductsList
-        variables={variables}
-        pageLabel={pageLabel}
-        queryType={queryType}
+    <StyledShopPage>
+      <PageTitle
+        page={pageLabel}
+        titles={[]}
       />
-    </div>
+
+      <div className="shop-pg-filters">
+        Filters
+      </div>
+
+      <div className="shop-pg-pgntn">
+        Pagination
+      </div>
+
+      <div className="shop-pg-lst">
+        <ProductsList
+          variables={variables}
+          queryType={queryType}
+        />
+      </div>
+    </StyledShopPage>
   );
 };
 
