@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { StyledEditPage } from '../../components/styles/PageStyles';
 import SingleProduct from '../../components/SingleProduct';
+import PageTitle from '../../components/PageTitle';
 import EditProductVariants from '../../components/EditProductVariants';
 
 
@@ -15,6 +16,19 @@ const EditProductVariantsPage = props => {
         const productTitle = product ? product.title : '';
         return (
           <StyledEditPage>
+            <PageTitle
+              page='Edit'
+              titles={[{
+                label: productTitle,
+                href: {
+                  pathname: '/product/edit',
+                  query: { id }
+                }
+              }, {
+                label: 'Selections'
+              }]}
+            />
+
             <div className="edit-pg-navi">
               <Link href={{
                 pathname: `/product/add`,
