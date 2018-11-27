@@ -68,35 +68,10 @@ const StyledProductVariants = styled.div`
 
 const StyledProductsList = styled.div`
   display: grid;
-  grid-template-rows: 1.9rem 5rem 1fr;
-  grid-template-columns: 18rem 1fr;
-  grid-gap: 2.5rem;
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto;
-  .prdct-lst-title {
-    grid-column: 1 / -1;
-    grid-row: 1 / 1;
-  }
-  .prdct-lst-filters {
-    grid-column: 1 / 1;
-    grid-row: 2 / -1;
-    max-width: ${props => props.theme.maxWidth};
-  }
-  .prdct-lst-pgntn {
-    grid-column: 2 / -1;
-    grid-row: 2 / 2;
-    max-width: ${props => props.theme.maxWidth};
-  }
-  .prdct-lst {
-    grid-column: 2 / -1;
-    grid-row: 3 / -1;
-  }
-  .prdct-lst-itms {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    grid-gap: 2.2rem;
-    justify-content: space-between;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-gap: 2.2rem;
+  justify-content: space-between;
+  background-color: pink;
 `;
 
 const StyledProductsListItem = styled.div`
