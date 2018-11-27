@@ -14,19 +14,20 @@ const EditProductVariantsPage = props => {
         if (error) return <p>Error: {error.message}</p>;
         const { product } = data;
         const productTitle = product ? product.title : '';
+        const titles = [{
+          label: productTitle,
+          href: {
+            pathname: '/product/edit',
+            query: { id }
+          }
+        }, {
+          label: 'Selections'
+        }];
         return (
           <StyledEditPage>
             <PageTitle
               page='Edit'
-              titles={[{
-                label: productTitle,
-                href: {
-                  pathname: '/product/edit',
-                  query: { id }
-                }
-              }, {
-                label: 'Selections'
-              }]}
+              titles={titles}
             />
 
             <div className="edit-pg-navi">
