@@ -16,7 +16,7 @@ const Menu = props => {
             >Hi, {user.name}!</button>
 
             <div id="myDropdown" className={acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
-              <a className="undrln-btn" href="/product/create">Create Product</a>
+              <a className="undrln-btn" href="/sell">Create Product</a>
               <a className="undrln-btn" href={`/shop?name=${user.name}`}>My Products</a>
               <a className="undrln-btn" href="/account/orders">Order History</a>
               <a className="undrln-btn" href="/account/sales">Sale History</a>
@@ -24,7 +24,7 @@ const Menu = props => {
             </div>
           </span>
 
-          <Link href="/product/create"><a>
+          <Link href="/sell"><a>
             <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
           </a></Link>
 

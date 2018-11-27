@@ -1,6 +1,6 @@
-import { StyledCreatePage } from '../../components/styles/PageStyles';
-import { CreateProductForm } from '../../components/Forms';
-import PageTitle from '../../components/PageTitle';
+import { StyledCreatePage } from '../components/styles/PageStyles';
+import { CreateProductForm } from '../components/Forms';
+import PageTitle from '../components/PageTitle';
 
 
 const CreateProductPage = props => {
