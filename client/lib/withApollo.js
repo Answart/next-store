@@ -15,21 +15,21 @@ function createClient({ headers }) {
         headers
       });
     },
-    resolvers: {
-      Mutation: {
-        toggleCart(_, variables, { cache }) {
-          const { cartOpen } = cache.readQuery({
-            query: LOCAL_CARTOPEN_QUERY
-          });
-          const data = {
-            data: { cartOpen: !cartOpen }
-          };
-          cache.writeData(data);
-          return data;
-        }
-      }
-    },
     clientState: {
+      resolvers: {
+        Mutation: {
+          toggleCart(_, variables, { cache }) {
+            const { cartOpen } = cache.readQuery({
+              query: LOCAL_CARTOPEN_QUERY
+            });
+            const data = {
+              data: { cartOpen: !cartOpen }
+            };
+            cache.writeData(data);
+            return data;
+          }
+        }
+      },
       defaults: {
         cartOpen: false
       }

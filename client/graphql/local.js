@@ -8,7 +8,7 @@ const LOCAL_CARTOPEN_QUERY = gql`
 `;
 
 const TOGGLE_LOCAL_CARTOPEN_MUTATION = gql`
-  query {
+  mutation {
     toggleCart @client
   }
 `;
