@@ -1,5 +1,5 @@
 export {
-  LOCAL_CARTOPEN_STATE_QUERY,
+  LOCAL_CARTOPEN_QUERY,
   TOGGLE_LOCAL_CARTOPEN_MUTATION
 } from './local';
 export {
