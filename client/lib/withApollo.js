@@ -13,6 +13,9 @@ function createClient({ headers }) {
         },
         headers
       });
+    },
+    clientState: {
+      defaults: {}
     }
   });
 }
