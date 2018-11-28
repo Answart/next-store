@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyledProductVariants } from './styles/ProductStyles';
+import PriceTag from './PriceTag';
 import { getUniqKeyVals, getFltrdObjs } from '../lib/utilFns';
 import formatMoney from '../lib/formatMoney';
 
@@ -77,20 +78,7 @@ class ProductVariants extends Component {
     return (
       <StyledProductVariants>
         {variant && (
-          <div className='prdct-var-price prdct-padding'>
-            {variant.sale ? (
-              <h3>
-                <span className='line-through'>
-                  {formatMoney(variant.price)}
-                </span>
-                <span className='prdct-var-price prdct-var-sale-price'>
-                  {formatMoney(variant.salePrice)}
-                </span>
-              </h3>
-            ) : (
-              <h3>{formatMoney(variant.price)}</h3>
-            )}
-          </div>
+          <PriceTag variant={variant} />
         )}
 
         {sizes && !!sizes.length && (

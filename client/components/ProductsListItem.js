@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledProductsListItem } from './styles/ProductStyles';
-import styled from 'styled-components';
+import PriceTag from './PriceTag';
 import formatMoney from '../lib/formatMoney';
 import { user } from '../lib/dummyData';
 
@@ -40,20 +40,7 @@ export default class Product extends Component {
 
           {variant && variant.price && (
             <div className='prdct-itm-price'>
-              {variant.sale ? (
-                <div>
-                  <span className='line-through'>
-                    {formatMoney(variant.price)}
-                  </span>
-                  <span className='prdct-itm-price prdct-itm-sale'>
-                    {formatMoney(variant.salePrice)}
-                  </span>
-                </div>
-              ) : (
-                <div>
-                  {formatMoney(variant.price)}
-                </div>
-              )}
+              <PriceTag variant={variant} />
             </div>
           )}
 

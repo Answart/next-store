@@ -58,12 +58,6 @@ const StyledProduct = styled.div`
 const StyledProductVariants = styled.div`
   width: 100%;
   bottom: 0;
-  .prdct-var-price {
-    padding: 1rem 0.5rem;
-  }
-  .prdct-var-sale-price {
-    color: ${props => props.theme.red};
-  }
 `;
 
 const StyledProductsList = styled.div`
@@ -105,10 +99,6 @@ const StyledProductsListItem = styled.div`
       font-size: 0.85rem;
       font-weight: bold;
       color: ${props => props.theme.lightGrey};
-    }
-    .prdct-itm-sale {
-      padding-left: 0.5rem;
-      color: ${props => props.theme.orange};
     }
     .prdct-itm-avail {
       padding: 0.2rem 0;
