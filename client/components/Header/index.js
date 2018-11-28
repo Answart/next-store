@@ -14,10 +14,6 @@ class Header extends Component {
 
     this.setState({ acctDrpdwn: !currentState });
   };
-  toggleCart = e => {
-    if (!!e && e.preventDefault) e.preventDefault();
-    console.log('toggling cart');
-  }
   render() {
     return (
       <StyledHeader>
@@ -33,7 +29,6 @@ class Header extends Component {
           <Menu
             acctDrpdwn={this.state.acctDrpdwn}
             toggAcctDrpdwn={this.toggAcctDrpdwn}
-            toggleCart={this.toggleCart}
           />
         </div>
 

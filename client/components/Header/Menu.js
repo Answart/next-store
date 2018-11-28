@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Logout from '../Buttons/Logout.js';
+import ToggleCart from '../Buttons/ToggleCart.js';
 import { user } from '../../lib/dummyData';
 
 
 const Menu = props => {
-  const { acctDrpdwn, toggAcctDrpdwn, toggleCart } = props;
+  const { acctDrpdwn, toggAcctDrpdwn } = props;
   const authed = !!user ? !!user.name : false;
   return (
     <div className="hdr-menu">
@@ -36,9 +37,9 @@ const Menu = props => {
           </a></Link>
 
           <span className="hdr-inline hdr-pad">
-            <button
-              onClick={toggleCart}
-            ><img src="/static/images/cart.svg" alt="Cart" height="14" width="14" /></button>
+            <ToggleCart>
+              <img src="/static/images/cart.svg" alt="Cart" height="14" width="14" />
+            </ToggleCart>
           </span>
         </>
       ) : (
