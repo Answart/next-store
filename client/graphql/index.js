@@ -1,4 +1,7 @@
 export {
+  LOCAL_CARTOPEN_STATE_QUERY
+} from './local';
+export {
   SIGNUP_MUTATION,
   LOGIN_MUTATION,
   LOG_OUT_MUTATION

@@ -15,7 +15,9 @@ function createClient({ headers }) {
       });
     },
     clientState: {
-      defaults: {}
+      defaults: {
+        cartOpen: false
+      }
     }
   });
 }
