@@ -7,7 +7,14 @@ const LOCAL_CARTOPEN_STATE_QUERY = gql`
   }
 `;
 
+const TOGGLE_LOCAL_CARTOPEN_MUTATION = gql`
+  query {
+    toggleCart @client
+  }
+`;
+
 
 export {
-  LOCAL_CARTOPEN_STATE_QUERY
+  LOCAL_CARTOPEN_STATE_QUERY,
+  TOGGLE_LOCAL_CARTOPEN_MUTATION
 };

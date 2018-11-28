@@ -1,6 +1,7 @@
 import withApollo from 'next-with-apollo';
 import ApolloClient from 'apollo-boost';
 import { SERVER_URL } from '../config';
+import { LOCAL_CARTOPEN_STATE_QUERY } from '../graphql';
 
 
 function createClient({ headers }) {
@@ -13,6 +14,20 @@ function createClient({ headers }) {
         },
         headers
       });
+    },
+    resolvers: {
+      Mutation: {
+        toggleCart(_, variables, { cache }) {
+          const { cartOpen } = cache.readQuery({
+            query: LOCAL_CARTOPEN_STATE_QUERY
+          });
+          const data = {
+            data: { cartOpen: !cartOpen }
+          };
+          cache.writeData(data);
+          return data;
+        }
+      }
     },
     clientState: {
       defaults: {
