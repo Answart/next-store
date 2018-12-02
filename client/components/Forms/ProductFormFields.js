@@ -18,13 +18,19 @@ class ProductFormFields extends Component {
     previewImage: PropTypes.bool
   };
   handleChange = e => {
-    const { name, type, value, checked } = e.target;
+    let { name, type, value, checked } = e.target;
     let state = {};
     let val = value;
 
     if (type === 'number') val = value ? parseFloat(value) : 0;
     if (type === 'checkbox') val = checked;
     if (name === 'department') state.category = '';
+    if (type === 'radio') {
+      if (name === 'online' || name === 'offline') {
+        val = (name === 'online');
+        name = 'online';
+      }
+    }
     state[name] = val;
 
     this.props.saveToState(state);
@@ -129,16 +135,26 @@ class ProductFormFields extends Component {
             />
           </label>
 
-          <input
-            type="checkbox"
-            id="online"
-            name="online"
-            value={this.props.online}
-            onChange={this.handleChange}
-            checked={this.props.online ? "checked" : ""}
-          />
-          <label htmlFor="online" className="chkbx-label">
-            Online
+          <label htmlFor="status">
+            Status:
+            <div>
+              <input
+                type="radio"
+                name='offline'
+                value={!this.props.online}
+                checked={!this.props.online}
+                onChange={this.handleChange}
+              /><label htmlFor="offline" className="inline-lbl">Private</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name='online'
+                value={this.props.online}
+                checked={this.props.online}
+                onChange={this.handleChange}
+              /><label htmlFor="online" className="inline-lbl">Public</label>
+            </div>
           </label>
 
           <label htmlFor="image">
