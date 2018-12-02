@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sat Dec 01 2018 15:42:50 GMT-0800 (Pacific Standard Time)
+# timestamp: Sat Dec 01 2018 17:07:06 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!
@@ -469,10 +469,9 @@ type Product implements Node {
   title: String!
   description: String!
   image: String!
-  online: Boolean
+  online: Boolean!
   category: String
   brand: String
-  url: String
   productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant!]
   user: User!
   createdAt: DateTime!
@@ -494,10 +493,9 @@ input ProductCreateInput {
   title: String!
   description: String!
   image: String!
-  online: Boolean
+  online: Boolean!
   category: String
   brand: String
-  url: String
   productVariants: ProductVariantCreateManyWithoutProductInput
   user: UserCreateOneInput!
 }
@@ -517,10 +515,9 @@ input ProductCreateWithoutProductVariantsInput {
   title: String!
   description: String!
   image: String!
-  online: Boolean
+  online: Boolean!
   category: String
   brand: String
-  url: String
   user: UserCreateOneInput!
 }
 
@@ -550,8 +547,6 @@ enum ProductOrderByInput {
   category_DESC
   brand_ASC
   brand_DESC
-  url_ASC
-  url_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -564,10 +559,9 @@ type ProductPreviousValues {
   title: String!
   description: String!
   image: String!
-  online: Boolean
+  online: Boolean!
   category: String
   brand: String
-  url: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -619,7 +613,6 @@ input ProductUpdateDataInput {
   online: Boolean
   category: String
   brand: String
-  url: String
   productVariants: ProductVariantUpdateManyWithoutProductInput
   user: UserUpdateOneRequiredInput
 }
@@ -632,7 +625,6 @@ input ProductUpdateInput {
   online: Boolean
   category: String
   brand: String
-  url: String
   productVariants: ProductVariantUpdateManyWithoutProductInput
   user: UserUpdateOneRequiredInput
 }
@@ -645,7 +637,6 @@ input ProductUpdateManyMutationInput {
   online: Boolean
   category: String
   brand: String
-  url: String
 }
 
 input ProductUpdateOneRequiredInput {
@@ -670,7 +661,6 @@ input ProductUpdateWithoutProductVariantsDataInput {
   online: Boolean
   category: String
   brand: String
-  url: String
   user: UserUpdateOneRequiredInput
 }
 
@@ -1662,46 +1652,6 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   brand_not_ends_with: String
-  url: String
-
-  """All values that are not equal to given value."""
-  url_not: String
-
-  """All values that are contained in given list."""
-  url_in: [String!]
-
-  """All values that are not contained in given list."""
-  url_not_in: [String!]
-
-  """All values less than the given value."""
-  url_lt: String
-
-  """All values less than or equal the given value."""
-  url_lte: String
-
-  """All values greater than the given value."""
-  url_gt: String
-
-  """All values greater than or equal the given value."""
-  url_gte: String
-
-  """All values containing the given string."""
-  url_contains: String
-
-  """All values not containing the given string."""
-  url_not_contains: String
-
-  """All values starting with the given string."""
-  url_starts_with: String
-
-  """All values not starting with the given string."""
-  url_not_starts_with: String
-
-  """All values ending with the given string."""
-  url_ends_with: String
-
-  """All values not ending with the given string."""
-  url_not_ends_with: String
   createdAt: DateTime
 
   """All values that are not equal to given value."""
