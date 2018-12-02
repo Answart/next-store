@@ -10,6 +10,15 @@ const Mutation = {
 
     return await ctx.db.mutation.createUser({ data }, info);
   },
+  async createImage(parent, args, ctx, info) {
+    const data = { ...args };
+    return await ctx.db.mutation.createImage({ data }, info);
+  },
+  async deleteImage(parent, args, ctx, info) {
+    return await ctx.db.mutation.deleteImage({
+      where: { id: args.id }
+    }, info);
+  },
   async createProduct(parent, args, ctx, info) {
     const data = { ...args };
     // Logged in?

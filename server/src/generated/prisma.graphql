@@ -1,5 +1,9 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sun Nov 25 2018 20:38:18 GMT-0800 (Pacific Standard Time)
+# timestamp: Sat Dec 01 2018 15:42:50 GMT-0800 (Pacific Standard Time)
+
+type AggregateImage {
+  count: Int!
+}
 
 type AggregateProduct {
   count: Int!
@@ -20,6 +24,385 @@ type BatchPayload {
 
 scalar DateTime
 
+type Image implements Node {
+  id: ID!
+  cloudinary_id: String!
+  name: String!
+  image_url: String!
+  large_image_url: String!
+  product: Product!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type ImageConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ImageEdge]!
+  aggregate: AggregateImage!
+}
+
+input ImageCreateInput {
+  cloudinary_id: String!
+  name: String!
+  image_url: String!
+  large_image_url: String!
+  product: ProductCreateOneInput!
+}
+
+"""An edge in a connection."""
+type ImageEdge {
+  """The item at the end of the edge."""
+  node: Image!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ImageOrderByInput {
+  id_ASC
+  id_DESC
+  cloudinary_id_ASC
+  cloudinary_id_DESC
+  name_ASC
+  name_DESC
+  image_url_ASC
+  image_url_DESC
+  large_image_url_ASC
+  large_image_url_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ImagePreviousValues {
+  id: ID!
+  cloudinary_id: String!
+  name: String!
+  image_url: String!
+  large_image_url: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ImageSubscriptionPayload {
+  mutation: MutationType!
+  node: Image
+  updatedFields: [String!]
+  previousValues: ImagePreviousValues
+}
+
+input ImageSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ImageSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ImageSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ImageSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ImageWhereInput
+}
+
+input ImageUpdateInput {
+  cloudinary_id: String
+  name: String
+  image_url: String
+  large_image_url: String
+  product: ProductUpdateOneRequiredInput
+}
+
+input ImageUpdateManyMutationInput {
+  cloudinary_id: String
+  name: String
+  image_url: String
+  large_image_url: String
+}
+
+input ImageWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ImageWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ImageWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ImageWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  cloudinary_id: String
+
+  """All values that are not equal to given value."""
+  cloudinary_id_not: String
+
+  """All values that are contained in given list."""
+  cloudinary_id_in: [String!]
+
+  """All values that are not contained in given list."""
+  cloudinary_id_not_in: [String!]
+
+  """All values less than the given value."""
+  cloudinary_id_lt: String
+
+  """All values less than or equal the given value."""
+  cloudinary_id_lte: String
+
+  """All values greater than the given value."""
+  cloudinary_id_gt: String
+
+  """All values greater than or equal the given value."""
+  cloudinary_id_gte: String
+
+  """All values containing the given string."""
+  cloudinary_id_contains: String
+
+  """All values not containing the given string."""
+  cloudinary_id_not_contains: String
+
+  """All values starting with the given string."""
+  cloudinary_id_starts_with: String
+
+  """All values not starting with the given string."""
+  cloudinary_id_not_starts_with: String
+
+  """All values ending with the given string."""
+  cloudinary_id_ends_with: String
+
+  """All values not ending with the given string."""
+  cloudinary_id_not_ends_with: String
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  image_url: String
+
+  """All values that are not equal to given value."""
+  image_url_not: String
+
+  """All values that are contained in given list."""
+  image_url_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_lte: String
+
+  """All values greater than the given value."""
+  image_url_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_gte: String
+
+  """All values containing the given string."""
+  image_url_contains: String
+
+  """All values not containing the given string."""
+  image_url_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_not_ends_with: String
+  large_image_url: String
+
+  """All values that are not equal to given value."""
+  large_image_url_not: String
+
+  """All values that are contained in given list."""
+  large_image_url_in: [String!]
+
+  """All values that are not contained in given list."""
+  large_image_url_not_in: [String!]
+
+  """All values less than the given value."""
+  large_image_url_lt: String
+
+  """All values less than or equal the given value."""
+  large_image_url_lte: String
+
+  """All values greater than the given value."""
+  large_image_url_gt: String
+
+  """All values greater than or equal the given value."""
+  large_image_url_gte: String
+
+  """All values containing the given string."""
+  large_image_url_contains: String
+
+  """All values not containing the given string."""
+  large_image_url_not_contains: String
+
+  """All values starting with the given string."""
+  large_image_url_starts_with: String
+
+  """All values not starting with the given string."""
+  large_image_url_not_starts_with: String
+
+  """All values ending with the given string."""
+  large_image_url_ends_with: String
+
+  """All values not ending with the given string."""
+  large_image_url_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  product: ProductWhereInput
+}
+
+input ImageWhereUniqueInput {
+  id: ID
+}
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -27,24 +410,30 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createProduct(data: ProductCreateInput!): Product!
   createProductVariant(data: ProductVariantCreateInput!): ProductVariant!
+  createImage(data: ImageCreateInput!): Image!
   createUser(data: UserCreateInput!): User!
-  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
+  createProduct(data: ProductCreateInput!): Product!
   updateProductVariant(data: ProductVariantUpdateInput!, where: ProductVariantWhereUniqueInput!): ProductVariant
+  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  deleteProduct(where: ProductWhereUniqueInput!): Product
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   deleteProductVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
+  deleteImage(where: ImageWhereUniqueInput!): Image
   deleteUser(where: UserWhereUniqueInput!): User
-  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
+  deleteProduct(where: ProductWhereUniqueInput!): Product
   upsertProductVariant(where: ProductVariantWhereUniqueInput!, create: ProductVariantCreateInput!, update: ProductVariantUpdateInput!): ProductVariant!
+  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   updateManyProductVariants(data: ProductVariantUpdateManyMutationInput!, where: ProductVariantWhereInput): BatchPayload!
+  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
   deleteManyProductVariants(where: ProductVariantWhereInput): BatchPayload!
+  deleteManyImages(where: ImageWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -111,6 +500,11 @@ input ProductCreateInput {
   url: String
   productVariants: ProductVariantCreateManyWithoutProductInput
   user: UserCreateOneInput!
+}
+
+input ProductCreateOneInput {
+  create: ProductCreateInput
+  connect: ProductWhereUniqueInput
 }
 
 input ProductCreateOneWithoutProductVariantsInput {
@@ -217,6 +611,19 @@ input ProductSubscriptionWhereInput {
   node: ProductWhereInput
 }
 
+input ProductUpdateDataInput {
+  department: String
+  title: String
+  description: String
+  image: String
+  online: Boolean
+  category: String
+  brand: String
+  url: String
+  productVariants: ProductVariantUpdateManyWithoutProductInput
+  user: UserUpdateOneRequiredInput
+}
+
 input ProductUpdateInput {
   department: String
   title: String
@@ -241,6 +648,13 @@ input ProductUpdateManyMutationInput {
   url: String
 }
 
+input ProductUpdateOneRequiredInput {
+  create: ProductCreateInput
+  connect: ProductWhereUniqueInput
+  update: ProductUpdateDataInput
+  upsert: ProductUpsertNestedInput
+}
+
 input ProductUpdateOneRequiredWithoutProductVariantsInput {
   create: ProductCreateWithoutProductVariantsInput
   connect: ProductWhereUniqueInput
@@ -258,6 +672,11 @@ input ProductUpdateWithoutProductVariantsDataInput {
   brand: String
   url: String
   user: UserUpdateOneRequiredInput
+}
+
+input ProductUpsertNestedInput {
+  update: ProductUpdateDataInput!
+  create: ProductCreateInput!
 }
 
 input ProductUpsertWithoutProductVariantsInput {
@@ -1338,15 +1757,18 @@ input ProductWhereUniqueInput {
 }
 
 type Query {
-  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant]!
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  product(where: ProductWhereUniqueInput!): Product
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   productVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
+  image(where: ImageWhereUniqueInput!): Image
   user(where: UserWhereUniqueInput!): User
-  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
+  product(where: ProductWhereUniqueInput!): Product
   productVariantsConnection(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductVariantConnection!
+  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -1356,9 +1778,10 @@ type Query {
 }
 
 type Subscription {
-  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
   productVariant(where: ProductVariantSubscriptionWhereInput): ProductVariantSubscriptionPayload
+  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
 }
 
 type User implements Node {

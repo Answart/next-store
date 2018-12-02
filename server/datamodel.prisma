@@ -34,3 +34,14 @@ type ProductVariant {
   salePrice: Float! @default(value: 1.00)
   product: Product!
 }
+
+type Image {
+  id: ID! @unique
+  cloudinary_id: String!
+  name: String!
+  image_url: String!
+  large_image_url: String!
+  product: Product!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
