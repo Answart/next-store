@@ -36,6 +36,7 @@ Tech Stack and Key Packages
 * [Styled-Components](https://www.styled-components.com/): CSS for styling React component systems
 * [Jest](https://facebook.github.io/jest/): Javascript testing
 * [Enzyme](https://github.com/airbnb/enzyme): React testing utility
+* [Cloudinary](https://cloudinary.com/): Image hosting
 
 App Map
 -------
@@ -73,18 +74,18 @@ client/
         _app.js               App root for navigating pages and persisting state between page changes
         _document.js          File to implement server side rendering for css-in-js libraries
         index.js              Home page
-        signup.js             Signup page
-        permissions.js        Permissions page
-        reset.js              Reset password page
-        shop.js               Catalog page
-        order.js              Current order page
+        signup.js             User signup/login page
+        permissions.js        User permissions page
+        reset.js              Reset User password page
+        order.js              Order page
         orders.js             Order history page
+        shop.js               Products catalog page
+        buy.js                Product page
+        sell.js               Create Product page
         product/
-            buy.js                Singular product page
-            create.js             Submit item to sell page
-            edit.js               Update product page
-            selections/
-                edit.js               Update productVariant page
+            edit.js               Update Product page
+            selections.js         Update Product's ProductVariants page
+            add.js                Update Product with new ProductVariant page
 ```
 
 Getting Started
@@ -95,12 +96,15 @@ Getting Started
 $ cd client;npm install;cd ../server;npm install;cd ..;
 
 #Create a .env file in server directory that has the following:
+APP_SECRET="<SECRETSTRINGOFYOURCHOICE>"
+PORT=4242
 CLIENT_URL="http://localhost:7272"
+CLOUDINARY_API_KEY="<CLOUDINARYAPIKEY>"
+CLOUDINARY_PRESET="nextstore"
+CLOUDINARY_SECRET="<CLOUDINARYSECRETSTRING>"
 PRISMA_ENDPOINT="https://us1.prisma.sh/<WORKSPACENAME>/<SERVICENAME>/<STAGE>"
 PRISMA_SECRET="<SECRETPRISMASTRINGOFYOURCHOICE>"
-APP_SECRET="<SECRETSTRINGOFYOURCHOICE>"
-STRIPE_SECRET="<STRIPESECRETSTRING"
-PORT=4242
+STRIPE_SECRET="<STRIPESECRETSTRING>"
 MAIL_HOST="<MAILTRAPHOSTNAME>"
 MAIL_PORT="<MAILTRAPPORTNUMBER>"
 MAIL_USER="<MAILTRAPUSER>"
