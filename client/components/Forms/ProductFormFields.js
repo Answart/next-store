@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ByCreator from '../ByCreator';
 import departments from '../../lib/departments';
 import categoriesByDept from '../../lib/categoriesByDept';
 import { user } from '../../lib/dummyData';
@@ -78,9 +79,10 @@ class ProductFormFields extends Component {
             />
           </label>
 
-          <div className="prdct-creator field-padding">
-            By <strong>{user.name}</strong>
-          </div>
+          <ByCreator
+            name={user.name}
+            online={true}
+          />
 
           <label htmlFor="department">
             Department:

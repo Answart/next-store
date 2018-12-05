@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import StyledProduct from './styles/ProductStyles';
+import ByCreator from './ByCreator';
 import ProductVariants from './ProductVariants';
 import AddToCart from './Buttons/AddToCart';
 
@@ -24,18 +25,10 @@ class Product extends Component {
             </Link>
           </div>
 
-          <div className="prdct-creator prdct-padding">
-            By
-            <Link href={{
-              pathname: `/shop`,
-              query: {
-                name: `${product.user.name}`,
-                online: true
-              }
-            }}><a className="undrln-btn">
-              {product.user.name}
-            </a></Link>
-          </div>
+          <ByCreator
+            name={product.user.name}
+            online={true}
+          />
 
           <div className="prdct-padding">
             {!viewerIsCreator && !product.online && (
