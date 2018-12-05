@@ -4,8 +4,7 @@ import { PRODUCT_QUERY } from '../graphql';
 
 
 const SingleItem = props => (
-  <Query
-    query={PRODUCT_QUERY}
+  <Query query={PRODUCT_QUERY}
     {...props}
   >
     {payload => props.children(payload)}
@@ -15,5 +14,6 @@ const SingleItem = props => (
 SingleItem.propTypes = {
   children: PropTypes.func.isRequired,
 };
+
 
 export default SingleItem;
