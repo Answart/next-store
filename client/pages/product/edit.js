@@ -22,20 +22,28 @@ const EditProductPage = props => {
               titles={[{ label: productTitle }]}
             />
 
-            <div className="edit-pg-navi">
-              <Link href={{
-                pathname: `/product/selections`,
-                query: { id }
-              }}><a className="undrln-btn">
-                Selections &#8811;
-              </a></Link>
-            </div>
+            {!product ? (
+              <p>
+                No product found!
+              </p>
+            ) : (
+              <>
+                <div className="edit-pg-navi">
+                  <Link href={{
+                    pathname: `/product/selections`,
+                    query: { id }
+                  }}><a className="undrln-btn">
+                    Selections &#8811;
+                  </a></Link>
+                </div>
 
-            <div className="edit-pg-content">
-              <UpdateProductForm product={product} />
+                <div className="edit-pg-content">
+                  <UpdateProductForm product={product} />
 
-              <DeleteProduct id={id}>Delete Product</DeleteProduct>
-            </div>
+                  <DeleteProduct id={id}>Delete Product</DeleteProduct>
+                </div>
+              </>
+            )}
           </StyledEditPage>
         )
       }}
