@@ -54,15 +54,15 @@ class ProductFormFields extends Component {
       : categoriesByDept['Tops'];
     return (
       <div>
-        {previewImage && (
-          <div className="prdct-imgs">
-            {image && (
-              <img width="200" src={image} alt="Upload Preview" />
-            )}
-          </div>
-        )}
+        <div className="form-imgs">
+          {!!image && (
+            <img width="450" height="640" src={image} alt="Placeholder Image" />
+          ) : (
+            <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
+          )}
+        </div>
 
-        <div className="prdct-content">
+        <div className="form-content">
           <div className="field-padding">
             <label htmlFor="title">
               Title:
