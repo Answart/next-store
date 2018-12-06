@@ -137,6 +137,44 @@ const UPDATE_PRODUCT_MUTATION = gql`
   }
 `;
 
+const UPDATE_PRODUCT_WITH_IMAGE_MUTATION = gql`
+  mutation UPDATE_PRODUCT_WITH_IMAGE_MUTATION(
+    $id: ID!,
+    $title: String!,
+    $department: String!,
+    $description: String!,
+    $category: String,
+    $brand: String,
+    $online: Boolean!,
+    $cloudinary_id: String!,
+    $name: String!,
+    $height: Int!,
+    $width: Int!,
+    $transformation: String!,
+    $image_url: String!,
+    $large_image_url: String!
+  ) {
+    updateProductWithImage(
+      id: $id,
+      title: $title,
+      department: $department,
+      description: $description,
+      category: $category,
+      brand: $brand,
+      online: $online,
+      cloudinary_id: $cloudinary_id,
+      name: $name,
+      height: $height,
+      width: $width,
+      transformation: $transformation,
+      image_url: $image_url,
+      large_image_url: $large_image_url
+    ) {
+      id
+    }
+  }
+`;
+
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
     deleteProduct(id: $id) {
@@ -150,5 +188,6 @@ export {
   CREATE_PRODUCT_MUTATION,
   CREATE_PRODUCT_WITH_IMAGE_MUTATION,
   UPDATE_PRODUCT_MUTATION,
+  UPDATE_PRODUCT_WITH_IMAGE_MUTATION
   DELETE_PRODUCT_MUTATION
 }
