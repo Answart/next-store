@@ -3,15 +3,14 @@ import styled from 'styled-components';
 
 const StyledProduct = styled.div`
   display: grid;
-  grid-auto-columns: 1fr 1fr;
-  grid-gap: 3rem;
+  grid-template-columns: 45rem minmax(20rem, 1fr);
   grid-auto-flow: column;
+  grid-gap: 2.5rem;
   text-decoration: none;
   font-size: 1.1rem;
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
   }
   select {
     height: 2rem;
@@ -30,10 +29,8 @@ const StyledProduct = styled.div`
       border-color: ${props => props.theme.darkblue};
     }
   }
-  .prdct-padding {
-    padding: 0.35rem 0;
-  }
   .prdct-imgs {
+    background-color: yellow;
   }
   .prdct-content {
     color: ${props => props.theme.textGrey};
@@ -46,12 +43,26 @@ const StyledProduct = styled.div`
     font-weight: bold;
   }
   .prdct-creator {
-    font-size: 1rem;
     padding-bottom: 1rem;
+    font-weight: normal;
+    a {
+      padding: 0 0.1rem;
+      font-weight: bold;
+      color: ${props => props.theme.textGrey};
+      text-decoration: none;
+    }
+    a:hover {
+      color: ${props => props.theme.darkblue};
+      text-decoration: underline ${props => props.theme.orange};
+    }
   }
   .prdct-desc {
     border-top: 1px solid ${props => props.theme.textGrey};
-    padding: 1rem 0 0 0;
+    margin: 1rem 0;
+    padding: 1rem 0;
+  }
+  .prdct-padding {
+    padding: 0.35rem 0;
   }
 `;
 
