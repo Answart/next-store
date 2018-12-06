@@ -49,8 +49,7 @@ class ProductFormFields extends Component {
     this.props.saveToState({ image });
   };
   render() {
-    const { department, image, previewImage
-    } = this.props;
+    const { department, image, previewImage, online } = this.props;
     let categories = department
       ? categoriesByDept[department]
       : categoriesByDept["Tops"];
