@@ -26,7 +26,7 @@ export default class Product extends Component {
           query: { id: product.id }
         }}>
           <a>{product.image && (
-            <img src={product.image} alt={product.title} />
+            <img width="400" height="610" src={product.image.image_url} alt={product.title} />
           )}</a>
         </Link>
 

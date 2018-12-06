@@ -28,12 +28,12 @@ type Product {
   department: String!
   title: String!
   description: String!
-  image: String!
   online: Boolean!
   category: String
   brand: String
-  productVariants: [ProductVariant!]!
   user: User!
+  image: Image!
+  productVariants: [ProductVariant!]!
   createdAt: DateTime!
   updatedAt: DateTime!
 }

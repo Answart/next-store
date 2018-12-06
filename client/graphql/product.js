@@ -8,10 +8,19 @@ const PRODUCT_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
+      image {
+        id
+        cloudinary_id
+        name
+        width
+        height
+        transformation
+        image_url
+        large_image_url
+      }
       user {
         id
         name
@@ -26,6 +35,19 @@ const PRODUCT_QUERY = gql`
         sale
         salePrice
         availability
+        product {
+          id
+          image {
+            id
+            cloudinary_id
+            name
+            width
+            height
+            transformation
+            image_url
+            large_image_url
+          }
+        }
       }
     }
   }

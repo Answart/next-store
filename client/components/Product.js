@@ -12,7 +12,7 @@ class Product extends Component {
     return (
       <StyledProduct>
         <div className="prdct-imgs">
-          <img src={product.image} alt={product.title} />
+          <img width="450" height="640" src={product.image.large_image_url} alt={product.title} />
         </div>
 
         <div className="prdct-content">

@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Mon Dec 03 2018 04:26:30 GMT-0800 (Pacific Standard Time)
+# timestamp: Thu Dec 06 2018 10:44:34 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!
@@ -59,7 +59,24 @@ input ImageCreateInput {
   image_url: String!
   large_image_url: String!
   user: UserCreateOneInput!
-  product: ProductCreateOneInput
+  product: ProductCreateOneWithoutImageInput
+  productVariants: ProductVariantCreateManyInput
+}
+
+input ImageCreateOneWithoutProductInput {
+  create: ImageCreateWithoutProductInput
+  connect: ImageWhereUniqueInput
+}
+
+input ImageCreateWithoutProductInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
   productVariants: ProductVariantCreateManyInput
 }
 
@@ -156,7 +173,7 @@ input ImageUpdateInput {
   image_url: String
   large_image_url: String
   user: UserUpdateOneRequiredInput
-  product: ProductUpdateOneInput
+  product: ProductUpdateOneWithoutImageInput
   productVariants: ProductVariantUpdateManyInput
 }
 
@@ -168,6 +185,30 @@ input ImageUpdateManyMutationInput {
   transformation: String
   image_url: String
   large_image_url: String
+}
+
+input ImageUpdateOneRequiredWithoutProductInput {
+  create: ImageCreateWithoutProductInput
+  connect: ImageWhereUniqueInput
+  update: ImageUpdateWithoutProductDataInput
+  upsert: ImageUpsertWithoutProductInput
+}
+
+input ImageUpdateWithoutProductDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  productVariants: ProductVariantUpdateManyInput
+}
+
+input ImageUpsertWithoutProductInput {
+  update: ImageUpdateWithoutProductDataInput!
+  create: ImageCreateWithoutProductInput!
 }
 
 input ImageWhereInput {
@@ -527,29 +568,29 @@ scalar Long
 
 type Mutation {
   createImage(data: ImageCreateInput!): Image!
+  createProduct(data: ProductCreateInput!): Product!
   createProductVariant(data: ProductVariantCreateInput!): ProductVariant!
   createUser(data: UserCreateInput!): User!
-  createProduct(data: ProductCreateInput!): Product!
   updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   updateProductVariant(data: ProductVariantUpdateInput!, where: ProductVariantWhereUniqueInput!): ProductVariant
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   deleteImage(where: ImageWhereUniqueInput!): Image
+  deleteProduct(where: ProductWhereUniqueInput!): Product
   deleteProductVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteProduct(where: ProductWhereUniqueInput!): Product
   upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   upsertProductVariant(where: ProductVariantWhereUniqueInput!, create: ProductVariantCreateInput!, update: ProductVariantUpdateInput!): ProductVariant!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
   updateManyProductVariants(data: ProductVariantUpdateManyMutationInput!, where: ProductVariantWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
   deleteManyImages(where: ImageWhereInput): BatchPayload!
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
   deleteManyProductVariants(where: ProductVariantWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyProducts(where: ProductWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -584,12 +625,12 @@ type Product implements Node {
   department: String!
   title: String!
   description: String!
-  image: String!
   online: Boolean!
   category: String
   brand: String
-  productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant!]
   user: User!
+  image: Image!
+  productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -608,16 +649,16 @@ input ProductCreateInput {
   department: String!
   title: String!
   description: String!
-  image: String!
   online: Boolean!
   category: String
   brand: String
-  productVariants: ProductVariantCreateManyWithoutProductInput
   user: UserCreateOneInput!
+  image: ImageCreateOneWithoutProductInput!
+  productVariants: ProductVariantCreateManyWithoutProductInput
 }
 
-input ProductCreateOneInput {
-  create: ProductCreateInput
+input ProductCreateOneWithoutImageInput {
+  create: ProductCreateWithoutImageInput
   connect: ProductWhereUniqueInput
 }
 
@@ -626,15 +667,26 @@ input ProductCreateOneWithoutProductVariantsInput {
   connect: ProductWhereUniqueInput
 }
 
-input ProductCreateWithoutProductVariantsInput {
+input ProductCreateWithoutImageInput {
   department: String!
   title: String!
   description: String!
-  image: String!
   online: Boolean!
   category: String
   brand: String
   user: UserCreateOneInput!
+  productVariants: ProductVariantCreateManyWithoutProductInput
+}
+
+input ProductCreateWithoutProductVariantsInput {
+  department: String!
+  title: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  image: ImageCreateOneWithoutProductInput!
 }
 
 """An edge in a connection."""
@@ -655,8 +707,6 @@ enum ProductOrderByInput {
   title_DESC
   description_ASC
   description_DESC
-  image_ASC
-  image_DESC
   online_ASC
   online_DESC
   category_ASC
@@ -674,7 +724,6 @@ type ProductPreviousValues {
   department: String!
   title: String!
   description: String!
-  image: String!
   online: Boolean!
   category: String
   brand: String
@@ -721,47 +770,25 @@ input ProductSubscriptionWhereInput {
   node: ProductWhereInput
 }
 
-input ProductUpdateDataInput {
-  department: String
-  title: String
-  description: String
-  image: String
-  online: Boolean
-  category: String
-  brand: String
-  productVariants: ProductVariantUpdateManyWithoutProductInput
-  user: UserUpdateOneRequiredInput
-}
-
 input ProductUpdateInput {
   department: String
   title: String
   description: String
-  image: String
   online: Boolean
   category: String
   brand: String
-  productVariants: ProductVariantUpdateManyWithoutProductInput
   user: UserUpdateOneRequiredInput
+  image: ImageUpdateOneRequiredWithoutProductInput
+  productVariants: ProductVariantUpdateManyWithoutProductInput
 }
 
 input ProductUpdateManyMutationInput {
   department: String
   title: String
   description: String
-  image: String
   online: Boolean
   category: String
   brand: String
-}
-
-input ProductUpdateOneInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
-  update: ProductUpdateDataInput
-  upsert: ProductUpsertNestedInput
 }
 
 input ProductUpdateOneRequiredWithoutProductVariantsInput {
@@ -771,20 +798,40 @@ input ProductUpdateOneRequiredWithoutProductVariantsInput {
   upsert: ProductUpsertWithoutProductVariantsInput
 }
 
-input ProductUpdateWithoutProductVariantsDataInput {
+input ProductUpdateOneWithoutImageInput {
+  create: ProductCreateWithoutImageInput
+  connect: ProductWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ProductUpdateWithoutImageDataInput
+  upsert: ProductUpsertWithoutImageInput
+}
+
+input ProductUpdateWithoutImageDataInput {
   department: String
   title: String
   description: String
-  image: String
   online: Boolean
   category: String
   brand: String
   user: UserUpdateOneRequiredInput
+  productVariants: ProductVariantUpdateManyWithoutProductInput
 }
 
-input ProductUpsertNestedInput {
-  update: ProductUpdateDataInput!
-  create: ProductCreateInput!
+input ProductUpdateWithoutProductVariantsDataInput {
+  department: String
+  title: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  image: ImageUpdateOneRequiredWithoutProductInput
+}
+
+input ProductUpsertWithoutImageInput {
+  update: ProductUpdateWithoutImageDataInput!
+  create: ProductCreateWithoutImageInput!
 }
 
 input ProductUpsertWithoutProductVariantsInput {
@@ -1684,46 +1731,6 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   description_not_ends_with: String
-  image: String
-
-  """All values that are not equal to given value."""
-  image_not: String
-
-  """All values that are contained in given list."""
-  image_in: [String!]
-
-  """All values that are not contained in given list."""
-  image_not_in: [String!]
-
-  """All values less than the given value."""
-  image_lt: String
-
-  """All values less than or equal the given value."""
-  image_lte: String
-
-  """All values greater than the given value."""
-  image_gt: String
-
-  """All values greater than or equal the given value."""
-  image_gte: String
-
-  """All values containing the given string."""
-  image_contains: String
-
-  """All values not containing the given string."""
-  image_not_contains: String
-
-  """All values starting with the given string."""
-  image_starts_with: String
-
-  """All values not starting with the given string."""
-  image_not_starts_with: String
-
-  """All values ending with the given string."""
-  image_ends_with: String
-
-  """All values not ending with the given string."""
-  image_not_ends_with: String
   online: Boolean
 
   """All values that are not equal to given value."""
@@ -1852,10 +1859,11 @@ input ProductWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  user: UserWhereInput
+  image: ImageWhereInput
   productVariants_every: ProductVariantWhereInput
   productVariants_some: ProductVariantWhereInput
   productVariants_none: ProductVariantWhereInput
-  user: UserWhereInput
 }
 
 input ProductWhereUniqueInput {
@@ -1864,17 +1872,17 @@ input ProductWhereUniqueInput {
 
 type Query {
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   image(where: ImageWhereUniqueInput!): Image
+  product(where: ProductWhereUniqueInput!): Product
   productVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
   user(where: UserWhereUniqueInput!): User
-  product(where: ProductWhereUniqueInput!): Product
   imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
   productVariantsConnection(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductVariantConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -1885,9 +1893,9 @@ type Query {
 
 type Subscription {
   image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
   productVariant(where: ProductVariantSubscriptionWhereInput): ProductVariantSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
 }
 
 type User implements Node {

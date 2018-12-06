@@ -8,13 +8,16 @@ const PRODUCTS_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
       user {
         id
         name
+      }
+      image {
+        name
+        large_image_url
       }
       productVariants {
         id
@@ -37,14 +40,17 @@ const ONLINE_PRODUCTS_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
-      url
       user {
         id
         name
+      }
+      image {
+        name
+        image_url
+        large_image_url
       }
       productVariants {
         id
@@ -68,13 +74,17 @@ const SELLERS_PRODUCTS_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
       user {
         id
         name
+      }
+      image {
+        name
+        image_url
+        large_image_url
       }
       productVariants {
         id
@@ -97,13 +107,17 @@ const ONLINE_SELLERS_PRODUCTS_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
       user {
         id
         name
+      }
+      image {
+        name
+        image_url
+        large_image_url
       }
       productVariants {
         id
@@ -126,13 +140,17 @@ const ONLINE_DEPT_PRODUCTS_QUERY = gql`
       department
       title
       description
-      image
       category
       brand
       online
       user {
         id
         name
+      }
+      image {
+        name
+        image_url
+        large_image_url
       }
       productVariants {
         id
