@@ -22,13 +22,13 @@ class ProductVariantFormFields extends Component {
 
     if (type === 'number') {
       val = (name == 'price' || name === 'salePrice')
-        ? parseFloat(value).toFixed(2)
-        : parseFloat(value)
+        ? Number(parseFloat(value).toFixed(2))
+        : Number(parseFloat(value))
     }
     if (type === 'checkbox') val = checked;
     if (name === 'sale') state.salePrice = 1.00;
-    state[name] = val;
 
+    state[name] = val;
     this.props.saveToState(state);
   };
   render() {
