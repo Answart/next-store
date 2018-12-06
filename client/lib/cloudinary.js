@@ -32,7 +32,26 @@ const uploadImageFile = async function(file) {
   }
 }
 
+const destroyImageFileByToken = async function(token) {
+  const data = new FormData();
+  data.append('token', token);
+
+  try {
+    const res = await fetch('https://api.cloudinary.com/v1_1/answart/delete_by_token', {
+      method: 'POST',
+      body: data
+    }).then(res => res.json());
+
+    if (!!res.error) throw res.error.message;
+    return res;
+  } catch(e) {
+    console.error('Error in destroyImageFileByToken image file in cloudinary.', e);
+    return { error: true, message: e };
+  }
+}
+
 
 export {
-  uploadImageFile
+  uploadImageFile,
+  destroyImageFileByToken
 };
