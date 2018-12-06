@@ -36,99 +36,104 @@ class ProductVariantFormFields extends Component {
     return (
       <StyledProduct>
         <div className="form-imgs">
-          {!!image ? (
-            <img width="450" height="640" src={image} alt="Placeholder Image" />
-          ) : (
-            <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
-          )}
+          <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
         </div>
 
         <div className="form-content">
-          <label htmlFor="size">
-            Size:
-            <select
-              id="size"
-              name="size"
-              value={this.props.size}
-              onChange={this.handleChange}
-            >
-              <option key={0} value={''}></option>
-              {sizes.map(sz => <option key={sz} value={sz}>{sz}</option>)}
-            </select>
-          </label>
+          <div className="field-padding">
+            <label htmlFor="size">
+              Size:
+              <select
+                id="size"
+                name="size"
+                value={this.props.size}
+                onChange={this.handleChange}
+              >
+                <option key={0} value=''></option>
+                {sizes.map(sz => <option key={sz} value={sz}>{sz}</option>)}
+              </select>
+            </label>
+          </div>
 
-          <label htmlFor="color">
-            Color:
-            <select
-              id="color"
-              name="color"
-              placeholder=""
-              value={this.props.color}
-              onChange={this.handleChange}
-            >
-              <option key={0} value={''}></option>
-              {colors.map(clr => <option key={clr} value={clr}>{clr}</option>)}
-            </select>
-          </label>
+          <div className="field-padding">
+            <label htmlFor="color">
+              Color:
+              <select
+                id="color"
+                name="color"
+                value={this.props.color}
+                onChange={this.handleChange}
+              >
+                <option key={0} value=''></option>
+                {colors.map(clr => <option key={clr} value={clr}>{clr}</option>)}
+              </select>
+            </label>
+          </div>
 
-          <label htmlFor="quantity">
-            Quantity:
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              placeholder="1"
-              min="1"
-              value={this.props.quantity}
-              onChange={this.handleChange}
-              required
-            />
-          </label>
+          <div className="field-padding">
+            <label htmlFor="quantity">
+              Quantity:
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="1"
+                min="1"
+                value={this.props.quantity}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+          </div>
 
-          <label htmlFor="price" className="prdct-padding">
-            Price per Item:
-            <input
-              type="number"
-              id="price"
-              name="price"
-              placeholder="1.00"
-              min="1.00"
-              step="0.01"
-              value={this.props.price}
-              onChange={this.handleChange}
-              required
-            />
-          </label>
+          <div className="field-padding">
+            <label htmlFor="price">
+              Price per Item (USD):
+              <input
+                type="number"
+                id="price"
+                name="price"
+                placeholder={1.00}
+                min={1.00}
+                step={0.01}
+                value={this.props.price}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+          </div>
 
-          <div>
-            <input
-              type="checkbox"
-              id="sale"
-              name="sale"
-              value={sale}
-              onChange={this.handleChange}
-              checked={sale ? "checked" : ""}
-            />
-            <label htmlFor="sale" className="prdct-padding">
-              Is this selection on sale?
+          <div className="field-padding">
+            <label htmlFor="sale">
+              <input
+                type="checkbox"
+                id="sale"
+                name="sale"
+                key={sale}
+                value={sale}
+                onChange={this.handleChange}
+                checked={sale ? "checked" : ""}
+              />On Sale
             </label>
           </div>
 
           {sale && (
-            <label htmlFor="salePrice" className="prdct-padding">
-              Sale Price per Item:
-              <input
-                type="number"
-                id="salePrice"
-                name="salePrice"
-                placeholder="1.00"
-                min="1.00"
-                step="0.01"
-                disabled={!sale}
-                value={this.props.salePrice}
-                onChange={this.handleChange}
-              />
-            </label>
+            <div className="field-padding">
+              <label htmlFor="salePrice">
+                Sale Price per Item (USD):
+                <input
+                  type="number"
+                  id="salePrice"
+                  name="salePrice"
+                  placeholder={1.00}
+                  min={1.00}
+                  step={0.01}
+                  disabled={!sale}
+                  value={this.props.salePrice}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
           )}
         </div>
       </StyledProduct>
