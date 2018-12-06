@@ -30,9 +30,7 @@ class UpdateProductVariantForm extends Component {
       sale: false,
       salePrice: 1.00
     };
-  saveToState = state => {
-    this.setState({ ...state });
-  };
+  saveToState = state => this.setState({ ...state });
   render() {
     return (
       <Mutation
@@ -46,7 +44,7 @@ class UpdateProductVariantForm extends Component {
               e.preventDefault();
               const res = await updateProductVariant();
               Router.push({
-                pathname: '/buy',
+                pathname: "/buy",
                 query: { id: res.data.updateProductVariant.product.id },
               });
             }}
@@ -68,7 +66,7 @@ class UpdateProductVariantForm extends Component {
                 saveToState={this.saveToState}
               />
 
-              <button className="big-btn"
+              <button className="form-submit-btn big-btn"
                 type="submit"
               >Update</button>
             </fieldset>
