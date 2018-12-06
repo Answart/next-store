@@ -14,15 +14,13 @@ class CreateProductVariantForm extends Component {
   state = {
     price: 1.00,
     quantity: 1,
-    color: '',
-    size: '',
+    color: "",
+    size: "",
     sale: false,
     salePrice: 1.00,
     productId: this.props.productId
   };
-  saveToState = state => {
-    this.setState({ ...state });
-  };
+  saveToState = state => this.setState({ ...state });
   render() {
     return (
       <Mutation
@@ -36,7 +34,7 @@ class CreateProductVariantForm extends Component {
               e.preventDefault();
               const res = await createProductVariant();
               Router.push({
-                pathname: '/buy',
+                pathname: "/buy",
                 query: { id: this.props.productId }
               });
             }}
@@ -58,7 +56,7 @@ class CreateProductVariantForm extends Component {
                 saveToState={this.saveToState}
               />
 
-              <button className="big-btn"
+              <button className="form-submit-btn big-btn"
                 type="submit"
               >Add</button>
             </fieldset>
