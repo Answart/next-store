@@ -25,7 +25,3 @@ export {
   UPDATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 } from './productVariant';
-export {
-  PROD_VARIANTS_QUERY,
-  PRODUCT_PROD_VARIANTS_QUERY
-} from './productVariants';
