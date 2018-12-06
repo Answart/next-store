@@ -8,17 +8,15 @@ import { CREATE_PRODUCT_MUTATION } from '../../graphql';
 
 class CreateProductForm extends Component {
   state = {
-    department: 'Tops',
-    title: '',
-    description: '',
-    image: '',
-    category: '',
-    brand: '',
-    online: false
+    department: "Tops",
+    title: "",
+    description: "",
+    category: "",
+    brand: "",
+    online: false,
+    image: ""
   };
-  saveToState = state => {
-    this.setState({ ...state });
-  };
+  saveToState = state => this.setState({ ...state });
   render() {
     return (
       <Mutation
@@ -48,15 +46,15 @@ class CreateProductForm extends Component {
                 title={this.state.title}
                 department={this.state.department}
                 description={this.state.description}
-                image={this.state.image}
                 category={this.state.category}
                 brand={this.state.brand}
                 online={this.state.online}
+                image={this.state.image}
                 saveToState={this.saveToState}
                 previewImage={true}
               />
 
-              <button className="big-btn"
+              <button className="form-submit-btn big-btn"
                 type="submit"
               >Create</button>
             </fieldset>
