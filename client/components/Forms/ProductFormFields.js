@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
 import departments from '../../lib/departments';
 import categoriesByDept from '../../lib/categoriesByDept';
@@ -51,9 +52,9 @@ class ProductFormFields extends Component {
     } = this.props;
     let categories = department
       ? categoriesByDept[department]
-      : categoriesByDept['Tops'];
+      : categoriesByDept["Tops"];
     return (
-      <div>
+      <StyledProduct>
         <div className="form-imgs">
           {!!image && (
             <img width="450" height="640" src={image} alt="Placeholder Image" />
@@ -187,7 +188,7 @@ class ProductFormFields extends Component {
             />
           </label>
         </div>
-      </div>
+      </StyledProduct>
     );
   }
 }
