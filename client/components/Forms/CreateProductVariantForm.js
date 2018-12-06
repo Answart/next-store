@@ -54,6 +54,7 @@ class CreateProductVariantForm extends Component {
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
                 saveToState={this.saveToState}
+                editView={false}
               />
 
               <button className="form-submit-btn big-btn"

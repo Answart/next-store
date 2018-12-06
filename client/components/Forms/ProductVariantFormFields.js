@@ -46,6 +46,7 @@ class ProductVariantFormFields extends Component {
               <select
                 id="size"
                 name="size"
+                disabled={this.props.editView}
                 value={this.props.size}
                 onChange={this.handleChange}
               >
@@ -61,6 +62,7 @@ class ProductVariantFormFields extends Component {
               <select
                 id="color"
                 name="color"
+                disabled={this.props.editView}
                 value={this.props.color}
                 onChange={this.handleChange}
               >
