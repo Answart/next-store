@@ -22,30 +22,45 @@ const StyledForm = styled.form`
     }
     h2 {
       text-align: center;
-      padding-bottom: 2rem;
+      padding-bottom: 4rem;
     }
-    button {
+    button.form-submit-btn {
+      margin-top: 5rem;
       float: right;
     }
   }
   label {
     display: block;
-    margin-bottom: 0.8rem;
-  }
-  .image-lbl {
-    margin: 0;
-    block: inherit;
-    pading-left: 0.25rem;
-    font-size: 1rem;
-    font-weight: normal;
-    color: black;
+    font-size: 1.2rem;
+    .inline-lbl {
+      margin: 0;
+      pading-left: 0.3rem 0 0 0.25rem;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .lbl-button {
+      display: inline;
+      width: 8rem;
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 1rem;
+      color: black;
+      padding: 0.25rem 0.9rem;
+      margin: 1rem 0;
+      background-color: ${props => props.theme.beige};
+      border: 1px solid #9A9A9A;
+      border-radius: 5px;
+      &:hover, &:active {
+        border: 1px solid ${props => props.theme.textGrey};
+      }
+    }
   }
   input,
   textarea,
   select {
+    display: block;
     width: 100%;
     padding: 0.5rem;
-    display: block;
     font-size: 1rem;
     border: 0;
     border-bottom: 1px solid ${props => props.theme.lightGrey};
@@ -59,22 +74,28 @@ const StyledForm = styled.form`
       border-color: ${props => props.theme.darkblue};
     }
   }
-  input[type='text'] {
-    min-width: 25rem;
-  }
   input[type='file'] {
     border: 0;
+    display: none;
   }
-  input[type=checkbox] {
-    display: block;
+  input[type='checkbox'] {
     width: 1.8rem;
     height: 1.8rem;
+    margin: 0 0.25rem 0 0;
+    padding: 0;
     float: left;
   }
-  input[type=number] {
+  input[type='number'] {
     display: block;
     min-width: 12rem;
     width: auto;
+  }
+  input[type='radio'] {
+    display: inline;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 0.5rem 0 0;
+    padding: 0;
   }
   textarea,
   select {
@@ -95,25 +116,27 @@ const StyledForm = styled.form`
     min-width: 12rem;
     width: auto;
   }
-  .prdct-creator {
-    font-size: 1rem;
-    a {
-      padding: 0 0.1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      color: ${props => props.theme.textGrey};
-      text-decoration: none;
-    }
-    a:hover {
-      color: ${props => props.theme.darkblue};
-      text-decoration: underline ${props => props.theme.orange};
-    }
-  }
   .field-padding {
     padding: 0.5rem 0;
   }
   .chkbx-label {
-    padding: 0.2rem 0;
+    padding: 0.4rem 0;
+  }
+  .inline-lbl {
+    margin: 0;
+    block: inherit;
+  }
+  .field-detail {
+    font-size: 1rem;
+    h5 {
+      text-decoration: underline;
+      color: ${props => props.theme.textGrey};
+    }
+    p {
+      font-weight: normal;
+      padding: 0;
+      margin: 0;
+    }
   }
 `;
 
