@@ -41,7 +41,7 @@ class CreateProductForm extends Component {
               e.preventDefault();
               const res = await createProductWithImage();
               Router.push({
-                pathname: "/product/edit",
+                pathname: "/product/add",
                 query: { id: res.data.createProductWithImage.id }
               });
             }}
