@@ -56,14 +56,12 @@ const StyledEditPage = styled.div`
 const StyledBuyPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem minmax(50rem, 1fr);
-  grid-template-columns: 1fr 80% 1fr;
+  grid-template-columns: minmax(80rem, 4fr);
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   .buy-page-content {
     grid-row: 2 / 2;
-    grid-column: 2 / 2;
-    background-color: ${props => props.theme.beige};
-    box-shadow: ${props => props.theme.bs};
+    grid-column: 1 / 1;
   }
 `;
 
