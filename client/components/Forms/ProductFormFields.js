@@ -15,7 +15,17 @@ class ProductFormFields extends Component {
     online: PropTypes.bool.isRequired,
     category: PropTypes.string,
     brand: PropTypes.string,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      id: PropTypes.string,
+      cloudinary_id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      transformation: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      large_image_url: PropTypes.string.isRequired,
+      delete_token: PropTypes.string
+    }),
     saveToForm: PropTypes.func.isRequired,
     previewImage: PropTypes.bool
   };
@@ -38,16 +48,18 @@ class ProductFormFields extends Component {
 
     this.props.saveToForm(state);
   };
-  uploadFile = async e => {
-    const files = e.target.files;
+  handleImageChange = async e => {
+    const { name, type, value, files } = e.target;
 
-    // Upload file and return url;
-    const image = files.length
-      ? files[0].name
-      : '';
+    if (type === "file" && name === "image") {
+      if (!files || !files.length) return;
+      // Upload file here
+      const image;
+      // destroy old cloudinary image here
 
-    this.props.saveToState({ image });
-  };
+      // save image to form here
+    }
+  }
   render() {
     const { department, image, previewImage, online } = this.props;
     let categories = department
@@ -56,8 +68,8 @@ class ProductFormFields extends Component {
     return (
       <StyledProduct>
         <div className="form-imgs">
-          {!!image && (
-            <img width="450" height="640" src={image} alt="Placeholder Image" />
+          {!!image ? (
+            <img width="450" height="640" src={image.large_image_url} alt={image.name} />
           ) : (
             <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
           )}
@@ -176,17 +188,23 @@ class ProductFormFields extends Component {
             </label>
           </div>
 
-          <label htmlFor="image">
-            Image: {image && (<span className="image-lbl"> {image}</span>)}
-            <input
-              type="file"
-              id="image"
-              name="image"
-              placeholder={image}
-              onChange={this.uploadFile}
-              required={!image}
-            />
-          </label>
+          <div className="field-padding">
+            <label>
+              Image:
+              <div>
+                <div className="prdct-padding">
+                  <label htmlFor="image" className="lbl-button">
+                    <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      onChange={this.handleImageChange}
+                    />Upload Image
+                  </label>
+                </div>
+              </div>
+            </label>
+          </div>
         </div>
       </StyledProduct>
     );
