@@ -50,7 +50,7 @@ class CreateProductForm extends Component {
                 brand={this.state.brand}
                 online={this.state.online}
                 image={this.state.image}
-                saveToState={this.saveToState}
+                saveToForm={this.saveToState}
                 previewImage={true}
               />
 

@@ -13,10 +13,10 @@ class ProductFormFields extends Component {
     department: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
-    image: PropTypes.string.isRequired,
     category: PropTypes.string,
     brand: PropTypes.string,
-    saveToState: PropTypes.func.isRequired,
+    image: PropTypes.string.isRequired,
+    saveToForm: PropTypes.func.isRequired,
     previewImage: PropTypes.bool
   };
   handleChange = e => {
@@ -36,7 +36,7 @@ class ProductFormFields extends Component {
     }
     state[name] = val;
 
-    this.props.saveToState(state);
+    this.props.saveToForm(state);
   };
   uploadFile = async e => {
     const files = e.target.files;

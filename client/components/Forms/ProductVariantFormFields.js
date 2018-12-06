@@ -13,7 +13,8 @@ class ProductVariantFormFields extends Component {
     color: PropTypes.string,
     sale: PropTypes.bool.isRequired,
     salePrice: PropTypes.number.isRequired,
-    saveToState: PropTypes.func.isRequired
+    saveToForm: PropTypes.func.isRequired,
+    editView: PropTypes.bool.isRequired
   };
   handleChange = e => {
     const { name, type, value, checked } = e.target;
@@ -29,7 +30,7 @@ class ProductVariantFormFields extends Component {
     if (name === 'sale') state.salePrice = 1.00;
 
     state[name] = val;
-    this.props.saveToState(state);
+    this.props.saveToForm(state);
   };
   render() {
     const { sale } = this.props;

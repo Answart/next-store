@@ -53,7 +53,7 @@ class CreateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
-                saveToState={this.saveToState}
+                saveToForm={this.saveToState}
                 editView={false}
               />
 
