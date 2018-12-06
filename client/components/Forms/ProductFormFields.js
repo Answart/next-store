@@ -20,17 +20,18 @@ class ProductFormFields extends Component {
     previewImage: PropTypes.bool
   };
   handleChange = e => {
+    if (!!e.preventDefault) e.preventDefault();
     let { name, type, value, checked } = e.target;
     let state = {};
     let val = value;
 
-    if (type === 'number') val = value ? parseFloat(value) : 0;
-    if (type === 'checkbox') val = checked;
-    if (name === 'department') state.category = '';
-    if (type === 'radio') {
-      if (name === 'online' || name === 'offline') {
-        val = (name === 'online');
-        name = 'online';
+    if (type === "number") val = value ? Number(parseFloat(value)) : 0;
+    if (type === "checkbox") val = checked;
+    if (name === "department") state.category = "";
+    if (type === "radio") {
+      if (name === "online" || name === "offline") {
+        val = (name === "online");
+        name = "online";
       }
     }
     state[name] = val;
