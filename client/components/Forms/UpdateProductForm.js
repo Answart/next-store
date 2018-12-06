@@ -19,20 +19,8 @@ class UpdateProductForm extends Component {
       online: PropTypes.bool.isRequired
     })
   };
-  state = this.props.product
-    ? this.props.product
-    : {
-        department: 'Tops',
-        title: '',
-        description: '',
-        image: '',
-        category: '',
-        brand: '',
-        online: false
-      };
-  saveToState = state => {
-    this.setState({ ...state });
-  };
+  state = this.props.product;
+  saveToState = state => this.setState({ ...state });
   render() {
     return (
       <Mutation
@@ -62,15 +50,15 @@ class UpdateProductForm extends Component {
                 title={this.state.title}
                 department={this.state.department}
                 description={this.state.description}
-                image={this.state.image}
                 category={this.state.category}
                 brand={this.state.brand}
                 online={this.state.online}
+                image={this.state.image}
                 saveToState={this.saveToState}
                 previewImage={false}
               />
 
-              <button className="big-btn"
+              <button className="form-submit-btn big-btn"
                 type="submit"
               >Update</button>
             </fieldset>
