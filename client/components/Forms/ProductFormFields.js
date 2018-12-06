@@ -5,6 +5,7 @@ import ByCreator from '../ByCreator';
 import departments from '../../lib/departments';
 import categoriesByDept from '../../lib/categoriesByDept';
 import { user } from '../../lib/dummyData';
+import { uploadImageFile } from '../../lib/cloudinary';
 
 
 class ProductFormFields extends Component {
@@ -53,8 +54,8 @@ class ProductFormFields extends Component {
 
     if (type === "file" && name === "image") {
       if (!files || !files.length) return;
-      // Upload file here
-      const image;
+      const image = await uploadImageFile(files[0]);
+      if (image.error) return alert('An error occured while uploading image. Please try again later.');
       // destroy old cloudinary image here
 
       // save image to form here
