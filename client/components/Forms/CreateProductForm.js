@@ -62,7 +62,6 @@ class CreateProductForm extends Component {
                 online={this.state.online}
                 image={this.state.image}
                 saveToForm={this.saveToState}
-                previewImage={true}
               />
 
               <button className="form-submit-btn big-btn"

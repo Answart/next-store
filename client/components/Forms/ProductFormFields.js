@@ -27,8 +27,7 @@ class ProductFormFields extends Component {
       large_image_url: PropTypes.string.isRequired,
       delete_token: PropTypes.string
     }),
-    saveToForm: PropTypes.func.isRequired,
-    previewImage: PropTypes.bool
+    saveToForm: PropTypes.func.isRequired
   };
   handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
@@ -65,7 +64,7 @@ class ProductFormFields extends Component {
     }
   }
   render() {
-    const { department, image, previewImage, online } = this.props;
+    const { department, image, online } = this.props;
     let categories = department
       ? categoriesByDept[department]
       : categoriesByDept["Tops"];
