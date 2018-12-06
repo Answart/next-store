@@ -66,6 +66,57 @@ const Mutation = {
       }
     }, info);
   },
+  async updateProductWithImage(parent, args, ctx, info) {
+    const { data, imgData } = getDataAndImgData(args);
+    delete data.id;
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpamijz53ny709197e43hhkx';
+    if (!userId) throw new Error('You must be signed in to add to a product');
+
+    // Existing product?
+    const existingProduct = await ctx.db.query.product({
+      where: { id: args.id }
+    }, `{ id title image { id } user { id }}`);
+    if (!existingProduct) throw new Error("No product found with that id.");
+    if (existingProduct.user.id !== userId) throw new Error('You are not authorized to update this product.');
+
+    // Existing image?
+    const incomingExistingImg = await ctx.db.query.image({
+      where: { cloudinary_id: imgData.cloudinary_id }
+    });
+
+    // Delete old image
+    if (!incomingExistingImg || (existingProduct.image.id !== incomingExistingImg.id)) {
+      await ctx.db.mutation.deleteImage({
+        where: { id: existingProduct.image.id }
+      });
+    }
+
+    if (!incomingExistingImg) {
+      await ctx.db.mutation.createImage({
+        data: {
+          ...imgData,
+          user: { connect: { id: userId } },
+          product: { connect: { id: existingProduct.id } }
+        }
+      });
+
+      return await ctx.db.mutation.updateProduct({
+        where: { id: existingProduct.id },
+        data
+      }, info);
+    } else {
+      if (existingProduct.image.id !== incomingExistingImg.id) {
+        data.image = { connect: { id: incomingExistingImg.id } };
+      }
+
+      return await ctx.db.mutation.updateProduct({
+        where: { id: existingProduct.id },
+        data
+      }, info);
+    };
+  },
   async deleteProduct(parent, args, ctx, info) {
     // Logged in?
     const userId = ctx.request.userId || 'cjoxto7d5l5z70a713fae9fur';
