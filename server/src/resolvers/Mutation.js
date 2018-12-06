@@ -118,26 +118,36 @@ const Mutation = {
     };
   },
   async deleteProduct(parent, args, ctx, info) {
+    const where = { id: args.id };
+
     // Logged in?
-    const userId = ctx.request.userId || 'cjoxto7d5l5z70a713fae9fur';
+    const userId = ctx.request.userId || 'cjpamijz53ny709197e43hhkx';
     if (!userId) throw new Error('You must be signed in to delete a product');
+
     // Existing product?
-    const product = await ctx.db.query.product({
+    const existingProduct = await ctx.db.query.product({
       where
-    }, `{ id title user { id } }`);
+    }, `{ id title image { id } user { id }}`);
+    if (!existingProduct) throw new Error("No product found with that id.");
+
     // Check if they own that product, or have the permissions
-    const ownsItem = product.user.id === userId;
+    const ownsItem = existingProduct.user.id === userId;
     if (!ownsItem) throw new Error("You don't have permission to do that!");
 
-    if (product.productVariants.length) {
-      await ctx.db.mutation.deleteManyProductVariants({
-        where: { product: { id: args.id }}
+    if (!!existingProduct.image) {
+      // delete cloudinaryImages here too
+      await ctx.db.mutation.deleteManyImages({
+        where: { product: { id: existingProduct.id }}
       });
-
-      return await ctx.db.mutation.deleteProduct({ where }, info);
-    } else {
-      return await ctx.db.mutation.deleteProduct({ where }, info);
     }
+
+    if (!!existingProduct.productVariants.length) {
+      await ctx.db.mutation.deleteManyProductVariants({
+        where: { product: { id: existingProduct.id }}
+      });
+    }
+
+    return await ctx.db.mutation.deleteProduct({ where }, info);
   },
   async updateProduct(parent, args, ctx, info) {
     // first take a copy of the updates
