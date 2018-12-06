@@ -1,6 +1,21 @@
 const bcrypt = require('bcryptjs');
 
 
+const getDataAndImgData = function(args) {
+  const imgKeys = ['cloudinary_id', 'name', 'width', 'height', 'transformation', 'image_url', 'large_image_url'];
+  let data = { ...args };
+  let imgData = {};
+
+  for (let i = 0; i < imgKeys.length; i++) {
+    const key = imgKeys[i];
+    imgData[key] = data[key];
+    delete data[key];
+  }
+
+  return { data, imgData };
+};
+
+
 const Mutation = {
   async createUser(parent, args, ctx, info) {
     const data = { ...args };
@@ -26,6 +41,28 @@ const Mutation = {
         ...data,
         productVariants: {},
         user: { connect: { id: userId } }
+      }
+    }, info);
+  },
+  async createProductWithImage(parent, args, ctx, info) {
+    const { data, imgData } = getDataAndImgData(args);
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpamijz53ny709197e43hhkx';
+    if (!userId) throw new Error('You must be signed in to create a product');
+
+    const newImage = await ctx.db.mutation.createImage({
+      data: {
+        ...imgData,
+        user: { connect: { id: userId } }
+      }
+    });
+
+    return await ctx.db.mutation.createProduct({
+      data: {
+        ...data,
+        user: { connect: { id: userId } },
+        image: { connect: { id: newImage.id } }
       }
     }, info);
   },
