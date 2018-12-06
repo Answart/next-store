@@ -47,10 +47,7 @@ class ProductFormFields extends Component {
     this.props.saveToState({ image });
   };
   render() {
-    const {
-      department,
-      image,
-      previewImage
+    const { department, image, previewImage
     } = this.props;
     let categories = department
       ? categoriesByDept[department]
@@ -66,98 +63,117 @@ class ProductFormFields extends Component {
         )}
 
         <div className="prdct-content">
-          <label htmlFor="title" className="field-padding">
-            Title:
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Title"
-              value={this.props.title}
-              onChange={this.handleChange}
-              required
-            />
-          </label>
+          <div className="field-padding">
+            <label htmlFor="title">
+              Title:
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="UGG Classic Boot"
+                value={this.props.title}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+          </div>
 
           <ByCreator
             name={user.name}
             online={true}
           />
 
-          <label htmlFor="department">
-            Department:
-            <select
-              id="department"
-              name="department"
-              form="carform"
-              placeholder="Department i.e. Shoes"
-              value={this.props.department}
-              onChange={this.handleChange}
-              required
-            >
-              {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
-            </select>
-          </label>
-
-          <label htmlFor="category">
-            Category:
-            <select
-              id="category"
-              name="category"
-              form="carform"
-              value={this.props.category}
-              onChange={this.handleChange}
-            >
-              <option key={0} value={''}></option>
-              {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
-            </select>
-          </label>
-
-          <label htmlFor="description">
-            Description:
-            <textarea
-              id="description"
-              name="description"
-              placeholder="Enter A Description"
-              value={this.props.description}
-              onChange={this.handleChange}
-              required
-            />
-          </label>
-
-          <label htmlFor="brand">
-            Brand:
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              placeholder="Brand"
-              value={this.props.brand}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label htmlFor="status">
-            Status:
-            <div>
-              <input
-                type="radio"
-                name='offline'
-                value={!this.props.online}
-                checked={!this.props.online}
+          <div className="field-padding">
+            <label htmlFor="department">
+              Department:
+              <select
+                id="department"
+                name="department"
+                value={department}
                 onChange={this.handleChange}
-              /><label htmlFor="offline" className="inline-lbl">Private</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name='online'
-                value={this.props.online}
-                checked={this.props.online}
+                required
+              >
+                {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div className="field-padding">
+            <label htmlFor="category">
+              Category:
+              <select
+                id="category"
+                name="category"
+                value={this.props.category}
                 onChange={this.handleChange}
-              /><label htmlFor="online" className="inline-lbl">Public</label>
-            </div>
-          </label>
+              >
+                <option key={0} value=''></option>
+                {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div className="field-padding">
+            <label htmlFor="description">
+              Description:
+              <textarea
+                id="description"
+                name="description"
+                placeholder="UGG boots are a unisex style of sheepskin boot originating in Australia and New Zealand..."
+                value={this.props.description}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="field-padding">
+            <label htmlFor="brand">
+              Brand:
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                placeholder="UGG"
+                value={this.props.brand}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div className="field-padding">
+            <label htmlFor="status">
+              Status:
+              <div className="prdct-padding">
+                <div className="prdct-padding">
+                  <label htmlFor="offline" className="inline-lbl">
+                    <input
+                      type="radio"
+                      id="offline"
+                      name="offline"
+                      key={!online}
+                      value={!online}
+                      onChange={this.handleChange}
+                      checked={!online}
+                    />Private
+                  </label>
+                </div>
+                <div>
+                  <label htmlFor="online" className="inline-lbl">
+                    <input
+                      type="radio"
+                      id="online"
+                      name="online"
+                      key={online}
+                      value={online}
+                      onChange={this.handleChange}
+                      checked={online}
+                    />Public
+                  </label>
+                </div>
+              </div>
+            </label>
+          </div>
 
           <label htmlFor="image">
             Image: {image && (<span className="image-lbl"> {image}</span>)}
