@@ -61,7 +61,7 @@ class ProductFormFields extends Component {
       if (image.error) return alert('An error occured while uploading image. Please try again later.');
       if (!!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
 
-      // save image to form here
+      this.props.saveToForm({ image });
     }
   }
   render() {
