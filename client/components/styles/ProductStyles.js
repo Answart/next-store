@@ -67,27 +67,44 @@ const StyledProduct = styled.div`
 `;
 
 const StyledProductVariants = styled.div`
-  width: 100%;
-  bottom: 0;
+  text-decoration: none;
+  select {
+    height: 2rem;
+    min-width: 12rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    font-size: 1rem;
+    border: 1px solid ${props => props.theme.lightGrey};
+    background-color: transparent;
+    &:focus {
+      outline: ${props => props.theme.darkblue};
+      border-color: ${props => props.theme.darkblue};
+    }
+    &:active {
+      color: ${props => props.theme.darkblue};
+      border-color: ${props => props.theme.darkblue};
+    }
+  }
+  .prdct-padding {
+    padding: 0.35rem 0;
+  }
 `;
 
 const StyledProductsList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  grid-gap: 2.2rem;
-  justify-content: space-between;
-  background-color: pink;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 25rem));
+  grid-gap: 2.5rem;
+  justify-content: start;
 `;
 
 const StyledProductsListItem = styled.div`
   min-width: 16rem;
-  max-width: 27rem;
+  max-width: 25rem;
   img {
-    background-color: pink;
     display: grid;
     grid-auto-columns: 1fr;
-    min-height: 25rem;
-    max-height: 34rem;
+    min-height: 30rem;
+    max-height: 35rem;
     width: 100%;
   }
   a {
