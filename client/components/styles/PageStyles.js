@@ -5,7 +5,7 @@ const StyledShopPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem 5rem minmax(50rem, 1fr);
   grid-template-columns: 18rem 1fr;
-  grid-gap: 2.5rem;
+  grid-gap: 3rem;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   .shop-pg-filters {
