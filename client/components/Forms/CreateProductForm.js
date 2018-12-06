@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductFormFields from './ProductFormFields';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_PRODUCT_MUTATION } from '../../graphql';
+import { CREATE_PRODUCT_WITH_IMAGE_MUTATION } from '../../graphql';
 
 
 class CreateProductForm extends Component {
@@ -14,24 +14,35 @@ class CreateProductForm extends Component {
     category: "",
     brand: "",
     online: false,
-    image: ""
+    image: null
   };
   saveToState = state => this.setState({ ...state });
+  getCreateProductVariables = () => {
+    const image = { ...this.state.image };
+    if (!!image.delete_token) delete image.delete_token;
+    delete image.id;
+    let variables = {
+      ...this.state,
+      ...image
+    };
+    delete variables.image;
+
+    return variables;
+  }
   render() {
     return (
-      <Mutation
-        mutation={CREATE_PRODUCT_MUTATION}
-        variables={this.state}
+      <Mutation mutation={CREATE_PRODUCT_WITH_IMAGE_MUTATION}
+        variables={this.getCreateProductVariables()}
       >
-        {(createProduct, { loading, error }) => (
+        {(createProductWithImage, { loading, error }) => (
           <StyledForm
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await createProduct();
+              const res = await createProductWithImage();
               Router.push({
-                pathname: '/product/edit',
-                query: { id: res.data.createProduct.id }
+                pathname: "/product/edit",
+                query: { id: res.data.createProductWithImage.id }
               });
             }}
           >
