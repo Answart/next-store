@@ -38,18 +38,18 @@ const StyledCreatePage = styled.div`
 const StyledEditPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem 2rem minmax(50rem, 1fr);
-  grid-template-columns: 1fr minmax(50rem, 1fr) 1fr;
+  grid-template-columns: minmax(80rem, 4fr);
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   .edit-pg-navi {
     grid-column: 1 / -1;
     grid-row: 2 / 2;
     text-align: right;
-    background-color: pink;
   }
   .edit-pg-content {
-    grid-column: 2 / 2;
+    grid-column: 1 / 1;
     grid-row: 3 / -1;
+    margin: 0 4rem;
   }
 `;
 
