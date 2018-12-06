@@ -5,7 +5,7 @@ import ByCreator from '../ByCreator';
 import departments from '../../lib/departments';
 import categoriesByDept from '../../lib/categoriesByDept';
 import { user } from '../../lib/dummyData';
-import { uploadImageFile } from '../../lib/cloudinary';
+import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 
 class ProductFormFields extends Component {
@@ -51,12 +51,15 @@ class ProductFormFields extends Component {
   };
   handleImageChange = async e => {
     const { name, type, value, files } = e.target;
+    const currentImageToken = this.props.image
+      ? (this.props.image.delete_token || '')
+      : '';
 
     if (type === "file" && name === "image") {
       if (!files || !files.length) return;
       const image = await uploadImageFile(files[0]);
       if (image.error) return alert('An error occured while uploading image. Please try again later.');
-      // destroy old cloudinary image here
+      if (!!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
 
       // save image to form here
     }
