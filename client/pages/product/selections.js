@@ -10,9 +10,10 @@ const EditProductVariantsPage = props => {
   return (
     <SingleProduct variables={{ id }}>
       {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) return <p>Error: {error.message}</p>;
+        if (loading) return (<p>Loading...</p>);
+        if (error) return (<p>Error: {error.message}</p>);
         const { product } = data;
+        if (!product) return (<p>No product found.</p>);
         const productTitle = product ? product.title : '';
         const titles = [{
           label: productTitle,
