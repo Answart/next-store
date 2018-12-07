@@ -11,39 +11,31 @@ const EditProductPage = props => {
   return (
     <SingleProduct variables={{ id }}>
       {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) return <p>Error: {error.message}</p>;
+        if (loading) return (<p>Loading...</p>);
+        if (error) return (<p>Error: {error.message}</p>);
         const { product } = data;
-        const productTitle = product ? product.title : '';
+        if (!product) return (<p>No product found.</p>);
         return (
           <StyledEditPage>
             <PageTitle
               page='Edit'
-              titles={[{ label: productTitle }]}
+              titles={[{ label: product.title }]}
             />
 
-            {!product ? (
-              <p>
-                No product found!
-              </p>
-            ) : (
-              <>
-                <div className="edit-pg-navi">
-                  <Link href={{
-                    pathname: `/product/selections`,
-                    query: { id }
-                  }}><a className="undrln-btn">
-                    Selections &#8811;
-                  </a></Link>
-                </div>
+            <div className="edit-pg-navi">
+              <Link href={{
+                pathname: `/product/selections`,
+                query: { id }
+              }}><a className="undrln-btn">
+                Selections &#8811;
+              </a></Link>
+            </div>
 
-                <div className="edit-pg-content">
-                  <UpdateProductForm product={product} />
+            <div className="edit-pg-content">
+              <UpdateProductForm product={product} />
 
-                  <DeleteProduct id={id}>Delete Product</DeleteProduct>
-                </div>
-              </>
-            )}
+              <DeleteProduct id={id}>Delete Product</DeleteProduct>
+            </div>
           </StyledEditPage>
         )
       }}
