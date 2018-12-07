@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
+import { CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
 
 
 class CreateProductVariantForm extends Component {
