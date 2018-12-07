@@ -135,30 +135,6 @@ const Mutation = {
 
     return await ctx.db.mutation.deleteProduct({ where }, info);
   },
-  async updateProduct(parent, args, ctx, info) {
-    // first take a copy of the updates
-    const data = { ...args };
-    // remove the ID from the updates
-    delete data.id;
-    // Logged in?
-    const userId = ctx.request.userId || 'cjoxto7d5l5z70a713fae9fur';
-    if (!userId) throw new Error('You must be signed in to add to a product');
-    // Existing product?
-    const existingProduct = await ctx.db.query.product({
-      where: { id: args.id }
-    });
-
-    if (!existingProduct) {
-      throw new Error('Cannot find product with this id');
-    } else {
-      // if (existingProduct.user.id !== userId) throw new Error('You are not authorized to delete this product');
-      console.log('This product already exists. Updating properties.');
-      return await ctx.db.mutation.updateProduct({
-        where: { id: existingProduct.id },
-        data
-      }, info);
-    }
-  },
   async createProductVariant(parent, args, ctx, info) {
     const productId = args.productId;
     const data = { ...args };
