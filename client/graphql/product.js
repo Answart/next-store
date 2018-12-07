@@ -48,6 +48,16 @@ const PRODUCT_QUERY = gql`
             large_image_url
           }
         }
+        image {
+          id
+          cloudinary_id
+          name
+          width
+          height
+          transformation
+          image_url
+          large_image_url
+        }
       }
     }
   }

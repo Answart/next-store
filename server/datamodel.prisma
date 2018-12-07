@@ -48,4 +48,5 @@ type ProductVariant {
   sale: Boolean! @default(value: false)
   salePrice: Float! @default(value: 1.00)
   product: Product!
+  image: Image!
 }
