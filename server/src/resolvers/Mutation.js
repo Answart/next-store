@@ -215,29 +215,6 @@ const Mutation = {
     if (!productVariant) throw new Error('No selection with this id found')
 
     return await ctx.db.mutation.deleteProductVariant({ where }, info);
-  },
-  async removeFromProduct(parent, args, ctx, info) {
-    const where = { id: args.id };
-    const quantity = args.quantity;
-    // Logged in?
-    const userId = ctx.request.userId || 'cjoxto7d5l5z70a713fae9fur';
-    if (!userId) throw new Error('You must be signed in to remove from product');
-    // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({ where });
-    if (!existingProductVariant) throw new Error('No productVariant found!');
-
-    const existingQuantity = existingProductVariant.quantity;
-    if (existingQuantity > quantity) {
-      // Update productVariant with decreased quantity
-      return await ctx.db.mutation.updateProductVariant({
-        where,
-        data: { quantity: existingQuantity - quantity }
-      }, info);
-    } else if (existingQuantity === quantity) {
-      return await ctx.db.mutation.deleteProductVariant({ where }, info);
-    } else {
-      throw new Error(`You cannot remove ${quantity} of ${existingQuantity} productVariants`);
-    }
   }
 };
 

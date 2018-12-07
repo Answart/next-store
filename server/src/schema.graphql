@@ -19,7 +19,6 @@ type Mutation {
   deleteProduct(id: ID!): Product
   createProductVariant(price: Float!, quantity: Int!, color: String, sale: Boolean!, salePrice: Float, size: String, productId: String!): ProductVariant!
   updateProductVariant(id: ID!, price: Float!, quantity: Int!, color: String, sale: Boolean!, salePrice: Float, size: String): ProductVariant!
-  removeFromProduct(id: ID!, quantity: Int!): ProductVariant
   deleteProductVariant(id: ID!): ProductVariant
 }
 
