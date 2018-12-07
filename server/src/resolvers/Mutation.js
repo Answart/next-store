@@ -30,20 +30,6 @@ const Mutation = {
       where: { id: args.id }
     }, info);
   },
-  async createProduct(parent, args, ctx, info) {
-    const data = { ...args };
-    // Logged in?
-    const userId = ctx.request.userId || 'cjoxto7d5l5z70a713fae9fur';
-    if (!userId) throw new Error('You must be signed in to create a product');
-
-    return await ctx.db.mutation.createProduct({
-      data: {
-        ...data,
-        productVariants: {},
-        user: { connect: { id: userId } }
-      }
-    }, info);
-  },
   async createProductWithImage(parent, args, ctx, info) {
     const { data, imgData } = getDataAndImgData(args);
 
