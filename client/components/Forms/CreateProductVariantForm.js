@@ -4,12 +4,23 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
+import { CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
 
 
 class CreateProductVariantForm extends Component {
   static propTypes = {
-    productId: PropTypes.string.isRequired
+    productId: PropTypes.string.isRequired,
+    productImage: PropTypes.shape({
+      id: PropTypes.string,
+      cloudinary_id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      transformation: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      large_image_url: PropTypes.string.isRequired,
+      delete_token: PropTypes.string
+    }).isRequired
   };
   state = {
     price: 1.00,
@@ -18,14 +29,22 @@ class CreateProductVariantForm extends Component {
     size: "",
     sale: false,
     salePrice: 1.00,
-    productId: this.props.productId
+    productImage: this.props.productImage
   };
   saveToState = state => this.setState({ ...state });
+  getCreateProdVarVariables = () => {
+    let variables = {
+      ...this.state,
+      productId: this.props.productId
+    };
+    delete variables.productImage;
+
+    return variables;
+  }
   render() {
     return (
-      <Mutation
-        mutation={CREATE_PROD_VARIANT_MUTATION}
-        variables={this.state}
+      <Mutation mutation={CREATE_PROD_VARIANT_MUTATION}
+        variables={this.getCreateProdVarVariables()}
       >
         {(createProductVariant, { loading, error }) => (
           <StyledForm
@@ -53,6 +72,7 @@ class CreateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
+                productImage={this.state.productImage}
                 saveToForm={this.saveToState}
                 editView={false}
               />

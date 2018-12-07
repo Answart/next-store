@@ -16,26 +16,38 @@ class UpdateProductVariantForm extends Component {
       size: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       sale: PropTypes.bool.isRequired,
-      salePrice: PropTypes.number.isRequired
-    })
+      salePrice: PropTypes.number.isRequired,
+      product: PropTypes.shape({
+        image: PropTypes.shape({
+          id: PropTypes.string,
+          cloudinary_id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          width: PropTypes.number.isRequired,
+          height: PropTypes.number.isRequired,
+          transformation: PropTypes.string.isRequired,
+          image_url: PropTypes.string.isRequired,
+          large_image_url: PropTypes.string.isRequired
+        }).isRequired
+      }).isRequired
+    }).isRequired
   };
-  state = this.props.variant
-    ? this.props.variant
-    : {
-      id: '1',
-      price: 1.00,
-      quantity: 1,
-      size: '',
-      color: '',
-      sale: false,
-      salePrice: 1.00
-    };
+  state = {
+    ...this.props.variant,
+    productImage: this.props.variant.product.image
+  };
   saveToState = state => this.setState({ ...state });
+  getUpdateProdVarVariables = () => {
+    let variables = {
+      ...this.state
+    };
+    delete variables.productImage;
+
+    return variables;
+  }
   render() {
     return (
-      <Mutation
-        mutation={UPDATE_PROD_VARIANT_MUTATION}
-        variables={this.state}
+      <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION}
+        variables={this.getUpdateProdVarVariables()}
       >
         {(updateProductVariant, { loading, error }) => (
           <StyledForm
@@ -63,6 +75,7 @@ class UpdateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
+                productImage={this.state.productImage}
                 saveToForm={this.saveToState}
                 editView={true}
               />

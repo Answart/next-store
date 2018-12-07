@@ -38,7 +38,7 @@ const CreateProductVariantPage = props => {
             <div className="create-pg-form">
               <CreateProductVariantForm
                 productId={id}
-                productTitle={product.title}
+                productImage={product.image}
               />
             </div>
           </StyledCreatePage>

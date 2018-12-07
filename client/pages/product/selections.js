@@ -48,8 +48,8 @@ const EditProductVariantsPage = props => {
                 <p>This product does not have any selections.</p>
               ) : (
                 <EditProductVariants
-                  productVariants={product.productVariants}
                   productId={id}
+                  productVariants={product.productVariants}
                 />
               )}
             </div>
