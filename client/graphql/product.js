@@ -89,32 +89,6 @@ const CREATE_PRODUCT_WITH_IMAGE_MUTATION = gql`
   }
 `;
 
-const UPDATE_PRODUCT_MUTATION = gql`
-  mutation UPDATE_PRODUCT_MUTATION(
-    $id: ID!,
-    $title: String!,
-    $department: String!,
-    $description: String!,
-    $image: String!,
-    $category: String,
-    $brand: String
-    $online: Boolean!
-  ) {
-    updateProduct(
-      id: $id,
-      title: $title,
-      department: $department,
-      description: $description,
-      image: $image,
-      category: $category,
-      brand: $brand,
-      online: $online
-    ) {
-      id
-    }
-  }
-`;
-
 const UPDATE_PRODUCT_WITH_IMAGE_MUTATION = gql`
   mutation UPDATE_PRODUCT_WITH_IMAGE_MUTATION(
     $id: ID!,
@@ -164,7 +138,6 @@ const DELETE_PRODUCT_MUTATION = gql`
 export {
   PRODUCT_QUERY,
   CREATE_PRODUCT_WITH_IMAGE_MUTATION,
-  UPDATE_PRODUCT_MUTATION,
   UPDATE_PRODUCT_WITH_IMAGE_MUTATION,
   DELETE_PRODUCT_MUTATION
 }
