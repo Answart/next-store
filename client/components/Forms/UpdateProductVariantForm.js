@@ -81,10 +81,11 @@ class UpdateProductVariantForm extends Component {
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await updateProductVariantWithImage();
-              Router.push({
-                pathname: "/buy",
-                query: { id: res.data.updateProductVariantWithImage.product.id },
+              await updateProductVariantWithImage().then((res) => {
+                Router.push({
+                  pathname: "/buy",
+                  query: { id: res.data.updateProductVariantWithImage.product.id }
+                });
               });
             }}
           >
