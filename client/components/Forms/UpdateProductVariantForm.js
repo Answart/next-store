@@ -43,7 +43,16 @@ class UpdateProductVariantForm extends Component {
     }).isRequired
   };
   state = { ...this.props.variant };
-  saveToState = state => this.setState({ ...state });
+  saveToState = state => {
+    if (typeof state.getNewImage !== 'undefined') {
+      const image = state.getNewImage
+        ? null
+        : this.props.variant.product.image;
+      this.setState({ image });
+    } else {
+      this.setState({ ...state });
+    }
+  }
   getUpdateProdVarVariables = () => {
     let variables = {
       ...this.state

@@ -27,6 +27,7 @@ class ProductVariantFormFields extends Component {
     saveToForm: PropTypes.func.isRequired,
     editView: PropTypes.bool.isRequired
   };
+  state = { getNewImage: false };
   handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
     const { name, type, value, checked } = e.target;
@@ -69,6 +70,7 @@ class ProductVariantFormFields extends Component {
   }
   render() {
     const { sale, image } = this.props;
+    const { getNewImage } = this.state;
     return (
       <StyledProduct>
         <div className="form-imgs">
@@ -177,6 +179,53 @@ class ProductVariantFormFields extends Component {
               </label>
             </div>
           )}
+
+          <div className="field-padding">
+            <label htmlFor="image">
+              Image:
+              <div className="prdct-padding">
+                <div className="prdct-padding">
+                  <label htmlFor="productImage" className="inline-lbl">
+                    <input
+                      type="radio"
+                      id="productImage"
+                      name="productImage"
+                      key={!getNewImage}
+                      value={false}
+                      onChange={this.handleImageChange}
+                      checked={!getNewImage}
+                    />Same as Product Image
+                  </label>
+                </div>
+                <div>
+                  <label htmlFor="newImage" className="inline-lbl">
+                    <input
+                      type="radio"
+                      id="newImage"
+                      name="newImage"
+                      key={getNewImage}
+                      value={true}
+                      onChange={this.handleImageChange}
+                      checked={getNewImage}
+                    />New Image
+                  </label>
+                </div>
+
+                {getNewImage && (
+                  <div className="field-padding">
+                    <label htmlFor="upload" className="lbl-button">
+                      <input
+                        type="file"
+                        id="upload"
+                        name="upload"
+                        onChange={this.handleImageChange}
+                      />Upload Image
+                    </label>
+                  </div>
+                )}
+              </div>
+            </label>
+          </div>
         </div>
       </StyledProduct>
     );

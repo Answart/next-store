@@ -31,7 +31,16 @@ class CreateProductVariantForm extends Component {
     salePrice: 1.00,
     image: this.props.productImage
   };
-  saveToState = state => this.setState({ ...state });
+  saveToState = state => {
+    if (typeof state.getNewImage !== 'undefined') {
+      const image = state.getNewImage
+        ? null
+        : this.props.productImage;
+      this.setState({ image });
+    } else {
+      this.setState({ ...state });
+    }
+  }
   getCreateProdVarVariables = () => {
     let variables = {
       ...this.state,
