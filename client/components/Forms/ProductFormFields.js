@@ -205,6 +205,17 @@ class ProductFormFields extends Component {
                     />Upload Image
                   </label>
                 </div>
+
+                {image && !!image.name.length && (
+                  <div className="field-padding field-detail">
+                    <h5>Preview Details:</h5>
+                    <p>ID: <i>{image.cloudinary_id}</i></p>
+                    <p>Name: <i>{image.name}</i></p>
+                    <p>Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H</p>
+                    <p>Transformation: <i>{image.transformation}</i></p>
+                    <p>Url: <i>{image.image_url}</i></p>
+                  </div>
+                )}
               </div>
             </label>
           </div>
