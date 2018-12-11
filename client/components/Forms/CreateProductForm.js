@@ -40,10 +40,11 @@ class CreateProductForm extends Component {
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await createProductWithImage();
-              Router.push({
-                pathname: "/product/add",
-                query: { id: res.data.createProductWithImage.id }
+              await createProductWithImage().then((res) => {
+                Router.push({
+                  pathname: "/product/add",
+                  query: { id: res.data.createProductWithImage.id }
+                });
               });
             }}
           >
