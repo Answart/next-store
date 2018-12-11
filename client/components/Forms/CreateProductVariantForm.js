@@ -11,7 +11,7 @@ class CreateProductVariantForm extends Component {
   static propTypes = {
     productId: PropTypes.string.isRequired,
     productImage: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.string.isRequired,
       cloudinary_id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       width: PropTypes.number.isRequired,
@@ -29,7 +29,6 @@ class CreateProductVariantForm extends Component {
     size: "",
     sale: false,
     salePrice: 1.00,
-    productImage: this.props.productImage
   };
   saveToState = state => this.setState({ ...state });
   getCreateProdVarVariables = () => {
@@ -37,7 +36,6 @@ class CreateProductVariantForm extends Component {
       ...this.state,
       productId: this.props.productId
     };
-    delete variables.productImage;
 
     return variables;
   }
@@ -72,7 +70,6 @@ class CreateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
-                productImage={this.state.productImage}
                 saveToForm={this.saveToState}
                 editView={false}
               />

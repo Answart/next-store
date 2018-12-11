@@ -19,7 +19,7 @@ class UpdateProductVariantForm extends Component {
       salePrice: PropTypes.number.isRequired,
       product: PropTypes.shape({
         image: PropTypes.shape({
-          id: PropTypes.string,
+          id: PropTypes.string.isRequired,
           cloudinary_id: PropTypes.string.isRequired,
           name: PropTypes.string.isRequired,
           width: PropTypes.number.isRequired,
@@ -31,16 +31,12 @@ class UpdateProductVariantForm extends Component {
       }).isRequired
     }).isRequired
   };
-  state = {
-    ...this.props.variant,
-    productImage: this.props.variant.product.image
-  };
+  state = { ...this.props.variant };
   saveToState = state => this.setState({ ...state });
   getUpdateProdVarVariables = () => {
     let variables = {
       ...this.state
     };
-    delete variables.productImage;
 
     return variables;
   }
@@ -75,7 +71,6 @@ class UpdateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
-                productImage={this.state.productImage}
                 saveToForm={this.saveToState}
                 editView={true}
               />
