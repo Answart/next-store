@@ -70,10 +70,11 @@ class CreateProductVariantForm extends Component {
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await createProductVariantWithImage();
-              Router.push({
-                pathname: "/buy",
-                query: { id: this.props.productId }
+              await createProductVariantWithImage().then((res) => {
+                Router.push({
+                  pathname: "/buy",
+                  query: { id: this.props.productId }
+                });
               });
             }}
           >
