@@ -35,6 +35,7 @@ class UpdateProductForm extends Component {
     const image = { ...this.state.image };
     if (!!image.delete_token) delete image.delete_token;
     delete image.id;
+    
     let variables = {
       ...this.state,
       ...image
@@ -79,7 +80,7 @@ class UpdateProductForm extends Component {
               />
 
               <button className="form-submit-btn big-btn"
-                disabled={!this.state.image}
+                disabled={!this.state.image || loading}
                 type="submit"
               >Update</button>
             </fieldset>
