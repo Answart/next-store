@@ -17,6 +17,17 @@ class UpdateProductVariantForm extends Component {
       color: PropTypes.string.isRequired,
       sale: PropTypes.bool.isRequired,
       salePrice: PropTypes.number.isRequired,
+      image: PropTypes.shape({
+        id: PropTypes.string,
+        cloudinary_id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+        transformation: PropTypes.string.isRequired,
+        image_url: PropTypes.string.isRequired,
+        large_image_url: PropTypes.string.isRequired,
+        delete_token: PropTypes.string
+      }),
       product: PropTypes.shape({
         image: PropTypes.shape({
           id: PropTypes.string.isRequired,
@@ -37,6 +48,8 @@ class UpdateProductVariantForm extends Component {
     let variables = {
       ...this.state
     };
+    delete variables.image;
+    delete variables.product;
 
     return variables;
   }
@@ -71,6 +84,7 @@ class UpdateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
+                image={this.state.image}
                 saveToForm={this.saveToState}
                 editView={true}
               />

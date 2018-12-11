@@ -13,6 +13,16 @@ class ProductVariantFormFields extends Component {
     color: PropTypes.string,
     sale: PropTypes.bool.isRequired,
     salePrice: PropTypes.number.isRequired,
+    image: PropTypes.shape({
+      id: PropTypes.string,
+      cloudinary_id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      transformation: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      large_image_url: PropTypes.string.isRequired
+    }),
     saveToForm: PropTypes.func.isRequired,
     editView: PropTypes.bool.isRequired
   };

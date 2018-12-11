@@ -29,6 +29,7 @@ class CreateProductVariantForm extends Component {
     size: "",
     sale: false,
     salePrice: 1.00,
+    image: this.props.productImage
   };
   saveToState = state => this.setState({ ...state });
   getCreateProdVarVariables = () => {
@@ -36,6 +37,7 @@ class CreateProductVariantForm extends Component {
       ...this.state,
       productId: this.props.productId
     };
+    delete variables.image;
 
     return variables;
   }
@@ -70,6 +72,7 @@ class CreateProductVariantForm extends Component {
                 size={this.state.size}
                 sale={this.state.sale}
                 salePrice={this.state.salePrice}
+                image={this.state.image}
                 saveToForm={this.saveToState}
                 editView={false}
               />
