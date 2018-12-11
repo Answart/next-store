@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StyledProduct from '../styles/ProductStyles';
 import colors from '../../lib/colors';
 import sizes from '../../lib/sizes';
+import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 
 class ProductVariantFormFields extends Component {
@@ -27,6 +28,7 @@ class ProductVariantFormFields extends Component {
     editView: PropTypes.bool.isRequired
   };
   handleChange = e => {
+    if (!!e.preventDefault) e.preventDefault();
     const { name, type, value, checked } = e.target;
     let val = value;
     let state = {};
