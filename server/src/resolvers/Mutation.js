@@ -148,19 +148,16 @@ const Mutation = {
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where: { id: productId }
-    }, `{ id title image { id } user { id }}`);
+    }, `{ id title image { id cloudinary_id } user { id }}`);
     if (!existingProduct) throw new Error('Cannot find product with this id');
+    if (existingProduct.user.id !== userId) throw new Error('You are not authorized to update this product.');
 
-    // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
-      where: {
-        ...data,
-        product: { id: productId }
-      }
-    }, `{ id quantity image { id }}`);
-
+    // Existing or new incoming image?
     let imageId;
-    if (!!imgData.cloudinary_id && !!imgData.cloudinary_id.length) {
+    if (imgData.cloudinary_id === existingProduct.image.cloudinary_id) {
+      // Use image from product.image
+      imageId = existingProduct.image.id;
+    } else {
       const newImage = await ctx.db.mutation.createImage({
         data: {
           ...imgData,
@@ -168,44 +165,34 @@ const Mutation = {
         }
       });
       imageId = newImage.id;
-    } else {
-      // Use image from product.image
-      const productsImage = await ctx.db.query.image({
-        where: { id: existingProduct.image.id }
-      });
-      imageId = productsImage.id;
     }
 
-    if (existingProductVariant) {
-      console.log('This productVariant already exists for the product. Updating quantity.');
-      const quantity = existingProductVariant.quantity + args.quantity;
-      return await ctx.db.mutation.updateProductVariant({
-        where: { id: existingProductVariant.id },
-        data: {
-          quantity,
-          availability: `${quantity} in Stock!`,
-          image: { connect: { id: imageId } }
-        }
-      }, info);
-    } else {
-      console.log('Creating new productVariation and updating product with new connection.');
-      const newProductVariant = await ctx.db.mutation.createProductVariant({
-        data: {
-          ...data,
-          availability: `${data.quantity} in Stock!`,
-          image: { connect: { id: imageId }},
-          product: { connect: { id: productId }}
-        }
-      }, info);
-      const updatedProduct = await ctx.db.mutation.updateProduct({
-        where: { id: productId },
-        data: {
-          productVariants: { connect: { id: newProductVariant.id }}
-        }
-      });
+    // Existing productVariant?
+    const [existingProductVariant] = await ctx.db.query.productVariants({
+      where: {
+        size: data.size,
+        color: data.color,
+        product: { id: productId }
+      }
+    });
+    if (!!existingProductVariant) throw new Error(`A selection with this size/color already exists for this product. ID: '${existingProductVariant.id}'`);
 
-      return newProductVariant;
-    }
+    const newProductVariant = await ctx.db.mutation.createProductVariant({
+      data: {
+        ...data,
+        availability: `${data.quantity} in Stock!`,
+        image: { connect: { id: imageId }},
+        product: { connect: { id: productId }}
+      }
+    }, info);
+    const updatedProduct = await ctx.db.mutation.updateProduct({
+      where: { id: productId },
+      data: {
+        productVariants: { connect: { id: newProductVariant.id }}
+      }
+    });
+
+    return newProductVariant;
   },
   async updateProductVariant(parent, args, ctx, info) {
     const data = { ...args };
