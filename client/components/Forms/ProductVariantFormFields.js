@@ -27,7 +27,7 @@ class ProductVariantFormFields extends Component {
     saveToForm: PropTypes.func.isRequired,
     editView: PropTypes.bool.isRequired
   };
-  state = { getNewImage: false };
+  state = { getNewImage: !this.props.image || !!this.props.image.id };
   handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
     const { name, type, value, checked } = e.target;
