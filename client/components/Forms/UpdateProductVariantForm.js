@@ -45,10 +45,14 @@ class UpdateProductVariantForm extends Component {
   state = { ...this.props.variant };
   saveToState = state => {
     if (typeof state.getNewImage !== 'undefined') {
-      const image = state.getNewImage
-        ? null
-        : this.props.variant.product.image;
-      this.setState({ image });
+      const { image, product } = this.props.variant;
+      const previousImage = (!!image && image.cloudinary_id !== product.image.cloudinary_id)
+        ? image
+        : null;
+      const overwrittenImage = state.getNewImage
+        ? previousImage
+        : product.image;
+      this.setState({ image: overwrittenImage });
     } else {
       this.setState({ ...state });
     }
