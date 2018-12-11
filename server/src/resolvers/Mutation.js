@@ -152,7 +152,17 @@ const Mutation = {
     if (!existingProduct) throw new Error('Cannot find product with this id');
     if (existingProduct.user.id !== userId) throw new Error('You are not authorized to update this product.');
 
-    // Existing or new incoming image?
+    // Existing productVariant?
+    const [existingProductVariant] = await ctx.db.query.productVariants({
+      where: {
+        size: data.size,
+        color: data.color,
+        product: { id: productId }
+      }
+    });
+    if (!!existingProductVariant) throw new Error(`A selection with this size/color already exists for this product. ID: '${existingProductVariant.id}'`);
+
+    // Create with existing or new image?
     let imageId;
     if (imgData.cloudinary_id === existingProduct.image.cloudinary_id) {
       // Use image from product.image
@@ -166,16 +176,6 @@ const Mutation = {
       });
       imageId = newImage.id;
     }
-
-    // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
-      where: {
-        size: data.size,
-        color: data.color,
-        product: { id: productId }
-      }
-    });
-    if (!!existingProductVariant) throw new Error(`A selection with this size/color already exists for this product. ID: '${existingProductVariant.id}'`);
 
     const newProductVariant = await ctx.db.mutation.createProductVariant({
       data: {
