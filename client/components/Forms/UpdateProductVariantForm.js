@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
-import { UPDATE_PROD_VARIANT_MUTATION } from '../../graphql';
+import { UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
 
 
 class UpdateProductVariantForm extends Component {
@@ -58,8 +58,13 @@ class UpdateProductVariantForm extends Component {
     }
   }
   getUpdateProdVarVariables = () => {
+    const image = { ...this.state.image };
+    if (!!image.delete_token) delete image.delete_token;
+    delete image.id;
+
     let variables = {
-      ...this.state
+      ...this.state,
+      ...image
     };
     delete variables.image;
     delete variables.product;
@@ -68,18 +73,18 @@ class UpdateProductVariantForm extends Component {
   }
   render() {
     return (
-      <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION}
+      <Mutation mutation={UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION}
         variables={this.getUpdateProdVarVariables()}
       >
-        {(updateProductVariant, { loading, error }) => (
+        {(updateProductVariantWithImage, { loading, error }) => (
           <StyledForm
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await updateProductVariant();
+              const res = await updateProductVariantWithImage();
               Router.push({
                 pathname: "/buy",
-                query: { id: res.data.updateProductVariant.product.id },
+                query: { id: res.data.updateProductVariantWithImage.product.id },
               });
             }}
           >
