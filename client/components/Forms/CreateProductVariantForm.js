@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
+import { CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
 
 
 class CreateProductVariantForm extends Component {
@@ -42,8 +42,13 @@ class CreateProductVariantForm extends Component {
     }
   }
   getCreateProdVarVariables = () => {
+    const image = { ...this.state.image };
+    if (!!image.delete_token) delete image.delete_token;
+    delete image.id;
+
     let variables = {
       ...this.state,
+      ...image,
       productId: this.props.productId
     };
     delete variables.image;
@@ -52,15 +57,15 @@ class CreateProductVariantForm extends Component {
   }
   render() {
     return (
-      <Mutation mutation={CREATE_PROD_VARIANT_MUTATION}
+      <Mutation mutation={CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION}
         variables={this.getCreateProdVarVariables()}
       >
-        {(createProductVariant, { loading, error }) => (
+        {(createProductVariantWithImage, { loading, error }) => (
           <StyledForm
             data-test="form"
             onSubmit={async e => {
               e.preventDefault();
-              const res = await createProductVariant();
+              const res = await createProductVariantWithImage();
               Router.push({
                 pathname: "/buy",
                 query: { id: this.props.productId }
