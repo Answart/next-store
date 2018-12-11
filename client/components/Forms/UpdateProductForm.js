@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
-import StyledForm from '../styles/FormStyles';
 import ProductFormFields from './ProductFormFields';
+import DisplayError from '../DisplayError';
+import StyledForm from '../styles/FormStyles';
 import { UPDATE_PRODUCT_WITH_IMAGE_MUTATION } from '../../graphql';
 
 
@@ -35,7 +36,7 @@ class UpdateProductForm extends Component {
     const image = { ...this.state.image };
     if (!!image.delete_token) delete image.delete_token;
     delete image.id;
-    
+
     let variables = {
       ...this.state,
       ...image
@@ -56,15 +57,13 @@ class UpdateProductForm extends Component {
               e.preventDefault();
               await updateProductWithImage().then((res) => {
                 Router.push({
-                  pathname: '/buy',
+                  pathname: "/buy",
                   query: { id: res.data.updateProductWithImage.id }
                 });
               });
             }}
           >
-            {error && (
-              <div>{error}</div>
-            )}
+            <DisplayError error={error} />
 
             <fieldset disabled={loading} aria-busy={loading}>
               <h2>Update Product</h2>
