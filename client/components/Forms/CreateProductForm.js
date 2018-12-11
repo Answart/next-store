@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductFormFields from './ProductFormFields';
+import DisplayError from '../DisplayError';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_PRODUCT_WITH_IMAGE_MUTATION } from '../../graphql';
 
@@ -21,7 +22,7 @@ class CreateProductForm extends Component {
     const image = { ...this.state.image };
     if (!!image.delete_token) delete image.delete_token;
     delete image.id;
-    
+
     let variables = {
       ...this.state,
       ...image
@@ -48,9 +49,7 @@ class CreateProductForm extends Component {
               });
             }}
           >
-            {error && (
-              <div>{error}</div>
-            )}
+            <DisplayError error={error} />
 
             <fieldset disabled={loading} aria-busy={loading}>
               <h2>Create Product</h2>
