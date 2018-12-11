@@ -9,18 +9,16 @@ const BuyProductPage = props => {
   return (
     <SingleProduct variables={{ id: props.query.id }}>
       {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) return <p>Error: {error.message}</p>;
+        if (loading) return (<p>Loading...</p>);
+        if (error) return (<p>Error: {error.message}</p>);
         const { product } = data;
-        const productTitle = product ? product.title : '';
-        const viewerIsCreator = product
-          ? product.user.id === user.id
-          : false;
+        if (!product) return (<p>No product found.</p>);
+        const viewerIsCreator = product.user.id === user.id;
         return (
           <StyledBuyPage>
             <PageTitle
               page={product.department}
-              titles={[{ label: productTitle }]}
+              titles={[{ label: product.title }]}
             />
 
             <div className="buy-page-content">
