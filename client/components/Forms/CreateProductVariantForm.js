@@ -87,6 +87,7 @@ class CreateProductVariantForm extends Component {
               />
 
               <button className="form-submit-btn big-btn"
+                disabled={!this.state.image}
                 type="submit"
               >Add</button>
             </fieldset>

@@ -99,6 +99,7 @@ class UpdateProductVariantForm extends Component {
               />
 
               <button className="form-submit-btn big-btn"
+                disabled={!this.state.image}
                 type="submit"
               >Update</button>
             </fieldset>
