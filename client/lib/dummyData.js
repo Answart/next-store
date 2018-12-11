@@ -1,9 +1,40 @@
 
 const user = {
-  id: "cjoxto7d5l5z70a713fae9fur",
+  id: "cjpj0izxabhkj0a15jmipydzc",
   name: 'alexy',
   email: 'alexy@gmail.com'
 };
+
+const image = {
+  id: "1",
+  cloudinary_id: "111111",
+  name: "peggswatch1",
+  width: 22,
+  height: 22,
+  transformation: "",
+  image_url: "peggswatch1.jpg",
+  large_image_url: "peggswatch1.jpg",
+}
+const image2 = {
+  id: "2",
+  cloudinary_id: "222222",
+  name: "peggswatch2",
+  width: 22,
+  height: 22,
+  transformation: "",
+  image_url: "peggswatch2.jpg",
+  large_image_url: "peggswatch2.jpg",
+}
+const image3 = {
+  id: "3",
+  cloudinary_id: "33333",
+  name: "peggswatch3",
+  width: 22,
+  height: 22,
+  transformation: "",
+  image_url: "peggswatch3.jpg",
+  large_image_url: "peggswatch3.jpg",
+}
 
 const productVariants = [
   {
@@ -11,25 +42,28 @@ const productVariants = [
     quantity: 3,
     color: "Black",
     size: "S",
-    price: 4400,
+    price: 14,
     sale: true,
-    salePrice: 2200
+    salePrice: 12,
+    image: image2
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
     color: "Black",
     size: "M",
-    price: 4400,
+    price: 24,
     sale: false,
-    salePrice: 0
+    salePrice: 0,
+    image: image3
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 2,
     color: "Red",
     size: "S",
-    price: 4000,
+    price: 40,
     sale: true,
-    salePrice: 20
+    salePrice: 20,
+    image: image3
   }
 ];
 
@@ -38,15 +72,13 @@ const product = {
   department: "Accessories",
   title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
   description: "Limited Edition watch from the 2018 Fall fashion line.",
-  image: "peggswatch.jpg",
   category: "Sport",
   brand: "Peggs",
   online: false,
-  url: "",
   user,
-  productVariants
+  productVariants,
+  image
 };
-
 
 const products = [
   product,
@@ -55,19 +87,48 @@ const products = [
     department: "Accessories",
     title: "Pegggy",
     description: "Limited.",
-    image: "peggswatch2.jpg",
     category: "Sport",
     brand: "Peggs",
     online: true,
-    url: "",
     user,
-    productVariants
+    productVariants,
+    image
   }
 ];
+
+let variant = { ...productVariants[0] };
+variant.product = product;
+
+const cart = [{
+    id: '1234',
+    productVariant: variant
+  }, {
+    id: '2345',
+    productVariant: variant
+  }, {
+    id: '3456',
+    productVariant: variant
+  }, {
+    id: '4567',
+    productVariant: variant
+  }, {
+    id: '5678',
+    productVariant: variant
+  }, {
+    id: '7890',
+    productVariant: variant
+  }, {
+    id: '8901',
+    productVariant: variant
+  }, {
+    id: '9012',
+    productVariant: variant
+}]
 
 export default product;
 export {
   productVariants,
   products,
-  user
+  user,
+  cart
 };
