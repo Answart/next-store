@@ -66,6 +66,43 @@ const UPDATE_PROD_VARIANT_MUTATION = gql`
   }
 `;
 
+const UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION = gql`
+  mutation UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION(
+    $id: ID!,
+    $price: Float!
+    $quantity: Int!
+    $sale: Boolean!
+    $salePrice: Float,
+    $cloudinary_id: String!,
+    $name: String!,
+    $height: Int!,
+    $width: Int!,
+    $transformation: String!,
+    $image_url: String!,
+    $large_image_url: String!
+  ) {
+    updateProductVariantWithImage(
+      id: $id
+      price: $price
+      quantity: $quantity
+      sale: $sale
+      salePrice: $salePrice
+      cloudinary_id: $cloudinary_id,
+      name: $name,
+      height: $height,
+      width: $width,
+      transformation: $transformation,
+      image_url: $image_url,
+      large_image_url: $large_image_url
+    ) {
+      id
+      product {
+        id
+      }
+    }
+  }
+`;
+
 const DELETE_PROD_VARIANT_MUTATION = gql`
   mutation DELETE_PROD_VARIANT_MUTATION($id: ID!) {
     deleteProductVariant(id: $id) {
@@ -78,5 +115,6 @@ const DELETE_PROD_VARIANT_MUTATION = gql`
 export {
   CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
   UPDATE_PROD_VARIANT_MUTATION,
+  UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 };
