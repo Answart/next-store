@@ -42,12 +42,39 @@ class ProductVariantFormFields extends Component {
     state[name] = val;
     this.props.saveToForm(state);
   };
+  handleImageChange = async e => {
+    if (!!e.preventDefault) e.preventDefault();
+    const { name, type, value, files } = e.target;
+    const currentImageToken = this.props.image
+      ? (this.props.image.delete_token || '')
+      : '';
+
+    if (type === 'radio') {
+      const getNewImage = (value === 'true');
+      if (getNewImage && !!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
+
+      this.setState({ getNewImage });
+      this.props.saveToForm({ getNewImage });
+    }
+    if (type === 'file' && name === 'upload') {
+      if (!files || !files.length) return;
+      const image = await uploadImageFile(files[0]);
+      if (image.error) return alert('An error occured while uploading image. Please try again later.');
+      if (!!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
+
+      this.props.saveToForm({ image });
+    }
+  }
   render() {
-    const { sale } = this.props;
+    const { sale, image } = this.props;
     return (
       <StyledProduct>
         <div className="form-imgs">
-          <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
+          {!!image ? (
+            <img width="450" height="640" src={image.large_image_url} alt={image.name} />
+          ) : (
+            <img width="450" height="640" src="/static/images/placeholder_large.jpg" alt="Placeholder Image" />
+          )}
         </div>
 
         <div className="form-content">
