@@ -19,6 +19,7 @@ type Mutation {
   deleteProduct(id: ID!): Product
   createProductVariantWithImage(price: Float!, quantity: Int!, color: String, sale: Boolean!, salePrice: Float, size: String, cloudinary_id: String, name: String, height: Int, width: Int, transformation: String, image_url: String, large_image_url: String, productId: String!): ProductVariant!
   updateProductVariant(id: ID!, price: Float!, quantity: Int!, color: String, sale: Boolean!, salePrice: Float, size: String): ProductVariant!
+  updateProductVariantWithImage(id: ID!, price: Float!, quantity: Int!, sale: Boolean!, salePrice: Float, cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): ProductVariant!
   deleteProductVariant(id: ID!): ProductVariant
 }
 
