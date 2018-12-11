@@ -39,33 +39,6 @@ const CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION = gql`
   }
 `;
 
-const UPDATE_PROD_VARIANT_MUTATION = gql`
-  mutation UPDATE_PROD_VARIANT_MUTATION(
-    $id: ID!,
-    $price: Float!
-    $quantity: Int!
-    $color: String
-    $size: String
-    $sale: Boolean!
-    $salePrice: Float
-  ) {
-    updateProductVariant(
-      id: $id
-      price: $price
-      quantity: $quantity
-      color: $color
-      size: $size
-      sale: $sale
-      salePrice: $salePrice
-    ) {
-      id
-      product {
-        id
-      }
-    }
-  }
-`;
-
 const UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION = gql`
   mutation UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION(
     $id: ID!,
@@ -114,7 +87,6 @@ const DELETE_PROD_VARIANT_MUTATION = gql`
 
 export {
   CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
-  UPDATE_PROD_VARIANT_MUTATION,
   UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 };
