@@ -1,4 +1,5 @@
 import SingleProduct from '../components/SingleProduct';
+import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import Product from '../components/Product';
 import { StyledBuyPage } from '../components/styles/PageStyles';
@@ -12,7 +13,7 @@ const BuyProductPage = props => {
         if (loading) return (<p>Loading...</p>);
         if (error) return (<p>Error: {error.message}</p>);
         const { product } = data;
-        if (!product) return (<p>No product found.</p>);
+        if (!product) return (<NotFound status={404} />);
         const viewerIsCreator = product.user.id === user.id;
         return (
           <StyledBuyPage>
