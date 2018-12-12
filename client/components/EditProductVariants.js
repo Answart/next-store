@@ -37,10 +37,12 @@ class EditProductVariants extends Component {
                 variant={currentVariant}
               />
 
-              <DeleteProductVariant
-                id={id}
-                productId={this.props.productId}
-              >Delete Selection</DeleteProductVariant>
+              <div className="edit-pg-content-footer">
+                <DeleteProductVariant
+                  id={id}
+                  productId={this.props.productId}
+                >Delete Selection</DeleteProductVariant>
+              </div>
             </div>
           )}
         </div>

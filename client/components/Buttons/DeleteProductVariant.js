@@ -13,27 +13,25 @@ class DeleteProductVariant extends Component {
         variables={{ id }}
       >
         {(deleteProductVariant, { error }) => (
-          <div className="form-actions prdct-padding">
-            <button className="dlt-btn"
-              disabled={!id}
-              onClick={() => {
-                if (confirm('Are you sure you want to delete this selection?')) {
-                  deleteProductVariant()
-                    .then((res) => {
-                      Router.push({
-                        pathname: '/product/edit',
-                        query: { id: productId }
-                      });
-                    })
-                    .catch(err => {
-                      alert(err.message);
+          <button className="dlt-btn"
+            disabled={!id}
+            onClick={() => {
+              if (confirm('Are you sure you want to delete this selection?')) {
+                deleteProductVariant()
+                  .then((res) => {
+                    Router.push({
+                      pathname: '/product/edit',
+                      query: { id: productId }
                     });
-                }
-              }}
-            >
-              {children}
-            </button>
-          </div>
+                  })
+                  .catch(err => {
+                    alert(err.message);
+                  });
+              }
+            }}
+          >
+            {children}
+          </button>
         )}
       </Mutation>
     );
