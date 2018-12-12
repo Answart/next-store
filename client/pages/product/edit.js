@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { StyledEditPage } from '../../components/styles/PageStyles';
+import NotFound from '../../components/NotFound';
 import SingleProduct from '../../components/SingleProduct';
 import PageTitle from '../../components/PageTitle';
 import DeleteProduct from '../../components/Buttons/DeleteProduct';
@@ -14,7 +15,7 @@ const EditProductPage = props => {
         if (loading) return (<p>Loading...</p>);
         if (error) return (<p>Error: {error.message}</p>);
         const { product } = data;
-        if (!product) return (<p>No product found.</p>);
+        if (!product) return (<NotFound status={404} />);
         return (
           <StyledEditPage>
             <PageTitle
