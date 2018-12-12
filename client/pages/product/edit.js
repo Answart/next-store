@@ -13,7 +13,7 @@ const EditProductPage = props => {
     <SingleProduct variables={{ id }}>
       {({ data, error, loading }) => {
         if (loading) return (<p>Loading...</p>);
-        if (error) return (<p>Error: {error.message}</p>);
+        if (error) return (<NotFound status={400} message={error.message} />);
         const { product } = data;
         if (!product) return (<NotFound status={404} />);
         return (
