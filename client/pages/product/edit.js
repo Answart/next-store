@@ -34,7 +34,10 @@ const EditProductPage = props => {
             <div className="edit-pg-content">
               <UpdateProductForm product={product} />
 
-              <DeleteProduct id={id}>Delete Product</DeleteProduct>
+              <div className="edit-pg-content-footer">
+                <DeleteProduct id={id}>Delete Product</DeleteProduct>
+              </div>
+
             </div>
           </StyledEditPage>
         )
