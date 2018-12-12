@@ -24,6 +24,7 @@ const NotFound = (props) => {
     message: 'Unable to find what you are looking for!'
   };
   if (props.status) {
+    if (props.status === 204) notFound.title = 'Nothing Here';
     if (props.status === 400) {
       notFound.title = 'Error';
       notFound.message = !!props.message ? props.message : 'An error occured. Please try again later.';
