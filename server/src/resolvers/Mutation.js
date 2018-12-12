@@ -35,7 +35,7 @@ const Mutation = {
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to create a product');
+    if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
 
     const newImage = await ctx.db.mutation.createImage({
       data: {
@@ -58,14 +58,14 @@ const Mutation = {
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to add to a product');
+    if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
 
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where: { id: args.id }
     }, `{ id title image { id } user { id }}`);
-    if (!existingProduct) throw new Error("No product found with that id.");
-    if (existingProduct.user.id !== userId) throw new Error('You are not authorized to update this product.');
+    if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
+    if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
 
     // Existing image?
     const incomingExistingImg = await ctx.db.query.image({
@@ -108,17 +108,14 @@ const Mutation = {
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to delete a product');
+    if (!userId) throw new Error('DELETE PRODUCT: You must be signed in to delete a product');
 
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where
     }, `{ id title image { id } user { id }}`);
-    if (!existingProduct) throw new Error("No product found with that id.");
-
-    // Check if they own that product, or have the permissions
-    const ownsItem = existingProduct.user.id === userId;
-    if (!ownsItem) throw new Error("You don't have permission to do that!");
+    if (!existingProduct) throw new Error('DELETE PRODUCT: No product found with that id.');
+    if (existingProduct.user.id !== userId) throw new Error('DELETE PRODUCT: You are not authorized to delete this product.');
 
     if (!!existingProduct.image) {
       // delete cloudinaryImages here too
@@ -143,14 +140,14 @@ const Mutation = {
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to add to a product');
+    if (!userId) throw new Error('CREATE SELECTION: You must be signed in to add to a selection to a product.');
 
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where: { id: productId }
     }, `{ id title image { id cloudinary_id } user { id }}`);
-    if (!existingProduct) throw new Error('Cannot find product with this id');
-    if (existingProduct.user.id !== userId) throw new Error('You are not authorized to update this product.');
+    if (!existingProduct) throw new Error(`CREATE SELECTION: Cannot find product with ID '${productId}'`);
+    if (existingProduct.user.id !== userId) throw new Error('CREATE SELECTION: You are not authorized to update this product.');
 
     // Existing productVariant?
     const [existingProductVariant] = await ctx.db.query.productVariants({
@@ -160,7 +157,7 @@ const Mutation = {
         product: { id: productId }
       }
     });
-    if (!!existingProductVariant) throw new Error(`A selection with this size/color already exists for this product. ID: '${existingProductVariant.id}'`);
+    if (!!existingProductVariant) throw new Error(`CREATE SELECTION: A selection with ID '${existingProductVariant.id}' already exists with this size/color for this product.`);
 
     // Create with existing or new image?
     let imageId;
@@ -200,14 +197,14 @@ const Mutation = {
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to add to a product');
+    if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
 
     // Existing productVariant?
     const [existingProductVariant] = await ctx.db.query.productVariants({
       where: { id: args.id }
     }, `{ id quantity image { id cloudinary_id } product { user { id }}}`);
-    if (!existingProductVariant) throw new Error("No productVariant found with that id.");
-    if (existingProductVariant.product.user.id !== userId) throw new Error('You are not authorized to update this productVariant.');
+    if (!existingProductVariant) throw new Error(`UPDATE SELECTION: No productVariant found with id '${args.id}'`);
+    if (existingProductVariant.product.user.id !== userId) throw new Error('UPDATE SELECTION: You are not authorized to update this selection.');
 
     // Update image?
     if (imgData.cloudinary_id !== existingProductVariant.image.cloudinary_id) {
@@ -238,12 +235,14 @@ const Mutation = {
   },
   async deleteProductVariant(parent, args, ctx, info) {
     const where = { id: args.id };
+
     // Logged in?
     const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('You must be signed in to delete a product');
+    if (!userId) throw new Error('DELETE SELECTION: You must be signed in to delete a product.');
+
     // Existing product?
     const productVariant = await ctx.db.query.productVariant({ where });
-    if (!productVariant) throw new Error('No selection with this id found')
+    if (!productVariant) throw new Error(`DELETE SELECTION: No selection with ID '${args.id}' found.`)
 
     return await ctx.db.mutation.deleteProductVariant({ where }, info);
   }
