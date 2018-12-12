@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { StyledProductsList } from './styles/ProductStyles';
-import NotFound from './DisplayError';
+import NotFound from './NotFound';
 import ProductsListItem from './ProductsListItem';
 import {
   PRODUCTS_QUERY,
