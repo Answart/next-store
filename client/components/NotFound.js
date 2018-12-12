@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 
@@ -46,7 +47,7 @@ const NotFound = (props) => {
 };
 
 
-DisplayError.propTypes = {
+NotFound.propTypes = {
   status: PropTypes.number,
   message: PropTypes.string,
 };
