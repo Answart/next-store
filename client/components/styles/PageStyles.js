@@ -50,6 +50,10 @@ const StyledEditPage = styled.div`
     grid-column: 1 / 1;
     grid-row: 3 / -1;
     margin: 0 4rem;
+    .edit-pg-content-footer {
+      padding: 5rem 0;
+      text-align: center;
+    }
   }
 `;
 
