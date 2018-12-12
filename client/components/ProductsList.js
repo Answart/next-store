@@ -37,6 +37,9 @@ class ProductsList extends Component {
         {({ data, error, loading }) => {
           if (loading) return (<p>Loading...</p>);
           if (error) return (<NotFound status={400} message={error.message} />);
+          const { products } = data;
+          if (!products) return (<NotFound status={404} />);
+          if (!products.length) return (<NotFound status={204} message='No products found.' />);
           return (
             <StyledProductsList>
               {data.products.map(prdct =>
