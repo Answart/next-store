@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { StyledProductsList } from './styles/ProductStyles';
+import NotFound from './DisplayError';
 import ProductsListItem from './ProductsListItem';
 import {
   PRODUCTS_QUERY,
@@ -34,8 +35,8 @@ class ProductsList extends Component {
         variables={variables}
       >
         {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}</p>;
+          if (loading) return (<p>Loading...</p>);
+          if (error) return (<NotFound status={400} message={error.message} />);
           return (
             <StyledProductsList>
               {data.products.map(prdct =>
