@@ -1,6 +1,32 @@
 import gql from 'graphql-tag';
 
 
+const CREATE_PROD_VARIANT_MUTATION = gql`
+  mutation CREATE_PROD_VARIANT_MUTATION(
+    $color: String!,
+    $size: String!,
+    $quantity: Int!,
+    $price: Float!,
+    $sale: Boolean!,
+    $salePrice: Float,
+    $productId: String!,
+    $imageId: String!
+  ) {
+    createProductVariant(
+      color: $color,
+      size: $size,
+      price: $price,
+      quantity: $quantity,
+      sale: $sale,
+      salePrice: $salePrice,
+      productId: $productId,
+      imageId: $imageId
+    ) {
+      id
+    }
+  }
+`;
+
 const CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION = gql`
   mutation CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION(
     $price: Float!
@@ -86,6 +112,7 @@ const DELETE_PROD_VARIANT_MUTATION = gql`
 
 
 export {
+  CREATE_PROD_VARIANT_MUTATION,
   CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
   UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
