@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import DisplayError from '../DisplayError';
 import StyledForm from '../styles/FormStyles';
-import { UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
+import { CREATE_IMAGE_MUTATION, UPDATE_PROD_VARIANT_MUTATION } from '../../graphql';
 
 
 class UpdateProductVariantForm extends Component {
@@ -57,62 +57,57 @@ class UpdateProductVariantForm extends Component {
     } else {
       this.setState({ ...state });
     }
-  }
-  getUpdateProdVarVariables = () => {
-    const image = { ...this.state.image };
-    if (!!image.delete_token) delete image.delete_token;
-    delete image.id;
-
-    let variables = {
-      ...this.state,
-      ...image
-    };
+  };
+  submitForm = async (e, createImage, updateProductVariant) => {
+    e.preventDefault();
+    const variables = { ...this.state };
+    const imageVariables = { ...variables.image };
     delete variables.image;
-    delete variables.product;
+    delete imageVariables.id;
+    if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
-    return variables;
-  }
+    return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
+      variables.imageId = res.data.createImage.id;
+      return await updateProductVariant({ variables }).then((res) => {
+        Router.push({
+          pathname: "/buy",
+          query: { id: this.props.productId }
+        });
+      });
+    });
+  };
   render() {
     return (
-      <Mutation mutation={UPDATE_PROD_VARIANT_WITH_IMAGE_MUTATION}
-        variables={this.getUpdateProdVarVariables()}
-      >
-        {(updateProductVariantWithImage, { loading, error }) => (
-          <StyledForm
-            data-test="form"
-            onSubmit={async e => {
-              e.preventDefault();
-              await updateProductVariantWithImage().then((res) => {
-                Router.push({
-                  pathname: "/buy",
-                  query: { id: res.data.updateProductVariantWithImage.product.id }
-                });
-              });
-            }}
-          >
-            <DisplayError error={error} />
+      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
+        {(createImage) => (
+          <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}}>
+            {(updateProductVariant, { loading, error }) => (
+              <StyledForm onSubmit={e => this.submitForm(e, createImage, updateProductVariant)}>
+                <DisplayError error={error} />
 
-            <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Update Selection</h2>
+                <fieldset disabled={loading} aria-busy={loading}>
+                  <h2>Update Selection</h2>
 
-              <ProductVariantFormFields
-                price={this.state.price}
-                quantity={this.state.quantity}
-                color={this.state.color}
-                size={this.state.size}
-                sale={this.state.sale}
-                salePrice={this.state.salePrice}
-                image={this.state.image}
-                saveToForm={this.saveToState}
-                editView={true}
-              />
+                  <ProductVariantFormFields
+                    price={this.state.price}
+                    quantity={this.state.quantity}
+                    color={this.state.color}
+                    size={this.state.size}
+                    sale={this.state.sale}
+                    salePrice={this.state.salePrice}
+                    image={this.state.image}
+                    saveToForm={this.saveToState}
+                    editView={true}
+                  />
 
-              <button className="form-submit-btn big-btn"
-                disabled={!this.state.image || loading}
-                type="submit"
-              >Update</button>
-            </fieldset>
-          </StyledForm>
+                  <button className="form-submit-btn big-btn"
+                    disabled={!this.state.image || loading}
+                    type="submit"
+                  >Update</button>
+                </fieldset>
+              </StyledForm>
+            )}
+          </Mutation>
         )}
       </Mutation>
     );
