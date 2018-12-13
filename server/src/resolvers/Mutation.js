@@ -55,9 +55,9 @@ const Mutation = {
     }, info);
   },
   async createProduct(parent, args, ctx, info) {
-    const imgId = args.imgId;
+    const imageId = args.imageId;
     const data = { ...args };
-    delete data.imgId;
+    delete data.imageId;
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
@@ -65,15 +65,15 @@ const Mutation = {
 
     // Existing image?
     const [incomingImg] = await ctx.db.query.images({
-      where: { id: imgId }
+      where: { id: imageId }
     });
-    if (!incomingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imgId}'.`);
+    if (!incomingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imageId}'.`);
 
     return await ctx.db.mutation.createProduct({
       data: {
         ...data,
         user: { connect: { id: userId } },
-        image: { connect: { id: imgId } }
+        image: { connect: { id: imageId } }
       }
     }, info);
   },

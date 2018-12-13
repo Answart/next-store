@@ -15,7 +15,7 @@ type Mutation {
   createUser(name: String!, email: String!, password: String!): User!
   createImage(cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): Image!
   deleteImage(id: ID!): Image
-  createProduct(department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imgId: String!): Product!
+  createProduct(department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imageId: String!): Product!
   updateProduct(id: ID!, department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imgId: String!): Product!
   deleteProduct(id: ID!): Product
   createProductVariantWithImage(price: Float!, quantity: Int!, color: String, sale: Boolean!, salePrice: Float, size: String, cloudinary_id: String, name: String, height: Int, width: Int, transformation: String, image_url: String, large_image_url: String, productId: String!): ProductVariant!
