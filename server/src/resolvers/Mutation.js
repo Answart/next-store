@@ -99,6 +99,62 @@ const Mutation = {
       }
     }, info);
   },
+  async updateProduct(parent, args, ctx, info) {
+    const imgId = args.imgId;
+    const data = { ...args };
+    delete data.id;
+    delete data.imgId;
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
+
+    // Existing product?
+    const existingProduct = await ctx.db.query.product({
+      where: { id: args.id }
+    }, `{ id title image { id } user { id }}`);
+    if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
+    if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
+
+    // Existing image?
+    const [incomingImg] = await ctx.db.query.images({
+      where: { id: imgId }
+    });
+    if (!incomingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imgId}'.`);
+
+    // Update w/new image?
+    if (existingProduct.image.id !== imgId) data.image = { connect: { id: imgId } };
+
+    const updatedProduct = await ctx.db.mutation.updateProduct({
+      where: { id: existingProduct.id },
+      data
+    }, info);
+
+    // (Delete old image. MAY NOT BE NECESSARY?)
+    if (existingProduct.image.id !== imgId) {
+      console.log('deleting old image', incomingImg)
+
+      const variantsToUpdate = await ctx.db.query.productVariants({
+        where: { image: { id: existingProduct.image.id }}
+      });
+      console.log('after updateManyProductVariants', variantsToUpdate);
+      for (let i = 0; i < variantsToUpdate.length; i ++) {
+        const id = variantsToUpdate[i].id;
+        await ctx.db.mutation.productVariant({
+          where: { id },
+          data: { image: { connect: { id: imgId }}}
+        });
+      }
+      console.log('finished updating');
+
+      await ctx.db.mutation.deleteImage({
+        where: { id: existingProduct.image.id }
+      });
+      console.log('after deleting old image')
+    }
+
+    return updatedProduct;
+  },
   async updateProductWithImage(parent, args, ctx, info) {
     const { data, imgData } = getDataAndImgData(args);
     delete data.id;
