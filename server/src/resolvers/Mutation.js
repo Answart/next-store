@@ -273,6 +273,49 @@ const Mutation = {
 
     return newProductVariant;
   },
+  async updateProductVariant(parent, args, ctx, info) {
+    const data = { ...args };
+    let imageId;
+    if (args.imageId) {
+      imageId = args.imageId;
+      delete data.imageId;
+    }
+    delete data.id;
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
+
+    // Existing productVariant?
+    const [existingProductVariant] = await ctx.db.query.productVariants({
+      where: { id: args.id }
+    }, `{ id quantity image { id cloudinary_id } product { user { id }}}`);
+    if (!existingProductVariant) throw new Error(`UPDATE SELECTION: No productVariant found with id '${args.id}'.`);
+    if (existingProductVariant.product.user.id !== userId) throw new Error('UPDATE SELECTION: You are not authorized to update this selection.');
+
+    // Update image?
+    if (imageId) {
+      // Existing image?
+      const [incomingImg] = await ctx.db.query.images({
+        where: { id: imageId }
+      });
+      if (!incomingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
+
+      if (incomingImg.id !== existingProductVariant.image.id) {
+        data.image = { connect: { id: incomingImg.id } };
+      }
+    }
+
+    // Update availability?
+    if (data.quantity !== existingProductVariant.quantity) {
+      data.availability = `${data.quantity} in Stock!`;
+    }
+
+    return await ctx.db.mutation.updateProductVariant({
+      where: { id: existingProductVariant.id },
+      data
+    }, info);
+  },
   async updateProductVariantWithImage(parent, args, ctx, info) {
     const { data, imgData } = getDataAndImgData(args);
     delete data.id;
