@@ -78,10 +78,10 @@ const Mutation = {
     }, info);
   },
   async updateProduct(parent, args, ctx, info) {
-    const imgId = args.imgId;
+    const imageId = args.imageId;
     const data = { ...args };
     delete data.id;
-    delete data.imgId;
+    delete data.imageId;
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
@@ -96,12 +96,12 @@ const Mutation = {
 
     // Existing image?
     const [incomingImg] = await ctx.db.query.images({
-      where: { id: imgId }
+      where: { id: imageId }
     });
-    if (!incomingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imgId}'.`);
+    if (!incomingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imageId}'.`);
 
     // Update w/new image?
-    if (existingProduct.image.id !== imgId) data.image = { connect: { id: imgId } };
+    if (existingProduct.image.id !== imageId) data.image = { connect: { id: imageId } };
 
     const updatedProduct = await ctx.db.mutation.updateProduct({
       where: { id: existingProduct.id },
@@ -109,7 +109,7 @@ const Mutation = {
     }, info);
 
     // (Delete old image. MAY NOT BE NECESSARY?)
-    if (existingProduct.image.id !== imgId) {
+    if (existingProduct.image.id !== imageId) {
       console.log('deleting old image', incomingImg)
 
       const variantsToUpdate = await ctx.db.query.productVariants({
@@ -120,7 +120,7 @@ const Mutation = {
         const id = variantsToUpdate[i].id;
         await ctx.db.mutation.productVariant({
           where: { id },
-          data: { image: { connect: { id: imgId }}}
+          data: { image: { connect: { id: imageId }}}
         });
       }
       console.log('finished updating');

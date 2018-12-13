@@ -41,7 +41,7 @@ class UpdateProductForm extends Component {
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
-      variables.imgId = res.data.createImage.id;
+      variables.imageId = res.data.createImage.id;
       return await createProduct({ variables }).then((res) => {
         Router.push({
           pathname: "/product/add",

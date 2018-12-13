@@ -96,7 +96,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
     $category: String,
     $brand: String,
     $online: Boolean!,
-    $imgId: String!
+    $imageId: String!
   ) {
     updateProduct(
       id: $id,
@@ -106,7 +106,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
       category: $category,
       brand: $brand,
       online: $online,
-      imgId: $imgId
+      imageId: $imageId
     ) {
       id
     }
