@@ -8,6 +8,9 @@ export {
   LOG_OUT_MUTATION
 } from './user';
 export {
+  CREATE_IMAGE_MUTATION
+} from './image';
+export {
   PRODUCT_QUERY,
   CREATE_PRODUCT_WITH_IMAGE_MUTATION,
   UPDATE_PRODUCT_WITH_IMAGE_MUTATION,
