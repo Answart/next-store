@@ -28,6 +28,7 @@ function getShopProps(variables = {}) {
   if (variables.department) {
     queryType = 'department';
     pageLabel = capWord(variables.department);
+    variables.online = true;
   } else if (variables.name) {
     if (typeof variables.online !== 'undefined') {
       queryType = 'name'
@@ -63,8 +64,7 @@ const Shop = props => {
       </div>
 
       <div className="shop-pg-lst">
-        <Query
-          query={query}
+        <Query query={query}
           variables={variables}
         >
           {({ data, error, loading }) => {
