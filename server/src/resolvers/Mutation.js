@@ -54,6 +54,29 @@ const Mutation = {
       where: { id: args.id }
     }, info);
   },
+  async createProduct(parent, args, ctx, info) {
+    const imgId = args.imgId;
+    const data = { ...args };
+    delete data.imgId;
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
+
+    // Existing image?
+    const [incomingImg] = await ctx.db.query.images({
+      where: { id: imgId }
+    });
+    if (!incomingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imgId}'.`);
+
+    return await ctx.db.mutation.createProduct({
+      data: {
+        ...data,
+        user: { connect: { id: userId } },
+        image: { connect: { id: imgId } }
+      }
+    }, info);
+  },
   async createProductWithImage(parent, args, ctx, info) {
     const { data, imgData } = getDataAndImgData(args);
 
