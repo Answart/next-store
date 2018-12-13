@@ -69,12 +69,11 @@ const StyledPage = styled.div`
   .line-through {
     text-decoration: line-through ${theme.orange};
   }
-`;
-
-const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto;
-  padding: 2rem;
+  .inner-page {
+    max-width: ${props => props.theme.maxWidth};
+    margin: 0 auto;
+    padding: 2rem;
+  }
 `;
 
 injectGlobal`
@@ -164,9 +163,9 @@ class Page extends Component {
 
           <Header />
 
-          <Inner>
+          <div className="inner-page">
             {this.props.children}
-          </Inner>
+          </div>
         </StyledPage>
       </ThemeProvider>
     );
