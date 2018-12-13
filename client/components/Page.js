@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
-import Meta from './Meta.js';
 import Header from './Header';
 
 
@@ -155,7 +155,13 @@ class Page extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyledPage>
-          <Meta />
+          <Head>
+            <meta name='viewport' content='width=device-width, initial-scale=1' />
+            <meta charSet='utf-8' />
+            <link rel="shortcut icon" href="/static/images/favicon.png" />
+            <title>Next Store</title>
+          </Head>
+
           <Header />
 
           <Inner>
