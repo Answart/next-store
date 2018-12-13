@@ -77,28 +77,6 @@ const Mutation = {
       }
     }, info);
   },
-  async createProductWithImage(parent, args, ctx, info) {
-    const { data, imgData } = getDataAndImgData(args);
-
-    // Logged in?
-    const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
-
-    const newImage = await ctx.db.mutation.createImage({
-      data: {
-        ...imgData,
-        user: { connect: { id: userId } }
-      }
-    });
-
-    return await ctx.db.mutation.createProduct({
-      data: {
-        ...data,
-        user: { connect: { id: userId } },
-        image: { connect: { id: newImage.id } }
-      }
-    }, info);
-  },
   async updateProduct(parent, args, ctx, info) {
     const imgId = args.imgId;
     const data = { ...args };
