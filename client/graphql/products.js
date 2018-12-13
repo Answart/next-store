@@ -166,10 +166,52 @@ const ONLINE_DEPT_PRODUCTS_QUERY = gql`
   }
 `;
 
+const SHOP_PRODUCTS_QUERY = gql`
+  query ONLINE_PRODUCTS_QUERY(
+    $online: Boolean,
+    $department: String,
+    $name: String
+  ) {
+    products(where: {
+      online: $online,
+      department: $department,
+      user: { name: $name }
+    }) {
+      id
+      department
+      title
+      description
+      category
+      brand
+      online
+      user {
+        id
+        name
+      }
+      image {
+        name
+        image_url
+      }
+      productVariants {
+        id
+        quantity
+        color
+        size
+        price
+        sale
+        salePrice
+        availability
+      }
+    }
+  }
+`;
+
+
 export {
   PRODUCTS_QUERY,
   ONLINE_PRODUCTS_QUERY,
   SELLERS_PRODUCTS_QUERY,
   ONLINE_SELLERS_PRODUCTS_QUERY,
-  ONLINE_DEPT_PRODUCTS_QUERY
+  ONLINE_DEPT_PRODUCTS_QUERY,
+  SHOP_PRODUCTS_QUERY
 }
