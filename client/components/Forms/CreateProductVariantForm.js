@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import DisplayError from '../DisplayError';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION } from '../../graphql';
+import { CREATE_IMAGE_MUTATION, CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
 
 
 class CreateProductVariantForm extends Component {
@@ -30,7 +30,7 @@ class CreateProductVariantForm extends Component {
     size: "",
     sale: false,
     salePrice: 1.00,
-    image: this.props.productImage
+    image: { ...this.props.productImage }
   };
   saveToState = state => {
     if (typeof state.getNewImage !== 'undefined') {
@@ -46,62 +46,60 @@ class CreateProductVariantForm extends Component {
     } else {
       this.setState({ ...state });
     }
-  }
-  getCreateProdVarVariables = () => {
-    const image = { ...this.state.image };
-    if (!!image.delete_token) delete image.delete_token;
-    delete image.id;
-
-    let variables = {
+  };
+  submitForm = async (e, createImage, createProductVariant) => {
+    e.preventDefault();
+    const variables = {
       ...this.state,
-      ...image,
       productId: this.props.productId
     };
+    const imageVariables = { ...variables.image };
     delete variables.image;
+    delete imageVariables.id;
+    if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
-    return variables;
-  }
+    return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
+      variables.imageId = res.data.createImage.id;
+      return await createProductVariant({ variables }).then((res) => {
+        Router.push({
+          pathname: "/buy",
+          query: { id: this.props.productId }
+        });
+      });
+    });
+  };
   render() {
     return (
-      <Mutation mutation={CREATE_PROD_VARIANT_WITH_IMAGE_MUTATION}
-        variables={this.getCreateProdVarVariables()}
-      >
-        {(createProductVariantWithImage, { loading, error }) => (
-          <StyledForm
-            data-test="form"
-            onSubmit={async e => {
-              e.preventDefault();
-              await createProductVariantWithImage().then((res) => {
-                Router.push({
-                  pathname: "/buy",
-                  query: { id: this.props.productId }
-                });
-              });
-            }}
-          >
-            <DisplayError error={error} />
+      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
+        {(createImage) => (
+          <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}}>
+            {(createProductVariant, { loading, error }) => (
+              <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
+                <DisplayError error={error} />
 
-            <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Add Selection</h2>
+                <fieldset disabled={loading} aria-busy={loading}>
+                  <h2>Add Selection</h2>
 
-              <ProductVariantFormFields
-                price={this.state.price}
-                quantity={this.state.quantity}
-                color={this.state.color}
-                size={this.state.size}
-                sale={this.state.sale}
-                salePrice={this.state.salePrice}
-                image={this.state.image}
-                saveToForm={this.saveToState}
-                editView={false}
-              />
+                  <ProductVariantFormFields
+                    price={this.state.price}
+                    quantity={this.state.quantity}
+                    color={this.state.color}
+                    size={this.state.size}
+                    sale={this.state.sale}
+                    salePrice={this.state.salePrice}
+                    image={this.state.image}
+                    saveToForm={this.saveToState}
+                    editView={false}
+                  />
 
-              <button className="form-submit-btn big-btn"
-                disabled={!this.state.image || loading}
-                type="submit"
-              >Add</button>
-            </fieldset>
-          </StyledForm>
+                  <button className="form-submit-btn big-btn"
+                    disabled={!this.state.image || loading}
+                    type="submit"
+                  >Add</button>
+                </fieldset>
+              </StyledForm>
+            )}
+          </Mutation>
         )}
       </Mutation>
     );
