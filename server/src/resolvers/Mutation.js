@@ -25,6 +25,30 @@ const Mutation = {
 
     return await ctx.db.mutation.createUser({ data }, info);
   },
+  async createImage(parent, args, ctx, info) {
+    const data = { ...args };
+
+    // Logged in?
+    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    if (!userId) throw new Error('CREATE IMAGE: You must be signed in to create an image.');
+
+    // Existing image?
+    const [existingImg] = await ctx.db.query.images({
+      where: { ...data }
+    }, info);
+    if (!!existingImg) {
+      console.log('CREATE IMAGE: Returning existing image found with incoming cloudinary_id.');
+      return existingImg;
+    }
+
+    delete data.id;
+    return await ctx.db.mutation.createImage({
+      data: {
+        ...data,
+        user: { connect: { id: userId } }
+      }
+    }, info);
+  },
   async deleteImage(parent, args, ctx, info) {
     return await ctx.db.mutation.deleteImage({
       where: { id: args.id }

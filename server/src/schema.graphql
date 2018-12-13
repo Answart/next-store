@@ -13,6 +13,7 @@ type Query {
 
 type Mutation {
   createUser(name: String!, email: String!, password: String!): User!
+  createImage(cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): Image!
   deleteImage(id: ID!): Image
   createProductWithImage(department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): Product!
   updateProductWithImage(id: ID!, department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): Product!
