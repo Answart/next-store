@@ -34,14 +34,17 @@ class UpdateProductForm extends Component {
   saveToState = state => this.setState({ ...state });
   submitForm = async (e, createImage, updateProduct) => {
     e.preventDefault();
-    const variables = { ...this.state };
-    const imageVariables = { ...variables.image };
-    delete variables.image;
-    delete imageVariables.id;
+    const imageVariables = { ...this.state.image };
+    if (!!imageVariables.id) delete imageVariables.id;
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
-      variables.imageId = res.data.createImage.id;
+      const variables = {
+        ...this.state,
+        imageId: res.data.createImage.id
+      };
+      delete variables.image;
+
       return await createProduct({ variables }).then((res) => {
         Router.push({
           pathname: "/product/add",

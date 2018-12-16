@@ -60,14 +60,17 @@ class UpdateProductVariantForm extends Component {
   };
   submitForm = async (e, createImage, updateProductVariant) => {
     e.preventDefault();
-    const variables = { ...this.state };
-    const imageVariables = { ...variables.image };
-    delete variables.image;
-    delete imageVariables.id;
+    const imageVariables = { ...this.state.image };
+    if (!!imageVariables.id) delete imageVariables.id;
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
-      variables.imageId = res.data.createImage.id;
+      const variables = {
+        ...this.state,
+        imageId: res.data.createImage.id
+      };
+      delete variables.image;
+
       return await updateProductVariant({ variables }).then((res) => {
         Router.push({
           pathname: "/buy",

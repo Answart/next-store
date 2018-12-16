@@ -49,17 +49,18 @@ class CreateProductVariantForm extends Component {
   };
   submitForm = async (e, createImage, createProductVariant) => {
     e.preventDefault();
-    const variables = {
-      ...this.state,
-      productId: this.props.productId
-    };
-    const imageVariables = { ...variables.image };
-    delete variables.image;
-    delete imageVariables.id;
+    const imageVariables = { ...this.state.image };
+    if (!!imageVariables.id) delete imageVariables.id;
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
-      variables.imageId = res.data.createImage.id;
+      const variables = {
+        ...this.state,
+        productId: this.props.productId,
+        imageId: res.data.createImage.id
+      };
+      delete variables.image;
+
       return await createProductVariant({ variables }).then((res) => {
         Router.push({
           pathname: "/buy",
