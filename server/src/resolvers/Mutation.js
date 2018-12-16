@@ -214,65 +214,6 @@ const Mutation = {
 
     return newProductVariant;
   },
-  async createProductVariantWithImage(parent, args, ctx, info) {
-    const productId = args.productId;
-    const { data, imgData } = getDataAndImgData(args);
-    delete data.id;
-    delete data.productId;
-
-    // Logged in?
-    const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('CREATE SELECTION: You must be signed in to add to a selection to a product.');
-
-    // Existing product?
-    const existingProduct = await ctx.db.query.product({
-      where: { id: productId }
-    }, `{ id title image { id cloudinary_id } user { id }}`);
-    if (!existingProduct) throw new Error(`CREATE SELECTION: Cannot find product with ID '${productId}'`);
-    if (existingProduct.user.id !== userId) throw new Error('CREATE SELECTION: You are not authorized to update this product.');
-
-    // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
-      where: {
-        size: data.size,
-        color: data.color,
-        product: { id: productId }
-      }
-    });
-    if (!!existingProductVariant) throw new Error(`CREATE SELECTION: A selection with ID '${existingProductVariant.id}' already exists with this size/color for this product.`);
-
-    // Create with existing or new image?
-    let imageId;
-    if (imgData.cloudinary_id === existingProduct.image.cloudinary_id) {
-      // Use image from product.image
-      imageId = existingProduct.image.id;
-    } else {
-      const newImage = await ctx.db.mutation.createImage({
-        data: {
-          ...imgData,
-          user: { connect: { id: userId } }
-        }
-      });
-      imageId = newImage.id;
-    }
-
-    const newProductVariant = await ctx.db.mutation.createProductVariant({
-      data: {
-        ...data,
-        availability: `${data.quantity} in Stock!`,
-        image: { connect: { id: imageId }},
-        product: { connect: { id: productId }}
-      }
-    }, info);
-    const updatedProduct = await ctx.db.mutation.updateProduct({
-      where: { id: productId },
-      data: {
-        productVariants: { connect: { id: newProductVariant.id }}
-      }
-    });
-
-    return newProductVariant;
-  },
   async updateProductVariant(parent, args, ctx, info) {
     const data = { ...args };
     let imageId;
