@@ -95,7 +95,7 @@ class CreateProductVariantForm extends Component {
                   <button className="form-submit-btn big-btn"
                     disabled={!this.state.image || loading}
                     type="submit"
-                  >Add</button>
+                  >Add{loading ? 'ing' : ''} Selection</button>
                 </fieldset>
               </StyledForm>
             )}

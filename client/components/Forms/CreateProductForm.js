@@ -62,7 +62,7 @@ class CreateProductForm extends Component {
                   <button className="form-submit-btn big-btn"
                     disabled={!this.state.image || loading}
                     type="submit"
-                  >Create</button>
+                  >Creat{loading ? 'ing' : 'e'} Product</button>
                 </fieldset>
               </StyledForm>
             )}
