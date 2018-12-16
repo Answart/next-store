@@ -15,7 +15,7 @@ const EditProductPage = props => {
         if (loading) return (<p>Loading...</p>);
         if (error) return (<NotFound status={400} message={error.message} />);
         const { product } = data;
-        if (!product) return (<NotFound status={404} />);
+        if (typeof product === 'undefined') return (<NotFound status={404} />);
         return (
           <StyledEditPage>
             <PageTitle

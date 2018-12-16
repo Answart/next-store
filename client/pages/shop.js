@@ -52,7 +52,7 @@ const Shop = props => {
             if (loading) return (<p>Loading...</p>);
             if (error) return (<NotFound status={400} message={error.message} />);
             const { products } = data;
-            if (!products) return (<NotFound status={404} />);
+            if (typeof products === 'undefined') return (<NotFound status={404} />);
             if (!products.length) return (<NotFound status={204} message='No products found.' />);
             return (
               <ProductsList products={products} />

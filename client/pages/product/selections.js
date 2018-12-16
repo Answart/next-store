@@ -14,7 +14,7 @@ const EditProductVariantsPage = props => {
         if (loading) return (<p>Loading...</p>);
         if (error) return (<NotFound status={400} message={error.message} />);
         const { product } = data;
-        if (!product) return (<NotFound status={404} />);
+        if (typeof product === 'undefined') return (<NotFound status={404} />);
         const productTitle = product ? product.title : '';
         const titles = [{
           label: productTitle,
