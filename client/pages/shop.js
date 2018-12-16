@@ -4,20 +4,22 @@ import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
 import { capWord } from '../lib/utilFns';
+import { user } from '../lib/dummyData';
 import { SHOP_PRODUCTS_QUERY } from '../graphql';
 
 
 function getShopProps(variables = {}) {
   let pageLabel = '';
+  variables.online = true;
 
   if (variables.department) {
     pageLabel = capWord(variables.department);
-    variables.online = true;
   } else if (variables.name) {
-    if (typeof variables.online !== 'undefined') {
-      pageLabel = capWord(variables.name);
-    } else {
+    if (variables.name === user.name) {
       pageLabel = 'My Products';
+      delete variables.online;
+    } else {
+      pageLabel = capWord(variables.name);
     }
   }
 

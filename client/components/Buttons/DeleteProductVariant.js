@@ -16,11 +16,11 @@ class DeleteProductVariant extends Component {
           <button className="dlt-btn"
             disabled={!id}
             onClick={() => {
-              if (confirm('Are you sure you want to delete this selection?')) {
+              if (confirm("Are you sure you want to delete this selection?")) {
                 deleteProductVariant()
                   .then((res) => {
                     Router.push({
-                      pathname: '/product/edit',
+                      pathname: "/product/edit",
                       query: { id: productId }
                     });
                   })

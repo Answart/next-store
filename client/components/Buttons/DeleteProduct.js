@@ -16,13 +16,10 @@ class DeleteProduct extends Component {
           <button className="dlt-btn"
             disabled={!id}
             onClick={() => {
-              if (confirm('Are you sure you want to delete this product?')) {
+              if (confirm("Are you sure you want to delete this product?")) {
                 deleteProduct()
                   .then((res) => {
-                    Router.push({
-                      pathname: '/shop',
-                      query: { online: true }
-                    });
+                    Router.push({ pathname: "/shop" });
                   })
                   .catch(err => {
                     alert(err.message);

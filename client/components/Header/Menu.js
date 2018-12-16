@@ -30,7 +30,7 @@ const Menu = props => {
           </a></Link>
 
           <Link href={{
-            pathname: `/shop`,
+            pathname: "/shop",
             query: { name: `${user.name}` }
           }}><a className="hdr-pad">
             <img src="/static/images/package.svg" alt="Products" height="14" width="14" />
