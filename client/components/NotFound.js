@@ -27,9 +27,10 @@ const NotFound = (props) => {
     if (props.status === 204) notFound.title = 'Nothing Here';
     if (props.status === 400) {
       notFound.title = 'Error';
-      notFound.message = !!props.message ? props.message : 'An error occured. Please try again later.';
+      notFound.message = 'An error occured. Please try again later.';
     };
   };
+  if (props.message && !!props.message.length) notFound.message = props.message;
 
   return (
     <StyledNotFound>
@@ -38,10 +39,11 @@ const NotFound = (props) => {
       <p>{notFound.message}</p>
 
       <p>
-        Go to back
+        Go back to
         <Link href={{ pathname: '/' }}><a className="undrln-btn">
-          home.
+          home
         </a></Link>
+        page.
       </p>
     </StyledNotFound>
   )
