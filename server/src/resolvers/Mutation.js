@@ -257,48 +257,6 @@ const Mutation = {
       data
     }, info);
   },
-  async updateProductVariantWithImage(parent, args, ctx, info) {
-    const { data, imgData } = getDataAndImgData(args);
-    delete data.id;
-
-    // Logged in?
-    const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
-
-    // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
-      where: { id: args.id }
-    }, `{ id quantity image { id cloudinary_id } product { user { id }}}`);
-    if (!existingProductVariant) throw new Error(`UPDATE SELECTION: No productVariant found with id '${args.id}'`);
-    if (existingProductVariant.product.user.id !== userId) throw new Error('UPDATE SELECTION: You are not authorized to update this selection.');
-
-    // Update image?
-    if (imgData.cloudinary_id !== existingProductVariant.image.cloudinary_id) {
-      // Existing incoming image?
-      const [incomingExistingImg] = await ctx.db.query.images({
-        where: { cloudinary_id: imgData.cloudinary_id }
-      });
-      if (!!incomingExistingImg) {
-        data.image = { connect: { id: incomingExistingImg.id } };
-      } else {
-        const newImage = await ctx.db.mutation.createImage({
-          data: {
-            ...imgData,
-            user: { connect: { id: userId } }
-          }
-        });
-        data.image = { connect: { id: newImage.id } };
-      }
-    }
-
-    // Update availability?
-    if (data.quantity !== existingProductVariant.quantity) data.availability = `${data.quantity} in Stock!`;
-
-    return await ctx.db.mutation.updateProductVariant({
-      where: { id: existingProductVariant.id },
-      data
-    }, info);
-  },
   async deleteProductVariant(parent, args, ctx, info) {
     const where = { id: args.id };
 
