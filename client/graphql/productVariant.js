@@ -23,6 +23,7 @@ const CREATE_PROD_VARIANT_MUTATION = gql`
       imageId: $imageId
     ) {
       id
+      product { id }
     }
   }
 `;
@@ -49,6 +50,7 @@ const UPDATE_PROD_VARIANT_MUTATION = gql`
       imageId: $imageId
     ) {
       id
+      product { id }
     }
   }
 `;
