@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyledEditProductVariants } from './styles/ProductStyles';
 import Product from './Product';
 import { UpdateProductVariantForm } from './Forms';
@@ -6,6 +7,29 @@ import DeleteProductVariant from './Buttons/DeleteProductVariant';
 
 
 class EditProductVariants extends Component {
+  static propTypes = {
+    product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      department: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      category: PropTypes.string,
+      brand: PropTypes.string,
+      online: PropTypes.bool.isRequired,
+      image: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        cloudinary_id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+        transformation: PropTypes.string.isRequired,
+        image_url: PropTypes.string.isRequired,
+        large_image_url: PropTypes.string.isRequired
+      }).isRequired,
+      productVariants: PropTypes.array.isRequired,
+    }).isRequired,
+    viewerIsCreator: PropTypes.bool.isRequired
+  };
   state = { currentVariant: null };
   selectVariant = (e, currentVariant) => {
     e.preventDefault();
