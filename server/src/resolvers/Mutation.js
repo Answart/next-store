@@ -154,13 +154,6 @@ const Mutation = {
       });
     }
 
-    if (!!existingProduct.variants.length) {
-      console.log('delete productVariants A')
-      await ctx.db.mutation.deleteManyVariants({
-        where: { product: { id: existingProduct.id }}
-      });
-    }
-
     return await ctx.db.mutation.deleteProduct({ where }, info);
   },
   async createProductVariant(parent, args, ctx, info) {

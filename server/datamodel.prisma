@@ -33,7 +33,7 @@ type Product {
   brand: String
   user: User!
   image: Image!
-  variants: [Variant!]!
+  variants: [Variant!]! @relation(name: "ProductVariants", onDelete: CASCADE)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -47,7 +47,7 @@ type Variant {
   size: String
   sale: Boolean! @default(value: false)
   salePrice: Float! @default(value: 1.00)
-  product: Product!
+  product: Product! @relation(name: "ProductVariants")
   image: Image!
   createdAt: DateTime!
   updatedAt: DateTime!
