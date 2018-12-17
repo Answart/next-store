@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Mon Dec 17 2018 14:24:40 GMT-0800 (Pacific Standard Time)
+# timestamp: Mon Dec 17 2018 15:23:00 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!

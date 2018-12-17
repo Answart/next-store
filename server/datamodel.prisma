@@ -49,4 +49,6 @@ type Variant {
   salePrice: Float! @default(value: 1.00)
   product: Product!
   image: Image!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
