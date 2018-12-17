@@ -64,7 +64,7 @@ class CreateProductVariantForm extends Component {
       return await createProductVariant({ variables }).then((res) => {
         Router.push({
           pathname: "/buy",
-          query: { id: this.props.productId }
+          query: { id: res.data.createProductVariant.product.id }
         });
       });
     });
