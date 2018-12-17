@@ -3,12 +3,14 @@ import Link from 'next/link';
 import StyledProduct from './styles/ProductStyles';
 import ByCreator from './ByCreator';
 import ProductVariants from './ProductVariants';
-import AddToCart from './Buttons/AddToCart';
 
 
 class Product extends Component {
   render() {
-    const { product, viewerIsCreator, demoView } = this.props;
+    const {
+      product, viewerIsCreator, demoView,
+      variantAction, variantActionLabel, VariantActionComponent
+    } = this.props;
     return (
       <StyledProduct>
         <div className="prdct-imgs">
@@ -40,7 +42,9 @@ class Product extends Component {
             variants={product.productVariants}
             online={product.online}
             demoView={demoView}
-            VariantActionComponent={AddToCart}
+            VariantActionComponent={VariantActionComponent}
+            variantAction={variantAction}
+            variantActionLabel={variantActionLabel}
           />
 
           <div className="prdct-desc prdct-padding">
