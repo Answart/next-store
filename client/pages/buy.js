@@ -2,6 +2,7 @@ import SingleProduct from '../components/SingleProduct';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import Product from '../components/Product';
+import AddToCart from '../components/Buttons/AddToCart';
 import { StyledBuyPage } from '../components/styles/PageStyles';
 import { user } from '../lib/dummyData';
 
@@ -27,6 +28,7 @@ const BuyProductPage = props => {
                 product={product}
                 viewerIsCreator={viewerIsCreator}
                 demoView={false}
+                variantActionComponent={AddToCart}
               />
             </div>
           </StyledBuyPage>
