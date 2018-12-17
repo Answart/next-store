@@ -4,6 +4,7 @@ import NotFound from '../../components/NotFound';
 import SingleProduct from '../../components/SingleProduct';
 import PageTitle from '../../components/PageTitle';
 import EditProductVariants from '../../components/EditProductVariants';
+import { user } from '../../lib/dummyData';
 
 
 const EditProductVariantsPage = props => {
@@ -15,6 +16,7 @@ const EditProductVariantsPage = props => {
         if (error) return (<NotFound status={400} message={error.message} />);
         const { product } = data;
         if (typeof product === 'undefined') return (<NotFound status={404} />);
+        const viewerIsCreator = product.user.id === user.id;
         const productTitle = product ? product.title : '';
         const titles = [{
           label: productTitle,
@@ -49,8 +51,8 @@ const EditProductVariantsPage = props => {
                 <p>This product does not have any selections.</p>
               ) : (
                 <EditProductVariants
-                  productId={id}
-                  productVariants={product.productVariants}
+                  product={product}
+                  viewerIsCreator={viewerIsCreator}
                 />
               )}
             </div>

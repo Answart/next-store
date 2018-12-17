@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyledEditProductVariants } from './styles/ProductStyles';
-import ProductVariants from './ProductVariants';
+import Product from './Product';
 import { UpdateProductVariantForm } from './Forms';
 import DeleteProductVariant from './Buttons/DeleteProductVariant';
 
@@ -18,9 +18,10 @@ class EditProductVariants extends Component {
       <StyledEditProductVariants>
         <div className="edit-prdct-var-choose">
           <div className="edit-prdct-lbl">1. Choose</div>
-          <ProductVariants
-            variants={this.props.productVariants}
-            online={true}
+
+          <Product
+            product={this.props.product}
+            viewerIsCreator={this.props.viewerIsCreator}
             demoView={true}
             variantAction={this.selectVariant}
             variantActionLabel='Select'
@@ -40,7 +41,7 @@ class EditProductVariants extends Component {
               <div className="edit-pg-content-footer">
                 <DeleteProductVariant
                   id={id}
-                  productId={this.props.productId}
+                  productId={this.props.product.id}
                 >Delete Selection</DeleteProductVariant>
               </div>
             </div>
