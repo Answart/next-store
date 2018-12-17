@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import StyledProduct from './styles/ProductStyles';
 import ByCreator from './ByCreator';
@@ -6,6 +7,32 @@ import ProductVariants from './ProductVariants';
 
 
 class Product extends Component {
+  static propTypes = {
+    product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      department: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      category: PropTypes.string,
+      brand: PropTypes.string,
+      online: PropTypes.bool.isRequired,
+      image: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        cloudinary_id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+        transformation: PropTypes.string.isRequired,
+        image_url: PropTypes.string.isRequired,
+        large_image_url: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired,
+    viewerIsCreator: PropTypes.bool.isRequired,
+    demoView: PropTypes.bool,
+    VariantActionComponent: PropTypes.func,
+    variantAction: PropTypes.func,
+    variantActionLabel: PropTypes.string
+  };
   render() {
     const {
       product, viewerIsCreator, demoView,
