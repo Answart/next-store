@@ -112,13 +112,13 @@ const Mutation = {
     if (existingProduct.image.id !== imageId) {
       console.log('deleting old image', incomingImg)
 
-      const variantsToUpdate = await ctx.db.query.productVariants({
+      const variantsToUpdate = await ctx.db.query.variants({
         where: { image: { id: existingProduct.image.id }}
       });
       console.log('after updateManyProductVariants', variantsToUpdate);
       for (let i = 0; i < variantsToUpdate.length; i ++) {
         const id = variantsToUpdate[i].id;
-        await ctx.db.mutation.productVariant({
+        await ctx.db.mutation.variant({
           where: { id },
           data: { image: { connect: { id: imageId }}}
         });
@@ -154,8 +154,9 @@ const Mutation = {
       });
     }
 
-    if (!!existingProduct.productVariants.length) {
-      await ctx.db.mutation.deleteManyProductVariants({
+    if (!!existingProduct.variants.length) {
+      console.log('delete productVariants A')
+      await ctx.db.mutation.deleteManyVariants({
         where: { product: { id: existingProduct.id }}
       });
     }
@@ -181,7 +182,7 @@ const Mutation = {
     if (existingProduct.user.id !== userId) throw new Error('CREATE SELECTION: You are not authorized to update this product.');
 
     // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
+    const [existingProductVariant] = await ctx.db.query.variants({
       where: {
         size: data.size,
         color: data.color,
@@ -196,7 +197,7 @@ const Mutation = {
     });
     if (!incomingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
 
-    const newProductVariant = await ctx.db.mutation.createProductVariant({
+    const newProductVariant = await ctx.db.mutation.createVariant({
       data: {
         ...data,
         availability: `${data.quantity} in Stock!`,
@@ -208,7 +209,7 @@ const Mutation = {
     const updatedProduct = await ctx.db.mutation.updateProduct({
       where: { id: productId },
       data: {
-        productVariants: { connect: { id: newProductVariant.id }}
+        variants: { connect: { id: newProductVariant.id }}
       }
     });
 
@@ -228,7 +229,7 @@ const Mutation = {
     if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
 
     // Existing productVariant?
-    const [existingProductVariant] = await ctx.db.query.productVariants({
+    const [existingProductVariant] = await ctx.db.query.variants({
       where: { id: args.id }
     }, `{ id quantity image { id cloudinary_id } product { user { id }}}`);
     if (!existingProductVariant) throw new Error(`UPDATE SELECTION: No productVariant found with id '${args.id}'.`);
@@ -252,7 +253,7 @@ const Mutation = {
       data.availability = `${data.quantity} in Stock!`;
     }
 
-    return await ctx.db.mutation.updateProductVariant({
+    return await ctx.db.mutation.updateVariant({
       where: { id: existingProductVariant.id },
       data
     }, info);
@@ -261,14 +262,14 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
+    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
     if (!userId) throw new Error('DELETE SELECTION: You must be signed in to delete a product.');
 
     // Existing product?
-    const productVariant = await ctx.db.query.productVariant({ where });
+    const productVariant = await ctx.db.query.variant({ where });
     if (!productVariant) throw new Error(`DELETE SELECTION: No selection with ID '${args.id}' found.`)
 
-    return await ctx.db.mutation.deleteProductVariant({ where }, info);
+    return await ctx.db.mutation.deleteVariant({ where }, info);
   }
 };
 

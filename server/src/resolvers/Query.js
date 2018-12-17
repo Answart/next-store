@@ -15,8 +15,8 @@ const Query = {
   images: forwardTo('db'),
   product: forwardTo('db'),
   products: forwardTo('db'),
-  productVariant: forwardTo('db'),
-  productVariants: forwardTo('db')
+  variant: forwardTo('db'),
+  variants: forwardTo('db')
 };
 
 module.exports = Query;

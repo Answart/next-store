@@ -66,7 +66,7 @@ class Product extends Component {
           </div>
 
           <ProductVariants
-            variants={product.productVariants}
+            variants={product.variants}
             online={product.online}
             demoView={demoView}
             VariantActionComponent={VariantActionComponent}

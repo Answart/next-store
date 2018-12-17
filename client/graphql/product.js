@@ -25,7 +25,7 @@ const PRODUCT_QUERY = gql`
         id
         name
       }
-      productVariants {
+      variants {
         id
         price
         quantity

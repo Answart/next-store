@@ -7,8 +7,8 @@ type Query {
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, first: Int): [Image!]!
   product(where: ProductWhereInput): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product!]!
-  productVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
-  productVariants(where: ProductVariantWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [ProductVariant]!
+  variant(where: VariantWhereUniqueInput!): Variant
+  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, first: Int): [Variant!]!
 }
 
 type Mutation {
@@ -18,9 +18,9 @@ type Mutation {
   createProduct(department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imageId: String!): Product!
   updateProduct(id: ID!, department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imageId: String!): Product!
   deleteProduct(id: ID!): Product
-  createProductVariant(color: String!, size: String!, quantity: Int!, price: Float!, sale: Boolean!, salePrice: Float, productId: String!, imageId: String!): ProductVariant!
-  updateProductVariant(id: ID!, color: String!, size: String!, quantity: Int, price: Float, sale: Boolean, salePrice: Float, imageId: String): ProductVariant!
-  deleteProductVariant(id: ID!): ProductVariant
+  createProductVariant(color: String!, size: String!, quantity: Int!, price: Float!, sale: Boolean!, salePrice: Float, productId: String!, imageId: String!): Variant!
+  updateProductVariant(id: ID!, color: String!, size: String!, quantity: Int, price: Float, sale: Boolean, salePrice: Float, imageId: String): Variant!
+  deleteProductVariant(id: ID!): Variant
 }
 
 type User {

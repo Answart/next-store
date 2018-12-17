@@ -18,7 +18,7 @@ type Image {
   large_image_url: String!
   user: User!
   product: Product
-  productVariants: [ProductVariant]
+  variants: [Variant]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -33,12 +33,12 @@ type Product {
   brand: String
   user: User!
   image: Image!
-  productVariants: [ProductVariant!]!
+  variants: [Variant!]!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type ProductVariant {
+type Variant {
   id: ID! @unique
   price: Float!
   quantity: Int! @default(value: 1)

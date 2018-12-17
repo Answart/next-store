@@ -26,7 +26,7 @@ class EditProductVariants extends Component {
         image_url: PropTypes.string.isRequired,
         large_image_url: PropTypes.string.isRequired
       }).isRequired,
-      productVariants: PropTypes.array.isRequired,
+      variants: PropTypes.array.isRequired,
     }).isRequired,
     viewerIsCreator: PropTypes.bool.isRequired
   };

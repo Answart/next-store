@@ -27,7 +27,7 @@ const SHOP_PRODUCTS_QUERY = gql`
         name
         image_url
       }
-      productVariants {
+      variants {
         id
         quantity
         color

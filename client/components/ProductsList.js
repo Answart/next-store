@@ -15,7 +15,7 @@ class ProductsList extends Component {
       image: PropTypes.shape({
         image_url: PropTypes.string.isRequired
       }).isRequired,
-      productVariants: PropTypes.arrayOf(PropTypes.shape({
+      variants: PropTypes.arrayOf(PropTypes.shape({
         price: PropTypes.number.isRequired,
         sale: PropTypes.bool.isRequired,
         salePrice: PropTypes.number.isRequired,
@@ -30,8 +30,8 @@ class ProductsList extends Component {
           const viewerIsCreator = prdct
             ? prdct.user.id === user.id
             : false;
-          const variant = prdct.productVariants.length
-            ? prdct.productVariants[0]
+          const variant = prdct.variants.length
+            ? prdct.variants[0]
             : null;
           return (
             <StyledProductsListItem key={prdct.id} >
