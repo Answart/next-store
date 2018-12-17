@@ -74,7 +74,7 @@ class UpdateProductVariantForm extends Component {
       return await updateProductVariant({ variables }).then((res) => {
         Router.push({
           pathname: "/buy",
-          query: { id: this.props.productId }
+          query: { id: res.data.updateProductVariant.product.id }
         });
       });
     });
