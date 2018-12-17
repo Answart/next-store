@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 
 const SHOP_PRODUCTS_QUERY = gql`
-  query ONLINE_PRODUCTS_QUERY(
+  query SHOP_PRODUCTS_QUERY(
     $online: Boolean,
     $department: String,
     $name: String
