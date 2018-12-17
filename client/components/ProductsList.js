@@ -8,7 +8,20 @@ import { user } from '../lib/dummyData';
 
 class ProductsList extends Component {
   static propTypes = {
-    products: PropTypes.array.isRequired
+    products: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      online: PropTypes.bool.isRequired,
+      image: PropTypes.shape({
+        image_url: PropTypes.string.isRequired
+      }).isRequired,
+      productVariants: PropTypes.arrayOf(PropTypes.shape({
+        price: PropTypes.number.isRequired,
+        sale: PropTypes.bool.isRequired,
+        salePrice: PropTypes.number.isRequired,
+        availability: PropTypes.string.isRequired
+      })).isRequired
+    })).isRequired
   };
   render() {
     return (
