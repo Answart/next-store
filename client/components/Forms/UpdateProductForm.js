@@ -45,10 +45,10 @@ class UpdateProductForm extends Component {
       };
       delete variables.image;
 
-      return await createProduct({ variables }).then((res) => {
+      return await updateProduct({ variables }).then((res) => {
         Router.push({
           pathname: "/product/add",
-          query: { id: res.data.createProduct.id }
+          query: { id: res.data.updateProduct.id }
         });
       });
     });
