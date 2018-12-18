@@ -139,24 +139,24 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpj0izxabhkj0a15jmipydzc';
-    if (!userId) throw new Error('DELETE PRODUCT: You must be signed in to delete a product');
+    const userId = ctx.request.userId || 'cjpt3pua1earv0a84i37dnhtc';
+    if (!userId) throw new Error('DELETE PRODUCT: You must be signed in to delete a product.');
 
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where
-    }, `{ id title image { id } user { id }}`);
+    }, `{ id user { id }}`);
     if (!existingProduct) throw new Error('DELETE PRODUCT: No product found with that id.');
     if (existingProduct.user.id !== userId) throw new Error('DELETE PRODUCT: You are not authorized to delete this product.');
 
-    if (!!existingProduct.image) {
-      // delete cloudinaryImages here too
-      await ctx.db.mutation.deleteManyImages({
-        where: { product: { id: existingProduct.id }}
-      });
-    }
+    const deletedProduct = await ctx.db.mutation.deleteProduct({ where }, info);
 
-    return await ctx.db.mutation.deleteProduct({ where }, info);
+    // TODO: delete cloudinaryImages here too?
+    await ctx.db.mutation.deleteManyImages({
+      where: { product: { id: existingProduct.id }}
+    });
+
+    return deletedProduct;
   },
   async createProductVariant(parent, args, ctx, info) {
     const data = { ...args };
