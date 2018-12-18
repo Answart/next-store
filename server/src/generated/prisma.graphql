@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Mon Dec 17 2018 15:23:00 GMT-0800 (Pacific Standard Time)
+# timestamp: Mon Dec 17 2018 16:15:54 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!
@@ -663,8 +663,8 @@ type PageInfo {
 
 type Product implements Node {
   id: ID!
-  department: String!
   title: String!
+  department: String!
   description: String!
   online: Boolean!
   category: String
@@ -687,8 +687,8 @@ type ProductConnection {
 }
 
 input ProductCreateInput {
-  department: String!
   title: String!
+  department: String!
   description: String!
   online: Boolean!
   category: String
@@ -709,8 +709,8 @@ input ProductCreateOneWithoutVariantsInput {
 }
 
 input ProductCreateWithoutImageInput {
-  department: String!
   title: String!
+  department: String!
   description: String!
   online: Boolean!
   category: String
@@ -720,8 +720,8 @@ input ProductCreateWithoutImageInput {
 }
 
 input ProductCreateWithoutVariantsInput {
-  department: String!
   title: String!
+  department: String!
   description: String!
   online: Boolean!
   category: String
@@ -742,10 +742,10 @@ type ProductEdge {
 enum ProductOrderByInput {
   id_ASC
   id_DESC
-  department_ASC
-  department_DESC
   title_ASC
   title_DESC
+  department_ASC
+  department_DESC
   description_ASC
   description_DESC
   online_ASC
@@ -762,8 +762,8 @@ enum ProductOrderByInput {
 
 type ProductPreviousValues {
   id: ID!
-  department: String!
   title: String!
+  department: String!
   description: String!
   online: Boolean!
   category: String
@@ -812,8 +812,8 @@ input ProductSubscriptionWhereInput {
 }
 
 input ProductUpdateInput {
-  department: String
   title: String
+  department: String
   description: String
   online: Boolean
   category: String
@@ -824,8 +824,8 @@ input ProductUpdateInput {
 }
 
 input ProductUpdateManyMutationInput {
-  department: String
   title: String
+  department: String
   description: String
   online: Boolean
   category: String
@@ -849,8 +849,8 @@ input ProductUpdateOneWithoutImageInput {
 }
 
 input ProductUpdateWithoutImageDataInput {
-  department: String
   title: String
+  department: String
   description: String
   online: Boolean
   category: String
@@ -860,8 +860,8 @@ input ProductUpdateWithoutImageDataInput {
 }
 
 input ProductUpdateWithoutVariantsDataInput {
-  department: String
   title: String
+  department: String
   description: String
   online: Boolean
   category: String
@@ -929,46 +929,6 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  department: String
-
-  """All values that are not equal to given value."""
-  department_not: String
-
-  """All values that are contained in given list."""
-  department_in: [String!]
-
-  """All values that are not contained in given list."""
-  department_not_in: [String!]
-
-  """All values less than the given value."""
-  department_lt: String
-
-  """All values less than or equal the given value."""
-  department_lte: String
-
-  """All values greater than the given value."""
-  department_gt: String
-
-  """All values greater than or equal the given value."""
-  department_gte: String
-
-  """All values containing the given string."""
-  department_contains: String
-
-  """All values not containing the given string."""
-  department_not_contains: String
-
-  """All values starting with the given string."""
-  department_starts_with: String
-
-  """All values not starting with the given string."""
-  department_not_starts_with: String
-
-  """All values ending with the given string."""
-  department_ends_with: String
-
-  """All values not ending with the given string."""
-  department_not_ends_with: String
   title: String
 
   """All values that are not equal to given value."""
@@ -1009,6 +969,46 @@ input ProductWhereInput {
 
   """All values not ending with the given string."""
   title_not_ends_with: String
+  department: String
+
+  """All values that are not equal to given value."""
+  department_not: String
+
+  """All values that are contained in given list."""
+  department_in: [String!]
+
+  """All values that are not contained in given list."""
+  department_not_in: [String!]
+
+  """All values less than the given value."""
+  department_lt: String
+
+  """All values less than or equal the given value."""
+  department_lte: String
+
+  """All values greater than the given value."""
+  department_gt: String
+
+  """All values greater than or equal the given value."""
+  department_gte: String
+
+  """All values containing the given string."""
+  department_contains: String
+
+  """All values not containing the given string."""
+  department_not_contains: String
+
+  """All values starting with the given string."""
+  department_starts_with: String
+
+  """All values not starting with the given string."""
+  department_not_starts_with: String
+
+  """All values ending with the given string."""
+  department_ends_with: String
+
+  """All values not ending with the given string."""
+  department_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -1186,6 +1186,7 @@ input ProductWhereInput {
 
 input ProductWhereUniqueInput {
   id: ID
+  title: String
 }
 
 type Query {

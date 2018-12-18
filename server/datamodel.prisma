@@ -25,8 +25,8 @@ type Image {
 
 type Product {
   id: ID! @unique
+  title: String! @unique
   department: String!
-  title: String!
   description: String!
   online: Boolean!
   category: String
