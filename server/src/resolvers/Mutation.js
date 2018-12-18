@@ -27,6 +27,7 @@ const Mutation = {
   },
   async createImage(parent, args, ctx, info) {
     const data = { ...args };
+    delete data.id;
 
     // Logged in?
     const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
@@ -34,14 +35,13 @@ const Mutation = {
 
     // Existing image?
     const [existingImg] = await ctx.db.query.images({
-      where: { ...data }
+      where: { ...args }
     }, info);
     if (!!existingImg) {
       console.log('CREATE IMAGE: Returning existing image found with incoming cloudinary_id.');
       return existingImg;
     }
 
-    delete data.id;
     return await ctx.db.mutation.createImage({
       data: {
         ...data,
