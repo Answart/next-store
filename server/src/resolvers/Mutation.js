@@ -69,6 +69,7 @@ const Mutation = {
     });
     if (!incomingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imageId}'.`);
 
+    // Create image with known user/image
     return await ctx.db.mutation.createProduct({
       data: {
         ...data,
@@ -84,13 +85,13 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    const userId = ctx.request.userId || 'cjpt3pua1earv0a84i37dnhtc';
     if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
 
     // Existing product?
     const existingProduct = await ctx.db.query.product({
       where: { id: args.id }
-    }, `{ id title image { id } user { id }}`);
+    }, `{ id image { id } user { id }}`);
     if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
     if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
 
@@ -108,27 +109,28 @@ const Mutation = {
       data
     }, info);
 
-    // (Delete old image. MAY NOT BE NECESSARY?)
+    // Update variants w/new image and cleanup
     if (existingProduct.image.id !== imageId) {
-      console.log('deleting old image', incomingImg)
 
+      // Find variants whose image was 'Same as Product Image'
       const variantsToUpdate = await ctx.db.query.variants({
         where: { image: { id: existingProduct.image.id }}
       });
-      console.log('after updateManyProductVariants', variantsToUpdate);
+      // Update found varaint's image to new product Image
       for (let i = 0; i < variantsToUpdate.length; i ++) {
         const id = variantsToUpdate[i].id;
-        await ctx.db.mutation.variant({
+        await ctx.db.mutation.updateVariant({
           where: { id },
-          data: { image: { connect: { id: imageId }}}
+          data: {
+            image: { connect: { id: imageId }}
+          }
         });
       }
-      console.log('finished updating');
 
+      // Delete image that no longer has owner/product
       await ctx.db.mutation.deleteImage({
         where: { id: existingProduct.image.id }
       });
-      console.log('after deleting old image')
     }
 
     return updatedProduct;
