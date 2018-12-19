@@ -44,7 +44,7 @@ const Mutation = {
     }, info);
     if (!!existingImg) {
       console.log('CREATE IMAGE: Returning pre-existing image found with image data.', existingImg);
-      return incomingImg;
+      return existingImg;
     }
 
     const createdImage = await ctx.db.mutation.createImage({
