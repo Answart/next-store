@@ -118,7 +118,7 @@ const Mutation = {
       });
       if (!existingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imageId}'.`);
 
-      // Update w/new image.
+      // Update w/new image. Old image's 'used_by_product' will now become null.
       data.image = { connect: { id: imageId }};
 
       // Find variants whose image was 'Same as Product Image' (AKA old image)
