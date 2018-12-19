@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledProductsList, StyledProductsListItem } from './styles/ProductStyles';
 import PriceTag from './PriceTag';
+import DeleteProduct from './Buttons/DeleteProduct';
 import { user } from '../lib/dummyData';
 
 
@@ -73,9 +74,12 @@ class ProductsList extends Component {
                   }}><a>
                     Edit
                   </a></Link>
-                  <button className="undrln-btn"
+                  <DeleteProduct
+                    className="undrln-btn"
                     id={prdct.id}
-                  >Delete</button>
+                  >
+                    Delete
+                  </DeleteProduct>
                 </span>
               )}
 
