@@ -36,7 +36,7 @@ const image3 = {
   large_image_url: "peggswatch3.jpg",
 }
 
-const productVariants = [
+const variants = [
   {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
@@ -76,7 +76,7 @@ const product = {
   brand: "Peggs",
   online: false,
   user,
-  productVariants,
+  variants,
   image
 };
 
@@ -91,43 +91,43 @@ const products = [
     brand: "Peggs",
     online: true,
     user,
-    productVariants,
+    variants,
     image
   }
 ];
 
-let variant = { ...productVariants[0] };
+let variant = { ...variants[0] };
 variant.product = product;
 
 const cart = [{
     id: '1234',
-    productVariant: variant
+    variant: variant
   }, {
     id: '2345',
-    productVariant: variant
+    variant: variant
   }, {
     id: '3456',
-    productVariant: variant
+    variant: variant
   }, {
     id: '4567',
-    productVariant: variant
+    variant: variant
   }, {
     id: '5678',
-    productVariant: variant
+    variant: variant
   }, {
     id: '7890',
-    productVariant: variant
+    variant: variant
   }, {
     id: '8901',
-    productVariant: variant
+    variant: variant
   }, {
     id: '9012',
-    productVariant: variant
+    variant: variant
 }]
 
 export default product;
 export {
-  productVariants,
+  variants,
   products,
   user,
   cart
