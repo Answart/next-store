@@ -172,9 +172,9 @@ const Mutation = {
     if (!userId) throw new Error('CREATE SELECTION: You must be signed in to add to a selection to a product.');
 
     // Existing product?
-    const existingProduct = await ctx.db.query.product({
+    const [existingProduct] = await ctx.db.query.products({
       where: { id: productId }
-    }, `{ id title image { id cloudinary_id } user { id }}`);
+    }, `{ id user { id } image { id } }`);
     if (!existingProduct) throw new Error(`CREATE SELECTION: Cannot find product with ID '${productId}'.`);
     if (existingProduct.user.id !== userId) throw new Error('CREATE SELECTION: You are not authorized to update this product.');
 
@@ -189,12 +189,12 @@ const Mutation = {
     if (!!existingProductVariant) throw new Error(`CREATE SELECTION: A selection with this size/color already exists with ID '${existingProductVariant.id}'.`);
 
     // Existing image?
-    const [incomingImg] = await ctx.db.query.images({
+    const [existingImg] = await ctx.db.query.images({
       where: { id: imageId }
     });
-    if (!incomingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
+    if (!existingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
 
-    const newProductVariant = await ctx.db.mutation.createVariant({
+    return await ctx.db.mutation.createVariant({
       data: {
         ...data,
         availability: `${data.quantity} in Stock!`,
@@ -202,15 +202,6 @@ const Mutation = {
         product: { connect: { id: productId }}
       }
     }, info);
-
-    const updatedProduct = await ctx.db.mutation.updateProduct({
-      where: { id: productId },
-      data: {
-        variants: { connect: { id: newProductVariant.id }}
-      }
-    });
-
-    return newProductVariant;
   },
   async updateProductVariant(parent, args, ctx, info) {
     const data = { ...args };
