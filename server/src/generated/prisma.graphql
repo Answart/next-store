@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Mon Dec 17 2018 16:15:54 GMT-0800 (Pacific Standard Time)
+# timestamp: Tue Dec 18 2018 19:00:59 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!
@@ -35,7 +35,8 @@ type Image implements Node {
   large_image_url: String!
   user: User!
   product: Product
-  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
+  used_by_product: Product
+  used_by_variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -59,17 +60,23 @@ input ImageCreateInput {
   image_url: String!
   large_image_url: String!
   user: UserCreateOneInput!
-  product: ProductCreateOneWithoutImageInput
-  variants: VariantCreateManyWithoutImageInput
+  product: ProductCreateOneWithoutImagesInput
+  used_by_product: ProductCreateOneWithoutImageInput
+  used_by_variants: VariantCreateManyWithoutImageInput
 }
 
-input ImageCreateOneWithoutProductInput {
-  create: ImageCreateWithoutProductInput
+input ImageCreateManyWithoutProductInput {
+  create: [ImageCreateWithoutProductInput!]
+  connect: [ImageWhereUniqueInput!]
+}
+
+input ImageCreateOneWithoutUsed_by_productInput {
+  create: ImageCreateWithoutUsed_by_productInput
   connect: ImageWhereUniqueInput
 }
 
-input ImageCreateOneWithoutVariantsInput {
-  create: ImageCreateWithoutVariantsInput
+input ImageCreateOneWithoutUsed_by_variantsInput {
+  create: ImageCreateWithoutUsed_by_variantsInput
   connect: ImageWhereUniqueInput
 }
 
@@ -82,10 +89,11 @@ input ImageCreateWithoutProductInput {
   image_url: String!
   large_image_url: String!
   user: UserCreateOneInput!
-  variants: VariantCreateManyWithoutImageInput
+  used_by_product: ProductCreateOneWithoutImageInput
+  used_by_variants: VariantCreateManyWithoutImageInput
 }
 
-input ImageCreateWithoutVariantsInput {
+input ImageCreateWithoutUsed_by_productInput {
   cloudinary_id: String!
   name: String!
   height: Int!
@@ -94,7 +102,21 @@ input ImageCreateWithoutVariantsInput {
   image_url: String!
   large_image_url: String!
   user: UserCreateOneInput!
-  product: ProductCreateOneWithoutImageInput
+  product: ProductCreateOneWithoutImagesInput
+  used_by_variants: VariantCreateManyWithoutImageInput
+}
+
+input ImageCreateWithoutUsed_by_variantsInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
+  product: ProductCreateOneWithoutImagesInput
+  used_by_product: ProductCreateOneWithoutImageInput
 }
 
 """An edge in a connection."""
@@ -140,6 +162,345 @@ type ImagePreviousValues {
   large_image_url: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+input ImageScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ImageScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ImageScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ImageScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  cloudinary_id: String
+
+  """All values that are not equal to given value."""
+  cloudinary_id_not: String
+
+  """All values that are contained in given list."""
+  cloudinary_id_in: [String!]
+
+  """All values that are not contained in given list."""
+  cloudinary_id_not_in: [String!]
+
+  """All values less than the given value."""
+  cloudinary_id_lt: String
+
+  """All values less than or equal the given value."""
+  cloudinary_id_lte: String
+
+  """All values greater than the given value."""
+  cloudinary_id_gt: String
+
+  """All values greater than or equal the given value."""
+  cloudinary_id_gte: String
+
+  """All values containing the given string."""
+  cloudinary_id_contains: String
+
+  """All values not containing the given string."""
+  cloudinary_id_not_contains: String
+
+  """All values starting with the given string."""
+  cloudinary_id_starts_with: String
+
+  """All values not starting with the given string."""
+  cloudinary_id_not_starts_with: String
+
+  """All values ending with the given string."""
+  cloudinary_id_ends_with: String
+
+  """All values not ending with the given string."""
+  cloudinary_id_not_ends_with: String
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  height: Int
+
+  """All values that are not equal to given value."""
+  height_not: Int
+
+  """All values that are contained in given list."""
+  height_in: [Int!]
+
+  """All values that are not contained in given list."""
+  height_not_in: [Int!]
+
+  """All values less than the given value."""
+  height_lt: Int
+
+  """All values less than or equal the given value."""
+  height_lte: Int
+
+  """All values greater than the given value."""
+  height_gt: Int
+
+  """All values greater than or equal the given value."""
+  height_gte: Int
+  width: Int
+
+  """All values that are not equal to given value."""
+  width_not: Int
+
+  """All values that are contained in given list."""
+  width_in: [Int!]
+
+  """All values that are not contained in given list."""
+  width_not_in: [Int!]
+
+  """All values less than the given value."""
+  width_lt: Int
+
+  """All values less than or equal the given value."""
+  width_lte: Int
+
+  """All values greater than the given value."""
+  width_gt: Int
+
+  """All values greater than or equal the given value."""
+  width_gte: Int
+  transformation: String
+
+  """All values that are not equal to given value."""
+  transformation_not: String
+
+  """All values that are contained in given list."""
+  transformation_in: [String!]
+
+  """All values that are not contained in given list."""
+  transformation_not_in: [String!]
+
+  """All values less than the given value."""
+  transformation_lt: String
+
+  """All values less than or equal the given value."""
+  transformation_lte: String
+
+  """All values greater than the given value."""
+  transformation_gt: String
+
+  """All values greater than or equal the given value."""
+  transformation_gte: String
+
+  """All values containing the given string."""
+  transformation_contains: String
+
+  """All values not containing the given string."""
+  transformation_not_contains: String
+
+  """All values starting with the given string."""
+  transformation_starts_with: String
+
+  """All values not starting with the given string."""
+  transformation_not_starts_with: String
+
+  """All values ending with the given string."""
+  transformation_ends_with: String
+
+  """All values not ending with the given string."""
+  transformation_not_ends_with: String
+  image_url: String
+
+  """All values that are not equal to given value."""
+  image_url_not: String
+
+  """All values that are contained in given list."""
+  image_url_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_lte: String
+
+  """All values greater than the given value."""
+  image_url_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_gte: String
+
+  """All values containing the given string."""
+  image_url_contains: String
+
+  """All values not containing the given string."""
+  image_url_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_not_ends_with: String
+  large_image_url: String
+
+  """All values that are not equal to given value."""
+  large_image_url_not: String
+
+  """All values that are contained in given list."""
+  large_image_url_in: [String!]
+
+  """All values that are not contained in given list."""
+  large_image_url_not_in: [String!]
+
+  """All values less than the given value."""
+  large_image_url_lt: String
+
+  """All values less than or equal the given value."""
+  large_image_url_lte: String
+
+  """All values greater than the given value."""
+  large_image_url_gt: String
+
+  """All values greater than or equal the given value."""
+  large_image_url_gte: String
+
+  """All values containing the given string."""
+  large_image_url_contains: String
+
+  """All values not containing the given string."""
+  large_image_url_not_contains: String
+
+  """All values starting with the given string."""
+  large_image_url_starts_with: String
+
+  """All values not starting with the given string."""
+  large_image_url_not_starts_with: String
+
+  """All values ending with the given string."""
+  large_image_url_ends_with: String
+
+  """All values not ending with the given string."""
+  large_image_url_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type ImageSubscriptionPayload {
@@ -190,8 +551,19 @@ input ImageUpdateInput {
   image_url: String
   large_image_url: String
   user: UserUpdateOneRequiredInput
-  product: ProductUpdateOneWithoutImageInput
-  variants: VariantUpdateManyWithoutImageInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
+}
+
+input ImageUpdateManyDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
 }
 
 input ImageUpdateManyMutationInput {
@@ -204,18 +576,38 @@ input ImageUpdateManyMutationInput {
   large_image_url: String
 }
 
-input ImageUpdateOneRequiredWithoutProductInput {
-  create: ImageCreateWithoutProductInput
-  connect: ImageWhereUniqueInput
-  update: ImageUpdateWithoutProductDataInput
-  upsert: ImageUpsertWithoutProductInput
+input ImageUpdateManyWithoutProductInput {
+  create: [ImageCreateWithoutProductInput!]
+  connect: [ImageWhereUniqueInput!]
+  disconnect: [ImageWhereUniqueInput!]
+  delete: [ImageWhereUniqueInput!]
+  update: [ImageUpdateWithWhereUniqueWithoutProductInput!]
+  updateMany: [ImageUpdateManyWithWhereNestedInput!]
+  deleteMany: [ImageScalarWhereInput!]
+  upsert: [ImageUpsertWithWhereUniqueWithoutProductInput!]
 }
 
-input ImageUpdateOneRequiredWithoutVariantsInput {
-  create: ImageCreateWithoutVariantsInput
+input ImageUpdateManyWithWhereNestedInput {
+  where: ImageScalarWhereInput!
+  data: ImageUpdateManyDataInput!
+}
+
+input ImageUpdateOneWithoutUsed_by_productInput {
+  create: ImageCreateWithoutUsed_by_productInput
   connect: ImageWhereUniqueInput
-  update: ImageUpdateWithoutVariantsDataInput
-  upsert: ImageUpsertWithoutVariantsInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ImageUpdateWithoutUsed_by_productDataInput
+  upsert: ImageUpsertWithoutUsed_by_productInput
+}
+
+input ImageUpdateOneWithoutUsed_by_variantsInput {
+  create: ImageCreateWithoutUsed_by_variantsInput
+  connect: ImageWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ImageUpdateWithoutUsed_by_variantsDataInput
+  upsert: ImageUpsertWithoutUsed_by_variantsInput
 }
 
 input ImageUpdateWithoutProductDataInput {
@@ -227,10 +619,11 @@ input ImageUpdateWithoutProductDataInput {
   image_url: String
   large_image_url: String
   user: UserUpdateOneRequiredInput
-  variants: VariantUpdateManyWithoutImageInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
 }
 
-input ImageUpdateWithoutVariantsDataInput {
+input ImageUpdateWithoutUsed_by_productDataInput {
   cloudinary_id: String
   name: String
   height: Int
@@ -239,17 +632,42 @@ input ImageUpdateWithoutVariantsDataInput {
   image_url: String
   large_image_url: String
   user: UserUpdateOneRequiredInput
-  product: ProductUpdateOneWithoutImageInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
 }
 
-input ImageUpsertWithoutProductInput {
+input ImageUpdateWithoutUsed_by_variantsDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+}
+
+input ImageUpdateWithWhereUniqueWithoutProductInput {
+  where: ImageWhereUniqueInput!
+  data: ImageUpdateWithoutProductDataInput!
+}
+
+input ImageUpsertWithoutUsed_by_productInput {
+  update: ImageUpdateWithoutUsed_by_productDataInput!
+  create: ImageCreateWithoutUsed_by_productInput!
+}
+
+input ImageUpsertWithoutUsed_by_variantsInput {
+  update: ImageUpdateWithoutUsed_by_variantsDataInput!
+  create: ImageCreateWithoutUsed_by_variantsInput!
+}
+
+input ImageUpsertWithWhereUniqueWithoutProductInput {
+  where: ImageWhereUniqueInput!
   update: ImageUpdateWithoutProductDataInput!
   create: ImageCreateWithoutProductInput!
-}
-
-input ImageUpsertWithoutVariantsInput {
-  update: ImageUpdateWithoutVariantsDataInput!
-  create: ImageCreateWithoutVariantsInput!
 }
 
 input ImageWhereInput {
@@ -591,9 +1009,10 @@ input ImageWhereInput {
   updatedAt_gte: DateTime
   user: UserWhereInput
   product: ProductWhereInput
-  variants_every: VariantWhereInput
-  variants_some: VariantWhereInput
-  variants_none: VariantWhereInput
+  used_by_product: ProductWhereInput
+  used_by_variants_every: VariantWhereInput
+  used_by_variants_some: VariantWhereInput
+  used_by_variants_none: VariantWhereInput
 }
 
 input ImageWhereUniqueInput {
@@ -670,8 +1089,9 @@ type Product implements Node {
   category: String
   brand: String
   user: User!
-  image: Image!
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image!]
+  image: Image
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -694,12 +1114,18 @@ input ProductCreateInput {
   category: String
   brand: String
   user: UserCreateOneInput!
-  image: ImageCreateOneWithoutProductInput!
   variants: VariantCreateManyWithoutProductInput
+  images: ImageCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
 }
 
 input ProductCreateOneWithoutImageInput {
   create: ProductCreateWithoutImageInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateOneWithoutImagesInput {
+  create: ProductCreateWithoutImagesInput
   connect: ProductWhereUniqueInput
 }
 
@@ -717,6 +1143,19 @@ input ProductCreateWithoutImageInput {
   brand: String
   user: UserCreateOneInput!
   variants: VariantCreateManyWithoutProductInput
+  images: ImageCreateManyWithoutProductInput
+}
+
+input ProductCreateWithoutImagesInput {
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  variants: VariantCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
 }
 
 input ProductCreateWithoutVariantsInput {
@@ -727,7 +1166,8 @@ input ProductCreateWithoutVariantsInput {
   category: String
   brand: String
   user: UserCreateOneInput!
-  image: ImageCreateOneWithoutProductInput!
+  images: ImageCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
 }
 
 """An edge in a connection."""
@@ -819,8 +1259,9 @@ input ProductUpdateInput {
   category: String
   brand: String
   user: UserUpdateOneRequiredInput
-  image: ImageUpdateOneRequiredWithoutProductInput
   variants: VariantUpdateManyWithoutProductInput
+  images: ImageUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
 }
 
 input ProductUpdateManyMutationInput {
@@ -848,6 +1289,15 @@ input ProductUpdateOneWithoutImageInput {
   upsert: ProductUpsertWithoutImageInput
 }
 
+input ProductUpdateOneWithoutImagesInput {
+  create: ProductCreateWithoutImagesInput
+  connect: ProductWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ProductUpdateWithoutImagesDataInput
+  upsert: ProductUpsertWithoutImagesInput
+}
+
 input ProductUpdateWithoutImageDataInput {
   title: String
   department: String
@@ -857,6 +1307,19 @@ input ProductUpdateWithoutImageDataInput {
   brand: String
   user: UserUpdateOneRequiredInput
   variants: VariantUpdateManyWithoutProductInput
+  images: ImageUpdateManyWithoutProductInput
+}
+
+input ProductUpdateWithoutImagesDataInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  variants: VariantUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
 }
 
 input ProductUpdateWithoutVariantsDataInput {
@@ -867,12 +1330,18 @@ input ProductUpdateWithoutVariantsDataInput {
   category: String
   brand: String
   user: UserUpdateOneRequiredInput
-  image: ImageUpdateOneRequiredWithoutProductInput
+  images: ImageUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
 }
 
 input ProductUpsertWithoutImageInput {
   update: ProductUpdateWithoutImageDataInput!
   create: ProductCreateWithoutImageInput!
+}
+
+input ProductUpsertWithoutImagesInput {
+  update: ProductUpdateWithoutImagesDataInput!
+  create: ProductCreateWithoutImagesInput!
 }
 
 input ProductUpsertWithoutVariantsInput {
@@ -1178,10 +1647,13 @@ input ProductWhereInput {
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
   user: UserWhereInput
-  image: ImageWhereInput
   variants_every: VariantWhereInput
   variants_some: VariantWhereInput
   variants_none: VariantWhereInput
+  images_every: ImageWhereInput
+  images_some: ImageWhereInput
+  images_none: ImageWhereInput
+  image: ImageWhereInput
 }
 
 input ProductWhereUniqueInput {
@@ -1579,7 +2051,7 @@ type Variant implements Node {
   sale: Boolean!
   salePrice: Float!
   product: Product!
-  image: Image!
+  image: Image
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1603,7 +2075,7 @@ input VariantCreateInput {
   sale: Boolean
   salePrice: Float
   product: ProductCreateOneWithoutVariantsInput!
-  image: ImageCreateOneWithoutVariantsInput!
+  image: ImageCreateOneWithoutUsed_by_variantsInput
 }
 
 input VariantCreateManyWithoutImageInput {
@@ -1635,7 +2107,7 @@ input VariantCreateWithoutProductInput {
   size: String
   sale: Boolean
   salePrice: Float
-  image: ImageCreateOneWithoutVariantsInput!
+  image: ImageCreateOneWithoutUsed_by_variantsInput
 }
 
 """An edge in a connection."""
@@ -2016,7 +2488,7 @@ input VariantUpdateInput {
   sale: Boolean
   salePrice: Float
   product: ProductUpdateOneRequiredWithoutVariantsInput
-  image: ImageUpdateOneRequiredWithoutVariantsInput
+  image: ImageUpdateOneWithoutUsed_by_variantsInput
 }
 
 input VariantUpdateManyDataInput {
@@ -2085,7 +2557,7 @@ input VariantUpdateWithoutProductDataInput {
   size: String
   sale: Boolean
   salePrice: Float
-  image: ImageUpdateOneRequiredWithoutVariantsInput
+  image: ImageUpdateOneWithoutUsed_by_variantsInput
 }
 
 input VariantUpdateWithWhereUniqueWithoutImageInput {

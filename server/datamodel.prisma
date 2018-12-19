@@ -17,6 +17,7 @@ type Image {
   image_url: String!
   large_image_url: String!
   user: User!
+  product: Product @relation(name: "ProductImages")
   used_by_product: Product @relation(name: "ProductImage")
   used_by_variants: [Variant] @relation(name: "VariantImage")
   createdAt: DateTime!
@@ -33,6 +34,7 @@ type Product {
   brand: String
   user: User!
   variants: [Variant!]! @relation(name: "ProductVariants", onDelete: CASCADE)
+  images: [Image!]! @relation(name: "ProductImages", onDelete: CASCADE)
   image: Image @relation(name: "ProductImage")
   createdAt: DateTime!
   updatedAt: DateTime!
