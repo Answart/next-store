@@ -23,4 +23,4 @@ export {
   CREATE_PROD_VARIANT_MUTATION,
   UPDATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
-} from './productVariant';
+} from './variants';
