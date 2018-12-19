@@ -94,51 +94,44 @@ const Mutation = {
     if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
 
     // Existing product?
-    const existingProduct = await ctx.db.query.product({
+    const [existingProduct] = await ctx.db.query.products({
       where: { id: args.id }
     }, `{ id image { id } user { id }}`);
     if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
     if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
 
-    // Existing image?
-    const [incomingImg] = await ctx.db.query.images({
-      where: { id: imageId }
-    });
-    if (!incomingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imageId}'.`);
-
     // Update w/new image?
-    if (existingProduct.image.id !== imageId) data.image = { connect: { id: imageId } };
-
-    const updatedProduct = await ctx.db.mutation.updateProduct({
-      where: { id: existingProduct.id },
-      data
-    }, info);
-
-    // Update variants w/new image and cleanup
     if (existingProduct.image.id !== imageId) {
+      const [existingImg] = await ctx.db.query.images({
+        where: { id: imageId }
+      });
+      if (!existingImg) throw new Error(`UPDATE PRODUCT: No image found with ID '${imageId}'.`);
 
-      // Find variants whose image was 'Same as Product Image'
+      // Update w/new image.
+      data.image = { connect: { id: imageId }};
+
+      // Find variants whose image was 'Same as Product Image' (AKA old image)
       const variantsToUpdate = await ctx.db.query.variants({
         where: { image: { id: existingProduct.image.id }}
       });
-      // Update found varaint's image to new product Image
-      for (let i = 0; i < variantsToUpdate.length; i ++) {
-        const id = variantsToUpdate[i].id;
-        await ctx.db.mutation.updateVariant({
-          where: { id },
-          data: {
-            image: { connect: { id: imageId }}
-          }
-        });
+      if (!!variantsToUpdate.length) {
+        // Update found varaint's image to new product Image
+        for (let i = 0; i < variantsToUpdate.length; i ++) {
+          const id = variantsToUpdate[i].id;
+          await ctx.db.mutation.updateVariant({
+            where: { id },
+            data: {
+              image: { connect: { id: imageId }}
+            }
+          });
+        }
       }
-
-      // Delete image that no longer has owner/product
-      await ctx.db.mutation.deleteImage({
-        where: { id: existingProduct.image.id }
-      });
     }
 
-    return updatedProduct;
+    return await ctx.db.mutation.updateProduct({
+      where: { id: productId },
+      data
+    }, info);
   },
   async deleteProduct(parent, args, ctx, info) {
     const where = { id: args.id };
