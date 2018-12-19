@@ -47,12 +47,23 @@ const Mutation = {
       return incomingImg;
     }
 
-    return await ctx.db.mutation.createImage({
+    const createdImage = await ctx.db.mutation.createImage({
       data: {
         ...data,
         user: { connect: { id: userId } }
       }
     }, info);
+
+    if (productId) {
+      await ctx.db.mutation.updateProduct({
+        where: { id: productId },
+        data: {
+          image: { connect: { id: createdImage.id }},
+        }
+      });
+    }
+
+    return createdImage;
   },
   async deleteImage(parent, args, ctx, info) {
     return await ctx.db.mutation.deleteImage({
