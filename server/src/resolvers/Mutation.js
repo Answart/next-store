@@ -204,12 +204,9 @@ const Mutation = {
     }, info);
   },
   async updateProductVariant(parent, args, ctx, info) {
+    const imageId = args.imageId;
     const data = { ...args };
-    let imageId;
-    if (args.imageId) {
-      imageId = args.imageId;
-      delete data.imageId;
-    }
+    delete data.imageId;
     delete data.id;
 
     // Logged in?
@@ -219,21 +216,18 @@ const Mutation = {
     // Existing productVariant?
     const [existingProductVariant] = await ctx.db.query.variants({
       where: { id: args.id }
-    }, `{ id quantity image { id cloudinary_id } product { user { id }}}`);
+    }, `{ id image { id } product { id user { id }}}`);
     if (!existingProductVariant) throw new Error(`UPDATE SELECTION: No productVariant found with id '${args.id}'.`);
     if (existingProductVariant.product.user.id !== userId) throw new Error('UPDATE SELECTION: You are not authorized to update this selection.');
 
     // Update image?
-    if (imageId) {
-      // Existing image?
-      const [incomingImg] = await ctx.db.query.images({
+    if (existingProductVariant.image.id !== imageId) {
+      const existingImg = await ctx.db.query.image({
         where: { id: imageId }
       });
-      if (!incomingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
+      if (!existingImg) throw new Error(`CREATE SELECTION: No image found with ID '${imageId}'.`);
 
-      if (incomingImg.id !== existingProductVariant.image.id) {
-        data.image = { connect: { id: incomingImg.id } };
-      }
+      data.image = { connect: { id: imageId } };
     }
 
     // Update availability?
