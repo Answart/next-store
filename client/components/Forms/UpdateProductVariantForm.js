@@ -60,7 +60,10 @@ class UpdateProductVariantForm extends Component {
   };
   submitForm = async (e, createImage, updateProductVariant) => {
     e.preventDefault();
-    const imageVariables = { ...this.state.image };
+    const imageVariables = {
+      ...this.state.image,
+      productId: this.props.variant.product.id
+    };
     if (!!imageVariables.id) delete imageVariables.id;
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 

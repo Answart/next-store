@@ -27,6 +27,11 @@ const Mutation = {
   },
   async createImage(parent, args, ctx, info) {
     const data = { ...args };
+    let productId;
+    if (args.productId) {
+      productId = args.productId;
+      delete data.productId;
+    }
     delete data.id;
 
     // Logged in?

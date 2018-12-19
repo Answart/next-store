@@ -11,6 +11,7 @@ import { CREATE_IMAGE_MUTATION, UPDATE_PRODUCT_MUTATION } from '../../graphql';
 class UpdateProductForm extends Component {
   static propTypes = {
     product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
       department: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
@@ -34,7 +35,10 @@ class UpdateProductForm extends Component {
   saveToState = state => this.setState({ ...state });
   submitForm = async (e, createImage, updateProduct) => {
     e.preventDefault();
-    const imageVariables = { ...this.state.image };
+    const imageVariables = {
+      ...this.state.image,
+      productId: this.props.product.id
+    };
     if (!!imageVariables.id) delete imageVariables.id;
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
