@@ -18,7 +18,7 @@ type Image {
   large_image_url: String!
   user: User!
   product: Product
-  variants: [Variant]
+  used_by_variants: [Variant] @relation(name: "VariantImage")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -48,7 +48,7 @@ type Variant {
   sale: Boolean! @default(value: false)
   salePrice: Float! @default(value: 1.00)
   product: Product! @relation(name: "ProductVariants")
-  image: Image!
+  image: Image @relation(name: "VariantImage")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
