@@ -14,7 +14,7 @@ const BuyProductPage = props => {
         if (loading) return (<p>Loading...</p>);
         if (error) return (<NotFound status={400} message={error.message} />);
         const { product } = data;
-        if (typeof product === 'undefined') return (<NotFound status={404} />);
+        if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
         const viewerIsCreator = product.user.id === user.id;
         return (
           <StyledBuyPage>
