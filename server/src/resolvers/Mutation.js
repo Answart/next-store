@@ -69,10 +69,10 @@ const Mutation = {
     if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
 
     // Existing image?
-    const [incomingImg] = await ctx.db.query.images({
+    const [existingImg] = await ctx.db.query.images({
       where: { id: imageId }
     });
-    if (!incomingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imageId}'.`);
+    if (!existingImg) throw new Error(`CREATE PRODUCT: No image found with ID '${imageId}'.`);
 
     // Create image with known user/image
     return await ctx.db.mutation.createProduct({
