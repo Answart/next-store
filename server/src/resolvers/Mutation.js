@@ -40,11 +40,11 @@ const Mutation = {
 
     // Existing image?
     const [existingImg] = await ctx.db.query.images({
-      where: { ...args }
+      where: { ...data }
     }, info);
     if (!!existingImg) {
-      console.log('CREATE IMAGE: Returning existing image found with incoming cloudinary_id.');
-      return existingImg;
+      console.log('CREATE IMAGE: Returning pre-existing image found with image data.', existingImg);
+      return incomingImg;
     }
 
     return await ctx.db.mutation.createImage({
