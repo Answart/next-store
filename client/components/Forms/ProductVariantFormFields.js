@@ -24,10 +24,11 @@ class ProductVariantFormFields extends Component {
       image_url: PropTypes.string.isRequired,
       large_image_url: PropTypes.string.isRequired
     }),
+    imgNotProdImg: PropTypes.bool.isRequired,
     saveToForm: PropTypes.func.isRequired,
     editView: PropTypes.bool.isRequired
   };
-  state = { getNewImage: !this.props.image || !!this.props.image.id };
+  state = { getNewImage: this.props.imgNotProdImg };
   handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
     const { name, type, value, checked } = e.target;

@@ -101,6 +101,7 @@ class UpdateProductVariantForm extends Component {
                     image={this.state.image}
                     saveToForm={this.saveToState}
                     editView={true}
+                    imgNotProdImg={!this.state.image || this.state.image.id !== this.props.variant.product.image.id}
                   />
 
                   <button className="form-submit-btn big-btn"
