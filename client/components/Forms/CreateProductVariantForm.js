@@ -23,15 +23,16 @@ class CreateProductVariantForm extends Component {
       delete_token: PropTypes.string
     }).isRequired
   };
-  state = {
+  newState = {
     price: 1.00,
     quantity: 1,
     color: "",
     size: "",
     sale: false,
     salePrice: 1.00,
-    image: { ...this.props.productImage }
+    image: { ...this.props.productImage },
   };
+  state = this.newState;
   saveToState = state => {
     if (typeof state.getNewImage !== 'undefined') {
       const { productImage } = this.props;
@@ -65,9 +66,8 @@ class CreateProductVariantForm extends Component {
       delete variables.image;
 
       return await createProductVariant({ variables }).then((res) => {
-        Router.push({
-          pathname: "/buy",
-          query: { id: res.data.createProductVariant.product.id }
+        this.setState({
+          ...this.newState,
         });
       });
     });
