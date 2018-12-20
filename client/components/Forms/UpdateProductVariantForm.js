@@ -43,7 +43,9 @@ class UpdateProductVariantForm extends Component {
       }).isRequired
     }).isRequired
   };
-  state = { ...this.props.variant };
+  state = {
+    ...this.props.variant,
+  };
   saveToState = state => {
     if (typeof state.getNewImage !== 'undefined') {
       const { image, product } = this.props.variant;
@@ -75,9 +77,8 @@ class UpdateProductVariantForm extends Component {
       delete variables.image;
 
       return await updateProductVariant({ variables }).then((res) => {
-        Router.push({
-          pathname: "/buy",
-          query: { id: res.data.updateProductVariant.product.id }
+        this.setState({
+          ...res.data.updateProductVariant,
         });
       });
     });
