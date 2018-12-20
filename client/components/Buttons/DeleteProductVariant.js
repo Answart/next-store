@@ -8,8 +8,7 @@ class DeleteProductVariant extends Component {
   render() {
     const { productId, id, children } = this.props;
     return (
-      <Mutation
-        mutation={DELETE_PROD_VARIANT_MUTATION}
+      <Mutation mutation={DELETE_PROD_VARIANT_MUTATION}
         variables={{ id }}
       >
         {(deleteProductVariant, { error }) => (
@@ -19,14 +18,9 @@ class DeleteProductVariant extends Component {
               if (confirm("Are you sure you want to delete this selection?")) {
                 deleteProductVariant()
                   .then((res) => {
-                    Router.push({
-                      pathname: "/product/edit",
-                      query: { id: productId }
-                    });
+                    if (this.props.postDelete) this.props.postDelete();
                   })
-                  .catch(err => {
-                    alert(err.message);
-                  });
+                  .catch(err => alert(err.message));
               }
             }}
           >
