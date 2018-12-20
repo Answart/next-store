@@ -30,47 +30,51 @@ class EditProductVariants extends Component {
     }).isRequired,
     viewerIsCreator: PropTypes.bool.isRequired
   };
-  state = { currentVariant: null };
+  state = {
+    currentVariant: null,
+  };
   selectVariant = (e, currentVariant) => {
-    e.preventDefault();
-    this.setState({ currentVariant });
+    if (!!e && e.preventDefault) e.preventDefault();
+
+    this.setState({ currentVariant: null }, () => {
+      if (currentVariant) this.setState({ currentVariant });
+    });
   }
   render() {
     const { currentVariant } = this.state;
     const id = currentVariant ? currentVariant.id : null;
     return (
       <StyledEditProductVariants>
-        <div className="edit-prdct-var-choose">
-          <div className="edit-prdct-lbl">1. Choose</div>
+        {!currentVariant ? (
+          <div className="edit-prdct-var-choose">
+            <div className="edit-prdct-lbl">1. Choose Selection to Update</div>
 
-          <Product
-            product={this.props.product}
-            viewerIsCreator={this.props.viewerIsCreator}
-            demoView={true}
-            variantAction={this.selectVariant}
-            variantActionLabel='Select'
-          />
-        </div>
+            <Product
+              product={this.props.product}
+              viewerIsCreator={this.props.viewerIsCreator}
+              demoView={true}
+              variantAction={this.selectVariant}
+              variantActionLabel='Select'
+            />
+          </div>
+        ) : (
+          <div className='edit-prdct-var-form'>
+            <div className="edit-prdct-lbl">2. Update Selection</div>
 
-        <div className='edit-prdct-var-form'>
-          <div className="edit-prdct-lbl">2. Update</div>
-          {!currentVariant ? (
-            <p>Choose a selection to update.</p>
-          ) : (
-            <div>
-              <UpdateProductVariantForm
-                variant={currentVariant}
-              />
+            <UpdateProductVariantForm
+              variant={currentVariant}
+              goBack={(e) => this.selectVariant(e, null)}
+            />
 
-              <div className="edit-pg-content-footer">
-                <DeleteProductVariant
-                  id={id}
-                  productId={this.props.product.id}
-                >Delete Selection</DeleteProductVariant>
-              </div>
+            <div className="edit-pg-content-footer">
+              <DeleteProductVariant
+                id={id}
+                productId={this.props.product.id}
+                postDelete={(e) => this.selectVariant(e, null)}
+              >Delete Selection</DeleteProductVariant>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </StyledEditProductVariants>
     );
   };
