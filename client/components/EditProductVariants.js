@@ -74,7 +74,7 @@ class EditProductVariants extends Component {
               <DeleteProductVariant
                 id={id}
                 productId={this.props.product.id}
-                postDelete={(e) => this.selectVariant(e, null, `Selection with size '${currentVariant.size}' and color '${currentVariant.color}' successfully deleted.`)}
+                postDelete={(e) => this.selectVariant(e, null, `Deleted selection with size '${currentVariant.size}' and color '${currentVariant.color}'.`)}
               >Delete Selection</DeleteProductVariant>
             </div>
           </div>
