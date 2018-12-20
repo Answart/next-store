@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductFormFields from './ProductFormFields';
-import DisplayError from '../DisplayError';
+import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_IMAGE_MUTATION, CREATE_PRODUCT_MUTATION } from '../../graphql';
 
@@ -46,7 +46,7 @@ class CreateProductForm extends Component {
           <Mutation mutation={CREATE_PRODUCT_MUTATION} variables={{}}>
             {(createProduct, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, createProduct)}>
-                <DisplayError error={error} />
+                <DisplayMessage error={error} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Create Product</h2>

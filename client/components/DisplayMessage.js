@@ -19,7 +19,7 @@ const StyledDisplayError = styled.div`
   }
 `;
 
-const DisplayError = ({ error }) => {
+const DisplayMessage = ({ error }) => {
   if (!error || !error.message) return null;
   const errors = error.networkError && error.networkError.result && !!error.networkError.result.errors.length
     ? error.networkError.result.errors
@@ -35,13 +35,13 @@ const DisplayError = ({ error }) => {
   ));
 };
 
-DisplayError.defaultProps = {
+DisplayMessage.defaultProps = {
   error: {},
 };
 
-DisplayError.propTypes = {
+DisplayMessage.propTypes = {
   error: PropTypes.object,
 };
 
 
-export default DisplayError;
+export default DisplayMessage;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
-import DisplayError from '../DisplayError';
+import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
 import { CREATE_IMAGE_MUTATION, CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
 
@@ -79,7 +79,7 @@ class CreateProductVariantForm extends Component {
           <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}}>
             {(createProductVariant, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
-                <DisplayError error={error} />
+                <DisplayMessage error={error} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Add Selection</h2>
