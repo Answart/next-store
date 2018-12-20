@@ -41,7 +41,8 @@ class UpdateProductVariantForm extends Component {
           large_image_url: PropTypes.string.isRequired
         }).isRequired
       }).isRequired
-    }).isRequired
+    }).isRequired,
+    goBack: PropTypes.func.isRequired
   };
   state = {
     ...this.props.variant,
@@ -115,6 +116,10 @@ class UpdateProductVariantForm extends Component {
                     disabled={!this.state.image || loading}
                     type="submit"
                   >Updat{loading ? 'ing' : 'e'} Selection</button>
+                  <button className="form-submit-btn undrln-btn"
+                    onClick={this.props.goBack}
+                    type="button"
+                  >Go Back</button>
                 </fieldset>
               </StyledForm>
             )}
