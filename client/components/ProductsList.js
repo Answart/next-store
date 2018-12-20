@@ -22,7 +22,8 @@ class ProductsList extends Component {
         salePrice: PropTypes.number.isRequired,
         availability: PropTypes.string.isRequired
       })).isRequired
-    })).isRequired
+    })).isRequired,
+    editView: PropTypes.bool.isRequired
   };
   render() {
     return (
@@ -66,7 +67,7 @@ class ProductsList extends Component {
                 )}
               </div>
 
-              {prdct.id && viewerIsCreator && (
+              {viewerIsCreator && this.props.editView && (
                 <span className="prdct-itm-actns">
                   <Link href={{
                     pathname: "/product/edit",

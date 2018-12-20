@@ -10,6 +10,7 @@ import { SHOP_PRODUCTS_QUERY } from '../graphql';
 
 function getShopProps(variables = {}) {
   let pageLabel = '';
+  let editView = false;
   variables.online = true;
 
   if (variables.department) {
@@ -18,17 +19,18 @@ function getShopProps(variables = {}) {
     if (variables.name === user.name) {
       pageLabel = 'My Products';
       delete variables.online;
+      editView = true;
     } else {
       pageLabel = capWord(variables.name);
     }
   }
 
-  return { variables, pageLabel };
+  return { variables, pageLabel, editView };
 }
 
 const Shop = props => {
   const shopProps = getShopProps(props.query);
-  const { variables, pageLabel } = shopProps;
+  const { variables, pageLabel, editView } = shopProps;
   return (
     <StyledShopPage>
       <PageTitle
@@ -55,7 +57,10 @@ const Shop = props => {
             if (typeof products === 'undefined' || products === null) return (<NotFound status={404} />);
             if (!products.length) return (<NotFound status={204} message='No products found.' />);
             return (
-              <ProductsList products={products} />
+              <ProductsList
+                products={products}
+                editView={editView}
+              />
             );
           }}
         </Query>
