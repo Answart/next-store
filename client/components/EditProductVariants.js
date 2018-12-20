@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyledEditProductVariants } from './styles/ProductStyles';
+import DisplayMessage from './DisplayMessage';
 import Product from './Product';
 import { UpdateProductVariantForm } from './Forms';
 import DeleteProductVariant from './Buttons/DeleteProductVariant';
@@ -32,12 +33,13 @@ class EditProductVariants extends Component {
   };
   state = {
     currentVariant: null,
+    message: ''
   };
-  selectVariant = (e, currentVariant) => {
+  selectVariant = (e, currentVariant, message = '') => {
     if (!!e && e.preventDefault) e.preventDefault();
 
-    this.setState({ currentVariant: null }, () => {
-      if (currentVariant) this.setState({ currentVariant });
+    this.setState({ currentVariant: null, message }, () => {
+      if (currentVariant) this.setState({ currentVariant, message });
     });
   }
   render() {
@@ -45,6 +47,8 @@ class EditProductVariants extends Component {
     const id = currentVariant ? currentVariant.id : null;
     return (
       <StyledEditProductVariants>
+        <DisplayMessage success={this.state.message} />
+
         {!currentVariant ? (
           <div className="edit-prdct-var-choose">
             <div className="edit-prdct-lbl">1. Choose Selection to Update</div>
