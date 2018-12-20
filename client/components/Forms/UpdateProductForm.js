@@ -33,6 +33,7 @@ class UpdateProductForm extends Component {
   };
   state = {
     ...this.props.product,
+    message: ''
   };
   saveToState = state => this.setState({ ...state });
   submitForm = async (e, createImage, updateProduct) => {
@@ -50,10 +51,12 @@ class UpdateProductForm extends Component {
         imageId: res.data.createImage.id
       };
       delete variables.image;
+      delete variables.message;
 
       return await updateProduct({ variables }).then((res) => {
         this.setState({
           ...res.data.updateProduct,
+          message: 'Product changes saved.'
         });
       });
     });
@@ -65,7 +68,7 @@ class UpdateProductForm extends Component {
           <Mutation mutation={UPDATE_PRODUCT_MUTATION} variables={{}}>
             {(updateProduct, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, updateProduct)}>
-                <DisplayMessage error={error} />
+                <DisplayMessage error={error} message={this.state.message} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Update Product</h2>
