@@ -93,7 +93,7 @@ class UpdateProductVariantForm extends Component {
           <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}}>
             {(updateProductVariant, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, updateProductVariant)}>
-                <DisplayMessage error={error} message={this.state.message} />
+                <DisplayMessage error={error} success={this.state.message} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Update Selection</h2>

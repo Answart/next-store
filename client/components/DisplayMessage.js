@@ -35,8 +35,8 @@ const StyledDisplaySuccess = styled.div`
   }
 `;
 
-const DisplayMessage = ({ error, message }) => {
-  if ((!error || !error.message) && !message) return null;
+const DisplayMessage = ({ error, success }) => {
+  if ((!error || !error.message) && !success) return null;
   let errors;
   if (!!error) {
     errors = error.networkError && error.networkError.result && !!error.networkError.result.errors.length
@@ -44,12 +44,12 @@ const DisplayMessage = ({ error, message }) => {
       : [{ ...error }];
   }
 
-  if (!!message.length) {
+  if (!!success.length) {
     return (
       <StyledDisplaySuccess key={9999}>
         <p>
           <strong>Success!</strong>
-          {message}
+          {success}
         </p>
       </StyledDisplaySuccess>
     )
@@ -69,7 +69,7 @@ const DisplayMessage = ({ error, message }) => {
 
 DisplayMessage.defaultProps = {
   error: {},
-  message: '',
+  success: '',
 };
 
 DisplayMessage.propTypes = {
