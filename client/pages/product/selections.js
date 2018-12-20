@@ -48,7 +48,7 @@ const EditProductVariantsPage = props => {
 
             <div className="edit-pg-content">
               {!product.variants.length ? (
-                <p>This product does not have any selections.</p>
+                <NotFound status={204} message='This product does not have any selections.' />
               ) : (
                 <EditProductVariants
                   product={product}
