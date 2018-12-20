@@ -31,7 +31,9 @@ class UpdateProductForm extends Component {
       })
     })
   };
-  state = { ...this.props.product };
+  state = {
+    ...this.props.product,
+  };
   saveToState = state => this.setState({ ...state });
   submitForm = async (e, createImage, updateProduct) => {
     e.preventDefault();
@@ -50,9 +52,8 @@ class UpdateProductForm extends Component {
       delete variables.image;
 
       return await updateProduct({ variables }).then((res) => {
-        Router.push({
-          pathname: "/product/add",
-          query: { id: res.data.updateProduct.id }
+        this.setState({
+          ...res.data.updateProduct,
         });
       });
     });
