@@ -45,6 +45,7 @@ class UpdateProductVariantForm extends Component {
   };
   state = {
     ...this.props.variant,
+    message: ''
   };
   saveToState = state => {
     if (typeof state.getNewImage !== 'undefined') {
@@ -75,10 +76,12 @@ class UpdateProductVariantForm extends Component {
         imageId: res.data.createImage.id
       };
       delete variables.image;
+      delete variables.message;
 
       return await updateProductVariant({ variables }).then((res) => {
         this.setState({
           ...res.data.updateProductVariant,
+          message: `Changes for selection with size '${this.state.size}' and color '${this.state.color}' saved.`
         });
       });
     });
@@ -90,7 +93,7 @@ class UpdateProductVariantForm extends Component {
           <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}}>
             {(updateProductVariant, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, updateProductVariant)}>
-                <DisplayMessage error={error} />
+                <DisplayMessage error={error} message={this.state.message} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Update Selection</h2>
