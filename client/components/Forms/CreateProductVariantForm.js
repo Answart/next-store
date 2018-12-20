@@ -31,6 +31,7 @@ class CreateProductVariantForm extends Component {
     sale: false,
     salePrice: 1.00,
     image: { ...this.props.productImage },
+    message: ''
   };
   state = this.newState;
   saveToState = state => {
@@ -64,10 +65,12 @@ class CreateProductVariantForm extends Component {
         imageId: res.data.createImage.id
       };
       delete variables.image;
+      delete variables.message;
 
       return await createProductVariant({ variables }).then((res) => {
         this.setState({
           ...this.newState,
+          message: `Selection of size '${this.state.size}' and color '${this.state.color}' added to product!`
         });
       });
     });
@@ -79,7 +82,7 @@ class CreateProductVariantForm extends Component {
           <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}}>
             {(createProductVariant, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
-                <DisplayMessage error={error} />
+                <DisplayMessage error={error} message={this.state.message} />
 
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Add Selection</h2>
