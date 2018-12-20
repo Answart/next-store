@@ -7,6 +7,7 @@ import Header from './Header';
 const theme = {
   red: '#e86c52',
   orange: '#fe8b72',
+  green: '#b2c94c',
   darkblue: '#47505f',
   beige: '#f9f6f4',
   textGrey: '#6d6c6c',
