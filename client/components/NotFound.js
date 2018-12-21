@@ -19,24 +19,23 @@ const StyledNotFound = styled.div`
 `;
 
 const NotFound = (props) => {
-  const notFound = {
-    title: 'Not Found',
-    message: 'Unable to find what you are looking for!'
-  };
+  let title = 'Not Found';
+  let message = 'Unable to find what you are looking for!';
+
   if (props.status) {
-    if (props.status === 204) notFound.title = 'Nothing Here';
+    if (props.status === 204) title = 'Nothing Here';
     if (props.status === 400) {
-      notFound.title = 'Error';
-      notFound.message = 'An error occured. Please try again later.';
+      title = 'Error';
+      message = 'An error occured. Please try again later.';
     };
   };
-  if (props.message && !!props.message.length) notFound.message = props.message;
+  if (props.message && !!props.message.length) message = props.message;
 
   return (
     <StyledNotFound>
-      <h1>{notFound.title}</h1>
+      <h1>{title}</h1>
 
-      <p>{notFound.message}</p>
+      <p>{message}</p>
 
       <p>
         Go back to
