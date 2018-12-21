@@ -38,6 +38,7 @@ class EditProductVariants extends Component {
   selectVariant = (e, currentVariant, message = '') => {
     if (!!e && e.preventDefault) e.preventDefault();
 
+    if (!this.props.product.variants.length) return;
     this.setState({ currentVariant: null, message }, () => {
       if (currentVariant) this.setState({ currentVariant, message });
     });
