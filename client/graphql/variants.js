@@ -23,7 +23,43 @@ const CREATE_PROD_VARIANT_MUTATION = gql`
       imageId: $imageId
     ) {
       id
-      product { id }
+      price
+      quantity
+      color
+      size
+      price
+      sale
+      salePrice
+      availability
+      product {
+        id
+        title
+        department
+        description
+        category
+        brand
+        online
+        image {
+          id
+          cloudinary_id
+          name
+          width
+          height
+          transformation
+          image_url
+          large_image_url
+        }
+      }
+      image {
+        id
+        cloudinary_id
+        name
+        width
+        height
+        transformation
+        image_url
+        large_image_url
+      }
     }
   }
 `;

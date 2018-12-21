@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo';
 import ProductVariantFormFields from './ProductVariantFormFields';
 import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
-import { CREATE_IMAGE_MUTATION, CREATE_PROD_VARIANT_MUTATION } from '../../graphql';
+import { CREATE_IMAGE_MUTATION, CREATE_PROD_VARIANT_MUTATION, PRODUCT_QUERY } from '../../graphql';
 
 
 class CreateProductVariantForm extends Component {
@@ -75,11 +75,19 @@ class CreateProductVariantForm extends Component {
       });
     });
   };
+  update = (cache, payload) => {
+    const variables = { id: this.props.productId };
+    const data = cache.readQuery({ query: PRODUCT_QUERY, variables });
+    const newVariant = payload.data.createProductVariant;
+    const included = data.product.variants.find(variant => variant.id === `${newVariant.id}`);
+    if (!included) data.product.variants.push(newVariant);
+    cache.writeQuery({ query: PRODUCT_QUERY, variables, data });
+  };
   render() {
     return (
       <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
         {(createImage) => (
-          <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}}>
+          <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}} update={this.update}>
             {(createProductVariant, { loading, error }) => (
               <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
                 <DisplayMessage error={error} success={this.state.message} />
