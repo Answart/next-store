@@ -15,7 +15,6 @@ const SHOP_PRODUCTS_QUERY = gql`
       id
       department
       title
-      description
       category
       brand
       online
