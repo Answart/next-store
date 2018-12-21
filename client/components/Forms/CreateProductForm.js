@@ -33,7 +33,7 @@ class CreateProductForm extends Component {
 
       return await createProduct({ variables }).then((res) => {
         Router.push({
-          pathname: "/product/add",
+          pathname: "/product/selections",
           query: { id: res.data.createProduct.id }
         });
       });
