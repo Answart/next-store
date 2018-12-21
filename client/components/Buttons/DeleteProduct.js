@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import Router from 'next/router';
-import { PRODUCTS_QUERY, DELETE_PRODUCT_MUTATION } from '../graphql';
+import { DELETE_PRODUCT_MUTATION, SHOP_PRODUCTS_QUERY } from '../../graphql';
+import { user } from '../../lib/dummyData';
 
 
 class DeleteProduct extends Component {
+  update = (cache, payload) => {
+    try {
+      const variables = { name: user.name };
+      const data = cache.readQuery({ query: SHOP_PRODUCTS_QUERY, variables });
+      data.products = data.products.filter(product => product.id !== payload.data.deleteProduct.id);
+      cache.writeQuery({ query: SHOP_PRODUCTS_QUERY, variables, data });
+    } catch(e) {}
+  };
   render() {
     const { id, className, children } = this.props;
     return (
       <Mutation mutation={DELETE_PRODUCT_MUTATION}
         variables={{ id }}
+        update={this.update}
       >
         {(deleteProduct, { error }) => (
           <button className={className ? `${className}` : 'dlt-btn'}
