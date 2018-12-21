@@ -18,11 +18,12 @@ class DeleteProduct extends Component {
               if (confirm("Are you sure you want to delete this product?")) {
                 deleteProduct()
                   .then((res) => {
-                    Router.push({ pathname: "/shop" });
+                    Router.push({
+                      pathname: "/shop",
+                      query: { name: user.name }
+                    });
                   })
-                  .catch(err => {
-                    alert(err.message);
-                  });
+                  .catch(err => alert(err.message));
               }
             }}
           >
