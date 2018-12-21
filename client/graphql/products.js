@@ -23,6 +23,7 @@ const SHOP_PRODUCTS_QUERY = gql`
         name
       }
       image {
+        id
         name
         image_url
       }
