@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import Search from './Search.js';
 import Menu from './Menu.js';
 import Nav from './Nav.js';
 import StyledHeader from '../styles/HeaderStyles.js';
 
+
+Router.onRouteChangeStart = () => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => {
+  NProgress.done();
+};
+Router.onRouteChangeError = () => {
+  NProgress.done();
+};
 
 class Header extends Component {
   state = { acctDrpdwn: false };
