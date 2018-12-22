@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import formatMoney from '../lib/formatMoney';
+import { formatMoney } from '../lib/utilFns';
 import styled from 'styled-components';
 
 
