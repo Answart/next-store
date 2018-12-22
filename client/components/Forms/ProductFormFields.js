@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
-import categoriesByDept from '../../lib/categoriesByDept';
-import { departments } from '../../config';
+import { departments, categories } from '../../config';
 import { user } from '../../lib/dummyData';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
@@ -65,9 +64,9 @@ class ProductFormFields extends Component {
   }
   render() {
     const { department, image, online } = this.props;
-    let categories = department
-      ? categoriesByDept[department]
-      : categoriesByDept["Tops"];
+    let categoriesByDept = department
+      ? categories[department]
+      : categories["Tops"];
     return (
       <StyledProduct>
         <div className="form-imgs">
@@ -124,7 +123,7 @@ class ProductFormFields extends Component {
                 onChange={this.handleChange}
               >
                 <option key={0} value=''></option>
-                {categories.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
+                {categoriesByDept.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
               </select>
             </label>
           </div>
