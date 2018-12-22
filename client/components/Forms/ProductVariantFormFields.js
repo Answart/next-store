@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StyledProduct from '../styles/ProductStyles';
-import sizes from '../../lib/sizes';
-import { colors } from '../../config';
+import { colors, sizes } from '../../config';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 
