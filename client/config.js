@@ -19,6 +19,15 @@ export const colors = [
   'Gold',
   'Multi'
 ];
+export const departments = [
+  'Tops',
+  'Bottoms',
+  'Shoes',
+  'Outwear',
+  'Accessories',
+  'Decor',
+  'Wedding'
+];
 export const sizes = [
   'XXS',
   'XS',

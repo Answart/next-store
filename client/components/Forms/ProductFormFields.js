@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
-import departments from '../../lib/departments';
 import categoriesByDept from '../../lib/categoriesByDept';
+import { departments } from '../../config';
 import { user } from '../../lib/dummyData';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 

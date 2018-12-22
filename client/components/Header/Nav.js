@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import departments from '../../lib/departments';
+import { departments } from '../../config';
 
 
 const Nav = () => (
