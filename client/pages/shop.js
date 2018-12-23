@@ -42,20 +42,28 @@ const Shop = props => {
         Filters
       </div>
 
-      <div className="shop-pg-pgntn">
-        Pagination
-      </div>
-
       <div className="shop-pg-lst">
+        <div className="shop-pg-pagin">
+          <div>Sort here</div>
+
+          <div>Pagination here</div>
+        </div>
+
         <Query query={SHOP_PRODUCTS_QUERY}
           variables={variables}
         >
           {({ data, error, loading }) => {
             if (loading) return (<p>Loading...</p>);
-            if (error) return (<NotFound status={400} message={error.message} />);
+            if (error) return (
+              <NotFound status={400} message={error.message} />
+            );
             const { products } = data;
-            if (typeof products === 'undefined' || products === null) return (<NotFound status={404} />);
-            if (!products.length) return (<NotFound status={204} message='No products found.' />);
+            if (typeof products === 'undefined' || products === null) return (
+              <NotFound status={404} />
+            );
+            if (!products.length) return (
+              <NotFound status={204} message='No products found.' />
+            );
             return (
               <ProductsList
                 products={products}
@@ -64,6 +72,12 @@ const Shop = props => {
             );
           }}
         </Query>
+
+        <div className="shop-pg-pagin">
+          <div>Sort here</div>
+
+          <div>Pagination here</div>
+        </div>
       </div>
     </StyledShopPage>
   );

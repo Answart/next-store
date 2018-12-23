@@ -12,13 +12,16 @@ const StyledShopPage = styled.div`
     grid-column: 1 / 1;
     grid-row: 2 / -1;
   }
-  .shop-pg-pgntn {
-    grid-column: 2 / -1;
-    grid-row: 2 / 2;
-  }
   .shop-pg-lst {
     grid-column: 2 / -1;
-    grid-row: 3 / -1;
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-rows: 5rem minmax(50rem, 1fr) 5rem;
+    grid-gap: 3rem;
+    .shop-pg-pagin {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
   }
 `;
 
