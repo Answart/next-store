@@ -61,7 +61,7 @@ const StyledHeader = styled.header`
       border-bottom: 1px solid ${props => props.theme.beige};
     }
     a:hover {
-      border-bottom: 1px solid ${props => props.theme.orange};
+      border-bottom: 1px solid ${props => props.theme.coral};
     }
   }
   .hdr-menu {

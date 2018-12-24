@@ -6,7 +6,7 @@ import Header from './Header';
 
 const theme = {
   red: '#e86c52',
-  orange: '#fe8b72',
+  coral: '#fe8b72',
   green: '#b2c94c',
   darkblue: '#47505f',
   beige: '#f9f6f4',
@@ -30,7 +30,7 @@ const StyledPage = styled.div`
     -webkit-font-smoothing: antialiased;
     &:hover {
       color: ${theme.darkblue};
-      text-decoration: underline ${theme.orange};
+      text-decoration: underline ${theme.coral};
     }
   }
   a.big-btn, button.big-btn {
@@ -68,7 +68,7 @@ const StyledPage = styled.div`
     }
   }
   .line-through {
-    text-decoration: line-through ${theme.orange};
+    text-decoration: line-through ${theme.coral};
   }
   .inner-page {
     max-width: ${props => props.theme.maxWidth};

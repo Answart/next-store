@@ -53,7 +53,7 @@ const StyledProduct = styled.div`
     }
     a:hover {
       color: ${props => props.theme.darkblue};
-      text-decoration: underline ${props => props.theme.orange};
+      text-decoration: underline ${props => props.theme.coral};
     }
   }
   .prdct-desc {
@@ -144,7 +144,7 @@ const StyledProductsListItem = styled.div`
       color: ${props => props.theme.textGrey};
       &:hover {
         color: ${props => props.theme.darkblue};
-        text-decoration: underline ${props => props.theme.orange};
+        text-decoration: underline ${props => props.theme.coral};
       }
     }
     button {
@@ -155,7 +155,7 @@ const StyledProductsListItem = styled.div`
       color: ${props => props.theme.textGrey};
       &:hover {
         color: ${props => props.theme.darkblue};
-        text-decoration: underline ${props => props.theme.orange};
+        text-decoration: underline ${props => props.theme.coral};
       }
     }
   }

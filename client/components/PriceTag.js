@@ -8,7 +8,7 @@ const StyledPriceTag = styled.div`
     padding: 1rem 0.5rem;
   }
   .price-tag-priceSale {
-    color: ${props => props.theme.orange};
+    color: ${props => props.theme.coral};
   }
 `;
 
