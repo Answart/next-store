@@ -66,12 +66,12 @@ const StyledForm = styled.form`
     border-bottom: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
-      outline: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      outline: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
     &:active {
-      color: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
   }
   input[type='file'] {

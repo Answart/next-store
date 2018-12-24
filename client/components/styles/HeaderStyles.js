@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
     a {
       font-size: 4rem !important;
       font-weight: normal;
-      color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
     }
   }
   .hdr-search {
@@ -38,7 +38,7 @@ const StyledHeader = styled.header`
       border: 0;
       font-size: 1rem;
       font-weight: bold;
-      color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
       background-color: transparent;
     }
     input.search-input:hover {

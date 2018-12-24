@@ -21,12 +21,12 @@ const StyledProduct = styled.div`
     border: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
-      outline: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      outline: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
     &:active {
-      color: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
   }
   .prdct-imgs {
@@ -37,7 +37,7 @@ const StyledProduct = styled.div`
     padding-right: 2rem;
   }
   .prdct-title {
-    color: ${props => props.theme.darkblue};
+    color: ${props => props.theme.darkBlue};
     font-size: 1.17em;
     padding: 0;
     font-weight: bold;
@@ -52,7 +52,7 @@ const StyledProduct = styled.div`
       text-decoration: none;
     }
     a:hover {
-      color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
       text-decoration: underline ${props => props.theme.coral};
     }
   }
@@ -77,12 +77,12 @@ const StyledProductVariants = styled.div`
     border: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
-      outline: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      outline: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
     &:active {
-      color: ${props => props.theme.darkblue};
-      border-color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
+      border-color: ${props => props.theme.darkBlue};
     }
   }
   .prdct-padding {
@@ -114,7 +114,7 @@ const StyledProductsListItem = styled.div`
   .prdct-itm-info {
     padding: 0.2rem 0;
     a {
-      color: ${props => props.theme.darkblue};
+      color: ${props => props.theme.darkBlue};
     }
     .prdct-itm-title {
       padding: 0.3rem 0;
@@ -143,7 +143,7 @@ const StyledProductsListItem = styled.div`
       padding-right: 0.3rem;
       color: ${props => props.theme.darkGrey};
       &:hover {
-        color: ${props => props.theme.darkblue};
+        color: ${props => props.theme.darkBlue};
         text-decoration: underline ${props => props.theme.coral};
       }
     }
@@ -154,7 +154,7 @@ const StyledProductsListItem = styled.div`
       font-weight: bold;
       color: ${props => props.theme.darkGrey};
       &:hover {
-        color: ${props => props.theme.darkblue};
+        color: ${props => props.theme.darkBlue};
         text-decoration: underline ${props => props.theme.coral};
       }
     }

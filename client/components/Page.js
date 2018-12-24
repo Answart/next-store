@@ -8,7 +8,7 @@ const theme = {
   red: '#e86c52',
   coral: '#fe8b72',
   green: '#b2c94c',
-  darkblue: '#47505f',
+  darkBlue: '#47505f',
   beige: '#f9f6f4',
   offWhite: '#EDEDED',
   grey: '#9A9A9A',
@@ -27,7 +27,7 @@ const StyledPage = styled.div`
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
     &:hover {
-      color: ${theme.darkblue};
+      color: ${theme.darkBlue};
       text-decoration: underline ${theme.coral};
     }
   }
@@ -37,7 +37,7 @@ const StyledPage = styled.div`
     color: white;
     font-size: 1.3rem;
     font-weight: bold;
-    background-color: ${theme.darkblue};
+    background-color: ${theme.darkBlue};
     &:hover {
       color: white;
       background-color: ${theme.black};
@@ -61,7 +61,7 @@ const StyledPage = styled.div`
     -webkit-font-smoothing: antialiased;
     font-weight: normal;
     &:hover, &:active, &:focus {
-      color: ${theme.darkblue};
+      color: ${theme.darkBlue};
       font-weight: normal;
     }
   }
@@ -114,7 +114,7 @@ injectGlobal`
     display: block;
   }
   h1, h2, h3, h4, h5 {
-    color: ${theme.darkblue};
+    color: ${theme.darkBlue};
     padding: 0;
     margin: 0;
   }
@@ -124,7 +124,7 @@ injectGlobal`
     color: ${theme.darkGrey};
     text-decoration: none;
     &:hover, &:active, &:focus {
-      color: ${theme.darkblue};
+      color: ${theme.darkBlue};
       outline: 0;
     }
   }
