@@ -10,11 +10,10 @@ const theme = {
   green: '#b2c94c',
   darkblue: '#47505f',
   beige: '#f9f6f4',
-  textGrey: '#6d6c6c',
+  darkGrey: '#6d6c6c',
   lightGrey: '#9A9A9A',
   textBlack: '#3d3d3d',
   offWhite: '#EDEDED',
-  grey: '#3A3A3A',
   black: '#393939',
   maxWidth: '1050px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
@@ -109,7 +108,7 @@ injectGlobal`
     font-size: 1.2rem;
     letter-spacing: 0.02rem;
     font-family: 'Tahoma', 'Geneva', sans-serif;
-    color: ${theme.textGrey};
+    color: ${theme.darkGrey};
     -webkit-font-smoothing: antialiased;
   }
   div {
@@ -123,7 +122,7 @@ injectGlobal`
   a {
     font-size: 0.85rem;
     font-weight: bold;
-    color: ${theme.textGrey};
+    color: ${theme.darkGrey};
     text-decoration: none;
     &:hover, &:active, &:focus {
       color: ${theme.darkblue};
@@ -134,7 +133,7 @@ injectGlobal`
     font-family: 'Tahoma', 'Geneva', sans-serif;
     text-decoration: none;
     font-weight: normal;
-    color: ${theme.textGrey};
+    color: ${theme.darkGrey};
     cursor: pointer;
     border: 0;
     text-decoration: none;

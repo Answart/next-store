@@ -26,7 +26,7 @@ const StyledHeader = styled.header`
     grid-gap: 2px;
     grid-template-columns: 20px auto;
     place-items: center start;
-    color: ${props => props.theme.textGrey};
+    color: ${props => props.theme.darkGrey};
     img.search-img {
       padding-top: 0.3rem;
       line-height: 1.7rem;
@@ -68,7 +68,7 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: flex-end;
     padding-top: 2.1rem;
-    color: ${props => props.theme.textGrey};
+    color: ${props => props.theme.darkGrey};
     a {
       padding: 0 0.4rem;
     }

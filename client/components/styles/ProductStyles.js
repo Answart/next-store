@@ -33,7 +33,7 @@ const StyledProduct = styled.div`
     background-color: yellow;
   }
   .prdct-content {
-    color: ${props => props.theme.textGrey};
+    color: ${props => props.theme.darkGrey};
     padding-right: 2rem;
   }
   .prdct-title {
@@ -48,7 +48,7 @@ const StyledProduct = styled.div`
     a {
       padding: 0 0.1rem;
       font-weight: bold;
-      color: ${props => props.theme.textGrey};
+      color: ${props => props.theme.darkGrey};
       text-decoration: none;
     }
     a:hover {
@@ -57,7 +57,7 @@ const StyledProduct = styled.div`
     }
   }
   .prdct-desc {
-    border-top: 1px solid ${props => props.theme.textGrey};
+    border-top: 1px solid ${props => props.theme.darkGrey};
     margin: 1rem 0;
     padding: 1rem 0;
   }
@@ -138,10 +138,10 @@ const StyledProductsListItem = styled.div`
   .prdct-itm-actns {
     padding: 0.2rem 0;
     font-size: 0.85rem;
-    color: ${props => props.theme.textGrey};
+    color: ${props => props.theme.darkGrey};
     a {
       padding-right: 0.3rem;
-      color: ${props => props.theme.textGrey};
+      color: ${props => props.theme.darkGrey};
       &:hover {
         color: ${props => props.theme.darkblue};
         text-decoration: underline ${props => props.theme.coral};
@@ -152,7 +152,7 @@ const StyledProductsListItem = styled.div`
       border: 0;
       font-size: 0.9rem;
       font-weight: bold;
-      color: ${props => props.theme.textGrey};
+      color: ${props => props.theme.darkGrey};
       &:hover {
         color: ${props => props.theme.darkblue};
         text-decoration: underline ${props => props.theme.coral};
@@ -160,7 +160,7 @@ const StyledProductsListItem = styled.div`
     }
   }
   .edit-prdct-var {
-    color: ${props => props.theme.textGrey};
+    color: ${props => props.theme.darkGrey};
   }
 `;
 

@@ -6,7 +6,7 @@ const StyledForm = styled.form`
   font-size: 1.3rem;
   line-height: 1.5;
   font-weight: 600;
-  color: ${props => props.theme.textGrey};
+  color: ${props => props.theme.darkGrey};
   background-color: ${props => props.theme.beige};
   box-shadow: ${props => props.theme.bs};
   fieldset {
@@ -51,7 +51,7 @@ const StyledForm = styled.form`
       border: 1px solid #9A9A9A;
       border-radius: 5px;
       &:hover, &:active {
-        border: 1px solid ${props => props.theme.textGrey};
+        border: 1px solid ${props => props.theme.darkGrey};
       }
     }
   }
@@ -130,7 +130,7 @@ const StyledForm = styled.form`
     font-size: 1rem;
     h5 {
       text-decoration: underline;
-      color: ${props => props.theme.textGrey};
+      color: ${props => props.theme.darkGrey};
     }
     p {
       font-weight: normal;

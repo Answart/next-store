@@ -88,7 +88,7 @@ const StyledPageTitle = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / 1;
   font-size: 1.1rem;
-  color: ${props => props.theme.textGrey};
+  color: ${props => props.theme.darkGrey};
 `;
 
 export {
