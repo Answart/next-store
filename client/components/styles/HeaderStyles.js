@@ -42,12 +42,12 @@ const StyledHeader = styled.header`
       background-color: transparent;
     }
     input.search-input:hover {
-      border-bottom: 1px solid ${props => props.theme.lightGrey};
+      border-bottom: 1px solid ${props => props.theme.grey};
     }
     input.search-input:focus {
       outline: none;
       background-color: transparent;
-      border-bottom: 1px solid ${props => props.theme.lightGrey};
+      border-bottom: 1px solid ${props => props.theme.grey};
     }
   }
   .hdr-nav {

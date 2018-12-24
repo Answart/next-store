@@ -18,7 +18,7 @@ const StyledProduct = styled.div`
     padding: 0.25rem;
     margin: 0.25rem;
     font-size: 1rem;
-    border: 1px solid ${props => props.theme.lightGrey};
+    border: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
       outline: ${props => props.theme.darkblue};
@@ -74,7 +74,7 @@ const StyledProductVariants = styled.div`
     padding: 0.25rem;
     margin: 0.25rem;
     font-size: 1rem;
-    border: 1px solid ${props => props.theme.lightGrey};
+    border: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
       outline: ${props => props.theme.darkblue};
@@ -126,7 +126,7 @@ const StyledProductsListItem = styled.div`
       padding: 0.4rem 0 0.2rem 0;
       font-size: 0.85rem;
       font-weight: bold;
-      color: ${props => props.theme.lightGrey};
+      color: ${props => props.theme.grey};
     }
     .prdct-itm-avail {
       padding: 0.2rem 0;

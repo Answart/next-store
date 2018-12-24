@@ -63,7 +63,7 @@ const StyledForm = styled.form`
     padding: 0.5rem;
     font-size: 1rem;
     border: 0;
-    border-bottom: 1px solid ${props => props.theme.lightGrey};
+    border-bottom: 1px solid ${props => props.theme.grey};
     background-color: transparent;
     &:focus {
       outline: ${props => props.theme.darkblue};
@@ -101,7 +101,7 @@ const StyledForm = styled.form`
   select {
     height: 2rem;
     padding: 0.25rem;
-    border: 1px solid ${props => props.theme.lightGrey};
+    border: 1px solid ${props => props.theme.grey};
     margin: 0.25rem;
   }
   textarea {
