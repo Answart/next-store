@@ -10,18 +10,17 @@ const theme = {
   green: '#b2c94c',
   darkblue: '#47505f',
   beige: '#f9f6f4',
+  offWhite: '#EDEDED',
   grey: '#9A9A9A',
   darkGrey: '#6d6c6c',
-  textBlack: '#3d3d3d',
-  offWhite: '#EDEDED',
-  black: '#393939',
+  black: '#3d3d3d',
   maxWidth: '1050px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
 const StyledPage = styled.div`
   background: white;
-  color: ${props => props.theme.black};
+  color: ${theme.black};
   a.undrln-btn, button.undrln-btn {
     padding: 0.5rem;
     font-size: 1rem;
@@ -41,7 +40,7 @@ const StyledPage = styled.div`
     background-color: ${theme.darkblue};
     &:hover {
       color: white;
-      background-color: ${theme.textBlack};
+      background-color: ${theme.black};
     }
   }
   a.dlt-btn, button.dlt-btn  {

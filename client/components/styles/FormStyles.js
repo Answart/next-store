@@ -44,7 +44,7 @@ const StyledForm = styled.form`
       cursor: pointer;
       font-weight: normal;
       font-size: 1rem;
-      color: black;
+      color: ${props => props.theme.black};
       padding: 0.25rem 0.9rem;
       margin: 1rem 0;
       background-color: ${props => props.theme.beige};
