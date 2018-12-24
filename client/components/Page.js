@@ -5,12 +5,21 @@ import Header from './Header';
 
 
 const theme = {
-  red: '#e86c52',
+  red: '#dc3736',
+  redOrange: '#e86c52',
   coral: '#fe8b72',
+  orange: '#ed8e40',
+  yellow: '#ffdd52',
   green: '#b2c94c',
+  blue: '#497bd3',
   darkBlue: '#47505f',
+  purple: '#9083c9',
+  pink: '#f498b0',
+  brown: '#997151',
+  gold: '#e8cc68',
   beige: '#f9f6f4',
   offWhite: '#EDEDED',
+  lightGrey: '#cbc9c7',
   grey: '#9A9A9A',
   darkGrey: '#6d6c6c',
   black: '#3d3d3d',
