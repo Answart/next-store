@@ -154,6 +154,116 @@ injectGlobal`
       font-weight: bold;
     }
   }
+  .red-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.red};
+    background-color: ${theme.red};
+  }
+  .orange-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.orange};
+    background-color: ${theme.orange};
+  }
+  .yellow-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.yellow};
+    background-color: ${theme.yellow};
+  }
+  .green-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.green};
+    background-color: ${theme.green};
+  }
+  .blue-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.blue};
+    background-color: ${theme.blue};
+  }
+  .purple-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.purple};
+    background-color: ${theme.purple};
+  }
+  .pink-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.pink};
+    background-color: ${theme.pink};
+  }
+  .brown-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.brown};
+    background-color: ${theme.brown};
+  }
+  .black-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.black};
+    background-color: ${theme.black};
+  }
+  .white-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid ${theme.lightGrey};
+  }
+  .silver-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.lightGrey}; /* Old browsers */
+    background: -o-linear-gradient(45deg, ${theme.lightGrey} 20%, white 85%, white 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(45deg, ${theme.lightGrey} 20%, white 85%, white 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, ${theme.lightGrey} 20%, white 85%, white 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, ${theme.lightGrey} 20%, white 85%, white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${theme.lightGrey}', endColorstr='white',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+  .gold-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: gold; /* Old browsers */
+    background: -moz-linear-gradient(45deg, ${theme.gold} 20%, white 85%, white 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, ${theme.gold} 20%, white 85%, white 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, ${theme.gold} 20%, white 85%, white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${theme.gold}', endColorstr='white',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+  .multi-sample {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: ${theme.beige}; /* Old browsers */
+    background:
+      -moz-linear-gradient(circle at 50% 0, ${theme.red}, rgba(255,0,0,0) 50.71%),
+      -moz-linear-gradient(circle at 6.7% 75%, ${theme.blue}, rgba(0,0,255,0) 70.71%),
+      -moz-linear-gradient(circle at 93.3% 75%, ${theme.yellow}, rgba(0,255,0,0) 100%) beige; /* FF3.6-15 ??? */
+    background:
+      -webkit-linear-gradient(circle at 50% 0, ${theme.red}, rgba(255,0,0,0) 50.71%),
+      -webkit-linear-gradient(circle at 6.7% 75%, ${theme.blue}, rgba(0,0,255,0) 70.71%),
+      -webkit-linear-gradient(circle at 93.3% 75%, ${theme.yellow}, rgba(0,255,0,0) 100%) beige; /* Chrome10-25,Safari5.1-6 */
+    background:
+      radial-gradient(circle at 50% 0, ${theme.red}, rgba(255,0,0,0) 50.71%),
+      radial-gradient(circle at 6.7% 75%, ${theme.blue}, rgba(0,0,255,0) 70.71%),
+      radial-gradient(circle at 93.3% 75%, ${theme.yellow}, rgba(0,255,0,0) 100%) beige; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${theme.red}', endColorstr='${theme.yellow}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
 `;
 
 
