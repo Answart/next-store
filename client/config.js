@@ -5,19 +5,19 @@ export const CLOUDINARY_API_KEY = '376449995445936';
 export const CLOUDINARY_PRESET = 'nextstore';
 export const CLOUDINARY_SECRET = 'yk-s-3xjvyoZl8B2Ue4E01CqhZ4';
 export const colors = [
-  'Red',
-  'Orange',
-  'Yellow',
-  'Green',
-  'Blue',
-  'Purple',
-  'Pink',
-  'Brown',
-  'Black',
-  'Silver',
-  'White',
-  'Gold',
-  'Multi'
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'purple',
+  'pink',
+  'brown',
+  'black',
+  'white',
+  'silver',
+  'gold',
+  'multi'
 ];
 export const departments = [
   'Tops',
