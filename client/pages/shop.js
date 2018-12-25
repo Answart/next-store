@@ -3,34 +3,27 @@ import { StyledShopPage } from '../components/styles/PageStyles';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
-import { capWord } from '../lib/utilFns';
+import { capWord, getPageTitleProps } from '../lib/utilFns';
 import { user } from '../lib/dummyData';
 import { SHOP_PRODUCTS_QUERY } from '../graphql';
 
 
-function getShopProps(variables = {}) {
-  let pageLabel = '';
+function getShopProps(pageQuery = {}) {
   let editView = false;
+  const variables = { ...pageQuery };
   variables.online = true;
 
-  if (variables.department) {
-    pageLabel = capWord(variables.department);
-  } else if (variables.name) {
-    if (variables.name === user.name) {
-      pageLabel = 'My Products';
-      delete variables.online;
-      editView = true;
-    } else {
-      pageLabel = capWord(variables.name);
-    }
+  if (variables.name && variables.name === user.name) {
+    delete variables.online;
+    editView = true;
   }
 
-  return { variables, pageLabel, editView };
+  return { variables, editView };
 }
 
 const Shop = props => {
-  const shopProps = getShopProps(props.query);
-  const { variables, pageLabel, editView } = shopProps;
+  const pageQuery = props.query;
+  const { variables, editView } = getShopProps(pageQuery);
   return (
     <Query query={SHOP_PRODUCTS_QUERY}
       variables={variables}
@@ -47,11 +40,12 @@ const Shop = props => {
         if (!products.length) return (
           <NotFound status={204} message='No products found.' />
         );
+        const { pageLabel, titles } = getPageTitleProps(user, pageQuery);
         return (
           <StyledShopPage>
             <PageTitle
               page={pageLabel}
-              titles={[]}
+              titles={titles}
             />
 
             <div className="shop-pg-filters">

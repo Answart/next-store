@@ -81,11 +81,47 @@ const formatMoney = function(amount) {
   return formatter.format(amount);
 }
 
+const getPageTitleProps = function(user, pageQuery = {}) {
+  let pageLabel = '';
+  let titles = [];
+
+  if (pageQuery.name) {
+    pageLabel = (pageQuery.name === user.name)
+      ? 'My Products'
+      : capWord(pageQuery.name);
+  }
+
+  if (pageQuery.department) {
+    const query = { ...pageQuery }
+    if (query.category) delete query.category;
+
+    titles.push({
+      label: capWord(pageQuery.department),
+      href: {
+        pathname: 'shop',
+        query
+      }
+    })
+  }
+  if (pageQuery.category) {
+    titles.push({
+      label: capWord(pageQuery.category),
+      href: {
+        pathname: 'shop',
+        query: { ...pageQuery }
+      }
+    })
+  }
+
+  return { pageLabel, titles };
+}
+
 
 export {
   objctsDiffer,
   getUniqKeyVals,
   getFltrdObjs,
   capWord,
-  formatMoney
+  formatMoney,
+  getPageTitleProps
 };
