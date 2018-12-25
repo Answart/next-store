@@ -32,7 +32,7 @@ const CreateProductVariantPage = props => {
         return (
           <StyledCreatePage>
             <PageTitle
-              page='Edit'
+              page='Edit Product'
               titles={titles}
             />
 

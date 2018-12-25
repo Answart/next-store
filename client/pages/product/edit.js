@@ -19,7 +19,7 @@ const EditProductPage = props => {
         return (
           <StyledEditPage>
             <PageTitle
-              page='Edit'
+              page='Edit Product'
               titles={[{ label: product.title }]}
             />
 
