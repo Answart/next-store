@@ -9,21 +9,19 @@ import { SHOP_PRODUCTS_QUERY } from '../graphql';
 
 
 function getShopProps(pageQuery = {}) {
-  let editView = false;
   const variables = { ...pageQuery };
   variables.online = true;
 
   if (variables.name && variables.name === user.name) {
     delete variables.online;
-    editView = true;
   }
 
-  return { variables, editView };
+  return { variables };
 }
 
 const Shop = props => {
   const pageQuery = props.query;
-  const { variables, editView } = getShopProps(pageQuery);
+  const { variables } = getShopProps(pageQuery);
   return (
     <Query query={SHOP_PRODUCTS_QUERY}
       variables={variables}
@@ -61,7 +59,7 @@ const Shop = props => {
 
               <ProductsList
                 products={products}
-                editView={editView}
+                editView={!variables.online}
               />
 
               <div className="shop-pg-pagin">
