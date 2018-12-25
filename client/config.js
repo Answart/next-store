@@ -52,24 +52,24 @@ export const sizes = [
 ];
 export const categories = {
   'tops': [
-    'Blouses', 'Cartigans', 'Casual', 'Sweaters', 'Sweatshirts'
+    'blouses', 'cartigans', 'casual', 'sweaters', 'sweatshirts'
   ],
   'bottoms': [
-    'Skirts', 'Pants', 'Jeans', 'Leggings', 'Shorts', 'Intimates'
+    'skirts', 'pants', 'jeans', 'leggings', 'shorts', 'intimates'
   ],
   'shoes': [
-    'Heels', 'Flats', 'Sandals', 'Wedges', 'Boots', 'Booties', 'Sneakers'
+    'heels', 'flats', 'sandals', 'wedges', 'boots', 'booties', 'sneakers'
   ],
   'outwear': [
-    'Jackets', 'Blazers', 'Coats', 'Cartigans'
+    'jackets', 'blazers', 'coats', 'cartigans'
   ],
   'accessories': [
-     'Jewelry', 'Bags', 'Wallets', 'Belts', 'Sunglasses', 'Makeup', 'Hair', 'Hats'
+    'jewelry', 'bags', 'wallets', 'belts', 'sunglasses', 'makeup', 'hair', 'hats'
   ],
   'decor': [
-    'Home', 'Kitchen', 'Office', 'Lighting'
+    'home', 'kitchen', 'office', 'lighting'
   ],
   'wedding': [
-    'Dresses', 'Shoes', 'Gifts', 'Accessories'
+    'dresses', 'shoes', 'gifts', 'accessories'
   ]
 };

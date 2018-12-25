@@ -124,7 +124,7 @@ class ProductFormFields extends Component {
                 onChange={this.handleChange}
               >
                 <option key={0} value=''></option>
-                {categoriesByDept.map(ctgry => <option key={ctgry} value={ctgry}>{ctgry}</option>)}
+                {categoriesByDept.map(ctgry => <option key={ctgry} value={ctgry}>{capWord(ctgry)}</option>)}
               </select>
             </label>
           </div>
