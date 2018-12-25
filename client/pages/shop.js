@@ -28,16 +28,14 @@ const Shop = props => {
     >
       {({ data, error, loading }) => {
         if (loading) return (<p>Loading...</p>);
-        if (error) return (
-          <NotFound status={400} message={error.message} />
-        );
-        const { products } = data;
-        if (typeof products === 'undefined' || products === null) return (
-          <NotFound status={404} />
-        );
-        if (!products.length) return (
-          <NotFound status={204} message='No products found.' />
-        );
+        const notFound = { message: '' };
+        const products = !!data ? data.products : [];
+        if (typeof products === 'undefined') notFound.status = 404;
+        if (!!products && !products.length) notFound.status = 204;
+        if (error) {
+          notFound.status = 400;
+          notFound.message = error.message;
+        };
         const { pageLabel, titles } = getPageTitleProps(user, pageQuery);
         return (
           <StyledShopPage>
@@ -57,10 +55,14 @@ const Shop = props => {
                 <div>Pagination here</div>
               </div>
 
-              <ProductsList
-                products={products}
-                editView={!variables.online}
-              />
+              {(!!notFound.status || !products.length) ? (
+                <NotFound status={notFound.status} message={notFound.message} />
+              ) : (
+                <ProductsList
+                  products={products}
+                  editView={!variables.online}
+                />
+              )}
 
               <div className="shop-pg-pagin">
                 <div>Sort here</div>
