@@ -14,19 +14,26 @@ const PageTitle = props => {
         </title>
       </Head>
 
-      {page}
-      {!!titles && titles.map(title =>
-        <span key={title.label}> &#8811;
+      {!!page && !!page.length && (
+        <span style={{ padding: '0 1rem'}}>{page}</span>
+      )}
+
+      {!!titles && titles.map((title, i) =>
+        <span key={i}>
+          &#8811;
+
           {!!title.href && (
             <Link href={title.href}><a className="thn-btn">
               {title.label}
             </a></Link>
           )}
+
           {!!title.click && (
             <button className="thn-btn"
               onClick={e => title.click(e)}
             >{title.label}</button>
           )}
+
           {!title.href && !title.click && (
             <span style={{ padding: '0 1rem'}}>{title.label}</span>
           )}
