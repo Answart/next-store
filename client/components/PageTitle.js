@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { StyledPageTitle } from './styles/PageStyles';
 
 
@@ -7,6 +8,12 @@ const PageTitle = props => {
   const { page, titles } = props;
   return (
     <StyledPageTitle>
+      <Head>
+        <title>
+          Next Store | {page}
+        </title>
+      </Head>
+
       {page}
       {!!titles && titles.map(title =>
         <span key={title.label}> &#8811;
