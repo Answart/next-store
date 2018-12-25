@@ -44,28 +44,20 @@ const Shop = props => {
               titles={titles}
             />
 
-            <div className="shop-pg-filters">
-              Filters
-            </div>
+            <div className="shop-pg-content">
+              <div>Filter here</div>
 
-            <div className="shop-pg-lst">
-              <div className="shop-pg-pagin">
-                <div>Sort here</div>
-
+              <div className="shop-pg-lst">
                 <div>Pagination here</div>
-              </div>
 
-              {(!!notFound.status || !products.length) ? (
-                <NotFound status={notFound.status} message={notFound.message} />
-              ) : (
-                <ProductsList
-                  products={products}
-                  editView={!variables.online}
-                />
-              )}
-
-              <div className="shop-pg-pagin">
-                <div>Sort here</div>
+                {(!!notFound.status || !products.length) ? (
+                  <NotFound status={notFound.status} message={notFound.message} />
+                ) : (
+                  <ProductsList
+                    products={products}
+                    editView={!variables.online}
+                  />
+                )}
 
                 <div>Pagination here</div>
               </div>

@@ -3,24 +3,22 @@ import styled from 'styled-components';
 
 const StyledShopPage = styled.div`
   display: grid;
-  grid-template-rows: 1.9rem 5rem minmax(50rem, 1fr);
-  grid-template-columns: 18rem 1fr;
+  grid-template-rows: 1.9rem 1fr;
   grid-gap: 3rem;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  .shop-pg-filters {
-    grid-column: 1 / 1;
-    grid-row: 2 / -1;
-  }
-  .shop-pg-lst {
-    grid-column: 2 / -1;
-    grid-row: 2 / -1;
+  .shop-pg-content {
     display: grid;
-    grid-template-rows: 5rem minmax(50rem, 1fr) 5rem;
+    grid-row: 2 / -1;
+    grid-template-columns: 18rem 1fr;
     grid-gap: 3rem;
-    .shop-pg-pagin {
+    grid-auto-flow: column;
+    .shop-pg-lst {
+      grid-column: 2 / -1;
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 5rem minmax(50rem, 1fr) 5rem;
+      grid-gap: 3rem;
+      grid-auto-flow: row;
     }
   }
 `;
