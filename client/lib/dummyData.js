@@ -69,7 +69,7 @@ const variants = [
 
 const product = {
   id: "cjoc0irhbo26r0a0121ub69i3",
-  department: "Accessories",
+  department: "accessories",
   title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
   description: "Limited Edition watch from the 2018 Fall fashion line.",
   category: "Sport",
@@ -84,7 +84,7 @@ const products = [
   product,
   {
     id: "cjoc0oaljo2kj0a01qmdo08ai",
-    department: "Accessories",
+    department: "accessories",
     title: "Pegggy",
     description: "Limited.",
     category: "Sport",

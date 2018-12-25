@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { departments } from '../../config';
+import { capWord } from '../../lib/utilFns';
 
 
 const Nav = () => (
@@ -9,7 +10,7 @@ const Nav = () => (
         pathname: "/shop",
         query: { department: dept.toLowerCase() }
       }}>
-        <a>{dept}</a>
+        <a>{capWord(dept)}</a>
       </Link>
     ))}
   </div>

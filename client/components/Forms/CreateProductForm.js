@@ -9,7 +9,7 @@ import { CREATE_IMAGE_MUTATION, CREATE_PRODUCT_MUTATION } from '../../graphql';
 
 class CreateProductForm extends Component {
   state = {
-    department: "Tops",
+    department: "tops",
     title: "",
     description: "",
     category: "",

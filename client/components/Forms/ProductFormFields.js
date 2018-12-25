@@ -4,6 +4,7 @@ import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
 import { departments, categories } from '../../config';
 import { user } from '../../lib/dummyData';
+import { capWord } from '../../lib/utilFns';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 
@@ -66,7 +67,7 @@ class ProductFormFields extends Component {
     const { department, image, online } = this.props;
     let categoriesByDept = department
       ? categories[department]
-      : categories["Tops"];
+      : categories["tops"];
     return (
       <StyledProduct>
         <div className="form-imgs">
@@ -108,7 +109,7 @@ class ProductFormFields extends Component {
                 onChange={this.handleChange}
                 required
               >
-                {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
+                {departments.map(dept => <option key={dept} value={dept}>{capWord(dept)}</option>)}
               </select>
             </label>
           </div>

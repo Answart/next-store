@@ -20,13 +20,13 @@ export const colors = [
   'multi'
 ];
 export const departments = [
-  'Tops',
-  'Bottoms',
-  'Shoes',
-  'Outwear',
-  'Accessories',
-  'Decor',
-  'Wedding'
+  'tops',
+  'bottoms',
+  'shoes',
+  'outwear',
+  'accessories',
+  'decor',
+  'wedding'
 ];
 export const sizes = [
   'XXS',
@@ -51,25 +51,25 @@ export const sizes = [
   '18'
 ];
 export const categories = {
-  'Tops': [
+  'tops': [
     'Blouses', 'Cartigans', 'Casual', 'Sweaters', 'Sweatshirts'
   ],
-  'Bottoms': [
+  'bottoms': [
     'Skirts', 'Pants', 'Jeans', 'Leggings', 'Shorts', 'Intimates'
   ],
-  'Shoes': [
+  'shoes': [
     'Heels', 'Flats', 'Sandals', 'Wedges', 'Boots', 'Booties', 'Sneakers'
   ],
-  'Outwear': [
+  'outwear': [
     'Jackets', 'Blazers', 'Coats', 'Cartigans'
   ],
-  'Accessories': [
-    'Jewelry', 'Bags', 'Wallets', 'Belts', 'Sunglasses', 'Makeup', 'Hair & Hats'
+  'accessories': [
+     'Jewelry', 'Bags', 'Wallets', 'Belts', 'Sunglasses', 'Makeup', 'Hair', 'Hats'
   ],
-  'Decor': [
+  'decor': [
     'Home', 'Kitchen', 'Office', 'Lighting'
   ],
-  'Wedding': [
+  'wedding': [
     'Dresses', 'Shoes', 'Gifts', 'Accessories'
   ]
 };
