@@ -3,6 +3,7 @@ import { StyledShopPage } from '../components/styles/PageStyles';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
+import Pagination from '../components/Pagination';
 import { capWord, getPageTitleProps } from '../lib/utilFns';
 import { orderByList } from '../config';
 import { user } from '../lib/dummyData';
@@ -28,12 +29,12 @@ function getShopProps(pageQuery = {}) {
   const orderBy = pageQuery.orderBy || 'newest';
   variables.orderBy = orderByList[orderBy];
 
-  return { variables };
+  return { variables, show, page, orderBy };
 }
 
 const Shop = props => {
   const pageQuery = props.query;
-  const { variables } = getShopProps(pageQuery);
+  const { variables, show, page, orderBy } = getShopProps(pageQuery);
   const { pageLabel, titles } = getPageTitleProps(user, pageQuery);
   return (
     <StyledShopPage>
@@ -61,7 +62,15 @@ const Shop = props => {
                   <div>Filter here</div>
 
                   <div className="shop-pg-lst">
-                    <div>Pagination here</div>
+                    <Pagination
+                      pageQuery={pageQuery}
+                      currentPage={page}
+                      currentShow={show}
+                      results={products.length}
+                      count={count}
+                      currentOrderBy={orderBy}
+                      disabled={!count}
+                    />
 
                     {(!!notFound.status || !products.length) ? (
                       <NotFound status={notFound.status} message={notFound.message} />
@@ -72,7 +81,15 @@ const Shop = props => {
                       />
                     )}
 
-                    <div>Pagination here</div>
+                    <Pagination
+                      pageQuery={pageQuery}
+                      currentPage={page}
+                      currentShow={show}
+                      results={products.length}
+                      count={count}
+                      currentOrderBy={orderBy}
+                      disabled={!count}
+                    />
                   </div>
                 </div>
               );
