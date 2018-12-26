@@ -73,3 +73,9 @@ export const categories = {
     'dresses', 'shoes', 'gifts', 'accessories'
   ]
 };
+export const orderByList = {
+  'name': 'title_DESC',
+  'newest': 'createdAt_DESC',
+  'oldest': 'createdAt_ASC',
+  'updated': 'updatedAt_DESC',
+};

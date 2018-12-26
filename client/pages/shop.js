@@ -4,6 +4,7 @@ import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
 import { capWord, getPageTitleProps } from '../lib/utilFns';
+import { orderByList } from '../config';
 import { user } from '../lib/dummyData';
 import { SHOP_PRODUCTS_QUERY, PAGINATION_QUERY } from '../graphql';
 
@@ -15,6 +16,17 @@ function getShopProps(pageQuery = {}) {
   if (variables.name && variables.name === user.name) {
     delete variables.online;
   }
+
+  const show = parseFloat(pageQuery.show) || 1;
+  variables.first = show;
+  delete variables.show;
+
+  const page = parseFloat(pageQuery.page) || 1;
+  delete variables.page;
+  variables.skip = (page * show - show) || 1;
+
+  const orderBy = pageQuery.orderBy || 'newest';
+  variables.orderBy = orderByList[orderBy];
 
   return { variables };
 }

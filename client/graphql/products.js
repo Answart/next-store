@@ -3,6 +3,9 @@ import gql from 'graphql-tag';
 
 const SHOP_PRODUCTS_QUERY = gql`
   query SHOP_PRODUCTS_QUERY(
+    $orderBy: ProductOrderByInput,
+    $skip: Int,
+    $first: Int,
     $online: Boolean,
     $department: String,
     $name: String
@@ -14,7 +17,10 @@ const SHOP_PRODUCTS_QUERY = gql`
         user: {
           name: $name
         }
-      }
+      },
+      orderBy: $orderBy,
+      skip: $skip,
+      first: $first
     ) {
       id
       department
@@ -47,6 +53,9 @@ const SHOP_PRODUCTS_QUERY = gql`
 
 const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY(
+    $orderBy: ProductOrderByInput,
+    $skip: Int,
+    $first: Int,
     $online: Boolean,
     $department: String,
     $name: String,
@@ -58,7 +67,10 @@ const PAGINATION_QUERY = gql`
         user: {
           name: $name
         }
-      }
+      },
+      orderBy: $orderBy,
+      skip: $skip,
+      first: $first
     ) {
       aggregate {
         count
