@@ -20,7 +20,7 @@ const PageTitle = props => {
 
       {!!titles && titles.map((title, i) =>
         <span key={i}>
-          &#8811;
+          {(!!page && !!page.length) && (<>&#8811;</>)}
 
           {!!title.href && (
             <Link href={title.href}><a className="thn-btn">
