@@ -53,9 +53,6 @@ const SHOP_PRODUCTS_QUERY = gql`
 
 const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY(
-    $orderBy: ProductOrderByInput,
-    $skip: Int,
-    $first: Int,
     $online: Boolean,
     $department: String,
     $name: String,
@@ -67,10 +64,7 @@ const PAGINATION_QUERY = gql`
         user: {
           name: $name
         }
-      },
-      orderBy: $orderBy,
-      skip: $skip,
-      first: $first
+      }
     ) {
       aggregate {
         count
