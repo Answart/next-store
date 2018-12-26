@@ -1,21 +1,6 @@
 const bcrypt = require('bcryptjs');
 
 
-const getDataAndImgData = function(args) {
-  const imgKeys = ['cloudinary_id', 'name', 'width', 'height', 'transformation', 'image_url', 'large_image_url'];
-  let data = { ...args };
-  let imgData = {};
-
-  for (let i = 0; i < imgKeys.length; i++) {
-    const key = imgKeys[i];
-    imgData[key] = data[key];
-    delete data[key];
-  }
-
-  return { data, imgData };
-};
-
-
 const Mutation = {
   async createUser(parent, args, ctx, info) {
     const data = { ...args };
@@ -42,10 +27,7 @@ const Mutation = {
     const [existingImg] = await ctx.db.query.images({
       where: { ...data }
     }, info);
-    if (!!existingImg) {
-      console.log('CREATE IMAGE: Returning pre-existing image found with image data.', existingImg);
-      return existingImg;
-    }
+    if (!!existingImg) return existingImg;
 
     const createdImage = await ctx.db.mutation.createImage({
       data: {
@@ -191,7 +173,7 @@ const Mutation = {
         product: { id: productId }
       }
     });
-    if (!!existingProductVariant) throw new Error(`CREATE SELECTION: A selection with this size/color already exists with ID '${existingProductVariant.id}'.`);
+    if (!!existingProductVariant) throw new Error(`CREATE SELECTION: A selection with this size and color already exists for this product.`);
 
     // Existing image?
     const [existingImg] = await ctx.db.query.images({
