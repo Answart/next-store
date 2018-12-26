@@ -97,6 +97,7 @@ const Mutation = {
     }, info);
   },
   async updateProduct(parent, args, ctx, info) {
+    const productId = args.id;
     const imageId = args.imageId;
     const data = { ...args };
     delete data.id;
@@ -108,7 +109,7 @@ const Mutation = {
 
     // Existing product?
     const [existingProduct] = await ctx.db.query.products({
-      where: { id: args.id }
+      where: { id: productId }
     }, `{ id image { id } user { id }}`);
     if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
     if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
