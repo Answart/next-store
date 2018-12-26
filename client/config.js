@@ -79,3 +79,4 @@ export const orderByList = {
   'oldest': 'createdAt_ASC',
   'updated': 'updatedAt_DESC',
 };
+export const showList = [ 6, 12, 30, 60 ];
