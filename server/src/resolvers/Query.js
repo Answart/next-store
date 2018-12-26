@@ -15,6 +15,7 @@ const Query = {
   images: forwardTo('db'),
   product: forwardTo('db'),
   products: forwardTo('db'),
+  productsConnection: forwardTo('db'),
   variant: forwardTo('db'),
   variants: forwardTo('db')
 };

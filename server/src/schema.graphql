@@ -7,6 +7,7 @@ type Query {
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, first: Int): [Image!]!
   product(where: ProductWhereInput): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product!]!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): ProductConnection!
   variant(where: VariantWhereUniqueInput!): Variant
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, first: Int): [Variant!]!
 }
