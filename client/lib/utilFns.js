@@ -116,6 +116,27 @@ const getPageTitleProps = function(user, pageQuery = {}) {
   return { pageLabel, titles };
 }
 
+const getFilterProps = function(products) {
+  const categories = [];
+  const colors = [];
+  const sizes = [];
+  const brands = [];
+
+  for (let p = 0; p < products.length; p++) {
+    const product = products[p];
+    const variants = product.variants;
+    if (!!product.category) categories.push(product.category);
+    if (!!product.brand) brands.push(product.brand);
+    for (let v = 0; v < variants.length; v++) {
+      const variant = variants[v]
+      if (variant.size) sizes.push(variant.size);
+      if (variant.color) colors.push(variant.color);
+    }
+  }
+
+  return { categories, colors, sizes, brands };
+}
+
 
 export {
   objctsDiffer,
@@ -123,5 +144,6 @@ export {
   getFltrdObjs,
   capWord,
   formatMoney,
-  getPageTitleProps
+  getPageTitleProps,
+  getFilterProps,
 };
