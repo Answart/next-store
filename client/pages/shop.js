@@ -3,6 +3,7 @@ import { StyledShopPage } from '../components/styles/PageStyles';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import ProductsList from '../components/ProductsList';
+import Filter from '../components/Filter';
 import Pagination from '../components/Pagination';
 import { capWord, getPageTitleProps } from '../lib/utilFns';
 import { orderByList } from '../config';
@@ -59,7 +60,10 @@ const Shop = props => {
               };
               return (
                 <div className="shop-pg-content">
-                  <div>Filter here</div>
+                  <Filter
+                    pageQuery={pageQuery}
+                    products={products}
+                  />
 
                   <div className="shop-pg-lst">
                     <Pagination
