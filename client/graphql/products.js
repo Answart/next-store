@@ -8,14 +8,24 @@ const SHOP_PRODUCTS_QUERY = gql`
     $first: Int,
     $online: Boolean,
     $department: String,
-    $name: String
+    $name: String,
+    $category: String,
+    $brand: String,
+    $color: String,
+    $size: String,
   ) {
     products(
       where: {
         online: $online,
         department: $department,
+        category: $category,
+        brand: $brand,
         user: {
           name: $name
+        },
+        variants_every: {
+          color: $color,
+          size: $size
         }
       },
       orderBy: $orderBy,
@@ -56,13 +66,25 @@ const PAGINATION_QUERY = gql`
     $online: Boolean,
     $department: String,
     $name: String,
+    category: $category,
+    brand: $brand,
+    $category: String,
+    $brand: String,
+    $color: String,
+    $size: String,
   ) {
     productsConnection(
       where: {
         online: $online,
         department: $department,
+        category: $category,
+        brand: $brand,
         user: {
           name: $name
+        },
+        variants_every: {
+          color: $color,
+          size: $size
         }
       }
     ) {
