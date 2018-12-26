@@ -12,7 +12,7 @@ const SHOP_PRODUCTS_QUERY = gql`
     $category: String,
     $brand: String,
     $color: String,
-    $size: String,
+    $size: String
   ) {
     products(
       where: {
@@ -66,8 +66,6 @@ const PAGINATION_QUERY = gql`
     $online: Boolean,
     $department: String,
     $name: String,
-    category: $category,
-    brand: $brand,
     $category: String,
     $brand: String,
     $color: String,
