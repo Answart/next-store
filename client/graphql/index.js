@@ -17,7 +17,8 @@ export {
   DELETE_PRODUCT_MUTATION
 } from './product';
 export {
-  SHOP_PRODUCTS_QUERY
+  SHOP_PRODUCTS_QUERY,
+  PAGINATION_QUERY
 } from './products';
 export {
   CREATE_PROD_VARIANT_MUTATION,

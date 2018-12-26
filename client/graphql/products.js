@@ -7,11 +7,15 @@ const SHOP_PRODUCTS_QUERY = gql`
     $department: String,
     $name: String
   ) {
-    products(where: {
-      online: $online,
-      department: $department,
-      user: { name: $name }
-    }) {
+    products(
+      where: {
+        online: $online,
+        department: $department,
+        user: {
+          name: $name
+        }
+      }
+    ) {
       id
       department
       title
@@ -41,7 +45,30 @@ const SHOP_PRODUCTS_QUERY = gql`
   }
 `;
 
+const PAGINATION_QUERY = gql`
+  query PAGINATION_QUERY(
+    $online: Boolean,
+    $department: String,
+    $name: String,
+  ) {
+    productsConnection(
+      where: {
+        online: $online,
+        department: $department,
+        user: {
+          name: $name
+        }
+      }
+    ) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 
 export {
-  SHOP_PRODUCTS_QUERY
+  SHOP_PRODUCTS_QUERY,
+  PAGINATION_QUERY
 }
