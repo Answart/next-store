@@ -7,7 +7,14 @@ import { getUniqKeyVals, getFltrdObjs, formatMoney } from '../lib/utilFns';
 
 class ProductVariants extends Component {
   static propTypes = {
-    variants: PropTypes.array.isRequired,
+    variants: PropTypes.arrayOf(PropTypes.shape({
+      size: PropTypes.string,
+      color: PropTypes.string,
+      availability: PropTypes.string,
+      price: PropTypes.number,
+      sale: PropTypes.bool.isRequired,
+      salePrice: PropTypes.number
+    })).isRequired,
     online: PropTypes.bool.isRequired,
     demoView: PropTypes.bool,
     VariantActionComponent: PropTypes.func,
@@ -126,5 +133,6 @@ class ProductVariants extends Component {
     );
   }
 }
+
 
 export default ProductVariants;
