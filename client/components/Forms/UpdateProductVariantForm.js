@@ -91,7 +91,7 @@ class UpdateProductVariantForm extends Component {
     return (
       <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
         {(createImage, { loading: imageLoading, error: imageError }) => (
-          <Mutation mutation={UPDATE_PRODUCT_MUTATION} variables={{}}>
+          <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}}>
             {(updateProductVariant, { loading: prodVarLoading, error: prodVarError }) => {
               const loading = (imageLoading || prodVarLoading);
               const error = imageError ? imageError : prodVarError;
