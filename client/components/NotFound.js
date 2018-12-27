@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import styled from 'styled-components';
 
 
 const StyledNotFound = styled.div`
@@ -18,18 +17,14 @@ const StyledNotFound = styled.div`
   }
 `;
 
-const NotFound = (props) => {
+const NotFound = ({ status, message }) => {
   let title = 'Not Found';
-  let message = 'Unable to find what you are looking for!';
 
-  if (props.status) {
-    if (props.status === 204) title = 'Nothing Here';
-    if (props.status === 400) {
-      title = 'Error';
-      message = 'An error occured. Please try again later.';
-    };
+  if (status === 204) title = 'Nothing Here';
+  if (status === 400) {
+    title = 'Error';
+    message = 'An error occured. Please try again later.';
   };
-  if (props.message && !!props.message.length) message = props.message;
 
   return (
     <StyledNotFound>
@@ -48,10 +43,15 @@ const NotFound = (props) => {
   )
 };
 
+NotFound.defaultProps = {
+  status: 404,
+  message: 'Unable to find what you are looking for!'
+};
 
 NotFound.propTypes = {
   status: PropTypes.number,
-  message: PropTypes.string,
+  message: PropTypes.string
 };
+
 
 export default NotFound;
