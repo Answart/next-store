@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Head from 'next/head';
 import { StyledPageTitle } from './styles/PageStyles';
@@ -43,6 +44,18 @@ const PageTitle = ({ page, titles }) => (
 PageTitle.defaultProps = {
   page: '',
   titles: []
+};
+
+PageTitle.propTypes = {
+  page: PropTypes.string,
+  titles: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    href: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      query: PropTypes.object,
+    }),
+    click: PropTypes.func
+  }))
 };
 
 
