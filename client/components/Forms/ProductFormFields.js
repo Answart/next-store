@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
 import { departments, categories } from '../../config';
@@ -53,6 +54,7 @@ class ProductFormFields extends Component {
     const currentImageToken = this.props.image
       ? (this.props.image.delete_token || '')
       : '';
+    NProgress.start();
 
     if (type === "file" && name === "image") {
       if (!files || !files.length) return;
@@ -62,6 +64,7 @@ class ProductFormFields extends Component {
 
       this.props.saveToForm({ image });
     }
+    NProgress.done();
   }
   render() {
     const { department, image, online } = this.props;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import { colors, sizes } from '../../config';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
@@ -53,6 +54,7 @@ class ProductVariantFormFields extends Component {
     const currentImageToken = this.props.image
       ? (this.props.image.delete_token || '')
       : '';
+    NProgress.start();
 
     if (type === 'radio') {
       const getNewImage = (value === 'true');
@@ -69,6 +71,7 @@ class ProductVariantFormFields extends Component {
 
       this.props.saveToForm({ image });
     }
+    NProgress.done();
   }
   render() {
     const { sale, image } = this.props;
