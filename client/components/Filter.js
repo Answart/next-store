@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { departments, categories, colors, sizes } from '../config';
@@ -86,6 +87,10 @@ const FilterStyles = styled.div`
 `;
 
 class Filter extends Component {
+  static propTypes = {
+    pageQuery: PropTypes.object.isRequired,
+    products: PropTypes.arrayOf(PropTypes.object)
+  };
   state = {
     showCategories: true,
     showColors: true,
