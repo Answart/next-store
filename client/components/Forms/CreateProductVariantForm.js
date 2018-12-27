@@ -86,35 +86,39 @@ class CreateProductVariantForm extends Component {
   render() {
     return (
       <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
-        {(createImage) => (
+        {(createImage, { loading: imageLoading, error: imageError }) => (
           <Mutation mutation={CREATE_PROD_VARIANT_MUTATION} variables={{}} update={this.update}>
-            {(createProductVariant, { loading, error }) => (
-              <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
-                <DisplayMessage error={error} success={this.state.message} />
+            {(createProductVariant, { loading: prodVarLoading, error: prodVarError }) => {
+              const loading = (imageLoading || prodVarLoading);
+              const error = imageError ? imageError : prodVarError;
+              return (
+                <StyledForm onSubmit={e => this.submitForm(e, createImage, createProductVariant)}>
+                  <DisplayMessage error={error} success={this.state.message} />
 
-                <fieldset disabled={loading} aria-busy={loading}>
-                  <h2>Add Selection</h2>
+                  <fieldset disabled={loading} aria-busy={loading}>
+                    <h2>Add Selection</h2>
 
-                  <ProductVariantFormFields
-                    price={this.state.price}
-                    quantity={this.state.quantity}
-                    color={this.state.color}
-                    size={this.state.size}
-                    sale={this.state.sale}
-                    salePrice={this.state.salePrice}
-                    image={this.state.image}
-                    saveToForm={this.saveToState}
-                    editView={false}
-                    imgNotProdImg={!this.state.image || this.state.image.id !== this.props.productImage.id}
-                  />
+                    <ProductVariantFormFields
+                      price={this.state.price}
+                      quantity={this.state.quantity}
+                      color={this.state.color}
+                      size={this.state.size}
+                      sale={this.state.sale}
+                      salePrice={this.state.salePrice}
+                      image={this.state.image}
+                      saveToForm={this.saveToState}
+                      editView={false}
+                      imgNotProdImg={!this.state.image || this.state.image.id !== this.props.productImage.id}
+                    />
 
-                  <button className="form-submit-btn big-btn"
-                    disabled={!this.state.image || loading}
-                    type="submit"
-                  >Add{loading ? 'ing' : ''} Selection</button>
-                </fieldset>
-              </StyledForm>
-            )}
+                    <button className="form-submit-btn big-btn"
+                      disabled={!this.state.image || loading}
+                      type="submit"
+                    >Add{loading ? 'ing' : ''} Selection</button>
+                  </fieldset>
+                </StyledForm>
+              )
+            }}
           </Mutation>
         )}
       </Mutation>
