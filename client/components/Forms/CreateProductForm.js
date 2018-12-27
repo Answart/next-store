@@ -42,33 +42,37 @@ class CreateProductForm extends Component {
   render() {
     return (
       <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
-        {(createImage) => (
+        {(createImage, { loading: imageLoading, error: imageError }) => (
           <Mutation mutation={CREATE_PRODUCT_MUTATION} variables={{}}>
-            {(createProduct, { loading, error }) => (
-              <StyledForm onSubmit={e => this.submitForm(e, createImage, createProduct)}>
-                <DisplayMessage error={error} />
+            {(createProduct, { loading: prodLoading, error: prodError }) => {
+              const loading = (imageLoading || prodLoading);
+              const error = imageError ? imageError : prodError;
+              return (
+                <StyledForm onSubmit={e => this.submitForm(e, createImage, createProduct)}>
+                  <DisplayMessage error={error} />
 
-                <fieldset disabled={loading} aria-busy={loading}>
-                  <h2>Create Product</h2>
+                  <fieldset disabled={loading} aria-busy={loading}>
+                    <h2>Create Product</h2>
 
-                  <ProductFormFields
-                    title={this.state.title}
-                    department={this.state.department}
-                    description={this.state.description}
-                    category={this.state.category}
-                    brand={this.state.brand}
-                    online={this.state.online}
-                    image={this.state.image}
-                    saveToForm={this.saveToState}
-                  />
+                    <ProductFormFields
+                      title={this.state.title}
+                      department={this.state.department}
+                      description={this.state.description}
+                      category={this.state.category}
+                      brand={this.state.brand}
+                      online={this.state.online}
+                      image={this.state.image}
+                      saveToForm={this.saveToState}
+                    />
 
-                  <button className="form-submit-btn big-btn"
-                    disabled={!this.state.image || loading}
-                    type="submit"
-                  >Creat{loading ? 'ing' : 'e'} Product</button>
-                </fieldset>
-              </StyledForm>
-            )}
+                    <button className="form-submit-btn big-btn"
+                      disabled={!this.state.image || loading}
+                      type="submit"
+                    >Creat{loading ? 'ing' : 'e'} Product</button>
+                  </fieldset>
+                </StyledForm>
+              )
+            }}
           </Mutation>
         )}
       </Mutation>
