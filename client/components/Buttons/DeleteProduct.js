@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import { DELETE_PRODUCT_MUTATION, SHOP_PRODUCTS_QUERY } from '../../graphql';
@@ -41,6 +42,12 @@ const DeleteProduct = props => {
       )}
     </Mutation>
   )
+};
+
+DeleteProduct.propTypes = {
+  id: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.string.isRequired
 };
 
 
