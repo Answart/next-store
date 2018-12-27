@@ -6,6 +6,7 @@ const SHOP_PRODUCTS_QUERY = gql`
     $orderBy: ProductOrderByInput,
     $skip: Int,
     $first: Int,
+    $title: String,
     $online: Boolean,
     $department: String,
     $name: String,
@@ -16,6 +17,7 @@ const SHOP_PRODUCTS_QUERY = gql`
   ) {
     products(
       where: {
+        title_contains: $title,
         online: $online,
         department: $department,
         category: $category,
@@ -63,6 +65,7 @@ const SHOP_PRODUCTS_QUERY = gql`
 
 const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY(
+    $title: String,
     $online: Boolean,
     $department: String,
     $name: String,
@@ -73,6 +76,7 @@ const PAGINATION_QUERY = gql`
   ) {
     productsConnection(
       where: {
+        title_contains: $title,
         online: $online,
         department: $department,
         category: $category,

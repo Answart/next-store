@@ -9,7 +9,10 @@ class Search extends Component {
     if (!!e && e.preventDefault) e.preventDefault();
     if (!this.state.title.length) return;
 
-    // route to shop with title query variable
+    Router.push({
+      pathname: "/shop",
+      query: { ...this.state }
+    });
   };
   render() {
     return (
