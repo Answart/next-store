@@ -25,7 +25,7 @@ function getShopProps(pageQuery = {}) {
 
   const page = parseFloat(pageQuery.page) || 1;
   delete variables.page;
-  variables.skip = (page * show - show) || 1;
+  variables.skip = (page * show - show) || 0;
 
   const orderBy = pageQuery.orderBy || 'newest';
   variables.orderBy = orderByList[orderBy];
