@@ -22,32 +22,47 @@ const StyledHeader = styled.header`
     }
   }
   .hdr-search {
-    display: grid;
-    grid-gap: 2px;
-    grid-template-columns: 20px auto;
-    place-items: center start;
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: stretch;
+    justify-content: start;
+    align-content: start;
     color: ${props => props.theme.darkGrey};
+    padding: 1.1rem;
     img.search-img {
       padding-top: 0.3rem;
       line-height: 1.7rem;
     }
     input.search-input {
-      width: 85%;
-      width: calc(100% - 3rem);
       line-height: 2rem;
       border: 0;
       font-size: 1rem;
       font-weight: bold;
       color: ${props => props.theme.darkBlue};
+      margin: 0 0.5rem;
+      padding-right: 0.5rem;
       background-color: transparent;
+      &:hover, &:active, &:focus {
+        background-color: transparent;
+        border-bottom: 1px solid ${props => props.theme.grey};
+      }
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid ${props => props.theme.grey};
+      }
     }
-    input.search-input:hover {
-      border-bottom: 1px solid ${props => props.theme.grey};
-    }
-    input.search-input:focus {
-      outline: none;
-      background-color: transparent;
-      border-bottom: 1px solid ${props => props.theme.grey};
+    button.hdr-search-btn {
+      line-height: 1.7rem;
+      padding-top: 0.35rem;
+      font-size: 1rem;
+      font-weight: bold;
+      &:hover, &:active, &:focus {
+        font-weight: bold;
+      }
+      &:disabled {
+        color: ${props => props.theme.beige};
+        pointer-events: none;
+      }
     }
   }
   .hdr-nav {
