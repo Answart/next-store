@@ -36,15 +36,15 @@ const StyledDisplaySuccess = styled.div`
 `;
 
 const DisplayMessage = ({ error, success }) => {
-  if ((!error || !error.message) && !success) return null;
+  if (!error.message && !error.networkError && !success.length) return null;
   let errors;
-  if (!!error) {
+  if (!!error.message || !!error.networkError) {
     errors = error.networkError && error.networkError.result && !!error.networkError.result.errors.length
       ? error.networkError.result.errors
       : [{ ...error }];
   }
 
-  if (!!success.length) {
+  if (!!success.length)
     return (
       <StyledDisplaySuccess key={9999}>
         <p>
@@ -52,10 +52,9 @@ const DisplayMessage = ({ error, success }) => {
           {success}
         </p>
       </StyledDisplaySuccess>
-    )
-  }
+    );
 
-  if (!!errors) {
+  if (!!errors && !!errors.length)
     return errors.map((error, i) => (
       <StyledDisplayError key={i}>
         <p data-test="graphql-error">
@@ -64,12 +63,11 @@ const DisplayMessage = ({ error, success }) => {
         </p>
       </StyledDisplayError>
     ));
-  };
 };
 
 DisplayMessage.defaultProps = {
   error: {},
-  success: '',
+  success: ''
 };
 
 DisplayMessage.propTypes = {

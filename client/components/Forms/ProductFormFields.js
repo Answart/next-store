@@ -225,4 +225,5 @@ class ProductFormFields extends Component {
   }
 }
 
+
 export default ProductFormFields;
