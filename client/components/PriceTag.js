@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { formatMoney } from '../lib/utilFns';
 import styled from 'styled-components';
+import { formatMoney } from '../lib/utilFns';
 
 
 const StyledPriceTag = styled.div`
@@ -30,7 +30,11 @@ const PriceTag = props => (
 );
 
 PriceTag.propTypes = {
-  variant: PropTypes.object.isRequired,
+  variant: PropTypes.shape({
+    price: PropTypes.number,
+    sale: PropTypes.bool.isRequired,
+    salePrice: PropTypes.number
+  })
 };
 
 
