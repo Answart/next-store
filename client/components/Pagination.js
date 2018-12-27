@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { orderByList, showList } from '../config';
@@ -100,6 +101,15 @@ const getList = function(page, pages) {
 }
 
 class Pagination extends Component {
+  static propTypes = {
+    pageQuery: PropTypes.object.isRequired,
+    currentShow: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    currentOrderBy: PropTypes.string.isRequired,
+    results: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    disabled: PropTypes.bool.isRequired
+  };
   state = {
     sortDrpdwn: false,
     showDrpdwn: false
@@ -111,7 +121,9 @@ class Pagination extends Component {
     this.setState({ [drpdwn]: !dd });
   };
   render() {
-    const { pageQuery, currentShow, currentPage, currentOrderBy, results, count, disabled } = this.props;
+    const {
+      pageQuery, currentShow, currentPage, currentOrderBy, results, count, disabled
+    } = this.props;
     const orderByKeys = Object.keys(orderByList);
 
     const pages = Math.ceil(count/currentShow);
