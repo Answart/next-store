@@ -3,17 +3,15 @@ import { CreateProductForm } from '../components/Forms';
 import PageTitle from '../components/PageTitle';
 
 
-const CreateProductPage = props => {
-  return (
-    <StyledCreatePage>
-      <PageTitle page='Create Product' />
+const CreateProductPage = () => (
+  <StyledCreatePage>
+    <PageTitle page='Create Product' />
 
-      <div className="create-pg-form">
-        <CreateProductForm />
-      </div>
-    </StyledCreatePage>
-  );
-};
+    <div className="create-pg-form">
+      <CreateProductForm />
+    </div>
+  </StyledCreatePage>
+);
 
 
 export default CreateProductPage;
