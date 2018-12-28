@@ -6,9 +6,15 @@ const Mutation = {
     const data = { ...args };
     data.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
-    data.password = password;
 
-    return await ctx.db.mutation.createUser({ data }, info);
+    const user = await ctx.db.mutation.createUser({
+      data: {
+        ...data,
+        password
+      }
+    }, info);
+
+    return user;
   },
   async createImage(parent, args, ctx, info) {
     const data = { ...args };
