@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { StyledShopPage } from '../components/styles/PageStyles';
 import NotFound from '../components/NotFound';
@@ -33,10 +34,9 @@ function getShopProps(pageQuery = {}) {
   return { variables, show, page, orderBy };
 }
 
-const Shop = props => {
-  const pageQuery = props.query;
-  const { variables, show, page, orderBy } = getShopProps(pageQuery);
-  const { pageLabel, titles } = getPageTitleProps(user, pageQuery);
+const ShopPage = ({ query }) => {
+  const { variables, show, page, orderBy } = getShopProps(query);
+  const { pageLabel, titles } = getPageTitleProps(user, query);
   return (
     <StyledShopPage>
       <PageTitle
@@ -61,13 +61,13 @@ const Shop = props => {
               return (
                 <div className="shop-pg-content">
                   <Filter
-                    pageQuery={pageQuery}
+                    pageQuery={query}
                     products={products}
                   />
 
                   <div className="shop-pg-lst">
                     <Pagination
-                      pageQuery={pageQuery}
+                      pageQuery={query}
                       currentPage={page}
                       currentShow={show}
                       results={products.length}
@@ -86,7 +86,7 @@ const Shop = props => {
                     )}
 
                     <Pagination
-                      pageQuery={pageQuery}
+                      pageQuery={query}
                       currentPage={page}
                       currentShow={show}
                       results={products.length}
@@ -105,4 +105,9 @@ const Shop = props => {
   );
 };
 
-export default Shop;
+ShopPage.propTypes = {
+  query: PropTypes.object.isRequired
+};
+
+
+export default ShopPage;
