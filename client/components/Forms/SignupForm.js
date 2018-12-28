@@ -1,26 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Router from 'next/router';
+import { Mutation } from 'react-apollo';
+import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
+import { SIGNUP_MUTATION } from '../../graphql';
 
 
-class SignupForm extends Component {
+class SignupForm extends React.Component {
   state = {
-    name: '',
-    email: '',
-    password: ''
+    name: '', email: '', password: ''
   };
-  saveToState = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  saveToState = e => this.setState({ [e.target.name]: e.target.value });
+  submitForm = async (e, createUser) => {
+    e.preventDefault();
+    await createUser().then((res) => {
+      Router.push({
+        pathname: "/shop",
+        query: { name: `${res.data.createUser.name}` }
+      });
+
+      this.setState({
+        name: '', email: '', password: ''
+      });
+    });
+  }
   render() {
     return (
-          <StyledForm
-            method="post"
-            onSubmit={async e => {
-              e.preventDefault();
-              this.setState({ name: '', email: '', password: '' });
-            }}
-          >
-            <fieldset disabled={false} aria-busy={false}>
+      <Mutation mutation={SIGNUP_MUTATION}
+        variables={this.state}
+      >
+        {(createUser, { error, loading }) => (
+          <StyledForm onSubmit={e => this.submitForm(e, createUser)}>
+            <DisplayMessage error={error} />
+
+            <fieldset disabled={loading} aria-busy={loading}>
               <h2>Sign Up for An Account</h2>
 
               <label htmlFor="email">
@@ -57,13 +70,16 @@ class SignupForm extends Component {
               </label>
 
               <button className="big-btn"
+                disabled={loading}
                 type="submit"
               >Sign Up!</button>
             </fieldset>
           </StyledForm>
+        )}
+      </Mutation>
     );
   }
-}
+};
 
 
 export { SignupForm };
