@@ -42,17 +42,13 @@ const Menu = props => (
       </>
     ) : (
       <>
-        <Link href="/account">
-          <a className="hdr-btn hdr-pad">
-            Sign In
-          </a>
-        </Link>
+        <Link href="/account"><a className="hdr-btn hdr-pad">
+          Sign In
+        </a></Link>
         |
-        <Link href="/signup">
-          <a className="hdr-btn hdr-pad">
-            Join
-          </a>
-        </Link>
+        <Link href="/signup"><a className="hdr-btn hdr-pad">
+          Join
+        </a></Link>
       </>
     )}
   </div>

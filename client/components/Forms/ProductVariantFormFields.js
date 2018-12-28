@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
@@ -17,7 +16,7 @@ const ProductVariantFormFields = props => {
     if (type === 'number') {
       val = (name == 'price' || name === 'salePrice')
         ? Number(parseFloat(value).toFixed(2))
-        : Number(parseFloat(value))
+        : Number(parseFloat(value));
     }
     if (type === 'checkbox') val = checked;
     if (name === 'sale') state.salePrice = 1.00;
@@ -241,5 +240,6 @@ ProductVariantFormFields.propTypes = {
   saveToForm: PropTypes.func.isRequired,
   editView: PropTypes.bool.isRequired
 };
+
 
 export default ProductVariantFormFields;

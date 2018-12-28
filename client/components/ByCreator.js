@@ -7,10 +7,7 @@ const ByCreator = ({ name, online }) => (
     By
     <Link href={{
       pathname: "/shop",
-      query: {
-        name: name,
-        online: online
-      }
+      query: { name, online }
     }}><a className="undrln-btn">
       {name}
     </a></Link>

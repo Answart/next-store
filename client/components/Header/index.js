@@ -33,9 +33,9 @@ class Header extends Component {
           <Search />
 
           <div className="hdr-logo">
-            <Link href="/">
-              <a>NextStore</a>
-            </Link>
+            <Link href="/"><a>
+              NextStore
+            </a></Link>
           </div>
 
           <Menu
@@ -48,6 +48,7 @@ class Header extends Component {
       </StyledHeader>
     );
   }
-}
+};
+
 
 export default Header;
