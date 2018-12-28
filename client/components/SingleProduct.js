@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import { PRODUCT_QUERY } from '../graphql';
 
 
-const SingleItem = props => (
-  <Query query={PRODUCT_QUERY}
-    {...props}
-  >
-    {payload => props.children(payload)}
+const SingleItem = ({ variables, children }) => (
+  <Query query={PRODUCT_QUERY} variables={{ ...variables }}>
+    {payload => children(payload)}
   </Query>
 );
 
 SingleItem.propTypes = {
-  children: PropTypes.func.isRequired,
+  variables: PropTypes.shape({
+    id: PropTypes.string
+  }).isRequired,
+  children: PropTypes.func.isRequired
 };
 
 
