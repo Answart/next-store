@@ -12,29 +12,24 @@ const StyledPriceTag = styled.div`
   }
 `;
 
-const PriceTag = props => (
+const PriceTag = ({ price, sale, salePrice }) => (
   <StyledPriceTag>
-    {props.variant.sale ? (
-      <div>
-        <span className='line-through'>
-          {formatMoney(props.variant.price)}
-        </span>
-        <span className='price-tag-padding price-tag-priceSale'>
-          {formatMoney(props.variant.salePrice)}
-        </span>
-      </div>
-    ) : (
-      <div>{formatMoney(props.variant.price)}</div>
+    <span className={sale && 'line-through'}>
+      {formatMoney(price)}
+    </span>
+
+    {sale && (
+      <span className='price-tag-padding price-tag-priceSale'>
+        {formatMoney(salePrice)}
+      </span>
     )}
   </StyledPriceTag>
 );
 
 PriceTag.propTypes = {
-  variant: PropTypes.shape({
-    price: PropTypes.number,
-    sale: PropTypes.bool.isRequired,
-    salePrice: PropTypes.number
-  })
+  price: PropTypes.number.isRequired,
+  sale: PropTypes.bool.isRequired,
+  salePrice: PropTypes.number
 };
 
 

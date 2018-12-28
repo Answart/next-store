@@ -84,7 +84,11 @@ class ProductVariants extends Component {
     return (
       <StyledProductVariants>
         {variant && (
-          <PriceTag variant={variant} />
+          <PriceTag
+            price={variant.price}
+            sale={variant.sale}
+            salePrice={variant.salePrice}
+          />
         )}
 
         {sizes && !!sizes.length && (

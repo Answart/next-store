@@ -36,7 +36,11 @@ const ProductsList = ({ products, editView }) => (
 
             {variant && variant.price && (
               <div className="prdct-itm-price">
-                <PriceTag variant={variant} />
+                <PriceTag
+                  price={variant.price}
+                  sale={variant.sale}
+                  salePrice={variant.salePrice}
+                />
               </div>
             )}
 
