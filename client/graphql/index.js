@@ -4,8 +4,6 @@ export {
 } from './local';
 export {
   SIGNUP_MUTATION,
-  LOGIN_MUTATION,
-  LOG_OUT_MUTATION
 } from './user';
 export {
   CREATE_IMAGE_MUTATION
