@@ -16,6 +16,17 @@ const Mutation = {
 
     return user;
   },
+  async signin(parent, { email, password }, ctx, info) {
+    // User exists?
+    const user = await ctx.db.query.user({ where: { email } });
+    if (!user) throw new Error(`No such user found for email ${email}`);
+
+    // Password correct?
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) throw new Error('Invalid Password!');
+
+    return user;
+  },
   async createImage(parent, args, ctx, info) {
     const data = { ...args };
     let productId;
