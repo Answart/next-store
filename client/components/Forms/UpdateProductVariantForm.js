@@ -46,18 +46,20 @@ class UpdateProductVariantForm extends Component {
   };
   state = {
     ...this.props.variant,
-    message: ''
+    message: '',
+    imageIsNew: (!!this.props.image && this.props.image.id !== this.props.variant.product.image.id)
   };
   saveToState = state => {
-    if (typeof state.getNewImage !== 'undefined') {
+    const { imageIsNew } = state;
+    if (typeof imageIsNew !== 'undefined') {
       const { image, product } = this.props.variant;
       const previousImage = (!!image && image.cloudinary_id !== product.image.cloudinary_id)
         ? image
         : null;
-      const overwrittenImage = state.getNewImage
+      const overwrittenImage = imageIsNew
         ? previousImage
         : product.image;
-      this.setState({ image: overwrittenImage });
+      this.setState({ imageIsNew, image: overwrittenImage });
     } else {
       this.setState({ ...state });
     }
@@ -77,6 +79,7 @@ class UpdateProductVariantForm extends Component {
         imageId: res.data.createImage.id
       };
       delete variables.image;
+      delete variables.imageIsNew;
       delete variables.message;
 
       return await updateProductVariant({ variables }).then((res) => {
@@ -112,7 +115,7 @@ class UpdateProductVariantForm extends Component {
                       image={this.state.image}
                       saveToForm={this.saveToState}
                       editView={true}
-                      imgNotProdImg={!this.state.image || this.state.image.id !== this.props.variant.product.image.id}
+                      imageIsNew={this.state.imageIsNew}
                     />
 
                     <button className="form-submit-btn big-btn"

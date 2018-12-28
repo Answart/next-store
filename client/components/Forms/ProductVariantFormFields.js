@@ -24,12 +24,9 @@ class ProductVariantFormFields extends Component {
       image_url: PropTypes.string.isRequired,
       large_image_url: PropTypes.string.isRequired
     }),
-    imgNotProdImg: PropTypes.bool.isRequired,
+    imageIsNew: PropTypes.bool.isRequired,
     saveToForm: PropTypes.func.isRequired,
     editView: PropTypes.bool.isRequired
-  };
-  state = {
-    getNewImage: this.props.imgNotProdImg
   };
   handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
@@ -57,11 +54,10 @@ class ProductVariantFormFields extends Component {
     NProgress.start();
 
     if (type === 'radio') {
-      const getNewImage = (value === 'true');
-      if (getNewImage && !!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
+      const imageIsNew = (value === 'true');
+      if (imageIsNew && !!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
 
-      this.setState({ getNewImage });
-      this.props.saveToForm({ getNewImage });
+      this.props.saveToForm({ imageIsNew });
     }
     if (type === 'file' && name === 'upload') {
       if (!files || !files.length) return;
@@ -74,8 +70,7 @@ class ProductVariantFormFields extends Component {
     NProgress.done();
   }
   render() {
-    const { sale, image } = this.props;
-    const { getNewImage } = this.state;
+    const { sale, image, imageIsNew } = this.props;
     return (
       <StyledProduct>
         <div className="form-imgs">
@@ -195,10 +190,10 @@ class ProductVariantFormFields extends Component {
                       type="radio"
                       id="productImage"
                       name="productImage"
-                      key={!getNewImage}
+                      key={!imageIsNew}
                       value={false}
                       onChange={this.handleImageChange}
-                      checked={!getNewImage}
+                      checked={!imageIsNew}
                     />Same as Product Image
                   </label>
                 </div>
@@ -208,15 +203,15 @@ class ProductVariantFormFields extends Component {
                       type="radio"
                       id="newImage"
                       name="newImage"
-                      key={getNewImage}
+                      key={imageIsNew}
                       value={true}
                       onChange={this.handleImageChange}
-                      checked={getNewImage}
+                      checked={imageIsNew}
                     />New Image
                   </label>
                 </div>
 
-                {getNewImage && (
+                {imageIsNew && (
                   <div className="field-padding">
                     <label htmlFor="upload" className="lbl-button">
                       <input
