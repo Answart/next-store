@@ -4,6 +4,7 @@ export {
 } from './local';
 export {
   SIGNUP_MUTATION,
+  SIGNIN_MUTATION,
 } from './user';
 export {
   CREATE_IMAGE_MUTATION
