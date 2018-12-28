@@ -34,6 +34,14 @@ const Mutation = {
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) throw new Error('Invalid Password!');
 
+    // create JWT token
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // set 1 year JWT token as response cookie token
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365
+    });
+
     return user;
   },
   async createImage(parent, args, ctx, info) {
