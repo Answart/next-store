@@ -2,12 +2,6 @@ const { forwardTo } = require('prisma-binding');
 
 
 const Query = {
-  user(parent, args, ctx, info) {
-    return ctx.db.query.user(
-      { where: { id: args.id } },
-      info
-    );
-  },
   async users(parent, args, ctx, info) {
     if (!ctx.request.userId) throw new Error('USERS: You must be logged in!');
 
