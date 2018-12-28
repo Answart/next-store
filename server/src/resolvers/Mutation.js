@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 const Mutation = {
@@ -13,6 +14,14 @@ const Mutation = {
         password
       }
     }, info);
+
+    // create JWT token
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // set 1 year JWT token as response cookie token
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+    });
 
     return user;
   },
