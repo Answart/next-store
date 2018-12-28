@@ -1,50 +1,56 @@
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledEditPage } from '../../components/styles/PageStyles';
-import NotFound from '../../components/NotFound';
 import SingleProduct from '../../components/SingleProduct';
+import NotFound from '../../components/NotFound';
 import PageTitle from '../../components/PageTitle';
 import DeleteProduct from '../../components/Buttons/DeleteProduct';
 import { UpdateProductForm } from '../../components/Forms';
 
 
-const EditProductPage = props => {
-  const { id } = props.query;
-  return (
-    <SingleProduct variables={{ id }}>
-      {({ data, error, loading }) => {
-        if (loading) return (<p>Loading...</p>);
-        if (error) return (<NotFound status={400} message={error.message} />);
-        const { product } = data;
-        if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
-        return (
-          <StyledEditPage>
-            <PageTitle
-              page='Edit Product'
-              titles={[{ label: product.title }]}
-            />
+const EditProductPage = ({ query }) => (
+  <SingleProduct variables={{ id: query.id }}>
+    {({ data, error, loading }) => {
+      if (loading) return (<p>Loading...</p>);
+      if (error) return (<NotFound status={400} message={error.message} />);
+      const { product } = data;
+      if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
+      return (
+        <StyledEditPage>
+          <PageTitle
+            page='Edit Product'
+            titles={[{ label: product.title }]}
+          />
 
-            <div className="edit-pg-navi">
-              <Link href={{
-                pathname: `/product/selections`,
-                query: { id }
-              }}><a className="undrln-btn">
-                Selections &#8811;
-              </a></Link>
+          <div className="edit-pg-navi">
+            <Link href={{
+              pathname: `/product/selections`,
+              query
+            }}><a className="undrln-btn">
+              Selections &#8811;
+            </a></Link>
+          </div>
+
+          <div className="edit-pg-content">
+            <UpdateProductForm product={product} />
+
+            <div className="edit-pg-content-footer">
+              <DeleteProduct
+                id={query.id}
+              >Delete Product</DeleteProduct>
             </div>
 
-            <div className="edit-pg-content">
-              <UpdateProductForm product={product} />
+          </div>
+        </StyledEditPage>
+      )
+    }}
+  </SingleProduct>
+);
 
-              <div className="edit-pg-content-footer">
-                <DeleteProduct id={id}>Delete Product</DeleteProduct>
-              </div>
-
-            </div>
-          </StyledEditPage>
-        )
-      }}
-    </SingleProduct>
-  );
+EditProductPage.propTypes = {
+  query: PropTypes.shape({
+    id: PropTypes.string
+  }).isRequired
 };
 
 
