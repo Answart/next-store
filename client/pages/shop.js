@@ -7,7 +7,6 @@ import ProductsList from '../components/ProductsList';
 import Filter from '../components/Filter';
 import Pagination from '../components/Pagination';
 import { capWord, getPageTitleProps } from '../lib/utilFns';
-import { orderByList } from '../config';
 import { user } from '../lib/dummyData';
 import { SHOP_PRODUCTS_QUERY, PAGINATION_QUERY } from '../graphql';
 
