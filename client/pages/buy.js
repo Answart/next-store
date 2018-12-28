@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import SingleProduct from '../components/SingleProduct';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
@@ -7,35 +8,40 @@ import { StyledBuyPage } from '../components/styles/PageStyles';
 import { user } from '../lib/dummyData';
 
 
-const BuyProductPage = props => {
-  return (
-    <SingleProduct variables={{ id: props.query.id }}>
-      {({ data, error, loading }) => {
-        if (loading) return (<p>Loading...</p>);
-        if (error) return (<NotFound status={400} message={error.message} />);
-        const { product } = data;
-        if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
-        const viewerIsCreator = product.user.id === user.id;
-        return (
-          <StyledBuyPage>
-            <PageTitle
-              page={product.department}
-              titles={[{ label: product.title }]}
-            />
+const BuyPage = ({ query }) => (
+  <SingleProduct variables={{ id: query.id }}>
+    {({ data, error, loading }) => {
+      if (loading) return (<p>Loading...</p>);
+      if (error) return (<NotFound status={400} message={error.message} />);
+      const { product } = data;
+      if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
+      const viewerIsCreator = product.user.id === user.id;
+      return (
+        <StyledBuyPage>
+          <PageTitle
+            page={product.department}
+            titles={[{ label: product.title }]}
+          />
 
-            <div className="buy-page-content">
-              <Product
-                product={product}
-                viewerIsCreator={viewerIsCreator}
-                demoView={false}
-                variantActionComponent={AddToCart}
-              />
-            </div>
-          </StyledBuyPage>
-        )
-      }}
-    </SingleProduct>
-  );
+          <div className="buy-page-content">
+            <Product
+              product={product}
+              viewerIsCreator={viewerIsCreator}
+              demoView={false}
+              variantActionComponent={AddToCart}
+            />
+          </div>
+        </StyledBuyPage>
+      )
+    }}
+  </SingleProduct>
+);
+
+BuyPage.propTypes = {
+  query: PropTypes.shape({
+    id: PropTypes.string
+  }).isRequired
 };
 
-export default BuyProductPage;
+
+export default BuyPage;
