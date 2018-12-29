@@ -44,6 +44,11 @@ const Mutation = {
 
     return user;
   },
+  signout(parent, args, ctx, info) {
+    ctx.response.clearCookie('token');
+
+    return { success: true, message: 'Goodbye!' };
+  },
   async createImage(parent, args, ctx, info) {
     const data = { ...args };
     let productId;
