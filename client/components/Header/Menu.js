@@ -31,8 +31,6 @@ const Menu = props => (
             <div id="myDropdown" className={props.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
               <a className="undrln-btn" href="/sell">Create Product</a>
               <a className="undrln-btn" href={`/shop?name=${me.name}`}>My Products</a>
-              <a className="undrln-btn" href="/account/orders">Order History</a>
-              <a className="undrln-btn" href="/account/sales">Sale History</a>
               <Logout />
             </div>
           </span>
