@@ -1,6 +1,7 @@
 # import * from './generated/prisma.graphql'
 
 type Query {
+  me: User
   users: [User!]!
   image(where: ImageWhereInput): Image
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, first: Int): [Image!]!
