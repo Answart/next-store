@@ -5,6 +5,7 @@ export {
 export {
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
+  SIGNOUT_MUTATION
 } from './user';
 export {
   CREATE_IMAGE_MUTATION

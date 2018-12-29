@@ -21,8 +21,17 @@ const SIGNIN_MUTATION = gql`
   }
 `;
 
+const SIGNOUT_MUTATION = gql`
+  mutation SIGNOUT_MUTATION {
+    signout {
+      message
+    }
+  }
+`;
+
 
 export {
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
+  SIGNOUT_MUTATION
 };
