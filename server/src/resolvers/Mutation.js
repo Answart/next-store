@@ -59,7 +59,7 @@ const Mutation = {
     delete data.id;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('CREATE IMAGE: You must be signed in to create an image.');
 
     // Existing image?
@@ -98,7 +98,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
 
     // Existing image?
@@ -125,7 +125,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpt3pua1earv0a84i37dnhtc';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
 
     // Existing product?
@@ -174,7 +174,7 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpt3pua1earv0a84i37dnhtc';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('DELETE PRODUCT: You must be signed in to delete a product.');
 
     // Existing product?
@@ -194,7 +194,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpuld0oh2eye0923m9cid4w7';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('CREATE SELECTION: You must be signed in to add to a selection to a product.');
 
     // Existing product?
@@ -244,7 +244,7 @@ const Mutation = {
     delete data.id;
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpuld0oh2eye0923m9cid4w7';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
 
     // Existing productVariant?
@@ -286,7 +286,7 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId || 'cjpmd6acr4j2c0a422niv2rp1';
+    const userId = ctx.request.userId;
     if (!userId) throw new Error('DELETE SELECTION: You must be signed in to delete a product.');
 
     // Existing product?
