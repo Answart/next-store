@@ -1,6 +1,16 @@
 import gql from 'graphql-tag';
 
 
+const CURRENT_USER_QUERY = gql`
+  query CURRENT_USER_QUERY {
+    me {
+      id
+      email
+      name
+    }
+  }
+`;
+
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION($email: String!, $name: String!, $password: String!) {
     createUser(email: $email, name: $name, password: $password) {
@@ -31,6 +41,7 @@ const SIGNOUT_MUTATION = gql`
 
 
 export {
+  CURRENT_USER_QUERY,
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
   SIGNOUT_MUTATION
