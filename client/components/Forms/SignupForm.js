@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
-import { SIGNUP_MUTATION } from '../../graphql';
+import { SIGNUP_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
 
 class SignupForm extends React.Component {
@@ -28,6 +28,7 @@ class SignupForm extends React.Component {
     return (
       <Mutation mutation={SIGNUP_MUTATION}
         variables={this.state}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(createUser, { error, loading }) => (
           <StyledForm onSubmit={e => this.submitForm(e, createUser)}>
