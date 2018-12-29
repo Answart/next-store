@@ -30,3 +30,9 @@ type User {
   email: String!
   password: String!
 }
+
+type Message {
+  success: Boolean
+  failure: Boolean
+  message: String!
+}
