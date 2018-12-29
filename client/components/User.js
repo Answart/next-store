@@ -1,19 +1,17 @@
-import Link from 'next/link';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Query } from 'react-apollo';
+import { CURRENT_USER_QUERY } from '../graphql';
 
 
-const UserStyles = styled.span`
-  text-alight: right;
-  min-width: 50px;
-  padding: 0px 5px;
-`;
-
-const User = () => (
-  <UserStyles>
-    <Link href="/account">
-      <a>Firstname</a>
-    </Link>
-  </UserStyles>
+const User = ({ children }) => (
+  <Query query={CURRENT_USER_QUERY}>
+    {payload => children(payload)}
+  </Query>
 );
+
+User.propTypes = {
+  children: PropTypes.func.isRequired
+};
+
 
 export default User;
