@@ -1,5 +1,5 @@
 export { SignupForm } from './SignupForm.js';
-export { LoginForm } from './LoginForm.js';
+export { SigninForm } from './SigninForm.js';
 export { CreateProductForm } from './CreateProductForm.js';
 export { CreateProductVariantForm } from './CreateProductVariantForm.js';
 export { UpdateProductForm } from './UpdateProductForm.js';

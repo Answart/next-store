@@ -6,7 +6,7 @@ import StyledForm from '../styles/FormStyles';
 import { SIGNIN_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
 
-class LoginForm extends React.Component {
+class SigninForm extends React.Component {
   state = {
     name: '', password: '', email: ''
   };
@@ -72,4 +72,4 @@ class LoginForm extends React.Component {
 };
 
 
-export { LoginForm };
+export { SigninForm };

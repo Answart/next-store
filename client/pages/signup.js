@@ -1,6 +1,6 @@
 import { StyledSignupPage } from '../components/styles/PageStyles';
 import PageTitle from '../components/PageTitle';
-import { SignupForm, LoginForm } from '../components/Forms';
+import { SignupForm, SigninForm } from '../components/Forms';
 
 
 const SignupPage = props => (
@@ -9,7 +9,7 @@ const SignupPage = props => (
 
     <div className="signup-page-content">
       <SignupForm />
-      <LoginForm />
+      <SigninForm />
     </div>
   </StyledSignupPage>
 );
