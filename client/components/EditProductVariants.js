@@ -28,8 +28,7 @@ class EditProductVariants extends Component {
         large_image_url: PropTypes.string.isRequired
       }).isRequired,
       variants: PropTypes.array.isRequired,
-    }).isRequired,
-    viewerIsCreator: PropTypes.bool.isRequired
+    }).isRequired
   };
   state = {
     currentVariant: null,
@@ -56,7 +55,6 @@ class EditProductVariants extends Component {
 
             <Product
               product={this.props.product}
-              viewerIsCreator={this.props.viewerIsCreator}
               demoView={true}
               variantAction={this.selectVariant}
               variantActionLabel='Select'

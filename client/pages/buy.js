@@ -5,7 +5,6 @@ import PageTitle from '../components/PageTitle';
 import Product from '../components/Product';
 import AddToCart from '../components/Buttons/AddToCart';
 import { StyledBuyPage } from '../components/styles/PageStyles';
-import { user } from '../lib/dummyData';
 
 
 const BuyPage = ({ query }) => (
@@ -15,7 +14,6 @@ const BuyPage = ({ query }) => (
       if (error) return (<NotFound status={400} message={error.message} />);
       const { product } = data;
       if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
-      const viewerIsCreator = product.user.id === user.id;
       return (
         <StyledBuyPage>
           <PageTitle
@@ -26,7 +24,6 @@ const BuyPage = ({ query }) => (
           <div className="buy-page-content">
             <Product
               product={product}
-              viewerIsCreator={viewerIsCreator}
               demoView={false}
               variantActionComponent={AddToCart}
             />

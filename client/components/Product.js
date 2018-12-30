@@ -29,7 +29,7 @@ const Product = props => {
         />
 
         <div className="prdct-padding">
-          {!props.viewerIsCreator && !product.online && (
+          {!product.online && (
             <i>Offline</i>
           )}
         </div>
@@ -78,7 +78,6 @@ Product.propTypes = {
       large_image_url: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  viewerIsCreator: PropTypes.bool.isRequired,
   demoView: PropTypes.bool,
   VariantActionComponent: PropTypes.func,
   variantAction: PropTypes.func,
