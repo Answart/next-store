@@ -86,7 +86,7 @@ const getPageTitleProps = function(user, pageQuery = {}) {
   let titles = [];
 
   if (pageQuery.name) {
-    pageLabel = (pageQuery.name === user.name)
+    pageLabel = (user && pageQuery.name === user.name)
       ? 'My Products'
       : capWord(pageQuery.name);
   }
@@ -98,7 +98,7 @@ const getPageTitleProps = function(user, pageQuery = {}) {
     titles.push({
       label: capWord(pageQuery.department),
       href: {
-        pathname: 'shop',
+        pathname: '/shop',
         query
       }
     })
@@ -107,7 +107,7 @@ const getPageTitleProps = function(user, pageQuery = {}) {
     titles.push({
       label: capWord(pageQuery.category),
       href: {
-        pathname: 'shop',
+        pathname: '/shop',
         query: { ...pageQuery }
       }
     })
