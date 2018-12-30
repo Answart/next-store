@@ -18,6 +18,10 @@ class UpdateProductForm extends Component {
       category: PropTypes.string.isRequired,
       brand: PropTypes.string.isRequired,
       online: PropTypes.bool.isRequired,
+      user: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      }).isRequired,
       image: PropTypes.shape({
         id: PropTypes.string,
         cloudinary_id: PropTypes.string.isRequired,
@@ -78,6 +82,7 @@ class UpdateProductForm extends Component {
 
                     <ProductFormFields
                       title={this.state.title}
+                      userName={this.props.product.user.name}
                       department={this.state.department}
                       description={this.state.description}
                       category={this.state.category}

@@ -56,6 +56,7 @@ class CreateProductForm extends Component {
 
                     <ProductFormFields
                       title={this.state.title}
+                      userName=""
                       department={this.state.department}
                       description={this.state.description}
                       category={this.state.category}

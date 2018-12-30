@@ -3,7 +3,6 @@ import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
 import { departments, categories } from '../../config';
-import { user } from '../../lib/dummyData';
 import { capWord } from '../../lib/utilFns';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
@@ -75,10 +74,12 @@ const ProductFormFields = props => {
           </label>
         </div>
 
-        <ByCreator
-          name={user.name}
-          online={true}
-        />
+        {props.userName && (
+          <ByCreator
+            name={props.userName}
+            online={true}
+          />
+        )}
 
         <div className="field-padding">
           <label htmlFor="department">
@@ -207,6 +208,7 @@ const ProductFormFields = props => {
 
 ProductFormFields.propTypes = {
   title: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   department: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   online: PropTypes.bool.isRequired,
