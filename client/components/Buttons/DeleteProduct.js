@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import { DELETE_PRODUCT_MUTATION, SHOP_PRODUCTS_QUERY } from '../../graphql';
-import { user } from '../../lib/dummyData';
 
 
 const DeleteProduct = props => {
-  const { id, className, children } = props;
+  const { id, userName, className, children } = props;
   const update = (cache, payload) => {
     try {
-      const variables = { name: user.name };
+      const variables = { name: userName };
       const data = cache.readQuery({ query: SHOP_PRODUCTS_QUERY, variables });
       data.products = data.products.filter(product => product.id !== payload.data.deleteProduct.id);
       cache.writeQuery({ query: SHOP_PRODUCTS_QUERY, variables, data });
@@ -31,7 +30,7 @@ const DeleteProduct = props => {
                 .then((res) => {
                   Router.push({
                     pathname: "/shop",
-                    query: { name: user.name }
+                    query: { name: userName }
                   });
                 });
             }
@@ -46,6 +45,7 @@ const DeleteProduct = props => {
 
 DeleteProduct.propTypes = {
   id: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.string.isRequired
 };

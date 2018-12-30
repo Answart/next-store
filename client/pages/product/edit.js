@@ -39,6 +39,7 @@ const EditProductPage = ({ query }) => (
               <div className="edit-pg-content-footer">
                 <DeleteProduct
                   id={query.id}
+                  userName={product.user.name}
                 >Delete Product</DeleteProduct>
               </div>
 

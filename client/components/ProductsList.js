@@ -61,6 +61,7 @@ const ProductsList = ({ products, editView, userId }) => (
 
               <DeleteProduct className="undrln-btn"
                 id={prdct.id}
+                userName={prdct.user.name}
               >Delete</DeleteProduct>
             </span>
           )}
@@ -81,6 +82,10 @@ ProductsList.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
+    user: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired,
     image: PropTypes.shape({
       image_url: PropTypes.string.isRequired
     }).isRequired,
@@ -91,6 +96,7 @@ ProductsList.propTypes = {
       availability: PropTypes.string.isRequired
     })).isRequired
   })).isRequired,
+  userId: PropTypes.string.isRequired,
   editView: PropTypes.bool.isRequired
 };
 
