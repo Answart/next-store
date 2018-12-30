@@ -82,6 +82,7 @@ const ShopPage = ({ query }) => {
                       <ProductsList
                         products={products}
                         editView={!variables.online}
+                        userId={user.id}
                       />
                     )}
 

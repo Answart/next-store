@@ -3,14 +3,13 @@ import Link from 'next/link';
 import { StyledProductsList, StyledProductsListItem } from './styles/ProductStyles';
 import PriceTag from './PriceTag';
 import DeleteProduct from './Buttons/DeleteProduct';
-import { user } from '../lib/dummyData';
 
 
-const ProductsList = ({ products, editView }) => (
+const ProductsList = ({ products, editView, userId }) => (
   <StyledProductsList>
     {products.map(prdct => {
       const viewerIsCreator = prdct
-        ? prdct.user.id === user.id
+        ? prdct.user.id === userId
         : false;
       const variant = prdct.variants.length
         ? prdct.variants[0]
@@ -34,7 +33,7 @@ const ProductsList = ({ products, editView }) => (
               {prdct.title}
             </a></Link>
 
-            {variant && variant.price && (
+            {variant && (
               <div className="prdct-itm-price">
                 <PriceTag
                   price={variant.price}
