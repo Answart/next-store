@@ -5,60 +5,60 @@ import NotFound from '../../components/NotFound';
 import SingleProduct from '../../components/SingleProduct';
 import PageTitle from '../../components/PageTitle';
 import EditProductVariants from '../../components/EditProductVariants';
-import { user } from '../../lib/dummyData';
+import RequireSignin from '../../components/RequireSignin';
 
 
 const EditProductVariantsPage = ({ query }) => (
-  <SingleProduct variables={{ id: query.id }}>
-    {({ data, error, loading }) => {
-      if (loading) return (<p>Loading...</p>);
-      if (error) return (<NotFound status={400} message={error.message} />);
-      const { product } = data;
-      if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
-      const viewerIsCreator = product.user.id === user.id;
-      const productTitle = product ? product.title : '';
-      const titles = [{
-        label: productTitle,
-        href: {
-          pathname: '/product/edit',
-          query
-        }
-      }, {
-        label: 'Selections'
-      }];
-      return (
-        <StyledEditPage>
-          <PageTitle
-            page='Edit Product'
-            titles={titles}
-          />
+  <RequireSignin>
+    <SingleProduct variables={{ id: query.id }}>
+      {({ data, error, loading }) => {
+        if (loading) return (<p>Loading...</p>);
+        if (error) return (<NotFound status={400} message={error.message} />);
+        const { product } = data;
+        if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
+        const productTitle = product ? product.title : '';
+        const titles = [{
+          label: productTitle,
+          href: {
+            pathname: '/product/edit',
+            query
+          }
+        }, {
+          label: 'Selections'
+        }];
+        return (
+          <StyledEditPage>
+            <PageTitle
+              page='Edit Product'
+              titles={titles}
+            />
 
-          <div className="edit-pg-navi">
-            <Link href={{
-              pathname: `/product/add`,
-              query: {
-                id: query.id,
-                title: productTitle
-              }
-            }}><a className="undrln-btn">
-              Add Selection &#8811;
-            </a></Link>
-          </div>
+            <div className="edit-pg-navi">
+              <Link href={{
+                pathname: `/product/add`,
+                query: {
+                  id: query.id,
+                  title: productTitle
+                }
+              }}><a className="undrln-btn">
+                Add Selection &#8811;
+              </a></Link>
+            </div>
 
-          <div className="edit-pg-content">
-            {!product.variants.length ? (
-              <NotFound status={204} message="This product does not have any selections. Click the 'Add Selection' link to add to this list." />
-            ) : (
-              <EditProductVariants
-                product={product}
-                viewerIsCreator={viewerIsCreator}
-              />
-            )}
-          </div>
-        </StyledEditPage>
-      )
-    }}
-  </SingleProduct>
+            <div className="edit-pg-content">
+              {!product.variants.length ? (
+                <NotFound status={204} message="This product does not have any selections. Click the 'Add Selection' link to add to this list." />
+              ) : (
+                <EditProductVariants
+                  product={product}
+                />
+              )}
+            </div>
+          </StyledEditPage>
+        )
+      }}
+    </SingleProduct>
+  </RequireSignin>
 );
 
 EditProductVariantsPage.propTypes = {
