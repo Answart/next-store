@@ -12,11 +12,11 @@ import { orderByList } from '../config';
 import { SHOP_PRODUCTS_QUERY, PAGINATION_QUERY } from '../graphql';
 
 
-function getShopProps(pageQuery = {}) {
+function getShopProps(user, pageQuery = {}) {
   const variables = { ...pageQuery };
   variables.online = true;
 
-  if (variables.name && variables.name === user.name) {
+  if (!!user && variables.name && variables.name === user.name) {
     delete variables.online;
   }
 
@@ -35,8 +35,9 @@ function getShopProps(pageQuery = {}) {
 }
 
 const ShopPage = ({ query }) => {
-  const { variables, show, page, orderBy } = getShopProps(query);
-  const { pageLabel, titles } = getPageTitleProps(user, query);
+  const me = user;
+  const { variables, show, page, orderBy } = getShopProps(me, query);
+  const { pageLabel, titles } = getPageTitleProps(me, query);
   return (
     <StyledShopPage>
       <PageTitle
