@@ -3,6 +3,8 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  resetToken: String
+  resetTokenExpiry: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
