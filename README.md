@@ -52,7 +52,7 @@ server/
         db.js                 Prisma DB connection and querying
         index.js              Server root which starts node server
         mail.js               Mailtrap integration through nodemailer and Email Templates
-        schema.graphql        GraphQL schema with type definitions for client facing calls
+        schema.graphql        GraphQL yoga schema with type definitions for client facing calls
         stripe.js             Stripe API connection
         utils.js              Utility files
         generated/            Generated files from Prisma
@@ -96,6 +96,7 @@ Getting Started
 $ cd client;npm install;cd ../server;npm install;cd ..;
 
 #Create a .env file in server directory that has the following:
+NODE_ENV="development"
 APP_SECRET="<SECRETSTRINGOFYOURCHOICE>"
 PORT=4242
 CLIENT_URL="http://localhost:7272"
@@ -105,10 +106,14 @@ CLOUDINARY_SECRET="<CLOUDINARYSECRETSTRING>"
 PRISMA_ENDPOINT="https://us1.prisma.sh/<WORKSPACENAME>/<SERVICENAME>/<STAGE>"
 PRISMA_SECRET="<SECRETPRISMASTRINGOFYOURCHOICE>"
 STRIPE_SECRET="<STRIPESECRETSTRING>"
-MAIL_HOST="<MAILTRAPHOSTNAME>"
-MAIL_PORT="<MAILTRAPPORTNUMBER>"
-MAIL_USER="<MAILTRAPUSER>"
-MAIL_PASS="<MAILTRAPPASSWORD>"
+MAILTRAP_HOST="<MAILTRAPHOSTNAME>"
+MAILTRAP_PORT=<MAILTRAPPORTNUMBER>
+MAILTRAP_USER="<MAILTRAPUSER>"
+MAILTRAP_PASS="<MAILTRAPPASSWORD>"
+POSTMARK_HOST="<POSTMARKHOSTNAME>"
+POSTMARK_PORT=<POSTMARKPORTNUMBER>
+POSTMARK_USER="<POSTMARKUSER>"
+POSTMARK_PASS="<POSTMARKPASSWORD>"
 
 # Initialize Prisma
 $ prisma init
@@ -127,8 +132,8 @@ $ npm run dev
 NPM Commands for Client and Server directories
 ------------
 
-|Command|Description|
-|---|---|
+| Command | Description |
+|---------|-------------|
 |npm run dev|Start server with logging @ **localhost:7272**|
 |npm run start|Start server @ **localhost:7272**|
 |npm run test|Run tests on all .test. files.|
