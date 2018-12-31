@@ -39,10 +39,19 @@ const SIGNOUT_MUTATION = gql`
   }
 `;
 
+const REQUEST_PASSWORD_RESET_MUTATION = gql`
+  mutation REQUEST_PASSWORD_RESET_MUTATION($email: String!) {
+    requestPasswordReset(email: $email) {
+      message
+    }
+  }
+`;
+
 
 export {
   CURRENT_USER_QUERY,
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
-  SIGNOUT_MUTATION
+  SIGNOUT_MUTATION,
+  REQUEST_PASSWORD_RESET_MUTATION,
 };
