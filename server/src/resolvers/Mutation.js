@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const maxAge = 1000 * 60 * 60 * 24 * 365;
 
 
 const Mutation = {
@@ -20,7 +21,7 @@ const Mutation = {
     // set 1 year JWT token as response cookie token
     ctx.response.cookie('token', token, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365,
+      maxAge
     });
 
     return user;
@@ -39,7 +40,7 @@ const Mutation = {
     // set 1 year JWT token as response cookie token
     ctx.response.cookie('token', token, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365
+      maxAge
     });
 
     return user;
