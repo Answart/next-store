@@ -2,6 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import DisplayMessage from '../DisplayMessage';
+import RequestPasswordReset from '../Buttons/RequestPasswordReset';
 import StyledForm from '../styles/FormStyles';
 import { SIGNIN_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
@@ -58,6 +59,10 @@ class SigninForm extends React.Component {
                   onChange={this.saveToState}
                 />
               </label>
+
+              <RequestPasswordReset
+                email={this.state.email}
+              >Forgot password?</RequestPasswordReset>
 
               <button className="big-btn"
                 disabled={loading}
