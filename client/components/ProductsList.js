@@ -8,7 +8,7 @@ import DeleteProduct from './Buttons/DeleteProduct';
 const ProductsList = ({ products, editView, userId }) => (
   <StyledProductsList>
     {products.map(prdct => {
-      const viewerIsCreator = prdct
+      const viewerIsCreator = !!userId
         ? prdct.user.id === userId
         : false;
       const variant = prdct.variants.length
@@ -96,7 +96,7 @@ ProductsList.propTypes = {
       availability: PropTypes.string.isRequired
     })).isRequired
   })).isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
   editView: PropTypes.bool.isRequired
 };
 
