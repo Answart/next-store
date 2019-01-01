@@ -14,6 +14,7 @@ type User {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
+  permissions: [Permission]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
