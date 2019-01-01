@@ -1,6 +1,6 @@
 # Next Store
 
-A fullstack React store app where a user can browse among items with which they can buy or sell. It uses React's Next.js framework and GraphQL's Apollo framework.
+A fullstack React e-commerce app where a user can browse among items with which they can buy or sell. It uses React's Next.js framework and GraphQL's Apollo framework.
 
 User stories
 ------------
