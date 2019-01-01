@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import DisplayMessage from '../DisplayMessage';
 import StyledForm from '../styles/FormStyles';
-import { RESET_PASSWORD_MUTATION } from '../../graphql';
+import { RESET_PASSWORD_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
 
 class ResetPasswordForm extends React.Component {
@@ -39,6 +39,7 @@ class ResetPasswordForm extends React.Component {
           password: this.state.password,
           confirmPassword: this.state.confirmPassword
         }}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(resetPassword, { error, loading }) => (
           <StyledForm onSubmit={e => this.submitForm(e, resetPassword)}>
