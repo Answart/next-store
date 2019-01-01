@@ -33,8 +33,8 @@ const ProductFormFields = props => {
   };
   const handleImageChange = async e => {
     const { name, type, value, files } = e.target;
-    const currentImageToken = this.props.image
-      ? (this.props.image.delete_token || '')
+    const currentImageToken = props.image
+      ? (props.image.delete_token || '')
       : '';
     NProgress.start();
 
@@ -44,7 +44,7 @@ const ProductFormFields = props => {
       if (image.error) return alert('An error occured while uploading image. Please try again later.');
       if (!!currentImageToken.length) await destroyImageFileByToken(currentImageToken);
 
-      this.props.saveToForm({ image });
+      props.saveToForm({ image });
     }
     NProgress.done();
   }
