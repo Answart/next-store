@@ -7,7 +7,7 @@ import Header from './Header';
 const theme = {
   red: '#dc3736',
   redOrange: '#e86c52',
-  coral: '#fe8b72',
+  coral: '#ffc5bc',
   orange: '#ed8e40',
   yellow: '#ffdd52',
   green: '#b2c94c',
