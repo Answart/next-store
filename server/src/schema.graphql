@@ -18,6 +18,7 @@ type Mutation {
   signout: Message
   requestPasswordReset(email: String!): Message
   resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
+  updatePermissions(permissions: [Permission], userId: ID!): User
   createImage(cloudinary_id: String!, name: String!, height: Int!, width: Int!, transformation: String!, image_url: String!, large_image_url: String!): Image!
   deleteImage(id: ID!): Image
   createProduct(department: String!, title: String!, description: String!, category: String, brand: String, online: Boolean!, imageId: String!): Product!
