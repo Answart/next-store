@@ -3,7 +3,7 @@ import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
 import { departments, categories } from '../../config';
-import { capWord } from '../../lib/utilFns';
+import { capWord } from '../../lib/utils';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 

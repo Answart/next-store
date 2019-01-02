@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { formatMoney } from '../lib/utilFns';
+import { formatMoney } from '../lib/utils';
 
 
 const StyledPriceTag = styled.div`

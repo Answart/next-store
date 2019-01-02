@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { orderByList, showList } from '../config';
-import { capWord } from '../lib/utilFns';
+import { capWord } from '../lib/utils';
 
 
 const PaginationStyles = styled.div`

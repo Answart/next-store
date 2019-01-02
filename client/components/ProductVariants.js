@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyledProductVariants } from './styles/ProductStyles';
 import PriceTag from './PriceTag';
-import { getUniqKeyVals, getFltrdObjs, formatMoney } from '../lib/utilFns';
+import { getUniqKeyVals, getFltrdObjs, formatMoney } from '../lib/utils';
 
 
 class ProductVariants extends Component {

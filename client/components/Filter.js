@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { departments, categories, colors, sizes } from '../config';
-import { capWord, getFilterProps } from '../lib/utilFns';
+import { capWord, getFilterProps } from '../lib/utils';
 
 
 const FilterStyles = styled.div`

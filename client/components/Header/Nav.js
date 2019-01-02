@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { departments } from '../../config';
-import { capWord } from '../../lib/utilFns';
+import { capWord } from '../../lib/utils';
 
 
 const Nav = () => (
