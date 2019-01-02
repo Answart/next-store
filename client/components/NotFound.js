@@ -21,6 +21,7 @@ const NotFound = ({ status, message }) => {
   let title = 'Not Found';
 
   if (status === 204) title = 'Nothing Here';
+  if (status === 401) title = 'Unauthorized';
   if (status === 400) {
     title = 'Error';
     message = 'An error occured. Please try again later.';
