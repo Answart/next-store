@@ -3,6 +3,7 @@ import { StyledCreatePage } from '../components/styles/PageStyles';
 import PageTitle from '../components/PageTitle';
 import RequireSignin from '../components/RequireSignin';
 import NotFound from '../components/NotFound';
+import Permissions from '../components/Permissions';
 import { ALL_USERS_QUERY } from '../graphql';
 
 
@@ -18,7 +19,7 @@ const PermissionsPage = () => (
             if (error) return (<NotFound status={401} message={error.message.replace('GraphQL error: ', '')} />);
             const users = !!data && data.users ? data.users : [];
             return (
-              <div>List permissions here</div>
+              <Permissions users={users} />
             )
           }}
         </Query>
