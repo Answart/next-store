@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle';
 import { SignupForm, SigninForm } from '../components/Forms';
 
 
-const SignupPage = props => (
+const SignupPage = () => (
   <StyledSignupPage>
     <PageTitle page='Signup' />
 
