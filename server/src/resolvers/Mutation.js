@@ -287,7 +287,13 @@ const Mutation = {
       where: { id: productId }
     }, `{ id user { id } images { id } image { id } }`);
     if (!existingProduct) throw new Error(`CREATE SELECTION: Cannot find product with ID '${productId}'.`);
-    if (existingProduct.user.id !== userId) throw new Error('CREATE SELECTION: You are not authorized to update this product.');
+
+    // requester has permission to delete?
+    const ownsItem = existingProduct.user.id === userId;
+    const hasPermissions = ctx.request.user.permissions.some(permission =>
+      ['ADMIN', 'PRODUCTUPDATE'].includes(permission)
+    );
+    if (!ownsItem && !hasPermissions) throw new Error("CREATE SELECTION: You are not authorized to create a selection for this product.");
 
     // Existing productVariant?
     const [existingProductVariant] = await ctx.db.query.variants({
