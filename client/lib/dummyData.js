@@ -1,6 +1,6 @@
 
 const user = {
-  id: "cjpj0izxabhkj0a15jmipydzc",
+  id: "cjq2u0j0k9wn50991ayczmcap",
   name: 'alexy',
   email: 'alexy@gmail.com'
 };
@@ -40,7 +40,7 @@ const variants = [
   {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
-    color: "Black",
+    color: "black",
     size: "S",
     price: 14,
     sale: true,
@@ -49,7 +49,7 @@ const variants = [
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
-    color: "Black",
+    color: "black",
     size: "M",
     price: 24,
     sale: false,
@@ -58,7 +58,7 @@ const variants = [
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 2,
-    color: "Red",
+    color: "fed",
     size: "S",
     price: 40,
     sale: true,
