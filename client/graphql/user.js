@@ -1,6 +1,17 @@
 import gql from 'graphql-tag';
 
 
+const ALL_USERS_QUERY = gql`
+  query {
+    users {
+      id
+      name
+      email
+      permissions
+    }
+  }
+`;
+
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {
     me {
@@ -59,6 +70,7 @@ const RESET_PASSWORD_MUTATION = gql`
 
 
 export {
+  ALL_USERS_QUERY,
   CURRENT_USER_QUERY,
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
