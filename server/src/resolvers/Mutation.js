@@ -168,6 +168,12 @@ const Mutation = {
     const userId = ctx.request.userId;
     if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
 
+    // requester has permission to delete?
+    const hasPermissions = ctx.request.user.permissions.some(permission =>
+      ['ADMIN', 'PRODUCTCREATE'].includes(permission)
+    );
+    if (!hasPermissions) throw new Error("CREATE SELECTION: You are not authorized. Apply to our Designer program to submit products on NextStore.");
+
     // Existing image?
     const [existingImg] = await ctx.db.query.images({
       where: { id: imageId }
