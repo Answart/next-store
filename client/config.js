@@ -7,9 +7,9 @@ export const CLOUDINARY_SECRET = 'yk-s-3xjvyoZl8B2Ue4E01CqhZ4';
 export const permissions = [
   'ADMIN',
   'USER',
-  'ITEMCREATE',
-  'ITEMUPDATE',
-  'ITEMDELETE',
+  'PRODUCTCREATE',
+  'PRODUCTUPDATE',
+  'PRODUCTDELETE',
   'PERMISSIONUPDATE',
 ];
 export const colors = [

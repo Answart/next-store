@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Tue Jan 01 2019 09:09:31 GMT-0800 (Pacific Standard Time)
+# timestamp: Wed Jan 02 2019 09:05:47 GMT-0800 (Pacific Standard Time)
 
 type AggregateImage {
   count: Int!
@@ -1083,9 +1083,9 @@ type PageInfo {
 enum Permission {
   ADMIN
   USER
-  ITEMCREATE
-  ITEMUPDATE
-  ITEMDELETE
+  PRODUCTCREATE
+  PRODUCTUPDATE
+  PRODUCTDELETE
   PERMISSIONUPDATE
 }
 
