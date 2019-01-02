@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const { transport, emailFromNextStoreSupport } = require('../mail');
+const { hasPermission } = require('../utils');
 const maxAge = 1000 * 60 * 60 * 24 * 365;
 
 
