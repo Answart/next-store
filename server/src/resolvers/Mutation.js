@@ -206,7 +206,13 @@ const Mutation = {
       where: { id: productId }
     }, `{ id image { id } user { id }}`);
     if (!existingProduct) throw new Error('UPDATE PRODUCT: No product found with that id.');
-    if (existingProduct.user.id !== userId) throw new Error('UPDATE PRODUCT: You are not authorized to update this product.');
+
+    // requester has permission to update?
+    const ownsItem = existingProduct.user.id === userId;
+    const hasPermissions = ctx.request.user.permissions.some(permission =>
+      ['ADMIN', 'PRODUCTUPDATE'].includes(permission)
+    );
+    if (!ownsItem && !hasPermissions) throw new Error("UPDATE PRODUCT: You are not authorized to update this product.");
 
     // Update w/new image?
     if (existingProduct.image.id !== imageId) {
