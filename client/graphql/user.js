@@ -68,6 +68,17 @@ const RESET_PASSWORD_MUTATION = gql`
   }
 `;
 
+const UPDATE_PERMISSIONS_MUTATION = gql`
+  mutation updatePermissions($permissions: [Permission], $userId: ID!) {
+    updatePermissions(permissions: $permissions, userId: $userId) {
+      id
+      permissions
+      name
+      email
+    }
+  }
+`;
+
 
 export {
   ALL_USERS_QUERY,
@@ -76,5 +87,6 @@ export {
   SIGNIN_MUTATION,
   SIGNOUT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION,
-  RESET_PASSWORD_MUTATION
+  RESET_PASSWORD_MUTATION,
+  UPDATE_PERMISSIONS_MUTATION
 };
