@@ -14,7 +14,7 @@ const StyledPriceTag = styled.div`
 
 const PriceTag = ({ price, sale, salePrice }) => (
   <StyledPriceTag>
-    <span className={sale && 'line-through'}>
+    <span className={sale ? 'line-through': ''}>
       {formatMoney(price)}
     </span>
 
