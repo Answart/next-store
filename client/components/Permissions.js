@@ -1,6 +1,9 @@
+import { Mutation } from 'react-apollo';
 import PropTypes from 'prop-types';
+import DisplayMessage from './DisplayMessage';
 import { StyledPermissionsTable } from './styles/TableStyles';
 import { permissions } from '../config';
+import { UPDATE_PERMISSIONS_MUTATION } from '../graphql';
 
 
 class UserPermissions extends React.Component {
@@ -30,6 +33,21 @@ class UserPermissions extends React.Component {
   render() {
     const user = this.props.user;
     return (
+      <Mutation
+        mutation={UPDATE_PERMISSIONS_MUTATION}
+        variables={{
+          permissions: this.state.permissions,
+          userId: this.props.user.id
+        }}
+      >
+        {(updatePermissions, { loading, error }) => (
+          <>
+            {error && (
+              <td colspan="8">
+                <DisplayMessage error={error} />
+              </td>
+            )}
+
             <tr>
               <td>{user.name}</td>
 
@@ -52,14 +70,14 @@ class UserPermissions extends React.Component {
               <td>
                 <button className="undrln-btn"
                   type="button"
-                  disabled={false}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log('click')
-                  }}
-                >Updat{false ? 'ing' : 'e'}</button>
+                  disabled={loading}
+                  onClick={updatePermissions}
+                >Updat{loading ? 'ing' : 'e'}</button>
               </td>
             </tr>
+          </>
+        )}
+      </Mutation>
     );
   }
 };
