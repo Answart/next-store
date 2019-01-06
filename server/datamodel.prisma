@@ -15,7 +15,7 @@ type User {
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission]
-  cart: [CartItem!]!
+  cart: [CartItem!]! @relation(name: "UserCart")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -72,5 +72,5 @@ type CartItem {
   id: ID! @unique
   quantity: Int! @default(value: 1)
   variant: Variant
-  user: User!
+  user: User! @relation(name: "UserCart")
 }
