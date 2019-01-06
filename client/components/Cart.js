@@ -1,5 +1,5 @@
 import { Query } from 'react-apollo';
-import { StyledCartPage } from './styles/PageStyles';
+import { StyledCart } from './styles/CartStyles';
 import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import NotFound from './NotFound';
@@ -23,7 +23,7 @@ const Cart = () => (
           const { totalQuantity, totalShipping, totalSalesTax, subTotal } = getCartTotals(myCart);
           const totalAmount = (subTotal + totalShipping + totalSalesTax);
           return (
-            <StyledCartPage open={localData.cartOpen}>
+            <StyledCart open={localData.cartOpen}>
               <header>
                 <div className="cart-title">
                   <ToggleCart>
@@ -107,7 +107,7 @@ const Cart = () => (
                   </CheckoutCart>
                 </div>
               </footer>
-            </StyledCartPage>
+            </StyledCart>
           )
         }}
       </User>
