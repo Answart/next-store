@@ -15,7 +15,7 @@ type User {
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission]
-  cart: [CartItem!]! @relation(name: "UserCart")
+  cart: [CartItem!]! @relation(name: "UserCart", onDelete: CASCADE)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
