@@ -75,7 +75,7 @@ const StyledPage = styled.div`
     }
   }
   .line-through {
-    text-decoration: line-through ${theme.coral};
+    text-decoration: line-through ${theme.red};
   }
   .inner-page {
     max-width: ${props => props.theme.maxWidth};
