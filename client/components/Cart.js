@@ -1,9 +1,15 @@
+import { Query } from 'react-apollo';
 import { StyledCartPage } from './styles/PageStyles';
 import ToggleCart from './Buttons/ToggleCart';
+import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 
 const Cart = () => (
-            <StyledCartPage open={true}>
+  <Query query={LOCAL_CARTOPEN_QUERY}>
+    {({ data: localData, error: localError }) => {
+          if (localError) return null;
+          return (
+            <StyledCartPage open={localData.cartOpen}>
               <header>
                 <div className="cart-title">
                   <ToggleCart>
@@ -28,6 +34,9 @@ const Cart = () => (
                 </div>
               </footer>
             </StyledCartPage>
+          )
+    }}
+  </Query>
 );
 
 
