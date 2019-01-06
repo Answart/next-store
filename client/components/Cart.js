@@ -4,6 +4,7 @@ import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import NotFound from './NotFound';
 import ToggleCart from './Buttons/ToggleCart';
+import CheckoutCart from './Buttons/CheckoutCart';
 import { formatMoney, getCartTotals } from '../lib/utils';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
@@ -16,6 +17,9 @@ const Cart = () => (
           if (localError) return null;
           const me = !!userData ? userData.me : null;
           const myCart = (!!me && !!me.cart) ? me.cart : [];
+          const imgUrl = (!!myCart.length && !!myCart[0].variant)
+            ? myCart[0].variant.image.image_url
+            : "";
           const { totalQuantity, totalShipping, totalSalesTax, subTotal } = getCartTotals(myCart);
           const totalAmount = (subTotal + totalShipping + totalSalesTax);
           return (
@@ -92,7 +96,15 @@ const Cart = () => (
                 </div>
 
                 <div className="cart-close">
-                  CheckoutCart
+                  <CheckoutCart
+                    totalQuantity={totalQuantity}
+                    totalAmount={totalAmount}
+                    email={!!me ? me.email : ""}
+                    image_url={imgUrl}
+                    disabled={!!userError || !me || totalQuantity === 0}
+                  >
+                    Checkout
+                  </CheckoutCart>
                 </div>
               </footer>
             </StyledCartPage>
