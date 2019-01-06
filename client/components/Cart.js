@@ -14,6 +14,8 @@ const Cart = () => (
       <User>
         {({ data: userData, error: userError }) => {
           if (localError) return null;
+          const me = !!userData ? userData.me : null;
+          const myCart = (!!me && !!me.cart) ? me.cart : [];
           return (
             <StyledCartPage open={localData.cartOpen}>
               <header>
@@ -44,9 +46,13 @@ const Cart = () => (
                         <NotFound status={400} />
                       </td></tr>
                     ) : (
-                      <tr>
-                        <td>CartItem here</td>
-                      </tr>
+                      <>
+                        {myCart.map(cartItem =>
+                          <tr key={cartItem.id}>
+                            <td>CartItem here</td>
+                          </tr>
+                        )}
+                      </>
                     )}
                   </tbody>
                 </StyledCartTable>
