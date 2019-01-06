@@ -43,7 +43,7 @@ class UserPermissions extends React.Component {
         {(updatePermissions, { loading, error }) => (
           <>
             {error && (
-              <td colspan="8">
+              <td colSpan="8">
                 <DisplayMessage error={error} />
               </td>
             )}
