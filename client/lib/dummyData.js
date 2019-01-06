@@ -39,7 +39,7 @@ const image3 = {
 const variants = [
   {
     id: "cjo8awitz7ox30a01gbzxtr4y",
-    quantity: 3,
+    quantity: 5,
     color: "black",
     size: "S",
     price: 14,
@@ -101,28 +101,44 @@ variant.product = product;
 
 const cart = [{
     id: '1234',
-    variant: variant
+    quantity: 5,
+    variant,
+    user
   }, {
     id: '2345',
-    variant: variant
+    quantity: 3,
+    variant,
+    user
   }, {
     id: '3456',
-    variant: variant
+    quantity: 4,
+    variant,
+    user
   }, {
     id: '4567',
-    variant: variant
+    quantity: 1,
+    variant,
+    user
   }, {
     id: '5678',
-    variant: variant
+    quantity: 5,
+    variant,
+    user
   }, {
     id: '7890',
-    variant: variant
+    quantity: 3,
+    variant,
+    user
   }, {
     id: '8901',
-    variant: variant
+    quantity: 5,
+    variant,
+    user
   }, {
     id: '9012',
-    variant: variant
+    quantity: 4,
+    variant,
+    user
 }]
 
 export default product;
