@@ -4,7 +4,7 @@ import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import NotFound from './NotFound';
 import ToggleCart from './Buttons/ToggleCart';
-import { formatMoney } from '../lib/utils';
+import { formatMoney, getCartTotals } from '../lib/utils';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 
@@ -16,6 +16,8 @@ const Cart = () => (
           if (localError) return null;
           const me = !!userData ? userData.me : null;
           const myCart = (!!me && !!me.cart) ? me.cart : [];
+          const { totalQuantity, totalShipping, totalSalesTax, subTotal } = getCartTotals(myCart);
+          const totalAmount = (subTotal + totalShipping + totalSalesTax);
           return (
             <StyledCartPage open={localData.cartOpen}>
               <header>
@@ -65,25 +67,25 @@ const Cart = () => (
                       <tr>
                         <td>Subtotal</td>
 
-                        <td>{formatMoney(0)}</td>
+                        <td>{formatMoney(subTotal)}</td>
                       </tr>
 
                       <tr>
                         <td>Shipping</td>
 
-                        <td>{formatMoney(0)}</td>
+                        <td>{formatMoney(totalShipping)}</td>
                       </tr>
 
                       <tr className="totals-table-last-item">
                         <td>Sales Tax</td>
 
-                        <td>{formatMoney(0)}</td>
+                        <td>{formatMoney(totalSalesTax)}</td>
                       </tr>
 
                       <tr>
                         <td>Estimated Total</td>
 
-                        <td>{formatMoney(0)}</td>
+                        <td>{formatMoney(totalAmount)}</td>
                       </tr>
                     </tbody>
                   </StyledTotalsTable>
