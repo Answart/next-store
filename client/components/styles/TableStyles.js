@@ -132,8 +132,32 @@ const StyledCartTable = styled.table`
   }
 `;
 
+const StyledTotalsTable = styled.table`
+  float: right;
+  padding: 0.7rem 0;
+  td {
+    text-align: right;
+    width: 15rem;
+  }
+  tr:first-child {
+    td {
+      padding-top: 1rem;
+    }
+  }
+  tr:last-child {
+    td {
+      padding: 1rem 0;
+      border-top: 1px solid ${props => props.theme.coral};
+    }
+  }
+  .totals-table-last-item td {
+    padding-bottom: 1rem;
+  }
+`;
+
 
 export {
   StyledPermissionsTable,
   StyledCartTable,
+  StyledTotalsTable
 };
