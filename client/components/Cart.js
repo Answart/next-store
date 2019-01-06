@@ -1,5 +1,6 @@
 import { Query } from 'react-apollo';
 import { StyledCartPage } from './styles/PageStyles';
+import { StyledCartTable } from './styles/TableStyles';
 import ToggleCart from './Buttons/ToggleCart';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
@@ -21,7 +22,23 @@ const Cart = () => (
               </header>
 
               <div className="cart-body">
-                StyledCartTable
+                <StyledCartTable>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+
+                      <th>Quantity</th>
+
+                      <th>Total Price</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>CartItem here</td>
+                    </tr>
+                  </tbody>
+                </StyledCartTable>
               </div>
 
               <footer>
