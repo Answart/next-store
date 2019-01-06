@@ -4,6 +4,7 @@ import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import NotFound from './NotFound';
 import ToggleCart from './Buttons/ToggleCart';
+import { formatMoney } from '../lib/utils';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 
@@ -58,25 +59,25 @@ const Cart = () => (
                       <tr>
                         <td>Subtotal</td>
 
-                        <td>{0}</td>
+                        <td>{formatMoney(0)}</td>
                       </tr>
 
                       <tr>
                         <td>Shipping</td>
 
-                        <td>{0}</td>
+                        <td>{formatMoney(0)}</td>
                       </tr>
 
                       <tr className="totals-table-last-item">
                         <td>Sales Tax</td>
 
-                        <td>{0}</td>
+                        <td>{formatMoney(0)}</td>
                       </tr>
 
                       <tr>
                         <td>Estimated Total</td>
 
-                        <td>{0}</td>
+                        <td>{formatMoney(0)}</td>
                       </tr>
                     </tbody>
                   </StyledTotalsTable>
