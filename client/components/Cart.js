@@ -1,6 +1,6 @@
 import { Query } from 'react-apollo';
 import { StyledCartPage } from './styles/PageStyles';
-import { StyledCartTable } from './styles/TableStyles';
+import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import ToggleCart from './Buttons/ToggleCart';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
@@ -43,7 +43,33 @@ const Cart = () => (
 
               <footer>
                 <div>
-                  StyledTotalsTable
+                  <StyledTotalsTable>
+                    <tbody>
+                      <tr>
+                        <td>Subtotal</td>
+
+                        <td>{0}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Shipping</td>
+
+                        <td>{0}</td>
+                      </tr>
+
+                      <tr className="totals-table-last-item">
+                        <td>Sales Tax</td>
+
+                        <td>{0}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Estimated Total</td>
+
+                        <td>{0}</td>
+                      </tr>
+                    </tbody>
+                  </StyledTotalsTable>
                 </div>
 
                 <div className="cart-close">
