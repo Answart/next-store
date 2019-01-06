@@ -139,6 +139,36 @@ const getFilterProps = function(products) {
   return { categories, colors, sizes, brands };
 }
 
+const getCartTotals = function(cart = []) {
+  let totalQuantity = 0;
+  let totalShipping = 0;
+  let totalSalesTax = 0;
+  let subTotal = 0;
+
+  if (!!cart && !!cart.length) {
+    subTotal = cart.reduce((tally, cartItem) => {
+      if (!cartItem.variant || !cartItem.variant.price) return tally;
+      const quantity = cartItem.quantity;
+      const price = cartItem.variant.sale
+        ? cartItem.variant.salePrice
+        : cartItem.variant.price
+
+      totalQuantity += quantity;
+      totalShipping += quantity * SHIPPING_COST_PER_ITEM;
+      totalSalesTax += quantity * (SALES_TAX_RATE * price);
+
+      return tally + (quantity * price);
+    }, 0);
+  }
+
+  return {
+    totalQuantity,
+    totalShipping: Number(parseFloat(totalShipping).toFixed(2)),
+    totalSalesTax: Number(parseFloat(totalSalesTax).toFixed(2)),
+    subTotal: Number(parseFloat(subTotal).toFixed(2))
+  };
+}
+
 
 export {
   objctsDiffer,
@@ -148,4 +178,5 @@ export {
   formatMoney,
   getPageTitleProps,
   getFilterProps,
+  getCartTotals
 };
