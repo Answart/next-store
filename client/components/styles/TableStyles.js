@@ -88,6 +88,7 @@ const StyledCartTable = styled.table`
 const StyledTotalsTable = styled.table`
   float: right;
   padding: 0.7rem 0;
+  color: ${props => props.theme.darkBlue};
   td {
     text-align: right;
     width: 15rem;
