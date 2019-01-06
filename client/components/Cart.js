@@ -1,13 +1,16 @@
 import { Query } from 'react-apollo';
 import { StyledCartPage } from './styles/PageStyles';
 import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
+import User from './User';
 import ToggleCart from './Buttons/ToggleCart';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 
 const Cart = () => (
   <Query query={LOCAL_CARTOPEN_QUERY}>
-    {({ data: localData, error: localError }) => {
+    {({ data: localData, error: localError }) => (
+      <User>
+        {({ data: userData, error: userError }) => {
           if (localError) return null;
           return (
             <StyledCartPage open={localData.cartOpen}>
@@ -78,7 +81,9 @@ const Cart = () => (
               </footer>
             </StyledCartPage>
           )
-    }}
+        }}
+      </User>
+    )}
   </Query>
 );
 
