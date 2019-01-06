@@ -1,3 +1,5 @@
+import { SALES_TAX_RATE, SHIPPING_COST_PER_ITEM } from '../config';
+
 
 const objctsDiffer = function(object1, object2) {
   for (let propName in object1) {
