@@ -1,11 +1,14 @@
 import { StyledCartPage } from './styles/PageStyles';
+import ToggleCart from './Buttons/ToggleCart';
 
 
 const Cart = () => (
             <StyledCartPage open={true}>
               <header>
                 <div className="cart-title">
-                  <button><h2>&times;</h2></button>
+                  <ToggleCart>
+                    <h2>&times;</h2>
+                  </ToggleCart>
 
                   <h2>Your Cart</h2>
                 </div>
