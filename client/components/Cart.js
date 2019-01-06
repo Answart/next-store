@@ -2,6 +2,7 @@ import { Query } from 'react-apollo';
 import { StyledCartPage } from './styles/PageStyles';
 import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
+import NotFound from './NotFound';
 import ToggleCart from './Buttons/ToggleCart';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
@@ -37,9 +38,15 @@ const Cart = () => (
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <td>CartItem here</td>
-                    </tr>
+                    {!!userError ? (
+                      <tr><td className="cart-page">
+                        <NotFound status={400} />
+                      </td></tr>
+                    ) : (
+                      <tr>
+                        <td>CartItem here</td>
+                      </tr>
+                    )}
                   </tbody>
                 </StyledCartTable>
               </div>
