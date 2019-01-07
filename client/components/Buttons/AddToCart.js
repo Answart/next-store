@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import { ADD_TO_CART_MUTATION } from '../../graphql';
+import { ADD_TO_CART_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
 
 const AddToCart = ({ variant, disabled }) => (
   <Mutation mutation={ADD_TO_CART_MUTATION}
     variables={{ id: variant.id }}
+    refetchQueries={[{ query: CURRENT_USER_QUERY }]}
   >
     {(addToCart, { loading }) => (
       <button className="big-btn"
