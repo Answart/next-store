@@ -22,6 +22,9 @@ const CartItem = ({ id, quantity, variant }) => {
       </StyledCartItem>
     );
   const title = variant.product.title;
+  const price = variant.sale
+    ? variant.salePrice
+    : variant.price;
   return (
     <StyledCartItem>
       <td className="cart-item-details">
@@ -80,7 +83,7 @@ const CartItem = ({ id, quantity, variant }) => {
       </td>
 
       <td className="cart-item-total-price">
-        price * quantity here
+        {(price * quantity)}
       </td>
     </StyledCartItem>
   );
