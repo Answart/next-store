@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
 import RemoveFromCart from './Buttons/RemoveFromCart';
+import UpdateCartItem from './Buttons/UpdateCartItem';
 import { formatMoney, capWord } from '../lib/utils';
 
 
@@ -71,11 +72,19 @@ const CartItem = ({ id, quantity, variant }) => {
 
       <td className="cart-item-quantity">
         <div className="cart-item-quantity-actions">
-          <button>update cartitem amt by -1</button>
+          <UpdateCartItem
+            id={variant.id}
+            quantity={quantity - 1}
+            disabled={(quantity - 1) <= 0}
+          >&#8722;</UpdateCartItem>
 
           {quantity}
 
-          <button>update cartitem amt by +1</button>
+          <UpdateCartItem
+            id={variant.id}
+            quantity={quantity + 1}
+            disabled={(quantity + 1) > variant.quantity}
+          >&#43;</UpdateCartItem>
 
           <div className="cart-item-quantity-remove">
             <RemoveFromCart id={id} />
