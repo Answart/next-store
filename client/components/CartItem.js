@@ -3,7 +3,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
-import { capWord } from '../lib/utils';
+import { formatMoney, capWord } from '../lib/utils';
 
 
 const CartItem = ({ id, quantity, variant }) => {
@@ -83,7 +83,7 @@ const CartItem = ({ id, quantity, variant }) => {
       </td>
 
       <td className="cart-item-total-price">
-        {(price * quantity)}
+        {formatMoney(price * quantity)}
       </td>
     </StyledCartItem>
   );
