@@ -30,3 +30,6 @@ export {
   UPDATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 } from './variants';
+export {
+  ADD_TO_CART_MUTATION,
+} from './cart';
