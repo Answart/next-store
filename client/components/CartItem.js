@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 
@@ -18,10 +19,22 @@ const CartItem = ({ id, quantity, variant }) => {
         </td>
       </StyledCartItem>
     );
+  const title = variant.product.title;
   return (
     <StyledCartItem>
       <td className="cart-item-details">
-        <div>cartitem variant image here</div>
+        <Link href={{
+          pathname: "/shop",
+          query: {
+            id: variant.product.id
+          }
+        }}><a>
+          <img width="100" height="120"
+            src={variant.image.image_url}
+            alt={title}
+            title={`Go to: ${title}`}
+          />
+        </a></Link>
 
         <div>cartitem variant details here</div>
       </td>
