@@ -85,6 +85,54 @@ const StyledCartTable = styled.table`
   }
 `;
 
+const StyledCartItem = styled.tr`
+  display: grid;
+  grid-template-columns: auto 3fr 1fr 1fr;
+  td.cart-item-details {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 10rem 22rem;
+    min-height: 12rem;
+    grid-gap: 1rem;
+    text-align: left;
+    .cart-item-detail {
+      padding: 0.1rem 0;
+    }
+    .cart-item-title {
+      color: ${props => props.theme.darkBlue};
+    }
+  }
+  td.cart-item-quantity {
+    width: 10rem;
+    margin: 0;
+    place-items: center center;
+    button {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .cart-item-quantity-actions {
+      display: grid;
+      grid-auto-flow: columns;
+      grid-template-columns: 1fr 1rem 1fr;
+      grid-template-rows: 1rem 2rem;
+      grid-gap: 0.5rem;
+      place-items: center center;
+      color: ${props => props.theme.darkBlue};
+      .cart-item-quantity-remove {
+        grid-row: 2 / 2;
+        grid-column: 2 / 2;
+      }
+    }
+  }
+  td.cart-item-total-price {
+    width: 8rem;
+    text-align: right;
+    color: ${props => props.theme.darkBlue};
+  }
+`;
+
 const StyledTotalsTable = styled.table`
   float: right;
   padding: 0.7rem 0;
@@ -113,5 +161,6 @@ const StyledTotalsTable = styled.table`
 export {
   StyledPermissionsTable,
   StyledCartTable,
+  StyledCartItem,
   StyledTotalsTable
 };
