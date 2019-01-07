@@ -72,7 +72,7 @@ const CartItem = ({ id, quantity, variant }) => {
         <div className="cart-item-quantity-actions">
           <button>update cartitem amt by -1</button>
 
-          <div>show cartitem quantity</div>
+          {quantity}
 
           <button>update cartitem amt by +1</button>
 
