@@ -36,7 +36,27 @@ const CartItem = ({ id, quantity, variant }) => {
           />
         </a></Link>
 
-        <div>cartitem variant details here</div>
+        <div>
+          <div className="cart-item-detail">
+            <h4>{title}</h4>
+          </div>
+
+          <div className="cart-item-detail">
+            Price: {variant.price}
+          </div>
+
+          {variant.size && (
+            <div className="cart-item-detail">
+              Size: {variant.size}
+            </div>
+          )}
+
+          {variant.color && (
+            <div className="cart-item-detail">
+              Color: {variant.color}
+            </div>
+          )}
+        </div>
       </td>
 
       <td className="cart-item-quantity">
