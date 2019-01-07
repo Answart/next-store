@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
+import { capWord } from '../lib/utils';
 
 
 const CartItem = ({ id, quantity, variant }) => {
