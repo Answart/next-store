@@ -1,13 +1,25 @@
 import PropTypes from 'prop-types';
+import { Mutation } from 'react-apollo';
+import { ADD_TO_CART_MUTATION } from '../../graphql';
 
 
 const AddToCart = ({ variant, disabled }) => (
+  <Mutation mutation={ADD_TO_CART_MUTATION}
+    variables={{ id: variant.id }}
+  >
+    {(addToCart, { loading }) => (
       <button className="big-btn"
-        disabled={disabled}
-        onClick={(e) => e.preventDefault;console.log('adding', variant.id)}
+        disabled={!variant.id || disabled}
+        onClick={(e) => {
+          e.preventDefault();
+          addToCart()
+            .catch(err => alert(err.message.replace('GraphQL error: ', '')));
+        }}
       >
-        Add To Cart
+        Add{loading ? 'ing' : ''} To Cart
       </button>
+    )}
+  </Mutation>
 );
 
 AddToCart.propTypes = {
