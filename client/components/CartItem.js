@@ -54,7 +54,7 @@ const CartItem = ({ id, quantity, variant }) => {
 
           {variant.color && (
             <div className="cart-item-detail">
-              Color: {variant.color}
+              Color: {capWord(variant.color)}
             </div>
           )}
         </div>
