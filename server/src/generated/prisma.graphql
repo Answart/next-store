@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sat Jan 05 2019 20:26:16 GMT-0800 (Pacific Standard Time)
+# timestamp: Sun Jan 06 2019 00:42:08 GMT-0800 (Pacific Standard Time)
 
 type AggregateCartItem {
   count: Int!
@@ -46,7 +46,17 @@ type CartItemConnection {
 input CartItemCreateInput {
   quantity: Int
   variant: VariantCreateOneInput
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutCartInput!
+}
+
+input CartItemCreateManyWithoutUserInput {
+  create: [CartItemCreateWithoutUserInput!]
+  connect: [CartItemWhereUniqueInput!]
+}
+
+input CartItemCreateWithoutUserInput {
+  quantity: Int
+  variant: VariantCreateOneInput
 }
 
 """An edge in a connection."""
@@ -72,6 +82,79 @@ enum CartItemOrderByInput {
 type CartItemPreviousValues {
   id: ID!
   quantity: Int!
+}
+
+input CartItemScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CartItemScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CartItemScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CartItemScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
 }
 
 type CartItemSubscriptionPayload {
@@ -116,11 +199,47 @@ input CartItemSubscriptionWhereInput {
 input CartItemUpdateInput {
   quantity: Int
   variant: VariantUpdateOneInput
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutCartInput
+}
+
+input CartItemUpdateManyDataInput {
+  quantity: Int
 }
 
 input CartItemUpdateManyMutationInput {
   quantity: Int
+}
+
+input CartItemUpdateManyWithoutUserInput {
+  create: [CartItemCreateWithoutUserInput!]
+  connect: [CartItemWhereUniqueInput!]
+  disconnect: [CartItemWhereUniqueInput!]
+  delete: [CartItemWhereUniqueInput!]
+  update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [CartItemUpdateManyWithWhereNestedInput!]
+  deleteMany: [CartItemScalarWhereInput!]
+  upsert: [CartItemUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input CartItemUpdateManyWithWhereNestedInput {
+  where: CartItemScalarWhereInput!
+  data: CartItemUpdateManyDataInput!
+}
+
+input CartItemUpdateWithoutUserDataInput {
+  quantity: Int
+  variant: VariantUpdateOneInput
+}
+
+input CartItemUpdateWithWhereUniqueWithoutUserInput {
+  where: CartItemWhereUniqueInput!
+  data: CartItemUpdateWithoutUserDataInput!
+}
+
+input CartItemUpsertWithWhereUniqueWithoutUserInput {
+  where: CartItemWhereUniqueInput!
+  update: CartItemUpdateWithoutUserDataInput!
+  create: CartItemCreateWithoutUserInput!
 }
 
 input CartItemWhereInput {
@@ -1283,6 +1402,7 @@ type Product implements Node {
   online: Boolean!
   category: String
   brand: String
+  user: User!
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
   images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image!]
   image: Image
@@ -1307,6 +1427,7 @@ input ProductCreateInput {
   online: Boolean!
   category: String
   brand: String
+  user: UserCreateOneInput!
   variants: VariantCreateManyWithoutProductInput
   images: ImageCreateManyWithoutProductInput
   image: ImageCreateOneWithoutUsed_by_productInput
@@ -1334,6 +1455,7 @@ input ProductCreateWithoutImageInput {
   online: Boolean!
   category: String
   brand: String
+  user: UserCreateOneInput!
   variants: VariantCreateManyWithoutProductInput
   images: ImageCreateManyWithoutProductInput
 }
@@ -1345,6 +1467,7 @@ input ProductCreateWithoutImagesInput {
   online: Boolean!
   category: String
   brand: String
+  user: UserCreateOneInput!
   variants: VariantCreateManyWithoutProductInput
   image: ImageCreateOneWithoutUsed_by_productInput
 }
@@ -1356,6 +1479,7 @@ input ProductCreateWithoutVariantsInput {
   online: Boolean!
   category: String
   brand: String
+  user: UserCreateOneInput!
   images: ImageCreateManyWithoutProductInput
   image: ImageCreateOneWithoutUsed_by_productInput
 }
@@ -1448,6 +1572,7 @@ input ProductUpdateInput {
   online: Boolean
   category: String
   brand: String
+  user: UserUpdateOneRequiredInput
   variants: VariantUpdateManyWithoutProductInput
   images: ImageUpdateManyWithoutProductInput
   image: ImageUpdateOneWithoutUsed_by_productInput
@@ -1494,6 +1619,7 @@ input ProductUpdateWithoutImageDataInput {
   online: Boolean
   category: String
   brand: String
+  user: UserUpdateOneRequiredInput
   variants: VariantUpdateManyWithoutProductInput
   images: ImageUpdateManyWithoutProductInput
 }
@@ -1505,6 +1631,7 @@ input ProductUpdateWithoutImagesDataInput {
   online: Boolean
   category: String
   brand: String
+  user: UserUpdateOneRequiredInput
   variants: VariantUpdateManyWithoutProductInput
   image: ImageUpdateOneWithoutUsed_by_productInput
 }
@@ -1516,6 +1643,7 @@ input ProductUpdateWithoutVariantsDataInput {
   online: Boolean
   category: String
   brand: String
+  user: UserUpdateOneRequiredInput
   images: ImageUpdateManyWithoutProductInput
   image: ImageUpdateOneWithoutUsed_by_productInput
 }
@@ -1832,6 +1960,7 @@ input ProductWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  user: UserWhereInput
   variants_every: VariantWhereInput
   variants_some: VariantWhereInput
   variants_none: VariantWhereInput
@@ -1886,6 +2015,7 @@ type User implements Node {
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
+  cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1907,6 +2037,7 @@ input UserCreateInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
+  cart: CartItemCreateManyWithoutUserInput
 }
 
 input UserCreateOneInput {
@@ -1914,8 +2045,22 @@ input UserCreateOneInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateOneWithoutCartInput {
+  create: UserCreateWithoutCartInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreatepermissionsInput {
   set: [Permission!]
+}
+
+input UserCreateWithoutCartInput {
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserCreatepermissionsInput
 }
 
 """An edge in a connection."""
@@ -2004,6 +2149,7 @@ input UserUpdateDataInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
+  cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateInput {
@@ -2013,6 +2159,7 @@ input UserUpdateInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
+  cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -2031,13 +2178,34 @@ input UserUpdateOneRequiredInput {
   upsert: UserUpsertNestedInput
 }
 
+input UserUpdateOneRequiredWithoutCartInput {
+  create: UserCreateWithoutCartInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutCartDataInput
+  upsert: UserUpsertWithoutCartInput
+}
+
 input UserUpdatepermissionsInput {
   set: [Permission!]
+}
+
+input UserUpdateWithoutCartDataInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
 }
 
 input UserUpsertNestedInput {
   update: UserUpdateDataInput!
   create: UserCreateInput!
+}
+
+input UserUpsertWithoutCartInput {
+  update: UserUpdateWithoutCartDataInput!
+  create: UserCreateWithoutCartInput!
 }
 
 input UserWhereInput {
@@ -2315,6 +2483,9 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  cart_every: CartItemWhereInput
+  cart_some: CartItemWhereInput
+  cart_none: CartItemWhereInput
 }
 
 input UserWhereUniqueInput {
