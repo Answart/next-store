@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import Search from './Search.js';
 import Menu from './Menu.js';
 import Nav from './Nav.js';
+import Cart from '../Cart';
 import StyledHeader from '../styles/HeaderStyles.js';
 
 
@@ -43,6 +44,7 @@ class Header extends Component {
             toggAcctDrpdwn={this.toggAcctDrpdwn}
           />
         </div>
+        <Cart />
 
         <Nav />
       </StyledHeader>
