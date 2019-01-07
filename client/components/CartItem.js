@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
+import RemoveFromCart from './Buttons/RemoveFromCart';
 import { formatMoney, capWord } from '../lib/utils';
 
 
@@ -16,7 +17,7 @@ const CartItem = ({ id, quantity, variant }) => {
 
         <td className="cart-item-quantity">
           <div className="cart-item-quantity-remove">
-            <button>remove cartitem here</button>
+            <RemoveFromCart id={id} />
           </div>
         </td>
       </StyledCartItem>
@@ -77,7 +78,7 @@ const CartItem = ({ id, quantity, variant }) => {
           <button>update cartitem amt by +1</button>
 
           <div className="cart-item-quantity-remove">
-            <button>remove cartitem here</button>
+            <RemoveFromCart id={id} />
           </div>
         </div>
       </td>
