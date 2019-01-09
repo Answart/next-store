@@ -28,6 +28,7 @@ type Mutation {
   updateProductVariant(id: ID!, color: String!, size: String!, quantity: Int, price: Float, sale: Boolean, salePrice: Float, imageId: String): Variant!
   deleteProductVariant(id: ID!): Variant
   addToCart(id: ID!): CartItem
+  removeFromCart(id: ID!): CartItem
 }
 
 type User {
