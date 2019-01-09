@@ -2,6 +2,7 @@ import { Query } from 'react-apollo';
 import { StyledCart } from './styles/CartStyles';
 import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
+import CartItem from './CartItem';
 import NotFound from './NotFound';
 import ToggleCart from './Buttons/ToggleCart';
 import CheckoutCart from './Buttons/CheckoutCart';
@@ -54,9 +55,11 @@ const Cart = () => (
                     ) : (
                       <>
                         {myCart.map(cartItem =>
-                          <tr key={cartItem.id}>
-                            <td>CartItem here</td>
-                          </tr>
+                          <CartItem key={cartItem.id}
+                            id={cartItem.id}
+                            quantity={cartItem.quantity}
+                            variant={cartItem.variant}
+                          />
                         )}
                       </>
                     )}
