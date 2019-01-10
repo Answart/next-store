@@ -1,19 +1,27 @@
 import PropTypes from 'prop-types';
+import { Mutation } from 'react-apollo';
+import { REMOVE_FROM_CART_MUTATION } from '../../graphql';
 
 
 const RemoveFromCart = ({ id }) => {
-  const addToCart = e => {
-    e.preventDefault();
-    console.log('adding', id)
-  };
   return (
+    <Mutation mutation={REMOVE_FROM_CART_MUTATION}
+      variables={{ id }}
+    >
+      {(removeFromCart, { loading, error }) => (
         <button className="undrln-btn"
           disabled={!id}
-          onClick={addToCart}
+          onClick={(e) => {
+            e.preventDefault();
+            removeFromCart()
+              .catch(err => alert(err.message.replace('GraphQL error: ', '')));
+          }}
           title="Delete Item"
         >
-          Remove
+          Remov{loading ? 'ing' : 'e'}
         </button>
+      )}
+    </Mutation>
   );
 };
 
