@@ -40,8 +40,9 @@ const StyledHeader = styled.header`
       font-weight: bold;
       color: ${props => props.theme.darkBlue};
       margin: 0 0.5rem;
-      padding-right: 0.5rem;
+      padding: 0.5rem 0.5rem 0 0;
       background-color: transparent;
+      border-bottom: 1px solid transparent;
       &:hover, &:active, &:focus {
         background-color: transparent;
         border-bottom: 1px solid ${props => props.theme.grey};
@@ -53,10 +54,12 @@ const StyledHeader = styled.header`
     }
     button.hdr-search-btn {
       line-height: 1.7rem;
-      padding-top: 0.35rem;
+      padding-top: 0.5rem;
       font-size: 1rem;
       font-weight: bold;
+      color: ${props => props.theme.darkGrey};
       &:hover, &:active, &:focus {
+        color: ${props => props.theme.darkBlue};
         font-weight: bold;
       }
       &:disabled {
