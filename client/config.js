@@ -4,8 +4,31 @@ export const PROD_SERVER_URL = `https://us1.prisma.sh/alexandra-6f757c/next-stor
 export const CLOUDINARY_API_KEY = '376449995445936';
 export const CLOUDINARY_PRESET = 'nextstore';
 export const CLOUDINARY_SECRET = 'yk-s-3xjvyoZl8B2Ue4E01CqhZ4';
-export const SALES_TAX_RATE = 0.12;
+export const STRIPE_API_KEY = '';
+export const SALES_TAX_RATE = 0.0925;
 export const SHIPPING_COST_PER_ITEM = 1.2;
+export const theme = {
+  red: '#dc3736',
+  redOrange: '#e86c52',
+  coral: '#ffc5bc',
+  orange: '#ed8e40',
+  yellow: '#ffdd52',
+  green: '#b2c94c',
+  blue: '#497bd3',
+  darkBlue: '#47505f',
+  purple: '#9083c9',
+  pink: '#f498b0',
+  brown: '#997151',
+  gold: '#e8cc68',
+  beige: '#f9f6f4',
+  offWhite: '#EDEDED',
+  lightGrey: '#cbc9c7',
+  grey: '#9A9A9A',
+  darkGrey: '#6d6c6c',
+  black: '#3d3d3d',
+  maxWidth: '1050px',
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+};
 export const permissions = [
   'ADMIN',
   'USER',
