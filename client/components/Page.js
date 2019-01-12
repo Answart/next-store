@@ -83,79 +83,6 @@ const StyledPage = styled.div`
     margin: 0 auto;
     padding: 2rem;
   }
-`;
-
-injectGlobal`
-  @font-face {
-    font-family: 'guttenbg';
-    src: url('/static/fonts/Guttenbg.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'mank_sans_medium';
-    src: url('/static/fonts/MankSans-Medium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'mank_sans';
-    src: url('/static/fonts/MankSans.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  html {
-    box-sizing: border-box;
-    font-size: 10px;
-    color: ${props => props.theme.darkGrey};
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  body {
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
-    letter-spacing: 0.02rem;
-    font-family: 'Tahoma', 'Geneva', sans-serif;
-    color: ${props => props.theme.darkGrey};
-    -webkit-font-smoothing: antialiased;
-  }
-  div {
-    display: block;
-  }
-  h1, h2, h3, h4, h5 {
-    color: ${props => props.theme.darkBlue};
-    padding: 0;
-    margin: 0;
-  }
-  a {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: ${props => props.theme.darkGrey};
-    text-decoration: none;
-    &:hover, &:active, &:focus {
-      color: ${props => props.theme.darkBlue};
-      outline: 0;
-    }
-  }
-  button {
-    font-family: 'Tahoma', 'Geneva', sans-serif;
-    text-decoration: none;
-    font-weight: normal;
-    color: ${props => props.theme.darkGrey};
-    cursor: pointer;
-    border: 0;
-    text-decoration: none;
-    background-color: inherit;
-    &:disabled {
-      opacity: 0.5;
-    }
-    &:hover, &:active, &:focus {
-      outline: 0;
-      font-weight: bold;
-    }
-  }
   .red-sample {
     width: 2rem;
     height: 2rem;
@@ -265,6 +192,79 @@ injectGlobal`
       radial-gradient(circle at 6.7% 75%, ${props => props.theme.blue}, rgba(0,0,255,0) 70.71%),
       radial-gradient(circle at 93.3% 75%, ${props => props.theme.yellow}, rgba(0,255,0,0) 100%) beige; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${props => props.theme.red}', endColorstr='${props => props.theme.yellow}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+`;
+
+injectGlobal`
+  @font-face {
+    font-family: 'guttenbg';
+    src: url('/static/fonts/Guttenbg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'mank_sans_medium';
+    src: url('/static/fonts/MankSans-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'mank_sans';
+    src: url('/static/fonts/MankSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  html {
+    box-sizing: border-box;
+    font-size: 10px;
+    color: ${props => props.theme.darkGrey};
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    font-family: 'Tahoma', 'Geneva', sans-serif;
+    color: ${props => props.theme.darkGrey};
+    -webkit-font-smoothing: antialiased;
+  }
+  div {
+    display: block;
+  }
+  h1, h2, h3, h4, h5 {
+    color: ${props => props.theme.darkBlue};
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: ${props => props.theme.darkGrey};
+    text-decoration: none;
+    &:hover, &:active, &:focus {
+      color: ${props => props.theme.darkBlue};
+      outline: 0;
+    }
+  }
+  button {
+    font-family: 'Tahoma', 'Geneva', sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: ${props => props.theme.darkGrey};
+    cursor: pointer;
+    border: 0;
+    text-decoration: none;
+    background-color: inherit;
+    &:disabled {
+      opacity: 0.5;
+    }
+    &:hover, &:active, &:focus {
+      outline: 0;
+      font-weight: bold;
+    }
   }
 `;
 
