@@ -26,4 +26,4 @@ const Logout = () => (
 );
 
 
-export default Logout;
+export { Logout };

@@ -18,4 +18,4 @@ ToggleCart.propTypes = {
 };
 
 
-export default ToggleCart;
+export { ToggleCart };

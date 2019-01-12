@@ -37,4 +37,4 @@ RemoveFromCart.propTypes = {
 };
 
 
-export default RemoveFromCart;
+export { RemoveFromCart };

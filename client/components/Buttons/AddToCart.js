@@ -31,4 +31,4 @@ AddToCart.propTypes = {
 };
 
 
-export default AddToCart;
+export { AddToCart };

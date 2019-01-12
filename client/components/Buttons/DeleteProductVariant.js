@@ -44,4 +44,4 @@ DeleteProductVariant.propTypes = {
 };
 
 
-export default DeleteProductVariant;
+export { DeleteProductVariant };

@@ -21,4 +21,4 @@ CheckoutCart.propTypes = {
 };
 
 
-export default CheckoutCart;
+export { CheckoutCart };

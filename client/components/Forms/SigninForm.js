@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import DisplayMessage from '../DisplayMessage';
-import RequestPasswordReset from '../Buttons/RequestPasswordReset';
+import { RequestPasswordReset } from '../Buttons';
 import StyledForm from '../styles/FormStyles';
 import { SIGNIN_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 

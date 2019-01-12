@@ -4,7 +4,7 @@ import { StyledEditPage } from '../../components/styles/PageStyles';
 import SingleProduct from '../../components/SingleProduct';
 import NotFound from '../../components/NotFound';
 import PageTitle from '../../components/PageTitle';
-import DeleteProduct from '../../components/Buttons/DeleteProduct';
+import { DeleteProduct } from '../../components/Buttons';
 import { UpdateProductForm } from '../../components/Forms';
 import RequireSignin from '../../components/RequireSignin';
 

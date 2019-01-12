@@ -4,8 +4,7 @@ import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import CartItem from './CartItem';
 import NotFound from './NotFound';
-import ToggleCart from './Buttons/ToggleCart';
-import CheckoutCart from './Buttons/CheckoutCart';
+import { ToggleCart, CheckoutCart } from './Buttons';
 import { formatMoney, getCartTotals } from '../lib/utils';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 

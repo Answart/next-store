@@ -20,4 +20,4 @@ UpdateCartItem.propTypes = {
 };
 
 
-export default UpdateCartItem;
+export { UpdateCartItem };

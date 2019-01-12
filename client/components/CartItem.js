@@ -3,8 +3,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
-import RemoveFromCart from './Buttons/RemoveFromCart';
-import UpdateCartItem from './Buttons/UpdateCartItem';
+import { RemoveFromCart, UpdateCartItem } from './Buttons';
 import { formatMoney, capWord } from '../lib/utils';
 
 

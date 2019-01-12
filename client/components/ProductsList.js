@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { StyledProductsList, StyledProductsListItem } from './styles/ProductStyles';
 import PriceTag from './PriceTag';
-import DeleteProduct from './Buttons/DeleteProduct';
+import { DeleteProduct } from './Buttons';
 
 
 const ProductsList = ({ products, editView, userId }) => (

@@ -3,7 +3,7 @@ import SingleProduct from '../components/SingleProduct';
 import NotFound from '../components/NotFound';
 import PageTitle from '../components/PageTitle';
 import Product from '../components/Product';
-import AddToCart from '../components/Buttons/AddToCart';
+import { AddToCart } from '../components/Buttons';
 import { StyledBuyPage } from '../components/styles/PageStyles';
 
 

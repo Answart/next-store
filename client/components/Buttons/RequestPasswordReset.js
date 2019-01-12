@@ -30,4 +30,4 @@ RequestPasswordReset.propTypes = {
 };
 
 
-export default RequestPasswordReset;
+export { RequestPasswordReset };

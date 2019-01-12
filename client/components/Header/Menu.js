@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import User from '../User';
-import Logout from '../Buttons/Logout';
-import ToggleCart from '../Buttons/ToggleCart';
+import { ToggleCart, Logout } from '../Buttons';
 
 
 const Menu = props => (

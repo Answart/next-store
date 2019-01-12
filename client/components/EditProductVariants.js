@@ -4,7 +4,7 @@ import { StyledEditProductVariants } from './styles/ProductStyles';
 import DisplayMessage from './DisplayMessage';
 import Product from './Product';
 import { UpdateProductVariantForm } from './Forms';
-import DeleteProductVariant from './Buttons/DeleteProductVariant';
+import { DeleteProductVariant } from './Buttons';
 
 
 class EditProductVariants extends Component {
