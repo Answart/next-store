@@ -73,10 +73,12 @@ const StyledHeader = styled.header`
       -webkit-font-smoothing: antialiased;
       outline: medium none;
       overflow: hidden;
-      border-bottom: 1px solid ${props => props.theme.beige};
-    }
-    a:hover {
-      border-bottom: 1px solid ${props => props.theme.coral};
+      color: inherit;
+      border-bottom: 1.5px solid ${props => props.theme.beige};
+      &:hover {
+        color: ${props => props.theme.darkBlue};
+        border-bottom: 1.5px solid ${props => props.theme.coral};
+      }
     }
   }
   .hdr-menu {
