@@ -6,7 +6,7 @@ import { orderByList, showList } from '../config';
 import { capWord } from '../lib/utils';
 
 
-const PaginationStyles = styled.div`
+const StyledPagination = styled.div`
   text-align: center;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
@@ -17,19 +17,28 @@ const PaginationStyles = styled.div`
     margin: 0;
   }
   a[aria-disabled='true'] {
+    color: ${props => props.theme.darkGrey};
     pointer-events: none;
     opacity: 0.5;
   }
   button.sort-btn {
+    color: ${props => props.theme.darkGrey};
     border: 1px solid ${props => props.theme.lightGrey};
     padding: 9px;
     margin: 0 0.2rem;
     font-weight: bold;
+    &:hover {
+      color: ${props => props.theme.darkBlue};
+    }
   }
   a.page-btn {
+    color: ${props => props.theme.darkGrey};
     border: 1px solid ${props => props.theme.lightGrey};
     padding: 9px;
     margin: 0 0.2rem;
+    &:hover {
+      color: ${props => props.theme.darkBlue};
+    }
   }
   .pagination-padding {
     padding: 9px;
@@ -71,6 +80,7 @@ const PaginationStyles = styled.div`
     align-content: start;
     .page-num {
       padding: 9px;
+      color: ${props => props.theme.darkGrey};
       &:first-child {
         padding-left: 0;
       }
@@ -129,7 +139,7 @@ class Pagination extends Component {
     const pages = Math.ceil(count/currentShow);
     const list = getList(currentPage, pages);
     return (
-      <PaginationStyles data-test="pagination">
+      <StyledPagination data-test="pagination">
         <div className="sort">
           <div className="srt-inline">
             <button className="sort-btn"
@@ -234,7 +244,7 @@ class Pagination extends Component {
             </a>
           </Link>
         </div>
-      </PaginationStyles>
+      </StyledPagination>
     )
   }
 };
