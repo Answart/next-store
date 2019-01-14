@@ -62,7 +62,7 @@ class SigninForm extends React.Component {
 
               <RequestPasswordReset
                 email={this.state.email}
-              >Forgot password?</RequestPasswordReset>
+              >Reset password?</RequestPasswordReset>
 
               <button className="big-btn"
                 disabled={loading}
