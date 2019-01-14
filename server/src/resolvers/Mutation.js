@@ -117,7 +117,7 @@ const Mutation = {
     return updatedUser;
   },
   async updatePermissions(parent, args, ctx, info) {
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('You must be logged in!');
 
     const currentUser = await ctx.db.query.user({
@@ -145,7 +145,7 @@ const Mutation = {
     delete data.id;
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('CREATE IMAGE: You must be signed in to create an image.');
 
     // Existing image?
@@ -184,7 +184,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('CREATE PRODUCT: You must be signed in to create a product.');
 
     // requester has permission to delete?
@@ -217,7 +217,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('UPDATE PRODUCT: You must be signed in to add to a product.');
 
     // Existing product?
@@ -272,7 +272,7 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('DELETE PRODUCT: You must be signed in to delete a product.');
 
     // Existing product?
@@ -298,7 +298,7 @@ const Mutation = {
     delete data.imageId;
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('CREATE SELECTION: You must be signed in to add to a selection to a product.');
 
     // Existing product?
@@ -354,7 +354,7 @@ const Mutation = {
     delete data.id;
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('UPDATE SELECTION: You must be signed in to add a selection to a product.');
 
     // Existing productVariant?
@@ -402,7 +402,7 @@ const Mutation = {
     const where = { id: args.id };
 
     // Logged in?
-    const userId = ctx.request.userId;
+    const { userId } = ctx.request;
     if (!userId) throw new Error('DELETE SELECTION: You must be signed in to delete a product.');
 
     // Existing product?
