@@ -30,24 +30,28 @@ const Menu = props => (
             <div id="myDropdown" className={props.acctDrpdwn ? 'hdr-dropdown-content show' : 'hdr-dropdown-content'}>
               <a className="undrln-btn" href="/sell">Create Product</a>
               <a className="undrln-btn" href={`/shop?name=${me.name}`}>My Products</a>
+              <a className="undrln-btn" href="/account/orders">Order History</a>
+              <a className="undrln-btn" href="/account/sales">Sale History</a>
               <Logout />
             </div>
           </span>
 
-          <Link href="/sell"><a>
-            <img src="/static/images/box.svg" alt="Sell" height="17" width="17" />
+          <Link href="/sell"><a className="hdr-pad-sell">
+            <img src="/static/images/box.svg" alt="Sell" height="19" width="19" />
           </a></Link>
 
           <Link href={{
             pathname: "/shop",
             query: { name: `${me.name}` }
-          }}><a className="hdr-pad">
-            <img src="/static/images/package.svg" alt="Products" height="14" width="14" />
+          }}><a className="hdr-pad-shop">
+            <img src="/static/images/package.svg" alt="Products" height="17" width="17" />
           </a></Link>
 
-          <span className="hdr-inline hdr-pad">
+          <span className="hdr-inline hdr-pad-cart">
             <ToggleCart>
-              <img src="/static/images/cart.svg" alt="Cart" height="14" width="14" />
+              <>
+                <img src="/static/images/cart.svg" alt="Cart" height="16" width="16" />
+              </>
             </ToggleCart>
           </span>
         </div>

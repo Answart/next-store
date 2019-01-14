@@ -87,7 +87,7 @@ const StyledHeader = styled.header`
   .hdr-menu {
     display: flex;
     justify-content: flex-end;
-    padding-top: 2.1rem;
+    padding-top: 0.55rem;
     color: ${props => props.theme.darkGrey};
     a {
       padding: 0 0.4rem;
@@ -97,7 +97,22 @@ const StyledHeader = styled.header`
     font-size: 0.9rem !important;
   }
   .hdr-pad {
-    padding-top: 0.23rem !important;
+    padding-top: 1.5rem !important;
+  }
+  .hdr-pad-sell {
+    padding-top: 1.2rem !important;
+  }
+  .hdr-pad-shop {
+    padding-top: 1.3rem !important;
+  }
+  .hdr-pad-cart {
+    padding: 0.15rem 0.4rem 0 0.4rem !important;
+    button {
+      padding: 0;
+    }
+    img {
+      margin-right: 1.1rem;
+    }
   }
   .hdr-inline {
     position: relative;
