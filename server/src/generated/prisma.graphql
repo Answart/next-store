@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alexandra-6f757c/next-store-app/dev
-# timestamp: Sun Jan 06 2019 00:42:08 GMT-0800 (Pacific Standard Time)
+# timestamp: Mon Jan 14 2019 01:13:45 GMT-0800 (Pacific Standard Time)
 
 type AggregateCartItem {
   count: Int!
@@ -213,6 +213,7 @@ input CartItemUpdateManyMutationInput {
 input CartItemUpdateManyWithoutUserInput {
   create: [CartItemCreateWithoutUserInput!]
   connect: [CartItemWhereUniqueInput!]
+  set: [CartItemWhereUniqueInput!]
   disconnect: [CartItemWhereUniqueInput!]
   delete: [CartItemWhereUniqueInput!]
   update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
@@ -878,6 +879,7 @@ input ImageUpdateManyMutationInput {
 input ImageUpdateManyWithoutProductInput {
   create: [ImageCreateWithoutProductInput!]
   connect: [ImageWhereUniqueInput!]
+  set: [ImageWhereUniqueInput!]
   disconnect: [ImageWhereUniqueInput!]
   delete: [ImageWhereUniqueInput!]
   update: [ImageUpdateWithWhereUniqueWithoutProductInput!]
@@ -2983,6 +2985,7 @@ input VariantUpdateManyMutationInput {
 input VariantUpdateManyWithoutImageInput {
   create: [VariantCreateWithoutImageInput!]
   connect: [VariantWhereUniqueInput!]
+  set: [VariantWhereUniqueInput!]
   disconnect: [VariantWhereUniqueInput!]
   delete: [VariantWhereUniqueInput!]
   update: [VariantUpdateWithWhereUniqueWithoutImageInput!]
@@ -2994,6 +2997,7 @@ input VariantUpdateManyWithoutImageInput {
 input VariantUpdateManyWithoutProductInput {
   create: [VariantCreateWithoutProductInput!]
   connect: [VariantWhereUniqueInput!]
+  set: [VariantWhereUniqueInput!]
   disconnect: [VariantWhereUniqueInput!]
   delete: [VariantWhereUniqueInput!]
   update: [VariantUpdateWithWhereUniqueWithoutProductInput!]
