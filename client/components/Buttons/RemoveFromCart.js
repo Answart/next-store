@@ -14,6 +14,13 @@ const RemoveFromCart = ({ id }) => {
     <Mutation mutation={REMOVE_FROM_CART_MUTATION}
       variables={{ id }}
       update={update}
+      optimisticResponse={{
+        __typename: 'Mutation',
+        removeFromCart: {
+          __typename: 'CartItem',
+          id
+        }
+      }}
     >
       {(removeFromCart, { loading, error }) => (
         <button className="undrln-btn"
