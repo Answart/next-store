@@ -32,5 +32,6 @@ export {
 } from './variants';
 export {
   ADD_TO_CART_MUTATION,
+  UPDATE_CARTITEM_MUTATION,
   REMOVE_FROM_CART_MUTATION
 } from './cart';
