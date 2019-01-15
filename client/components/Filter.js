@@ -84,9 +84,8 @@ class Filter extends Component {
   toggleFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
     const { name } = e.currentTarget;
-    let toggleMe = this.state[name];
 
-    this.setState({ [name]: !toggleMe });
+    this.setState(state => ({ [name]: !state[name] }));
   };
   clearFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
