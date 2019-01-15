@@ -57,6 +57,24 @@ const StyledPage = styled.div`
     margin: 0 auto;
     padding: 2rem;
   }
+  .sample-hover {
+    width: 2.75rem;
+    height: 2.75rem;
+    &:hover {
+      border: 1px solid ${props => props.theme.black};
+      border-radius: 15px;
+    }
+  }
+  .sample-selected {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid ${props => props.theme.black};
+    border-radius: 15px;
+  }
+  .color-sample {
+    color: transparent;
+    margin: -3.75px 0 0 -3.75px;
+  }
   .red-sample {
     width: 2rem;
     height: 2rem;

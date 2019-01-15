@@ -58,9 +58,6 @@ const FilterStyles = styled.div`
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(3, 1fr);
       align-items: stretch;
-      .color-sample {
-        margin: -3.5px 0 0 -3.5px;
-      }
     }
     .filter-sizes {
       padding: 0.5rem 1rem 0 1rem;
@@ -68,20 +65,6 @@ const FilterStyles = styled.div`
       grid-auto-flow: row;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(4, 1fr);
-    }
-    .filter-hover {
-      width: 2.5rem;
-      height: 2.5rem;
-      &:hover {
-        border: 1px solid ${props => props.theme.black};
-        border-radius: 15px;
-      }
-    }
-    .filter-selected {
-      width: 2.5rem;
-      height: 2.5rem;
-      border: 1px solid ${props => props.theme.black};
-      border-radius: 15px;
     }
   }
 `;
@@ -191,7 +174,7 @@ class Filter extends Component {
             {showColors && (
               <div className="filter-colors">
                 {colors.map((color, i) => (
-                  <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'filter-selected' : 'filter-hover'}`}
+                  <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'sample-selected' : 'sample-hover'}`}
                     title={`Refine by color: ${capWord(color)}`}
                     onClick={(e) => this.updateFilter(e, 'color', color)}
                   >
@@ -219,7 +202,7 @@ class Filter extends Component {
             {showSizes && (
               <div className="filter-sizes">
                 {sizes.map((size, i) => (
-                  <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'filter-selected' : 'filter-hover'}`}
+                  <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'sample-selected' : 'sample-hover'}`}
                     onClick={(e) => this.updateFilter(e, 'size', size)}
                   >
                     {capWord(size)}
