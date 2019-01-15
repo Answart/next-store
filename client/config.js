@@ -52,15 +52,6 @@ export const COLORS = [
   'gold',
   'multi'
 ];
-export const departments = [
-  'tops',
-  'bottoms',
-  'shoes',
-  'outwear',
-  'accessories',
-  'decor',
-  'wedding'
-];
 export const SIZES = [
   'XXS',
   'XS',
@@ -82,6 +73,15 @@ export const SIZES = [
   '14',
   '16',
   '18'
+];
+export const DEPARTMENTS = [
+  'tops',
+  'bottoms',
+  'shoes',
+  'outwear',
+  'accessories',
+  'decor',
+  'wedding'
 ];
 export const categories = {
   'tops': [

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
-import { departments, categories, COLORS, SIZES } from '../config';
+import { DEPARTMENTS, categories, COLORS, SIZES } from '../config';
 import { capWord, getFilterProps } from '../lib/utils';
 
 
@@ -125,7 +125,7 @@ class Filter extends Component {
     const categoryListType = pageQuery.department ? 'category' : 'department';
     const categoryList = categoryListType === 'category'
       ? categories[pageQuery.department]
-      : departments;
+      : DEPARTMENTS;
     return (
       <FilterStyles data-test="filter">
         {!!categoryList.length && (

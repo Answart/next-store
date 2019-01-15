@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
-import { departments, categories } from '../../config';
+import { DEPARTMENTS, categories } from '../../config';
 import { capWord } from '../../lib/utils';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
@@ -91,7 +91,7 @@ const ProductFormFields = props => {
               onChange={handleChange}
               required
             >
-              {departments.map(dept => <option key={dept} value={dept}>{capWord(dept)}</option>)}
+              {DEPARTMENTS.map(dept => <option key={dept} value={dept}>{capWord(dept)}</option>)}
             </select>
           </label>
         </div>
