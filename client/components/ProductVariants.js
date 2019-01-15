@@ -96,11 +96,19 @@ class ProductVariants extends Component {
         {sizes && !!sizes.length && (
           <div className="prdct-padding">
             <div>Sizes:</div>
-            <select id="prdct-var-size" name="size"
-              onChange={this.updateFilter}
-            >
-              {sizes.map(sz => <option key={sz}>{sz}</option>)}
-            </select>
+
+            <div className="prdct-padding filter-sizes">
+              {sizes.map((size, i) => (
+                <button key={i} className={`undrln-btn ${size == variant.size ? 'sample-selected' : 'sample-hover'}`}
+                  name="size"
+                  value={size}
+                  title={`Select size: ${capWord(size)}`}
+                  onClick={this.updateFilter}
+                >
+                  {capWord(size)}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
