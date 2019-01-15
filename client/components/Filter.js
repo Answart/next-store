@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
-import { departments, categories, COLORS, sizes } from '../config';
+import { departments, categories, COLORS, SIZES } from '../config';
 import { capWord, getFilterProps } from '../lib/utils';
 
 
@@ -197,7 +197,7 @@ class Filter extends Component {
           </div>
         )}
 
-        {!!sizes.length && (
+        {!!SIZES.length && (
           <div className="filter">
             <div className="filter-top">
               <h4>SIZE</h4>
@@ -216,7 +216,7 @@ class Filter extends Component {
 
             {this.state.showSizes && (
               <div className="filter-sizes">
-                {sizes.map((size, i) => (
+                {SIZES.map((size, i) => (
                   <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'sample-selected' : 'sample-hover'}`}
                     name="size"
                     value={size}

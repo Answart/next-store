@@ -61,7 +61,7 @@ export const departments = [
   'decor',
   'wedding'
 ];
-export const sizes = [
+export const SIZES = [
   'XXS',
   'XS',
   'S',
