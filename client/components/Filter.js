@@ -118,9 +118,6 @@ class Filter extends Component {
     });
   };
   render() {
-    const {
-      showCategories, showColors, showSizes, showPrices, showBrands
-    } = this.state;
     const { pageQuery, products } = this.props;
     const { brands } = getFilterProps(products);
     const categoryListType = pageQuery.department ? 'category' : 'department';
@@ -142,7 +139,7 @@ class Filter extends Component {
               >click</button>
             </div>
 
-            {showCategories && (
+            {this.state.showCategories && (
               <div className="filter-categories">
                 {categoryList.map((category, i) => (
                   <button key={i} className="undrln-btn"
@@ -171,7 +168,7 @@ class Filter extends Component {
               >click</button>
             </div>
 
-            {showColors && (
+            {this.state.showColors && (
               <div className="filter-colors">
                 {colors.map((color, i) => (
                   <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'sample-selected' : 'sample-hover'}`}
@@ -199,7 +196,7 @@ class Filter extends Component {
               >click</button>
             </div>
 
-            {showSizes && (
+            {this.state.showSizes && (
               <div className="filter-sizes">
                 {sizes.map((size, i) => (
                   <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'sample-selected' : 'sample-hover'}`}
@@ -239,7 +236,7 @@ class Filter extends Component {
               >click</button>
             </div>
 
-            {showBrands && (
+            {this.state.showBrands && (
               <div className="filter-categories">
                 {brands.map((brand, i) => (
                   <button key={i} className="undrln-btn"
