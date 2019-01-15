@@ -84,11 +84,13 @@ class ProductVariants extends Component {
     return (
       <StyledProductVariants>
         {variant && (
-          <PriceTag
-            price={variant.price}
-            sale={variant.sale}
-            salePrice={variant.salePrice}
-          />
+          <div className="prdct-padding">
+            <PriceTag
+              price={variant.price}
+              sale={variant.sale}
+              salePrice={variant.salePrice}
+            />
+          </div>
         )}
 
         {sizes && !!sizes.length && (
