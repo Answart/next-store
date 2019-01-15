@@ -88,12 +88,13 @@ class Filter extends Component {
 
     this.setState({ [name]: !toggleMe });
   };
-  clearFilter = (e, queryVariable) => {
+  clearFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
+    const { name } = e.currentTarget;
     const { pageQuery } = this.props;
 
-    if (pageQuery[queryVariable]) {
-      delete pageQuery[queryVariable];
+    if (pageQuery[name]) {
+      delete pageQuery[name];
 
       Router.push({
         pathname: "/shop",
@@ -133,7 +134,8 @@ class Filter extends Component {
               <h4>CATEGORY</h4>
               <button className="filter-clear-btn"
                 disabled={!pageQuery[categoryListType]}
-                onClick={(e) => this.clearFilter(e, categoryListType)}
+                name={categoryListType}
+                onClick={this.clearFilter}
               >{!!pageQuery.category && 'Clear'}</button>
               <button
                 name="showCategories"
@@ -163,7 +165,8 @@ class Filter extends Component {
               <h4>COLOR</h4>
               <button className="filter-clear-btn"
                 disabled={!pageQuery.color}
-                onClick={(e) => this.clearFilter(e, 'color')}
+                name="color"
+                onClick={this.clearFilter}
               >{!!pageQuery.color && 'Clear'}</button>
               <button
                 name="showColors"
@@ -192,7 +195,8 @@ class Filter extends Component {
               <h4>SIZE</h4>
               <button className="filter-clear-btn"
                 disabled={!pageQuery.size}
-                onClick={(e) => this.clearFilter(e, 'size')}
+                name="size"
+                onClick={this.clearFilter}
               >{!!pageQuery.size && 'Clear'}</button>
               <button
                 name="showSizes"
@@ -219,7 +223,8 @@ class Filter extends Component {
             <h4>PRICE</h4>
             <button className="filter-clear-btn"
               disabled={!pageQuery.price}
-              onClick={(e) => this.clearFilter(e, 'price')}
+              name="price"
+              onClick={this.clearFilter}
             >{!!pageQuery.price && 'Clear'}</button>
             <button
               name="showPrices"
@@ -234,7 +239,8 @@ class Filter extends Component {
               <h4>BRAND</h4>
               <button className="filter-clear-btn"
                 disabled={!pageQuery.brand}
-                onClick={(e) => this.clearFilter(e, 'brand')}
+                name="brand"
+                onClick={this.clearFilter}
               >{!!pageQuery.brand && 'Clear'}</button>
               <button
                 name="showBrands"
