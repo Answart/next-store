@@ -23,9 +23,8 @@ class Header extends Component {
   state = { acctDrpdwn: false };
   toggAcctDrpdwn = e => {
     if (!!e && e.preventDefault) e.preventDefault();
-    let currentState = this.state.acctDrpdwn;
 
-    this.setState({ acctDrpdwn: !currentState });
+    this.setState(state => ({ acctDrpdwn: !state.acctDrpdwn }));
   };
   render() {
     return (
