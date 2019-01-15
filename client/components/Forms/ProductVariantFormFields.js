@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
-import { colors, sizes } from '../../config';
+import { COLORS, sizes } from '../../config';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
 
@@ -86,7 +86,7 @@ const ProductVariantFormFields = props => {
               onChange={handleChange}
             >
               <option key={0} value=''></option>
-              {colors.map(clr => <option key={clr} value={clr}>{clr}</option>)}
+              {COLORS.map(clr => <option key={clr} value={clr}>{clr}</option>)}
             </select>
           </label>
         </div>

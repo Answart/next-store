@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
-import { departments, categories, colors, sizes } from '../config';
+import { departments, categories, COLORS, sizes } from '../config';
 import { capWord, getFilterProps } from '../lib/utils';
 
 
@@ -163,7 +163,7 @@ class Filter extends Component {
           </div>
         )}
 
-        {!!colors.length && (
+        {!!COLORS.length && (
           <div className="filter">
             <div className="filter-top">
               <h4>COLOR</h4>
@@ -182,7 +182,7 @@ class Filter extends Component {
 
             {this.state.showColors && (
               <div className="filter-colors">
-                {colors.map((color, i) => (
+                {COLORS.map((color, i) => (
                   <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'sample-selected' : 'sample-hover'}`}
                     title={`Refine by color: ${capWord(color)}`}
                     name="color"

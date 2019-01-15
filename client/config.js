@@ -37,7 +37,7 @@ export const permissions = [
   'PRODUCTDELETE',
   'PERMISSIONUPDATE',
 ];
-export const colors = [
+export const COLORS = [
   'red',
   'orange',
   'yellow',
