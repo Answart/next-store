@@ -126,9 +126,8 @@ class Pagination extends Component {
   };
   toggDrpdwn = (e, drpdwn) => {
     if (!!e && e.preventDefault) e.preventDefault();
-    let dd = this.state[drpdwn];
 
-    this.setState({ [drpdwn]: !dd });
+    this.setState(state => ({ [drpdwn]: !state[drpdwn] }));
   };
   render() {
     const {
