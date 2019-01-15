@@ -29,14 +29,6 @@ export const theme = {
   maxWidth: '1050px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
-export const permissions = [
-  'ADMIN',
-  'USER',
-  'PRODUCTCREATE',
-  'PRODUCTUPDATE',
-  'PRODUCTDELETE',
-  'PERMISSIONUPDATE',
-];
 export const COLORS = [
   'red',
   'orange',
@@ -106,6 +98,14 @@ export const CATEGORIES = {
     'dresses', 'shoes', 'gifts', 'accessories'
   ]
 };
+export const PERMISSIONS = [
+  'ADMIN',
+  'USER',
+  'PRODUCTCREATE',
+  'PRODUCTUPDATE',
+  'PRODUCTDELETE',
+  'PERMISSIONUPDATE',
+];
 export const orderByList = {
   'name': 'title_DESC',
   'newest': 'createdAt_DESC',

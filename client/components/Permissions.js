@@ -2,7 +2,7 @@ import { Mutation } from 'react-apollo';
 import PropTypes from 'prop-types';
 import DisplayMessage from './DisplayMessage';
 import { StyledPermissionsTable } from './styles/TableStyles';
-import { permissions } from '../config';
+import { PERMISSIONS } from '../config';
 import { UPDATE_PERMISSIONS_MUTATION } from '../graphql';
 
 
@@ -53,7 +53,7 @@ class UserPermissions extends React.Component {
 
               <td>{user.email}</td>
 
-              {permissions.map(permission => (
+              {PERMISSIONS.map(permission => (
                 <td key={permission}>
                   <label htmlFor={`${user.id}-permission-${permission}`}>
                     <input
@@ -90,7 +90,7 @@ const Permissions = ({ users }) => (
 
         <th>Email</th>
 
-        {permissions.map(permission => (
+        {PERMISSIONS.map(permission => (
           <th key={permission}>{permission}</th>
         ))}
 
