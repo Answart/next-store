@@ -102,16 +102,16 @@ class Filter extends Component {
       });
     }
   };
-  updateFilter = (e, queryVariable, queryValue) => {
+  updateFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
-    if (!queryValue) return;
+    const { name, value } = e.currentTarget;
+    if (!value) return;
     const { pageQuery } = this.props;
-    console.log('updateFilter', queryVariable, queryValue)
 
-    if (pageQuery[queryVariable] !== queryValue) {
-      pageQuery[queryVariable] = queryValue;
+    if (pageQuery[name] !== value) {
+      pageQuery[name] = value;
     } else {
-      delete pageQuery[queryVariable];
+      delete pageQuery[name];
     };
 
     Router.push({
@@ -149,7 +149,9 @@ class Filter extends Component {
                   <button key={i} className="undrln-btn"
                     disabled={category == pageQuery[categoryListType]}
                     title={`Go to category: ${capWord(category)}`}
-                    onClick={(e) => this.updateFilter(e, categoryListType, category)}
+                    name={categoryListType}
+                    value={category}
+                    onClick={this.updateFilter}
                   >
                     {capWord(category)}
                   </button>
@@ -179,7 +181,9 @@ class Filter extends Component {
                 {colors.map((color, i) => (
                   <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'sample-selected' : 'sample-hover'}`}
                     title={`Refine by color: ${capWord(color)}`}
-                    onClick={(e) => this.updateFilter(e, 'color', color)}
+                    name="color"
+                    value={color}
+                    onClick={this.updateFilter}
                   >
                     <div className={`color-sample ${color}-sample`}></div>
                   </button>
@@ -208,7 +212,9 @@ class Filter extends Component {
               <div className="filter-sizes">
                 {sizes.map((size, i) => (
                   <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'sample-selected' : 'sample-hover'}`}
-                    onClick={(e) => this.updateFilter(e, 'size', size)}
+                    name="size"
+                    value={size}
+                    onClick={this.updateFilter}
                   >
                     {capWord(size)}
                   </button>
@@ -254,7 +260,9 @@ class Filter extends Component {
                   <button key={i} className="undrln-btn"
                     disabled={brand == pageQuery.brand}
                     title={`Refine by brand: ${capWord(brand)}`}
-                    onClick={(e) => this.updateFilter(e, 'brand', brand)}
+                    name="brand"
+                    value={brand}
+                    onClick={this.updateFilter}
                   >
                     {capWord(brand)}
                   </button>
