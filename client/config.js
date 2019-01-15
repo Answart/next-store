@@ -83,7 +83,7 @@ export const DEPARTMENTS = [
   'decor',
   'wedding'
 ];
-export const categories = {
+export const CATEGORIES = {
   'tops': [
     'blouses', 'cartigans', 'casual', 'sweaters', 'sweatshirts'
   ],

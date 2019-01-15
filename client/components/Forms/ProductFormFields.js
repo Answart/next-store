@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import StyledProduct from '../styles/ProductStyles';
 import ByCreator from '../ByCreator';
-import { DEPARTMENTS, categories } from '../../config';
+import { DEPARTMENTS, CATEGORIES } from '../../config';
 import { capWord } from '../../lib/utils';
 import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 
@@ -10,8 +10,8 @@ import { uploadImageFile, destroyImageFileByToken } from '../../lib/cloudinary';
 const ProductFormFields = props => {
   const { department, image, online } = props;
   let categoriesByDept = department
-    ? categories[department]
-    : categories["tops"];
+    ? CATEGORIES[department]
+    : CATEGORIES["tops"];
   const handleChange = e => {
     if (!!e.preventDefault) e.preventDefault();
     let { name, type, value, checked } = e.target;
