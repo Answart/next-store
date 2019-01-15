@@ -81,11 +81,12 @@ class Filter extends Component {
     showPrices: true,
     showBrands: true
   };
-  toggleFilter = (e, filter) => {
+  toggleFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
-    let toggleMe = this.state[filter];
+    const { name } = e.currentTarget;
+    let toggleMe = this.state[name];
 
-    this.setState({ [filter]: !toggleMe });
+    this.setState({ [name]: !toggleMe });
   };
   clearFilter = (e, queryVariable) => {
     if (!!e && e.preventDefault) e.preventDefault();
@@ -135,7 +136,8 @@ class Filter extends Component {
                 onClick={(e) => this.clearFilter(e, categoryListType)}
               >{!!pageQuery.category && 'Clear'}</button>
               <button
-                onClick={(e) => this.toggleFilter(e, 'showCategories')}
+                name="showCategories"
+                onClick={this.toggleFilter}
               >click</button>
             </div>
 
@@ -164,7 +166,8 @@ class Filter extends Component {
                 onClick={(e) => this.clearFilter(e, 'color')}
               >{!!pageQuery.color && 'Clear'}</button>
               <button
-                onClick={(e) => this.toggleFilter(e, 'showColors')}
+                name="showColors"
+                onClick={this.toggleFilter}
               >click</button>
             </div>
 
@@ -192,7 +195,8 @@ class Filter extends Component {
                 onClick={(e) => this.clearFilter(e, 'size')}
               >{!!pageQuery.size && 'Clear'}</button>
               <button
-                onClick={(e) => this.toggleFilter(e, 'showSizes')}
+                name="showSizes"
+                onClick={this.toggleFilter}
               >click</button>
             </div>
 
@@ -218,7 +222,8 @@ class Filter extends Component {
               onClick={(e) => this.clearFilter(e, 'price')}
             >{!!pageQuery.price && 'Clear'}</button>
             <button
-              onClick={(e) => this.toggleFilter(e, 'showPrices')}
+              name="showPrices"
+              onClick={this.toggleFilter}
             >click</button>
           </div>
         </div>
@@ -232,7 +237,8 @@ class Filter extends Component {
                 onClick={(e) => this.clearFilter(e, 'brand')}
               >{!!pageQuery.brand && 'Clear'}</button>
               <button
-                onClick={(e) => this.toggleFilter(e, 'showBrands')}
+                name="showBrands"
+                onClick={this.toggleFilter}
               >click</button>
             </div>
 
