@@ -114,12 +114,20 @@ class ProductVariants extends Component {
 
         {colors && !!colors.length && (
           <div className="prdct-padding">
-            <div>Colors:</div>
-            <select id="prdct-var-color" name="color"
-              onChange={this.updateFilter}
-            >
-              {colors.map(clr => <option key={clr}>{clr}</option>)}
-            </select>
+            <div>{!!variant.color ? capWord(variant.color) : 'Colors:'}</div>
+
+            <div className="prdct-padding filter-colors">
+              {colors.map((color, i) => (
+                <button key={i} className={`undrln-btn ${color == variant.color ? 'sample-selected' : 'sample-hover'}`}
+                  name="color"
+                  value={color}
+                  title={`Select color: ${capWord(color)}`}
+                  onClick={this.updateFilter}
+                >
+                  <div className={`color-sample ${color}-sample`}></div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
