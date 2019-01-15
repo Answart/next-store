@@ -132,11 +132,13 @@ class Filter extends Component {
           <div className="filter">
             <div className="filter-top">
               <h4>CATEGORY</h4>
+
               <button className="filter-clear-btn"
                 disabled={!pageQuery[categoryListType]}
                 name={categoryListType}
                 onClick={this.clearFilter}
               >{!!pageQuery.category && 'Clear'}</button>
+
               <button
                 name="showCategories"
                 onClick={this.toggleFilter}
@@ -165,11 +167,13 @@ class Filter extends Component {
           <div className="filter">
             <div className="filter-top">
               <h4>COLOR</h4>
+
               <button className="filter-clear-btn"
                 disabled={!pageQuery.color}
                 name="color"
                 onClick={this.clearFilter}
               >{!!pageQuery.color && 'Clear'}</button>
+
               <button
                 name="showColors"
                 onClick={this.toggleFilter}
@@ -197,11 +201,13 @@ class Filter extends Component {
           <div className="filter">
             <div className="filter-top">
               <h4>SIZE</h4>
+
               <button className="filter-clear-btn"
                 disabled={!pageQuery.size}
                 name="size"
                 onClick={this.clearFilter}
               >{!!pageQuery.size && 'Clear'}</button>
+
               <button
                 name="showSizes"
                 onClick={this.toggleFilter}
@@ -227,11 +233,13 @@ class Filter extends Component {
         <div className="filter">
           <div className="filter-top">
             <h4>PRICE</h4>
+
             <button className="filter-clear-btn"
               disabled={!pageQuery.price}
               name="price"
               onClick={this.clearFilter}
             >{!!pageQuery.price && 'Clear'}</button>
+
             <button
               name="showPrices"
               onClick={this.toggleFilter}
@@ -243,11 +251,13 @@ class Filter extends Component {
           <div className="filter">
             <div className="filter-top">
               <h4>BRAND</h4>
+
               <button className="filter-clear-btn"
                 disabled={!pageQuery.brand}
                 name="brand"
                 onClick={this.clearFilter}
               >{!!pageQuery.brand && 'Clear'}</button>
+
               <button
                 name="showBrands"
                 onClick={this.toggleFilter}
