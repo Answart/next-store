@@ -25,7 +25,7 @@ const DeleteProductVariant = props => {
               deleteProductVariant()
                 .catch(err => alert(err.message))
                 .then((res) => {
-                  if (this.props.postDelete) props.postDelete();
+                  if (props.postDelete) props.postDelete();
                 });
             }
           }}
