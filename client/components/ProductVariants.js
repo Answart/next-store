@@ -135,11 +135,11 @@ class ProductVariants extends Component {
           <i>{availability}</i>
         </div>
 
-        {accessible && (
+        {!!variant && accessible && (
           <div className="prdct-padding">
             {(!!VariantActionComponent) && (
               <VariantActionComponent
-                disabled={!variant || !variant.id}
+                disabled={!variant.id}
                 variant={variant}
               />
             )}
