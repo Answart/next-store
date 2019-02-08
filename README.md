@@ -12,6 +12,8 @@
 [![MIT](https://img.shields.io/github/license/Answart/next-store.svg)][MIT]
 <!-- [![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg)][coveralls] -->
 
+:construction: WORK IN PROGRESS :construction:
+
 A React e-commerce app where a user can browse among items with which they can buy or sell. It uses React's Next.js framework and GraphQL's Apollo framework.
 
 User stories
@@ -113,7 +115,7 @@ Getting Started
 
 Create an **.env** file in **server** directory that has the following:
 ```bash
-# .env
+# ./server/.env
 NODE_ENV=development
 APP_SECRET=<SECRETSTRINGOFYOURCHOICE>
 PORT=4242

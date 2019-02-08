@@ -26,7 +26,7 @@ Getting Started
 
 Create an **.env** file:
 ```bash
-# .env
+# ./server/.env
 NODE_ENV=development
 APP_SECRET=<SECRETSTRINGOFYOURCHOICE>
 PORT=4242
@@ -54,7 +54,7 @@ $ npm install
 $ npm run start:dev
 ```
 
-View client at [**localhost:4242**](http://localhost:4242).
+View server at [**localhost:4242**](http://localhost:4242).
 
 NPM Commands
 ------------
