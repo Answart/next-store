@@ -5,6 +5,9 @@ const { promisify } = require('util');
 const { transport, emailFromNextStoreSupport } = require('../mail');
 const { hasPermission } = require('../utils');
 const maxAge = 1000 * 60 * 60 * 24 * 365;
+const appUrl = process.env.NODE_ENV == 'production'
+  ? process.env.PROD_CLIENT_URL
+  : process.env.DEV_CLIENT_URL;
 
 
 const Mutation = {
@@ -78,8 +81,7 @@ const Mutation = {
       subject: 'NextStore | Password Reset Request',
       html: emailFromNextStoreSupport(`Your Password Reset Token is here!
       \n\n
-      <a href="${process.env
-        .CLIENT_URL}/reset?resetToken=${resetToken}">Click Here to Reset Your Password</a>`),
+      <a href="${appUrl}/reset?resetToken=${resetToken}">Click Here to Reset Your Password</a>`),
     });
 
     return { success: true, message: 'Your request has been sent! Check your email.' };

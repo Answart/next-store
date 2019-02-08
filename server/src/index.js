@@ -1,11 +1,14 @@
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
-
 require('dotenv').config({ path: '.env' });
 
-const createServer = require('./createServer.js');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const db = require('./db');
+const createServer = require('./createServer.js');
 const server = createServer();
+const appUrl = (process.env.NODE_ENV == 'production')
+  ? process.env.PROD_CLIENT_URL
+  : process.env.DEV_CLIENT_URL;
+
 
 server.express.use(cookieParser());
 
@@ -37,7 +40,7 @@ server.start(
   {
     cors: {
       credentials: true,
-      origin: process.env.CLIENT_URL,
+      origin: appUrl,
     },
   },
   details => {
