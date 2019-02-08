@@ -1,4 +1,5 @@
 [travis]: https://travis-ci.org/Answart/next-store
+[heroku]: https://answart-next-store.herokuapp.com/
 [MIT]: https://github.com/Answart/next-store/blob/master/LICENSE.md
 <!-- [coveralls]: https://coveralls.io/github/Answart/next-store -->
 
@@ -9,6 +10,7 @@
 # Next Store
 
 [![Build Status](https://travis-ci.org/Answart/next-store.svg)][travis]
+[![Heroku](https://heroku-badge.herokuapp.com/?app=answart-next-store&style=flat&svg=1)][heroku]
 [![MIT](https://img.shields.io/github/license/Answart/next-store.svg)][MIT]
 <!-- [![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg)][coveralls] -->
 
