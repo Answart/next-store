@@ -63,4 +63,5 @@ NPM Commands
 | Command | Description |
 |---------|-------------|
 | npm install | Install dependencies |
+| npm run deploy | Deploy changes to Prisma server |
 | npm run start:dev | Launch server |
