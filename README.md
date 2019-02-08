@@ -123,7 +123,8 @@ CLIENT_URL=http://localhost:7272
 CLOUDINARY_API_KEY=<CLOUDINARYAPIKEY>
 CLOUDINARY_PRESET=nextstore
 CLOUDINARY_SECRET=<CLOUDINARYSECRETSTRING>
-PRISMA_ENDPOINT=https://us1.prisma.sh/<WORKSPACENAME>/<SERVICENAME>/<STAGE>
+PRISMA_DEV_ENDPOINT=https://<PRISMADEVSERVER>.sh/<PRISMAWORKSPACE>/<PRISMADEVSERVICE>/dev
+PRISMA_PROD_ENDPOINT=https://<PRISMAPRODSERVER>.herokuapp.com/<PRISMAPRODSERVICE>/prod
 PRISMA_SECRET=<SECRETPRISMASTRINGOFYOURCHOICE>
 STRIPE_SECRET=<STRIPESECRETSTRING>
 MAILTRAP_HOST=<MAILTRAPHOSTNAME>
@@ -146,7 +147,7 @@ $ npm install
 # Initialize Prisma in server directory
 $ prisma init
 
-# Update .env file with given PRISMA_ENDPOINT then deploy prisma
+# Update .env file with given PRISMA_DEV_ENDPOINT/PRISMA_PROD_ENDPOINT (depending where you are deploying) then deploy prisma
 $ prisma deploy
 
 # Start the app locally by running the server and client side apps
