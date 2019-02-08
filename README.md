@@ -164,7 +164,7 @@ $ npm run start:dev
 
 View app at [**localhost:7272**](http://localhost:7272) in browser.
 
-App Screenshots
+<!-- App Screenshots
 ---------------
 
 <p align="center">
@@ -172,7 +172,7 @@ App Screenshots
   <img src="https://user-images.githubusercontent.com/4269260/51296228-f8868180-19cf-11e9-8fd1-ba959d155792.png" width="350" height="350" alt="Account Page">
   <img src="https://user-images.githubusercontent.com/4269260/51295802-29fe4d80-19ce-11e9-93b2-e70788d3ddcc.png" width="350" height="350" alt="Vote Popup">
   <img src="https://user-images.githubusercontent.com/4269260/51295814-413d3b00-19ce-11e9-9e38-089a9254e7af.png" width="350" height="350" alt="Poll Page">
-</p>
+</p> -->
 
 NPM Commands for Client and Server directories
 ------------
