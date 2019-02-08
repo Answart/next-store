@@ -44,6 +44,10 @@ server.start(
     },
   },
   details => {
-    console.log(`Server is now running on port http://localhost:${details.port}`);
+    console.log('\nSERVER::    GraphQLServer Starting . . .');
+    console.log(`SERVER::    Environment: ${process.env.NODE_ENV}`);
+    console.info(`SERVER::    Port: ${details.port}`);
+    console.info(`SERVER::    CORS: ${!!details.cors ? details.cors.origin : ''}`);
+    console.info(`SERVER::    Endpoint: ${details.endpoint}\n`);
   }
 );
