@@ -118,8 +118,10 @@ Create an **.env** file in **server** directory that has the following:
 # ./server/.env
 NODE_ENV=development
 APP_SECRET=<SECRETSTRINGOFYOURCHOICE>
+HOST=http://localhost
 PORT=4242
-CLIENT_URL=http://localhost:7272
+DEV_CLIENT_URL=http://localhost:7272
+PROD_CLIENT_URL=<HEROKUAPPURL>
 CLOUDINARY_API_KEY=<CLOUDINARYAPIKEY>
 CLOUDINARY_PRESET=nextstore
 CLOUDINARY_SECRET=<CLOUDINARYSECRETSTRING>
