@@ -1,10 +1,10 @@
 [dependency]: https://david-dm.org/Answart/next-store?path=server
-[synk]: https://snyk.io/test/github/Answart/next-store?targetFile=server/package.json
+[snyk]: https://snyk.io/test/github/Answart/next-store
 
 # Next Store server-side
 
 [![dependencies Status](https://david-dm.org/Answart/next-store/status.svg?path=server)][dependency]
-[![Known Vulnerabilities](https://snyk.io/test/github/Answart/next-store/badge.svg?targetFile=server/package.json)][synk]
+[![Known Vulnerabilities](https://snyk.io/test/github/Answart/next-store/badge.svg?targetFile=server/package.json)][snyk]
 
 An Express GraphQL server app using [GraphQL Yoga](https://oss.prisma.io/content/graphql-yoga/01-overview/) and [Prisma](https://www.prisma.io/) that serves as the server to Next Store.
 
