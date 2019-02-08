@@ -1,12 +1,14 @@
 import withApollo from 'next-with-apollo';
 import ApolloClient from 'apollo-boost';
-import { SERVER_URL } from '../config';
+import { DEV_SERVER_URL, PROD_SERVER_URL } from '../config';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 
 function createClient({ headers }) {
   return new ApolloClient({
-    uri: process.env.NODE_ENV === 'development' ? SERVER_URL : SERVER_URL,
+    uri: (process.env.NODE_ENV === 'production')
+      ? PROD_SERVER_URL
+      : DEV_SERVER_URL,
     request: operation => {
       operation.setContext({
         fetchOptions: {

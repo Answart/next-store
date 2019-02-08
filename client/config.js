@@ -1,5 +1,7 @@
 // Client side config only
-export const SERVER_URL = `http://localhost:4242`;
+export const DEV_SERVER_URL = 'http://localhost:4242';
+// TODO
+export const PROD_SERVER_URL = 'http://localhost:4242';
 export const CLOUDINARY_API_KEY = '376449995445936';
 export const CLOUDINARY_PRESET = 'nextstore';
 export const CLOUDINARY_SECRET = 'yk-s-3xjvyoZl8B2Ue4E01CqhZ4';
