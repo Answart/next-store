@@ -5,6 +5,9 @@ endpoint:      ${env:PRISMA_DEV_ENDPOINT}
 datamodel:     datamodel.prisma
 # You can only access the API when providing JWTs that are signed with this secret
 secret:        ${env:PRISMA_SECRET}
+generate:
+   - generator: graphql-schema
+     output: ./src/generated/
 hooks:
   post-deploy:
-      - graphql get-schema -p prisma
+      - prisma generate
