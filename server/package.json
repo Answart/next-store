@@ -24,7 +24,7 @@
     "jsonwebtoken": "^8.4.0",
     "nodemailer": "^5.0.0",
     "nodemon": "1.18.5",
-    "prisma": "^1.26.3",
+    "prisma": "^1.26.4",
     "prisma-binding": "^2.1.6"
   },
   "devDependencies": {},
