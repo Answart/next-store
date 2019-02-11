@@ -6,9 +6,13 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "next start",
+    "start": "next start -$PORT",
     "start:dev": "next -p 7272",
-    "build": "next build"
+    "build": "next build",
+    "heroku-postbuild": "next build",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "heroku-logs-client": "cd .. && heroku logs --tail --app answart-next-store",
+    "heroku-push-client": "cd .. && git subtree push --prefix client heroku-client-side master"
   },
   "repository": {
     "type": "git",
