@@ -11,9 +11,9 @@ const endpoint = (process.env.NODE_ENV == 'production')
 const clientUrl = (process.env.NODE_ENV == 'production')
   ? process.env.PROD_CLIENT_URL
   : process.env.DEV_CLIENT_URL;
-const playgroundUrl = (process.env.NODE_ENV == 'development')
+const serverUrl = (process.env.NODE_ENV == 'development')
   ? `${process.env.HOST}:${process.env.PORT}`
-  : '';
+  : process.env.PROD_SERVER_URL;
 
 
 const db = new Prisma({
@@ -59,6 +59,9 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
+// if (process.env.NODE_ENV !== 'production')
+//   export DEBUG="*";
+
 
 server.start(
   {
@@ -73,6 +76,6 @@ server.start(
     console.info(`SERVER::    Port: ${details.port}`);
     console.info(`SERVER::    CORS origin: ${!!details.cors ? details.cors.origin : ''}`);
     console.info(`SERVER::    DB Endpoint: ${endpoint}`);
-    console.info(`SERVER::    Playground Url: ${playgroundUrl}\n`);
+    console.info(`SERVER::    Url: ${serverUrl}\n`);
   }
 );
