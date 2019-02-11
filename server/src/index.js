@@ -2,12 +2,32 @@ require('dotenv').config({ path: '.env' });
 
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const db = require('./db');
-const createServer = require('./createServer.js');
-const server = createServer();
+const { GraphQLServer } = require('graphql-yoga');
+const { Prisma } = require('prisma-binding');
+const resolvers = require('./resolvers');
 const appUrl = (process.env.NODE_ENV == 'production')
   ? process.env.PROD_CLIENT_URL
   : process.env.DEV_CLIENT_URL;
+const endpoint = (process.env.NODE_ENV == 'production')
+  ? process.env.PRISMA_PROD_ENDPOINT
+  : process.env.PRISMA_DEV_ENDPOINT;
+
+
+const db = new Prisma({
+  typeDefs: 'src/generated/prisma.graphql',
+  endpoint,
+  secret: process.env.PRISMA_SECRET,
+  debug: false,
+});
+
+const server = new GraphQLServer({
+  typeDefs: 'src/schema.graphql',
+  resolvers,
+  resolverValidationOptions: {
+    requireResolversForResolveType: false,
+  },
+  context: req => ({ ...req, db })
+});
 
 
 server.express.use(cookieParser());
@@ -35,6 +55,7 @@ server.express.use(async (req, res, next) => {
 
   next();
 });
+
 
 server.start(
   {
