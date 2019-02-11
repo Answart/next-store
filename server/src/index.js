@@ -5,12 +5,15 @@ const jwt = require('jsonwebtoken');
 const { GraphQLServer } = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
 const resolvers = require('./resolvers');
-const appUrl = (process.env.NODE_ENV == 'production')
-  ? process.env.PROD_CLIENT_URL
-  : process.env.DEV_CLIENT_URL;
 const endpoint = (process.env.NODE_ENV == 'production')
   ? process.env.PRISMA_PROD_ENDPOINT
   : process.env.PRISMA_DEV_ENDPOINT;
+const clientUrl = (process.env.NODE_ENV == 'production')
+  ? process.env.PROD_CLIENT_URL
+  : process.env.DEV_CLIENT_URL;
+const playgroundUrl = (process.env.NODE_ENV == 'development')
+  ? `${process.env.HOST}:${process.env.PORT}`
+  : '';
 
 
 const db = new Prisma({
@@ -61,14 +64,15 @@ server.start(
   {
     cors: {
       credentials: true,
-      origin: appUrl,
+      origin: clientUrl,
     },
   },
   details => {
     console.log('\nSERVER::    GraphQLServer Starting . . .');
     console.log(`SERVER::    Environment: ${process.env.NODE_ENV}`);
     console.info(`SERVER::    Port: ${details.port}`);
-    console.info(`SERVER::    CORS: ${!!details.cors ? details.cors.origin : ''}`);
-    console.info(`SERVER::    Endpoint: ${details.endpoint}\n`);
+    console.info(`SERVER::    CORS origin: ${!!details.cors ? details.cors.origin : ''}`);
+    console.info(`SERVER::    DB Endpoint: ${endpoint}`);
+    console.info(`SERVER::    Playground Url: ${playgroundUrl}\n`);
   }
 );
