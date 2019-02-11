@@ -17,7 +17,7 @@ const removeFromCart = require('./removeFromCart');
 const updateCartItem = require('./updateCartItem');
 
 
-module.exports = {
+const Mutation = {
   createUser,
   signin,
   signout,
@@ -36,3 +36,6 @@ module.exports = {
   removeFromCart,
   updateCartItem
 };
+
+
+module.exports = Mutation;

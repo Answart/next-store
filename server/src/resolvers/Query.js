@@ -29,4 +29,5 @@ const Query = {
   variants: forwardTo('db')
 };
 
+
 module.exports = Query;
