@@ -1,10 +1,18 @@
 projects:
-  server:
-    schemaPath:  "./src/schema.graphql"
+  app:
+    schemaPath:  src/schema.graphql
+    includes:    [
+      "schema.graphql"
+      "prisma.graphql"
+    ]
     extensions:
       endpoints:
-        default: "${env:HOST}${env:PORT}"
+        default: ${env:HOST}${env:PORT}
   prisma:
-    schemaPath:  "src/generated/prisma.graphql"
+    schemaPath:  src/generated/prisma.graphql
+    includes:    [
+      "prisma.graphql",
+      "datamodel.graphql"
+    ]
     extensions:
-      prisma:    prisma.yml
+      prisma:    prisma/prisma.yml

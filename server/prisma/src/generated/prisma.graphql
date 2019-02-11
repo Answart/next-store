@@ -1,0 +1,1939 @@
+type AggregateCartItem {
+  count: Int!
+}
+
+type AggregateImage {
+  count: Int!
+}
+
+type AggregateProduct {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type AggregateVariant {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type CartItem {
+  id: ID!
+  quantity: Int!
+  variant: Variant
+  user: User!
+}
+
+type CartItemConnection {
+  pageInfo: PageInfo!
+  edges: [CartItemEdge]!
+  aggregate: AggregateCartItem!
+}
+
+input CartItemCreateInput {
+  quantity: Int
+  variant: VariantCreateOneInput
+  user: UserCreateOneWithoutCartInput!
+}
+
+input CartItemCreateManyWithoutUserInput {
+  create: [CartItemCreateWithoutUserInput!]
+  connect: [CartItemWhereUniqueInput!]
+}
+
+input CartItemCreateWithoutUserInput {
+  quantity: Int
+  variant: VariantCreateOneInput
+}
+
+type CartItemEdge {
+  node: CartItem!
+  cursor: String!
+}
+
+enum CartItemOrderByInput {
+  id_ASC
+  id_DESC
+  quantity_ASC
+  quantity_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CartItemPreviousValues {
+  id: ID!
+  quantity: Int!
+}
+
+input CartItemScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  quantity: Int
+  quantity_not: Int
+  quantity_in: [Int!]
+  quantity_not_in: [Int!]
+  quantity_lt: Int
+  quantity_lte: Int
+  quantity_gt: Int
+  quantity_gte: Int
+  AND: [CartItemScalarWhereInput!]
+  OR: [CartItemScalarWhereInput!]
+  NOT: [CartItemScalarWhereInput!]
+}
+
+type CartItemSubscriptionPayload {
+  mutation: MutationType!
+  node: CartItem
+  updatedFields: [String!]
+  previousValues: CartItemPreviousValues
+}
+
+input CartItemSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CartItemWhereInput
+  AND: [CartItemSubscriptionWhereInput!]
+  OR: [CartItemSubscriptionWhereInput!]
+  NOT: [CartItemSubscriptionWhereInput!]
+}
+
+input CartItemUpdateInput {
+  quantity: Int
+  variant: VariantUpdateOneInput
+  user: UserUpdateOneRequiredWithoutCartInput
+}
+
+input CartItemUpdateManyDataInput {
+  quantity: Int
+}
+
+input CartItemUpdateManyMutationInput {
+  quantity: Int
+}
+
+input CartItemUpdateManyWithoutUserInput {
+  create: [CartItemCreateWithoutUserInput!]
+  delete: [CartItemWhereUniqueInput!]
+  connect: [CartItemWhereUniqueInput!]
+  set: [CartItemWhereUniqueInput!]
+  disconnect: [CartItemWhereUniqueInput!]
+  update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [CartItemUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [CartItemScalarWhereInput!]
+  updateMany: [CartItemUpdateManyWithWhereNestedInput!]
+}
+
+input CartItemUpdateManyWithWhereNestedInput {
+  where: CartItemScalarWhereInput!
+  data: CartItemUpdateManyDataInput!
+}
+
+input CartItemUpdateWithoutUserDataInput {
+  quantity: Int
+  variant: VariantUpdateOneInput
+}
+
+input CartItemUpdateWithWhereUniqueWithoutUserInput {
+  where: CartItemWhereUniqueInput!
+  data: CartItemUpdateWithoutUserDataInput!
+}
+
+input CartItemUpsertWithWhereUniqueWithoutUserInput {
+  where: CartItemWhereUniqueInput!
+  update: CartItemUpdateWithoutUserDataInput!
+  create: CartItemCreateWithoutUserInput!
+}
+
+input CartItemWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  quantity: Int
+  quantity_not: Int
+  quantity_in: [Int!]
+  quantity_not_in: [Int!]
+  quantity_lt: Int
+  quantity_lte: Int
+  quantity_gt: Int
+  quantity_gte: Int
+  variant: VariantWhereInput
+  user: UserWhereInput
+  AND: [CartItemWhereInput!]
+  OR: [CartItemWhereInput!]
+  NOT: [CartItemWhereInput!]
+}
+
+input CartItemWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Image {
+  id: ID!
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: User!
+  product: Product
+  used_by_product: Product
+  used_by_variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ImageConnection {
+  pageInfo: PageInfo!
+  edges: [ImageEdge]!
+  aggregate: AggregateImage!
+}
+
+input ImageCreateInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
+  product: ProductCreateOneWithoutImagesInput
+  used_by_product: ProductCreateOneWithoutImageInput
+  used_by_variants: VariantCreateManyWithoutImageInput
+}
+
+input ImageCreateManyWithoutProductInput {
+  create: [ImageCreateWithoutProductInput!]
+  connect: [ImageWhereUniqueInput!]
+}
+
+input ImageCreateOneWithoutUsed_by_productInput {
+  create: ImageCreateWithoutUsed_by_productInput
+  connect: ImageWhereUniqueInput
+}
+
+input ImageCreateOneWithoutUsed_by_variantsInput {
+  create: ImageCreateWithoutUsed_by_variantsInput
+  connect: ImageWhereUniqueInput
+}
+
+input ImageCreateWithoutProductInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
+  used_by_product: ProductCreateOneWithoutImageInput
+  used_by_variants: VariantCreateManyWithoutImageInput
+}
+
+input ImageCreateWithoutUsed_by_productInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
+  product: ProductCreateOneWithoutImagesInput
+  used_by_variants: VariantCreateManyWithoutImageInput
+}
+
+input ImageCreateWithoutUsed_by_variantsInput {
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  user: UserCreateOneInput!
+  product: ProductCreateOneWithoutImagesInput
+  used_by_product: ProductCreateOneWithoutImageInput
+}
+
+type ImageEdge {
+  node: Image!
+  cursor: String!
+}
+
+enum ImageOrderByInput {
+  id_ASC
+  id_DESC
+  cloudinary_id_ASC
+  cloudinary_id_DESC
+  name_ASC
+  name_DESC
+  height_ASC
+  height_DESC
+  width_ASC
+  width_DESC
+  transformation_ASC
+  transformation_DESC
+  image_url_ASC
+  image_url_DESC
+  large_image_url_ASC
+  large_image_url_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ImagePreviousValues {
+  id: ID!
+  cloudinary_id: String!
+  name: String!
+  height: Int!
+  width: Int!
+  transformation: String!
+  image_url: String!
+  large_image_url: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input ImageScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  cloudinary_id: String
+  cloudinary_id_not: String
+  cloudinary_id_in: [String!]
+  cloudinary_id_not_in: [String!]
+  cloudinary_id_lt: String
+  cloudinary_id_lte: String
+  cloudinary_id_gt: String
+  cloudinary_id_gte: String
+  cloudinary_id_contains: String
+  cloudinary_id_not_contains: String
+  cloudinary_id_starts_with: String
+  cloudinary_id_not_starts_with: String
+  cloudinary_id_ends_with: String
+  cloudinary_id_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  height: Int
+  height_not: Int
+  height_in: [Int!]
+  height_not_in: [Int!]
+  height_lt: Int
+  height_lte: Int
+  height_gt: Int
+  height_gte: Int
+  width: Int
+  width_not: Int
+  width_in: [Int!]
+  width_not_in: [Int!]
+  width_lt: Int
+  width_lte: Int
+  width_gt: Int
+  width_gte: Int
+  transformation: String
+  transformation_not: String
+  transformation_in: [String!]
+  transformation_not_in: [String!]
+  transformation_lt: String
+  transformation_lte: String
+  transformation_gt: String
+  transformation_gte: String
+  transformation_contains: String
+  transformation_not_contains: String
+  transformation_starts_with: String
+  transformation_not_starts_with: String
+  transformation_ends_with: String
+  transformation_not_ends_with: String
+  image_url: String
+  image_url_not: String
+  image_url_in: [String!]
+  image_url_not_in: [String!]
+  image_url_lt: String
+  image_url_lte: String
+  image_url_gt: String
+  image_url_gte: String
+  image_url_contains: String
+  image_url_not_contains: String
+  image_url_starts_with: String
+  image_url_not_starts_with: String
+  image_url_ends_with: String
+  image_url_not_ends_with: String
+  large_image_url: String
+  large_image_url_not: String
+  large_image_url_in: [String!]
+  large_image_url_not_in: [String!]
+  large_image_url_lt: String
+  large_image_url_lte: String
+  large_image_url_gt: String
+  large_image_url_gte: String
+  large_image_url_contains: String
+  large_image_url_not_contains: String
+  large_image_url_starts_with: String
+  large_image_url_not_starts_with: String
+  large_image_url_ends_with: String
+  large_image_url_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ImageScalarWhereInput!]
+  OR: [ImageScalarWhereInput!]
+  NOT: [ImageScalarWhereInput!]
+}
+
+type ImageSubscriptionPayload {
+  mutation: MutationType!
+  node: Image
+  updatedFields: [String!]
+  previousValues: ImagePreviousValues
+}
+
+input ImageSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ImageWhereInput
+  AND: [ImageSubscriptionWhereInput!]
+  OR: [ImageSubscriptionWhereInput!]
+  NOT: [ImageSubscriptionWhereInput!]
+}
+
+input ImageUpdateInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
+}
+
+input ImageUpdateManyDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+}
+
+input ImageUpdateManyMutationInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+}
+
+input ImageUpdateManyWithoutProductInput {
+  create: [ImageCreateWithoutProductInput!]
+  delete: [ImageWhereUniqueInput!]
+  connect: [ImageWhereUniqueInput!]
+  set: [ImageWhereUniqueInput!]
+  disconnect: [ImageWhereUniqueInput!]
+  update: [ImageUpdateWithWhereUniqueWithoutProductInput!]
+  upsert: [ImageUpsertWithWhereUniqueWithoutProductInput!]
+  deleteMany: [ImageScalarWhereInput!]
+  updateMany: [ImageUpdateManyWithWhereNestedInput!]
+}
+
+input ImageUpdateManyWithWhereNestedInput {
+  where: ImageScalarWhereInput!
+  data: ImageUpdateManyDataInput!
+}
+
+input ImageUpdateOneWithoutUsed_by_productInput {
+  create: ImageCreateWithoutUsed_by_productInput
+  update: ImageUpdateWithoutUsed_by_productDataInput
+  upsert: ImageUpsertWithoutUsed_by_productInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ImageWhereUniqueInput
+}
+
+input ImageUpdateOneWithoutUsed_by_variantsInput {
+  create: ImageCreateWithoutUsed_by_variantsInput
+  update: ImageUpdateWithoutUsed_by_variantsDataInput
+  upsert: ImageUpsertWithoutUsed_by_variantsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ImageWhereUniqueInput
+}
+
+input ImageUpdateWithoutProductDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
+}
+
+input ImageUpdateWithoutUsed_by_productDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_variants: VariantUpdateManyWithoutImageInput
+}
+
+input ImageUpdateWithoutUsed_by_variantsDataInput {
+  cloudinary_id: String
+  name: String
+  height: Int
+  width: Int
+  transformation: String
+  image_url: String
+  large_image_url: String
+  user: UserUpdateOneRequiredInput
+  product: ProductUpdateOneWithoutImagesInput
+  used_by_product: ProductUpdateOneWithoutImageInput
+}
+
+input ImageUpdateWithWhereUniqueWithoutProductInput {
+  where: ImageWhereUniqueInput!
+  data: ImageUpdateWithoutProductDataInput!
+}
+
+input ImageUpsertWithoutUsed_by_productInput {
+  update: ImageUpdateWithoutUsed_by_productDataInput!
+  create: ImageCreateWithoutUsed_by_productInput!
+}
+
+input ImageUpsertWithoutUsed_by_variantsInput {
+  update: ImageUpdateWithoutUsed_by_variantsDataInput!
+  create: ImageCreateWithoutUsed_by_variantsInput!
+}
+
+input ImageUpsertWithWhereUniqueWithoutProductInput {
+  where: ImageWhereUniqueInput!
+  update: ImageUpdateWithoutProductDataInput!
+  create: ImageCreateWithoutProductInput!
+}
+
+input ImageWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  cloudinary_id: String
+  cloudinary_id_not: String
+  cloudinary_id_in: [String!]
+  cloudinary_id_not_in: [String!]
+  cloudinary_id_lt: String
+  cloudinary_id_lte: String
+  cloudinary_id_gt: String
+  cloudinary_id_gte: String
+  cloudinary_id_contains: String
+  cloudinary_id_not_contains: String
+  cloudinary_id_starts_with: String
+  cloudinary_id_not_starts_with: String
+  cloudinary_id_ends_with: String
+  cloudinary_id_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  height: Int
+  height_not: Int
+  height_in: [Int!]
+  height_not_in: [Int!]
+  height_lt: Int
+  height_lte: Int
+  height_gt: Int
+  height_gte: Int
+  width: Int
+  width_not: Int
+  width_in: [Int!]
+  width_not_in: [Int!]
+  width_lt: Int
+  width_lte: Int
+  width_gt: Int
+  width_gte: Int
+  transformation: String
+  transformation_not: String
+  transformation_in: [String!]
+  transformation_not_in: [String!]
+  transformation_lt: String
+  transformation_lte: String
+  transformation_gt: String
+  transformation_gte: String
+  transformation_contains: String
+  transformation_not_contains: String
+  transformation_starts_with: String
+  transformation_not_starts_with: String
+  transformation_ends_with: String
+  transformation_not_ends_with: String
+  image_url: String
+  image_url_not: String
+  image_url_in: [String!]
+  image_url_not_in: [String!]
+  image_url_lt: String
+  image_url_lte: String
+  image_url_gt: String
+  image_url_gte: String
+  image_url_contains: String
+  image_url_not_contains: String
+  image_url_starts_with: String
+  image_url_not_starts_with: String
+  image_url_ends_with: String
+  image_url_not_ends_with: String
+  large_image_url: String
+  large_image_url_not: String
+  large_image_url_in: [String!]
+  large_image_url_not_in: [String!]
+  large_image_url_lt: String
+  large_image_url_lte: String
+  large_image_url_gt: String
+  large_image_url_gte: String
+  large_image_url_contains: String
+  large_image_url_not_contains: String
+  large_image_url_starts_with: String
+  large_image_url_not_starts_with: String
+  large_image_url_ends_with: String
+  large_image_url_not_ends_with: String
+  user: UserWhereInput
+  product: ProductWhereInput
+  used_by_product: ProductWhereInput
+  used_by_variants_every: VariantWhereInput
+  used_by_variants_some: VariantWhereInput
+  used_by_variants_none: VariantWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ImageWhereInput!]
+  OR: [ImageWhereInput!]
+  NOT: [ImageWhereInput!]
+}
+
+input ImageWhereUniqueInput {
+  id: ID
+  cloudinary_id: String
+}
+
+scalar Long
+
+type Mutation {
+  createCartItem(data: CartItemCreateInput!): CartItem!
+  updateCartItem(data: CartItemUpdateInput!, where: CartItemWhereUniqueInput!): CartItem
+  updateManyCartItems(data: CartItemUpdateManyMutationInput!, where: CartItemWhereInput): BatchPayload!
+  upsertCartItem(where: CartItemWhereUniqueInput!, create: CartItemCreateInput!, update: CartItemUpdateInput!): CartItem!
+  deleteCartItem(where: CartItemWhereUniqueInput!): CartItem
+  deleteManyCartItems(where: CartItemWhereInput): BatchPayload!
+  createImage(data: ImageCreateInput!): Image!
+  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
+  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
+  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
+  deleteImage(where: ImageWhereUniqueInput!): Image
+  deleteManyImages(where: ImageWhereInput): BatchPayload!
+  createProduct(data: ProductCreateInput!): Product!
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  createVariant(data: VariantCreateInput!): Variant!
+  updateVariant(data: VariantUpdateInput!, where: VariantWhereUniqueInput!): Variant
+  updateManyVariants(data: VariantUpdateManyMutationInput!, where: VariantWhereInput): BatchPayload!
+  upsertVariant(where: VariantWhereUniqueInput!, create: VariantCreateInput!, update: VariantUpdateInput!): Variant!
+  deleteVariant(where: VariantWhereUniqueInput!): Variant
+  deleteManyVariants(where: VariantWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+enum Permission {
+  ADMIN
+  USER
+  PRODUCTCREATE
+  PRODUCTUPDATE
+  PRODUCTDELETE
+  PERMISSIONUPDATE
+}
+
+type Product {
+  id: ID!
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: User!
+  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image!]
+  image: Image
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProductConnection {
+  pageInfo: PageInfo!
+  edges: [ProductEdge]!
+  aggregate: AggregateProduct!
+}
+
+input ProductCreateInput {
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  variants: VariantCreateManyWithoutProductInput
+  images: ImageCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
+}
+
+input ProductCreateOneWithoutImageInput {
+  create: ProductCreateWithoutImageInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateOneWithoutImagesInput {
+  create: ProductCreateWithoutImagesInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateOneWithoutVariantsInput {
+  create: ProductCreateWithoutVariantsInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateWithoutImageInput {
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  variants: VariantCreateManyWithoutProductInput
+  images: ImageCreateManyWithoutProductInput
+}
+
+input ProductCreateWithoutImagesInput {
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  variants: VariantCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
+}
+
+input ProductCreateWithoutVariantsInput {
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  user: UserCreateOneInput!
+  images: ImageCreateManyWithoutProductInput
+  image: ImageCreateOneWithoutUsed_by_productInput
+}
+
+type ProductEdge {
+  node: Product!
+  cursor: String!
+}
+
+enum ProductOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  department_ASC
+  department_DESC
+  description_ASC
+  description_DESC
+  online_ASC
+  online_DESC
+  category_ASC
+  category_DESC
+  brand_ASC
+  brand_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProductPreviousValues {
+  id: ID!
+  title: String!
+  department: String!
+  description: String!
+  online: Boolean!
+  category: String
+  brand: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProductSubscriptionPayload {
+  mutation: MutationType!
+  node: Product
+  updatedFields: [String!]
+  previousValues: ProductPreviousValues
+}
+
+input ProductSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProductWhereInput
+  AND: [ProductSubscriptionWhereInput!]
+  OR: [ProductSubscriptionWhereInput!]
+  NOT: [ProductSubscriptionWhereInput!]
+}
+
+input ProductUpdateInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  variants: VariantUpdateManyWithoutProductInput
+  images: ImageUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
+}
+
+input ProductUpdateManyMutationInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+}
+
+input ProductUpdateOneRequiredWithoutVariantsInput {
+  create: ProductCreateWithoutVariantsInput
+  update: ProductUpdateWithoutVariantsDataInput
+  upsert: ProductUpsertWithoutVariantsInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductUpdateOneWithoutImageInput {
+  create: ProductCreateWithoutImageInput
+  update: ProductUpdateWithoutImageDataInput
+  upsert: ProductUpsertWithoutImageInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProductWhereUniqueInput
+}
+
+input ProductUpdateOneWithoutImagesInput {
+  create: ProductCreateWithoutImagesInput
+  update: ProductUpdateWithoutImagesDataInput
+  upsert: ProductUpsertWithoutImagesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProductWhereUniqueInput
+}
+
+input ProductUpdateWithoutImageDataInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  variants: VariantUpdateManyWithoutProductInput
+  images: ImageUpdateManyWithoutProductInput
+}
+
+input ProductUpdateWithoutImagesDataInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  variants: VariantUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
+}
+
+input ProductUpdateWithoutVariantsDataInput {
+  title: String
+  department: String
+  description: String
+  online: Boolean
+  category: String
+  brand: String
+  user: UserUpdateOneRequiredInput
+  images: ImageUpdateManyWithoutProductInput
+  image: ImageUpdateOneWithoutUsed_by_productInput
+}
+
+input ProductUpsertWithoutImageInput {
+  update: ProductUpdateWithoutImageDataInput!
+  create: ProductCreateWithoutImageInput!
+}
+
+input ProductUpsertWithoutImagesInput {
+  update: ProductUpdateWithoutImagesDataInput!
+  create: ProductCreateWithoutImagesInput!
+}
+
+input ProductUpsertWithoutVariantsInput {
+  update: ProductUpdateWithoutVariantsDataInput!
+  create: ProductCreateWithoutVariantsInput!
+}
+
+input ProductWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  department: String
+  department_not: String
+  department_in: [String!]
+  department_not_in: [String!]
+  department_lt: String
+  department_lte: String
+  department_gt: String
+  department_gte: String
+  department_contains: String
+  department_not_contains: String
+  department_starts_with: String
+  department_not_starts_with: String
+  department_ends_with: String
+  department_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  online: Boolean
+  online_not: Boolean
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  brand: String
+  brand_not: String
+  brand_in: [String!]
+  brand_not_in: [String!]
+  brand_lt: String
+  brand_lte: String
+  brand_gt: String
+  brand_gte: String
+  brand_contains: String
+  brand_not_contains: String
+  brand_starts_with: String
+  brand_not_starts_with: String
+  brand_ends_with: String
+  brand_not_ends_with: String
+  user: UserWhereInput
+  variants_every: VariantWhereInput
+  variants_some: VariantWhereInput
+  variants_none: VariantWhereInput
+  images_every: ImageWhereInput
+  images_some: ImageWhereInput
+  images_none: ImageWhereInput
+  image: ImageWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  NOT: [ProductWhereInput!]
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+  title: String
+}
+
+type Query {
+  cartItem(where: CartItemWhereUniqueInput!): CartItem
+  cartItems(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem]!
+  cartItemsConnection(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CartItemConnection!
+  image(where: ImageWhereUniqueInput!): Image
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
+  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
+  product(where: ProductWhereUniqueInput!): Product
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  variant(where: VariantWhereUniqueInput!): Variant
+  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant]!
+  variantsConnection(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VariantConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  cartItem(where: CartItemSubscriptionWhereInput): CartItemSubscriptionPayload
+  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  variant(where: VariantSubscriptionWhereInput): VariantSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission!]!
+  cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserCreatepermissionsInput
+  cart: CartItemCreateManyWithoutUserInput
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutCartInput {
+  create: UserCreateWithoutCartInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreatepermissionsInput {
+  set: [Permission!]
+}
+
+input UserCreateWithoutCartInput {
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserCreatepermissionsInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateDataInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+  cart: CartItemUpdateManyWithoutUserInput
+}
+
+input UserUpdateInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+  cart: CartItemUpdateManyWithoutUserInput
+}
+
+input UserUpdateManyMutationInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutCartInput {
+  create: UserCreateWithoutCartInput
+  update: UserUpdateWithoutCartDataInput
+  upsert: UserUpsertWithoutCartInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdatepermissionsInput {
+  set: [Permission!]
+}
+
+input UserUpdateWithoutCartDataInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserUpsertWithoutCartInput {
+  update: UserUpdateWithoutCartDataInput!
+  create: UserCreateWithoutCartInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
+  cart_every: CartItemWhereInput
+  cart_some: CartItemWhereInput
+  cart_none: CartItemWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}
+
+type Variant {
+  id: ID!
+  price: Float!
+  quantity: Int!
+  availability: String
+  color: String
+  size: String
+  sale: Boolean!
+  salePrice: Float!
+  product: Product!
+  image: Image
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type VariantConnection {
+  pageInfo: PageInfo!
+  edges: [VariantEdge]!
+  aggregate: AggregateVariant!
+}
+
+input VariantCreateInput {
+  price: Float!
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  product: ProductCreateOneWithoutVariantsInput!
+  image: ImageCreateOneWithoutUsed_by_variantsInput
+}
+
+input VariantCreateManyWithoutImageInput {
+  create: [VariantCreateWithoutImageInput!]
+  connect: [VariantWhereUniqueInput!]
+}
+
+input VariantCreateManyWithoutProductInput {
+  create: [VariantCreateWithoutProductInput!]
+  connect: [VariantWhereUniqueInput!]
+}
+
+input VariantCreateOneInput {
+  create: VariantCreateInput
+  connect: VariantWhereUniqueInput
+}
+
+input VariantCreateWithoutImageInput {
+  price: Float!
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  product: ProductCreateOneWithoutVariantsInput!
+}
+
+input VariantCreateWithoutProductInput {
+  price: Float!
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  image: ImageCreateOneWithoutUsed_by_variantsInput
+}
+
+type VariantEdge {
+  node: Variant!
+  cursor: String!
+}
+
+enum VariantOrderByInput {
+  id_ASC
+  id_DESC
+  price_ASC
+  price_DESC
+  quantity_ASC
+  quantity_DESC
+  availability_ASC
+  availability_DESC
+  color_ASC
+  color_DESC
+  size_ASC
+  size_DESC
+  sale_ASC
+  sale_DESC
+  salePrice_ASC
+  salePrice_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type VariantPreviousValues {
+  id: ID!
+  price: Float!
+  quantity: Int!
+  availability: String
+  color: String
+  size: String
+  sale: Boolean!
+  salePrice: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input VariantScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  quantity: Int
+  quantity_not: Int
+  quantity_in: [Int!]
+  quantity_not_in: [Int!]
+  quantity_lt: Int
+  quantity_lte: Int
+  quantity_gt: Int
+  quantity_gte: Int
+  availability: String
+  availability_not: String
+  availability_in: [String!]
+  availability_not_in: [String!]
+  availability_lt: String
+  availability_lte: String
+  availability_gt: String
+  availability_gte: String
+  availability_contains: String
+  availability_not_contains: String
+  availability_starts_with: String
+  availability_not_starts_with: String
+  availability_ends_with: String
+  availability_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  sale: Boolean
+  sale_not: Boolean
+  salePrice: Float
+  salePrice_not: Float
+  salePrice_in: [Float!]
+  salePrice_not_in: [Float!]
+  salePrice_lt: Float
+  salePrice_lte: Float
+  salePrice_gt: Float
+  salePrice_gte: Float
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [VariantScalarWhereInput!]
+  OR: [VariantScalarWhereInput!]
+  NOT: [VariantScalarWhereInput!]
+}
+
+type VariantSubscriptionPayload {
+  mutation: MutationType!
+  node: Variant
+  updatedFields: [String!]
+  previousValues: VariantPreviousValues
+}
+
+input VariantSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: VariantWhereInput
+  AND: [VariantSubscriptionWhereInput!]
+  OR: [VariantSubscriptionWhereInput!]
+  NOT: [VariantSubscriptionWhereInput!]
+}
+
+input VariantUpdateDataInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  product: ProductUpdateOneRequiredWithoutVariantsInput
+  image: ImageUpdateOneWithoutUsed_by_variantsInput
+}
+
+input VariantUpdateInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  product: ProductUpdateOneRequiredWithoutVariantsInput
+  image: ImageUpdateOneWithoutUsed_by_variantsInput
+}
+
+input VariantUpdateManyDataInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+}
+
+input VariantUpdateManyMutationInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+}
+
+input VariantUpdateManyWithoutImageInput {
+  create: [VariantCreateWithoutImageInput!]
+  delete: [VariantWhereUniqueInput!]
+  connect: [VariantWhereUniqueInput!]
+  set: [VariantWhereUniqueInput!]
+  disconnect: [VariantWhereUniqueInput!]
+  update: [VariantUpdateWithWhereUniqueWithoutImageInput!]
+  upsert: [VariantUpsertWithWhereUniqueWithoutImageInput!]
+  deleteMany: [VariantScalarWhereInput!]
+  updateMany: [VariantUpdateManyWithWhereNestedInput!]
+}
+
+input VariantUpdateManyWithoutProductInput {
+  create: [VariantCreateWithoutProductInput!]
+  delete: [VariantWhereUniqueInput!]
+  connect: [VariantWhereUniqueInput!]
+  set: [VariantWhereUniqueInput!]
+  disconnect: [VariantWhereUniqueInput!]
+  update: [VariantUpdateWithWhereUniqueWithoutProductInput!]
+  upsert: [VariantUpsertWithWhereUniqueWithoutProductInput!]
+  deleteMany: [VariantScalarWhereInput!]
+  updateMany: [VariantUpdateManyWithWhereNestedInput!]
+}
+
+input VariantUpdateManyWithWhereNestedInput {
+  where: VariantScalarWhereInput!
+  data: VariantUpdateManyDataInput!
+}
+
+input VariantUpdateOneInput {
+  create: VariantCreateInput
+  update: VariantUpdateDataInput
+  upsert: VariantUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: VariantWhereUniqueInput
+}
+
+input VariantUpdateWithoutImageDataInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  product: ProductUpdateOneRequiredWithoutVariantsInput
+}
+
+input VariantUpdateWithoutProductDataInput {
+  price: Float
+  quantity: Int
+  availability: String
+  color: String
+  size: String
+  sale: Boolean
+  salePrice: Float
+  image: ImageUpdateOneWithoutUsed_by_variantsInput
+}
+
+input VariantUpdateWithWhereUniqueWithoutImageInput {
+  where: VariantWhereUniqueInput!
+  data: VariantUpdateWithoutImageDataInput!
+}
+
+input VariantUpdateWithWhereUniqueWithoutProductInput {
+  where: VariantWhereUniqueInput!
+  data: VariantUpdateWithoutProductDataInput!
+}
+
+input VariantUpsertNestedInput {
+  update: VariantUpdateDataInput!
+  create: VariantCreateInput!
+}
+
+input VariantUpsertWithWhereUniqueWithoutImageInput {
+  where: VariantWhereUniqueInput!
+  update: VariantUpdateWithoutImageDataInput!
+  create: VariantCreateWithoutImageInput!
+}
+
+input VariantUpsertWithWhereUniqueWithoutProductInput {
+  where: VariantWhereUniqueInput!
+  update: VariantUpdateWithoutProductDataInput!
+  create: VariantCreateWithoutProductInput!
+}
+
+input VariantWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  quantity: Int
+  quantity_not: Int
+  quantity_in: [Int!]
+  quantity_not_in: [Int!]
+  quantity_lt: Int
+  quantity_lte: Int
+  quantity_gt: Int
+  quantity_gte: Int
+  availability: String
+  availability_not: String
+  availability_in: [String!]
+  availability_not_in: [String!]
+  availability_lt: String
+  availability_lte: String
+  availability_gt: String
+  availability_gte: String
+  availability_contains: String
+  availability_not_contains: String
+  availability_starts_with: String
+  availability_not_starts_with: String
+  availability_ends_with: String
+  availability_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  sale: Boolean
+  sale_not: Boolean
+  salePrice: Float
+  salePrice_not: Float
+  salePrice_in: [Float!]
+  salePrice_not_in: [Float!]
+  salePrice_lt: Float
+  salePrice_lte: Float
+  salePrice_gt: Float
+  salePrice_gte: Float
+  product: ProductWhereInput
+  image: ImageWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [VariantWhereInput!]
+  OR: [VariantWhereInput!]
+  NOT: [VariantWhereInput!]
+}
+
+input VariantWhereUniqueInput {
+  id: ID
+}

@@ -1,0 +1,22 @@
+# The HTTP endpoint for your Prisma API
+endpoint:      ${env:PRISMA_DEV_ENDPOINT}
+#endpoint:     ${env:PRISMA_PROD_ENDPOINT}
+
+# Points to the file that holds your data model
+datamodel:     datamodel.prisma
+
+# You can only access the API when providing JWTs that are signed with this secret
+# The secret is used to generate JTWs which allow to authenticate
+# against your Prisma service. You can use the `prisma token` command from the CLI
+# to generate a JWT based on the secret. When using the `prisma-binding` package,
+# you don't need to generate the JWTs manually as the library is doing that for you
+# (this is why you're passing it to the `Prisma` constructor).
+secret:        ${env:PRISMA_SECRET}
+
+generate:
+   - generator: graphql-schema
+     output:   src/generated/
+     
+hooks:
+  post-deploy:
+      - prisma generate
