@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "next start -$PORT",
+    "start": "next start -p $PORT",
     "start:dev": "next -p 7272",
     "build": "next build",
     "heroku-postbuild": "next build",
