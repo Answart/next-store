@@ -8,9 +8,12 @@
   "scripts": {
     "start:dev": "nodemon -e js,graphql -x node --inspect src/index.js",
     "start": "cross-env NODE_ENV=production nodemon -e js,graphql -x node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "now-build": "rm -rf dist && npm run deploy:dev && npm run test",
     "deploy:dev": "prisma deploy --env-file .env",
-    "deploy": "cross-env NODE_ENV=production prisma deploy --env-file .env"
+    "deploy": "cross-env NODE_ENV=production prisma deploy --env-file .env",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "heroku-logs-server": "cd .. && heroku logs --tail --app next-store-yoga",
+    "heroku-push-server": "cd .. && git subtree push --prefix server heroku-server-side master"
   },
   "dependencies": {
     "babel-preset-env": "^1.7.0",
