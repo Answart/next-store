@@ -2,50 +2,49 @@
 const user = {
   id: "cjq2u0j0k9wn50991ayczmcap",
   name: 'alexy',
-  email: 'alexy@gmail.com'
+  email: 'alexy@gmail.com',
+  cart:[],
+  __typename: "User"
 };
 
 const image = {
-  id: "1",
   cloudinary_id: "111111",
-  name: "peggswatch1",
+  id: "cjr06a3e80cja0a71ao59lgnb",
+  name: "Screen Shot 2019-01-16 at 8.59.25 PM",
   width: 22,
   height: 22,
   transformation: "",
-  image_url: "peggswatch1.jpg",
-  large_image_url: "peggswatch1.jpg",
+  image_url: "https://res.cloudinary.com/answart/image/upload/v1547702705/nextstore/ifhreq8hdbih0qslden0.png",
+  large_image_url: "https://res.cloudinary.com/answart/image/upload/v1547702705/nextstore/ifhreq8hdbih0qslden2.png",
+  __typename: "Image"
 }
 const image2 = {
+  ...image,
   id: "2",
-  cloudinary_id: "222222",
-  name: "peggswatch2",
-  width: 22,
-  height: 22,
-  transformation: "",
-  image_url: "peggswatch2.jpg",
-  large_image_url: "peggswatch2.jpg",
+  cloudinary_id: "222222"
 }
 const image3 = {
+  ...image,
   id: "3",
-  cloudinary_id: "33333",
-  name: "peggswatch3",
-  width: 22,
-  height: 22,
-  transformation: "",
-  image_url: "peggswatch3.jpg",
-  large_image_url: "peggswatch3.jpg",
+  cloudinary_id: "33333"
+}
+
+const variant = {
+  id: "cjr06bj1e0cnm0a71h8m89l6k",
+  availability: "4 in Stock!",
+  color: "white",
+  price: 35,
+  quantity: 4,
+  sale: true,
+  salePrice: 30,
+  size: "S",
+  image,
+  __typename: "Variant"
 }
 
 const variants = [
   {
-    id: "cjo8awitz7ox30a01gbzxtr4y",
-    quantity: 5,
-    color: "black",
-    size: "S",
-    price: 14,
-    sale: true,
-    salePrice: 12,
-    image: image2
+    ...variant
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 3,
@@ -68,16 +67,17 @@ const variants = [
 ];
 
 const product = {
-  id: "cjoc0irhbo26r0a0121ub69i3",
-  department: "accessories",
-  title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
-  description: "Limited Edition watch from the 2018 Fall fashion line.",
-  category: "sport",
-  brand: "Peggs",
-  online: false,
+  id: "cjr06a3sz0cjm0a71kb2wdmbo",
+  brand: "Moddurn",
+  category: "home",
+  department: "decor",
+  online: true,
+  title: "Modern Wooden Stool",
+  description: "Limited Edition stool from the 2018 Fall fashion line.",
+  image,
   user,
-  variants,
-  image
+  variants: [{ ...variant }],
+  __typename: "Product"
 };
 
 const products = [
@@ -96,7 +96,6 @@ const products = [
   }
 ];
 
-let variant = { ...variants[0] };
 variant.product = product;
 
 const cart = [{
@@ -143,6 +142,7 @@ const cart = [{
 
 export default product;
 export {
+  variant,
   variants,
   products,
   user,
