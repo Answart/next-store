@@ -16,6 +16,9 @@ import product, {
   user_two,
   cart
 } from '../../lib/dummyData';
+import {
+  SALES_TAX_RATE, SHIPPING_COST_PER_ITEM
+} from '../../config';
 
 
 describe('Util functions', () => {
