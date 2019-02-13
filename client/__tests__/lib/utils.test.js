@@ -51,4 +51,43 @@ describe('Util functions', () => {
       expect(capWord(`${8} string`)).toEqual('8 string');
     });
   });
+
+  describe('formatMoney fn', () => {
+    it('leaves cents off for whole dollars', () => {
+      expect(formatMoney(50)).toEqual('$50');
+      expect(formatMoney(1)).toEqual('$1');
+      expect(formatMoney(500000)).toEqual('$500,000');
+    });
+
+    it('works with whole and fractional dollars', () => {
+      expect(formatMoney(.01)).toEqual('$0.01');
+      expect(formatMoney(.4)).toEqual('$0.40');
+      expect(formatMoney(0.1020)).toEqual('$0.10');
+      expect(formatMoney(0.09)).toEqual('$0.09');
+      expect(formatMoney(50.12)).toEqual('$50.12');
+      expect(formatMoney(1.01)).toEqual('$1.01');
+      expect(formatMoney(1.10)).toEqual('$1.10');
+    });
+
+    it('works with large whole dollars up to trillion', () => {
+      expect(formatMoney(749823749823749)).toEqual('$749,823,749,823,749');
+    });
+
+    it('works with large fractional dollars up to trillion', () => {
+      expect(formatMoney(749823749823749.2)).toEqual('$749,823,749,823,749.20');
+    });
+
+    it('returns rounded numbers larger than trillion', () => {
+      expect(formatMoney(20893749823749823749)).toEqual('$20,893,749,823,749,825,000');
+    });
+
+    it('works with trailing cents', () => {
+      const price = 12.50;
+      const quantity = 3;
+      const three_shipping = quantity * SHIPPING_COST_PER_ITEM;
+      const three_salestax = quantity * price * SALES_TAX_RATE;
+      expect(formatMoney(three_shipping)).toEqual('$3.60');
+      expect(formatMoney(three_salestax)).toEqual('$3.47');
+    });
+  });
 });
