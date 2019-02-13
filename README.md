@@ -1,7 +1,7 @@
 [travis]: https://travis-ci.org/Answart/next-store
 [heroku]: https://answart-next-store.herokuapp.com/
 [MIT]: https://github.com/Answart/next-store/blob/master/LICENSE.md
-[coveralls]: https://coveralls.io/github/Answart/next-store
+[coveralls]: https://coveralls.io/github/Answart/next-store?branch=master
 
 <!-- <p align="center">
   <img src="https://user-images.githubusercontent.com/4269260/51296194-c117d500-19cf-11e9-81a8-c0b15867579f.png" width="450" title="Home Page">
@@ -12,7 +12,7 @@
 [![Build Status](https://travis-ci.org/Answart/next-store.svg)][travis]
 [![Heroku](https://heroku-badge.herokuapp.com/?app=answart-next-store&style=flat&svg=1)][heroku]
 [![MIT](https://img.shields.io/github/license/Answart/next-store.svg)][MIT]
-[![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg)][coveralls]
+[![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg?branch=master)][coveralls]
 
 :construction: WORK IN PROGRESS :construction:
 

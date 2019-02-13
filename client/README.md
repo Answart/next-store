@@ -1,12 +1,12 @@
 [dependency]: https://david-dm.org/Answart/next-store?path=client
 [snyk]: https://snyk.io/test/github/Answart/next-store
-[coveralls]: https://coveralls.io/github/Answart/next-store
+[coveralls]: https://coveralls.io/github/Answart/next-store?branch=master
 
 # Next Store client-side
 
 [![dependencies Status](https://david-dm.org/Answart/next-store/status.svg?path=client)][dependency]
 [![Known Vulnerabilities](https://snyk.io/test/github/Answart/next-store/badge.svg?targetFile=client/package.json)][snyk]
-[![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg)][coveralls]
+[![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg?branch=master)][coveralls]
 
 A React app that uses [Next.js](https://nextjs.org/), [Apollo](https://www.apollographql.com/), and [Styled-Components](https://www.styled-components.com/) that serves as the client for Next Store.
 
