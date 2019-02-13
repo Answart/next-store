@@ -16,7 +16,7 @@
 
 :construction: WORK IN PROGRESS :construction:
 
-A React e-commerce app where a user can browse among items with which they can buy or sell. It uses React's Next.js framework and GraphQL's Apollo framework.
+An **e-commerce app** where a user can browse among items with which they can buy or sell. It contains a client app built in [**React**](https://reactjs.org/) using it's [**Next.js**](https://nextjs.org/) framework and GraphQL's [**Apollo**](https://www.apollographql.com/) framework. The server app uses a [**GraphQL**](https://oss.prisma.io/content/graphql-yoga/01-overview/) server with [**Prisma**](https://www.prisma.io/) as the database interface.
 
 User stories
 ------------
@@ -115,7 +115,27 @@ App Map
 Getting Started
 ---------------
 
-Create an **.env** file in **server** directory that has the following:
+#### Cloudinary setup
+
+1. Create and access your [**Cloudinary**](https://cloudinary.com/) account.
+2. Grab your API key and API secret from the [main console page](
+https://cloudinary.com/console).
+3. Create a [folder](https://cloudinary.com/console/media_library/folders/all/) where uploads will be stored.
+4. Add an [upload preset](https://cloudinary.com/console/settings/upload) to set the dimensions uploaded files will be transformed into.
+
+#### Prisma setup
+
+1. Create or access your [**Prisma**](https://app.prisma.io/) account.
+2. [Set up Prisma](https://www.prisma.io/docs/1.26/get-started/01-setting-up-prisma-demo-server-JAVASCRIPT-a001/) using the [prisma-cli](https://github.com/prisma/prisma) in the terminal by running **<i>prisma init</i>**.
+
+#### MailTrap setup
+
+1. Create or access your [**MailTrap**](https://mailtrap.io/) account.
+2. Create a demo inbox and check the SMTP Settings page for the Host, Port, Username, and Password credentials to be used in your env file.
+
+#### The .env file
+
+Create an **.env** file in the **server** directory with the following:
 ```bash
 # ./server/.env
 NODE_ENV=development
@@ -141,6 +161,8 @@ POSTMARK_USER=<POSTMARKUSER>
 POSTMARK_PASS=<POSTMARKPASSWORD>
 ```
 
+#### Start app
+
 Start server:
 ```bash
 # ./
@@ -154,20 +176,22 @@ $ prisma init
 # Update .env file with given PRISMA_DEV_ENDPOINT/PRISMA_PROD_ENDPOINT (depending where you are deploying) then deploy prisma
 $ prisma deploy
 
-# Start the app locally by running the server and client side apps
+# Start client locally
 $ npm run start:dev
 ```
 
-Launch client in new tab:
+Start client in new tab:
 ```bash
 # ./
 $ cd client
 # ./client/
 $ npm install
+
+# Start server locally
 $ npm run start:dev
 ```
 
-View app at [**localhost:7272**](http://localhost:7272) in browser.
+View app at [**localhost:7272**](http://localhost:7272) when both client and server are running.
 
 <!-- App Screenshots
 ---------------
@@ -179,10 +203,11 @@ View app at [**localhost:7272**](http://localhost:7272) in browser.
   <img src="https://user-images.githubusercontent.com/4269260/51295814-413d3b00-19ce-11e9-9e38-089a9254e7af.png" width="350" height="350" alt="Poll Page">
 </p> -->
 
-NPM Commands for Client and Server directories
+NPM Commands for Client/Server app
 ------------
 
 | Command | Description |
 |---------|-------------|
 | npm install | Install dependencies |
+| npm test | Run test files |
 | npm run start:dev | Launch app |
