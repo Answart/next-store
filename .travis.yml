@@ -1,0 +1,13 @@
+language:      node_js
+node_js:
+  - '10'
+  - '11'
+  - stable
+cache:
+  directories:
+  - client/node_modules
+  - server/node_modules
+script:
+  - cd server && npm install && npm run build && npm test
+  - cd client && npm install && npm run deploy && npm test
+after_script:  cd client && npm run coveralls
