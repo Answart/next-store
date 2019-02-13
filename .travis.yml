@@ -8,6 +8,5 @@ cache:
   - client/node_modules
   - server/node_modules
 script:
-  - cd server && npm install && npm run deploy && npm test
   - cd client && npm install && npm run build && npm test
 after_script:  cd client && npm run coveralls
