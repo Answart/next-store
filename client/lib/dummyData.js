@@ -7,6 +7,12 @@ const user = {
   __typename: "User"
 };
 
+const user_two = {
+  ...user,
+  name: 'answart',
+  email: 'answart@sbcglobal.net'
+};
+
 const image = {
   cloudinary_id: "111111",
   id: "cjr06a3e80cja0a71ao59lgnb",
@@ -146,5 +152,6 @@ export {
   variants,
   products,
   user,
+  user_two,
   cart
 };
