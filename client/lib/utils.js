@@ -67,12 +67,14 @@ const getFltrdObjs = function(objs, filter) {
 }
 
 const capWord = function(string = "") {
-  string = string.toString().trim();
-  if (!string.length) return string;
+  let new_string = (!string)
+    ? ''
+    : string.toString().trim();
+  if (!new_string.length) return new_string;
 
-  return (string.length > 1)
-    ? (string.charAt(0).toUpperCase() + string.slice(1))
-    : string.charAt(0).toUpperCase();
+  return (new_string.length > 1)
+    ? (new_string.charAt(0).toUpperCase() + new_string.slice(1))
+    : new_string.charAt(0).toUpperCase();
 }
 
 const formatMoney = function(amount) {
