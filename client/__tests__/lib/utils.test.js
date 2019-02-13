@@ -90,4 +90,61 @@ describe('Util functions', () => {
       expect(formatMoney(three_salestax)).toEqual('$3.47');
     });
   });
+
+  describe('getPageTitleProps fn', () => {
+    it('renders properly on shop page', () => {
+      expect(getPageTitleProps(user, { department: "bottoms" })).toEqual({
+        pageLabel: "",
+        titles: [{
+          href: {
+            pathname: "/shop",
+            query: { department: "bottoms" }
+          },
+          label: "Bottoms"
+        }]
+      });
+    });
+    it("renders properly when viewing another user's products shop page", () => {
+      expect(getPageTitleProps(user, { name: "answart" })).toEqual({
+        pageLabel: "Answart",
+        titles: []
+      });
+    });
+    it("renders properly when viewing another user's products shop page w/category", () => {
+      expect(getPageTitleProps(user, {
+        name: "answart",
+        department: "decor"
+      })).toEqual({
+        pageLabel: "Answart",
+        titles: [{
+          href: {
+            pathname: "/shop",
+            query: { name: "answart", department: "decor" }
+          },
+          label: "Decor"
+        }]
+      });
+    });
+    it('renders properly when viewing own products shop page', () => {
+      expect(getPageTitleProps(user_two, { name: "answart" })).toEqual({
+        pageLabel: "My Products",
+        titles: []
+      });
+    });
+    it('renders properly when viewing own products shop page w/category', () => {
+      expect(getPageTitleProps(user_two, {
+        name: "answart",
+        department: "decor"
+      })).toEqual({
+        pageLabel: "My Products",
+        titles: [{
+          href: {
+            pathname: "/shop",
+            query: { name: "answart", department: "decor" }
+          },
+          label: "Decor"
+        }]
+      });
+    });
+  });
 });
