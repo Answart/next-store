@@ -220,4 +220,14 @@ describe('Util functions', () => {
       });
     });
   });
+
+  describe('getUniqKeyVals fn', () => {
+    it('gets unique keys values for size', () => {
+      expect(getUniqKeyVals(variants, 'size')).toEqual(["S", "M"]);
+    });
+
+    it('gets unique keys values for color', () => {
+      expect(getUniqKeyVals(variants, 'color')).toEqual(["white", "black", "red"]);
+    });
+  });
 });
