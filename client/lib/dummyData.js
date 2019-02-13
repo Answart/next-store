@@ -57,7 +57,7 @@ const variants = [
   }, {
     id: "cjo8awitz7ox30a01gbzxtr4y",
     quantity: 2,
-    color: "fed",
+    color: "red",
     size: "S",
     price: 40,
     sale: true,
