@@ -176,4 +176,25 @@ describe('Util functions', () => {
       });
     });
   });
+
+  describe('getCartTotals fn', () => {
+    it('returns cart totals from empty cart', () => {
+      const emptyCart = {
+        subTotal: 0,
+        totalQuantity: 0,
+        totalSalesTax: 0,
+        totalShipping: 0
+      }
+      expect(getCartTotals([])).toEqual(emptyCart);
+      expect(getCartTotals()).toEqual(emptyCart);
+    });
+    it('returns cart totals from cart with items', () => {
+      expect(getCartTotals(cart)).toEqual({
+        subTotal: 900,
+        totalQuantity: 30,
+        totalSalesTax: 83.25,
+        totalShipping: 36
+      });
+    });
+  });
 });
