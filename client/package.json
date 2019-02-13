@@ -10,9 +10,8 @@
     "start:dev": "next -p 7272",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "test": "NODE_ENV=test jest --watch",
-    "coverage": "NODE_ENV=test jest --coverage --verbose",
-    "coveralls": "npm run coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "NODE_ENV=test jest --coverage --verbose",
+    "coveralls": "npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "heroku-logs-client": "cd .. && heroku logs --tail --app answart-next-store",
     "heroku-push-client": "cd .. && git subtree push --prefix client heroku-client-side master"
   },
