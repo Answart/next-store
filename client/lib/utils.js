@@ -97,7 +97,7 @@ const getCartTotals = function(cart = []) {
 
       totalQuantity += quantity;
       totalShipping += quantity * SHIPPING_COST_PER_ITEM;
-      totalSalesTax += quantity * (SALES_TAX_RATE * price);
+      totalSalesTax += quantity * price * SALES_TAX_RATE;
 
       return tally + (quantity * price);
     }, 0);
