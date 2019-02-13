@@ -9,7 +9,7 @@
 
 # Next Store
 
-[![Build Status](https://travis-ci.org/Answart/next-store.svg)][travis]
+[![Build Status](https://travis-ci.org/Answart/next-store.svg?branch=master)][travis]
 [![Heroku](https://heroku-badge.herokuapp.com/?app=answart-next-store&style=flat&svg=1)][heroku]
 [![MIT](https://img.shields.io/github/license/Answart/next-store.svg)][MIT]
 [![Coverage Status](https://coveralls.io/repos/github/Answart/next-store/badge.svg?branch=master)][coveralls]
