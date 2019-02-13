@@ -82,9 +82,11 @@ const product = {
   description: "Limited Edition stool from the 2018 Fall fashion line.",
   image,
   user,
-  variants: [{ ...variant }],
+  variants: [],
   __typename: "Product"
 };
+
+product.variants.push(variant);
 
 const products = [
   product,
