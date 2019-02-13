@@ -230,4 +230,17 @@ describe('Util functions', () => {
       expect(getUniqKeyVals(variants, 'color')).toEqual(["white", "black", "red"]);
     });
   });
+
+  describe('getFltrdObjs fn', () => {
+    it('returns filtered objs for empty filter', () => {
+      expect(getFltrdObjs(variants, {})).toEqual(variants);
+    });
+
+    it('returns filtered objs w/filter', () => {
+      let varia = { ...variant };
+      delete varia.product;
+
+      expect(getFltrdObjs(variants, {color: "white"})).toEqual([varia]);
+    });
+  });
 });
