@@ -92,7 +92,7 @@ describe('Util functions', () => {
   });
 
   describe('getPageTitleProps fn', () => {
-    it('renders properly on shop page', () => {
+    it('renders properly on shop page w/department', () => {
       expect(getPageTitleProps(user, { department: "bottoms" })).toEqual({
         pageLabel: "",
         titles: [{
@@ -104,12 +104,33 @@ describe('Util functions', () => {
         }]
       });
     });
+
+    it('renders properly on shop page w/department and category', () => {
+      expect(getPageTitleProps(user, { department: "bottoms", category: "pants" })).toEqual({
+        pageLabel: "",
+        titles: [{
+          href: {
+            pathname: "/shop",
+            query: { department: "bottoms" }
+          },
+          label: "Bottoms"
+        }, {
+          href: {
+            pathname: "/shop",
+            query: { department: "bottoms", category: "pants" }
+          },
+          label: "Pants"
+        }]
+      });
+    });
+
     it("renders properly when viewing another user's products shop page", () => {
       expect(getPageTitleProps(user, { name: "answart" })).toEqual({
         pageLabel: "Answart",
         titles: []
       });
     });
+
     it("renders properly when viewing another user's products shop page w/category", () => {
       expect(getPageTitleProps(user, {
         name: "answart",
@@ -125,12 +146,14 @@ describe('Util functions', () => {
         }]
       });
     });
+
     it('renders properly when viewing own products shop page', () => {
       expect(getPageTitleProps(user_two, { name: "answart" })).toEqual({
         pageLabel: "My Products",
         titles: []
       });
     });
+
     it('renders properly when viewing own products shop page w/category', () => {
       expect(getPageTitleProps(user_two, {
         name: "answart",
