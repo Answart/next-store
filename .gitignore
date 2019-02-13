@@ -10,3 +10,5 @@ layout.md
 now.json
 .graphcoolrc
 package-lock.json
+.coveralls.yml
+coverage
