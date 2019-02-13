@@ -147,4 +147,33 @@ describe('Util functions', () => {
       });
     });
   });
+
+  describe('getFilterProps fn', () => {
+    it('no product(s) return empty array for brands/categories/colors/sizes', () => {
+      expect(getFilterProps([])).toEqual({
+        brands: [],
+        categories: [],
+        colors: [],
+        sizes: []
+      });
+    });
+
+    it('single product input returns filled array for brands/categories/colors/sizes', () => {
+      expect(getFilterProps([{ ...product }])).toEqual({
+        brands: ["Moddurn"],
+        categories: ["home"],
+        colors: ["white"],
+        sizes: ["S"]
+      });
+    });
+
+    it('multiple products input returns filled array for brands/categories/colors/sizes', () => {
+      expect(getFilterProps(products)).toEqual({
+        brands: ["Moddurn","Peggs"],
+        categories: ["home","sport"],
+        colors: ["white","white","black","red"],
+        sizes: ["S","S","M","S"]
+      });
+    });
+  });
 });
