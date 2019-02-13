@@ -21,6 +21,14 @@ import product, {
 describe('Util functions', () => {
 
   describe('capWord fn', () => {
+    it('invalid/empty input returns an empty string', () => {
+      expect(capWord()).toEqual('');
+      expect(capWord('')).toEqual('');
+      expect(capWord(' ')).toEqual('');
+      expect(capWord(undefined)).toEqual('');
+      expect(capWord(null)).toEqual('');
+    });
+
     it('string word(s) input returns trimmed string with capitalized first word', () => {
       expect(capWord('word')).toEqual('Word');
       expect(capWord(' string')).toEqual('String');
