@@ -1,6 +1,6 @@
 import { CURRENT_USER_QUERY } from '../graphql';
 import {
-  fakeUser,
+  fakeUser, fakeCartItem,
 } from './testUtils';
 
 
@@ -16,7 +16,20 @@ const userQueryMock = {
   },
 };
 
+const userQueryCartItemMock = {
+  request: { query: CURRENT_USER_QUERY },
+  result: {
+    data: {
+      me: {
+        ...fakeUser(),
+        cart: [fakeCartItem()],
+      },
+    },
+  },
+};
+
 
 export {
   userQueryMock,
+  userQueryCartItemMock,
 };
