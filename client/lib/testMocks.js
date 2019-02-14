@@ -1,4 +1,4 @@
-import { CURRENT_USER_QUERY } from '../graphql';
+import { ADD_TO_CART_MUTATION, CURRENT_USER_QUERY } from '../graphql';
 import {
   fakeUser, fakeCartItem,
 } from './testUtils';
@@ -28,8 +28,21 @@ const userQueryCartItemMock = {
   },
 };
 
+const addToCartMutationMock = {
+  request: { query: ADD_TO_CART_MUTATION, variables: { id: 'abc123' } },
+  result: {
+    data: {
+      addToCart: {
+        ...fakeCartItem(),
+        quantity: 1,
+      },
+    },
+  },
+};
+
 
 export {
   userQueryMock,
   userQueryCartItemMock,
+  addToCartMutationMock
 };
