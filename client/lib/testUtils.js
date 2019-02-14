@@ -53,10 +53,20 @@ const fakeVariant = () => ({
   product: fakeProduct()
 });
 
+const fakeCartItem = overrides => ({
+  __typename: 'CartItem',
+  id: 'omg123',
+  quantity: 3,
+  user: fakeUser(),
+  variant: fakeVariant(),
+  ...overrides,
+});
+
 
 export {
   fakeUser,
   fakeImage,
   fakeProduct,
   fakeVariant,
+  fakeCartItem,
 };
