@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "babel-jest": "^24.1.0",
+    "casual": "^1.6.0",
     "enzyme-to-json": "^3.3.5",
     "jest": "^24.1.0",
     "jest-transform-graphql": "^2.1.0"
