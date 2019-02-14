@@ -39,9 +39,24 @@ const fakeProduct = () => ({
   image: fakeImage(),
 });
 
+const fakeVariant = () => ({
+  __typename: 'Variant',
+  id: 'abc123',
+  availability: "4 in Stock!",
+  color: "white",
+  price: 35,
+  quantity: 4,
+  sale: true,
+  salePrice: 30,
+  size: "S",
+  image: fakeImage(),
+  product: fakeProduct()
+});
+
 
 export {
   fakeUser,
   fakeImage,
   fakeProduct,
+  fakeVariant,
 };
