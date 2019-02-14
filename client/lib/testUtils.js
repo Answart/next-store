@@ -25,8 +25,23 @@ const fakeImage = () => ({
   large_image_url: "peggswatch2.jpg",
 });
 
+const fakeProduct = () => ({
+  __typename: 'Product',
+  id: 'abc123',
+  department: "accessories",
+  title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+  description: "Limited Edition watch from the 2018 Fall fashion line.",
+  category: "sport",
+  brand: "Peggs",
+  online: false,
+  user: fakeUser(),
+  variants: [],
+  image: fakeImage(),
+});
+
 
 export {
   fakeUser,
   fakeImage,
+  fakeProduct,
 };
