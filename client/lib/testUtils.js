@@ -13,7 +13,20 @@ const fakeUser = () => ({
   cart: [],
 });
 
+const fakeImage = () => ({
+  __typename: 'Image',
+  id: 'abc123',
+  cloudinary_id: "111111",
+  name: "peggswatch1",
+  width: 22,
+  height: 22,
+  transformation: "",
+  image_url: "peggswatch1.jpg",
+  large_image_url: "peggswatch2.jpg",
+});
+
 
 export {
   fakeUser,
+  fakeImage,
 };
