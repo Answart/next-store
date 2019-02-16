@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logout /> renders and matches the snap shot 1`] = `
+<button
+  className="undrln-btn"
+  onClick={[Function]}
+>
+  Log Out
+</button>
+`;
