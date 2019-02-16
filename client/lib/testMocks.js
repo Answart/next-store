@@ -80,6 +80,20 @@ const removeFromCartMutationMock = {
   },
 };
 
+const updateCartItemMutationMock = (quantity) => ({
+  request: { query: UPDATE_CARTITEM_MUTATION, variables: { id: mockCartItem.id, quantity } },
+  result: {
+    data: {
+      updateCartItem: {
+        __typename: mockCartItem.__typename,
+        id: mockCartItem.id,
+        quantity,
+        variant: { ...mockCartItem.variant }
+      },
+    },
+  },
+});
+
 
 export {
   userQueryMock,
@@ -87,5 +101,6 @@ export {
   signoutMutationMock,
   userQueryCartItemMock,
   addToCartMutationMock,
+  updateCartItemMutationMock,
   removeFromCartMutationMock
 };
