@@ -15,7 +15,7 @@ const mocks = [
   { ...addToCartMutationMock }
 ];
 
-describe('<AddToCart/>', () => {
+describe('<AddToCart />', () => {
   it('renders and matches the snap shot', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
@@ -44,17 +44,15 @@ describe('<AddToCart/>', () => {
     wrapper.update();
     const { data: { me } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me.cart).toHaveLength(0);
-    // add an item to the cart
     wrapper.find('button').simulate('click');
     await wait();
-    // check if the item is in the cart
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2.cart).toHaveLength(1);
     expect(me2.cart[0].id).toBe('c4rt1t3m1d');
     expect(me2.cart[0].quantity).toBe(3);
   });
 
-  it('changes from add to adding when clicked', async () => {
+  it("changes from 'Add To Cart' to 'Adding To Cart' when clicked", async () => {
     const variant = fakeVariant();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
@@ -85,11 +83,9 @@ describe('<AddToCart/>', () => {
     wrapper.update();
     const { data: { me } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me.cart).toHaveLength(0);
-    // add an item to the cart
     wrapper.find('button').simulate('click');
     await wait();
     expect(wrapper.text()).toContain('Add To Cart');
-    // check if the item is in the cart
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2.cart).toHaveLength(0);
   });
