@@ -1,4 +1,8 @@
-import { CURRENT_USER_QUERY, ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION } from '../graphql';
+import {
+  CURRENT_USER_QUERY,
+  SIGNOUT_MUTATION,
+  ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION
+} from '../graphql';
 import {
   fakeUser, fakeCartItem, fakeVariant,
 } from './testUtils';
@@ -15,6 +19,19 @@ const userQueryMock = {
       me: {
         ...mockUser,
         cart: [],
+      },
+    },
+  },
+};
+
+const signoutMutationMock = {
+  request: { query: SIGNOUT_MUTATION },
+  result: {
+    data: {
+      signout: {
+        __typename: 'Message',
+        success: true,
+        message: 'Goodbye!'
       },
     },
   },
@@ -59,6 +76,7 @@ const removeFromCartMutationMock = {
 
 export {
   userQueryMock,
+  signoutMutationMock,
   userQueryCartItemMock,
   addToCartMutationMock,
   removeFromCartMutationMock
