@@ -1,4 +1,4 @@
-import { ADD_TO_CART_MUTATION, CURRENT_USER_QUERY } from '../graphql';
+import { CURRENT_USER_QUERY, ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION } from '../graphql';
 import {
   fakeUser, fakeCartItem, fakeVariant,
 } from './testUtils';
@@ -44,9 +44,22 @@ const addToCartMutationMock = {
   },
 };
 
+const removeFromCartMutationMock = {
+  request: { query: REMOVE_FROM_CART_MUTATION, variables: { id: mockCartItem.id } },
+  result: {
+    data: {
+      removeFromCart: {
+        __typename: mockCartItem.__typename,
+        id: mockCartItem.id,
+      },
+    },
+  },
+};
+
 
 export {
   userQueryMock,
   userQueryCartItemMock,
-  addToCartMutationMock
+  addToCartMutationMock,
+  removeFromCartMutationMock
 };
