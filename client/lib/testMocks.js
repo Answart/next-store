@@ -64,8 +64,8 @@ const addToCartMutationMock = {
   result: {
     data: {
       addToCart: {
-        ...mockCartItem,
-        quantity: 1,
+        __typename: mockCartItem.__typename,
+        id: mockCartItem.id,
       },
     },
   },
