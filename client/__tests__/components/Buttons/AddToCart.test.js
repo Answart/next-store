@@ -10,8 +10,8 @@ import { fakeVariant } from '../../../lib/testUtils';
 
 const mocks = [
   { ...userQueryEmptyCartMock },
-  { ...userQueryCartItemMock },
-  { ...addToCartMutationMock }
+  { ...addToCartMutationMock },
+  userQueryCartItemMock({ quantity: 1 }),
 ];
 
 describe('<AddToCart />', () => {

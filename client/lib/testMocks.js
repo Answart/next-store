@@ -44,17 +44,20 @@ const signoutMutationMock = {
   },
 };
 
-const userQueryCartItemMock = {
+const userQueryCartItemMock = overrides => ({
   request: { query: CURRENT_USER_QUERY },
   result: {
     data: {
       me: {
         ...mockUser,
-        cart: [mockCartItem],
+        cart: [{
+          ...mockCartItem,
+          ...overrides
+        }],
       },
     },
   },
-};
+});
 
 const addToCartMutationMock = {
   request: { query: ADD_TO_CART_MUTATION, variables: { id: mockVariant.id } },

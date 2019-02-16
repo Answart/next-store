@@ -8,10 +8,11 @@ import { RemoveFromCart } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
 
 const mocks = [
-  { ...userQueryCartItemMock },
+  userQueryCartItemMock(),
   { ...userQueryEmptyCartMock },
   { ...removeFromCartMutationMock }
 ];
+
 
 describe('<RemoveFromCart />', () => {
   it('renders and matches snapshot', async () => {
