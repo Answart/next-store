@@ -24,6 +24,13 @@ const userQueryMock = {
   },
 };
 
+const userQuerySignoutMock = {
+  request: { query: CURRENT_USER_QUERY },
+  result: {
+    data: { me: null }
+  },
+};
+
 const signoutMutationMock = {
   request: { query: SIGNOUT_MUTATION },
   result: {
@@ -76,6 +83,7 @@ const removeFromCartMutationMock = {
 
 export {
   userQueryMock,
+  userQuerySignoutMock,
   signoutMutationMock,
   userQueryCartItemMock,
   addToCartMutationMock,
