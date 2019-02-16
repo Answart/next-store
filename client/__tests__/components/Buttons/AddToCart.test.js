@@ -46,10 +46,12 @@ describe('<AddToCart />', () => {
     expect(me.cart).toHaveLength(0);
     wrapper.find('button').simulate('click');
     await wait();
-    const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
-    expect(me2.cart).toHaveLength(1);
-    expect(me2.cart[0].id).toBe('c4rt1t3m1d');
-    expect(me2.cart[0].quantity).toBe(3);
+    const { data: { me: { cart } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
+    expect(cart).toHaveLength(1);
+    expect(cart[0].id).toBe('c4rt1t3m1d');
+    expect(cart[0].quantity).toBe(1);
+    expect(cart[0].variant.id).toBe('v4r13nt1d');
+    expect(cart[0].variant.quantity).toBe(4);
   });
 
   it("changes from 'Add To Cart' to 'Adding To Cart' when clicked", async () => {
