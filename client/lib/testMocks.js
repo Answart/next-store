@@ -1,15 +1,19 @@
 import { ADD_TO_CART_MUTATION, CURRENT_USER_QUERY } from '../graphql';
 import {
-  fakeUser, fakeCartItem,
+  fakeUser, fakeCartItem, fakeVariant,
 } from './testUtils';
 
+
+const mockUser = fakeUser();
+const mockCartItem = fakeCartItem();
+const mockVariant = fakeVariant();
 
 const userQueryMock = {
   request: { query: CURRENT_USER_QUERY },
   result: {
     data: {
       me: {
-        ...fakeUser(),
+        ...mockUser,
         cart: [],
       },
     },
@@ -21,19 +25,19 @@ const userQueryCartItemMock = {
   result: {
     data: {
       me: {
-        ...fakeUser(),
-        cart: [fakeCartItem()],
+        ...mockUser,
+        cart: [mockCartItem],
       },
     },
   },
 };
 
 const addToCartMutationMock = {
-  request: { query: ADD_TO_CART_MUTATION, variables: { id: 'abc123' } },
+  request: { query: ADD_TO_CART_MUTATION, variables: { id: mockVariant.id } },
   result: {
     data: {
       addToCart: {
-        ...fakeCartItem(),
+        ...mockCartItem,
         quantity: 1,
       },
     },
