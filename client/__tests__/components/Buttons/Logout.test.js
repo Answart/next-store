@@ -10,8 +10,8 @@ import { CURRENT_USER_QUERY } from '../../../graphql';
 
 const mocks = [
   { ...userQueryEmptyCartMock },
-  { ...userQueryNoUserMock },
   { ...signoutMutationMock },
+  { ...userQueryNoUserMock },
 ];
 
 
