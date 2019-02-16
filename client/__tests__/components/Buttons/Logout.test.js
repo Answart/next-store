@@ -46,6 +46,7 @@ describe('<Logout />', () => {
     expect(me.__typename).toBe("User");
     wrapper.find('button').simulate('click');
     await wait();
+    wrapper.update();
     const { data } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(data.me).toBe(null);
   });
