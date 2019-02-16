@@ -6,7 +6,7 @@ casual.seed(777);
 
 const fakeUser = () => ({
   __typename: 'User',
-  id: '4234',
+  id: 'us3r1d',
   name: casual.name,
   email: casual.email,
   permissions: ['ADMIN'],
@@ -15,7 +15,7 @@ const fakeUser = () => ({
 
 const fakeImage = () => ({
   __typename: 'Image',
-  id: 'abc123',
+  id: '1m4g31d',
   cloudinary_id: "111111",
   name: "peggswatch1",
   width: 22,
@@ -27,7 +27,7 @@ const fakeImage = () => ({
 
 const fakeProduct = () => ({
   __typename: 'Product',
-  id: 'abc123',
+  id: 'pr0duct1d',
   department: "accessories",
   title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
   description: "Limited Edition watch from the 2018 Fall fashion line.",
@@ -41,7 +41,7 @@ const fakeProduct = () => ({
 
 const fakeVariant = () => ({
   __typename: 'Variant',
-  id: 'abc123',
+  id: 'v4r13nt1d',
   availability: "4 in Stock!",
   color: "white",
   price: 35,
@@ -55,7 +55,7 @@ const fakeVariant = () => ({
 
 const fakeCartItem = overrides => ({
   __typename: 'CartItem',
-  id: 'omg123',
+  id: 'c4rt1t3m1d',
   quantity: 3,
   user: fakeUser(),
   variant: fakeVariant(),

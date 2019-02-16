@@ -50,7 +50,7 @@ describe('<AddToCart/>', () => {
     // check if the item is in the cart
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2.cart).toHaveLength(1);
-    expect(me2.cart[0].id).toBe('omg123');
+    expect(me2.cart[0].id).toBe('c4rt1t3m1d');
     expect(me2.cart[0].quantity).toBe(3);
   });
 
