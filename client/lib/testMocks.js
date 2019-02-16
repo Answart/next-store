@@ -101,7 +101,7 @@ const updateCartItemMutationMock = (quantity) => ({
 export {
   userQueryNoUserMock,
   userQueryEmptyCartMock,
-  userQuerySignoutMock,
+  signoutMutationMock,
   userQueryCartItemMock,
   addToCartMutationMock,
   updateCartItemMutationMock,
