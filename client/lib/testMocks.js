@@ -7,12 +7,12 @@ import {
   fakeUser, fakeCartItem, fakeVariant,
 } from './testUtils';
 
-
 const mockUser = fakeUser();
 const mockCartItem = fakeCartItem();
 const mockVariant = fakeVariant();
 
-const userQueryMock = {
+
+const userQueryEmptyCartMock = {
   request: { query: CURRENT_USER_QUERY },
   result: {
     data: {
@@ -96,8 +96,8 @@ const updateCartItemMutationMock = (quantity) => ({
 
 
 export {
-  userQueryMock,
   userQueryNoUserMock,
+  userQueryEmptyCartMock,
   userQuerySignoutMock,
   userQueryCartItemMock,
   addToCartMutationMock,

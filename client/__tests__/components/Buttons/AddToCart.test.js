@@ -3,14 +3,13 @@ import toJSON from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { fakeVariant } from '../../../lib/testUtils';
-import { userQueryMock, userQueryCartItemMock, addToCartMutationMock } from '../../../lib/testMocks';
+import { userQueryEmptyCartMock, userQueryCartItemMock, addToCartMutationMock } from '../../../lib/testMocks';
 import { AddToCart } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
-
+import { fakeVariant } from '../../../lib/testUtils';
 
 const mocks = [
-  { ...userQueryMock },
+  { ...userQueryEmptyCartMock },
   { ...userQueryCartItemMock },
   { ...addToCartMutationMock }
 ];

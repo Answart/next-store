@@ -4,16 +4,16 @@ import Router from 'next/router';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryMock, userQueryNoUserMock, signoutMutationMock } from '../../../lib/testMocks';
+import { userQueryEmptyCartMock, userQueryNoUserMock, signoutMutationMock } from '../../../lib/testMocks';
 import { Logout } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
 
-
 const mocks = [
-  { ...userQueryMock },
+  { ...userQueryEmptyCartMock },
   { ...userQueryNoUserMock },
   { ...signoutMutationMock },
 ];
+
 
 describe('<Logout />', () => {
   it('renders and matches the snap shot', async () => {
