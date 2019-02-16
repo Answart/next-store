@@ -13,12 +13,14 @@ const mocks = [
   { ...addToCartMutationMock },
   userQueryCartItemMock({ quantity: 1 }),
 ];
+const variant = fakeVariant();
+
 
 describe('<AddToCart />', () => {
   it('renders and matches the snap shot', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AddToCart variant={fakeVariant()} disabled={false} />
+        <AddToCart variant={variant} disabled={false} />
       </MockedProvider>
     );
     await wait();
@@ -28,7 +30,6 @@ describe('<AddToCart />', () => {
 
   it('adds an item to cart when clicked', async () => {
     let apolloClient;
-    const variant = fakeVariant();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
         <ApolloConsumer>
@@ -52,7 +53,6 @@ describe('<AddToCart />', () => {
   });
 
   it("changes from 'Add To Cart' to 'Adding To Cart' when clicked", async () => {
-    const variant = fakeVariant();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
         <AddToCart variant={variant} disabled={false} />
@@ -66,7 +66,6 @@ describe('<AddToCart />', () => {
   });
 
   it('does not add an item to cart when disabled', async () => {
-    const variant = fakeVariant();
     let apolloClient;
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
