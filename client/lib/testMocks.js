@@ -24,7 +24,7 @@ const userQueryMock = {
   },
 };
 
-const userQuerySignoutMock = {
+const userQueryNoUserMock = {
   request: { query: CURRENT_USER_QUERY },
   result: {
     data: { me: null }
@@ -97,8 +97,8 @@ const updateCartItemMutationMock = (quantity) => ({
 
 export {
   userQueryMock,
+  userQueryNoUserMock,
   userQuerySignoutMock,
-  signoutMutationMock,
   userQueryCartItemMock,
   addToCartMutationMock,
   updateCartItemMutationMock,

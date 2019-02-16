@@ -4,14 +4,14 @@ import Router from 'next/router';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryMock, userQuerySignoutMock, signoutMutationMock } from '../../../lib/testMocks';
+import { userQueryMock, userQueryNoUserMock, signoutMutationMock } from '../../../lib/testMocks';
 import { Logout } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
 
 
 const mocks = [
   { ...userQueryMock },
-  { ...userQuerySignoutMock },
+  { ...userQueryNoUserMock },
   { ...signoutMutationMock },
 ];
 
