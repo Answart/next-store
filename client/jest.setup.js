@@ -3,9 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-window.alert = (msg) => {
-  if (msg) console.log(msg);
-};
-window.confirm = (msg) => {};
+window.alert = jest.fn();
+window.confirm = jest.fn(() => true);
 window.matchMedia = () => ({});
 window.scrollTo = () => { };
