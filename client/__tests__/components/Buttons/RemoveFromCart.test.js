@@ -36,32 +36,23 @@ describe('<RemoveFromCart />', () => {
         </ApolloConsumer>
       </MockedProvider>
     );
-    const res = await apolloClient.query({ query: CURRENT_USER_QUERY });
-    const { me } = res.data;
-    expect(me.cart).toHaveLength(1);
-    expect(me.cart[0].variant.price).toBe(35);
+    const { data: { me: { cart } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
+    expect(cart).toHaveLength(1);
+    expect(cart[0].variant.price).toBe(35);
     wrapper.find('button').simulate('click');
-    await wait();
-    const res2 = await apolloClient.query({ query: CURRENT_USER_QUERY });
-    const me2 = res2.data.me;
-    expect(me2.cart).toHaveLength(0);
+    await wait(50);
+    const { data: { me: { cart: cart2 } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
+    expect(cart2).toHaveLength(0);
   });
 
   it("changes from 'Remove' to 'Removing' when clicked", async () => {
-    let apolloClient;
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <ApolloConsumer>
-          {client => {
-            apolloClient = client;
-            return <RemoveFromCart id='c4rt1t3m1d' />;
-          }}
-        </ApolloConsumer>
+        <RemoveFromCart id='c4rt1t3m1d' />
       </MockedProvider>
     );
     await wait();
     wrapper.update();
-    const res = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(wrapper.text()).toContain('Remove');
     wrapper.find('button').simulate('click');
     expect(wrapper.text()).toContain('Removing');
