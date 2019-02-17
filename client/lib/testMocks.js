@@ -2,7 +2,7 @@ import {
   CURRENT_USER_QUERY,
   SIGNOUT_MUTATION,
   ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION,
-  SHOP_PRODUCTS_QUERY,
+  PRODUCT_QUERY, SHOP_PRODUCTS_QUERY,
   DELETE_PRODUCT_MUTATION, DELETE_PROD_VARIANT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION,
 } from '../graphql';
@@ -168,6 +168,32 @@ const requestPasswordResetMutationErrorMock = {
   },
 };
 
+const productQueryMock = {
+  request: { query: PRODUCT_QUERY, variables: { id: mockProduct.id } },
+  result: {
+    data: {
+      product: {
+        ...mockProduct,
+        __typename: mockProduct.__typename,
+        image: mockImage,
+        user: {
+          __typename: mockUser.__typename,
+          id: mockUser.id,
+          name: mockUser.name,
+        },
+        variants: [{
+          ...mockVariant,
+          product: {
+            __typename: mockProduct.__typename,
+            id: mockProduct.id,
+            image: mockImage
+          }
+        }]
+      },
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -206,6 +232,7 @@ export {
   shopProductsQueryNameEmptyMock,
   shopProductsQueryProductMock,
   deleteProductMutationMock,
+  productQueryMock,
   deleteProductVariantMutationMock,
   requestPasswordResetMutationMock,
   requestPasswordResetMutationErrorMock,
