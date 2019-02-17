@@ -17,6 +17,9 @@ const variant = fakeVariant();
 
 
 describe('<AddToCart />', () => {
+  afterAll(() => wrapper.unmount());
+  afterEach(() => jest.clearAllMocks());
+
   it('renders and matches the snap shot', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
@@ -26,6 +29,7 @@ describe('<AddToCart />', () => {
     await wait();
     wrapper.update();
     expect(toJSON(wrapper.find('button'))).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('adds an item to cart when clicked', async () => {
@@ -52,6 +56,7 @@ describe('<AddToCart />', () => {
     expect(cart2[0].quantity).toBe(1);
     expect(cart2[0].variant.id).toBe('v4r13nt1d');
     expect(cart2[0].variant.quantity).toBe(4);
+    wrapper.unmount();
   });
 
   it("changes from 'Add To Cart' to 'Adding To Cart' when clicked", async () => {
@@ -65,6 +70,7 @@ describe('<AddToCart />', () => {
     expect(wrapper.text()).toContain('Add To Cart');
     wrapper.find('button').simulate('click');
     expect(wrapper.text()).toContain('Adding To Cart');
+    wrapper.unmount();
   });
 
   it('does not add an item to cart when disabled', async () => {
@@ -88,5 +94,6 @@ describe('<AddToCart />', () => {
     expect(wrapper.text()).toContain('Add To Cart');
     const { data: { me: { cart: cart2 } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(cart2).toHaveLength(0);
+    wrapper.unmount();
   });
 });
