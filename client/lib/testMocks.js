@@ -116,6 +116,31 @@ const shopProductsQueryNameEmptyMock = {
   },
 };
 
+const shopProductsQueryProductMock = {
+  request: { query: SHOP_PRODUCTS_QUERY, variables: { ...mockShopProductsVariables }},
+  result: {
+    data: {
+      products: [{
+        ...mockProduct,
+        image: mockImage,
+        user: {
+          __typename: mockUser.__typename,
+          id: mockUser.id,
+          name: mockUser.name,
+        },
+        variants: {
+          ...mockVariant,
+          product: {
+            __typename: mockProduct.__typename,
+            id: mockProduct.id,
+            image: mockImage
+          }
+        }
+      }],
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -140,5 +165,6 @@ export {
   updateCartItemMutationMock,
   removeFromCartMutationMock,
   shopProductsQueryNameEmptyMock,
+  shopProductsQueryProductMock,
   deleteProductMutationMock,
 };
