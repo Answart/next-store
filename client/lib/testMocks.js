@@ -155,6 +155,19 @@ const requestPasswordResetMutationMock = {
   },
 };
 
+const requestPasswordResetMutationErrorMock = {
+  request: { query: REQUEST_PASSWORD_RESET_MUTATION, variables: { email: 'err@g.c' } },
+  result: {
+    data: {
+      requestPasswordReset: {
+        __typename: 'Message',
+        success: false,
+        message: 'No such user found for email err@g.c',
+      }
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -182,4 +195,5 @@ export {
   shopProductsQueryProductMock,
   deleteProductMutationMock,
   requestPasswordResetMutationMock,
+  requestPasswordResetMutationErrorMock,
 };
