@@ -16,6 +16,9 @@ const mocks = [
 
 
 describe('<Logout />', () => {
+  afterAll(() => wrapper.unmount());
+  afterEach(() => jest.clearAllMocks());
+
   it('renders and matches the snap shot', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
@@ -25,6 +28,7 @@ describe('<Logout />', () => {
     await wait();
     wrapper.update();
     expect(toJSON(wrapper.find('button'))).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('removes current active user', async () => {
@@ -49,6 +53,7 @@ describe('<Logout />', () => {
     wrapper.update();
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2).toBe(null);
+    wrapper.unmount();
   });
 
   it('routes to root page after successful logout', async () => {
@@ -64,5 +69,6 @@ describe('<Logout />', () => {
     await wait(50);
     expect(Router.router.push).toHaveBeenCalled();
     expect(Router.router.push).toHaveBeenCalledWith({ pathname: '/' });
+    wrapper.unmount();
   });
 });
