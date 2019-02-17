@@ -38,7 +38,7 @@ describe('<RequestPasswordReset />', () => {
       </MockedProvider>
     );
     wrapper.find('button').simulate('click');
-    await wait();
+    await wait(50);
     wrapper.update();
     expect(window.alert).toBeCalled();
     expect(window.alert).toHaveBeenCalledWith('Your request has been sent! Check your email.');
