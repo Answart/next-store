@@ -54,7 +54,7 @@ describe('<RequestPasswordReset />', () => {
       </MockedProvider>
     );
     wrapper.find('button').simulate('click');
-    await wait();
+    await wait(50);
     wrapper.update();
     expect(window.alert).toBeCalled();
     expect(window.alert).toHaveBeenCalledWith('No such user found for email err@g.c');
