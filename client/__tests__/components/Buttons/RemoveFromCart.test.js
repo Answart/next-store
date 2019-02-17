@@ -15,6 +15,9 @@ const mocks = [
 
 
 describe('<RemoveFromCart />', () => {
+  afterAll(() => wrapper.unmount());
+  afterEach(() => jest.clearAllMocks());
+
   it('renders and matches snapshot', async () => {
     const wrapper = mount(
       <MockedProvider>
@@ -22,6 +25,7 @@ describe('<RemoveFromCart />', () => {
       </MockedProvider>
     );
     expect(toJSON(wrapper.find('button'))).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('removes the cartItem from cart', async () => {
@@ -43,6 +47,7 @@ describe('<RemoveFromCart />', () => {
     await wait(50);
     const { data: { me: { cart: cart2 } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(cart2).toHaveLength(0);
+    wrapper.unmount();
   });
 
   it("changes from 'Remove' to 'Removing' when clicked", async () => {
@@ -56,5 +61,6 @@ describe('<RemoveFromCart />', () => {
     expect(wrapper.text()).toContain('Remove');
     wrapper.find('button').simulate('click');
     expect(wrapper.text()).toContain('Removing');
+    wrapper.unmount();
   });
 });
