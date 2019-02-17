@@ -15,6 +15,9 @@ const mocks = [
 ];
 
 describe('<UpdateCartItem />', () => {
+  afterAll(() => wrapper.unmount());
+  afterEach(() => jest.clearAllMocks());
+
   it('renders and matches snapshot', async () => {
     const wrapper = mount(
       <MockedProvider>
@@ -22,6 +25,7 @@ describe('<UpdateCartItem />', () => {
       </MockedProvider>
     );
     expect(toJSON(wrapper.find('button'))).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('sets cartItem quantity by given amt', async () => {
@@ -45,5 +49,6 @@ describe('<UpdateCartItem />', () => {
     const { data: { me: { cart: cart2 } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(cart2).toHaveLength(1);
     expect(cart2[0].quantity).toBe(4);
+    wrapper.unmount();
   });
 });
