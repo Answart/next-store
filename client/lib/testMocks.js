@@ -2,6 +2,7 @@ import {
   CURRENT_USER_QUERY,
   SIGNOUT_MUTATION,
   ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION,
+  SHOP_PRODUCTS_QUERY,
   DELETE_PRODUCT_MUTATION,
 } from '../graphql';
 import {
@@ -106,6 +107,15 @@ const updateCartItemMutationMock = (quantity) => ({
   },
 });
 
+const shopProductsQueryNameEmptyMock = {
+  request: { query: SHOP_PRODUCTS_QUERY, variables: { name: mockUser.name }},
+  result: {
+    data: {
+      products: [],
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -129,5 +139,6 @@ export {
   addToCartMutationMock,
   updateCartItemMutationMock,
   removeFromCartMutationMock,
+  shopProductsQueryNameEmptyMock,
   deleteProductMutationMock,
 };
