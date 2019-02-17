@@ -1,7 +1,8 @@
 import {
   CURRENT_USER_QUERY,
   SIGNOUT_MUTATION,
-  ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION
+  ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION,
+  DELETE_PRODUCT_MUTATION,
 } from '../graphql';
 import {
   fakeUser, fakeImage, fakeProduct, fakeCartItem, fakeVariant,
@@ -105,6 +106,18 @@ const updateCartItemMutationMock = (quantity) => ({
   },
 });
 
+const deleteProductMutationMock = {
+  request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
+  result: {
+    data: {
+      deleteProduct: {
+        __typename: 'Product',
+        id: mockProduct.id,
+      },
+    },
+  },
+};
+
 
 export {
   mockUser,
@@ -115,5 +128,6 @@ export {
   userQueryCartItemMock,
   addToCartMutationMock,
   updateCartItemMutationMock,
-  removeFromCartMutationMock
+  removeFromCartMutationMock,
+  deleteProductMutationMock,
 };
