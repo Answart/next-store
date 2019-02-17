@@ -194,6 +194,25 @@ const productQueryMock = {
   },
 };
 
+const productQueryNoVariantMock = {
+  request: { query: PRODUCT_QUERY, variables: { id: mockProduct.id } },
+  result: {
+    data: {
+      product: {
+        ...mockProduct,
+        __typename: mockProduct.__typename,
+        image: mockImage,
+        user: {
+          __typename: mockUser.__typename,
+          id: mockUser.id,
+          name: mockUser.name,
+        },
+        variants: []
+      },
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -233,6 +252,7 @@ export {
   shopProductsQueryProductMock,
   deleteProductMutationMock,
   productQueryMock,
+  productQueryNoVariantMock,
   deleteProductVariantMutationMock,
   requestPasswordResetMutationMock,
   requestPasswordResetMutationErrorMock,
