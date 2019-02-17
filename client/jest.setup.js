@@ -6,5 +6,6 @@ configure({ adapter: new Adapter() });
 window.alert = (msg) => {
   if (msg) console.log(msg);
 };
+window.confirm = (msg) => {};
 window.matchMedia = () => ({});
 window.scrollTo = () => { };

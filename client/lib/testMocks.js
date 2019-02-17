@@ -4,12 +4,20 @@ import {
   ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION
 } from '../graphql';
 import {
-  fakeUser, fakeCartItem, fakeVariant,
+  fakeUser, fakeImage, fakeProduct, fakeCartItem, fakeVariant,
 } from './testUtils';
 
 const mockUser = fakeUser();
+const mockImage = fakeImage();
+const mockProduct = fakeProduct();
 const mockCartItem = fakeCartItem();
 const mockVariant = fakeVariant();
+const mockShopProductsVariables = {
+  name: mockUser.name,
+  orderBy: 'createdAt_DESC',
+  skip: 0,
+  first: 1
+ };
 
 
 const userQueryEmptyCartMock = {
@@ -99,6 +107,8 @@ const updateCartItemMutationMock = (quantity) => ({
 
 
 export {
+  mockUser,
+  mockShopProductsVariables,
   userQueryNoUserMock,
   userQueryEmptyCartMock,
   signoutMutationMock,
