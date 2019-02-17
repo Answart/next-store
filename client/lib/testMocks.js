@@ -4,6 +4,7 @@ import {
   ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION,
   SHOP_PRODUCTS_QUERY,
   DELETE_PRODUCT_MUTATION,
+  REQUEST_PASSWORD_RESET_MUTATION,
 } from '../graphql';
 import {
   fakeUser, fakeImage, fakeProduct, fakeCartItem, fakeVariant,
@@ -141,6 +142,19 @@ const shopProductsQueryProductMock = {
   },
 };
 
+const requestPasswordResetMutationMock = {
+  request: { query: REQUEST_PASSWORD_RESET_MUTATION, variables: { email: 'answart@sbcglobal.net' } },
+  result: {
+    data: {
+      requestPasswordReset: {
+        __typename: 'Message',
+        success: true,
+        message: 'Your request has been sent! Check your email.',
+      }
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -167,4 +181,5 @@ export {
   shopProductsQueryNameEmptyMock,
   shopProductsQueryProductMock,
   deleteProductMutationMock,
+  requestPasswordResetMutationMock,
 };
