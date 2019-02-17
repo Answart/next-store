@@ -129,14 +129,14 @@ const shopProductsQueryProductMock = {
           id: mockUser.id,
           name: mockUser.name,
         },
-        variants: {
+        variants: [{
           ...mockVariant,
           product: {
             __typename: mockProduct.__typename,
             id: mockProduct.id,
             image: mockImage
           }
-        }
+        }]
       }],
     },
   },
