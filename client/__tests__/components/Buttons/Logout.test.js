@@ -45,30 +45,23 @@ describe('<Logout />', () => {
     const { data: { me } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me.__typename).toBe("User");
     wrapper.find('button').simulate('click');
-    await wait();
+    await wait(50);
     wrapper.update();
-    const { data } = await apolloClient.query({ query: CURRENT_USER_QUERY });
-    expect(data.me).toBe(null);
+    const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
+    expect(me2).toBe(null);
   });
 
   it('routes to root page after successful logout', async () => {
-    let apolloClient;
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <ApolloConsumer>
-          {client => {
-            apolloClient = client;
-            return <Logout />;
-          }}
-        </ApolloConsumer>
+        <Logout />
       </MockedProvider>
     );
     await wait();
     wrapper.update();
     Router.router = { push: jest.fn() };
     wrapper.find('button').simulate('click');
-    await wait();
-    wrapper.update();
+    await wait(50);
     expect(Router.router.push).toHaveBeenCalled();
     expect(Router.router.push).toHaveBeenCalledWith({ pathname: '/' });
   });
