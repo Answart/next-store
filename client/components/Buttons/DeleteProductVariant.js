@@ -7,10 +7,12 @@ import { DELETE_PROD_VARIANT_MUTATION, PRODUCT_QUERY } from '../../graphql';
 const DeleteProductVariant = props => {
   const { productId, id, children } = props;
   const update = (cache, payload) => {
-    const variables = { id: productId };
-    const data = cache.readQuery({ query: PRODUCT_QUERY, variables });
-    data.product.variants = data.product.variants.filter(variant => variant.id !== payload.data.deleteProductVariant.id);
-    cache.writeQuery({ query: PRODUCT_QUERY, variables, data });
+    try {
+      const variables = { id: productId };
+      const data = cache.readQuery({ query: PRODUCT_QUERY, variables });
+      data.product.variants = data.product.variants.filter(variant => variant.id !== payload.data.deleteProductVariant.id);
+      cache.writeQuery({ query: PRODUCT_QUERY, variables, data });
+    } catch(e) {}
   };
   return (
     <Mutation mutation={DELETE_PROD_VARIANT_MUTATION}
