@@ -4,11 +4,8 @@ import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 import {
+  mockVariant, mockProduct,
   productQueryMock, productQueryNoVariantMock,
-} from '../../../lib/testMocks';
-import { fakeProduct } from '../../../lib/testUtils';
-import {
-  mockVariant,
   deleteProductVariantMutationMock
 } from '../../../lib/test-utils/mocks';
 import { DeleteProductVariant } from '../../../components/Buttons';
@@ -19,7 +16,6 @@ const mocks = [
   { ...deleteProductVariantMutationMock },
   { ...productQueryNoVariantMock },
 ];
-const mockProduct = fakeProduct();
 
 
 describe('<DeleteProductVariant />', () => {

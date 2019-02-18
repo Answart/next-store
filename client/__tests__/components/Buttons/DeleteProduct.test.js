@@ -5,13 +5,9 @@ import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 import {
-  mockShopProductsVariables,
+  mockUser, mockProduct, mockShopProductsVariables,
   shopProductsQueryProductMock, shopProductsQueryNameEmptyMock,
   deleteProductMutationMock,
-} from '../../../lib/testMocks';
-import { fakeProduct } from '../../../lib/testUtils';
-import {
-  mockUser,
 } from '../../../lib/test-utils/mocks';
 import { DeleteProduct } from '../../../components/Buttons';
 import { SHOP_PRODUCTS_QUERY } from '../../../graphql';
@@ -21,7 +17,6 @@ const mocks = [
   { ...shopProductsQueryNameEmptyMock },
   { ...deleteProductMutationMock },
 ];
-const mockProduct = fakeProduct();
 
 
 describe('<DeleteProduct />', () => {
