@@ -3,17 +3,20 @@ import toJSON from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryEmptyCartMock, userQueryCartItemMock, addToCartMutationMock } from '../../../lib/testMocks';
+import {
+  userQueryEmptyCartMock, userQueryCartItemMock, addToCartMutationMock,
+} from '../../../lib/testMocks';
+import {
+  mockVariant,
+} from '../../../lib/test-utils/mocks';
 import { AddToCart } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
-import { fakeVariant } from '../../../lib/testUtils';
 
 const mocks = [
   { ...userQueryEmptyCartMock },
   { ...addToCartMutationMock },
   userQueryCartItemMock({ quantity: 1 }),
 ];
-const variant = fakeVariant();
 
 
 describe('<AddToCart />', () => {
@@ -23,7 +26,7 @@ describe('<AddToCart />', () => {
   it('renders and matches the snap shot', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AddToCart variant={variant} disabled={false} />
+        <AddToCart variant={mockVariant} disabled={false} />
       </MockedProvider>
     );
     await wait();
@@ -39,7 +42,7 @@ describe('<AddToCart />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <AddToCart variant={variant} disabled={false} />;
+            return <AddToCart variant={mockVariant} disabled={false} />;
           }}
         </ApolloConsumer>
       </MockedProvider>
@@ -49,7 +52,7 @@ describe('<AddToCart />', () => {
     const { data: { me: { cart } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(cart).toHaveLength(0);
     wrapper.find('button').simulate('click');
-    await wait();
+    await wait(50);
     const { data: { me: { cart: cart2 } } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(cart2).toHaveLength(1);
     expect(cart2[0].id).toBe('c4rt1t3m1d');
@@ -62,7 +65,7 @@ describe('<AddToCart />', () => {
   it("changes from 'Add To Cart' to 'Adding To Cart' when clicked", async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AddToCart variant={variant} disabled={false} />
+        <AddToCart variant={mockVariant} disabled={false} />
       </MockedProvider>
     );
     await wait();
@@ -80,7 +83,7 @@ describe('<AddToCart />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <AddToCart variant={variant} disabled={true} />;
+            return <AddToCart variant={mockVariant} disabled={true} />;
           }}
         </ApolloConsumer>
       </MockedProvider>

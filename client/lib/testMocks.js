@@ -225,18 +225,6 @@ const deleteProductMutationMock = {
   },
 };
 
-const deleteProductVariantMutationMock = {
-  request: { query: DELETE_PROD_VARIANT_MUTATION, variables: { id: mockVariant.id } },
-  result: {
-    data: {
-      deleteProductVariant: {
-        __typename: 'Variant',
-        id: mockVariant.id,
-      },
-    },
-  },
-};
-
 
 export {
   mockUser,
@@ -253,7 +241,6 @@ export {
   deleteProductMutationMock,
   productQueryMock,
   productQueryNoVariantMock,
-  deleteProductVariantMutationMock,
   requestPasswordResetMutationMock,
   requestPasswordResetMutationErrorMock,
 };
