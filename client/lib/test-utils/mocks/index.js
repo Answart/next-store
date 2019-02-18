@@ -5,6 +5,9 @@ export {
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock
 } from './user';
 export {
+  mockImage,
+} from './image';
+export {
   mockVariant,
   deleteProductVariantMutationMock
 } from './variant';
