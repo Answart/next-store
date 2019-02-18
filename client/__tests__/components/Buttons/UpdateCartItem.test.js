@@ -3,16 +3,16 @@ import toJSON from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryCartItemMock, updateCartItemMutationMock } from '../../../lib/testMocks';
+import { userQueryCartItemMock, updateCartItemMutationMock } from '../../../lib/test-utils/mocks';
 import { UpdateCartItem } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
-
 
 const mocks = [
   userQueryCartItemMock(),
   userQueryCartItemMock(4),
   updateCartItemMutationMock(4),
 ];
+
 
 describe('<UpdateCartItem />', () => {
   afterAll(() => wrapper.unmount());
