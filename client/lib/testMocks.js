@@ -1,20 +1,15 @@
 import {
-  CURRENT_USER_QUERY,
-  SIGNOUT_MUTATION,
-  ADD_TO_CART_MUTATION, REMOVE_FROM_CART_MUTATION, UPDATE_CARTITEM_MUTATION,
   PRODUCT_QUERY, SHOP_PRODUCTS_QUERY,
-  DELETE_PRODUCT_MUTATION, DELETE_PROD_VARIANT_MUTATION,
-  REQUEST_PASSWORD_RESET_MUTATION,
+  DELETE_PRODUCT_MUTATION,
 } from '../graphql';
 import {
-  fakeUser, fakeImage, fakeProduct, fakeCartItem, fakeVariant,
+  fakeProduct,
 } from './testUtils';
+import {
+  mockUser, mockImage, mockVariant,
+} from './test-utils/mocks';
 
-const mockUser = fakeUser();
-const mockImage = fakeImage();
 const mockProduct = fakeProduct();
-const mockCartItem = fakeCartItem();
-const mockVariant = fakeVariant();
 const mockShopProductsVariables = {
   name: mockUser.name,
   orderBy: 'createdAt_DESC',
@@ -22,53 +17,6 @@ const mockShopProductsVariables = {
   first: 1
  };
 
-
-const userQueryEmptyCartMock = {
-  request: { query: CURRENT_USER_QUERY },
-  result: {
-    data: {
-      me: {
-        ...mockUser,
-        cart: [],
-      },
-    },
-  },
-};
-
-const userQueryNoUserMock = {
-  request: { query: CURRENT_USER_QUERY },
-  result: {
-    data: { me: null }
-  },
-};
-
-const signoutMutationMock = {
-  request: { query: SIGNOUT_MUTATION },
-  result: {
-    data: {
-      signout: {
-        __typename: 'Message',
-        success: true,
-        message: 'Goodbye!'
-      },
-    },
-  },
-};
-
-const userQueryCartItemMock = overrides => ({
-  request: { query: CURRENT_USER_QUERY },
-  result: {
-    data: {
-      me: {
-        ...mockUser,
-        cart: [{
-          ...mockCartItem,
-          ...overrides
-        }],
-      },
-    },
-  },
-});
 
 const shopProductsQueryNameEmptyMock = {
   request: { query: SHOP_PRODUCTS_QUERY, variables: { name: mockUser.name }},
@@ -100,32 +48,6 @@ const shopProductsQueryProductMock = {
           }
         }]
       }],
-    },
-  },
-};
-
-const requestPasswordResetMutationMock = {
-  request: { query: REQUEST_PASSWORD_RESET_MUTATION, variables: { email: 'answart@sbcglobal.net' } },
-  result: {
-    data: {
-      requestPasswordReset: {
-        __typename: 'Message',
-        success: true,
-        message: 'Your request has been sent! Check your email.',
-      }
-    },
-  },
-};
-
-const requestPasswordResetMutationErrorMock = {
-  request: { query: REQUEST_PASSWORD_RESET_MUTATION, variables: { email: 'err@g.c' } },
-  result: {
-    data: {
-      requestPasswordReset: {
-        __typename: 'Message',
-        success: false,
-        message: 'No such user found for email err@g.c',
-      }
     },
   },
 };
@@ -189,17 +111,10 @@ const deleteProductMutationMock = {
 
 
 export {
-  mockUser,
   mockShopProductsVariables,
-  userQueryNoUserMock,
-  userQueryEmptyCartMock,
-  signoutMutationMock,
-  userQueryCartItemMock,
   shopProductsQueryNameEmptyMock,
   shopProductsQueryProductMock,
   deleteProductMutationMock,
   productQueryMock,
   productQueryNoVariantMock,
-  requestPasswordResetMutationMock,
-  requestPasswordResetMutationErrorMock,
 };

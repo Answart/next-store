@@ -4,10 +4,8 @@ import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 import {
-  userQueryEmptyCartMock, userQueryCartItemMock,
-} from '../../../lib/testMocks';
-import {
   mockVariant,
+  userQueryEmptyCartMock, userQueryCartItemMock,
   addToCartMutationMock,
 } from '../../../lib/test-utils/mocks';
 import { AddToCart } from '../../../components/Buttons';

@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryEmptyCartMock, userQueryNoUserMock, signoutMutationMock } from '../../../lib/testMocks';
+import { userQueryEmptyCartMock, userQueryNoUserMock, signoutMutationMock } from '../../../lib/test-utils/mocks';
 import { Logout } from '../../../components/Buttons';
 import { CURRENT_USER_QUERY } from '../../../graphql';
 

@@ -3,8 +3,8 @@ import toJSON from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
-import { userQueryCartItemMock, userQueryEmptyCartMock } from '../../../lib/testMocks';
 import {
+  userQueryCartItemMock, userQueryEmptyCartMock,
   removeFromCartMutationMock,
 } from '../../../lib/test-utils/mocks';
 import { RemoveFromCart } from '../../../components/Buttons';

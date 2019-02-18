@@ -1,4 +1,10 @@
 export {
+  mockUser,
+  userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
+  signoutMutationMock,
+  requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock
+} from './user';
+export {
   mockVariant,
   deleteProductVariantMutationMock
 } from './variant';
