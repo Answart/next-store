@@ -35,6 +35,7 @@ function createClient({ headers }) {
       defaults: {
         cartOpen: false,
         me: null,
+        products: [],
       }
     }
   });
