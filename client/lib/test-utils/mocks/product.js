@@ -85,6 +85,24 @@ const createProductMutationMock = {
   },
 };
 
+const createProductMutationErrorMock = {
+  request: {
+    query: CREATE_PRODUCT_MUTATION,
+    variables: {
+      department: 'tops',
+      title: '',
+      description: '',
+      category: '',
+      brand: '',
+      online: false,
+      imageId: mockImage.id,
+    },
+  },
+  result: {
+    errors: [{ message: 'ack!' }],
+  }
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -136,6 +154,6 @@ export {
   mockProduct, mockShopProductsVariables,
   productQueryMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
-  createProductMutationMock,
+  createProductMutationMock, createProductMutationErrorMock,
   deleteProductMutationMock,
 }
