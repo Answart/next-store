@@ -56,47 +56,24 @@ describe('<CreateProductForm />', () => {
   });
 
   it('handles state updating', async () => {
-    wrapper.find('#title')
-      .simulate('change', {
-        target: {
-          value: mockProduct.title, name: 'title'
-        }
-      });
-    wrapper.update();
-    wrapper.find('#department')
-      .simulate('change', {
-        target: {
-          value: mockProduct.department, name: 'department', type: 'select'
-        }
-      });
-    wrapper.update();
-    wrapper.find('#category')
-      .simulate('change', {
-        target: {
-          value: mockProduct.category, name: 'category', type: 'select'
-        }
-      });
-    wrapper.update();
-    wrapper.find('#description')
-      .simulate('change', {
-        target: {
-          value: mockProduct.description, name: 'description'
-        }
-      });
-    wrapper.update();
-    wrapper.find('#brand')
-      .simulate('change', {
-        target: {
-          value: mockProduct.brand, name: 'brand'
-        }
-      });
-    wrapper.update();
-    wrapper.find('#offline')
-      .simulate('change', {
-        target: {
-          value: mockProduct.online, name: 'offline', type: 'radio'
-        }
-      });
+    wrapper.find('#title').simulate('change', { target: {
+      value: mockProduct.title, name: 'title'
+    }});
+    wrapper.find('#department').simulate('change', { target: {
+      value: mockProduct.department, name: 'department', type: 'select'
+    }});
+    wrapper.find('#category').simulate('change', { target: {
+      value: mockProduct.category, name: 'category', type: 'select'
+    }});
+    wrapper.find('#description').simulate('change', { target: {
+      value: mockProduct.description, name: 'description'
+    }});
+    wrapper.find('#brand').simulate('change', { target: {
+      value: mockProduct.brand, name: 'brand'
+    }});
+    wrapper.find('#offline').simulate('change', { target: {
+      value: mockProduct.online, name: 'offline', type: 'radio'
+    }});
     wrapper.update();
     expect(wrapper.find('CreateProductForm').instance().state).toMatchObject({
       title: mockProduct.title,
@@ -110,12 +87,9 @@ describe('<CreateProductForm />', () => {
 
 
   it('image upload updates image in state', async () => {
-    wrapper.find('input[type="file"]')
-      .simulate('change', {
-        target: {
-          files: [mockImage.image_url], name: 'image', type: 'file'
-        }
-      });
+    wrapper.find('input[type="file"]').simulate('change', { target: {
+      files: [mockImage.image_url], name: 'image', type: 'file'
+    }});
     await wait(50);
     wrapper.update();
     expect(wrapper.find('CreateProductForm').instance().state.image).toMatchObject({
@@ -129,7 +103,9 @@ describe('<CreateProductForm />', () => {
     wrapper.find('form').simulate('submit');
     await wait(50);
     expect(Router.router.push).toHaveBeenCalled();
-    expect(Router.router.push).toHaveBeenCalledWith({ pathname: '/product/selections', query: { id: mockProduct.id } });
+    expect(Router.router.push).toHaveBeenCalledWith({
+      pathname: '/product/selections', query: { id: mockProduct.id }
+    });
   });
 
   // it('renders DisplayMessage component w/error message when submitted with invalid/insufficient info', async () => {
