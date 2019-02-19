@@ -13,6 +13,23 @@ const mockImageVariables = {
 }
 
 
+const createImageMutationMock = {
+  request: {
+    query: CREATE_IMAGE_MUTATION,
+    variables: { ...mockImageVariables },
+  },
+  result: {
+    data: {
+      createImage: {
+        __typename: 'Image',
+        id: mockImage.id,
+      },
+    },
+  },
+};
+
+
 export {
   mockImage, mockImageVariables,
+  createImageMutationMock,
 }
