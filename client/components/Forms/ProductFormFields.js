@@ -193,7 +193,6 @@ const ProductFormFields = props => {
                   <p>Name: <i>{image.name}</i></p>
                   <p>Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H</p>
                   <p>Transformation: <i>{image.transformation}</i></p>
-                  <p>Url: <i>{image.image_url}</i></p>
                 </div>
               )}
             </div>
