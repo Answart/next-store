@@ -28,8 +28,22 @@ const createImageMutationMock = {
   },
 };
 
+const createImageMutationErrorMock = {
+  request: {
+    query: CREATE_IMAGE_MUTATION,
+    variables: {
+      ...mockImageVariables,
+      cloudinary_id: '',
+      name: '',
+    },
+  },
+  result: {
+    errors: [{ message: 'ack!' }],
+  }
+};
+
 
 export {
   mockImage, mockImageVariables,
-  createImageMutationMock,
+  createImageMutationMock, createImageMutationErrorMock,
 }

@@ -6,7 +6,7 @@ export {
 } from './user';
 export {
   mockImage, mockImageVariables,
-  createImageMutationMock,
+  createImageMutationMock, createImageMutationErrorMock,
 } from './image';
 export {
   mockProduct, mockShopProductsVariables,
