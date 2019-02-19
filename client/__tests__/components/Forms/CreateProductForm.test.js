@@ -11,11 +11,11 @@ import {
 } from '../../../lib/test-utils/mocks';
 
 const successMocks = [
-  { ...createImageMutationMock },
+  createImageMutationMock(),
   { ...createProductMutationMock },
 ];
 const errorMocks = [
-  { ...createImageMutationMock },
+  createImageMutationMock(),
   { ...createProductMutationErrorMock },
 ];
 // mock the global fetch API (cloudinary)

@@ -13,10 +13,13 @@ const mockImageVariables = {
 }
 
 
-const createImageMutationMock = {
+const createImageMutationMock = (overrides) => ({
   request: {
     query: CREATE_IMAGE_MUTATION,
-    variables: { ...mockImageVariables },
+    variables: {
+      ...mockImageVariables,
+      ...overrides,
+    },
   },
   result: {
     data: {
@@ -26,7 +29,7 @@ const createImageMutationMock = {
       },
     },
   },
-};
+});
 
 const createImageMutationErrorMock = {
   request: {
