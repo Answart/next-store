@@ -18,8 +18,6 @@ const ProductFormFields = props => {
     let state = {};
     let val = value;
 
-    if (type === "number") val = value ? Number(parseFloat(value)) : 0;
-    if (type === "checkbox") val = checked;
     if (name === "department") state.category = "";
     if (type === "radio") {
       if (name === "online" || name === "offline") {
