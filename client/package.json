@@ -10,6 +10,7 @@
     "start:dev": "next -p 7272",
     "build": "next build",
     "heroku-postbuild": "next build",
+    "jest": "NODE_ENV=test jest --verbose --watch",
     "test": "NODE_ENV=test jest --coverage --verbose",
     "coveralls": "npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "heroku-logs-client": "cd .. && heroku logs --tail --app answart-next-store",
