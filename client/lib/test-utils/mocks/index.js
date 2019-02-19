@@ -12,6 +12,7 @@ export {
   mockProduct, mockShopProductsVariables,
   productQueryMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
+  createProductMutationMock,
   deleteProductMutationMock,
 } from './product';
 export {
