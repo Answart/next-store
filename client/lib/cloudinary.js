@@ -27,7 +27,7 @@ const uploadImageFile = async function(file) {
       delete_token: res.delete_token
     }
   } catch(e) {
-    console.error('Error creating image file in cloudinary uploadImageFile.', e);
+    console.error(`Error creating image file in cloudinary uploadImageFile. ${e}`);
     return { error: true, message: e };
   }
 }
