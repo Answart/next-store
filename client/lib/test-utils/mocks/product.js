@@ -1,6 +1,7 @@
 import {
   PRODUCT_QUERY, SHOP_PRODUCTS_QUERY,
   CREATE_PRODUCT_MUTATION,
+  UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION,
 } from '../../../graphql'
 import { fakeProduct } from '../utils';
@@ -103,6 +104,30 @@ const createProductMutationErrorMock = {
   }
 };
 
+const updateProductMutationMock = {
+  request: {
+    query: UPDATE_PRODUCT_MUTATION,
+    variables: {
+      id: mockProduct.id,
+      department: mockProduct.department,
+      title: mockProduct.title,
+      description: mockProduct.description,
+      category: mockProduct.category,
+      brand: mockProduct.brand,
+      online: mockProduct.online,
+      imageId: mockImage.id,
+    },
+  },
+  result: {
+    data: {
+      updateProduct: {
+        __typename: 'Product',
+        id: mockProduct.id,
+      },
+    },
+  },
+};
+
 const deleteProductMutationMock = {
   request: { query: DELETE_PRODUCT_MUTATION, variables: { id: mockProduct.id } },
   result: {
@@ -155,5 +180,6 @@ export {
   productQueryMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
   createProductMutationMock, createProductMutationErrorMock,
+  updateProductMutationMock,
   deleteProductMutationMock,
 }
