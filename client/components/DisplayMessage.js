@@ -55,14 +55,19 @@ const DisplayMessage = ({ error, success }) => {
     );
 
   if (!!errors && !!errors.length)
-    return errors.map((error, i) => (
-      <StyledDisplayError key={i}>
-        <p data-test="graphql-error">
-          <strong>Hold up!</strong>
-          {error.message.replace('GraphQL error: ', '')}
-        </p>
-      </StyledDisplayError>
-    ));
+    return errors.map((error, i) => {
+      if (!!error.message) return (
+        <StyledDisplayError key={i}>
+          <p data-test="graphql-error">
+            <strong>Hold up!</strong>
+            {error.message
+              .replace('GraphQL error:', '')
+              .replace('Network error:', '')
+            }
+          </p>
+        </StyledDisplayError>
+      )
+    });
 };
 
 DisplayMessage.defaultProps = {
