@@ -25,6 +25,7 @@ class CreateProductForm extends Component {
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
+      if (!res || !res.data) return;
       const variables = {
         ...this.state,
         imageId: res.data.createImage.id
@@ -32,6 +33,7 @@ class CreateProductForm extends Component {
       delete variables.image;
 
       return await createProduct({ variables }).then((res) => {
+        if (!res || !res.data) return;
         Router.push({
           pathname: "/product/selections",
           query: { id: res.data.createProduct.id }
@@ -41,9 +43,9 @@ class CreateProductForm extends Component {
   };
   render() {
     return (
-      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
+      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}} onError={(e) => {}}>
         {(createImage, { loading: imageLoading, error: imageError }) => (
-          <Mutation mutation={CREATE_PRODUCT_MUTATION} variables={{}}>
+          <Mutation mutation={CREATE_PRODUCT_MUTATION} variables={{}} onError={(e) => {}}>
             {(createProduct, { loading: prodLoading, error: prodError }) => {
               const loading = (imageLoading || prodLoading);
               const error = imageError ? imageError : prodError;
