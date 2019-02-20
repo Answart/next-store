@@ -107,25 +107,25 @@ describe('<CreateProductForm />', () => {
     });
   });
 
-  // it('renders DisplayMessage component w/error message when submitted with invalid/insufficient info', async () => {
-  //   console.error = jest.fn();
-  //   const wrapper2 = mount(
-  //     <MockedProvider addTypename={false} mocks={errorMocks}>
-  //       <CreateProductForm />
-  //     </MockedProvider>
-  //   );
-  //   wrapper2.find('input[type="file"]')
-  //     .simulate('change', { target: {
-  //       files: [mockImage.image_url], name: 'image', type: 'file'
-  //     }});
-  //   await wait(50);
-  //   expect(global.fetch).toHaveBeenCalled();
-  //   Router.router = { push: jest.fn() };
-  //   wrapper2.find('form').simulate('submit');
-  //   await wait(50);
-  //   wrapper2.update();
-  //   expect(wrapper2.find('DisplayMessage').text()).toContain('Hold up! ack!');
-  //   expect(Router.router.push).not.toHaveBeenCalled();
-  //   wrapper2.unmount();
-  // });
+  it('renders DisplayMessage component w/error message when submitted with invalid/insufficient info', async () => {
+    console.error = jest.fn();
+    const wrapper2 = mount(
+      <MockedProvider addTypename={false} mocks={errorMocks}>
+        <CreateProductForm />
+      </MockedProvider>
+    );
+    wrapper2.find('input[type="file"]')
+      .simulate('change', { target: {
+        files: [mockImage.image_url], name: 'image', type: 'file'
+      }});
+    await wait(50);
+    expect(global.fetch).toHaveBeenCalled();
+    Router.router = { push: jest.fn() };
+    wrapper2.find('form').simulate('submit');
+    await wait(50);
+    wrapper2.update();
+    expect(wrapper2.find('DisplayMessage').text()).toContain('Hold up! ack!');
+    expect(Router.router.push).not.toHaveBeenCalled();
+    wrapper2.unmount();
+  });
 });
