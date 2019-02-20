@@ -53,6 +53,7 @@ class ResetPasswordForm extends React.Component {
                 Password
                 <input
                   type="password"
+                  id="password"
                   name="password"
                   placeholder="New Password"
                   value={this.state.password}
@@ -65,6 +66,7 @@ class ResetPasswordForm extends React.Component {
                 Confirm Password
                 <input
                   type="password"
+                  id="confirmPassword"
                   name="confirmPassword"
                   placeholder="New Password"
                   value={this.state.confirmPassword}
