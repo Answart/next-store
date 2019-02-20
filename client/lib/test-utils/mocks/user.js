@@ -1,7 +1,7 @@
 import {
   CURRENT_USER_QUERY,
   SIGNOUT_MUTATION,
-  REQUEST_PASSWORD_RESET_MUTATION,
+  REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION
 } from '../../../graphql'
 import { fakeUser } from '../utils';
 import { mockCartItem } from './cart';
@@ -82,10 +82,29 @@ const requestPasswordResetMutationErrorMock = {
   },
 };
 
+const resetPasswordMutationMock = {
+  request: { query: RESET_PASSWORD_MUTATION, variables: {
+    resetToken: 'test-token',
+    password: mockUser.password,
+    confirmPassword: mockUser.password,
+  }},
+  result: {
+    data: {
+      resetPassword: {
+        // __typename: 'User',
+        id: mockUser.id,
+        email: mockUser.email,
+        name: mockUser.name
+      }
+    },
+  },
+};
+
 
 export {
   mockUser,
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signoutMutationMock,
-  requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock
+  requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
+  resetPasswordMutationMock,
 };
