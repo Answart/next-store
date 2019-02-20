@@ -106,11 +106,15 @@ const products = [
 
 variant.product = product;
 
+const cartItem = {
+  id: '1234',
+  quantity: 5,
+  variant,
+  user
+};
+
 const cart = [{
-    id: '1234',
-    quantity: 5,
-    variant,
-    user
+    ...cartItem
   }, {
     id: '2345',
     quantity: 3,
@@ -155,5 +159,6 @@ export {
   products,
   user,
   user_two,
-  cart
+  cart,
+  cartItem
 };
