@@ -8,6 +8,7 @@ const fakeUser = () => ({
   id: 'us3r1d',
   name: casual.name,
   email: casual.email,
+  password: 'unique-password',
   permissions: ['ADMIN'],
   cart: [],
 });
