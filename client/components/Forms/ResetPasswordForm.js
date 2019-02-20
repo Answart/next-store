@@ -19,6 +19,7 @@ class ResetPasswordForm extends React.Component {
   submitForm = async (e, resetPassword) => {
     e.preventDefault();
     await resetPassword().then((res) => {
+      if (!res || !res.data) return;
       Router.push({
         pathname: "/shop",
         query: { name: `${res.data.resetPassword.name}` }
@@ -32,14 +33,14 @@ class ResetPasswordForm extends React.Component {
   render() {
     const disabled = !this.props.resetToken || this.props.resetToken.length !== 40;
     return (
-      <Mutation
-        mutation={RESET_PASSWORD_MUTATION}
+      <Mutation mutation={RESET_PASSWORD_MUTATION}
         variables={{
           resetToken: this.props.resetToken,
           password: this.state.password,
           confirmPassword: this.state.confirmPassword
         }}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        onError={(e) => {}}
       >
         {(resetPassword, { error, loading }) => (
           <StyledForm onSubmit={e => this.submitForm(e, resetPassword)}>
