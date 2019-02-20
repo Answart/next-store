@@ -100,11 +100,22 @@ const resetPasswordMutationMock = {
   },
 };
 
+const resetPasswordMutationErrorMock = {
+  request: { query: RESET_PASSWORD_MUTATION, variables: {
+    resetToken: 'test-token',
+    password: mockUser.password,
+    confirmPassword: 'wrong-password',
+  }},
+  result: {
+    errors: [{ message: 'ack!' }],
+  },
+};
+
 
 export {
   mockUser,
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
-  resetPasswordMutationMock,
+  resetPasswordMutationMock, resetPasswordMutationErrorMock,
 };

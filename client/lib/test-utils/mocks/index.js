@@ -3,7 +3,7 @@ export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
-  resetPasswordMutationMock,
+  resetPasswordMutationMock, resetPasswordMutationErrorMock,
 } from './user';
 export {
   mockImage, mockImageVariables,
