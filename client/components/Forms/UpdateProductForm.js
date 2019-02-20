@@ -56,6 +56,7 @@ class UpdateProductForm extends Component {
       };
       delete variables.image;
       delete variables.message;
+      delete variables.user;
 
       return await updateProduct({ variables }).then((res) => {
         this.setState({
