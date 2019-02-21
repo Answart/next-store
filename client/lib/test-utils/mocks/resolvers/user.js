@@ -2,8 +2,8 @@ import {
   CURRENT_USER_QUERY,
   SIGNOUT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION
-} from '../../../graphql'
-import { mockUser, mockCartItem } from '../utils';
+} from '../../../../graphql'
+import { mockUser, mockCartItem } from '../../utils';
 
 
 const userQueryEmptyCartMock = {

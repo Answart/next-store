@@ -3,8 +3,8 @@ import {
   CREATE_PRODUCT_MUTATION,
   UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION,
-} from '../../../graphql'
-import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../utils';
+} from '../../../../graphql'
+import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../../utils';
 
 
 const productQueryMock = {
