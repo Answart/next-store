@@ -12,7 +12,6 @@ const fakeUser = () => ({
   permissions: ['ADMIN'],
   cart: [],
 });
-const mockUser = fakeUser();
 
 const fakeImage = () => ({
   __typename: 'Image',
@@ -25,16 +24,6 @@ const fakeImage = () => ({
   image_url: "peggswatch1.jpg",
   large_image_url: "peggswatch2.jpg",
 });
-const mockImage = fakeImage();
-const mockImageVariables = {
-  cloudinary_id: mockImage.cloudinary_id,
-  name: mockImage.name,
-  height: mockImage.height,
-  width: mockImage.width,
-  transformation: mockImage.transformation,
-  image_url: mockImage.image_url,
-  large_image_url: mockImage.large_image_url
-};
 
 const fakeProduct = () => ({
   __typename: 'Product',
@@ -49,13 +38,6 @@ const fakeProduct = () => ({
   variants: [],
   image: fakeImage(),
 });
-const mockProduct = fakeProduct();
-const mockShopProductsVariables = {
-  name: mockUser.name,
-  orderBy: 'createdAt_DESC',
-  skip: 0,
-  first: 1
- };
 
 const fakeVariant = () => ({
   __typename: 'Variant',
@@ -70,7 +52,6 @@ const fakeVariant = () => ({
   image: fakeImage(),
   product: fakeProduct()
 });
-const mockVariant = fakeVariant();
 
 const fakeCartItem = overrides => ({
   __typename: 'CartItem',
@@ -80,13 +61,12 @@ const fakeCartItem = overrides => ({
   variant: fakeVariant(),
   ...overrides,
 });
-const mockCartItem = fakeCartItem();
 
 
 export {
-  fakeUser, mockUser,
-  fakeImage, mockImage, mockImageVariables,
-  fakeProduct, mockProduct, mockShopProductsVariables,
-  fakeVariant, mockVariant,
-  fakeCartItem, mockCartItem,
+  fakeUser,
+  fakeImage,
+  fakeProduct,
+  fakeVariant,
+  fakeCartItem,
 };

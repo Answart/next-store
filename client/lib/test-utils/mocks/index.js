@@ -1,4 +1,11 @@
 export {
+  mockUser,
+  mockImage, mockImageVariables,
+  mockProduct, mockShopProductsVariables,
+  mockVariant,
+  mockCartItem,
+} from './typeDefs';
+export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,

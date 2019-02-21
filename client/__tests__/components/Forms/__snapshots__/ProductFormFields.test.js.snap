@@ -342,7 +342,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
   online={false}
   saveToForm={[MockFunction]}
   title=""
-  userName="Dr. Randy Gleason"
+  userName="Miss Coleman Berge"
 >
   <ProductStyles__StyledProduct>
     <div
@@ -380,7 +380,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
           </label>
         </div>
         <ByCreator
-          name="Dr. Randy Gleason"
+          name="Miss Coleman Berge"
           online={true}
         >
           <div
@@ -392,7 +392,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                 Object {
                   "pathname": "/shop",
                   "query": Object {
-                    "name": "Dr. Randy Gleason",
+                    "name": "Miss Coleman Berge",
                     "online": true,
                   },
                 }
@@ -400,10 +400,10 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
             >
               <a
                 className="undrln-btn"
-                href="/shop?name=Dr.%20Randy%20Gleason&online=true"
+                href="/shop?name=Miss%20Coleman%20Berge&online=true"
                 onClick={[Function]}
               >
-                Dr. Randy Gleason
+                Miss Coleman Berge
               </a>
             </Link>
           </div>

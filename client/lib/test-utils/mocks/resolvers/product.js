@@ -4,7 +4,7 @@ import {
   UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION,
 } from '../../../../graphql'
-import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../../utils';
+import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../typeDefs';
 
 
 const productQueryMock = {

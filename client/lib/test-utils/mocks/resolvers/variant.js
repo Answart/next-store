@@ -2,7 +2,7 @@ import {
   CREATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 } from '../../../../graphql'
-import { mockImage, mockProduct, mockVariant } from '../../utils';
+import { mockImage, mockProduct, mockVariant } from '../typeDefs';
 
 
 

@@ -5,10 +5,10 @@ import Router from 'next/router';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { CreateProductForm } from '../../../components/Forms';
 import {
+  mockImage, mockImageVariables, mockProduct,
   createImageMutationMock,
   createProductMutationMock, createProductMutationErrorMock,
 } from '../../../lib/test-utils/mocks';
-import { mockImage, mockImageVariables, mockProduct } from '../../../lib/test-utils/utils';
 
 const successMocks = [
   createImageMutationMock(),

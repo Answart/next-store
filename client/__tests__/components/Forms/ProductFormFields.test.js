@@ -3,8 +3,7 @@ import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 import ProductFormFields from '../../../components/Forms/ProductFormFields';
-import { createImageMutationErrorMock } from '../../../lib/test-utils/mocks';
-import { mockUser, mockImage, mockProduct } from '../../../lib/test-utils/utils';
+import { mockUser, mockImage, mockProduct, createImageMutationErrorMock } from '../../../lib/test-utils/mocks';
 
 const mocks = [
   { ...createImageMutationErrorMock },

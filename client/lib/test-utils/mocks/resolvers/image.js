@@ -1,5 +1,5 @@
 import { CREATE_IMAGE_MUTATION } from '../../../../graphql'
-import { mockImage, mockImageVariables } from '../../utils';
+import { mockImage, mockImageVariables } from '../typeDefs';
 
 
 const createImageMutationMock = (overrides) => ({
