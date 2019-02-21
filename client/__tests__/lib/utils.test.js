@@ -8,14 +8,9 @@ import {
   getFilterProps,
   getCartTotals
 } from '../../lib/utils';
-import product, {
-  variant,
-  variants,
-  products,
-  user,
-  user_two,
-  cart
-} from '../../lib/dummyData';
+import {
+  mockProduct, mockVariant, mockUser, mockCartItem, mockImage,
+} from '../../lib/test-utils/mocks';
 import {
   SALES_TAX_RATE, SHIPPING_COST_PER_ITEM
 } from '../../config';
@@ -93,7 +88,7 @@ describe('Util functions', () => {
 
   describe('getPageTitleProps fn', () => {
     it('renders properly on shop page w/department', () => {
-      expect(getPageTitleProps(user, { department: "bottoms" })).toEqual({
+      expect(getPageTitleProps(mockUser, { department: "bottoms" })).toEqual({
         pageLabel: "",
         titles: [{
           href: {
@@ -106,7 +101,7 @@ describe('Util functions', () => {
     });
 
     it('renders properly on shop page w/department and category', () => {
-      expect(getPageTitleProps(user, { department: "bottoms", category: "pants" })).toEqual({
+      expect(getPageTitleProps(mockUser, { department: "bottoms", category: "pants" })).toEqual({
         pageLabel: "",
         titles: [{
           href: {
@@ -125,22 +120,22 @@ describe('Util functions', () => {
     });
 
     it("renders properly when viewing another user's products shop page", () => {
-      expect(getPageTitleProps(user, { name: "answart" })).toEqual({
-        pageLabel: "Answart",
+      expect(getPageTitleProps(mockUser, { name: mockUser.name })).toEqual({
+        pageLabel: "My Products",
         titles: []
       });
     });
 
     it("renders properly when viewing another user's products shop page w/category", () => {
-      expect(getPageTitleProps(user, {
-        name: "answart",
+      expect(getPageTitleProps(mockUser, {
+        name: 'someone else',
         department: "decor"
       })).toEqual({
-        pageLabel: "Answart",
+        pageLabel: capWord('someone else'),
         titles: [{
           href: {
             pathname: "/shop",
-            query: { name: "answart", department: "decor" }
+            query: { name: 'someone else', department: "decor" }
           },
           label: "Decor"
         }]
@@ -148,22 +143,22 @@ describe('Util functions', () => {
     });
 
     it('renders properly when viewing own products shop page', () => {
-      expect(getPageTitleProps(user_two, { name: "answart" })).toEqual({
+      expect(getPageTitleProps(mockUser, { name: mockUser.name })).toEqual({
         pageLabel: "My Products",
         titles: []
       });
     });
 
     it('renders properly when viewing own products shop page w/category', () => {
-      expect(getPageTitleProps(user_two, {
-        name: "answart",
+      expect(getPageTitleProps(mockUser, {
+        name: mockUser.name,
         department: "decor"
       })).toEqual({
         pageLabel: "My Products",
         titles: [{
           href: {
             pathname: "/shop",
-            query: { name: "answart", department: "decor" }
+            query: { name: mockUser.name, department: "decor" }
           },
           label: "Decor"
         }]
@@ -182,20 +177,33 @@ describe('Util functions', () => {
     });
 
     it('single product input returns filled array for brands/categories/colors/sizes', () => {
-      expect(getFilterProps([{ ...product }])).toEqual({
-        brands: ["Moddurn"],
-        categories: ["home"],
-        colors: ["white"],
-        sizes: ["S"]
+      expect(getFilterProps([mockProduct])).toEqual({
+        brands: ["Peggs"],
+        categories: ["sport"],
+        colors: [],
+        sizes: []
       });
     });
 
     it('multiple products input returns filled array for brands/categories/colors/sizes', () => {
-      expect(getFilterProps(products)).toEqual({
-        brands: ["Moddurn","Peggs"],
-        categories: ["home","sport"],
-        colors: ["white","white","black","red"],
-        sizes: ["S","S","M","S"]
+      const otherProduct = {
+        id: "cjr06a3sz0cjm0a71kb2wdmbo",
+        brand: "Moddurn",
+        category: "home",
+        department: "decor",
+        online: true,
+        title: "Modern Wooden Stool",
+        description: "Limited Edition stool from the 2018 Fall fashion line.",
+        image: mockImage,
+        user: mockUser,
+        variants: [{ ...mockVariant }],
+        __typename: "Product"
+      }
+      expect(getFilterProps([mockProduct, otherProduct])).toEqual({
+        brands: ["Peggs","Moddurn"],
+        categories: ["sport","home"],
+        colors: ["white"],
+        sizes: ["S"]
       });
     });
   });
@@ -212,35 +220,35 @@ describe('Util functions', () => {
       expect(getCartTotals()).toEqual(emptyCart);
     });
     it('returns cart totals from cart with items', () => {
-      expect(getCartTotals(cart)).toEqual({
-        subTotal: 900,
-        totalQuantity: 30,
-        totalSalesTax: 83.25,
-        totalShipping: 36
+      expect(getCartTotals([mockCartItem])).toEqual({
+        subTotal: 90,
+        totalQuantity: 3,
+        totalSalesTax: 8.32,
+        totalShipping: 3.6
       });
     });
   });
 
   describe('getUniqKeyVals fn', () => {
     it('gets unique keys values for size', () => {
-      expect(getUniqKeyVals(variants, 'size')).toEqual(["S", "M"]);
+      expect(getUniqKeyVals([mockVariant], 'size')).toEqual(["S"]);
     });
 
     it('gets unique keys values for color', () => {
-      expect(getUniqKeyVals(variants, 'color')).toEqual(["white", "black", "red"]);
+      expect(getUniqKeyVals([mockVariant], 'color')).toEqual(["white"]);
     });
   });
 
   describe('getFltrdObjs fn', () => {
     it('returns filtered objs for empty filter', () => {
-      expect(getFltrdObjs(variants, {})).toEqual(variants);
+      expect(getFltrdObjs([mockVariant], {})).toEqual([mockVariant]);
     });
 
     it('returns filtered objs w/filter', () => {
-      let varia = { ...variant };
-      delete varia.product;
+      let varia = { ...mockVariant };
+      varia.color = "black";
 
-      expect(getFltrdObjs(variants, {color: "white"})).toEqual([varia]);
+      expect(getFltrdObjs([mockVariant, varia], { color: "white" })).toEqual([mockVariant]);
     });
   });
 });
