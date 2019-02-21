@@ -90,7 +90,8 @@ App Map
     ├──lib/                Files for utility and testing
     │   ├──cloudinary.js         Cloudinary API calls
     │   ├──utils.js              Utility methods
-    │   └──withApollo.js         Apollo client setup
+    │   ├──withApollo.js         Apollo client setup
+    │   └──test-utils/           Graphql mocks and dummyData for test calls
     ├──graphql/            Client side graphql query/mutations
     ├──components/         Component files called by pages and styles folder
     │   └──styles/               CSS for components using the styled-components package
