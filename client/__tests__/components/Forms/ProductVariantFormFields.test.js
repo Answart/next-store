@@ -3,9 +3,7 @@ import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 import ProductVariantFormFields from '../../../components/Forms/ProductVariantFormFields';
-import {
-  mockImage, mockVariant, mockImageVariables,
-} from '../../../lib/test-utils/mocks';
+import { mockImage, mockImageVariables, mockVariant } from '../../../lib/test-utils/utils';
 
 
 describe('<ProductVariantFormFields />', () => {

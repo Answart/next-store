@@ -3,10 +3,7 @@ import {
   SIGNOUT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION
 } from '../../../graphql'
-import { fakeUser } from '../utils';
-import { mockCartItem } from './cart';
-
-const mockUser = fakeUser();
+import { mockUser, mockCartItem } from '../utils';
 
 
 const userQueryEmptyCartMock = {
@@ -113,7 +110,6 @@ const resetPasswordMutationErrorMock = {
 
 
 export {
-  mockUser,
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,

@@ -3,10 +3,7 @@ import {
   UPDATE_CARTITEM_MUTATION,
   REMOVE_FROM_CART_MUTATION
 } from '../../../graphql'
-import { fakeCartItem } from '../utils';
-import { mockVariant } from './variant';
-
-const mockCartItem = fakeCartItem();
+import { mockCartItem, mockVariant } from '../utils';
 
 
 const addToCartMutationMock = {
@@ -49,7 +46,6 @@ const removeFromCartMutationMock = {
 
 
 export {
-  mockCartItem,
   addToCartMutationMock,
   updateCartItemMutationMock,
   removeFromCartMutationMock

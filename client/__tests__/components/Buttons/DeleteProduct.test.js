@@ -5,10 +5,10 @@ import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 import {
-  mockUser, mockProduct, mockShopProductsVariables,
   shopProductsQueryProductMock, shopProductsQueryNameEmptyMock,
   deleteProductMutationMock,
 } from '../../../lib/test-utils/mocks';
+import { mockUser, mockProduct, mockShopProductsVariables } from '../../../lib/test-utils/utils';
 import { DeleteProduct } from '../../../components/Buttons';
 import { SHOP_PRODUCTS_QUERY } from '../../../graphql';
 

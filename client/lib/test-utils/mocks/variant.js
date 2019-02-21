@@ -1,9 +1,8 @@
 import {
   DELETE_PROD_VARIANT_MUTATION
 } from '../../../graphql'
-import { fakeVariant } from '../utils';
+import { mockImage, mockProduct, mockVariant } from '../utils';
 
-const mockVariant = fakeVariant();
 
 
 const deleteProductVariantMutationMock = {
@@ -20,6 +19,5 @@ const deleteProductVariantMutationMock = {
 
 
 export {
-  mockVariant,
   deleteProductVariantMutationMock
 };

@@ -3,11 +3,8 @@ import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import Router from 'next/router';
 import { MockedProvider } from 'react-apollo/test-utils';
-import {
-  mockUser,
-  userQueryEmptyCartMock,
-  resetPasswordMutationMock, resetPasswordMutationErrorMock
-} from '../../../lib/test-utils/mocks';
+import { userQueryEmptyCartMock, resetPasswordMutationMock, resetPasswordMutationErrorMock } from '../../../lib/test-utils/mocks';
+import { mockUser } from '../../../lib/test-utils/utils';
 import { ResetPasswordForm } from '../../../components/Forms';
 
 const successMocks = [

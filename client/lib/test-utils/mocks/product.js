@@ -4,18 +4,7 @@ import {
   UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION,
 } from '../../../graphql'
-import { fakeProduct } from '../utils';
-import { mockUser } from './user';
-import { mockImage } from './image';
-import { mockVariant } from './variant';
-
-const mockProduct = fakeProduct();
-const mockShopProductsVariables = {
-  name: mockUser.name,
-  orderBy: 'createdAt_DESC',
-  skip: 0,
-  first: 1
- };
+import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../utils';
 
 
 const productQueryMock = {
@@ -185,7 +174,7 @@ const shopProductsQueryProductMock = {
           product: {
             __typename: mockProduct.__typename,
             id: mockProduct.id,
-            image: mockImage
+            image: mockImage,
           }
         }]
       }],
@@ -195,7 +184,6 @@ const shopProductsQueryProductMock = {
 
 
 export {
-  mockProduct, mockShopProductsVariables,
   productQueryMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
   createProductMutationMock, createProductMutationErrorMock,
