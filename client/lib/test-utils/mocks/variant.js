@@ -38,6 +38,25 @@ const createProductVariantMutationMock = {
   },
 };
 
+const createProductVariantMutationErrorMock = {
+  request: {
+    query: CREATE_PROD_VARIANT_MUTATION,
+    variables: {
+      color: '',
+      size: '',
+      quantity: 1,
+      price: 1,
+      sale: false,
+      salePrice: 1,
+      productId: mockProduct.id,
+      imageId: mockImage.id
+    },
+  },
+  result: {
+    errors: [{ message: 'ack!' }],
+  }
+};
+
 const deleteProductVariantMutationMock = {
   request: { query: DELETE_PROD_VARIANT_MUTATION, variables: { id: mockVariant.id } },
   result: {
@@ -52,6 +71,6 @@ const deleteProductVariantMutationMock = {
 
 
 export {
-  createProductVariantMutationMock,
+  createProductVariantMutationMock, createProductVariantMutationErrorMock,
   deleteProductVariantMutationMock
 };
