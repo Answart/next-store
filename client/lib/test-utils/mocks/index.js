@@ -13,7 +13,7 @@ export {
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
   createImageMutationMock, createImageMutationErrorMock,
-  productQueryMock, productQueryNoVariantMock,
+  productQueryMock, productQueryErrorMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,
