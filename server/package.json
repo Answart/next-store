@@ -22,7 +22,7 @@
     "cross-env": "^5.2.0",
     "dotenv": "^6.1.0",
     "graphql": "^0.13.2",
-    "graphql-cli": "^3.0.9",
+    "graphql-cli": "^3.0.10",
     "graphql-yoga": "1.16.7",
     "jsonwebtoken": "^8.5.0",
     "nodemailer": "^5.0.0",
