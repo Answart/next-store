@@ -8,6 +8,7 @@ export {
 export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signupMutationMock,
+  signinMutationMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,

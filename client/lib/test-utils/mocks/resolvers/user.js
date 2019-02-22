@@ -1,6 +1,6 @@
 import {
   CURRENT_USER_QUERY,
-  SIGNUP_MUTATION,
+  SIGNUP_MUTATION, SIGNIN_MUTATION,
   SIGNOUT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION
 } from '../../../../graphql'
@@ -48,6 +48,22 @@ const signupMutationMock = {
   result: {
     data: {
       createUser: {
+        __typename: 'User',
+        id: mockUser.id,
+        email: mockUser.email,
+        name: mockUser.name,
+      },
+    },
+  },
+};
+
+const signinMutationMock = {
+  request: { query: SIGNIN_MUTATION, variables: {
+    email: mockUser.email, password: mockUser.password,
+  }},
+  result: {
+    data: {
+      signin: {
         __typename: 'User',
         id: mockUser.id,
         email: mockUser.email,
@@ -129,6 +145,7 @@ const resetPasswordMutationErrorMock = {
 export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signupMutationMock,
+  signinMutationMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
