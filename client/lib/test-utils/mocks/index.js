@@ -17,7 +17,7 @@ export {
   updateProductMutationMock, updateProductMutationErrorMock,
   deleteProductMutationMock,
   createProductVariantMutationMock, createProductVariantMutationErrorMock,
-  updateProductVariantMutationMock,
+  updateProductVariantMutationMock, updateProductVariantMutationErrorMock,
   deleteProductVariantMutationMock,
   addToCartMutationMock,
   updateCartItemMutationMock,

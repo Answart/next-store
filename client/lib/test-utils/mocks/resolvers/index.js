@@ -16,7 +16,7 @@ export {
 } from './product';
 export {
   createProductVariantMutationMock, createProductVariantMutationErrorMock,
-  updateProductVariantMutationMock,
+  updateProductVariantMutationMock, updateProductVariantMutationErrorMock,
   deleteProductVariantMutationMock
 } from './variant';
 export {
