@@ -125,10 +125,9 @@ describe('<UpdateProductForm />', () => {
   });
 
   it('image upload updates image in state', async () => {
-    wrapper.find('input[type="file"]')
-      .simulate('change', { target: {
-        files: [mockImage.image_url], name: 'image', type: 'file'
-      }});
+    wrapper.find('input[type="file"]').simulate('change', { target: {
+      files: [mockImage.image_url], name: 'image', type: 'file'
+    }});
     await wait(50);
     wrapper.update();
     expect(wrapper.find('UpdateProductForm').instance().state.image).toMatchObject({
