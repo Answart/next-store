@@ -76,12 +76,15 @@ class UpdateProductVariantForm extends Component {
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
       if (!res || !res.data) return;
       const variables = {
-        ...this.state,
+        id: this.state.id,
+        color: this.state.color,
+        size: this.state.size,
+        quantity: this.state.quantity,
+        price: this.state.price,
+        sale: this.state.sale,
+        salePrice: this.state.salePrice,
         imageId: res.data.createImage.id
       };
-      delete variables.image;
-      delete variables.imageIsNew;
-      delete variables.message;
 
       return await updateProductVariant({ variables }).then((res) => {
         if (!res || !res.data) return;
