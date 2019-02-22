@@ -13,6 +13,7 @@ class SigninForm extends React.Component {
   submitForm = async (e, signin) => {
     e.preventDefault();
     await signin().then((res) => {
+      if (!res || !res.data) return;
       Router.push({
         pathname: "/shop",
         query: { name: `${res.data.signin.name}` }
@@ -26,6 +27,7 @@ class SigninForm extends React.Component {
       <Mutation mutation={SIGNIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        onError={(e) => {}}
       >
         {(signin, { error, loading }) => (
           <StyledForm onSubmit={e => this.submitForm(e, signin)}>
