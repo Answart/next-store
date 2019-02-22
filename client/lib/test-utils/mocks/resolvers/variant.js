@@ -1,5 +1,6 @@
 import {
   CREATE_PROD_VARIANT_MUTATION,
+  UPDATE_PROD_VARIANT_MUTATION,
   DELETE_PROD_VARIANT_MUTATION
 } from '../../../../graphql'
 import { mockImage, mockProduct, mockVariant } from '../typeDefs';
@@ -58,6 +59,34 @@ const createProductVariantMutationErrorMock = {
   }
 };
 
+const updateProductVariantMutationMock = {
+  request: {
+    query: UPDATE_PROD_VARIANT_MUTATION,
+    variables: {
+      id: mockVariant.id,
+      color: mockVariant.color,
+      size: mockVariant.size,
+      quantity: mockVariant.quantity,
+      price: mockVariant.price,
+      sale: mockVariant.sale,
+      salePrice: mockVariant.salePrice,
+      imageId: mockImage.id,
+    },
+  },
+  result: {
+    data: {
+      updateProductVariant: {
+        __typename: 'Variant',
+        id: mockVariant.id,
+        product: {
+          __typename: 'Product',
+          id: mockProduct.id,
+        }
+      },
+    },
+  },
+};
+
 const deleteProductVariantMutationMock = {
   request: { query: DELETE_PROD_VARIANT_MUTATION, variables: { id: mockVariant.id } },
   result: {
@@ -73,5 +102,6 @@ const deleteProductVariantMutationMock = {
 
 export {
   createProductVariantMutationMock, createProductVariantMutationErrorMock,
+  updateProductVariantMutationMock,
   deleteProductVariantMutationMock
 };
