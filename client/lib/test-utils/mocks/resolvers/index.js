@@ -10,7 +10,7 @@ export {
   createImageMutationMock, createImageMutationErrorMock,
 } from './image';
 export {
-  productQueryMock, productQueryErrorMock, productQueryNoVariantMock,
+  productQueryMock, productQueryErrorMock, productQueryNoProductMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,

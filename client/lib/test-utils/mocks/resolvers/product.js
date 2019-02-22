@@ -40,6 +40,15 @@ const productQueryErrorMock = {
   },
 };
 
+const productQueryNoProductMock = {
+  request: { query: PRODUCT_QUERY, variables: { id: "123" } },
+  result: {
+    data: {
+      product: null,
+    },
+  },
+};
+
 const productQueryNoVariantMock = {
   request: { query: PRODUCT_QUERY, variables: { id: mockProduct.id } },
   result: {
@@ -191,7 +200,7 @@ const shopProductsQueryProductMock = {
 
 
 export {
-  productQueryMock, productQueryErrorMock, productQueryNoVariantMock,
+  productQueryMock, productQueryErrorMock, productQueryNoProductMock, productQueryNoVariantMock,
   shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,
