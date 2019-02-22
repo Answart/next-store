@@ -37,6 +37,7 @@ class SigninForm extends React.Component {
               <label htmlFor="email">
                 Email
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   placeholder="email"
@@ -48,6 +49,7 @@ class SigninForm extends React.Component {
               <label htmlFor="password">
                 Password
                 <input
+                  id="password"
                   type="password"
                   name="password"
                   placeholder="password"
