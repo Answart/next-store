@@ -8,9 +8,7 @@ import { SIGNIN_MUTATION, CURRENT_USER_QUERY } from '../../graphql';
 
 
 class SigninForm extends React.Component {
-  state = {
-    name: '', password: '', email: ''
-  };
+  state = { email: '', password: '' };
   saveToState = e => this.setState({ [e.target.name]: e.target.value });
   submitForm = async (e, signin) => {
     e.preventDefault();
@@ -20,9 +18,7 @@ class SigninForm extends React.Component {
         query: { name: `${res.data.signin.name}` }
       });
 
-      this.setState({
-        name: '', email: '', password: ''
-      });
+      this.setState({ email: '', password: '' });
     });
   }
   render() {
