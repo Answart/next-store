@@ -1,20 +1,30 @@
-const createUser = require('./createUser');
-const signin = require('./signin');
-const signout = require('./signout');
-const requestPasswordReset = require('./requestPasswordReset');
-const resetPassword = require('./resetPassword');
-const updatePermissions = require('./updatePermissions');
-const createImage = require('./createImage');
-const deleteImage = require('./deleteImage');
-const createProduct = require('./createProduct');
-const updateProduct = require('./updateProduct');
-const deleteProduct = require('./deleteProduct');
-const createProductVariant = require('./createProductVariant');
-const updateProductVariant = require('./updateProductVariant');
-const deleteProductVariant = require('./deleteProductVariant');
-const addToCart = require('./addToCart');
-const removeFromCart = require('./removeFromCart');
-const updateCartItem = require('./updateCartItem');
+const {
+  createUser,
+  signin,
+  signout,
+  requestPasswordReset,
+  resetPassword,
+  updatePermissions,
+} = require('./user');
+const {
+  createImage,
+  deleteImage,
+} = require('./image');
+const {
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} = require('./product');
+const {
+  createProductVariant,
+  updateProductVariant,
+  deleteProductVariant,
+} = require('./variant');
+const {
+  addToCart,
+  updateCartItem,
+  removeFromCart,
+} = require('./cartItem');
 
 
 const Mutation = {
