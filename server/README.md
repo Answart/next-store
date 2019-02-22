@@ -24,37 +24,100 @@ Tech Stack and Key Packages
 Getting Started
 ---------------
 
-Create an **.env** file:
-```bash
-# ./server/.env
-NODE_ENV=development
-APP_SECRET=<SECRET-STRING-OF-YOUR-CHOICE>
-HOST=http://localhost
-PORT=4242
-DEV_CLIENT_URL=http://localhost:7272
-PROD_CLIENT_URL=<HEROKU-CLIENT-APP-URL>
-PROD_SERVER_URL=<HEROKU-SERVER-APP-URL>
-CLOUDINARY_API_KEY=<CLOUDINARY-API-KEY>
-CLOUDINARY_PRESET=nextstore
-CLOUDINARY_SECRET=<CLOUDINARY-SECRET-STRING>
-PRISMA_DEV_ENDPOINT=https://<PRISMA-DEV-SERVER>.sh/<PRISMA-WORKSPACE>/<PRISMA-DEV-SERVICE>/dev
-PRISMA_PROD_ENDPOINT=https://<PRISMA-PROD-SERVER>.herokuapp.com/<PRISMA-PROD-SERVICE>/prod
-PRISMA_SECRET=<SECRET-PRISMA-STRING-OF-YOUR-CHOICE>
-STRIPE_SECRET=<STRIPE-SECRET-STRING>
-MAILTRAP_HOST=<MAILTRAP-HOST-NAME>
-MAILTRAP_PORT=<MAILTRAP-PORT-NUMBER>
-MAILTRAP_USER=<MAILTRAP-USER>
-MAILTRAP_PASS=<MAILTRAP-PASSWORD>
-POSTMARK_HOST=<POSTMARK-HOST-NAME>
-POSTMARK_PORT=<POSTMARK-PORT-NUMBER>
-POSTMARK_USER=<POSTMARK-USER>
-POSTMARK_PASS=<POSTMARK-PASSWORD>
-```
+#### Install dependencies
 
-Launch server in new tab:
 ```bash
 # ./server/
 $ npm install
+```
+
+#### Create .env file
+
+Create an **.env** file which will be updated during setup. See also **.env_example**.
+```bash
+# ./server/.env
+NODE_ENV=development
+APP_SECRET=my-super-secret
+HOST=http://localhost
+PORT=4242
+DEV_CLIENT_URL=http://localhost:7272
+PROD_CLIENT_URL=
+PROD_SERVER_URL=
+CLOUDINARY_API_KEY=
+CLOUDINARY_PRESET=nextstore
+CLOUDINARY_SECRET=
+PRISMA_DEV_ENDPOINT=
+PRISMA_PROD_ENDPOINT=
+PRISMA_SECRET=
+STRIPE_SECRET=
+MAILTRAP_HOST=
+MAILTRAP_PORT=
+MAILTRAP_USER=
+MAILTRAP_PASS=
+POSTMARK_HOST=
+POSTMARK_PORT=
+POSTMARK_USER=
+POSTMARK_PASS=
+```
+
+#### Setup Cloudinary
+
+1. Create and access your [**Cloudinary**](https://cloudinary.com/) account.
+2. Grab your API key (**CLOUDINARY_API_KEY**) and API secret (**CLOUDINARY_SECRET**) from the [main console page](
+https://cloudinary.com/console).
+3. Create a [folder](https://cloudinary.com/console/media_library/folders/all/) where uploads will be stored.
+4. Add an [upload preset](https://cloudinary.com/console/settings/upload) to set the dimensions uploaded files will be transformed into. (**CLOUDINARY_PRESET**)
+
+#### Setup MailTrap
+
+1. Create or access your [**MailTrap**](https://mailtrap.io/) account.
+2. Create a demo inbox and check the SMTP Settings page for the Host, Port, Username, and Password credentials to be used in your env file.(**MAILTRAP_HOST**, **MAILTRAP_PORT**, **MAILTRAP_USER**, **MAILTRAP_PASS**)
+
+(Postmark setup is unnecessary for local)
+
+#### Setup Prisma
+
+1. Create or access your [**Prisma**](https://app.prisma.io/) account.
+2. Globally install prisma then login to prisma in the terminal.
+```bash
+# ./server/
+$ npm install -g prisma
+$ prisma login
+```
+3. [Set up Prisma](https://www.prisma.io/docs/1.26/get-started/01-setting-up-prisma-demo-server-JAVASCRIPT-a001/) by using the [prisma-cli](https://github.com/prisma/prisma) in the terminal to generate your endpoint.
+
+```bash
+# ./server/
+$ prisma init
+# ? Set up a new Prisma server or deploy to an existing server?
+> Demo server
+# ? Choose the region of your demo server
+# (for me it was 'answart/demo-us1')
+> PRISMA-WORKSPACE/PRISMA-SERVER
+# ? Choose a name for your service
+> next-store-dev
+# ? Choose a name for your stage (dev)
+> dev
+# ? Select the programming language for the generated Prisma client
+> Don\'t generate
+```
+It will generate the files **datamodel.graphql** and **prisma.yml**.
+
+4. Place the endpoint url from the generated **prisma.yml** as the **PRISMA_DEV_ENDPOINT** in your .env file. Delete the generated files as the endpoint is now in the .env file and generated files are already configured in the prisma directory.
+
+5. Any prisma changes from this point on can be updated with the following:
+```bash
+$ npm run deploy:dev
+```
+
+#### Setup Stripe
+
+TODO
+
+#### Launch server
+
+```bash
+# ./server/
 $ npm run start:dev
 ```
 
@@ -66,5 +129,5 @@ NPM Commands
 | Command | Description |
 |---------|-------------|
 | npm install | Install dependencies |
-| npm run deploy | Deploy changes to Prisma server |
-| npm run start:dev | Launch server |
+| npm run deploy:dev | Deploy changes to Prisma server |
+| npm run start:dev | Launch server app at [**localhost:4242**](http://localhost:4242) |
