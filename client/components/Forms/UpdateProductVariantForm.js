@@ -74,6 +74,7 @@ class UpdateProductVariantForm extends Component {
     if (!!imageVariables.delete_token) delete imageVariables.delete_token;
 
     return await createImage({ variables: { ...imageVariables }}).then(async (res) => {
+      if (!res || !res.data) return;
       const variables = {
         ...this.state,
         imageId: res.data.createImage.id
@@ -83,6 +84,7 @@ class UpdateProductVariantForm extends Component {
       delete variables.message;
 
       return await updateProductVariant({ variables }).then((res) => {
+        if (!res || !res.data) return;
         this.setState({
           ...res.data.updateProductVariant,
           message: `Changes for selection with size '${this.state.size}' and color '${this.state.color}' saved.`
@@ -92,9 +94,9 @@ class UpdateProductVariantForm extends Component {
   };
   render() {
     return (
-      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}}>
+      <Mutation mutation={CREATE_IMAGE_MUTATION} variables={{}} onError={(e) => {}}>
         {(createImage, { loading: imageLoading, error: imageError }) => (
-          <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}}>
+          <Mutation mutation={UPDATE_PROD_VARIANT_MUTATION} variables={{}} onError={(e) => {}}>
             {(updateProductVariant, { loading: prodVarLoading, error: prodVarError }) => {
               const loading = (imageLoading || prodVarLoading);
               const error = imageError ? imageError : prodVarError;
