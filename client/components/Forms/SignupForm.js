@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
   submitForm = async (e, createUser) => {
     e.preventDefault();
     await createUser().then((res) => {
+      if (!res || !res.data) return;
       Router.push({
         pathname: "/shop",
         query: { name: `${res.data.createUser.name}` }
@@ -29,6 +30,7 @@ class SignupForm extends React.Component {
       <Mutation mutation={SIGNUP_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        onError={(e) => {}}
       >
         {(createUser, { error, loading }) => (
           <StyledForm onSubmit={e => this.submitForm(e, createUser)}>
