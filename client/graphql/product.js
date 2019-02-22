@@ -63,6 +63,102 @@ const PRODUCT_QUERY = gql`
   }
 `;
 
+const SHOP_PRODUCTS_QUERY = gql`
+  query SHOP_PRODUCTS_QUERY(
+    $orderBy: ProductOrderByInput,
+    $skip: Int,
+    $first: Int,
+    $title: String,
+    $online: Boolean,
+    $department: String,
+    $name: String,
+    $category: String,
+    $brand: String,
+    $color: String,
+    $size: String
+  ) {
+    products(
+      where: {
+        title_contains: $title,
+        online: $online,
+        department: $department,
+        category: $category,
+        brand: $brand,
+        user: {
+          name: $name
+        },
+        variants_every: {
+          color: $color,
+          size: $size
+        }
+      },
+      orderBy: $orderBy,
+      skip: $skip,
+      first: $first
+    ) {
+      id
+      department
+      title
+      category
+      brand
+      online
+      user {
+        id
+        name
+      }
+      image {
+        id
+        name
+        image_url
+      }
+      variants {
+        id
+        quantity
+        color
+        size
+        price
+        sale
+        salePrice
+        availability
+      }
+    }
+  }
+`;
+
+const PAGINATION_QUERY = gql`
+  query PAGINATION_QUERY(
+    $title: String,
+    $online: Boolean,
+    $department: String,
+    $name: String,
+    $category: String,
+    $brand: String,
+    $color: String,
+    $size: String,
+  ) {
+    productsConnection(
+      where: {
+        title_contains: $title,
+        online: $online,
+        department: $department,
+        category: $category,
+        brand: $brand,
+        user: {
+          name: $name
+        },
+        variants_every: {
+          color: $color,
+          size: $size
+        }
+      }
+    ) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
     $title: String!,
@@ -121,8 +217,11 @@ const DELETE_PRODUCT_MUTATION = gql`
   }
 `;
 
+
 export {
   PRODUCT_QUERY,
+  SHOP_PRODUCTS_QUERY,
+  PAGINATION_QUERY,
   CREATE_PRODUCT_MUTATION,
   UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION
