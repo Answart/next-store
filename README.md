@@ -199,10 +199,9 @@ It will generate the files **datamodel.graphql** and **prisma.yml**.
 
 4. Place the endpoint url from the generated **prisma.yml** as the **PRISMA_DEV_ENDPOINT** in your .env file. Delete the generated files as the endpoint is now in the .env file and generated files are already configured in the prisma directory.
 
-5. Any prisma changes from this point on can be updated with the following:
+5. Run the deploy script. Any changes from this point on can be deployed with the following script:
 
 ```bash
-# ./server/
 $ npm run deploy:dev
 ```
 
