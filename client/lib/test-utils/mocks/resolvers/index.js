@@ -22,4 +22,4 @@ export {
   addToCartMutationMock,
   updateCartItemMutationMock,
   removeFromCartMutationMock
-} from './cart';
+} from './cartItem';
