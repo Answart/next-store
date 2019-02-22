@@ -7,6 +7,7 @@ export {
 } from './typeDefs';
 export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
+  signupMutationMock,
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
