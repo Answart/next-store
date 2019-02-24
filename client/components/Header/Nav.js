@@ -6,7 +6,7 @@ import { capWord } from '../../lib/utils';
 const Nav = () => (
   <div className="hdr-nav">
     {DEPARTMENTS.map(dept => (
-      <Link key={dept} href={{
+      <Link key={dept} id={`nav-${dept}`} href={{
         pathname: "/shop",
         query: { department: dept.toLowerCase() }
       }}>

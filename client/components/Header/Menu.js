@@ -10,11 +10,11 @@ const Menu = props => (
       if (!data || !data.me)
         return (
           <div className="hdr-menu">
-            <Link href="/account"><a className="undrln-btn hdr-btn hdr-pad">
+            <Link id="menu-acct" href="/account"><a className="undrln-btn hdr-btn hdr-pad">
               Sign In
             </a></Link>
             |
-            <Link href="/signup"><a className="undrln-btn hdr-btn hdr-pad">
+            <Link id="menu-sgnup" href="/signup"><a className="undrln-btn hdr-btn hdr-pad">
               Join
             </a></Link>
           </div>
@@ -23,7 +23,7 @@ const Menu = props => (
       return (
         <div className="hdr-menu">
           <span className="hdr-inline">
-            <button className="hdr-pad hdr-btn undrln-btn"
+            <button id='hdrDropdownBtn' className="hdr-pad hdr-btn undrln-btn"
               onClick={props.toggAcctDrpdwn}
             >Hi, {me.name}!</button>
 
