@@ -15,6 +15,9 @@ class Search extends Component {
     });
   };
   render() {
+    const disabled = this.state.title
+      ? !this.state.title.length
+      : true;
     return (
       <div className="hdr-search">
         <img className='search-img' src="/static/images/search.svg" alt="Search" width="18" />
@@ -27,7 +30,7 @@ class Search extends Component {
         />
 
         <button className="hdr-search-btn"
-          disabled={!this.state.title.length}
+          disabled={disabled}
           type="submit"
           onClick={this.search}
         >GO</button>
