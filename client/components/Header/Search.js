@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
+import SvgIcon from '../SvgIcon';
 
 
 class Search extends Component {
@@ -20,7 +21,7 @@ class Search extends Component {
       : true;
     return (
       <div className="hdr-search">
-        <img className='search-img' src="/static/images/search.svg" alt="Search" width="18" />
+        <SvgIcon className='search-img' width={18} name="search" />
 
         <input className='search-input'
           type='search'
