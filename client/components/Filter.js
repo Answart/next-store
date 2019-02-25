@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
+import SvgIcon from './SvgIcon';
 import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../config';
 import { capWord, getFilterProps } from '../lib/utils';
 
@@ -119,6 +120,7 @@ class Filter extends Component {
     });
   };
   render() {
+    const { showCategories, showColors, showSizes, showPrices, showBrands } = this.state;
     const { pageQuery, products } = this.props;
     const { brands } = getFilterProps(products);
     const categoryListType = pageQuery.department ? 'category' : 'department';
@@ -141,7 +143,9 @@ class Filter extends Component {
               <button
                 name="showCategories"
                 onClick={this.toggleFilter}
-              >click</button>
+              >
+                <SvgIcon width={10} name={showCategories ? 'downArrow' : 'upArrow'} />
+              </button>
             </div>
 
             {this.state.showCategories && (
@@ -176,7 +180,9 @@ class Filter extends Component {
               <button
                 name="showColors"
                 onClick={this.toggleFilter}
-              >click</button>
+              >
+                <SvgIcon width={10} name={showColors ? 'downArrow' : 'upArrow'} />
+              </button>
             </div>
 
             {this.state.showColors && (
@@ -210,7 +216,9 @@ class Filter extends Component {
               <button
                 name="showSizes"
                 onClick={this.toggleFilter}
-              >click</button>
+              >
+                <SvgIcon width={10} name={showSizes ? 'downArrow' : 'upArrow'} />
+              </button>
             </div>
 
             {this.state.showSizes && (
@@ -242,7 +250,9 @@ class Filter extends Component {
             <button
               name="showPrices"
               onClick={this.toggleFilter}
-            >click</button>
+            >
+              <SvgIcon width={10} name={showPrices ? 'downArrow' : 'upArrow'} />
+            </button>
           </div>
         </div>
 
@@ -260,7 +270,9 @@ class Filter extends Component {
               <button
                 name="showBrands"
                 onClick={this.toggleFilter}
-              >click</button>
+              >
+                <SvgIcon width={10} name={showBrands ? 'downArrow' : 'upArrow'} />
+              </button>
             </div>
 
             {this.state.showBrands && (
