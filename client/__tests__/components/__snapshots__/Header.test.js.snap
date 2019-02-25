@@ -375,7 +375,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 className="hdr-menu"
               >
                 <Link
-                  className="menu-acct"
                   href="/account"
                 >
                   <a
@@ -388,7 +387,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 </Link>
                 |
                 <Link
-                  className="menu-sgnup"
                   href="/signup"
                 >
                   <a

@@ -10,13 +10,17 @@ const Menu = props => (
       if (!data || !data.me)
         return (
           <div className="hdr-menu">
-            <Link className="menu-acct" href="/account"><a className="undrln-btn hdr-btn hdr-pad">
-              Sign In
-            </a></Link>
+            <Link href="/account">
+              <a className="undrln-btn hdr-btn hdr-pad">
+                Sign In
+              </a>
+            </Link>
             |
-            <Link className="menu-sgnup" href="/signup"><a className="undrln-btn hdr-btn hdr-pad">
-              Join
-            </a></Link>
+            <Link href="/signup">
+              <a className="undrln-btn hdr-btn hdr-pad">
+                Join
+              </a>
+            </Link>
           </div>
         )
       const { me } = data;
