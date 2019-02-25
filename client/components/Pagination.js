@@ -91,20 +91,29 @@ const StyledPagination = styled.div`
   }
 `;
 
-const getList = function(page, pages) {
+const getSamplePaginPages = function(page, pages) {
   const list = [];
   if (page > pages) page = pages;
   if (page < 1) page = 1;
+  let pageNum;
 
   const first = (page - 2) >= 1
     ? (page - 2)
-    : ((page - 1) >= 1) ? (page - 1) : 1;
+    : (page - 1) >= 1
+      ? (page - 1)
+      : 1;
   const last = (page + 2) <= pages
     ? (page + 2)
-    : ((page + 1) <= pages) ? (page + 1) : pages;
+    : (page + 1) <= pages
+      ? (page + 1)
+      : pages;
+
   for (let i = 0; i < 5; i++) {
-    const pageNum = (first + i);
-    if (pageNum >= first && pageNum <= last) list.push(pageNum)
+    pageNum = (first + i);
+
+    if (pageNum >= first && pageNum <= last) {
+      list.push(pageNum);
+    }
   }
 
   return list;
@@ -118,14 +127,14 @@ class Pagination extends Component {
     currentOrderBy: PropTypes.string.isRequired,
     results: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
-    disabled: PropTypes.bool.isRequired
+    disabled: PropTypes.bool.isRequired,
   };
   state = {
     sortDrpdwn: false,
-    showDrpdwn: false
+    showDrpdwn: false,
   };
   toggDrpdwn = (e, drpdwn) => {
-    if (!!e && e.preventDefault) e.preventDefault();
+    if (!!e && !!e.preventDefault) e.preventDefault();
 
     this.setState(state => ({ [drpdwn]: !state[drpdwn] }));
   };
@@ -136,7 +145,13 @@ class Pagination extends Component {
     const orderByKeys = Object.keys(orderByList);
 
     const pages = Math.ceil(count/currentShow);
-    const list = getList(currentPage, pages);
+    const list = getSamplePaginPages(currentPage, pages);
+    const sortDropdownClasses = this.state.sortDrpdwn
+      ? 'srt-dropdown-content show'
+      : 'srt-dropdown-content';
+    const showDropdownClasses = this.state.showDrpdwn
+      ? 'srt-dropdown-content show'
+      : 'srt-dropdown-content';
     return (
       <StyledPagination data-test="pagination">
         <div className="sort">
@@ -144,13 +159,18 @@ class Pagination extends Component {
             <button className="sort-btn"
               disabled={disabled}
               onClick={(e) => this.toggDrpdwn(e, 'sortDrpdwn')}
-            >{capWord(currentOrderBy)}</button>
+            >
+              {capWord(currentOrderBy)}
+            </button>
 
-            <div id="myDropdown" className={this.state.sortDrpdwn ? 'srt-dropdown-content show' : 'srt-dropdown-content'}>
+            <div id="myDropdown" className={sortDropdownClasses}>
               {orderByKeys.map((orderBy, i) => (
                 <Link key={i} href={{
                   pathname: 'shop',
-                  query: { ...pageQuery, orderBy }
+                  query: {
+                    ...pageQuery,
+                    orderBy,
+                  },
                 }}>
                   <a className="undrln-btn" aria-disabled={orderBy == currentOrderBy}>
                     {capWord(orderBy)}
@@ -164,13 +184,18 @@ class Pagination extends Component {
             <button className="sort-btn"
               disabled={disabled}
               onClick={(e) => this.toggDrpdwn(e, 'showDrpdwn')}
-            >Show {currentShow}</button>
+            >
+              Show {currentShow}
+            </button>
 
-            <div id="myODropdown" className={this.state.showDrpdwn ? 'srt-dropdown-content show' : 'srt-dropdown-content'}>
+            <div id="myODropdown" className={showDropdownClasses}>
               {showList.map((show, i) => (
                 <Link key={i} href={{
                   pathname: 'shop',
-                  query: { ...pageQuery, show }
+                  query: {
+                    ...pageQuery,
+                    show,
+                  },
                 }}>
                   <a className="undrln-btn" aria-disabled={show == currentShow}>
                     Show {show}
@@ -182,25 +207,29 @@ class Pagination extends Component {
         </div>
 
         <div className="pagination">
-          <div className="pagination-padding">{count || 0} Items</div>
+          <div className="pagination-padding">
+            {count || 0} Items
+          </div>
 
-          <Link prefetch
-            href={{
-              pathname: 'shop',
-              query: { ...pageQuery, page: 1 },
-            }}
-          >
+          <Link prefetch href={{
+            pathname: 'shop',
+            query: {
+              ...pageQuery,
+              page: 1,
+            },
+          }}>
             <a className="page-btn" aria-disabled={!results || currentPage == 1}>
               &#8810;
             </a>
           </Link>
 
-          <Link prefetch
-            href={{
-              pathname: 'shop',
-              query: { ...pageQuery, page: currentPage - 1 },
-            }}
-          >
+          <Link prefetch href={{
+            pathname: 'shop',
+            query: {
+              ...pageQuery,
+              page: currentPage - 1,
+            },
+          }}>
             <a className="page-btn" aria-disabled={!results || currentPage <= 1}>
               &#60;
             </a>
@@ -208,12 +237,13 @@ class Pagination extends Component {
 
           <div className="pagination-padding">
             {!!list.length && list.map((pageNum, i) => (
-              <Link key={i} prefetch
-                href={{
-                  pathname: 'shop',
-                  query: { ...pageQuery, page: pageNum }
-                }}
-              >
+              <Link key={i} prefetch href={{
+                pathname: 'shop',
+                query: {
+                  ...pageQuery,
+                  page: pageNum,
+                },
+              }}>
                 <a className="page-num" aria-disabled={pageNum == currentPage}>
                   {pageNum}
                 </a>
@@ -221,23 +251,25 @@ class Pagination extends Component {
             ))}
           </div>
 
-          <Link prefetch
-            href={{
-              pathname: 'shop',
-              query: { ...pageQuery, page: currentPage + 1 },
-            }}
-          >
+          <Link prefetch href={{
+            pathname: 'shop',
+            query: {
+              ...pageQuery,
+              page: currentPage + 1,
+            },
+          }}>
             <a className="page-btn" aria-disabled={!results || currentPage >= pages}>
               &#62;
             </a>
           </Link>
 
-          <Link prefetch
-            href={{
-              pathname: 'shop',
-              query: { ...pageQuery, page: pages },
-            }}
-          >
+          <Link prefetch href={{
+            pathname: 'shop',
+            query: {
+              ...pageQuery,
+              page: pages,
+            },
+          }}>
             <a className="page-btn" aria-disabled={!results || currentPage == pages}>
               &#8811;
             </a>
