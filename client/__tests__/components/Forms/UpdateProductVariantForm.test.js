@@ -76,23 +76,22 @@ describe('<UpdateProductVariantForm />', () => {
 
   it('handles state updating', async () => {
     wrapper.find('#price').simulate('change', { target: {
-      value: mockVariant.price, name: 'price', type: 'number'
+      value: mockVariant.price, name: 'price', type: 'number',
     }});
     wrapper.find('#quantity').simulate('change', { target: {
-      value: mockVariant.quantity, name: 'quantity', type: 'number'
+      value: mockVariant.quantity, name: 'quantity', type: 'number',
     }});
     wrapper.find('#size').simulate('change', { target: {
-      value: mockVariant.size, name: 'size', type: 'select'
+      value: mockVariant.size, name: 'size', type: 'select',
     }});
     wrapper.find('#color').simulate('change', { target: {
-      value: mockVariant.color, name: 'color', type: 'select'
+      value: mockVariant.color, name: 'color', type: 'select',
     }});
     wrapper.find('#sale').simulate('change', { target: {
-      value: mockVariant.sale, name: 'sale', type: 'radio'
+      value: mockVariant.sale, name: 'sale', type: 'radio',
     }});
-    // wrapper.update();
     wrapper.find('#salePrice').simulate('change', { target: {
-      value: mockVariant.salePrice, name: 'salePrice', type: 'number'
+      value: mockVariant.salePrice, name: 'salePrice', type: 'number',
     }});
     wrapper.update();
     expect(wrapper.find('UpdateProductVariantForm').instance().state).toMatchObject({
@@ -126,7 +125,7 @@ describe('<UpdateProductVariantForm />', () => {
         },
       },
       imageIsNew: false,
-      message: ''
+      message: '',
     });
   });
 
@@ -138,13 +137,11 @@ describe('<UpdateProductVariantForm />', () => {
       }),
     });
     wrapper.find('#newImage').simulate('change', { target: {
-      value: 'true', name: 'newImage', type: 'radio', checked: true
+      value: 'true', name: 'newImage', type: 'radio', checked: true,
     }});
     await wait(0);
     wrapper.update();
-    // expect(saveToForm).toHaveBeenCalled();
-    // expect(saveToForm).toHaveBeenCalledWith({ imageIsNew: true });
-    global.fetch.mockReset()
+    global.fetch.mockReset();
   });
 
   it('image upload updates image in state', async () => {
@@ -160,11 +157,11 @@ describe('<UpdateProductVariantForm />', () => {
           width: mockImage.width,
           transformation: mockImage.transformation,
           secure_url: mockImage.large_image_url,
-        }]
+        }],
       }),
     });
     wrapper.find('input[type="file"]').simulate('change', { target: {
-      files: [mockImage.image_url], name: 'upload', type: 'file'
+      files: [mockImage.image_url], name: 'upload', type: 'file',
     }});
     await wait(50);
     wrapper.update();
@@ -172,9 +169,9 @@ describe('<UpdateProductVariantForm />', () => {
     expect(state.imageIsNew).toBe(true);
     expect(state.image).toMatchObject({
       ...mockImageVariables,
-      delete_token: 'delete tokeeeen'
+      delete_token: 'delete tokeeeen',
     });
-    global.fetch.mockReset()
+    global.fetch.mockReset();
   });
 
   it('button text changes to Updating Selection on submit', async () => {

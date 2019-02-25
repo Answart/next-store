@@ -41,7 +41,7 @@ describe('<AddToCart />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <AddToCart variant={mockVariant} disabled={false} />;
+            return (<AddToCart variant={mockVariant} disabled={false} />);
           }}
         </ApolloConsumer>
       </MockedProvider>
@@ -82,7 +82,7 @@ describe('<AddToCart />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <AddToCart variant={mockVariant} disabled={true} />;
+            return (<AddToCart variant={mockVariant} disabled={true} />);
           }}
         </ApolloConsumer>
       </MockedProvider>

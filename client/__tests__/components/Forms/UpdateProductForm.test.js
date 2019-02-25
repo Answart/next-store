@@ -50,7 +50,7 @@ describe('<UpdateProductForm />', () => {
             online: true,
             user: {
               id: '123441232132',
-              name: 'hannah smith'
+              name: 'hannah smith',
             },
             image: {
               id: '777777',
@@ -80,22 +80,22 @@ describe('<UpdateProductForm />', () => {
 
   it('handles state updating', async () => {
     wrapper.find('#title').simulate('change', { target: {
-      value: mockProduct.title, name: 'title'
+      value: mockProduct.title, name: 'title',
     }});
     wrapper.find('#department').simulate('change', { target: {
-      value: mockProduct.department, name: 'department', type: 'select'
+      value: mockProduct.department, name: 'department', type: 'select',
     }});
     wrapper.find('#category').simulate('change', { target: {
-      value: mockProduct.category, name: 'category', type: 'select'
+      value: mockProduct.category, name: 'category', type: 'select',
     }});
     wrapper.find('#description').simulate('change', { target: {
-      value: mockProduct.description, name: 'description'
+      value: mockProduct.description, name: 'description',
     }});
     wrapper.find('#brand').simulate('change', { target: {
-      value: mockProduct.brand, name: 'brand'
+      value: mockProduct.brand, name: 'brand',
     }});
     wrapper.find('#offline').simulate('change', { target: {
-      value: mockProduct.online, name: 'offline', type: 'radio'
+      value: mockProduct.online, name: 'offline', type: 'radio',
     }});
     wrapper.update();
     expect(wrapper.find('UpdateProductForm').instance().state).toMatchObject({
@@ -108,7 +108,7 @@ describe('<UpdateProductForm />', () => {
       online: mockProduct.online,
       user: {
         id: '123441232132',
-        name: 'hannah smith'
+        name: 'hannah smith',
       },
       image: {
         id: '777777',
@@ -126,13 +126,13 @@ describe('<UpdateProductForm />', () => {
 
   it('image upload updates image in state', async () => {
     wrapper.find('input[type="file"]').simulate('change', { target: {
-      files: [mockImage.image_url], name: 'image', type: 'file'
+      files: [mockImage.image_url], name: 'image', type: 'file',
     }});
     await wait(50);
     wrapper.update();
     expect(wrapper.find('UpdateProductForm').instance().state.image).toMatchObject({
       ...mockImageVariables,
-      delete_token: 'delete tokeeeen'
+      delete_token: 'delete tokeeeen',
     });
   });
 

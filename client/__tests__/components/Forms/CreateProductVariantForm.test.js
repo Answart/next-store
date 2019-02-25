@@ -150,7 +150,6 @@ describe('<CreateProductVariantForm />', () => {
 
   it('button text changes to Adding Selection on submit', async () => {
     const { data: { product: { variants } } } = await apolloClient.query({ query: PRODUCT_QUERY, variables: { id: mockProduct.id }});
-    console.log('variants', variants)
     expect(variants).toHaveLength(0);
     wrapper.find('form').simulate('submit');
     expect(wrapper.find('button').text()).toContain('Adding Selection');
@@ -173,12 +172,12 @@ describe('<CreateProductVariantForm />', () => {
   it('renders DisplayMessage component w/error message when submit returns an error', async () => {
     console.error = jest.fn();
     const wrapper2 = mount(
-      <MockedProvider addTypename={false} mocks={errorMocks}>
+      <MockedProvider mocks={errorMocks} addTypename={false}>
         <CreateProductVariantForm
           productId={mockProduct.id}
           productImage={{
             ...mockImageVariables,
-            delete_token: 'delete tokeeeen'
+            delete_token: 'delete tokeeeen',
           }}
         />
       </MockedProvider>

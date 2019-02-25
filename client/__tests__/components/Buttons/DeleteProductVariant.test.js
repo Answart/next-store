@@ -25,7 +25,9 @@ describe('<DeleteProductVariant />', () => {
   it('renders and matches snapshot', async () => {
     const wrapper = mount(
       <MockedProvider>
-        <DeleteProductVariant productId={mockProduct.id} id={mockVariant.id}>Delete</DeleteProductVariant>
+        <DeleteProductVariant productId={mockProduct.id} id={mockVariant.id}>
+          Delete
+        </DeleteProductVariant>
       </MockedProvider>
     );
     await wait();
@@ -41,7 +43,11 @@ describe('<DeleteProductVariant />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <DeleteProductVariant productId={mockProduct.id} id={mockVariant.id}>Delete</DeleteProductVariant>;
+            return (
+              <DeleteProductVariant productId={mockProduct.id} id={mockVariant.id}>
+                Delete
+              </DeleteProductVariant>
+            );
           }}
         </ApolloConsumer>
       </MockedProvider>
@@ -64,11 +70,9 @@ describe('<DeleteProductVariant />', () => {
     const postDel = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <DeleteProductVariant
-          productId={mockProduct.id}
-          id={mockVariant.id}
-          postDelete={postDel}
-        >Delete</DeleteProductVariant>
+        <DeleteProductVariant productId={mockProduct.id} id={mockVariant.id} postDelete={postDel}>
+          Delete
+        </DeleteProductVariant>
       </MockedProvider>
     );
     await wait();

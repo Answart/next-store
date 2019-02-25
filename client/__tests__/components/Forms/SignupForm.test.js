@@ -45,13 +45,13 @@ describe('<SignupForm />', () => {
 
   it('handles state updating', async () => {
     wrapper.find('#name').simulate('change', { target: {
-      value: mockUser.name, name: 'name', type: 'text'
+      value: mockUser.name, name: 'name', type: 'text',
     }});
     wrapper.find('#email').simulate('change', { target: {
-      value: mockUser.email, name: 'email', type: 'email'
+      value: mockUser.email, name: 'email', type: 'email',
     }});
     wrapper.find('#password').simulate('change', { target: {
-      value: mockUser.password, name: 'password', type: 'password'
+      value: mockUser.password, name: 'password', type: 'password',
     }});
     wrapper.update();
     expect(wrapper.find('SignupForm').instance().state).toMatchObject({
@@ -76,14 +76,15 @@ describe('<SignupForm />', () => {
   it('routes to /shop after successful user signup', async () => {
     expect(Router.router.push).toHaveBeenCalled();
     expect(Router.router.push).toHaveBeenCalledWith({
-      pathname: '/shop', query: { name: mockUser.name }
+      pathname: '/shop',
+      query: { name: mockUser.name },
     });
     jest.clearAllMocks();
   });
 
   it('resets state after submit', async () => {
     expect(wrapper.find('SignupForm').instance().state).toMatchObject({
-      name: '', email: '', password: ''
+      name: '', email: '', password: '',
     });
   });
 });

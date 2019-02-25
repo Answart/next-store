@@ -24,7 +24,7 @@ describe('<ProductFormFields />', () => {
             transformation: '',
             image_url: 'image_urlimage_url.png',
             large_image_url: 'large_image_urllarge_image_url.png',
-            delete_token: 'delete tokeeeen'
+            delete_token: 'delete tokeeeen',
           }}
           saveToForm={jest.fn()}
         />
@@ -51,7 +51,7 @@ describe('<ProductFormFields />', () => {
 
     it('title input works', async () => {
       wrapper.find('#title').simulate('change', { target: {
-        value: mockProduct.title, name: 'title'
+        value: mockProduct.title, name: 'title',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -60,7 +60,7 @@ describe('<ProductFormFields />', () => {
 
     it('department select input works', async () => {
       wrapper.find('#department').simulate('change', { target: {
-        value: mockProduct.department, name: 'department', type: 'select'
+        value: mockProduct.department, name: 'department', type: 'select',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -69,7 +69,7 @@ describe('<ProductFormFields />', () => {
 
     it('category select input works', async () => {
       wrapper.find('#category').simulate('change', { target: {
-        value: mockProduct.category, name: 'category', type: 'select'
+        value: mockProduct.category, name: 'category', type: 'select',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -78,7 +78,7 @@ describe('<ProductFormFields />', () => {
 
     it('description input works', async () => {
       wrapper.find('#description').simulate('change', { target: {
-        value: mockProduct.description, name: 'description'
+        value: mockProduct.description, name: 'description',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -87,7 +87,7 @@ describe('<ProductFormFields />', () => {
 
     it('brand input works', async () => {
       wrapper.find('#brand').simulate('change', { target: {
-        value: mockProduct.brand, name: 'brand'
+        value: mockProduct.brand, name: 'brand',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -96,13 +96,13 @@ describe('<ProductFormFields />', () => {
 
     it('status inputs online/offline radio button work', async () => {
       wrapper.find('#online').simulate('change', { target: {
-        value: mockProduct.online, name: 'online', type: 'radio'
+        value: mockProduct.online, name: 'online', type: 'radio',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
       expect(saveToForm).toHaveBeenCalledWith({ online: !mockProduct.online });
       wrapper.find('#offline').simulate('change', { target: {
-        value: mockProduct.online, name: 'offline', type: 'radio'
+        value: mockProduct.online, name: 'offline', type: 'radio',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -117,7 +117,7 @@ describe('<ProductFormFields />', () => {
           json: () => ({})
         });
         wrapper.find('input[type="file"]').simulate('change', { target: {
-          files: [], name: 'image', type: 'file'
+          files: [], name: 'image', type: 'file',
         }});
         await wait(0);
         expect(global.fetch).not.toHaveBeenCalled();
@@ -135,7 +135,7 @@ describe('<ProductFormFields />', () => {
           }),
         });
         wrapper.find('input[type="file"]').simulate('change', { target: {
-          files: [mockImage.image_url], name: 'image', type: 'file'
+          files: [mockImage.image_url], name: 'image', type: 'file',
         }});
         await wait(0);
         expect(global.fetch).toHaveBeenCalled();
@@ -164,7 +164,7 @@ describe('<ProductFormFields />', () => {
             }),
           });
           wrapper.find('input[type="file"]').simulate('change', { target: {
-            files: [mockImage.image_url], name: 'image', type: 'file'
+            files: [mockImage.image_url], name: 'image', type: 'file',
           }});
         });
 
@@ -177,7 +177,7 @@ describe('<ProductFormFields />', () => {
         it('calls cloudinary to delete previous image if replacing an already uploaded image', async () => {
           await wait(0);
           wrapper.find('input[type="file"]').simulate('change', { target: {
-            files: ['anotherfile.png'], name: 'image', type: 'file'
+            files: ['anotherfile.png'], name: 'image', type: 'file',
           }});
           await wait(0);
           expect(global.fetch).toHaveBeenCalled();

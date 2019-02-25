@@ -103,21 +103,21 @@ describe('<CreateProductForm />', () => {
     await wait(100);
     expect(Router.router.push).toHaveBeenCalled();
     expect(Router.router.push).toHaveBeenCalledWith({
-      pathname: '/product/selections', query: { id: mockProduct.id }
+      pathname: '/product/selections',
+      query: { id: mockProduct.id },
     });
   });
 
   it('renders DisplayMessage component w/error message when submitted with invalid/insufficient info', async () => {
     console.error = jest.fn();
     const wrapper2 = mount(
-      <MockedProvider addTypename={false} mocks={errorMocks}>
+      <MockedProvider mocks={errorMocks} addTypename={false}>
         <CreateProductForm />
       </MockedProvider>
     );
-    wrapper2.find('input[type="file"]')
-      .simulate('change', { target: {
-        files: [mockImage.image_url], name: 'image', type: 'file'
-      }});
+    wrapper2.find('input[type="file"]').simulate('change', { target: {
+      files: [mockImage.image_url], name: 'image', type: 'file'
+    }});
     await wait(50);
     expect(global.fetch).toHaveBeenCalled();
     Router.router = { push: jest.fn() };

@@ -16,7 +16,7 @@ describe('<ProductVariantFormFields />', () => {
           image={{
             id: mockImage.id,
             ...mockImageVariables,
-            delete_token: 'delete tokeeeen'
+            delete_token: 'delete tokeeeen',
           }}
           saveToForm={jest.fn()}
         />
@@ -42,7 +42,7 @@ describe('<ProductVariantFormFields />', () => {
 
     it('size select input works', async () => {
       wrapper.find('#size').simulate('change', { target: {
-        value: mockVariant.size, name: 'size', type: 'select'
+        value: mockVariant.size, name: 'size', type: 'select',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -51,7 +51,7 @@ describe('<ProductVariantFormFields />', () => {
 
     it('color select input works', async () => {
       wrapper.find('#color').simulate('change', { target: {
-        value: mockVariant.color, name: 'color', type: 'select'
+        value: mockVariant.color, name: 'color', type: 'select',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -60,7 +60,7 @@ describe('<ProductVariantFormFields />', () => {
 
     it('quantity input works', async () => {
       wrapper.find('#quantity').simulate('change', { target: {
-        value: mockVariant.quantity, name: 'quantity', type: 'number'
+        value: mockVariant.quantity, name: 'quantity', type: 'number',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -69,7 +69,7 @@ describe('<ProductVariantFormFields />', () => {
 
     it('price input works', async () => {
       wrapper.find('#price').simulate('change', { target: {
-        value: mockVariant.price, name: 'price', type: 'number'
+        value: mockVariant.price, name: 'price', type: 'number',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -78,7 +78,7 @@ describe('<ProductVariantFormFields />', () => {
 
     it('sale input works', async () => {
       wrapper.find('#sale').simulate('change', { target: {
-        value: mockVariant.sale, name: 'sale', type: 'checkbox', checked: mockVariant.sale
+        value: mockVariant.sale, name: 'sale', type: 'checkbox', checked: mockVariant.sale,
       }});
       await wait(0);
       wrapper.update();
@@ -90,7 +90,7 @@ describe('<ProductVariantFormFields />', () => {
       const form = wrapper.find('.form-content');
       const instance = wrapper.find('ProductVariantFormFields');
       wrapper.find('#salePrice').simulate('change', { target: {
-        value: mockVariant.salePrice, name: 'salePrice', type: 'number'
+        value: mockVariant.salePrice, name: 'salePrice', type: 'number',
       }});
       wrapper.update();
       expect(saveToForm).toHaveBeenCalled();
@@ -100,7 +100,7 @@ describe('<ProductVariantFormFields />', () => {
     describe('newImage inputs productImage/newImage radio buttons work', async () => {
       it('productImage inputs productImage radio button works', async () => {
         wrapper.find('#productImage').simulate('change', { target: {
-          value: 'false', name: 'productImage', type: 'radio', checked: true
+          value: 'false', name: 'productImage', type: 'radio', checked: true,
         }});
         await wait(0);
         wrapper.update();
@@ -116,7 +116,7 @@ describe('<ProductVariantFormFields />', () => {
           }),
         });
         wrapper.find('#newImage').simulate('change', { target: {
-          value: 'true', name: 'newImage', type: 'radio', checked: true
+          value: 'true', name: 'newImage', type: 'radio', checked: true,
         }});
         await wait(0);
         wrapper.update();
@@ -151,7 +151,7 @@ describe('<ProductVariantFormFields />', () => {
           }),
         });
         wrapper.find('input[type="file"]').simulate('change', { target: {
-          files: [mockImage.image_url], name: 'upload', type: 'file'
+          files: [mockImage.image_url], name: 'upload', type: 'file',
         }});
         await wait(0);
         expect(global.fetch).toHaveBeenCalled();
@@ -180,7 +180,7 @@ describe('<ProductVariantFormFields />', () => {
             }),
           });
           wrapper.find('input[type="file"]').simulate('change', { target: {
-            files: [mockImage.image_url], name: 'upload', type: 'file'
+            files: [mockImage.image_url], name: 'upload', type: 'file',
           }});
         });
 
@@ -193,7 +193,7 @@ describe('<ProductVariantFormFields />', () => {
         it('calls cloudinary to delete previous image if replacing an already uploaded image', async () => {
           await wait(0);
           wrapper.find('input[type="file"]').simulate('change', { target: {
-            files: ['anotherfile.png'], name: 'upload', type: 'file'
+            files: ['anotherfile.png'], name: 'upload', type: 'file',
           }});
           await wait(0);
           expect(global.fetch).toHaveBeenCalled();

@@ -38,7 +38,7 @@ describe('<ResetPasswordForm />', () => {
 
   it('handles state updating', async () => {
     wrapper.find('#password').simulate('change', { target: {
-      value: mockUser.password, name: 'password'
+      value: mockUser.password, name: 'password',
     }});
     wrapper.find('#confirmPassword').simulate('change', { target: {
       value: mockUser.password, name: 'confirmPassword',
@@ -66,7 +66,8 @@ describe('<ResetPasswordForm />', () => {
     it('routes to current users shop page after submit', async () => {
       expect(Router.router.push).toHaveBeenCalled();
       expect(Router.router.push).toHaveBeenCalledWith({
-        pathname: '/shop', query: { name: mockUser.name }
+        pathname: '/shop',
+        query: { name: mockUser.name },
       });
     });
 
@@ -88,7 +89,7 @@ describe('<ResetPasswordForm />', () => {
       );
       Router.router = { push: jest.fn() };
       wrapper2.find('#password').simulate('change', { target: {
-        value: mockUser.password, name: 'password'
+        value: mockUser.password, name: 'password',
       }});
       wrapper2.find('#confirmPassword').simulate('change', { target: {
         value: 'wrong-password', name: 'confirmPassword',
@@ -96,8 +97,8 @@ describe('<ResetPasswordForm />', () => {
       wrapper2.update();
     });
     afterAll(() => {
-      wrapper2.unmount()
-      jest.clearAllMocks()
+      wrapper2.unmount();
+      jest.clearAllMocks();
     });
 
     it('show DisplayMessage component with error message', async () => {

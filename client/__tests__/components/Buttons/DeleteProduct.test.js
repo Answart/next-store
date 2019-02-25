@@ -26,7 +26,9 @@ describe('<DeleteProduct />', () => {
   it('renders and matches snapshot', async () => {
     const wrapper = mount(
       <MockedProvider>
-        <DeleteProduct id={mockProduct.id} userName={mockUser.name}>Delete</DeleteProduct>
+        <DeleteProduct id={mockProduct.id} userName={mockUser.name}>
+          Delete
+        </DeleteProduct>
       </MockedProvider>
     );
     await wait();
@@ -42,7 +44,11 @@ describe('<DeleteProduct />', () => {
         <ApolloConsumer>
           {client => {
             apolloClient = client;
-            return <DeleteProduct id={mockProduct.id} userName={mockUser.name}>Delete</DeleteProduct>;
+            return (
+              <DeleteProduct id={mockProduct.id} userName={mockUser.name}>
+                Delete
+              </DeleteProduct>
+            );
           }}
         </ApolloConsumer>
       </MockedProvider>
@@ -62,7 +68,9 @@ describe('<DeleteProduct />', () => {
   it('routes to shop page after successful deletion', async () => {
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <DeleteProduct id={mockProduct.id} userName={mockUser.name}>Delete</DeleteProduct>
+        <DeleteProduct id={mockProduct.id} userName={mockUser.name}>
+          Delete
+        </DeleteProduct>
       </MockedProvider>
     );
     await wait();
