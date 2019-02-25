@@ -4,7 +4,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
 <Header>
   <HeaderStyles__StyledHeader>
     <header
-      className="HeaderStyles__StyledHeader-isqki6-0 gbuCcy"
+      className="HeaderStyles__StyledHeader-isqki6-0 hJbXvy"
     >
       <div
         className="hdr-banner"
@@ -13,12 +13,29 @@ exports[`<Header /> when logged out renders with components and matches the snap
           <div
             className="hdr-search"
           >
-            <img
-              alt="Search"
+            <SvgIcon
               className="search-img"
-              src="/static/images/search.svg"
-              width="18"
-            />
+              name="search"
+              width={18}
+            >
+              <svg
+                className="search-img"
+                height="18px"
+                style={Object {}}
+                viewBox="0 0 32 32"
+                width="18px"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M20.194,3.46c-4.613-4.613-12.121-4.613-16.734,0c-4.612,4.614-4.612,12.121,0,16.735 c4.108,4.107,10.506,4.547,15.116,1.34c0.097,0.459,0.319,0.897,0.676,1.254l6.718,6.718c0.979,0.977,2.561,0.977,3.535,0 c0.978-0.978,0.978-2.56,0-3.535l-6.718-6.72c-0.355-0.354-0.794-0.577-1.253-0.674C24.743,13.967,24.303,7.57,20.194,3.46z M18.073,18.074c-3.444,3.444-9.049,3.444-12.492,0c-3.442-3.444-3.442-9.048,0-12.492c3.443-3.443,9.048-3.443,12.492,0 C21.517,9.026,21.517,14.63,18.073,18.074z"
+                    fill="#6d6c6c"
+                    key="0"
+                  />
+                </g>
+              </svg>
+            </SvgIcon>
             <input
               className="search-input"
               id="search"
@@ -781,7 +798,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-tops"
             key="tops"
           >
             <a
@@ -800,7 +816,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-bottoms"
             key="bottoms"
           >
             <a
@@ -819,7 +834,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-shoes"
             key="shoes"
           >
             <a
@@ -838,7 +852,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-outwear"
             key="outwear"
           >
             <a
@@ -857,7 +870,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-accessories"
             key="accessories"
           >
             <a
@@ -876,7 +888,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-decor"
             key="decor"
           >
             <a
@@ -895,7 +906,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 },
               }
             }
-            id="nav-wedding"
             key="wedding"
           >
             <a
