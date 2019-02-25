@@ -375,8 +375,8 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 className="hdr-menu"
               >
                 <Link
+                  className="menu-acct"
                   href="/account"
-                  id="menu-acct"
                 >
                   <a
                     className="undrln-btn hdr-btn hdr-pad"
@@ -388,8 +388,8 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 </Link>
                 |
                 <Link
+                  className="menu-sgnup"
                   href="/signup"
-                  id="menu-sgnup"
                 >
                   <a
                     className="undrln-btn hdr-btn hdr-pad"

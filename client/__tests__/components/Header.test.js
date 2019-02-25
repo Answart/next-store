@@ -135,8 +135,8 @@ describe('<Header />', () => {
     });
 
     it('<Menu /> renders properly', async () => {
-      expect(wrapper.find('Link#menu-acct').props().href).toBe('/account');
-      expect(wrapper.find('Link#menu-sgnup').props().href).toBe('/signup');
+      expect(wrapper.find('Link.menu-acct').props().href).toBe('/account');
+      expect(wrapper.find('Link.menu-sgnup').props().href).toBe('/signup');
     });
   });
 
