@@ -100,7 +100,7 @@ describe('<CreateProductForm />', () => {
   it('routes to product/selections after successful product creation', async () => {
     Router.router = { push: jest.fn() };
     wrapper.find('form').simulate('submit');
-    await wait(80);
+    await wait(100);
     expect(Router.router.push).toHaveBeenCalled();
     expect(Router.router.push).toHaveBeenCalledWith({
       pathname: '/product/selections', query: { id: mockProduct.id }
@@ -122,7 +122,7 @@ describe('<CreateProductForm />', () => {
     expect(global.fetch).toHaveBeenCalled();
     Router.router = { push: jest.fn() };
     wrapper2.find('form').simulate('submit');
-    await wait(50);
+    await wait(100);
     wrapper2.update();
     expect(wrapper2.find('DisplayMessage').text()).toContain('Hold up! ack!');
     expect(Router.router.push).not.toHaveBeenCalled();

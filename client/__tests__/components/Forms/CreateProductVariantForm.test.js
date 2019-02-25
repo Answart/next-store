@@ -154,7 +154,7 @@ describe('<CreateProductVariantForm />', () => {
     expect(variants).toHaveLength(0);
     wrapper.find('form').simulate('submit');
     expect(wrapper.find('button').text()).toContain('Adding Selection');
-    await wait(50);
+    await wait(80);
     wrapper.update();
     expect(wrapper.find('button').text()).toContain('Add Selection');
   });
