@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import SvgIcon from './SvgIcon';
 import styled from 'styled-components';
 import { orderByList, showList } from '../config';
 import { capWord } from '../lib/utils';
@@ -219,7 +220,7 @@ class Pagination extends Component {
             },
           }}>
             <a className="page-btn" aria-disabled={!results || currentPage == 1}>
-              &#8810;
+              <SvgIcon width={10} name='doubleLeftArrow' />
             </a>
           </Link>
 
@@ -231,7 +232,7 @@ class Pagination extends Component {
             },
           }}>
             <a className="page-btn" aria-disabled={!results || currentPage <= 1}>
-              &#60;
+              <SvgIcon width={10} name='leftArrow' />
             </a>
           </Link>
 
@@ -259,7 +260,7 @@ class Pagination extends Component {
             },
           }}>
             <a className="page-btn" aria-disabled={!results || currentPage >= pages}>
-              &#62;
+              <SvgIcon width={10} name='rightArrow' />
             </a>
           </Link>
 
@@ -271,7 +272,7 @@ class Pagination extends Component {
             },
           }}>
             <a className="page-btn" aria-disabled={!results || currentPage == pages}>
-              &#8811;
+              <SvgIcon width={10} name='doubleRightArrow' />
             </a>
           </Link>
         </div>
