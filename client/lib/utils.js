@@ -60,27 +60,6 @@ const getPageTitleProps = function(user, pageQuery = {}) {
   return { pageLabel, titles };
 }
 
-const getFilterProps = function(products) {
-  const categories = [];
-  const colors = [];
-  const sizes = [];
-  const brands = [];
-
-  for (let p = 0; p < products.length; p++) {
-    const product = products[p];
-    const variants = product.variants;
-    if (!!product.category) categories.push(product.category);
-    if (!!product.brand) brands.push(product.brand);
-    for (let v = 0; v < variants.length; v++) {
-      const variant = variants[v]
-      if (variant.size) sizes.push(variant.size);
-      if (variant.color) colors.push(variant.color);
-    }
-  }
-
-  return { categories, colors, sizes, brands };
-}
-
 const getCartTotals = function(cart = []) {
   let totalQuantity = 0;
   let totalShipping = 0;
@@ -135,53 +114,11 @@ const getFltrdObjs = function(objs, filter) {
   });
 }
 
-// const objsDiffer = function(object1, object2) {
-//   for (let propName in object1) {
-//     if (object1.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
-//       return true;
-//     } else if (typeof object1[propName] != typeof object2[propName]) {
-//       return true;
-//     }
-//     if (!object2.hasOwnProperty(propName)) return true;
-//   }
-//
-//   for (let propName in object2) {
-//     const object1Val = object1[propName];
-//     const object2Val = object2[propName];
-//     const object1Type = typeof object1Val;
-//     const object2Type = typeof object2Val;
-//
-//     if (object1.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
-//       return true;
-//     } else if (typeof object1Val != typeof object2Val) {
-//       return true;
-//     }
-//     if (!object1.hasOwnProperty(propName)) return true;
-//
-//     if (object1Type === 'array' && object2Type === 'array') {
-//       if (objsDiffer(object1Val, object2Val)) {
-//         return true;
-//       }
-//     } else if (object1Type === 'object' && object2Type === 'object') {
-//       if (objsDiffer(object1Val, object2Val)) {
-//         return true;
-//       } else if (object1Val != object2Val) {
-//         return true;
-//       }
-//     } else if (object1Type === 'string' && object2Type === 'string') {
-//       if (object1Val != object2Val) return true;
-//     }
-//   }
-//
-//   return false;
-// }
-
 
 export {
   capWord,
   formatMoney,
   getPageTitleProps,
-  getFilterProps,
   getCartTotals,
   getUniqKeyVals,
   getFltrdObjs,

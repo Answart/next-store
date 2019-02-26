@@ -4,7 +4,7 @@ import Router from 'next/router';
 import styled from 'styled-components';
 import SvgIcon from './SvgIcon';
 import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../config';
-import { capWord, getFilterProps } from '../lib/utils';
+import { capWord } from '../lib/utils';
 
 
 const FilterStyles = styled.div`
@@ -70,6 +70,28 @@ const FilterStyles = styled.div`
   }
 `;
 
+function getFilterProps(products) {
+  const categories = [];
+  const colors = [];
+  const sizes = [];
+  const brands = [];
+
+  for (let p = 0; p < products.length; p++) {
+    const product = products[p];
+    const variants = product.variants;
+    if (!!product.category) categories.push(product.category);
+    if (!!product.brand) brands.push(product.brand);
+    for (let v = 0; v < variants.length; v++) {
+      const variant = variants[v]
+      if (variant.size) sizes.push(variant.size);
+      if (variant.color) colors.push(variant.color);
+    }
+  }
+
+  return { categories, colors, sizes, brands };
+}
+
+
 class Filter extends Component {
   static propTypes = {
     pageQuery: PropTypes.object.isRequired,
@@ -123,7 +145,9 @@ class Filter extends Component {
     const { showCategories, showColors, showSizes, showPrices, showBrands } = this.state;
     const { pageQuery, products } = this.props;
     const { brands } = getFilterProps(products);
-    const categoryListType = pageQuery.department ? 'category' : 'department';
+    const categoryListType = pageQuery.department
+      ? 'category'
+      : 'department';
     const categoryList = categoryListType === 'category'
       ? CATEGORIES[pageQuery.department]
       : DEPARTMENTS;
