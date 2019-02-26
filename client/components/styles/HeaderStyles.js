@@ -29,9 +29,8 @@ const StyledHeader = styled.header`
     align-content: start;
     color: ${props => props.theme.darkGrey};
     padding: 1.1rem;
-    img.search-img {
-      padding-top: 0.3rem;
-      line-height: 1.7rem;
+    svg.search-img {
+      margin-top: 0.75rem;
     }
     input.search-input {
       line-height: 2rem;
