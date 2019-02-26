@@ -131,6 +131,7 @@ exports[`<Product /> matches the snap shot 1`] = `
             >
               <div
                 className="prdct-padding"
+                id="prod-var-avail"
               >
                 <i>
                   Unavailable
