@@ -14,13 +14,15 @@ const Product = props => {
       </div>
 
       <div className="prdct-content">
-        <div className="prdct-padding">
+        <div id='prdct-title' className="prdct-padding">
           <Link href={{
-            pathname: `/buy`,
+            pathname: '/buy',
             query: { id: product.id }
-          }}><a className="prdct-title">
-            {product.title}
-          </a></Link>
+          }}>
+            <a className="prdct-title">
+              {product.title}
+            </a>
+          </Link>
         </div>
 
         <ByCreator
@@ -28,7 +30,7 @@ const Product = props => {
           online={true}
         />
 
-        <div className="prdct-padding">
+        <div id='prdct-online' className="prdct-padding">
           {!product.online && (
             <i>Offline</i>
           )}
@@ -43,13 +45,26 @@ const Product = props => {
           variantActionLabel={props.variantActionLabel}
         />
 
-        <div className="prdct-desc prdct-padding">
-          <strong>Description:</strong>
-          <p>{product.description}</p>
+        <div id='prdct-desc' className="prdct-desc prdct-padding">
+          <div id="prdct-description">
+            <strong>
+              Description:
+            </strong>
+
+            <p>
+              {product.description}
+            </p>
+          </div>
 
           {product.brand && (
-            <div className="prdct-brand">
-              <strong>Brand: </strong>{product.brand}
+            <div id="prdct-brand">
+              <strong>
+                Brand:
+              </strong>
+
+              <p>
+                {product.brand}
+              </p>
             </div>
           )}
         </div>
