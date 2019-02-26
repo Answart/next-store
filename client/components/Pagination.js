@@ -32,10 +32,11 @@ const StyledPagination = styled.div`
       color: ${props => props.theme.darkBlue};
     }
   }
-  a.page-btn {
+  .page-btn {
     color: ${props => props.theme.darkGrey};
     border: 1px solid ${props => props.theme.lightGrey};
-    padding: 9px;
+    height: 100%;
+    padding: 0.9rem;
     margin: 0 0.2rem;
     &:hover {
       color: ${props => props.theme.darkBlue};
@@ -157,14 +158,14 @@ class Pagination extends Component {
       <StyledPagination data-test="pagination">
         <div className="sort">
           <div className="srt-inline">
-            <button className="sort-btn"
+            <button id="sortBtn" className="sort-btn"
               disabled={disabled}
               onClick={(e) => this.toggDrpdwn(e, 'sortDrpdwn')}
             >
               {capWord(currentOrderBy)}
             </button>
 
-            <div id="myDropdown" className={sortDropdownClasses}>
+            <div id="sortDropdown" className={sortDropdownClasses}>
               {orderByKeys.map((orderBy, i) => (
                 <Link key={i} href={{
                   pathname: 'shop',
@@ -182,14 +183,14 @@ class Pagination extends Component {
           </div>
 
           <div className="srt-inline">
-            <button className="sort-btn"
+            <button id="showBtn" className="sort-btn"
               disabled={disabled}
               onClick={(e) => this.toggDrpdwn(e, 'showDrpdwn')}
             >
               Show {currentShow}
             </button>
 
-            <div id="myODropdown" className={showDropdownClasses}>
+            <div id="showDropdown" className={showDropdownClasses}>
               {showList.map((show, i) => (
                 <Link key={i} href={{
                   pathname: 'shop',
@@ -208,35 +209,39 @@ class Pagination extends Component {
         </div>
 
         <div className="pagination">
-          <div className="pagination-padding">
+          <div id='pagin-item-count' className="pagination-padding">
             {count || 0} Items
           </div>
 
-          <Link prefetch href={{
-            pathname: 'shop',
-            query: {
-              ...pageQuery,
-              page: 1,
-            },
-          }}>
-            <a className="page-btn" aria-disabled={!results || currentPage == 1}>
-              <SvgIcon width={10} name='doubleLeftArrow' />
-            </a>
-          </Link>
+          <div id="pagin-d-l-arrow" className="page-btn">
+            <Link prefetch href={{
+              pathname: 'shop',
+              query: {
+                ...pageQuery,
+                page: 1,
+              },
+            }}>
+              <a aria-disabled={!results || currentPage == 1}>
+                <SvgIcon width={10} name='doubleLeftArrow' />
+              </a>
+            </Link>
+          </div>
 
-          <Link prefetch href={{
-            pathname: 'shop',
-            query: {
-              ...pageQuery,
-              page: currentPage - 1,
-            },
-          }}>
-            <a className="page-btn" aria-disabled={!results || currentPage <= 1}>
-              <SvgIcon width={10} name='leftArrow' />
-            </a>
-          </Link>
+          <div id="pagin-l-arrow" className="page-btn">
+            <Link prefetch href={{
+              pathname: 'shop',
+              query: {
+                ...pageQuery,
+                page: currentPage - 1,
+              },
+            }}>
+              <a aria-disabled={!results || currentPage <= 1}>
+                <SvgIcon width={10} name='leftArrow' />
+              </a>
+            </Link>
+          </div>
 
-          <div className="pagination-padding">
+          <div id="pagin-preview-pages" className="pagination-padding">
             {!!list.length && list.map((pageNum, i) => (
               <Link key={i} prefetch href={{
                 pathname: 'shop',
@@ -252,29 +257,33 @@ class Pagination extends Component {
             ))}
           </div>
 
-          <Link prefetch href={{
-            pathname: 'shop',
-            query: {
-              ...pageQuery,
-              page: currentPage + 1,
-            },
-          }}>
-            <a className="page-btn" aria-disabled={!results || currentPage >= pages}>
-              <SvgIcon width={10} name='rightArrow' />
-            </a>
-          </Link>
+          <div id="pagin-r-arrow" className="page-btn">
+            <Link prefetch href={{
+              pathname: 'shop',
+              query: {
+                ...pageQuery,
+                page: currentPage + 1,
+              },
+            }}>
+              <a aria-disabled={!results || currentPage >= pages}>
+                <SvgIcon width={10} name='rightArrow' />
+              </a>
+            </Link>
+          </div>
 
-          <Link prefetch href={{
-            pathname: 'shop',
-            query: {
-              ...pageQuery,
-              page: pages,
-            },
-          }}>
-            <a className="page-btn" aria-disabled={!results || currentPage == pages}>
-              <SvgIcon width={10} name='doubleRightArrow' />
-            </a>
-          </Link>
+          <div id="pagin-d-r-arrow" className="page-btn">
+            <Link prefetch href={{
+              pathname: 'shop',
+              query: {
+                ...pageQuery,
+                page: pages,
+              },
+            }}>
+              <a aria-disabled={!results || currentPage == pages}>
+                <SvgIcon width={10} name='doubleRightArrow' />
+              </a>
+            </Link>
+          </div>
         </div>
       </StyledPagination>
     )
