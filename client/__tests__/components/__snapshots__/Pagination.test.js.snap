@@ -1,0 +1,996 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> snapshot matches 1`] = `
+Array [
+  <Pagination__StyledPagination
+    data-test="pagination"
+  >
+    <div
+      className="Pagination__StyledPagination-sc-1opu4jj-0 gohHhT"
+      data-test="pagination"
+    >
+      <div
+        className="sort"
+      >
+        <div
+          className="srt-inline"
+        >
+          <button
+            className="sort-btn"
+            disabled={false}
+            id="sortBtn"
+            onClick={[Function]}
+          >
+            Name
+          </button>
+          <div
+            className="srt-dropdown-content"
+            id="sortDropdown"
+          >
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "orderBy": "name",
+                  },
+                }
+              }
+              key="0"
+            >
+              <a
+                aria-disabled={true}
+                className="undrln-btn"
+                href="shop?orderBy=name"
+                onClick={[Function]}
+              >
+                Name
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "orderBy": "newest",
+                  },
+                }
+              }
+              key="1"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?orderBy=newest"
+                onClick={[Function]}
+              >
+                Newest
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "orderBy": "oldest",
+                  },
+                }
+              }
+              key="2"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?orderBy=oldest"
+                onClick={[Function]}
+              >
+                Oldest
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "orderBy": "updated",
+                  },
+                }
+              }
+              key="3"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?orderBy=updated"
+                onClick={[Function]}
+              >
+                Updated
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div
+          className="srt-inline"
+        >
+          <button
+            className="sort-btn"
+            disabled={false}
+            id="showBtn"
+            onClick={[Function]}
+          >
+            Show 
+            1
+          </button>
+          <div
+            className="srt-dropdown-content"
+            id="showDropdown"
+          >
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "show": 6,
+                  },
+                }
+              }
+              key="0"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?show=6"
+                onClick={[Function]}
+              >
+                Show 
+                6
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "show": 12,
+                  },
+                }
+              }
+              key="1"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?show=12"
+                onClick={[Function]}
+              >
+                Show 
+                12
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "show": 30,
+                  },
+                }
+              }
+              key="2"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?show=30"
+                onClick={[Function]}
+              >
+                Show 
+                30
+              </a>
+            </Link>
+            <Link
+              href={
+                Object {
+                  "pathname": "shop",
+                  "query": Object {
+                    "show": 60,
+                  },
+                }
+              }
+              key="3"
+            >
+              <a
+                aria-disabled={false}
+                className="undrln-btn"
+                href="shop?show=60"
+                onClick={[Function]}
+              >
+                Show 
+                60
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div
+        className="pagination"
+      >
+        <div
+          className="pagination-padding"
+          id="pagin-item-count"
+        >
+          20
+           Items
+        </div>
+        <div
+          className="page-btn"
+          id="pagin-d-l-arrow"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 1,
+                },
+              }
+            }
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              href="shop?page=1"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="doubleLeftArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 284.929 284.929"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M165.304,142.468L277.517,30.267c1.902-1.903,2.847-4.093,2.847-6.567c0-2.475-0.951-4.665-2.847-6.567L263.239,2.857 C261.337,0.955,259.146,0,256.676,0c-2.478,0-4.665,0.955-6.571,2.857L117.057,135.9c-1.903,1.903-2.853,4.093-2.853,6.567 c0,2.475,0.95,4.664,2.853,6.567l133.048,133.043c1.903,1.906,4.086,2.851,6.564,2.851c2.478,0,4.66-0.947,6.563-2.851 l14.277-14.267c1.902-1.903,2.851-4.094,2.851-6.57c0-2.472-0.948-4.661-2.851-6.564L165.304,142.468z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                    <path
+                      d="M55.668,142.468L167.87,30.267c1.903-1.903,2.851-4.093,2.851-6.567c0-2.475-0.947-4.665-2.851-6.567L153.6,2.857 C151.697,0.955,149.507,0,147.036,0c-2.478,0-4.668,0.955-6.57,2.857L7.417,135.9c-1.903,1.903-2.853,4.093-2.853,6.567 c0,2.475,0.95,4.664,2.853,6.567l133.048,133.043c1.902,1.906,4.09,2.851,6.57,2.851c2.471,0,4.661-0.947,6.563-2.851 l14.271-14.267c1.903-1.903,2.851-4.094,2.851-6.57c0-2.472-0.947-4.661-2.851-6.564L55.668,142.468z"
+                      fill="#6d6c6c"
+                      key="1"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </a>
+          </Link>
+        </div>
+        <div
+          className="page-btn"
+          id="pagin-l-arrow"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 1,
+                },
+              }
+            }
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              href="shop?page=1"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="leftArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 492 492"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12 C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084 c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864 l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </a>
+          </Link>
+        </div>
+        <div
+          className="pagination-padding"
+          id="pagin-preview-pages"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 1,
+                },
+              }
+            }
+            key="0"
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              className="page-num"
+              href="shop?page=1"
+              onClick={[Function]}
+            >
+              1
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 2,
+                },
+              }
+            }
+            key="1"
+            prefetch={true}
+          >
+            <a
+              aria-disabled={true}
+              className="page-num"
+              href="shop?page=2"
+              onClick={[Function]}
+            >
+              2
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 3,
+                },
+              }
+            }
+            key="2"
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              className="page-num"
+              href="shop?page=3"
+              onClick={[Function]}
+            >
+              3
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 4,
+                },
+              }
+            }
+            key="3"
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              className="page-num"
+              href="shop?page=4"
+              onClick={[Function]}
+            >
+              4
+            </a>
+          </Link>
+        </div>
+        <div
+          className="page-btn"
+          id="pagin-r-arrow"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 3,
+                },
+              }
+            }
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              href="shop?page=3"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="rightArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 492.004 492.004"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12 c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028 c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265 c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </a>
+          </Link>
+        </div>
+        <div
+          className="page-btn"
+          id="pagin-d-r-arrow"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "page": 20,
+                },
+              }
+            }
+            prefetch={true}
+          >
+            <a
+              aria-disabled={false}
+              href="shop?page=20"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="doubleRightArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 284.936 284.936"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M277.515,135.9L144.464,2.857C142.565,0.955,140.375,0,137.9,0c-2.472,0-4.659,0.955-6.562,2.857l-14.277,14.275 c-1.903,1.903-2.853,4.089-2.853,6.567c0,2.478,0.95,4.664,2.853,6.567l112.207,112.204L117.062,254.677 c-1.903,1.903-2.853,4.093-2.853,6.564c0,2.477,0.95,4.667,2.853,6.57l14.277,14.271c1.902,1.905,4.089,2.854,6.562,2.854 c2.478,0,4.665-0.951,6.563-2.854l133.051-133.044c1.902-1.902,2.851-4.093,2.851-6.567S279.417,137.807,277.515,135.9z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </Pagination__StyledPagination>,
+  <div
+    className="Pagination__StyledPagination-sc-1opu4jj-0 gohHhT"
+    data-test="pagination"
+  >
+    <div
+      className="sort"
+    >
+      <div
+        className="srt-inline"
+      >
+        <button
+          className="sort-btn"
+          disabled={false}
+          id="sortBtn"
+          onClick={[Function]}
+        >
+          Name
+        </button>
+        <div
+          className="srt-dropdown-content"
+          id="sortDropdown"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "orderBy": "name",
+                },
+              }
+            }
+            key="0"
+          >
+            <a
+              aria-disabled={true}
+              className="undrln-btn"
+              href="shop?orderBy=name"
+              onClick={[Function]}
+            >
+              Name
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "orderBy": "newest",
+                },
+              }
+            }
+            key="1"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?orderBy=newest"
+              onClick={[Function]}
+            >
+              Newest
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "orderBy": "oldest",
+                },
+              }
+            }
+            key="2"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?orderBy=oldest"
+              onClick={[Function]}
+            >
+              Oldest
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "orderBy": "updated",
+                },
+              }
+            }
+            key="3"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?orderBy=updated"
+              onClick={[Function]}
+            >
+              Updated
+            </a>
+          </Link>
+        </div>
+      </div>
+      <div
+        className="srt-inline"
+      >
+        <button
+          className="sort-btn"
+          disabled={false}
+          id="showBtn"
+          onClick={[Function]}
+        >
+          Show 
+          1
+        </button>
+        <div
+          className="srt-dropdown-content"
+          id="showDropdown"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "show": 6,
+                },
+              }
+            }
+            key="0"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?show=6"
+              onClick={[Function]}
+            >
+              Show 
+              6
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "show": 12,
+                },
+              }
+            }
+            key="1"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?show=12"
+              onClick={[Function]}
+            >
+              Show 
+              12
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "show": 30,
+                },
+              }
+            }
+            key="2"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?show=30"
+              onClick={[Function]}
+            >
+              Show 
+              30
+            </a>
+          </Link>
+          <Link
+            href={
+              Object {
+                "pathname": "shop",
+                "query": Object {
+                  "show": 60,
+                },
+              }
+            }
+            key="3"
+          >
+            <a
+              aria-disabled={false}
+              className="undrln-btn"
+              href="shop?show=60"
+              onClick={[Function]}
+            >
+              Show 
+              60
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
+    <div
+      className="pagination"
+    >
+      <div
+        className="pagination-padding"
+        id="pagin-item-count"
+      >
+        20
+         Items
+      </div>
+      <div
+        className="page-btn"
+        id="pagin-d-l-arrow"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 1,
+              },
+            }
+          }
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            href="shop?page=1"
+            onClick={[Function]}
+          >
+            <SvgIcon
+              name="doubleLeftArrow"
+              width={10}
+            >
+              <svg
+                className=""
+                height="10px"
+                style={Object {}}
+                viewBox="0 0 284.929 284.929"
+                width="10px"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M165.304,142.468L277.517,30.267c1.902-1.903,2.847-4.093,2.847-6.567c0-2.475-0.951-4.665-2.847-6.567L263.239,2.857 C261.337,0.955,259.146,0,256.676,0c-2.478,0-4.665,0.955-6.571,2.857L117.057,135.9c-1.903,1.903-2.853,4.093-2.853,6.567 c0,2.475,0.95,4.664,2.853,6.567l133.048,133.043c1.903,1.906,4.086,2.851,6.564,2.851c2.478,0,4.66-0.947,6.563-2.851 l14.277-14.267c1.902-1.903,2.851-4.094,2.851-6.57c0-2.472-0.948-4.661-2.851-6.564L165.304,142.468z"
+                    fill="#6d6c6c"
+                    key="0"
+                  />
+                  <path
+                    d="M55.668,142.468L167.87,30.267c1.903-1.903,2.851-4.093,2.851-6.567c0-2.475-0.947-4.665-2.851-6.567L153.6,2.857 C151.697,0.955,149.507,0,147.036,0c-2.478,0-4.668,0.955-6.57,2.857L7.417,135.9c-1.903,1.903-2.853,4.093-2.853,6.567 c0,2.475,0.95,4.664,2.853,6.567l133.048,133.043c1.902,1.906,4.09,2.851,6.57,2.851c2.471,0,4.661-0.947,6.563-2.851 l14.271-14.267c1.903-1.903,2.851-4.094,2.851-6.57c0-2.472-0.947-4.661-2.851-6.564L55.668,142.468z"
+                    fill="#6d6c6c"
+                    key="1"
+                  />
+                </g>
+              </svg>
+            </SvgIcon>
+          </a>
+        </Link>
+      </div>
+      <div
+        className="page-btn"
+        id="pagin-l-arrow"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 1,
+              },
+            }
+          }
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            href="shop?page=1"
+            onClick={[Function]}
+          >
+            <SvgIcon
+              name="leftArrow"
+              width={10}
+            >
+              <svg
+                className=""
+                height="10px"
+                style={Object {}}
+                viewBox="0 0 492 492"
+                width="10px"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12 C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084 c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864 l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z"
+                    fill="#6d6c6c"
+                    key="0"
+                  />
+                </g>
+              </svg>
+            </SvgIcon>
+          </a>
+        </Link>
+      </div>
+      <div
+        className="pagination-padding"
+        id="pagin-preview-pages"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 1,
+              },
+            }
+          }
+          key="0"
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            className="page-num"
+            href="shop?page=1"
+            onClick={[Function]}
+          >
+            1
+          </a>
+        </Link>
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 2,
+              },
+            }
+          }
+          key="1"
+          prefetch={true}
+        >
+          <a
+            aria-disabled={true}
+            className="page-num"
+            href="shop?page=2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+        </Link>
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 3,
+              },
+            }
+          }
+          key="2"
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            className="page-num"
+            href="shop?page=3"
+            onClick={[Function]}
+          >
+            3
+          </a>
+        </Link>
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 4,
+              },
+            }
+          }
+          key="3"
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            className="page-num"
+            href="shop?page=4"
+            onClick={[Function]}
+          >
+            4
+          </a>
+        </Link>
+      </div>
+      <div
+        className="page-btn"
+        id="pagin-r-arrow"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 3,
+              },
+            }
+          }
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            href="shop?page=3"
+            onClick={[Function]}
+          >
+            <SvgIcon
+              name="rightArrow"
+              width={10}
+            >
+              <svg
+                className=""
+                height="10px"
+                style={Object {}}
+                viewBox="0 0 492.004 492.004"
+                width="10px"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M382.678,226.804L163.73,7.86C158.666,2.792,151.906,0,144.698,0s-13.968,2.792-19.032,7.86l-16.124,16.12 c-10.492,10.504-10.492,27.576,0,38.064L293.398,245.9l-184.06,184.06c-5.064,5.068-7.86,11.824-7.86,19.028 c0,7.212,2.796,13.968,7.86,19.04l16.124,16.116c5.068,5.068,11.824,7.86,19.032,7.86s13.968-2.792,19.032-7.86L382.678,265 c5.076-5.084,7.864-11.872,7.848-19.088C390.542,238.668,387.754,231.884,382.678,226.804z"
+                    fill="#6d6c6c"
+                    key="0"
+                  />
+                </g>
+              </svg>
+            </SvgIcon>
+          </a>
+        </Link>
+      </div>
+      <div
+        className="page-btn"
+        id="pagin-d-r-arrow"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "shop",
+              "query": Object {
+                "page": 20,
+              },
+            }
+          }
+          prefetch={true}
+        >
+          <a
+            aria-disabled={false}
+            href="shop?page=20"
+            onClick={[Function]}
+          >
+            <SvgIcon
+              name="doubleRightArrow"
+              width={10}
+            >
+              <svg
+                className=""
+                height="10px"
+                style={Object {}}
+                viewBox="0 0 284.936 284.936"
+                width="10px"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M277.515,135.9L144.464,2.857C142.565,0.955,140.375,0,137.9,0c-2.472,0-4.659,0.955-6.562,2.857l-14.277,14.275 c-1.903,1.903-2.853,4.089-2.853,6.567c0,2.478,0.95,4.664,2.853,6.567l112.207,112.204L117.062,254.677 c-1.903,1.903-2.853,4.093-2.853,6.564c0,2.477,0.95,4.667,2.853,6.57l14.277,14.271c1.902,1.905,4.089,2.854,6.562,2.854 c2.478,0,4.665-0.951,6.563-2.854l133.051-133.044c1.902-1.902,2.851-4.093,2.851-6.567S279.417,137.807,277.515,135.9z"
+                    fill="#6d6c6c"
+                    key="0"
+                  />
+                </g>
+              </svg>
+            </SvgIcon>
+          </a>
+        </Link>
+      </div>
+    </div>
+  </div>,
+]
+`;
