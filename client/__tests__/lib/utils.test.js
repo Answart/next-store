@@ -1,12 +1,10 @@
 import {
-  objctsDiffer,
-  getUniqKeyVals,
-  getFltrdObjs,
   capWord,
   formatMoney,
   getPageTitleProps,
-  getFilterProps,
-  getCartTotals
+  getCartTotals,
+  getUniqKeyVals,
+  getFltrdObjs,
 } from '../../lib/utils';
 import {
   mockProduct, mockVariant, mockUser, mockCartItem, mockImage,
@@ -166,48 +164,6 @@ describe('Util functions', () => {
     });
   });
 
-  describe('getFilterProps fn', () => {
-    it('no product(s) return empty array for brands/categories/colors/sizes', () => {
-      expect(getFilterProps([])).toEqual({
-        brands: [],
-        categories: [],
-        colors: [],
-        sizes: []
-      });
-    });
-
-    it('single product input returns filled array for brands/categories/colors/sizes', () => {
-      expect(getFilterProps([mockProduct])).toEqual({
-        brands: ["Peggs"],
-        categories: ["sport"],
-        colors: [],
-        sizes: []
-      });
-    });
-
-    it('multiple products input returns filled array for brands/categories/colors/sizes', () => {
-      const otherProduct = {
-        id: "cjr06a3sz0cjm0a71kb2wdmbo",
-        brand: "Moddurn",
-        category: "home",
-        department: "decor",
-        online: true,
-        title: "Modern Wooden Stool",
-        description: "Limited Edition stool from the 2018 Fall fashion line.",
-        image: mockImage,
-        user: mockUser,
-        variants: [{ ...mockVariant }],
-        __typename: "Product"
-      }
-      expect(getFilterProps([mockProduct, otherProduct])).toEqual({
-        brands: ["Peggs","Moddurn"],
-        categories: ["sport","home"],
-        colors: ["white"],
-        sizes: ["S"]
-      });
-    });
-  });
-
   describe('getCartTotals fn', () => {
     it('returns cart totals from empty cart', () => {
       const emptyCart = {
@@ -236,19 +192,6 @@ describe('Util functions', () => {
 
     it('gets unique keys values for color', () => {
       expect(getUniqKeyVals([mockVariant], 'color')).toEqual(["white"]);
-    });
-  });
-
-  describe('getFltrdObjs fn', () => {
-    it('returns filtered objs for empty filter', () => {
-      expect(getFltrdObjs([mockVariant], {})).toEqual([mockVariant]);
-    });
-
-    it('returns filtered objs w/filter', () => {
-      let varia = { ...mockVariant };
-      varia.color = "black";
-
-      expect(getFltrdObjs([mockVariant, varia], { color: "white" })).toEqual([mockVariant]);
     });
   });
 });
