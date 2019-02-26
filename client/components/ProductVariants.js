@@ -94,7 +94,7 @@ class ProductVariants extends Component {
         )}
 
         {sizes && !!sizes.length && (
-          <div className="prdct-padding">
+          <div id='prod-var-sizes' className="prdct-padding">
             <div>Sizes:</div>
 
             <div className="prdct-padding filter-sizes">
@@ -113,7 +113,7 @@ class ProductVariants extends Component {
         )}
 
         {colors && !!colors.length && (
-          <div className="prdct-padding">
+          <div id='prod-var-colors' className="prdct-padding">
             <div>{!!variant.color ? capWord(variant.color) : 'Colors:'}</div>
 
             <div className="prdct-padding filter-colors">
@@ -131,12 +131,12 @@ class ProductVariants extends Component {
           </div>
         )}
 
-        <div className="prdct-padding">
+        <div id='prod-var-avail' className="prdct-padding">
           <i>{availability}</i>
         </div>
 
         {!!variant && accessible && (
-          <div className="prdct-padding">
+          <div id='prod-var-action' className="prdct-padding">
             {(!!VariantActionComponent) && (
               <VariantActionComponent
                 disabled={!variant.id}
@@ -144,7 +144,7 @@ class ProductVariants extends Component {
               />
             )}
             {(!!variantAction && !!variantActionLabel) && (
-              <button className="big-btn"
+              <button id='prod-var-action-btn' className="big-btn"
                 disabled={!variant || !variant.id}
                 onClick={(e) => variantAction(e, variant)}
               >{variantActionLabel}</button>
