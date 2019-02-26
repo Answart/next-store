@@ -2,9 +2,9 @@ import { SALES_TAX_RATE, SHIPPING_COST_PER_ITEM } from '../config';
 
 
 const capWord = function(string = "") {
-  let new_string = (!string)
-    ? ""
-    : string.toString().trim();
+  let new_string = !!string
+    ? string.toString().trim()
+    : "";
   if (!new_string.length) return new_string;
 
   return (new_string.length > 1)
@@ -90,26 +90,33 @@ const getCartTotals = function(cart = []) {
   };
 }
 
-const getUniqKeyVals = function(objs, key) {
+const getUniqKeyVals = function(objsArr, key) {
   let vals = [];
+  const len = objsArr.length;
+  let val;
 
-  objs.map(obj => {
-    const val = obj[key];
+  for (let i = 0; i < len; i++) {
+    val = objsArr[i][key];
+
     if (!vals.includes(val)) vals.push(val);
-  });
+  }
 
   return vals;
 }
 
 const getFltrdObjs = function(objs, filter) {
   const filterKeys = Object.keys(filter);
+  const len = filterKeys.length;
+  let key;
 
   return objs.filter(obj => {
-    for (let i = 0; i < filterKeys.length; i++) {
-      const key = filterKeys[i];
+    for (let i = 0; i < len; i++) {
+      key = filterKeys[i];
+
       if (!obj[key]) return false;
       if (obj[key] !== filter[key]) return false;
     }
+
     return true;
   });
 }
