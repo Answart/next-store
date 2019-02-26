@@ -28,7 +28,7 @@ const variants = [{
   color: 'green',
   size: 'L',
 }];
-console.log('variants', variants)
+
 
 describe('<ProductVariants />', () => {
   describe('component w/variantAction and Label', () => {
