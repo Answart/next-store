@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductVariants /> component w/variantAction and Label matches the snap shot 1`] = `
+<ProductVariants
+  VariantActionComponent={null}
+  demoView={true}
+  online={true}
+  variantAction={[MockFunction]}
+  variantActionLabel="Select"
+  variants={
+    Array [
+      Object {
+        "__typename": "Variant",
+        "availability": "4 in Stock!",
+        "color": "white",
+        "id": "v4r13nt1d",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "price": 35,
+        "product": Object {
+          "__typename": "Product",
+          "brand": "Peggs",
+          "category": "sport",
+          "department": "accessories",
+          "description": "Limited Edition watch from the 2018 Fall fashion line.",
+          "id": "pr0duct1d",
+          "image": Object {
+            "__typename": "Image",
+            "cloudinary_id": "111111",
+            "height": 22,
+            "id": "1m4g31d",
+            "image_url": "peggswatch1.jpg",
+            "large_image_url": "peggswatch2.jpg",
+            "name": "peggswatch1",
+            "transformation": "",
+            "width": 22,
+          },
+          "online": false,
+          "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+          "user": Object {
+            "__typename": "User",
+            "cart": Array [],
+            "email": "Waldo.Yundt@Mosciski.biz",
+            "id": "us3r1d",
+            "name": "Ms. Josue McCullough",
+            "password": "unique-password",
+            "permissions": Array [
+              "ADMIN",
+            ],
+          },
+          "variants": Array [],
+        },
+        "quantity": 4,
+        "sale": true,
+        "salePrice": 30,
+        "size": "S",
+      },
+      Object {
+        "__typename": "Variant",
+        "availability": "4 in Stock!",
+        "color": "green",
+        "id": "4352624623",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "price": 35,
+        "product": Object {
+          "__typename": "Product",
+          "brand": "Peggs",
+          "category": "sport",
+          "department": "accessories",
+          "description": "Limited Edition watch from the 2018 Fall fashion line.",
+          "id": "pr0duct1d",
+          "image": Object {
+            "__typename": "Image",
+            "cloudinary_id": "111111",
+            "height": 22,
+            "id": "1m4g31d",
+            "image_url": "peggswatch1.jpg",
+            "large_image_url": "peggswatch2.jpg",
+            "name": "peggswatch1",
+            "transformation": "",
+            "width": 22,
+          },
+          "online": false,
+          "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+          "user": Object {
+            "__typename": "User",
+            "cart": Array [],
+            "email": "Waldo.Yundt@Mosciski.biz",
+            "id": "us3r1d",
+            "name": "Ms. Josue McCullough",
+            "password": "unique-password",
+            "permissions": Array [
+              "ADMIN",
+            ],
+          },
+          "variants": Array [],
+        },
+        "quantity": 4,
+        "sale": true,
+        "salePrice": 30,
+        "size": "S",
+      },
+      Object {
+        "__typename": "Variant",
+        "availability": "4 in Stock!",
+        "color": "white",
+        "id": "84202615159781",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "price": 35,
+        "product": Object {
+          "__typename": "Product",
+          "brand": "Peggs",
+          "category": "sport",
+          "department": "accessories",
+          "description": "Limited Edition watch from the 2018 Fall fashion line.",
+          "id": "pr0duct1d",
+          "image": Object {
+            "__typename": "Image",
+            "cloudinary_id": "111111",
+            "height": 22,
+            "id": "1m4g31d",
+            "image_url": "peggswatch1.jpg",
+            "large_image_url": "peggswatch2.jpg",
+            "name": "peggswatch1",
+            "transformation": "",
+            "width": 22,
+          },
+          "online": false,
+          "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+          "user": Object {
+            "__typename": "User",
+            "cart": Array [],
+            "email": "Waldo.Yundt@Mosciski.biz",
+            "id": "us3r1d",
+            "name": "Ms. Josue McCullough",
+            "password": "unique-password",
+            "permissions": Array [
+              "ADMIN",
+            ],
+          },
+          "variants": Array [],
+        },
+        "quantity": 4,
+        "sale": true,
+        "salePrice": 30,
+        "size": "L",
+      },
+      Object {
+        "__typename": "Variant",
+        "availability": "4 in Stock!",
+        "color": "green",
+        "id": "9182737465",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "price": 35,
+        "product": Object {
+          "__typename": "Product",
+          "brand": "Peggs",
+          "category": "sport",
+          "department": "accessories",
+          "description": "Limited Edition watch from the 2018 Fall fashion line.",
+          "id": "pr0duct1d",
+          "image": Object {
+            "__typename": "Image",
+            "cloudinary_id": "111111",
+            "height": 22,
+            "id": "1m4g31d",
+            "image_url": "peggswatch1.jpg",
+            "large_image_url": "peggswatch2.jpg",
+            "name": "peggswatch1",
+            "transformation": "",
+            "width": 22,
+          },
+          "online": false,
+          "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+          "user": Object {
+            "__typename": "User",
+            "cart": Array [],
+            "email": "Waldo.Yundt@Mosciski.biz",
+            "id": "us3r1d",
+            "name": "Ms. Josue McCullough",
+            "password": "unique-password",
+            "permissions": Array [
+              "ADMIN",
+            ],
+          },
+          "variants": Array [],
+        },
+        "quantity": 4,
+        "sale": true,
+        "salePrice": 30,
+        "size": "L",
+      },
+    ]
+  }
+>
+  <ProductStyles__StyledProductVariants>
+    <div
+      className="ProductStyles__StyledProductVariants-sc-2231u4-1 ndRtn"
+    >
+      <div
+        className="prdct-padding"
+      >
+        <PriceTag
+          price={35}
+          sale={true}
+          salePrice={30}
+        >
+          <PriceTag__StyledPriceTag>
+            <div
+              className="PriceTag__StyledPriceTag-sc-119rsfa-0 ePOheW"
+            >
+              <span
+                className="line-through"
+              >
+                $35
+              </span>
+              <span
+                className="price-tag-padding price-tag-priceSale"
+              >
+                $30
+              </span>
+            </div>
+          </PriceTag__StyledPriceTag>
+        </PriceTag>
+      </div>
+      <div
+        className="prdct-padding"
+        id="prod-var-sizes"
+      >
+        <div>
+          Sizes:
+        </div>
+        <div
+          className="prdct-padding filter-sizes"
+        >
+          <button
+            className="undrln-btn sample-selected"
+            key="0"
+            name="size"
+            onClick={[Function]}
+            title="Select size: S"
+            value="S"
+          >
+            S
+          </button>
+          <button
+            className="undrln-btn sample-hover"
+            key="1"
+            name="size"
+            onClick={[Function]}
+            title="Select size: L"
+            value="L"
+          >
+            L
+          </button>
+        </div>
+      </div>
+      <div
+        className="prdct-padding"
+        id="prod-var-colors"
+      >
+        <div>
+          White
+        </div>
+        <div
+          className="prdct-padding filter-colors"
+        >
+          <button
+            className="undrln-btn sample-selected"
+            key="0"
+            name="color"
+            onClick={[Function]}
+            title="Select color: White"
+            value="white"
+          >
+            <div
+              className="color-sample white-sample"
+            />
+          </button>
+          <button
+            className="undrln-btn sample-hover"
+            key="1"
+            name="color"
+            onClick={[Function]}
+            title="Select color: Green"
+            value="green"
+          >
+            <div
+              className="color-sample green-sample"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        className="prdct-padding"
+        id="prod-var-avail"
+      >
+        <i>
+          4 in Stock!
+        </i>
+      </div>
+      <div
+        className="prdct-padding"
+        id="prod-var-action"
+      >
+        <button
+          className="big-btn"
+          disabled={false}
+          id="prod-var-action-btn"
+          onClick={[Function]}
+        >
+          Select
+        </button>
+      </div>
+    </div>
+  </ProductStyles__StyledProductVariants>
+</ProductVariants>
+`;
