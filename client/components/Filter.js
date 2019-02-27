@@ -20,77 +20,120 @@ const FilterStyles = styled.div`
     padding-bottom: 1rem;
     border-bottom: 1px solid ${props => props.theme.lightGrey};
     margin-bottom: 1rem;
-    .filter-top {
+    .filter-banner {
       display: inline-grid;
       grid-template-columns: 10rem 4rem 4rem;
       grid-auto-flow: column;
-      h4 {
+      padding: 0.25rem 0;
+      color: ${props => props.theme.grey};
+      button h4 {
+        padding: 0;
+        margin: 0;
         text-align: left;
-        justify-content: start;
-        align-content: start;
+        justify-self: start;
+        align-self: center;
+        color: ${props => props.theme.darkBlue};
       }
-      button {
-        text-align: right;
-        justify-content: end;
-        align-content: end;
-        &[disabled] {
-          pointer-events: none;
+      button.filter-clear-btn {
+        justify-self: end;
+        align-self: end;
+        font-style: italic;
+        color: ${props => props.theme.grey};
+        &:hover {
+          text-decoration: none;
+          font-weight: normal;
+          color: ${props => props.theme.darkGrey};
         }
       }
-      .filter-clear-btn {
-        font-style: italic;
+      button.filter-show-btn {
+        justify-self: end;
         color: ${props => props.theme.grey};
       }
     }
-    .filter-categories {
-      padding: 0 1rem;
+    .filter-show {
       display: grid;
       grid-auto-flow: row;
+      padding: 0.25rem 1rem;
+      text-align: left;
+      font-weight: normal;
       text-align: left;
       justify-content: start;
       button {
         text-align: left;
       }
     }
-    .filter-colors {
-      padding: 0.5rem 1rem 0 1rem;
-      display: grid;
-      grid-auto-flow: row;
+    .filter-show-color {
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(3, 1fr);
+      padding: 0.75rem 1rem;
       align-items: stretch;
     }
-    .filter-sizes {
-      padding: 0.5rem 1rem 0 1rem;
-      display: grid;
-      grid-auto-flow: row;
+    .filter-show-size {
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(4, 1fr);
+      button {
+        text-align: center;
+      }
+    }
+    .filter-show-brand {
+      padding: 0.5rem 1rem;
     }
   }
 `;
 
-function getFilterProps(products) {
-  const categories = [];
-  const colors = [];
-  const sizes = [];
-  const brands = [];
 
-  for (let p = 0; p < products.length; p++) {
-    const product = products[p];
-    const variants = product.variants;
-    if (!!product.category) categories.push(product.category);
-    if (!!product.brand) brands.push(product.brand);
-    for (let v = 0; v < variants.length; v++) {
-      const variant = variants[v]
-      if (variant.size) sizes.push(variant.size);
-      if (variant.color) colors.push(variant.color);
-    }
-  }
+const FilterSection = (props) => {
+  const { name, currentFilter } = props;
+  return (
+    <div id={`filter-${name}`} className="filter">
+      <div className="filter-banner">
+        <button
+          name={props.showName}
+          onClick={props.toggleFilter}
+        >
+          <h4>
+            {name.toUpperCase()}
+          </h4>
+        </button>
 
-  return { categories, colors, sizes, brands };
-}
+        <button id={`filter-clear-${name}-btn`} className='filter-clear-btn'
+          disabled={!currentFilter}
+          name={name}
+          onClick={props.clearFilter}
+        >
+          {!!currentFilter && 'Clear'}
+        </button>
 
+        <button id={`filter-show-${name}-btn`} className='filter-show-btn'
+          name={props.showName}
+          onClick={props.toggleFilter}
+        >
+          <SvgIcon width={10} name={props.showFilter ? 'downArrow' : 'upArrow'} />
+        </button>
+      </div>
+
+      {props.showFilter && (
+        <div className={`filter-show filter-show-${name}`}>
+          {!!props.list && !!props.list.length && props.list.map((listItem, i) => (
+            <button key={i} id={`${name}-${listItem}`} className={`undrln-btn ${!!props.circleHover && (listItem == currentFilter ? 'sample-selected' : 'sample-hover')}`}
+              disabled={listItem == currentFilter}
+              title={`Refine by ${name}: ${capWord(listItem)}`}
+              name={name}
+              value={listItem}
+              onClick={props.updateFilter}
+            >
+              {(name == 'color') ? (
+                <div className={`${name}-sphere-sample ${listItem}-${name}-sample`}></div>
+              ) : (
+                capWord(listItem)
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+};
 
 class Filter extends Component {
   static propTypes = {
@@ -98,11 +141,11 @@ class Filter extends Component {
     products: PropTypes.arrayOf(PropTypes.object)
   };
   state = {
-    showCategories: true,
-    showColors: true,
-    showSizes: true,
-    showPrices: true,
-    showBrands: true
+    showCategory: true,
+    showColor: true,
+    showSize: true,
+    showPrice: true,
+    showBrand: true
   };
   toggleFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
@@ -142,9 +185,7 @@ class Filter extends Component {
     });
   };
   render() {
-    const { showCategories, showColors, showSizes, showPrices, showBrands } = this.state;
-    const { pageQuery, products } = this.props;
-    const { brands } = getFilterProps(products);
+    const { pageQuery } = this.props;
     const categoryListType = pageQuery.department
       ? 'category'
       : 'department';
@@ -153,169 +194,62 @@ class Filter extends Component {
       : DEPARTMENTS;
     return (
       <FilterStyles data-test="filter">
-        {!!categoryList.length && (
-          <div className="filter">
-            <div className="filter-top">
-              <h4>CATEGORY</h4>
+        <FilterSection
+          name={categoryListType}
+          list={categoryList}
+          currentFilter={pageQuery[categoryListType]}
+          showName='showCategory'
+          showFilter={this.state.showCategory}
+          clearFilter={this.clearFilter}
+          toggleFilter={this.toggleFilter}
+          updateFilter={this.updateFilter}
+        />
 
-              <button className="filter-clear-btn"
-                disabled={!pageQuery[categoryListType]}
-                name={categoryListType}
-                onClick={this.clearFilter}
-              >{!!pageQuery.category && 'Clear'}</button>
+        <FilterSection
+          name='color'
+          circleHover={true}
+          list={COLORS}
+          currentFilter={pageQuery['color']}
+          showName='showColor'
+          showFilter={this.state.showColor}
+          clearFilter={this.clearFilter}
+          toggleFilter={this.toggleFilter}
+          updateFilter={this.updateFilter}
+        />
 
-              <button
-                name="showCategories"
-                onClick={this.toggleFilter}
-              >
-                <SvgIcon width={10} name={showCategories ? 'downArrow' : 'upArrow'} />
-              </button>
-            </div>
+        <FilterSection
+          name='size'
+          circleHover={true}
+          list={SIZES}
+          currentFilter={pageQuery['size']}
+          showName='showSize'
+          showFilter={this.state.showSize}
+          clearFilter={this.clearFilter}
+          toggleFilter={this.toggleFilter}
+          updateFilter={this.updateFilter}
+        />
 
-            {this.state.showCategories && (
-              <div className="filter-categories">
-                {categoryList.map((category, i) => (
-                  <button key={i} className="undrln-btn"
-                    disabled={category == pageQuery[categoryListType]}
-                    title={`Go to category: ${capWord(category)}`}
-                    name={categoryListType}
-                    value={category}
-                    onClick={this.updateFilter}
-                  >
-                    {capWord(category)}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+        <FilterSection
+          name='price'
+          currentFilter={pageQuery['price']}
+          showName='showPrice'
+          showFilter={this.state.showPrice}
+          clearFilter={this.clearFilter}
+          toggleFilter={this.toggleFilter}
+          updateFilter={this.updateFilter}
+        />
 
-        {!!COLORS.length && (
-          <div className="filter">
-            <div className="filter-top">
-              <h4>COLOR</h4>
-
-              <button className="filter-clear-btn"
-                disabled={!pageQuery.color}
-                name="color"
-                onClick={this.clearFilter}
-              >{!!pageQuery.color && 'Clear'}</button>
-
-              <button
-                name="showColors"
-                onClick={this.toggleFilter}
-              >
-                <SvgIcon width={10} name={showColors ? 'downArrow' : 'upArrow'} />
-              </button>
-            </div>
-
-            {this.state.showColors && (
-              <div className="filter-colors">
-                {COLORS.map((color, i) => (
-                  <button key={i} className={`undrln-btn ${color == pageQuery.color ? 'sample-selected' : 'sample-hover'}`}
-                    title={`Refine by color: ${capWord(color)}`}
-                    name="color"
-                    value={color}
-                    onClick={this.updateFilter}
-                  >
-                    <div className={`color-sample ${color}-sample`}></div>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {!!SIZES.length && (
-          <div className="filter">
-            <div className="filter-top">
-              <h4>SIZE</h4>
-
-              <button className="filter-clear-btn"
-                disabled={!pageQuery.size}
-                name="size"
-                onClick={this.clearFilter}
-              >{!!pageQuery.size && 'Clear'}</button>
-
-              <button
-                name="showSizes"
-                onClick={this.toggleFilter}
-              >
-                <SvgIcon width={10} name={showSizes ? 'downArrow' : 'upArrow'} />
-              </button>
-            </div>
-
-            {this.state.showSizes && (
-              <div className="filter-sizes">
-                {SIZES.map((size, i) => (
-                  <button key={i} className={`undrln-btn ${size == pageQuery.size ? 'sample-selected' : 'sample-hover'}`}
-                    name="size"
-                    value={size}
-                    onClick={this.updateFilter}
-                  >
-                    {capWord(size)}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        <div className="filter">
-          <div className="filter-top">
-            <h4>PRICE</h4>
-
-            <button className="filter-clear-btn"
-              disabled={!pageQuery.price}
-              name="price"
-              onClick={this.clearFilter}
-            >{!!pageQuery.price && 'Clear'}</button>
-
-            <button
-              name="showPrices"
-              onClick={this.toggleFilter}
-            >
-              <SvgIcon width={10} name={showPrices ? 'downArrow' : 'upArrow'} />
-            </button>
-          </div>
-        </div>
-
-        {!!brands.length && (
-          <div className="filter">
-            <div className="filter-top">
-              <h4>BRAND</h4>
-
-              <button className="filter-clear-btn"
-                disabled={!pageQuery.brand}
-                name="brand"
-                onClick={this.clearFilter}
-              >{!!pageQuery.brand && 'Clear'}</button>
-
-              <button
-                name="showBrands"
-                onClick={this.toggleFilter}
-              >
-                <SvgIcon width={10} name={showBrands ? 'downArrow' : 'upArrow'} />
-              </button>
-            </div>
-
-            {this.state.showBrands && (
-              <div className="filter-categories">
-                {brands.map((brand, i) => (
-                  <button key={i} className="undrln-btn"
-                    disabled={brand == pageQuery.brand}
-                    title={`Refine by brand: ${capWord(brand)}`}
-                    name="brand"
-                    value={brand}
-                    onClick={this.updateFilter}
-                  >
-                    {capWord(brand)}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+        <FilterSection
+          name='brand'
+          list={['brand1', 'brand2']}
+          currentFilter={pageQuery['brand']}
+          pageQuery={pageQuery}
+          showName='showBrand'
+          showFilter={this.state.showBrand}
+          clearFilter={this.clearFilter}
+          toggleFilter={this.toggleFilter}
+          updateFilter={this.updateFilter}
+        />
       </FilterStyles>
     );
   }
