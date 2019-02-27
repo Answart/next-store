@@ -382,14 +382,12 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                         className="prdct-padding"
                         id="prod-var-sizes"
                       >
-                        <div>
-                          Sizes:
-                        </div>
                         <div
                           className="prdct-padding filter-sizes"
                         >
                           <button
                             className="undrln-btn sample-selected"
+                            id="prod-var-size-S"
                             key="0"
                             name="size"
                             onClick={[Function]}
@@ -404,14 +402,17 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                         className="prdct-padding"
                         id="prod-var-colors"
                       >
-                        <div>
+                        <div
+                          id="prod-var-colors-title"
+                        >
                           White
                         </div>
                         <div
                           className="prdct-padding filter-colors"
                         >
                           <button
-                            className="undrln-btn sample-selected"
+                            className="sample-selected"
+                            id="prod-var-color-white"
                             key="0"
                             name="color"
                             onClick={[Function]}
@@ -419,7 +420,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                             value="white"
                           >
                             <div
-                              className="color-sample white-sample"
+                              className="color-sphere-sample white-color-sample"
                             />
                           </button>
                         </div>
