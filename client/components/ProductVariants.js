@@ -124,7 +124,7 @@ class ProductVariants extends Component {
                   title={`Select color: ${capWord(color)}`}
                   onClick={this.updateFilter}
                 >
-                  <div className={`color-sample ${color}-sample`}></div>
+                  <div className={`color-sphere-sample ${color}-color-sample`}></div>
                 </button>
               ))}
             </div>
