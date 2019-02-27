@@ -82,84 +82,58 @@ const StyledPage = styled.div`
       border: 1px solid ${props => props.theme.grey};
     }
   }
-  .color-sample {
+  .color-sphere-sample {
     color: transparent;
     margin: -3.75px 0 0 -3.75px;
-  }
-  .red-sample {
     width: 2rem;
     height: 2rem;
-    border-radius: 10px;
+    border-radius: 2rem;
+  }
+  .red-color-sample {
     background: ${props => props.theme.red};
     background-color: ${props => props.theme.red};
   }
-  .orange-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .orange-color-sample {
     background: ${props => props.theme.orange};
     background-color: ${props => props.theme.orange};
   }
-  .yellow-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .yellow-color-sample {
     background: ${props => props.theme.yellow};
     background-color: ${props => props.theme.yellow};
   }
-  .green-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .green-color-sample {
     background: ${props => props.theme.green};
     background-color: ${props => props.theme.green};
   }
-  .blue-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .blue-color-sample {
     background: ${props => props.theme.blue};
     background-color: ${props => props.theme.blue};
   }
-  .purple-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .purple-color-sample {
     background: ${props => props.theme.purple};
     background-color: ${props => props.theme.purple};
   }
-  .pink-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .pink-color-sample {
     background: ${props => props.theme.pink};
     background-color: ${props => props.theme.pink};
   }
-  .brown-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .brown-color-sample {
     background: ${props => props.theme.brown};
     background-color: ${props => props.theme.brown};
   }
-  .black-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .brown-color-sample {
+    background: ${props => props.theme.brown};
+    background-color: ${props => props.theme.brown};
+  }
+  .black-color-sample {
     background: ${props => props.theme.black};
     background-color: ${props => props.theme.black};
   }
-  .white-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .white-color-sample {
     background: white;
     border: 1px solid ${props => props.theme.lightGrey};
   }
-  .silver-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .silver-color-sample {
     background: ${props => props.theme.lightGrey}; /* Old browsers */
     background: -o-linear-gradient(45deg, ${props => props.theme.lightGrey} 20%, white 85%, white 100%); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(45deg, ${props => props.theme.lightGrey} 20%, white 85%, white 100%); /* FF3.6-15 */
@@ -167,21 +141,14 @@ const StyledPage = styled.div`
     background: linear-gradient(45deg, ${props => props.theme.lightGrey} 20%, white 85%, white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${props => props.theme.lightGrey}', endColorstr='white',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
-  .gold-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
+  .gold-color-sample {
     background: gold; /* Old browsers */
     background: -moz-linear-gradient(45deg, ${props => props.theme.gold} 20%, white 85%, white 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(45deg, ${props => props.theme.gold} 20%, white 85%, white 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(45deg, ${props => props.theme.gold} 20%, white 85%, white 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${props => props.theme.gold}', endColorstr='white',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
-  .multi-sample {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 10px;
-    background: ${props => props.theme.beige}; /* Old browsers */
+  .multi-color-sample {
     background:
       -moz-linear-gradient(circle at 50% 0, ${props => props.theme.red}, rgba(255,0,0,0) 50.71%),
       -moz-linear-gradient(circle at 6.7% 75%, ${props => props.theme.blue}, rgba(0,0,255,0) 70.71%),
