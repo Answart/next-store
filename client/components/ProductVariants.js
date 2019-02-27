@@ -85,21 +85,15 @@ class ProductVariants extends Component {
       <StyledProductVariants>
         {variant && (
           <div className="prdct-padding">
-            <PriceTag
-              price={variant.price}
-              sale={variant.sale}
-              salePrice={variant.salePrice}
-            />
+            <PriceTag price={variant.price} sale={variant.sale} salePrice={variant.salePrice} />
           </div>
         )}
 
         {sizes && !!sizes.length && (
           <div id='prod-var-sizes' className="prdct-padding">
-            <div>Sizes:</div>
-
             <div className="prdct-padding filter-sizes">
               {sizes.map((size, i) => (
-                <button key={i} className={`undrln-btn ${size == variant.size ? 'sample-selected' : 'sample-hover'}`}
+                <button key={i} id={`prod-var-size-${size}`} className={size == variant.size ? 'undrln-btn sample-selected' : 'undrln-btn sample-hover'}
                   name="size"
                   value={size}
                   title={`Select size: ${capWord(size)}`}
@@ -114,11 +108,13 @@ class ProductVariants extends Component {
 
         {colors && !!colors.length && (
           <div id='prod-var-colors' className="prdct-padding">
-            <div>{!!variant.color ? capWord(variant.color) : 'Colors:'}</div>
+            <div id='prod-var-colors-title'>
+              {!variant.color ? 'Colors:' : capWord(variant.color)}
+            </div>
 
             <div className="prdct-padding filter-colors">
               {colors.map((color, i) => (
-                <button key={i} className={`undrln-btn ${color == variant.color ? 'sample-selected' : 'sample-hover'}`}
+                <button key={i} id={`prod-var-color-${color}`} className={color == variant.color ? 'sample-selected' : 'sample-hover'}
                   name="color"
                   value={color}
                   title={`Select color: ${capWord(color)}`}
@@ -132,7 +128,9 @@ class ProductVariants extends Component {
         )}
 
         <div id='prod-var-avail' className="prdct-padding">
-          <i>{availability}</i>
+          <i>
+            {availability}
+          </i>
         </div>
 
         {!!variant && accessible && (
@@ -147,7 +145,9 @@ class ProductVariants extends Component {
               <button id='prod-var-action-btn' className="big-btn"
                 disabled={!variant || !variant.id}
                 onClick={(e) => variantAction(e, variant)}
-              >{variantActionLabel}</button>
+              >
+                {variantActionLabel}
+              </button>
             )}
           </div>
         )}

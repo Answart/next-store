@@ -8,7 +8,7 @@ import {
 } from '../../lib/test-utils/mocks';
 
 const ComponentToMock = (props) => (
-  <div>A mock with '{Object.keys(props).length}' passed!</div>
+  <div>A mock with '{Object.keys(props).length}' props passed!</div>
 );
 const variants = [{
   ...mockVariant
@@ -63,7 +63,7 @@ describe('<ProductVariants />', () => {
       expect(wrapper.find('PriceTag').length).toBe(1);
       expect(wrapper.find('PriceTag').text()).toBe('$35$30');
       expect(wrapper.find('#prod-var-sizes').length).toBe(1);
-      expect(wrapper.find('#prod-var-sizes').text()).toBe('Sizes:SL');
+      expect(wrapper.find('#prod-var-sizes').text()).toBe('SL');
       expect(wrapper.find('#prod-var-sizes').find('button').length).toBe(2);
       expect(wrapper.find('#prod-var-colors').length).toBe(1);
       expect(wrapper.find('#prod-var-colors').text()).toBe('White');
@@ -83,16 +83,16 @@ describe('<ProductVariants />', () => {
       expect(whiteBtnProps.name).toBe('color');
       expect(whiteBtnProps.value).toBe('white');
       expect(whiteBtnProps.title).toBe('Select color: White');
-      expect(whiteBtnProps.className).toBe('undrln-btn sample-selected');
+      expect(whiteBtnProps.className).toBe('sample-selected');
       expect(greenBtnProps.name).toBe('color');
       expect(greenBtnProps.value).toBe('green');
       expect(greenBtnProps.title).toBe('Select color: Green');
-      expect(greenBtnProps.className).toBe('undrln-btn sample-hover');
+      expect(greenBtnProps.className).toBe('sample-hover');
       buttons.at(1).simulate('click');
       await wait(100);
       wrapper.update();
       const buttons2 = wrapper.find('#prod-var-colors').find('button');
-      expect(buttons2.at(0).props().className).toBe('undrln-btn sample-selected');
+      expect(buttons2.at(0).props().className).toBe('sample-selected');
     });
 
     it('clicking a size option changes its class', async () => {
