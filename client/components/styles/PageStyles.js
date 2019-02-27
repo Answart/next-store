@@ -61,15 +61,26 @@ const StyledPage = styled.div`
     width: 2.75rem;
     height: 2.75rem;
     &:hover {
-      border: 1px solid ${props => props.theme.black};
-      border-radius: 15px;
+      border: 1px solid ${props => props.theme.darkBlue};
+      border-radius: 2.75rem;
+      font-weight: bold;
+      &:disabled {
+        border: 0;
+        font-weight: inherit;
+      }
     }
   }
   .sample-selected {
     width: 2.75rem;
     height: 2.75rem;
-    border: 1px solid ${props => props.theme.black};
-    border-radius: 15px;
+    border: 1px solid ${props => props.theme.darkBlue};
+    border-radius: 2.75rem;
+    font-weight: bold;
+    &:disabled {
+      text-decoration: none;
+      opacity: 1;
+      border: 1px solid ${props => props.theme.grey};
+    }
   }
   .color-sample {
     color: transparent;
