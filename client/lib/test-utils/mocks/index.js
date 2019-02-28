@@ -1,7 +1,7 @@
 export {
   mockUser,
   mockImage, mockImageVariables,
-  mockProduct, mockShopProductsVariables,
+  mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,
   mockCartItem,
 } from './typeDefs';

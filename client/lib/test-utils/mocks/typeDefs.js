@@ -8,6 +8,23 @@ const mockImage = fakeImage();
 const mockProduct = fakeProduct();
 const mockVariant = fakeVariant();
 const mockCartItem = fakeCartItem();
+const mockProducts = [{
+  ...mockProduct,
+  image: mockImage,
+  user: {
+    __typename: mockUser.__typename,
+    id: mockUser.id,
+    name: mockUser.name,
+  },
+  variants: [{
+    ...mockVariant,
+    product: {
+      __typename: mockProduct.__typename,
+      id: mockProduct.id,
+      image: mockImage,
+    }
+  }]
+}];
 
 const mockImageVariables = {
   cloudinary_id: mockImage.cloudinary_id,
@@ -30,7 +47,7 @@ const mockShopProductsVariables = {
 export {
   mockUser,
   mockImage, mockImageVariables,
-  mockProduct, mockShopProductsVariables,
+  mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,
   mockCartItem,
 };
