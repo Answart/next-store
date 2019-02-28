@@ -4,7 +4,7 @@ import {
   UPDATE_PRODUCT_MUTATION,
   DELETE_PRODUCT_MUTATION,
 } from '../../../../graphql'
-import { mockUser, mockProduct, mockImage, mockVariant, mockShopProductsVariables } from '../typeDefs';
+import { mockUser, mockProduct, mockProducts, mockImage, mockVariant, mockShopProductsVariables } from '../typeDefs';
 
 
 const productQueryMock = {
@@ -164,44 +164,22 @@ const deleteProductMutationMock = {
   },
 };
 
-const shopProductsQueryNameEmptyMock = {
-  request: { query: SHOP_PRODUCTS_QUERY, variables: { name: mockUser.name }},
-  result: {
-    data: {
-      products: [],
+const shopProductsQueryFilterMock = ({ variables, products }) => {
+  products = !products ? [] : mockProducts;
+  return ({
+    request: { query: SHOP_PRODUCTS_QUERY, variables },
+    result: {
+      data: {
+        products
+      },
     },
-  },
-};
-
-const shopProductsQueryProductMock = {
-  request: { query: SHOP_PRODUCTS_QUERY, variables: { ...mockShopProductsVariables }},
-  result: {
-    data: {
-      products: [{
-        ...mockProduct,
-        image: mockImage,
-        user: {
-          __typename: mockUser.__typename,
-          id: mockUser.id,
-          name: mockUser.name,
-        },
-        variants: [{
-          ...mockVariant,
-          product: {
-            __typename: mockProduct.__typename,
-            id: mockProduct.id,
-            image: mockImage,
-          }
-        }]
-      }],
-    },
-  },
+  });
 };
 
 
 export {
   productQueryMock, productQueryErrorMock, productQueryNoProductMock, productQueryNoVariantMock,
-  shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
+  shopProductsQueryFilterMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,
   deleteProductMutationMock,

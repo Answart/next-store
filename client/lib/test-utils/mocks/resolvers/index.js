@@ -11,7 +11,7 @@ export {
 } from './image';
 export {
   productQueryMock, productQueryErrorMock, productQueryNoProductMock, productQueryNoVariantMock,
-  shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
+  shopProductsQueryFilterMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,
   deleteProductMutationMock,

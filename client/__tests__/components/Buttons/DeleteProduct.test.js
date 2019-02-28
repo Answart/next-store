@@ -6,15 +6,15 @@ import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 import {
   mockUser, mockProduct, mockShopProductsVariables,
-  shopProductsQueryProductMock, shopProductsQueryNameEmptyMock,
+  shopProductsQueryFilterMock,
   deleteProductMutationMock,
 } from '../../../lib/test-utils/mocks';
 import { DeleteProduct } from '../../../components/Buttons';
 import { SHOP_PRODUCTS_QUERY } from '../../../graphql';
 
 const mocks = [
-  { ...shopProductsQueryProductMock },
-  { ...shopProductsQueryNameEmptyMock },
+  shopProductsQueryFilterMock({ variables: { ...mockShopProductsVariables }, products: true }),
+  shopProductsQueryFilterMock({ variables: { name: mockUser.name }, products: false }),
   { ...deleteProductMutationMock },
 ];
 

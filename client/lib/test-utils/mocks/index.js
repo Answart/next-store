@@ -14,7 +14,7 @@ export {
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
   createImageMutationMock, createImageMutationErrorMock,
   productQueryMock, productQueryErrorMock, productQueryNoProductMock, productQueryNoVariantMock,
-  shopProductsQueryNameEmptyMock, shopProductsQueryProductMock,
+  shopProductsQueryFilterMock,
   createProductMutationMock, createProductMutationErrorMock,
   updateProductMutationMock, updateProductMutationErrorMock,
   deleteProductMutationMock,
