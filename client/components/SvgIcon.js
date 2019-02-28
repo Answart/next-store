@@ -45,7 +45,7 @@ const SvgIcon = ({ name, color, className, width, style, title }) => {
         {!!ds.length && ds.map((d, i) => (
           <path key={i} fill={fill} d={d} />
         ))}
-    </g>
+      </g>
     </svg>
   )
 };

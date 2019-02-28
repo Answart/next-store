@@ -87,7 +87,7 @@ const FilterSection = (props) => {
   return (
     <div id={`filter-${name}`} className="filter">
       <div className="filter-banner">
-        <button
+        <button id={`filter-${name}-label`}
           name={props.showName}
           onClick={props.toggleFilter}
         >
