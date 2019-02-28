@@ -1,0 +1,1000 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> matches the snap shot 1`] = `
+<Filter
+  pageQuery={
+    Object {
+      "department": "accessories",
+    }
+  }
+  products={
+    Array [
+      Object {
+        "__typename": "Product",
+        "brand": "Peggs",
+        "category": "jewelry",
+        "department": "accessories",
+        "description": "Limited Edition watch from the 2018 Fall fashion line.",
+        "id": "pr0duct1d",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "online": false,
+        "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+        "user": Object {
+          "__typename": "User",
+          "cart": Array [],
+          "email": "Gilbert.Nicolas@yahoo.com",
+          "id": "us3r1d",
+          "name": "Ms. Nigel Russel",
+          "password": "unique-password",
+          "permissions": Array [
+            "ADMIN",
+          ],
+        },
+        "variants": Array [],
+      },
+    ]
+  }
+>
+  <Filter__FilterStyles
+    data-test="filter"
+  >
+    <div
+      className="Filter__FilterStyles-sc-129b01r-0 cfKNls"
+      data-test="filter"
+    >
+      <FilterSection
+        list={
+          Array [
+            "jewelry",
+            "bags",
+            "wallets",
+            "belts",
+            "sunglasses",
+            "makeup",
+            "hair",
+            "hats",
+          ]
+        }
+        name="category"
+        showFilter={true}
+        showName="showCategory"
+        toggleFilter={[Function]}
+        updateFilter={[Function]}
+      >
+        <div
+          className="filter"
+          id="filter-category"
+        >
+          <div
+            className="filter-banner"
+          >
+            <button
+              id="filter-category-label"
+              name="showCategory"
+              onClick={[Function]}
+            >
+              <h4>
+                CATEGORY
+              </h4>
+            </button>
+            <button
+              className="filter-clear-btn"
+              disabled={true}
+              id="filter-clear-category-btn"
+              name="category"
+              onClick={[Function]}
+              value={null}
+            />
+            <button
+              className="filter-show-btn"
+              id="filter-show-category-btn"
+              name="showCategory"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="downArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 451.847 451.847"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </button>
+          </div>
+          <div
+            className="filter-show filter-show-category"
+          >
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-jewelry"
+              key="0"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Jewelry"
+              value="jewelry"
+            >
+              Jewelry
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-bags"
+              key="1"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Bags"
+              value="bags"
+            >
+              Bags
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-wallets"
+              key="2"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Wallets"
+              value="wallets"
+            >
+              Wallets
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-belts"
+              key="3"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Belts"
+              value="belts"
+            >
+              Belts
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-sunglasses"
+              key="4"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Sunglasses"
+              value="sunglasses"
+            >
+              Sunglasses
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-makeup"
+              key="5"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Makeup"
+              value="makeup"
+            >
+              Makeup
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-hair"
+              key="6"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Hair"
+              value="hair"
+            >
+              Hair
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="category-hats"
+              key="7"
+              name="category"
+              onClick={[Function]}
+              title="Refine by category: Hats"
+              value="hats"
+            >
+              Hats
+            </button>
+          </div>
+        </div>
+      </FilterSection>
+      <FilterSection
+        circleHover={true}
+        list={
+          Array [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "purple",
+            "pink",
+            "brown",
+            "black",
+            "white",
+            "silver",
+            "gold",
+            "multi",
+          ]
+        }
+        name="color"
+        showFilter={true}
+        showName="showColor"
+        toggleFilter={[Function]}
+        updateFilter={[Function]}
+      >
+        <div
+          className="filter"
+          id="filter-color"
+        >
+          <div
+            className="filter-banner"
+          >
+            <button
+              id="filter-color-label"
+              name="showColor"
+              onClick={[Function]}
+            >
+              <h4>
+                COLOR
+              </h4>
+            </button>
+            <button
+              className="filter-clear-btn"
+              disabled={true}
+              id="filter-clear-color-btn"
+              name="color"
+              onClick={[Function]}
+              value={null}
+            />
+            <button
+              className="filter-show-btn"
+              id="filter-show-color-btn"
+              name="showColor"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="downArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 451.847 451.847"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </button>
+          </div>
+          <div
+            className="filter-show filter-show-color"
+          >
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-red"
+              key="0"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Red"
+              value="red"
+            >
+              <div
+                className="color-sphere-sample red-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-orange"
+              key="1"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Orange"
+              value="orange"
+            >
+              <div
+                className="color-sphere-sample orange-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-yellow"
+              key="2"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Yellow"
+              value="yellow"
+            >
+              <div
+                className="color-sphere-sample yellow-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-green"
+              key="3"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Green"
+              value="green"
+            >
+              <div
+                className="color-sphere-sample green-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-blue"
+              key="4"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Blue"
+              value="blue"
+            >
+              <div
+                className="color-sphere-sample blue-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-purple"
+              key="5"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Purple"
+              value="purple"
+            >
+              <div
+                className="color-sphere-sample purple-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-pink"
+              key="6"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Pink"
+              value="pink"
+            >
+              <div
+                className="color-sphere-sample pink-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-brown"
+              key="7"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Brown"
+              value="brown"
+            >
+              <div
+                className="color-sphere-sample brown-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-black"
+              key="8"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Black"
+              value="black"
+            >
+              <div
+                className="color-sphere-sample black-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-white"
+              key="9"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: White"
+              value="white"
+            >
+              <div
+                className="color-sphere-sample white-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-silver"
+              key="10"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Silver"
+              value="silver"
+            >
+              <div
+                className="color-sphere-sample silver-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-gold"
+              key="11"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Gold"
+              value="gold"
+            >
+              <div
+                className="color-sphere-sample gold-color-sample"
+              />
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="color-multi"
+              key="12"
+              name="color"
+              onClick={[Function]}
+              title="Refine by color: Multi"
+              value="multi"
+            >
+              <div
+                className="color-sphere-sample multi-color-sample"
+              />
+            </button>
+          </div>
+        </div>
+      </FilterSection>
+      <FilterSection
+        circleHover={true}
+        list={
+          Array [
+            "XXS",
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "1X",
+            "2X",
+            "3X",
+            "4X",
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+          ]
+        }
+        name="size"
+        showFilter={true}
+        showName="showSize"
+        toggleFilter={[Function]}
+        updateFilter={[Function]}
+      >
+        <div
+          className="filter"
+          id="filter-size"
+        >
+          <div
+            className="filter-banner"
+          >
+            <button
+              id="filter-size-label"
+              name="showSize"
+              onClick={[Function]}
+            >
+              <h4>
+                SIZE
+              </h4>
+            </button>
+            <button
+              className="filter-clear-btn"
+              disabled={true}
+              id="filter-clear-size-btn"
+              name="size"
+              onClick={[Function]}
+              value={null}
+            />
+            <button
+              className="filter-show-btn"
+              id="filter-show-size-btn"
+              name="showSize"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="downArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 451.847 451.847"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </button>
+          </div>
+          <div
+            className="filter-show filter-show-size"
+          >
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-XXS"
+              key="0"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: XXS"
+              value="XXS"
+            >
+              XXS
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-XS"
+              key="1"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: XS"
+              value="XS"
+            >
+              XS
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-S"
+              key="2"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: S"
+              value="S"
+            >
+              S
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-M"
+              key="3"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: M"
+              value="M"
+            >
+              M
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-L"
+              key="4"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: L"
+              value="L"
+            >
+              L
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-XL"
+              key="5"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: XL"
+              value="XL"
+            >
+              XL
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-1X"
+              key="6"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 1X"
+              value="1X"
+            >
+              1X
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-2X"
+              key="7"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 2X"
+              value="2X"
+            >
+              2X
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-3X"
+              key="8"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 3X"
+              value="3X"
+            >
+              3X
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-4X"
+              key="9"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 4X"
+              value="4X"
+            >
+              4X
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-0"
+              key="10"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 0"
+              value="0"
+            >
+              0
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-2"
+              key="11"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 2"
+              value="2"
+            >
+              2
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-4"
+              key="12"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 4"
+              value="4"
+            >
+              4
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-6"
+              key="13"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 6"
+              value="6"
+            >
+              6
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-8"
+              key="14"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 8"
+              value="8"
+            >
+              8
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-10"
+              key="15"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 10"
+              value="10"
+            >
+              10
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-12"
+              key="16"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 12"
+              value="12"
+            >
+              12
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-14"
+              key="17"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 14"
+              value="14"
+            >
+              14
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-16"
+              key="18"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 16"
+              value="16"
+            >
+              16
+            </button>
+            <button
+              className="undrln-btn sample-hover"
+              disabled={false}
+              id="size-18"
+              key="19"
+              name="size"
+              onClick={[Function]}
+              title="Refine by size: 18"
+              value="18"
+            >
+              18
+            </button>
+          </div>
+        </div>
+      </FilterSection>
+      <FilterSection
+        name="price"
+        showFilter={true}
+        showName="showPrice"
+        toggleFilter={[Function]}
+        updateFilter={[Function]}
+      >
+        <div
+          className="filter"
+          id="filter-price"
+        >
+          <div
+            className="filter-banner"
+          >
+            <button
+              id="filter-price-label"
+              name="showPrice"
+              onClick={[Function]}
+            >
+              <h4>
+                PRICE
+              </h4>
+            </button>
+            <button
+              className="filter-clear-btn"
+              disabled={true}
+              id="filter-clear-price-btn"
+              name="price"
+              onClick={[Function]}
+              value={null}
+            />
+            <button
+              className="filter-show-btn"
+              id="filter-show-price-btn"
+              name="showPrice"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="downArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 451.847 451.847"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </button>
+          </div>
+          <div
+            className="filter-show filter-show-price"
+          />
+        </div>
+      </FilterSection>
+      <FilterSection
+        list={
+          Array [
+            "brand1",
+            "brand2",
+          ]
+        }
+        name="brand"
+        pageQuery={
+          Object {
+            "department": "accessories",
+          }
+        }
+        showFilter={true}
+        showName="showBrand"
+        toggleFilter={[Function]}
+        updateFilter={[Function]}
+      >
+        <div
+          className="filter"
+          id="filter-brand"
+        >
+          <div
+            className="filter-banner"
+          >
+            <button
+              id="filter-brand-label"
+              name="showBrand"
+              onClick={[Function]}
+            >
+              <h4>
+                BRAND
+              </h4>
+            </button>
+            <button
+              className="filter-clear-btn"
+              disabled={true}
+              id="filter-clear-brand-btn"
+              name="brand"
+              onClick={[Function]}
+              value={null}
+            />
+            <button
+              className="filter-show-btn"
+              id="filter-show-brand-btn"
+              name="showBrand"
+              onClick={[Function]}
+            >
+              <SvgIcon
+                name="downArrow"
+                width={10}
+              >
+                <svg
+                  className=""
+                  height="10px"
+                  style={Object {}}
+                  viewBox="0 0 451.847 451.847"
+                  width="10px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+                      fill="#6d6c6c"
+                      key="0"
+                    />
+                  </g>
+                </svg>
+              </SvgIcon>
+            </button>
+          </div>
+          <div
+            className="filter-show filter-show-brand"
+          >
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="brand-brand1"
+              key="0"
+              name="brand"
+              onClick={[Function]}
+              title="Refine by brand: Brand1"
+              value="brand1"
+            >
+              Brand1
+            </button>
+            <button
+              className="undrln-btn false"
+              disabled={false}
+              id="brand-brand2"
+              key="1"
+              name="brand"
+              onClick={[Function]}
+              title="Refine by brand: Brand2"
+              value="brand2"
+            >
+              Brand2
+            </button>
+          </div>
+        </div>
+      </FilterSection>
+    </div>
+  </Filter__FilterStyles>
+</Filter>
+`;
