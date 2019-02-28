@@ -99,7 +99,8 @@ const FilterSection = (props) => {
         <button id={`filter-clear-${name}-btn`} className='filter-clear-btn'
           disabled={!currentFilter}
           name={name}
-          onClick={props.clearFilter}
+          value={null}
+          onClick={props.updateFilter}
         >
           {!!currentFilter && 'Clear'}
         </button>
@@ -153,31 +154,17 @@ class Filter extends Component {
 
     this.setState(state => ({ [name]: !state[name] }));
   };
-  clearFilter = e => {
-    if (!!e && e.preventDefault) e.preventDefault();
-    const { name } = e.currentTarget;
-    const { pageQuery } = this.props;
-
-    if (pageQuery[name]) {
-      delete pageQuery[name];
-
-      Router.push({
-        pathname: "/shop",
-        query: { ...pageQuery }
-      });
-    }
-  };
   updateFilter = e => {
     if (!!e && e.preventDefault) e.preventDefault();
     const { name, value } = e.currentTarget;
-    if (!value) return;
+    if (!name) return;
     const { pageQuery } = this.props;
 
-    if (pageQuery[name] !== value) {
+    if (!!value && pageQuery[name] !== value) {
       pageQuery[name] = value;
     } else {
       delete pageQuery[name];
-    };
+    }
 
     Router.push({
       pathname: "/shop",
@@ -200,7 +187,6 @@ class Filter extends Component {
           currentFilter={pageQuery[categoryListType]}
           showName='showCategory'
           showFilter={this.state.showCategory}
-          clearFilter={this.clearFilter}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
         />
@@ -212,7 +198,6 @@ class Filter extends Component {
           currentFilter={pageQuery['color']}
           showName='showColor'
           showFilter={this.state.showColor}
-          clearFilter={this.clearFilter}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
         />
@@ -224,7 +209,6 @@ class Filter extends Component {
           currentFilter={pageQuery['size']}
           showName='showSize'
           showFilter={this.state.showSize}
-          clearFilter={this.clearFilter}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
         />
@@ -234,7 +218,6 @@ class Filter extends Component {
           currentFilter={pageQuery['price']}
           showName='showPrice'
           showFilter={this.state.showPrice}
-          clearFilter={this.clearFilter}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
         />
@@ -246,7 +229,6 @@ class Filter extends Component {
           pageQuery={pageQuery}
           showName='showBrand'
           showFilter={this.state.showBrand}
-          clearFilter={this.clearFilter}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
         />
