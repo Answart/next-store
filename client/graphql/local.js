@@ -2,13 +2,13 @@ import gql from 'graphql-tag';
 
 
 const LOCAL_CARTOPEN_QUERY = gql`
-  query {
+  query LOCAL_CARTOPEN_QUERY {
     cartOpen @client
   }
 `;
 
 const TOGGLE_LOCAL_CARTOPEN_MUTATION = gql`
-  mutation {
+  mutation TOGGLE_LOCAL_CARTOPEN_MUTATION {
     toggleCart @client
   }
 `;

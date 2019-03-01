@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 
 const ALL_USERS_QUERY = gql`
-  query {
+  query ALL_USERS_QUERY {
     users {
       id
       name
@@ -94,7 +94,7 @@ const RESET_PASSWORD_MUTATION = gql`
 `;
 
 const UPDATE_PERMISSIONS_MUTATION = gql`
-  mutation updatePermissions($permissions: [Permission], $userId: ID!) {
+  mutation UPDATE_PERMISSIONS_MUTATION($permissions: [Permission], $userId: ID!) {
     updatePermissions(permissions: $permissions, userId: $userId) {
       id
       permissions
