@@ -1,15 +1,20 @@
 import gql from 'graphql-tag';
 
 
-const LOCAL_CARTOPEN_QUERY = gql`
-  query LOCAL_CARTOPEN_QUERY {
-    cartOpen @client
+const ALL_USERS_QUERY = gql`
+  query ALL_USERS_QUERY {
+    users {
+      id
+      name
+      email
+      permissions
+    }
   }
 `;
 
-const LOCAL_USER_QUERY = gql`
-  query LOCAL_USER_QUERY {
-    me @client {
+const CURRENT_USER_QUERY = gql`
+  query CURRENT_USER_QUERY {
+    me {
       id
       email
       name
@@ -42,15 +47,8 @@ const LOCAL_USER_QUERY = gql`
   }
 `;
 
-const TOGGLE_LOCAL_CARTOPEN_MUTATION = gql`
-  mutation TOGGLE_LOCAL_CARTOPEN_MUTATION {
-    toggleCart @client
-  }
-`;
-
 
 export {
-  LOCAL_CARTOPEN_QUERY,
-  LOCAL_USER_QUERY,
-  TOGGLE_LOCAL_CARTOPEN_MUTATION
+  ALL_USERS_QUERY,
+  CURRENT_USER_QUERY,
 };

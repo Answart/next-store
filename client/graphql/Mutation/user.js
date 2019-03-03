@@ -1,52 +1,6 @@
 import gql from 'graphql-tag';
 
 
-const ALL_USERS_QUERY = gql`
-  query ALL_USERS_QUERY {
-    users {
-      id
-      name
-      email
-      permissions
-    }
-  }
-`;
-
-const CURRENT_USER_QUERY = gql`
-  query CURRENT_USER_QUERY {
-    me {
-      id
-      email
-      name
-      cart {
-        id
-        quantity
-        user {
-          id
-          name
-        }
-        variant {
-          id
-          size
-          color
-          quantity
-          price
-          sale
-          salePrice
-          product {
-            id
-            title
-          }
-          image {
-            id
-            image_url
-          }
-        }
-      }
-    }
-  }
-`;
-
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION($email: String!, $name: String!, $password: String!) {
     createUser(email: $email, name: $name, password: $password) {
@@ -106,12 +60,10 @@ const UPDATE_PERMISSIONS_MUTATION = gql`
 
 
 export {
-  ALL_USERS_QUERY,
-  CURRENT_USER_QUERY,
   SIGNUP_MUTATION,
   SIGNIN_MUTATION,
   SIGNOUT_MUTATION,
   REQUEST_PASSWORD_RESET_MUTATION,
   RESET_PASSWORD_MUTATION,
-  UPDATE_PERMISSIONS_MUTATION
+  UPDATE_PERMISSIONS_MUTATION,
 };
