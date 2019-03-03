@@ -1,5 +1,6 @@
 export {
   LOCAL_CARTOPEN_QUERY,
+  LOCAL_USER_QUERY,
   TOGGLE_LOCAL_CARTOPEN_MUTATION
 } from './local';
 export {
