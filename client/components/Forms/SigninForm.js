@@ -39,7 +39,7 @@ class SigninForm extends React.Component {
               <label htmlFor="email">
                 Email
                 <input
-                  id="email"
+                  id="signin-email"
                   type="email"
                   name="email"
                   placeholder="email"
@@ -51,7 +51,7 @@ class SigninForm extends React.Component {
               <label htmlFor="password">
                 Password
                 <input
-                  id="password"
+                  id="signin-password"
                   type="password"
                   name="password"
                   placeholder="password"
@@ -64,7 +64,7 @@ class SigninForm extends React.Component {
                 email={this.state.email}
               >Reset password?</RequestPasswordReset>
 
-              <button className="big-btn"
+              <button id="signin-btn" className="big-btn"
                 disabled={loading}
                 type="submit"
               >Sign In!</button>

@@ -42,7 +42,7 @@ class SignupForm extends React.Component {
               <label htmlFor="email">
                 Email
                 <input
-                  id="email"
+                  id="signup-email"
                   type="email"
                   name="email"
                   placeholder="email"
@@ -54,7 +54,7 @@ class SignupForm extends React.Component {
               <label htmlFor="name">
                 Name
                 <input
-                  id="name"
+                  id="signup-name"
                   type="text"
                   name="name"
                   placeholder="name"
@@ -66,7 +66,7 @@ class SignupForm extends React.Component {
               <label htmlFor="password">
                 Password
                 <input
-                  id="password"
+                  id="signup-password"
                   type="password"
                   name="password"
                   placeholder="password"
@@ -75,7 +75,7 @@ class SignupForm extends React.Component {
                 />
               </label>
 
-              <button className="big-btn"
+              <button id="signup-btn" className="big-btn"
                 disabled={loading}
                 type="submit"
               >Sign Up!</button>
