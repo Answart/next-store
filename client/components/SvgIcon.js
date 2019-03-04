@@ -22,6 +22,9 @@ const SvgIcon = ({ name, color, className, width, style, title }) => {
     case 'blue':
       fill = '#497bd3';
       break;
+    case 'darkBlue':
+      fill = '#47505f';
+      break;
     case 'purple':
       fill = '#9083c9';
       break;
