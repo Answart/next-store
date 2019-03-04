@@ -112,6 +112,7 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
+      "<rootDir>/__tests__/.next/",
       "<rootDir>/node_modules/"
     ],
     "transform": {
