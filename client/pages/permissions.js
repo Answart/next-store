@@ -16,14 +16,16 @@ const PermissionsPage = () => (
         <Query query={ALL_USERS_QUERY}>
           {({ data, loading, error }) => {
             if (loading) return (<p>Loading...</p>);
-            if (error) return (<NotFound status={401} message={error.message.replace('GraphQL error: ', '')} />);
-            const users = !!data && data.users ? data.users : [];
+            if (error) return (<NotFound status={401} message={error.message} />);
+            const users = (!!data && data.users)
+              ? data.users
+              : [];
             return (
               <Permissions users={users} />
-            )
+            );
           }}
         </Query>
-      </RequireSignin>
+       </RequireSignin>
     </div>
   </StyledCreatePage>
 );
