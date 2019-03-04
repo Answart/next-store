@@ -44,13 +44,13 @@ describe('<SignupForm />', () => {
   });
 
   it('handles state updating', async () => {
-    wrapper.find('#name').simulate('change', { target: {
+    wrapper.find('#signup-name').simulate('change', { target: {
       value: mockUser.name, name: 'name', type: 'text',
     }});
-    wrapper.find('#email').simulate('change', { target: {
+    wrapper.find('#signup-email').simulate('change', { target: {
       value: mockUser.email, name: 'email', type: 'email',
     }});
-    wrapper.find('#password').simulate('change', { target: {
+    wrapper.find('#signup-password').simulate('change', { target: {
       value: mockUser.password, name: 'password', type: 'password',
     }});
     wrapper.update();
