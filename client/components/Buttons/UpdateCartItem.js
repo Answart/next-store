@@ -38,7 +38,6 @@ UpdateCartItem.propTypes = {
   id: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
-  children: PropTypes.string.isRequired
 };
 
 
