@@ -1,83 +1,65 @@
-import { Mutation } from 'react-apollo';
 import PropTypes from 'prop-types';
-import DisplayMessage from './DisplayMessage';
 import { StyledPermissionsTable } from './styles/TableStyles';
+import { UpdatePermissions } from './Buttons';
 import { PERMISSIONS } from '../config';
-import { UPDATE_PERMISSIONS_MUTATION } from '../graphql';
 
 
 class UserPermissions extends React.Component {
   static propTypes = {
     user: PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string,
-      id: PropTypes.string,
-      permissions: PropTypes.array
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      permissions: PropTypes.array.isRequired,
     }).isRequired
   };
   state = {
-    permissions: this.props.user.permissions
+    permissions: [ ...this.props.user.permissions ]
   };
   handlePermissionChange = (e) => {
-    const checkbox = e.target;
-    let updatedPermissions = [...this.state.permissions];
+    const { checked, value } = e.target;
+    let updatedPermissions = [ ...this.state.permissions ];
 
-    if (checkbox.checked) {
-      updatedPermissions.push(checkbox.value);
+    if (checked) {
+      updatedPermissions.push(value);
     } else {
-      updatedPermissions = updatedPermissions.filter(permission => permission !== checkbox.value);
+      updatedPermissions = updatedPermissions.filter(permission => permission !== value);
     }
 
     this.setState({ permissions: updatedPermissions });
   };
   render() {
-    const user = this.props.user;
+    const { user } = this.props;
     return (
-      <Mutation
-        mutation={UPDATE_PERMISSIONS_MUTATION}
-        variables={{
-          permissions: this.state.permissions,
-          userId: this.props.user.id
-        }}
-      >
-        {(updatePermissions, { loading, error }) => (
-          <>
-            {error && (
-              <td colSpan="8">
-                <DisplayMessage error={error} />
-              </td>
-            )}
+      <tr key={`${user.id}-permissions`} id={`${user.id}-permissions`}>
+        <td>
+          {user.name}
+        </td>
 
-            <tr>
-              <td>{user.name}</td>
+        <td>
+          {user.email}
+        </td>
 
-              <td>{user.email}</td>
+        {PERMISSIONS.map(permission => (
+          <td key={`${user.id}-permission-${permission}`}>
+            <label htmlFor={`${user.id}-permission-${permission}`}>
+              <input id={`${user.id}-permission-${permission}`}
+                type="checkbox"
+                checked={this.state.permissions.includes(permission)}
+                value={permission}
+                onChange={this.handlePermissionChange}
+              />
+            </label>
+          </td>
+        ))}
 
-              {PERMISSIONS.map(permission => (
-                <td key={permission}>
-                  <label htmlFor={`${user.id}-permission-${permission}`}>
-                    <input
-                      id={`${user.id}-permission-${permission}`}
-                      type="checkbox"
-                      checked={this.state.permissions.includes(permission)}
-                      value={permission}
-                      onChange={this.handlePermissionChange}
-                    />
-                  </label>
-                </td>
-              ))}
-
-              <td>
-                <button className="undrln-btn"
-                  type="button"
-                  disabled={loading}
-                  onClick={updatePermissions}
-                >Updat{loading ? 'ing' : 'e'}</button>
-              </td>
-            </tr>
-          </>
-        )}
-      </Mutation>
+        <td>
+          <UpdatePermissions
+            permissions={this.state.permissions}
+            userId={this.props.user.id}
+          />
+        </td>
+      </tr>
     );
   }
 };
@@ -91,7 +73,9 @@ const Permissions = ({ users }) => (
         <th>Email</th>
 
         {PERMISSIONS.map(permission => (
-          <th key={permission}>{permission}</th>
+          <th key={permission}>
+            {permission}
+          </th>
         ))}
 
         <th>Action</th>
@@ -100,16 +84,19 @@ const Permissions = ({ users }) => (
 
     <tbody>
       {!!users.length && users.map(user => (
-        <UserPermissions key={user.id}
-          user={user}
-        />
+        <UserPermissions key={`${user.id}-permissions`} user={user} />
       ))}
     </tbody>
   </StyledPermissionsTable>
 );
 
 Permissions.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    permissions: PropTypes.array.isRequired,
+  })).isRequired,
 };
 
 
