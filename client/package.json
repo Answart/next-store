@@ -29,7 +29,7 @@
     "babel-core": "^6.26.3",
     "babel-plugin-styled-components": "^1.10.0",
     "cookie": "^0.3.1",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "graphql": "^14.1.1",
