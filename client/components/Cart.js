@@ -46,7 +46,7 @@ const Cart = ({ me }) => (
               </thead>
 
               <tbody>
-                {(!!me) ? (
+                {(!me) ? (
                   <StyledCartItem>
                     <td className="cart-page">
                       <NotFound status={400} />
