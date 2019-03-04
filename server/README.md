@@ -6,7 +6,7 @@
 [![dependencies Status](https://david-dm.org/Answart/next-store/status.svg?path=server)][dependency]
 [![Known Vulnerabilities](https://snyk.io/test/github/Answart/next-store/badge.svg?targetFile=server/package.json)][snyk]
 
-An Express GraphQL server app using [GraphQL Yoga](https://oss.prisma.io/content/graphql-yoga/01-overview/) and [Prisma](https://www.prisma.io/) that serves as the server to Next Store.
+An **Express GraphQL** server app using [**GraphQL Yoga**](https://oss.prisma.io/content/graphql-yoga/01-overview/) and [**Prisma**](https://www.prisma.io/) that serves as the server to Next Store.
 
 Tech Stack and Key Packages
 ---------------------------
