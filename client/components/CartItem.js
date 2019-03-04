@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
+import SvgIcon from './SvgIcon';
 import { RemoveFromCart, UpdateCartItem } from './Buttons';
 import { formatMoney, capWord } from '../lib/utils';
 
@@ -75,7 +76,9 @@ const CartItem = ({ id, quantity, variant }) => {
             id={variant.id}
             quantity={quantity - 1}
             disabled={(quantity - 1) <= 0}
-          >&#8722;</UpdateCartItem>
+          >
+            <SvgIcon width={7} name='minus' color='darkBlue' />
+          </UpdateCartItem>
 
           {quantity}
 
@@ -83,7 +86,9 @@ const CartItem = ({ id, quantity, variant }) => {
             id={variant.id}
             quantity={quantity + 1}
             disabled={(quantity + 1) > variant.quantity}
-          >&#43;</UpdateCartItem>
+          >
+            <SvgIcon width={7} name='plus' color='darkBlue' />
+          </UpdateCartItem>
 
           <div className="cart-item-quantity-remove">
             <RemoveFromCart id={id} />
