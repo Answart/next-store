@@ -36,8 +36,9 @@ function getShopProps(user, pageQuery = {}) {
 
 const ShopPage = ({ query }) => (
   <User>
-    {({ data: userData, loading: userLoading }) => {
+    {({ data: userData, loading: userLoading, error: userError }) => {
       if (userLoading) return (<p>Loading...</p>);
+      if (userError) return (<NotFound status={400} message={userError.message} />);
       const me = !!userData ? userData.me : null;
       const { pageLabel, titles } = getPageTitleProps(me, query);
       const { variables, show, page, orderBy } = getShopProps(me, query);
@@ -54,13 +55,21 @@ const ShopPage = ({ query }) => (
                 {({ data: paginData, error: paginError, loading: paginLoading }) => {
                   if (shopLoading || paginLoading) return (<p>Loading...</p>);
                   const notFound = { message: '' };
-                  const products = !!shopData ? shopData.products : [];
-                  const count = !!paginData ? paginData.productsConnection.aggregate.count : 0;
+                  const products = (!!shopData && !!shopData.products)
+                    ? shopData.products
+                    : [];
+                  const count = (!!paginData && !!paginData.productsConnection)
+                    ? paginData.productsConnection.aggregate.count
+                    : 0;
                   if ((!!products && !products.length) || !count) notFound.status = 204;
                   if ((typeof products === 'undefined') || (!!paginData && typeof paginData.productsConnection === 'undefined')) notFound.status = 404;
                   if (shopError || paginError) {
                     notFound.status = 400;
-                    notFound.message = shopError ? shopError.message : paginError.message.replace('GraphQL error: ', '');
+                    notFound.message = !!shopError
+                      ? shopError.message
+                      : (!!paginError && paginError.message)
+                        ? paginError.message
+                        : '';
                   };
                   return (
                     <div className="shop-pg-content">
