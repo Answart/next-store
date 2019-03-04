@@ -29,7 +29,7 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
         "product": Object {
           "__typename": "Product",
           "brand": "Peggs",
-          "category": "sport",
+          "category": "jewelry",
           "department": "accessories",
           "description": "Limited Edition watch from the 2018 Fall fashion line.",
           "id": "pr0duct1d",
@@ -84,7 +84,7 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
         "product": Object {
           "__typename": "Product",
           "brand": "Peggs",
-          "category": "sport",
+          "category": "jewelry",
           "department": "accessories",
           "description": "Limited Edition watch from the 2018 Fall fashion line.",
           "id": "pr0duct1d",
@@ -139,7 +139,7 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
         "product": Object {
           "__typename": "Product",
           "brand": "Peggs",
-          "category": "sport",
+          "category": "jewelry",
           "department": "accessories",
           "description": "Limited Edition watch from the 2018 Fall fashion line.",
           "id": "pr0duct1d",
@@ -194,7 +194,7 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
         "product": Object {
           "__typename": "Product",
           "brand": "Peggs",
-          "category": "sport",
+          "category": "jewelry",
           "department": "accessories",
           "description": "Limited Edition watch from the 2018 Fall fashion line.",
           "id": "pr0duct1d",

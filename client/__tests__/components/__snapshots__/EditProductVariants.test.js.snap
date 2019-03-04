@@ -6,7 +6,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
     Object {
       "__typename": "Product",
       "brand": "Peggs",
-      "category": "sport",
+      "category": "jewelry",
       "department": "accessories",
       "description": "Limited Edition watch from the 2018 Fall fashion line.",
       "id": "pr0duct1d",
@@ -55,7 +55,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
           "product": Object {
             "__typename": "Product",
             "brand": "Peggs",
-            "category": "sport",
+            "category": "jewelry",
             "department": "accessories",
             "description": "Limited Edition watch from the 2018 Fall fashion line.",
             "id": "pr0duct1d",
@@ -116,7 +116,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
             Object {
               "__typename": "Product",
               "brand": "Peggs",
-              "category": "sport",
+              "category": "jewelry",
               "department": "accessories",
               "description": "Limited Edition watch from the 2018 Fall fashion line.",
               "id": "pr0duct1d",
@@ -165,7 +165,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                   "product": Object {
                     "__typename": "Product",
                     "brand": "Peggs",
-                    "category": "sport",
+                    "category": "jewelry",
                     "department": "accessories",
                     "description": "Limited Edition watch from the 2018 Fall fashion line.",
                     "id": "pr0duct1d",
@@ -310,7 +310,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                         "product": Object {
                           "__typename": "Product",
                           "brand": "Peggs",
-                          "category": "sport",
+                          "category": "jewelry",
                           "department": "accessories",
                           "description": "Limited Edition watch from the 2018 Fall fashion line.",
                           "id": "pr0duct1d",

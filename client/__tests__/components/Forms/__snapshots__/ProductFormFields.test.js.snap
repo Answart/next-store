@@ -165,6 +165,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                 "variableDefinitions": Array [
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -186,6 +187,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -207,6 +209,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -228,6 +231,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -249,6 +253,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -270,6 +275,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
@@ -291,6 +297,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                   },
                   Object {
                     "defaultValue": undefined,
+                    "directives": Array [],
                     "kind": "VariableDefinition",
                     "type": Object {
                       "kind": "NonNullType",
