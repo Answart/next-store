@@ -7,7 +7,8 @@ import Menu from './Menu.js';
 import Nav from './Nav.js';
 import Cart from '../Cart';
 import StyledHeader from '../styles/HeaderStyles.js';
-
+import { Query } from 'react-apollo';
+import { CURRENT_USER_QUERY } from '../../graphql';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -19,6 +20,7 @@ Router.onRouteChangeError = () => {
   NProgress.done();
 };
 
+
 class Header extends Component {
   state = { acctDrpdwn: false };
   toggAcctDrpdwn = e => {
@@ -28,25 +30,33 @@ class Header extends Component {
   };
   render() {
     return (
-      <StyledHeader>
-        <div className="hdr-banner">
-          <Search />
+      <Query query={CURRENT_USER_QUERY}>
+        {({ data, error }) => (
+          <StyledHeader>
+            <div className="hdr-banner">
+              <Search />
 
-          <div className="hdr-logo">
-            <Link href="/"><a>
-              NextStore
-            </a></Link>
-          </div>
+              <div className="hdr-logo">
+                <Link href="/">
+                  <a>
+                    NextStore
+                  </a>
+                </Link>
+              </div>
 
-          <Menu
-            acctDrpdwn={this.state.acctDrpdwn}
-            toggAcctDrpdwn={this.toggAcctDrpdwn}
-          />
-        </div>
-        <Cart />
+              <Menu
+                me={!!data ? data.me : null}
+                acctDrpdwn={this.state.acctDrpdwn}
+                toggAcctDrpdwn={this.toggAcctDrpdwn}
+              />
+            </div>
 
-        <Nav />
-      </StyledHeader>
+            <Cart me={!!data ? data.me : null} />
+
+            <Nav />
+          </StyledHeader>
+        )}
+      </Query>
     );
   }
 };
