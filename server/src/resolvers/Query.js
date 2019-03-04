@@ -3,21 +3,21 @@ const { hasPermission } = require('../utils');
 
 
 const Query = {
-  me(parent, args, ctx, info) {
+  async me(parent, args, ctx, info) {
     const id = ctx.request.userId;
     if (!id) return null;
 
-    return ctx.db.query.user({
+    return await ctx.db.query.user({
       where: { id },
     }, info);
   },
-  users(parent, args, ctx, info) {
+  async users(parent, args, ctx, info) {
     if (!ctx.request.userId) throw new Error('USERS: You must be logged in!');
 
     // requester has permission to query all users?
     hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE'])
 
-    return ctx.db.query.users({}, info);
+    return await ctx.db.query.users({}, info);
   },
   image: forwardTo('db'),
   images: forwardTo('db'),
