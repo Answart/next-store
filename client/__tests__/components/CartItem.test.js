@@ -54,8 +54,8 @@ describe('<CartItem />', () => {
       expect(details.at(2).text()).toBe(`Size: ${mockVariant.size}`);
       expect(details.at(3).text()).toBe('Color: White');
       const actions = wrapper.find('.cart-item-quantity-actions');
-      expect(actions.text()).toBe('−3+Remove');
-      expect(actions.text()).toBe(`−${mockCartItem.quantity}+Remove`);
+      expect(actions.text()).toBe('3Remove');
+      expect(actions.text()).toBe(`${mockCartItem.quantity}Remove`);
       const price = wrapper.find('.cart-item-total-price');
       expect(price.text()).toBe(`$${mockCartItem.quantity * mockVariant.salePrice}`);
     });
