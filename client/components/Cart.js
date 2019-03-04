@@ -21,7 +21,7 @@ const Cart = ({ me }) => (
       const { totalQuantity, totalShipping, totalSalesTax, subTotal } = getCartTotals(myCart);
       const totalAmount = (subTotal + totalShipping + totalSalesTax);
       return (
-        <StyledCart open={true}>
+        <StyledCart open={localData.cartOpen}>
           <header>
             <div className="cart-title">
               <ToggleCart>
@@ -45,7 +45,7 @@ const Cart = ({ me }) => (
               </thead>
 
               <tbody>
-                {(true) ? (
+                {(!!me) ? (
                   <StyledCartItem>
                     <td className="cart-page">
                       <NotFound status={400} />
