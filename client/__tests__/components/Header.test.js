@@ -136,9 +136,8 @@ describe('<Header />', () => {
 
     it('<Menu /> renders properly', async () => {
       const links = wrapper.find('.hdr-menu').find('Link');
-      expect(links.length).toBe(2);
-      expect(links.at(0).props().href).toBe('/account');
-      expect(links.at(1).props().href).toBe('/signup');
+      expect(links.length).toBe(1);
+      expect(links.at(0).props().href).toBe('/signup');
     });
   });
 
@@ -171,7 +170,7 @@ describe('<Header />', () => {
     describe('<Menu />', async () => {
 
       it('renders properly', async () => {
-        expect(wrapper2.find('ToggleCart').length).toBe(1);
+        expect(wrapper2.find('ToggleCart').length).toBe(2);
         expect(wrapper2.find('CartCount').length).toBe(1);
         expect(wrapper2.find('Logout').length).toBe(1);
         expect(wrapper2.find('Menu').props().acctDrpdwn).toBe(false)
@@ -220,7 +219,7 @@ describe('<Header />', () => {
 
       it('renders <ToggleCart />', async () => {
         const togg = wrapper2.find('ToggleCart');
-        expect(togg.length).toBe(1);
+        expect(togg.length).toBe(2);
         expect(togg.find('CartCount').length).toBe(1);
         expect(togg.find('CartCount').props().count).toBe(0);
       });
