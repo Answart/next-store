@@ -26,6 +26,9 @@ const NotFound = ({ status, message }) => {
     title = 'Error';
     message = 'An error occured. Please try again later.';
   };
+  message = message
+    .replace('GraphQL error:', '')
+    .replace('Network error:', '')
 
   return (
     <StyledNotFound>
