@@ -4,6 +4,7 @@ import { StyledCartTable, StyledTotalsTable, StyledCartItem } from './styles/Tab
 import User from './User';
 import CartItem from './CartItem';
 import NotFound from './NotFound';
+import SvgIcon from './SvgIcon';
 import { ToggleCart, CheckoutCart } from './Buttons';
 import { formatMoney, getCartTotals } from '../lib/utils';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
@@ -25,7 +26,7 @@ const Cart = ({ me }) => (
           <header>
             <div className="cart-title">
               <ToggleCart>
-                <h2>&times;</h2>
+                <SvgIcon width={10} name='ex' />
               </ToggleCart>
 
               <h2>Your Cart</h2>
