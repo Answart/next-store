@@ -32,9 +32,9 @@ exports[`<Filter /> matches the snap shot 1`] = `
         "user": Object {
           "__typename": "User",
           "cart": Array [],
-          "email": "Gilbert.Nicolas@yahoo.com",
+          "email": "Waldo.Yundt@Mosciski.biz",
           "id": "us3r1d",
-          "name": "Ms. Nigel Russel",
+          "name": "Ms. Josue McCullough",
           "password": "unique-password",
           "permissions": Array [
             "ADMIN",

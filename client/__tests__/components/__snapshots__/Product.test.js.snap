@@ -27,9 +27,9 @@ exports[`<Product /> matches the snap shot 1`] = `
       "user": Object {
         "__typename": "User",
         "cart": Array [],
-        "email": "Gilbert.Nicolas@yahoo.com",
+        "email": "Waldo.Yundt@Mosciski.biz",
         "id": "us3r1d",
-        "name": "Ms. Nigel Russel",
+        "name": "Ms. Josue McCullough",
         "password": "unique-password",
         "permissions": Array [
           "ADMIN",
@@ -82,7 +82,7 @@ exports[`<Product /> matches the snap shot 1`] = `
           </Link>
         </div>
         <ByCreator
-          name="Ms. Nigel Russel"
+          name="Ms. Josue McCullough"
           online={true}
         >
           <div
@@ -94,7 +94,7 @@ exports[`<Product /> matches the snap shot 1`] = `
                 Object {
                   "pathname": "/shop",
                   "query": Object {
-                    "name": "Ms. Nigel Russel",
+                    "name": "Ms. Josue McCullough",
                     "online": true,
                   },
                 }
@@ -102,10 +102,10 @@ exports[`<Product /> matches the snap shot 1`] = `
             >
               <a
                 className="undrln-btn"
-                href="/shop?name=Ms.%20Nigel%20Russel&online=true"
+                href="/shop?name=Ms.%20Josue%20McCullough&online=true"
                 onClick={[Function]}
               >
-                Ms. Nigel Russel
+                Ms. Josue McCullough
               </a>
             </Link>
           </div>

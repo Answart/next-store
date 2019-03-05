@@ -49,9 +49,9 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
           "user": Object {
             "__typename": "User",
             "cart": Array [],
-            "email": "Waldo.Yundt@Mosciski.biz",
+            "email": "Princess.Ernser@Dibbert.net",
             "id": "us3r1d",
-            "name": "Ms. Josue McCullough",
+            "name": "Dr. Randy Gleason",
             "password": "unique-password",
             "permissions": Array [
               "ADMIN",
@@ -104,9 +104,9 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
           "user": Object {
             "__typename": "User",
             "cart": Array [],
-            "email": "Waldo.Yundt@Mosciski.biz",
+            "email": "Princess.Ernser@Dibbert.net",
             "id": "us3r1d",
-            "name": "Ms. Josue McCullough",
+            "name": "Dr. Randy Gleason",
             "password": "unique-password",
             "permissions": Array [
               "ADMIN",
@@ -159,9 +159,9 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
           "user": Object {
             "__typename": "User",
             "cart": Array [],
-            "email": "Waldo.Yundt@Mosciski.biz",
+            "email": "Princess.Ernser@Dibbert.net",
             "id": "us3r1d",
-            "name": "Ms. Josue McCullough",
+            "name": "Dr. Randy Gleason",
             "password": "unique-password",
             "permissions": Array [
               "ADMIN",
@@ -214,9 +214,9 @@ exports[`<ProductVariants /> component w/variantAction and Label matches the sna
           "user": Object {
             "__typename": "User",
             "cart": Array [],
-            "email": "Waldo.Yundt@Mosciski.biz",
+            "email": "Princess.Ernser@Dibbert.net",
             "id": "us3r1d",
-            "name": "Ms. Josue McCullough",
+            "name": "Dr. Randy Gleason",
             "password": "unique-password",
             "permissions": Array [
               "ADMIN",
