@@ -31,7 +31,7 @@ const fakeProduct = () => ({
   department: "accessories",
   title: "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
   description: "Limited Edition watch from the 2018 Fall fashion line.",
-  category: "sport",
+  category: "jewelry",
   brand: "Peggs",
   online: false,
   user: fakeUser(),
