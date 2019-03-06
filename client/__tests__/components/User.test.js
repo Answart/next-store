@@ -1,5 +1,4 @@
 import { mount } from 'enzyme';
-import toJSON from 'enzyme-to-json';
 import wait from 'waait';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
@@ -8,7 +7,7 @@ import NotFound from '../../components/NotFound';
 import {
   mockUser,
   userQueryEmptyCartMock, userQueryNoUserMock,
-  localUserQueryEmptyCartMock, localUserQueryNoUserMock, localUserQueryCartItemMock,
+  localUserQueryEmptyCartMock, localUserQueryNoUserMock,
 } from '../../lib/test-utils/mocks';
 import { LOCAL_USER_QUERY, CURRENT_USER_QUERY } from '../../graphql';
 
@@ -52,16 +51,12 @@ describe('<User />', () => {
       </MockedProvider>
     );
     expect(wrapper.text()).toContain('Loading...');
-    await wait();
-    wrapper.update();
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2).toMatchObject(sanitizedMockUser);
-    await wait();
-    wrapper.update();
     const { data: { me } } = await apolloClient.query({ query: LOCAL_USER_QUERY });
     expect(me).toMatchObject(sanitizedMockUser);
     wrapper.update();
-    expect(wrapper.text()).not.toContain('NotFound');
+    expect(wrapper.find('NotFound').length).toBe(0);
     expect(wrapper.text()).toContain('something goes here');
     wrapper.unmount();
   });
@@ -89,17 +84,14 @@ describe('<User />', () => {
       </MockedProvider>
     );
     expect(wrapper.text()).toContain('Loading...');
-    await wait();
-    wrapper.update();
     const { data: { me: me2 } } = await apolloClient.query({ query: CURRENT_USER_QUERY });
     expect(me2).toBe(null);
-    await wait();
-    wrapper.update();
     const { data: { me } } = await apolloClient.query({ query: LOCAL_USER_QUERY });
     expect(me).toBe(null);
     wrapper.update();
     expect(wrapper.text()).not.toContain('something goes here');
     const notFound = wrapper.find('NotFound');
+    expect(notFound.length).toBe(1);
     expect(notFound.props().status).toBe(404);
     expect(notFound.props().message).toBe('Unable to find what you are looking for!');
     expect(notFound.text()).toBe('Not FoundUnable to find what you are looking for!Go back tohomepage.');
