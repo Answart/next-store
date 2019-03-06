@@ -4,10 +4,20 @@ import {
 
 
 const mockUser = fakeUser();
+const mockUserStart = fakeUser();
 const mockImage = fakeImage();
 const mockProduct = fakeProduct();
 const mockVariant = fakeVariant();
 const mockCartItem = fakeCartItem();
+const mockUser2 = {
+  ...mockUserStart,
+  id: '87654321',
+  permissions: ['USER'],
+};
+
+const mockUsers = [
+  mockUser, mockUser2,
+];
 const mockProducts = [{
   ...mockProduct,
   image: mockImage,
@@ -45,7 +55,7 @@ const mockShopProductsVariables = {
 
 
 export {
-  mockUser,
+  mockUser, mockUsers,
   mockImage, mockImageVariables,
   mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,

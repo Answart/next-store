@@ -1,5 +1,5 @@
 export {
-  mockUser,
+  mockUser, mockUsers,
   mockImage, mockImageVariables,
   mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,
