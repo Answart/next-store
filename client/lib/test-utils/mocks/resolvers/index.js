@@ -1,4 +1,7 @@
 export {
+  localUserQueryEmptyCartMock, localUserQueryNoUserMock, localUserQueryCartItemMock,
+} from './local';
+export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signupMutationMock,
   signinMutationMock,

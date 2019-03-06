@@ -6,6 +6,7 @@ export {
   mockCartItem,
 } from './typeDefs';
 export {
+  localUserQueryEmptyCartMock, localUserQueryNoUserMock, localUserQueryCartItemMock,
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
   signupMutationMock,
   signinMutationMock,
