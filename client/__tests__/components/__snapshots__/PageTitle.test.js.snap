@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageTitle /> matches the snap shot 1`] = `
+<PageTitle
+  page="Edit Product"
+  titles={
+    Array [
+      Object {
+        "href": Object {
+          "pathname": "/product/edit",
+          "query": Object {
+            "name": "answart",
+          },
+        },
+        "label": "Some Title",
+      },
+      Object {
+        "href": Object {
+          "pathname": "/product/selections",
+          "query": Object {
+            "name": "answart",
+          },
+        },
+        "label": "Selections",
+      },
+      Object {
+        "label": "Add Selection",
+      },
+    ]
+  }
+>
+  <PageStyles__StyledPageTitle>
+    <div
+      className="PageStyles__StyledPageTitle-sc-18r5v5c-6 fkQdsG"
+    >
+      <SideEffect(Head)>
+        <Head />
+      </SideEffect(Head)>
+      <span
+        style={
+          Object {
+            "padding": "0 1rem",
+          }
+        }
+      >
+        Edit Product
+      </span>
+      <span
+        key="0"
+      >
+        ≫
+        <Link
+          href={
+            Object {
+              "pathname": "/product/edit",
+              "query": Object {
+                "name": "answart",
+              },
+            }
+          }
+        >
+          <a
+            className="thn-btn"
+            href="/product/edit?name=answart"
+            onClick={[Function]}
+          >
+            Some Title
+          </a>
+        </Link>
+      </span>
+      <span
+        key="1"
+      >
+        ≫
+        <Link
+          href={
+            Object {
+              "pathname": "/product/selections",
+              "query": Object {
+                "name": "answart",
+              },
+            }
+          }
+        >
+          <a
+            className="thn-btn"
+            href="/product/selections?name=answart"
+            onClick={[Function]}
+          >
+            Selections
+          </a>
+        </Link>
+      </span>
+      <span
+        key="2"
+      >
+        ≫
+        <span
+          style={
+            Object {
+              "padding": "0 1rem",
+            }
+          }
+        >
+          Add Selection
+        </span>
+      </span>
+    </div>
+  </PageStyles__StyledPageTitle>
+</PageTitle>
+`;
