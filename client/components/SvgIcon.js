@@ -13,20 +13,8 @@ const SvgIcon = ({ name, color, className, width, style, title }) => {
   let fill = '#6d6c6c';
 
   switch(color) {
-    case 'red':
-      fill = '#e86c52';
-      break;
-    case 'green':
-      fill = '#b2c94c';
-      break;
-    case 'blue':
-      fill = '#497bd3';
-      break;
     case 'darkBlue':
       fill = '#47505f';
-      break;
-    case 'purple':
-      fill = '#9083c9';
       break;
     default:
       fill = '#6d6c6c';
