@@ -34,12 +34,13 @@ class SigninForm extends React.Component {
             <DisplayMessage error={error} />
 
             <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Sign into your account</h2>
+              <h2>
+                Sign into your account
+              </h2>
 
               <label htmlFor="email">
                 Email
-                <input
-                  id="signin-email"
+                <input id="signin-email"
                   type="email"
                   name="email"
                   placeholder="email"
@@ -50,8 +51,7 @@ class SigninForm extends React.Component {
 
               <label htmlFor="password">
                 Password
-                <input
-                  id="signin-password"
+                <input id="signin-password"
                   type="password"
                   name="password"
                   placeholder="password"
@@ -60,14 +60,16 @@ class SigninForm extends React.Component {
                 />
               </label>
 
-              <RequestPasswordReset
-                email={this.state.email}
-              >Reset password?</RequestPasswordReset>
+              <RequestPasswordReset email={this.state.email}>
+                Reset password?
+              </RequestPasswordReset>
 
               <button id="signin-btn" className="big-btn"
-                disabled={loading}
                 type="submit"
-              >Sign In!</button>
+                disabled={loading}
+              >
+                Sign In!
+              </button>
             </fieldset>
           </StyledForm>
         )}

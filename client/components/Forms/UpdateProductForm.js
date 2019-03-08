@@ -79,7 +79,9 @@ class UpdateProductForm extends Component {
                   <DisplayMessage error={error} success={this.state.message} />
 
                   <fieldset disabled={loading} aria-busy={loading}>
-                    <h2>Update Product</h2>
+                    <h2>
+                      Update Product
+                    </h2>
 
                     <ProductFormFields
                       title={this.state.title}
@@ -94,9 +96,11 @@ class UpdateProductForm extends Component {
                     />
 
                     <button className="form-submit-btn big-btn"
-                      disabled={!this.state.image || loading}
                       type="submit"
-                    >Updat{loading ? 'ing' : 'e'} Product</button>
+                      disabled={!this.state.image || loading}
+                    >
+                      Updat{loading ? 'ing' : 'e'} Product
+                    </button>
                   </fieldset>
                 </StyledForm>
               )

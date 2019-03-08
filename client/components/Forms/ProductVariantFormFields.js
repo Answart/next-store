@@ -62,8 +62,7 @@ const ProductVariantFormFields = props => {
         <div className="field-padding">
           <label htmlFor="size">
             Size:
-            <select
-              id="size"
+            <select id="size"
               name="size"
               disabled={props.editView}
               value={props.size}
@@ -78,8 +77,7 @@ const ProductVariantFormFields = props => {
         <div className="field-padding">
           <label htmlFor="color">
             Color:
-            <select
-              id="color"
+            <select id="color"
               name="color"
               disabled={props.editView}
               value={props.color}
@@ -94,9 +92,8 @@ const ProductVariantFormFields = props => {
         <div className="field-padding">
           <label htmlFor="quantity">
             Quantity:
-            <input
+            <input id="quantity"
               type="number"
-              id="quantity"
               name="quantity"
               placeholder="1"
               min="1"
@@ -110,9 +107,8 @@ const ProductVariantFormFields = props => {
         <div className="field-padding">
           <label htmlFor="price">
             Price per Item (USD):
-            <input
+            <input id="price"
               type="number"
-              id="price"
               name="price"
               placeholder={1.00}
               min={1.00}
@@ -126,9 +122,8 @@ const ProductVariantFormFields = props => {
 
         <div className="field-padding">
           <label htmlFor="sale">
-            <input
+            <input id="sale"
               type="checkbox"
-              id="sale"
               name="sale"
               key={sale}
               value={sale}
@@ -142,9 +137,8 @@ const ProductVariantFormFields = props => {
           <div className="field-padding">
             <label htmlFor="salePrice">
               Sale Price per Item (USD):
-              <input
+              <input id="salePrice"
                 type="number"
-                id="salePrice"
                 name="salePrice"
                 placeholder={1.00}
                 min={1.00}
@@ -163,9 +157,8 @@ const ProductVariantFormFields = props => {
             <div className="prdct-padding">
               <div className="prdct-padding">
                 <label htmlFor="productImage" className="inline-lbl">
-                  <input
+                  <input id="productImage"
                     type="radio"
-                    id="productImage"
                     name="productImage"
                     key={!imageIsNew}
                     value={false}
@@ -176,9 +169,8 @@ const ProductVariantFormFields = props => {
               </div>
               <div>
                 <label htmlFor="newImage" className="inline-lbl">
-                  <input
+                  <input id="newImage"
                     type="radio"
-                    id="newImage"
                     name="newImage"
                     key={imageIsNew}
                     value={true}
@@ -191,9 +183,8 @@ const ProductVariantFormFields = props => {
               {imageIsNew && (
                 <div className="field-padding">
                   <label htmlFor="upload" className="lbl-button">
-                    <input
+                    <input id="upload"
                       type="file"
-                      id="upload"
                       name="upload"
                       onChange={handleImageChange}
                     />Upload Image
@@ -203,12 +194,24 @@ const ProductVariantFormFields = props => {
 
               {!!image && !!image.name.length && (
                 <div className="field-padding field-detail">
-                  <h5>Upload Details</h5>
-                  <p>ID: <i>{image.cloudinary_id}</i></p>
-                  <p>Name: <i>{image.name}</i></p>
-                  <p>Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H</p>
-                  <p>Transformation: <i>{image.transformation}</i></p>
-                  <p>Url: <i>{image.image_url}</i></p>
+                  <h5>
+                    Upload Details
+                  </h5>
+                  <p>
+                    ID: <i>{image.cloudinary_id}</i>
+                  </p>
+                  <p>
+                    Name: <i>{image.name}</i>
+                  </p>
+                  <p>
+                    Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H
+                  </p>
+                  <p>
+                    Transformation: <i>{image.transformation}</i>
+                  </p>
+                  <p>
+                    Url: <i>{image.image_url}</i>
+                  </p>
                 </div>
               )}
             </div>

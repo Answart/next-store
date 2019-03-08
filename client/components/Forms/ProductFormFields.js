@@ -60,9 +60,8 @@ const ProductFormFields = props => {
         <div className="field-padding">
           <label htmlFor="title">
             Title:
-            <input
+            <input id="title"
               type="text"
-              id="title"
               name="title"
               placeholder="UGG Classic Boot"
               value={props.title}
@@ -82,8 +81,7 @@ const ProductFormFields = props => {
         <div className="field-padding">
           <label htmlFor="department">
             Department:
-            <select
-              id="department"
+            <select id="department"
               name="department"
               value={department}
               onChange={handleChange}
@@ -97,8 +95,7 @@ const ProductFormFields = props => {
         <div className="field-padding">
           <label htmlFor="category">
             Category:
-            <select
-              id="category"
+            <select id="category"
               name="category"
               value={props.category}
               onChange={handleChange}
@@ -112,8 +109,7 @@ const ProductFormFields = props => {
         <div className="field-padding">
           <label htmlFor="description">
             Description:
-            <textarea
-              id="description"
+            <textarea id="description"
               name="description"
               placeholder="UGG boots are a unisex style of sheepskin boot originating in Australia and New Zealand..."
               value={props.description}
@@ -126,9 +122,8 @@ const ProductFormFields = props => {
         <div className="field-padding">
           <label htmlFor="brand">
             Brand:
-            <input
+            <input id="brand"
               type="text"
-              id="brand"
               name="brand"
               placeholder="UGG"
               value={props.brand}
@@ -143,9 +138,8 @@ const ProductFormFields = props => {
             <div className="prdct-padding">
               <div className="prdct-padding">
                 <label htmlFor="offline" className="inline-lbl">
-                  <input
+                  <input id="offline"
                     type="radio"
-                    id="offline"
                     name="offline"
                     key={!online}
                     value={!online}
@@ -156,9 +150,8 @@ const ProductFormFields = props => {
               </div>
               <div>
                 <label htmlFor="online" className="inline-lbl">
-                  <input
+                  <input id="online"
                     type="radio"
-                    id="online"
                     name="online"
                     key={online}
                     value={online}
@@ -177,9 +170,8 @@ const ProductFormFields = props => {
             <div>
               <div className="prdct-padding">
                 <label htmlFor="image" className="lbl-button">
-                  <input
+                  <input id="image"
                     type="file"
-                    id="image"
                     name="image"
                     onChange={handleImageChange}
                   />Upload Image
@@ -188,11 +180,24 @@ const ProductFormFields = props => {
 
               {image && !!image.name.length && (
                 <div className="field-padding field-detail">
-                  <h5>Preview Details:</h5>
-                  <p>ID: <i>{image.cloudinary_id}</i></p>
-                  <p>Name: <i>{image.name}</i></p>
-                  <p>Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H</p>
-                  <p>Transformation: <i>{image.transformation}</i></p>
+                  <h5>
+                    Preview Details
+                  </h5>
+                  <p>
+                    ID: <i>{image.cloudinary_id}</i>
+                  </p>
+                  <p>
+                    Name: <i>{image.name}</i>
+                  </p>
+                  <p>
+                    Dimensions: <i>{image.width}</i>W x <i>{image.height}</i>H
+                  </p>
+                  <p>
+                    Transformation: <i>{image.transformation}</i>
+                  </p>
+                  <p>
+                    Url: <i>{image.image_url}</i>
+                  </p>
                 </div>
               )}
             </div>

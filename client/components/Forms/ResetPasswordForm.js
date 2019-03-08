@@ -47,13 +47,14 @@ class ResetPasswordForm extends React.Component {
             <DisplayMessage error={error} />
 
             <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Reset Your Password</h2>
+              <h2>
+                Reset Your Password
+              </h2>
 
               <label htmlFor="password">
                 Password
-                <input
+                <input id="password"
                   type="password"
-                  id="password"
                   name="password"
                   placeholder="New Password"
                   value={this.state.password}
@@ -64,9 +65,8 @@ class ResetPasswordForm extends React.Component {
 
               <label htmlFor="confirmPassword">
                 Confirm Password
-                <input
+                <input id="confirmPassword"
                   type="password"
-                  id="confirmPassword"
                   name="confirmPassword"
                   placeholder="New Password"
                   value={this.state.confirmPassword}
@@ -78,8 +78,9 @@ class ResetPasswordForm extends React.Component {
               <button className="big-btn"
                 disabled={disabled}
                 title={disabled ? 'Requires valid token' : 'Click to reset'}
-                type="submit"
-              >Reset{loading ? 'ting' : ''} Password</button>
+              >
+                Reset{loading ? 'ting' : ''} Password
+              </button>
             </fieldset>
           </StyledForm>
         )}

@@ -30,10 +30,18 @@ const Menu = ({ me, acctDrpdwn, toggAcctDrpdwn }) => {
         </button>
 
         <div id="myDropdown" className={myDropdownClasses}>
-          <a className="undrln-btn" href="/sell">Create Product</a>
-          <a className="undrln-btn" href={`/shop?name=${me.name}`}>My Products</a>
-          <a className="undrln-btn" href="/account/orders">Order History</a>
-          <a className="undrln-btn" href="/account/sales">Sale History</a>
+          <a className="undrln-btn" href="/sell">
+            Create Product
+          </a>
+          <a className="undrln-btn" href={`/shop?name=${me.name}`}>
+            My Products
+          </a>
+          <a className="undrln-btn" href="/account/orders">
+            Order History
+          </a>
+          <a className="undrln-btn" href="/account/sales">
+            Sale History
+          </a>
           <Logout />
         </div>
       </span>

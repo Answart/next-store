@@ -51,7 +51,9 @@ class Header extends Component {
               />
             </div>
 
-            <Cart me={!!data ? data.me : null} />
+            <Cart
+              me={!!data ? data.me : null}
+            />
 
             <Nav />
           </StyledHeader>

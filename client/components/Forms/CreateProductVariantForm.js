@@ -101,7 +101,9 @@ class CreateProductVariantForm extends Component {
                   <DisplayMessage error={error} success={this.state.message} />
 
                   <fieldset disabled={loading} aria-busy={loading}>
-                    <h2>Add Selection</h2>
+                    <h2>
+                      Add Selection
+                    </h2>
 
                     <ProductVariantFormFields
                       price={this.state.price}
@@ -117,9 +119,11 @@ class CreateProductVariantForm extends Component {
                     />
 
                     <button className="form-submit-btn big-btn"
-                      disabled={!this.state.image || loading}
                       type="submit"
-                    >Add{loading ? 'ing' : ''} Selection</button>
+                      disabled={!this.state.image || loading}
+                    >
+                      Add{loading ? 'ing' : ''} Selection
+                    </button>
                   </fieldset>
                 </StyledForm>
               )

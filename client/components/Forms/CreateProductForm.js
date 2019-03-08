@@ -54,7 +54,9 @@ class CreateProductForm extends Component {
                   <DisplayMessage error={error} />
 
                   <fieldset disabled={loading} aria-busy={loading}>
-                    <h2>Create Product</h2>
+                    <h2>
+                      Create Product
+                    </h2>
 
                     <ProductFormFields
                       title={this.state.title}
@@ -69,9 +71,11 @@ class CreateProductForm extends Component {
                     />
 
                     <button className="form-submit-btn big-btn"
-                      disabled={!this.state.image || loading}
                       type="submit"
-                    >Creat{loading ? 'ing' : 'e'} Product</button>
+                      disabled={!this.state.image || loading}
+                    >
+                      Creat{loading ? 'ing' : 'e'} Product
+                    </button>
                   </fieldset>
                 </StyledForm>
               )

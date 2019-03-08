@@ -108,7 +108,9 @@ class UpdateProductVariantForm extends Component {
                   <DisplayMessage error={error} success={this.state.message} />
 
                   <fieldset disabled={loading} aria-busy={loading}>
-                    <h2>Update Selection</h2>
+                    <h2>
+                      Update Selection
+                    </h2>
 
                     <ProductVariantFormFields
                       price={this.state.price}
@@ -124,13 +126,18 @@ class UpdateProductVariantForm extends Component {
                     />
 
                     <button className="form-submit-btn big-btn"
-                      disabled={!this.state.image || loading}
-                      type="submit"
-                    >Updat{loading ? 'ing' : 'e'} Selection</button>
-                    <button className="form-submit-btn undrln-btn"
-                      onClick={this.props.goBack}
                       type="button"
-                    >Go Back</button>
+                      disabled={!this.state.image || loading}
+                    >
+                      Updat{loading ? 'ing' : 'e'} Selection
+                    </button>
+
+                    <button className="form-submit-btn undrln-btn"
+                      type="button"
+                      onClick={this.props.goBack}
+                    >
+                      Go Back
+                    </button>
                   </fieldset>
                 </StyledForm>
               )
