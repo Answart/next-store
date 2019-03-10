@@ -97,7 +97,7 @@ const Cart = ({ me }) => (
                 totalAmount={totalAmount}
                 email={!!me ? me.email : ""}
                 image_url={imgUrl}
-                disabled={!me || totalQuantity === 0}
+                disabled={!me || !totalQuantity || !totalAmount}
               >
                 Checkout
               </CheckoutCart>
