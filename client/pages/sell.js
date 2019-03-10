@@ -10,7 +10,9 @@ const CreateProductPage = () => (
 
     <div className="create-pg-form">
       <RequireSignin>
-        <CreateProductForm />
+        {({ me }) => (
+          <CreateProductForm />
+        )}
       </RequireSignin>
     </div>
   </StyledCreatePage>

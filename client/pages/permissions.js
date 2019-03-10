@@ -13,18 +13,20 @@ const PermissionsPage = () => (
 
     <div className="create-pg-form">
       <RequireSignin>
-        <Query query={ALL_USERS_QUERY}>
-          {({ data, loading, error }) => {
-            if (loading) return (<p>Loading...</p>);
-            if (error) return (<NotFound status={401} message={error.message} />);
-            const users = (!!data && data.users)
-              ? data.users
-              : [];
-            return (
-              <Permissions users={users} />
-            );
-          }}
-        </Query>
+        {({ me }) => (
+          <Query query={ALL_USERS_QUERY}>
+            {({ data, loading, error }) => {
+              if (loading) return (<p>Loading...</p>);
+              if (error) return (<NotFound status={401} message={error.message} />);
+              const users = (!!data && data.users)
+                ? data.users
+                : [];
+              return (
+                <Permissions users={users} />
+              );
+            }}
+          </Query>
+        )}
        </RequireSignin>
     </div>
   </StyledCreatePage>

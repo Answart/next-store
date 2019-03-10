@@ -9,44 +9,46 @@ import RequireSignin from '../../components/RequireSignin';
 
 const CreateProductVariantPage = ({ query }) => (
   <RequireSignin>
-    <SingleProduct variables={{ id: query.id }}>
-      {({ data, error, loading }) => {
-        if (loading) return (<p>Loading...</p>);
-        if (error) return (<NotFound status={400} message={error.message} />);
-        const { product } = data;
-        if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
-        const titles = [{
-            label: product.title,
-            href: {
-              pathname: '/product/edit',
-              query
-            }
-          }, {
-            label: 'Selections',
-            href: {
-              pathname: '/product/selections',
-              query
-            }
-          }, {
-            label: 'Add Selection'
-        }];
-        return (
-          <StyledCreatePage>
-            <PageTitle
-              page='Edit Product'
-              titles={titles}
-            />
-
-            <div className="create-pg-form">
-              <CreateProductVariantForm
-                productId={query.id}
-                productImage={product.image}
+    {({ me }) => (
+      <SingleProduct variables={{ id: query.id }}>
+        {({ data, error, loading }) => {
+          if (loading) return (<p>Loading...</p>);
+          if (error) return (<NotFound status={400} message={error.message} />);
+          const { product } = data;
+          if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
+          const titles = [{
+              label: product.title,
+              href: {
+                pathname: '/product/edit',
+                query
+              }
+            }, {
+              label: 'Selections',
+              href: {
+                pathname: '/product/selections',
+                query
+              }
+            }, {
+              label: 'Add Selection'
+          }];
+          return (
+            <StyledCreatePage>
+              <PageTitle
+                page='Edit Product'
+                titles={titles}
               />
-            </div>
-          </StyledCreatePage>
-        )
-      }}
-    </SingleProduct>
+
+              <div className="create-pg-form">
+                <CreateProductVariantForm
+                  productId={query.id}
+                  productImage={product.image}
+                />
+              </div>
+            </StyledCreatePage>
+          )
+        }}
+      </SingleProduct>
+    )}
   </RequireSignin>
 );
 

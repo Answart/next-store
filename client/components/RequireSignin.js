@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { SigninForm } from './Forms';
 import NotFound from './NotFound';
@@ -9,7 +10,10 @@ const RequireSignin = (props) => (
     {({ loading, error, data }) => {
       if (loading) return (<p>Loading...</p>);
       if (error) return (<NotFound status={401} message={error.message} />);
-      if (!data || !data.me) {
+      const me = (!data || !data.me)
+        ? null
+        : data.me;
+      if (!me) {
         return (
           <div>
             <p>
@@ -20,10 +24,14 @@ const RequireSignin = (props) => (
           </div>
         );
       }
-      return props.children;
+      return props.children({ me });
     }}
   </User>
 );
+
+RequireSignin.propTypes = {
+  children: PropTypes.func.isRequired
+};
 
 
 export default RequireSignin;
