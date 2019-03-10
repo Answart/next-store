@@ -253,6 +253,22 @@ const StyledPageTitle = styled.div`
   color: ${props => props.theme.darkGrey};
 `;
 
+const StyledOrderPage = styled.div`
+  display: grid;
+  grid-template-rows: 1.9rem minmax(50rem, 1fr);
+  /* grid-template-columns: minmax(80rem, 4fr); */
+  grid-gap: 2.5rem;
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
+  .order-page-content {
+    grid-row: 2 / 2;
+    grid-column: 1 / 1;
+    /* margin: 0 4rem; */
+    padding: 0 4rem;
+  }
+`;
+
+
 export {
   StyledPage,
   StyledShopPage,
@@ -260,5 +276,6 @@ export {
   StyledEditPage,
   StyledBuyPage,
   StyledSignupPage,
-  StyledPageTitle
+  StyledOrderPage,
+  StyledPageTitle,
 };
