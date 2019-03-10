@@ -36,10 +36,10 @@ const Menu = ({ me, acctDrpdwn, toggAcctDrpdwn }) => {
           <a className="undrln-btn" href={`/shop?name=${me.name}`}>
             My Products
           </a>
-          <a className="undrln-btn" href="/account/orders">
+          <a className="undrln-btn" href="/orders">
             Order History
           </a>
-          <a className="undrln-btn" href="/account/sales">
+          <a className="undrln-btn" href="/sales">
             Sale History
           </a>
           <Logout />
