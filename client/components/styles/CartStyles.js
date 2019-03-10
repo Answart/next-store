@@ -17,31 +17,48 @@ const StyledCart = styled.div`
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
   z-index: 5;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-auto-flow: rows;
+  grid-template-rows: 1rem 1fr 12rem;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
   ${props => props.open && `transform: translateX(0);`};
   button {
     float: right;
   }
   header {
-    display: inline-block;
     color: ${props => props.theme.darkBlue};
-    margin: 0;
     text-align: right;
     font-style: italic;
-    padding-bottom: 1rem;
+    grid-row: 1 / 3;
+    grid-column: 1 / 1;
     button {
       float: left;
     }
   }
+  .cart-container {
+    grid-row: 2 / 3;
+    grid-column: 1 / 1;
+  }
+  .cart-block {
+    display: block;
+  }
+  .cart-overflow {
+    overflow: auto;
+    -webkit-overflow-scrolling: auto;
+    width: 100%;
+  }
   .cart-body {
     overflow: auto !important;
+    width: 100%;
+    height:100%;
   }
   footer {
-    padding: 0 0 1.2rem 0;
-    display: grid;
+    grid-row: 3 / 3;
+    grid-column: 1 / 1;
     color: ${props => props.theme.darkGrey};
     font-size: 0.9em;
     font-weight: bold;
+    display: grid;
   }
 `;
 

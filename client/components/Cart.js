@@ -33,19 +33,17 @@ const Cart = ({ me }) => (
             </div>
           </header>
 
-          <div className="cart-body">
+          <div className="cart-container">
             <StyledCartTable>
               <thead>
-                <tr>
+                <tr className="cart-block">
                   <th>Product</th>
-
                   <th>Quantity</th>
-
                   <th>Total Price</th>
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="cart-block cart-overflow">
                 {(!me) ? (
                   <StyledCartItem>
                     <td className="cart-page">
@@ -72,25 +70,21 @@ const Cart = ({ me }) => (
                 <tbody>
                   <tr>
                     <td>Subtotal</td>
-
                     <td>{formatMoney(subTotal)}</td>
                   </tr>
 
                   <tr>
                     <td>Shipping</td>
-
                     <td>{formatMoney(totalShipping)}</td>
                   </tr>
 
                   <tr className="totals-table-last-item">
                     <td>Sales Tax</td>
-
                     <td>{formatMoney(totalSalesTax)}</td>
                   </tr>
 
                   <tr>
                     <td>Estimated Total</td>
-
                     <td>{formatMoney(totalAmount)}</td>
                   </tr>
                 </tbody>

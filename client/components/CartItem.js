@@ -28,22 +28,24 @@ const CartItem = ({ id, quantity, variant }) => {
     ? variant.salePrice
     : variant.price;
   return (
-    <StyledCartItem>
+    <StyledCartItem key={id}>
       <td className="cart-item-details">
-        <Link href={{
-          pathname: "/shop",
-          query: {
-            id: variant.product.id
-          }
-        }}><a>
-          <img width="100" height="120"
-            src={variant.image.image_url}
-            alt={title}
-            title={`Go to: ${title}`}
-          />
-        </a></Link>
+        <div className='cart-item-image'>
+          <Link href={{
+            pathname: "shop",
+            query: { id: variant.product.id }
+          }}>
+            <a>
+              <img width="100" height="120"
+                src={variant.image.image_url}
+                alt={title}
+                title={`Go to: ${title}`}
+              />
+            </a>
+          </Link>
+        </div>
 
-        <div>
+        <div className='cart-item-meta'>
           <div className="cart-item-detail">
             <h4>{title}</h4>
           </div>
