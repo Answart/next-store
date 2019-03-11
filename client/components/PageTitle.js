@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Head from 'next/head';
+import SvgIcon from './SvgIcon';
 import { StyledPageTitle } from './styles/PageStyles';
 
 
@@ -39,7 +40,7 @@ const PageTitle = ({ page, titles }) => (
           </span>
         )}
         {(i !== (titles.length - 1)) && (
-          <>&#8811;</>
+          <SvgIcon width={7} name='doubleRightArrow' />
         )}
       </span>
     ))}
