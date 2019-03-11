@@ -24,15 +24,9 @@ describe('<UpdatePermissions />', () => {
   });
   afterAll(() => wrapper.unmount());
 
-<<<<<<< HEAD
-  // it('renders and matches snapshot', async () => {
-  //   expect(toJSON(wrapper.find('UpdatePermissions'))).toMatchSnapshot();
-  // });
-=======
   it('renders and matches snapshot', async () => {
     expect(toJSON(wrapper.find('UpdatePermissions'))).toMatchSnapshot();
   });
->>>>>>> 63d8cef... Add UpdatePermissions.test to __tests__/components/buttons
 
   it('click renders properly', async () => {
     wrapper.find('button').simulate('click');
