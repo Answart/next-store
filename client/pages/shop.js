@@ -34,6 +34,7 @@ function getShopProps(user, pageQuery = {}) {
   return { variables, show, page, orderBy };
 }
 
+
 const ShopPage = ({ query }) => (
   <User>
     {({ data: userData, loading: userLoading, error: userError }) => {
@@ -80,6 +81,7 @@ const ShopPage = ({ query }) => (
 
                       <div className="shop-pg-lst">
                         <Pagination
+                          pathname='/shop'
                           pageQuery={query}
                           currentPage={page}
                           currentShow={show}
@@ -100,6 +102,7 @@ const ShopPage = ({ query }) => (
                         )}
 
                         <Pagination
+                          pathname='/shop'
                           pageQuery={query}
                           currentPage={page}
                           currentShow={show}

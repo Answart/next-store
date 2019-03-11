@@ -127,6 +127,7 @@ const getSamplePaginPages = function(page, pages) {
 class Pagination extends Component {
   static propTypes = {
     pageQuery: PropTypes.object.isRequired,
+    pathname: PropTypes.string.isRequired,
     currentShow: PropTypes.number,
     currentPage: PropTypes.number,
     currentOrderBy: PropTypes.string,
@@ -145,7 +146,7 @@ class Pagination extends Component {
   };
   render() {
     const {
-      pageQuery, currentShow, currentPage, currentOrderBy, results, count, disabled
+      pageQuery, pathname, currentShow, currentPage, currentOrderBy, results, count, disabled
     } = this.props;
     const orderByKeys = Object.keys(orderByList);
 
@@ -172,7 +173,7 @@ class Pagination extends Component {
               <div id="sortDropdown" className={sortDropdownClasses}>
                 {orderByKeys.map((orderBy, i) => (
                   <Link key={i} href={{
-                    pathname: 'shop',
+                    pathname,
                     query: {
                       ...pageQuery,
                       orderBy,
@@ -199,7 +200,7 @@ class Pagination extends Component {
               <div id="showDropdown" className={showDropdownClasses}>
                 {showList.map((show, i) => (
                   <Link key={i} href={{
-                    pathname: 'shop',
+                    pathname,
                     query: {
                       ...pageQuery,
                       show,
@@ -224,7 +225,7 @@ class Pagination extends Component {
             <>
               <div id="pagin-d-l-arrow" className="page-btn">
                 <Link prefetch href={{
-                  pathname: 'shop',
+                  pathname,
                   query: {
                     ...pageQuery,
                     page: 1,
@@ -238,7 +239,7 @@ class Pagination extends Component {
 
               <div id="pagin-l-arrow" className="page-btn">
                 <Link prefetch href={{
-                  pathname: 'shop',
+                  pathname,
                   query: {
                     ...pageQuery,
                     page: currentPage - 1,
@@ -253,7 +254,7 @@ class Pagination extends Component {
               <div id="pagin-preview-pages" className="pagination-padding">
                 {!!list.length && list.map((pageNum, i) => (
                   <Link key={i} prefetch href={{
-                    pathname: 'shop',
+                    pathname,
                     query: {
                       ...pageQuery,
                       page: pageNum,
@@ -268,7 +269,7 @@ class Pagination extends Component {
 
               <div id="pagin-r-arrow" className="page-btn">
                 <Link prefetch href={{
-                  pathname: 'shop',
+                  pathname,
                   query: {
                     ...pageQuery,
                     page: currentPage + 1,
@@ -282,7 +283,7 @@ class Pagination extends Component {
 
               <div id="pagin-d-r-arrow" className="page-btn">
                 <Link prefetch href={{
-                  pathname: 'shop',
+                  pathname,
                   query: {
                     ...pageQuery,
                     page: pages,
