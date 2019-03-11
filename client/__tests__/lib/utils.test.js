@@ -87,20 +87,20 @@ describe('Util functions', () => {
   describe('getPageTitleProps fn', () => {
     it('renders properly on shop page w/department', () => {
       expect(getPageTitleProps(mockUser, { department: "bottoms" })).toEqual({
-        pageLabel: "",
+        pageLabel: "Bottoms",
         titles: [{
+          label: "Bottoms",
           href: {
             pathname: "/shop",
             query: { department: "bottoms" }
           },
-          label: "Bottoms"
         }]
       });
     });
 
     it('renders properly on shop page w/department and category', () => {
       expect(getPageTitleProps(mockUser, { department: "bottoms", category: "pants" })).toEqual({
-        pageLabel: "",
+        pageLabel: "Pants",
         titles: [{
           href: {
             pathname: "/shop",
@@ -120,7 +120,15 @@ describe('Util functions', () => {
     it("renders properly when viewing another user's products shop page", () => {
       expect(getPageTitleProps(mockUser, { name: mockUser.name })).toEqual({
         pageLabel: "My Products",
-        titles: []
+        titles: [{
+          label: "My Products",
+          href: {
+            pathname: "/shop",
+            query: {
+              name: mockUser.name,
+            },
+          },
+        }]
       });
     });
 
@@ -129,13 +137,19 @@ describe('Util functions', () => {
         name: 'someone else',
         department: "decor"
       })).toEqual({
-        pageLabel: capWord('someone else'),
+        pageLabel: "Decor",
         titles: [{
+          label: "Someone else",
+          href: {
+            pathname: "/shop",
+            query: { name: 'someone else' }
+          },
+        },{
+          label: "Decor",
           href: {
             pathname: "/shop",
             query: { name: 'someone else', department: "decor" }
           },
-          label: "Decor"
         }]
       });
     });
@@ -143,7 +157,13 @@ describe('Util functions', () => {
     it('renders properly when viewing own products shop page', () => {
       expect(getPageTitleProps(mockUser, { name: mockUser.name })).toEqual({
         pageLabel: "My Products",
-        titles: []
+        titles: [{
+          label: "My Products",
+          href: {
+            pathname: "/shop",
+            query: { name: mockUser.name }
+          },
+        }]
       });
     });
 
@@ -152,13 +172,19 @@ describe('Util functions', () => {
         name: mockUser.name,
         department: "decor"
       })).toEqual({
-        pageLabel: "My Products",
+        pageLabel: "Decor",
         titles: [{
+          label: "My Products",
+          href: {
+            pathname: "/shop",
+            query: { name: mockUser.name }
+          },
+        },{
+          label: "Decor",
           href: {
             pathname: "/shop",
             query: { name: mockUser.name, department: "decor" }
           },
-          label: "Decor"
         }]
       });
     });
