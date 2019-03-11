@@ -8,7 +8,7 @@ const ResetPasswordPage = ({ query }) => (
   <StyledCreatePage>
     <PageTitle page='Reset Your Password' />
 
-    <div className="create-pg-form">
+    <div className="create-page-form">
       <ResetPasswordForm resetToken={query.resetToken} />
     </div>
   </StyledCreatePage>

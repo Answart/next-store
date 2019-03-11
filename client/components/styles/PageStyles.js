@@ -55,7 +55,7 @@ const StyledPage = styled.div`
   .inner-page {
     max-width: ${props => props.theme.maxWidth};
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 0;
   }
   .sample-hover {
     width: 2.75rem;
@@ -170,14 +170,15 @@ const StyledShopPage = styled.div`
   grid-template-rows: 1.9rem 1fr;
   grid-gap: 3rem;
   max-width: ${props => props.theme.maxWidth};
+  padding-bottom: 5rem;
   margin: 0 auto;
-  .shop-pg-content {
+  .shop-page-content {
     display: grid;
     grid-row: 2 / -1;
     grid-template-columns: 18rem 1fr;
-    grid-gap: 3rem;
     grid-auto-flow: column;
-    .shop-pg-lst {
+    grid-gap: 3rem;
+    .shop-page-lst {
       grid-column: 2 / -1;
       display: grid;
       grid-template-rows: 5rem minmax(50rem, 1fr) 5rem;
@@ -189,33 +190,33 @@ const StyledShopPage = styled.div`
 
 const StyledCreatePage = styled.div`
   display: grid;
-  grid-template-rows: 1.9rem minmax(36rem, 1fr);
-  grid-template-columns: minmax(80rem, 4fr);
+  grid-template-rows: 1.9rem minmax(50rem, 1fr);
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
-  .create-pg-form {
+  padding-bottom: 5rem;
+  margin: 0 auto;
+  .create-page-form {
     grid-row: 2 / 2;
     grid-column: 1 / 1;
-    margin: 0 4rem;
   }
 `;
 
 const StyledEditPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem 2rem minmax(50rem, 1fr);
-  grid-template-columns: minmax(80rem, 4fr);
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
-  .edit-pg-navi {
+  padding-bottom: 5rem;
+  margin: 0 auto;
+  .edit-page-navi {
     grid-column: 1 / -1;
     grid-row: 2 / 2;
     text-align: right;
   }
-  .edit-pg-content {
+  .edit-page-content {
     grid-column: 1 / 1;
     grid-row: 3 / -1;
-    margin: 0 4rem;
-    .edit-pg-content-footer {
+    .edit-page-content-footer {
       padding: 5rem 0;
       text-align: center;
     }
@@ -225,21 +226,24 @@ const StyledEditPage = styled.div`
 const StyledBuyPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem minmax(50rem, 1fr);
-  grid-template-columns: minmax(80rem, 4fr);
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
+  padding-bottom: 5rem;
+  margin: 0 auto;
   .buy-page-content {
     grid-row: 2 / 2;
     grid-column: 1 / 1;
+    margin-bottom: 18rem;
   }
 `;
 
 const StyledSignupPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem minmax(50rem, 1fr);
-  grid-template-columns: 1fr 80% 1fr;
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
+  padding-bottom: 5rem;
+  margin: 0 auto;
   .signup-page-content {
     grid-row: 2 / 2;
     grid-column: 2 / 2;
@@ -256,15 +260,13 @@ const StyledPageTitle = styled.div`
 const StyledOrderPage = styled.div`
   display: grid;
   grid-template-rows: 1.9rem minmax(50rem, 1fr);
-  /* grid-template-columns: minmax(80rem, 4fr); */
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
+  padding-bottom: 5rem;
   margin: 0 auto;
   .order-page-content {
     grid-row: 2 / 2;
     grid-column: 1 / 1;
-    /* margin: 0 4rem; */
-    padding: 0 4rem;
   }
 `;
 

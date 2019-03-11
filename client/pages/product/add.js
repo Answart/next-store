@@ -44,7 +44,7 @@ const CreateProductVariantPage = ({ query }) => (
                 titles={titles}
               />
 
-              <div className="create-pg-form">
+              <div className="create-page-form">
                 <CreateProductVariantForm
                   productId={query.id}
                   productImage={product.image}

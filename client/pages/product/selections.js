@@ -40,7 +40,7 @@ const EditProductVariantsPage = ({ query }) => (
                 titles={titles}
               />
 
-              <div className="edit-pg-navi">
+              <div className="edit-page-navi">
                 <Link href={{
                   pathname: `/product/add`,
                   query: {
@@ -54,7 +54,7 @@ const EditProductVariantsPage = ({ query }) => (
                 </Link>
               </div>
 
-              <div className="edit-pg-content">
+              <div className="edit-page-content">
                 {!product.variants.length ? (
                   <NotFound status={204}
                     message="This product does not have any selections. Click the 'Add Selection' link to add to this list."

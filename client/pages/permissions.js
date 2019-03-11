@@ -11,7 +11,7 @@ const PermissionsPage = () => (
   <StyledCreatePage>
     <PageTitle page='Manage Permissions' />
 
-    <div className="create-pg-form">
+    <div className="create-page-form">
       <RequireSignin>
         {({ me }) => (
           <Query query={ALL_USERS_QUERY}>

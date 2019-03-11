@@ -8,7 +8,7 @@ const CreateProductPage = () => (
   <StyledCreatePage>
     <PageTitle page='Create Product' />
 
-    <div className="create-pg-form">
+    <div className="create-page-form">
       <RequireSignin>
         {({ me }) => (
           <CreateProductForm />

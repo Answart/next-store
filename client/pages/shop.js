@@ -73,13 +73,13 @@ const ShopPage = ({ query }) => (
                         : '';
                   };
                   return (
-                    <div className="shop-pg-content">
+                    <div className="shop-page-content">
                       <Filter
                         pageQuery={query}
                         products={products}
                       />
 
-                      <div className="shop-pg-lst">
+                      <div className="shop-page-lst">
                         <Pagination
                           pathname='/shop'
                           pageQuery={query}

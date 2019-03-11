@@ -34,7 +34,7 @@ const EditProductPage = ({ query }) => (
                 titles={titles}
               />
 
-              <div className="edit-pg-navi">
+              <div className="edit-page-navi">
                 <Link href={{
                   pathname: `/product/selections`,
                   query
@@ -45,10 +45,10 @@ const EditProductPage = ({ query }) => (
                 </Link>
               </div>
 
-              <div className="edit-pg-content">
+              <div className="edit-page-content">
                 <UpdateProductForm product={product} />
 
-                <div className="edit-pg-content-footer">
+                <div className="edit-page-content-footer">
                   <DeleteProduct
                     id={query.id}
                     userName={product.user.name}
