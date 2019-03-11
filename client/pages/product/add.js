@@ -17,16 +17,22 @@ const CreateProductVariantPage = ({ query }) => (
           const { product } = data;
           if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
           const titles = [{
-              label: product.title,
+              label: 'My Products',
+              href: {
+                pathname: '/shop',
+                query: { name: me.name }
+              }
+            }, {
+              label: `Update '${product.title}'`,
               href: {
                 pathname: '/product/edit',
-                query
+                query: { id: product.id },
               }
             }, {
               label: 'Selections',
               href: {
                 pathname: '/product/selections',
-                query
+                query: { id: product.id }
               }
             }, {
               label: 'Add Selection'
@@ -34,7 +40,7 @@ const CreateProductVariantPage = ({ query }) => (
           return (
             <StyledCreatePage>
               <PageTitle
-                page='Edit Product'
+                page={`Update '${product.title}'`}
                 titles={titles}
               />
 
