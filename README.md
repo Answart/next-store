@@ -21,19 +21,20 @@ An **e-commerce app** where a user can browse among items with which they can bu
 User stories
 ------------
 
-* As an unauthenticated or authenticated user, I can see and search for items in store.
-* As an unauthenticated user, I can create an account or sign in.
-* As an unauthenticated user, I can request to reset my account password.
-* As an authenticated user, I can reset my account password.
-* As an authenticated user, I can submit items I want to sell through the store.
-* As an authenticated user, I can edit details, such as title and description, of a submitted item.
-* As an authenticated user, I can add selections to a submitted item.
-* As an authenticated user, I can edit details, such as price and quantity, of a submitted item's selection.
-* As an authenticated user, I can delete an item I have submitted to the store.
-* As an authenticated user, I can add/remove items from cart and come back later to access them.
-* As an authenticated user, I can delete items from cart that I decide I don't want anymore.
-* As an authenticated user, I can use a credit card to buy items in cart.
-* As an authenticated user, I can view past orders.
+* [x] As an unauthenticated or authenticated user, I can see and search for items in the store.
+* [x] As an unauthenticated user, I can create an account or sign in.
+* [x] As an unauthenticated user, I can request to reset my account password.
+* [x] As an authenticated user, I can reset my account password.
+* [x] As an authenticated user, I can submit items I want to sell through the store.
+* [x] As an authenticated user, I can edit details, such as title and description, of a submitted item.
+* [x] As an authenticated user, I can add selections to a submitted item.
+* [x] As an authenticated user, I can edit details, such as price and quantity, of a submitted item's selection.
+* [x] As an authenticated user, I can delete an item I have submitted to the store.
+* [x] As an authenticated user, I can add/remove items from cart and come back later to access them.
+* [x] As an authenticated user, I can remove items from cart that I decide I don't want anymore.
+* [ ] As an authenticated user, I can use a credit card to buy items in cart.
+* [ ] As an authenticated user, I can view current/previous orders.
+* [ ] As an authenticated user, I can view current/previous sales where people have ordered my products.
 
 Tech Stack and Key Packages
 ---------------------------
