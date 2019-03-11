@@ -21,7 +21,9 @@ const errorMocks = [
 const sanitizedMockUser = mockUser;
 delete sanitizedMockUser.permissions;
 delete sanitizedMockUser.password;
-
+const ComponentToMock = (props) => (
+  <div>A mock with '{Object.keys(props).length}' props passed!</div>
+);
 
 describe('<RequireSignin />', () => {
   afterAll(() => wrapper.unmount());
@@ -35,7 +37,9 @@ describe('<RequireSignin />', () => {
             apolloClient = client;
             return (
               <RequireSignin>
-                <p>We rendered!</p>
+                {({ me }) => (
+                  <ComponentToMock />
+                )}
               </RequireSignin>
             );
           }}
@@ -48,7 +52,7 @@ describe('<RequireSignin />', () => {
     const { data: { me } } = await apolloClient.query({ query: LOCAL_USER_QUERY });
     expect(me).toMatchObject(sanitizedMockUser);
     wrapper.update();
-    expect(wrapper.text()).toContain('We rendered!');
+    expect(wrapper.text()).toContain("A mock with '0' props passed!");
     expect(wrapper.text()).not.toContain('Please Sign In before ContinuingSign into your accountEmailPasswordReset password?Sign In!');
     expect(wrapper.find('SigninForm').length).toBe(0);
     wrapper.unmount();
@@ -63,7 +67,9 @@ describe('<RequireSignin />', () => {
             apolloClient = client;
             return (
               <RequireSignin>
-                <p>We rendered!</p>
+                {({ me }) => (
+                  <ComponentToMock />
+                )}
               </RequireSignin>
             );
           }}
@@ -76,6 +82,7 @@ describe('<RequireSignin />', () => {
     const { data: { me } } = await apolloClient.query({ query: LOCAL_USER_QUERY });
     expect(me).toBe(null);
     wrapper.update();
+    expect(wrapper.text()).not.toContain("A mock with '0' props passed!");
     expect(wrapper.text()).toContain('Please Sign In before ContinuingSign into your accountEmailPasswordReset password?Sign In!');
     expect(wrapper.find('SigninForm').length).toBe(1);
     wrapper.unmount();
