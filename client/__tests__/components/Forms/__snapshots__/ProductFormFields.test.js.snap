@@ -633,7 +633,7 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                 className="field-padding field-detail"
               >
                 <h5>
-                  Preview Details:
+                  Preview Details
                 </h5>
                 <p>
                   ID: 
@@ -661,6 +661,12 @@ exports[`<ProductFormFields /> renders and matches snapshot 1`] = `
                 <p>
                   Transformation: 
                   <i />
+                </p>
+                <p>
+                  Url: 
+                  <i>
+                    image_urlimage_url.png
+                  </i>
                 </p>
               </div>
             </div>
