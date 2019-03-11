@@ -178,7 +178,7 @@ describe('<UpdateProductVariantForm />', () => {
     expect(wrapper.find('button[type="submit"]').text()).toContain('Update Selection');
     wrapper.find('form').simulate('submit');
     expect(wrapper.find('button[type="submit"]').text()).toContain('Updating Selection');
-    await wait(80);
+    await wait(100);
     wrapper.update();
     expect(wrapper.find('button[type="submit"]').text()).toContain('Update Selection');
   });

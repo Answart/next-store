@@ -126,7 +126,7 @@ class UpdateProductVariantForm extends Component {
                     />
 
                     <button className="form-submit-btn big-btn"
-                      type="button"
+                      type="submit"
                       disabled={!this.state.image || loading}
                     >
                       Updat{loading ? 'ing' : 'e'} Selection
