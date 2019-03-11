@@ -16,7 +16,7 @@
 
 :construction: WORK IN PROGRESS :construction:
 
-An **e-commerce app** where a user can browse among items with which they can buy or sell. It contains a client app built in [**React**](https://reactjs.org/) using it's [**Next.js**](https://nextjs.org/) framework and GraphQL's [**Apollo**](https://www.apollographql.com/) framework. The server app uses a [**GraphQL**](https://oss.prisma.io/content/graphql-yoga/01-overview/) server with [**Prisma**](https://www.prisma.io/) as the database interface.
+An **e-commerce app** where a user can browse among products with which they can buy or sell. It contains a client app built in [**React**](https://reactjs.org/) using it's [**Next.js**](https://nextjs.org/) framework and GraphQL's [**Apollo**](https://www.apollographql.com/) framework. The server app uses a [**GraphQL**](https://oss.prisma.io/content/graphql-yoga/01-overview/) server with [**Prisma**](https://www.prisma.io/) as the database interface.
 
 User stories
 ------------
@@ -25,14 +25,14 @@ User stories
 * [x] As an unauthenticated user, I can create an account or sign in.
 * [x] As an unauthenticated user, I can request to reset my account password.
 * [x] As an authenticated user, I can reset my account password.
-* [x] As an authenticated user, I can submit items I want to sell through the store.
-* [x] As an authenticated user, I can edit details, such as title and description, of a submitted item.
-* [x] As an authenticated user, I can add selections to a submitted item.
-* [x] As an authenticated user, I can edit details, such as price and quantity, of a submitted item's selection.
-* [x] As an authenticated user, I can delete an item I have submitted to the store.
-* [x] As an authenticated user, I can add/remove items from cart and come back later to access them.
-* [x] As an authenticated user, I can remove items from cart that I decide I don't want anymore.
-* [ ] As an authenticated user, I can use a credit card to buy items in cart.
+* [x] As an authenticated user, I can submit products I want to sell through the store.
+* [x] As an authenticated user, I can edit details, such as title and description, of a submitted product.
+* [x] As an authenticated user, I can add selections to a submitted product.
+* [x] As an authenticated user, I can edit details, such as price and quantity, of a submitted product's selection.
+* [x] As an authenticated user, I can delete an product I have submitted to the store.
+* [x] As an authenticated user, I can add/remove products from cart and come back later to access them.
+* [x] As an authenticated user, I can remove products from cart that I decide I don't want anymore.
+* [ ] As an authenticated user, I can use a credit card to buy products in cart.
 * [ ] As an authenticated user, I can view current/previous orders.
 * [ ] As an authenticated user, I can view current/previous sales where people have ordered my products.
 
@@ -171,6 +171,13 @@ https://cloudinary.com/console).
 
 (Postmark setup is unnecessary for local)
 
+#### Setup Stripe
+
+1. Create or access your [**Stripe**](https://stripe.com/) account. (Confirm your account in your email if creating an account)
+2. Click the [API keys](https://dashboard.stripe.com/account/apikeys) link under the Developers tab.
+3. Grab the **Publishable Key** and update **STRIPE_API_KEY** on the **client side** with this key (aka **./client/config.js**)
+4. Grab the **Secret key** and update **STRIPE_SECRET** in the .env file on the **server side** (aka **./server/.env**)
+
 #### Setup Prisma
 
 1. Create or access your [**Prisma**](https://app.prisma.io/) account.
@@ -208,13 +215,6 @@ It will generate the files **datamodel.graphql** and **prisma.yml**.
 ```bash
 $ npm run deploy:dev
 ```
-
-#### Setup Stripe
-
-1. Create or access your [**Stripe**](https://stripe.com/) account. (Confirm your account in your email if creating an account)
-2. Click the [API keys](https://dashboard.stripe.com/account/apikeys) link under the Developers tab.
-3. Grab the **Publishable Key** and update **STRIPE_API_KEY** on the **client side** with this key (aka **./client/config.js**)
-4. Grab the **Secret key** and update **STRIPE_SECRET** in the .env file on the **server side** (aka **./server/.env**)
 
 -------------
 
