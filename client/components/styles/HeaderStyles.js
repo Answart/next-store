@@ -71,11 +71,14 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: center;
     a {
-      padding: 0 3rem 0.7rem 3rem !important;
+      padding: 0 4rem 0.7rem 4rem !important;
       -webkit-font-smoothing: antialiased;
       outline: medium none;
       overflow: hidden;
       color: inherit;
+      font-size: 1rem;
+      letter-spacing: 0.1rem;
+      font-weight: bold;
       border-bottom: 1.5px solid ${props => props.theme.beige};
       &:hover {
         color: ${props => props.theme.darkBlue};
@@ -88,7 +91,9 @@ const StyledHeader = styled.header`
     justify-content: flex-end;
     padding-top: 0.55rem;
     color: ${props => props.theme.darkGrey};
+    font-size: 1rem;
     a {
+      font-size: 1rem;
       padding: 0 0.4rem;
     }
   }
@@ -116,6 +121,8 @@ const StyledHeader = styled.header`
   .hdr-inline {
     position: relative;
     display: inline-block;
+    font-size: 1rem;
+    letter-spacing: 0.07rem;
   }
   .hdr-dropdown-content {
     position: absolute;
