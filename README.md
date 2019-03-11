@@ -89,7 +89,8 @@ App Map
     ├──lib/                Files for utility and testing
     │   ├──cloudinary.js         Cloudinary API calls
     │   ├──utils.js              Utility methods
-    │   ├──withApollo.js         Apollo client setup
+    │   ├──init-apollo.js        Apollo client setup
+    │   ├──with-apollo-client.js Integration of Apollo client with app.
     │   └──test-utils/           Graphql mocks and dummyData for test calls
     ├──graphql/            Client side graphql query/mutations
     ├──components/         Component files called by pages and styles folder
@@ -100,9 +101,10 @@ App Map
         ├──buy.js                Product page
         ├──index.js              Home page
         ├──order.js              Order page
-        ├──orders.js             Order history page
+        ├──orders.js             List page of Orders
         ├──permissions.js        User permissions page
         ├──reset.js              Reset User password page
+        ├──sales.js              List page of OrderItems (Variants sold)
         ├──sell.js               Create Product page
         ├──shop.js               Products catalog page
         ├──signup.js             User signup/login page
