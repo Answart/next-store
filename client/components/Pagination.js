@@ -8,6 +8,7 @@ import { capWord } from '../lib/utils';
 
 
 const StyledPagination = styled.div`
+  width: 100%;
   text-align: center;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
@@ -46,6 +47,7 @@ const StyledPagination = styled.div`
     padding: 9px;
   }
   .sort {
+    float: left;
     text-align: center;
     display: inline-grid;
     grid-template-columns: repeat(2, auto);
@@ -74,6 +76,7 @@ const StyledPagination = styled.div`
     }
   }
   .pagination {
+    float: right;
     text-align: center;
     display: inline-grid;
     grid-template-columns: repeat(6, auto);
