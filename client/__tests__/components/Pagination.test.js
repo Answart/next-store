@@ -33,6 +33,7 @@ describe('<Pagination />', () => {
     wrapper = mount(
       <MockedProvider mocks={[]}>
         <Pagination
+          pathname='/shop'
           pageQuery={{}}
           currentShow={1} currentPage={2}
           currentOrderBy='name'

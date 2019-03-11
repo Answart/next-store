@@ -149,7 +149,6 @@ class Pagination extends Component {
       pageQuery, pathname, currentShow, currentPage, currentOrderBy, results, count, disabled
     } = this.props;
     const orderByKeys = Object.keys(orderByList);
-
     const pages = Math.ceil(count/currentShow);
     const list = getSamplePaginPages(currentPage, pages);
     const sortDropdownClasses = this.state.sortDrpdwn
