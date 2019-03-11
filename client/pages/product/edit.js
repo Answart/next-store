@@ -18,20 +18,31 @@ const EditProductPage = ({ query }) => (
           if (error) return (<NotFound status={400} message={error.message} />);
           const { product } = data;
           if (typeof product === 'undefined' || product === null) return (<NotFound status={404} />);
+          const titles = [{
+              label: 'My Products',
+              href: {
+                pathname: '/shop',
+                query: { name: me.name }
+              }
+            }, {
+              label: `Update '${product.title}'`
+          }];
           return (
             <StyledEditPage>
               <PageTitle
-                page='Edit Product'
-                titles={[{ label: product.title }]}
+                page={`Update '${product.title}'`}
+                titles={titles}
               />
 
               <div className="edit-pg-navi">
                 <Link href={{
                   pathname: `/product/selections`,
                   query
-                }}><a className="undrln-btn">
-                  Selections &#8811;
-                </a></Link>
+                }}>
+                  <a className="undrln-btn">
+                    Selections &#8811;
+                  </a>
+                </Link>
               </div>
 
               <div className="edit-pg-content">
@@ -41,7 +52,9 @@ const EditProductPage = ({ query }) => (
                   <DeleteProduct
                     id={query.id}
                     userName={product.user.name}
-                  >Delete Product</DeleteProduct>
+                  >
+                    Delete Product
+                  </DeleteProduct>
                 </div>
 
               </div>
