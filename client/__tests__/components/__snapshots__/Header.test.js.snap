@@ -320,7 +320,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
   >
     <HeaderStyles__StyledHeader>
       <header
-        className="HeaderStyles__StyledHeader-isqki6-0 hJbXvy"
+        className="HeaderStyles__StyledHeader-isqki6-0 bWwMNb"
       >
         <div
           className="hdr-banner"
@@ -458,7 +458,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
           >
             <CartStyles__StyledCart>
               <div
-                className="CartStyles__StyledCart-bnkck5-0 Cjfri"
+                className="CartStyles__StyledCart-bnkck5-0 ekVrRN"
               >
                 <header>
                   <div
@@ -547,14 +547,16 @@ exports[`<Header /> when logged out renders with components and matches the snap
                   </div>
                 </header>
                 <div
-                  className="cart-body"
+                  className="cart-container"
                 >
                   <TableStyles__StyledCartTable>
                     <table
-                      className="TableStyles__StyledCartTable-nxd3hb-1 jWskAz"
+                      className="TableStyles__StyledCartTable-nxd3hb-1 hHDrsj"
                     >
                       <thead>
-                        <tr>
+                        <tr
+                          className="cart-block"
+                        >
                           <th>
                             Product
                           </th>
@@ -566,10 +568,15 @@ exports[`<Header /> when logged out renders with components and matches the snap
                           </th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <TableStyles__StyledCartItem>
+                      <tbody
+                        className="cart-block cart-overflow"
+                      >
+                        <TableStyles__StyledCartItem
+                          id={null}
+                        >
                           <tr
-                            className="TableStyles__StyledCartItem-nxd3hb-2 dNhgUA"
+                            className="TableStyles__StyledCartItem-nxd3hb-2 dvpIma"
+                            id={null}
                           >
                             <td
                               className="cart-page"
@@ -621,7 +628,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
                   <div>
                     <TableStyles__StyledTotalsTable>
                       <table
-                        className="TableStyles__StyledTotalsTable-nxd3hb-3 dICoel"
+                        className="TableStyles__StyledTotalsTable-nxd3hb-3 dvDsua"
                       >
                         <tbody>
                           <tr>
@@ -725,65 +732,6 @@ exports[`<Header /> when logged out renders with components and matches the snap
                                             },
                                             "selectionSet": undefined,
                                           },
-                                          Object {
-                                            "alias": undefined,
-                                            "arguments": Array [],
-                                            "directives": Array [],
-                                            "kind": "Field",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "charge",
-                                            },
-                                            "selectionSet": undefined,
-                                          },
-                                          Object {
-                                            "alias": undefined,
-                                            "arguments": Array [],
-                                            "directives": Array [],
-                                            "kind": "Field",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "total",
-                                            },
-                                            "selectionSet": undefined,
-                                          },
-                                          Object {
-                                            "alias": undefined,
-                                            "arguments": Array [],
-                                            "directives": Array [],
-                                            "kind": "Field",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "items",
-                                            },
-                                            "selectionSet": Object {
-                                              "kind": "SelectionSet",
-                                              "selections": Array [
-                                                Object {
-                                                  "alias": undefined,
-                                                  "arguments": Array [],
-                                                  "directives": Array [],
-                                                  "kind": "Field",
-                                                  "name": Object {
-                                                    "kind": "Name",
-                                                    "value": "id",
-                                                  },
-                                                  "selectionSet": undefined,
-                                                },
-                                                Object {
-                                                  "alias": undefined,
-                                                  "arguments": Array [],
-                                                  "directives": Array [],
-                                                  "kind": "Field",
-                                                  "name": Object {
-                                                    "kind": "Name",
-                                                    "value": "title",
-                                                  },
-                                                  "selectionSet": undefined,
-                                                },
-                                              ],
-                                            },
-                                          },
                                         ],
                                       },
                                     },
@@ -817,11 +765,12 @@ exports[`<Header /> when logged out renders with components and matches the snap
                             ],
                             "kind": "Document",
                             "loc": Object {
-                              "end": 177,
+                              "end": 105,
                               "start": 0,
                             },
                           }
                         }
+                        onError={[Function]}
                         refetchQueries={
                           Array [
                             Object {
@@ -1144,6 +1093,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
                         <button
                           className="big-btn"
                           disabled={true}
+                          onClick={[Function]}
                         >
                           Checkout
                         </button>

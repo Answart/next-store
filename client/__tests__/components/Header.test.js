@@ -185,9 +185,9 @@ describe('<Header />', () => {
         expect(links.at(1).text()).toBe('My Products')
         expect(links.at(1).props().href).toBe(`/shop?name=${mockUser.name}`)
         expect(links.at(2).text()).toBe('Order History')
-        expect(links.at(2).props().href).toBe('/account/orders')
+        expect(links.at(2).props().href).toBe('/orders')
         expect(links.at(3).text()).toBe('Sale History')
-        expect(links.at(3).props().href).toBe('/account/sales')
+        expect(links.at(3).props().href).toBe('/sales')
       });
 
       // it('dropdown links work properly', async () => {
