@@ -14,7 +14,7 @@ const StyledCart = styled.div`
   padding: 2rem;
   transform: translateX(100%);
   transition: all 0.3s;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.theme.cartShadow};
   z-index: 5;
   display: grid;
   grid-auto-flow: rows;

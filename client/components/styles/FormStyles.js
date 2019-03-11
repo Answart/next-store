@@ -8,7 +8,7 @@ const StyledForm = styled.form`
   font-weight: 600;
   color: ${props => props.theme.darkGrey};
   background-color: ${props => props.theme.beige};
-  box-shadow: ${props => props.theme.bs};
+  box-shadow: ${props => props.theme.headerShadow};
   fieldset {
     border: 0;
     padding: 0;

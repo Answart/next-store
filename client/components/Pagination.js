@@ -62,7 +62,7 @@ const StyledPagination = styled.div`
       padding: 10px 13px;
       background-color: white;
       min-width: 12rem;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      box-shadow: ${props => props.theme.headerShadow};
       z-index: 1;
     }
     .srt-dropdown-content a {

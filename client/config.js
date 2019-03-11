@@ -28,6 +28,8 @@ export const theme = {
   black: '#3d3d3d',
   maxWidth: '1050px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+  cartShadow: '0 0 10px 3px rgba(0, 0, 0, 0.2)',
+  headerShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
 };
 export const COLORS = [
   'red',
