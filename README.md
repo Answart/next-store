@@ -213,8 +213,8 @@ $ npm run deploy:dev
 
 1. Create or access your [**Stripe**](https://stripe.com/) account. (Confirm your account in your email if creating an account)
 2. Click the [API keys](https://dashboard.stripe.com/account/apikeys) link under the Developers tab.
-3. Grab the **Publishable Key** and update STRIPE_API_KEY on the **CLIENT SIDE** with this key (aka **./client/config.js**)
-4. Grab the **Secret key** and update STRIPE_SECRET in the .env file on the **SERVER SIDE** (aka **./server/.env**)
+3. Grab the **Publishable Key** and update **STRIPE_API_KEY** on the **client side** with this key (aka **./client/config.js**)
+4. Grab the **Secret key** and update **STRIPE_SECRET** in the .env file on the **server side** (aka **./server/.env**)
 
 -------------
 

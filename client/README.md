@@ -56,4 +56,5 @@ NPM Commands
 |---------|-------------|
 | npm install | Install dependencies |
 | npm run build | Build production deployment files |
-| npm run start:dev | Launch client |
+| npm test | Run test files |
+| npm run start:dev | Launch client @ [**localhost:7272**](http://localhost:7272) |
