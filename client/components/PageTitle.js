@@ -9,22 +9,22 @@ const PageTitle = ({ page, titles }) => (
   <StyledPageTitle>
     <Head>
       <title>
-        Next Store | {page}
+        Next Store{!!page ? ` | ${page}` : ''}
       </title>
     </Head>
 
-    {!!page && !!page.length && (
-      <span style={{ padding: '0 1rem'}}>{page}</span>
-    )}
-
-    {!!titles && titles.map((title, i) =>
+    {!titles || !titles.length ? (
+      <span style={{ padding: '0 1rem'}}>
+        {page}
+      </span>
+    ) : (titles.map((title, i) =>
       <span key={i}>
-        {(!!page && !!page.length) && (<>&#8811;</>)}
-
         {!!title.href && (
-          <Link href={title.href}><a className="thn-btn">
-            {title.label}
-          </a></Link>
+          <Link href={title.href}>
+            <a className="thn-btn">
+              {title.label}
+            </a>
+          </Link>
         )}
 
         {!!title.click && (
@@ -34,10 +34,15 @@ const PageTitle = ({ page, titles }) => (
         )}
 
         {!title.href && !title.click && (
-          <span style={{ padding: '0 1rem'}}>{title.label}</span>
+          <span style={{ padding: '0 1rem'}}>
+            {title.label}
+          </span>
+        )}
+        {(i !== (titles.length - 1)) && (
+          <>&#8811;</>
         )}
       </span>
-    )}
+    ))}
   </StyledPageTitle>
 );
 
