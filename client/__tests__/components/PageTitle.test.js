@@ -44,6 +44,6 @@ describe('<PageTitle />', () => {
   });
 
   it('renders properly', async () => {
-    expect(wrapper.text()).toContain('Edit Product≫Some Title≫Selections≫Add Selection');
+    expect(wrapper.text()).toContain('Some TitleSelectionsAdd Selection');
   });
 });
