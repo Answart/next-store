@@ -20,7 +20,7 @@ function getShopProps(user, pageQuery = {}) {
     delete variables.online;
   }
 
-  const show = parseFloat(pageQuery.show) || 1;
+  const show = parseFloat(pageQuery.show) || 6;
   variables.first = show;
   delete variables.show;
 
