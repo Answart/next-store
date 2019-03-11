@@ -109,7 +109,7 @@ export const PERMISSIONS = [
   'PERMISSIONUPDATE',
 ];
 export const orderByList = {
-  'name': 'title_DESC',
+  'name': 'title_ASC',
   'newest': 'createdAt_DESC',
   'oldest': 'createdAt_ASC',
   'updated': 'updatedAt_DESC',
