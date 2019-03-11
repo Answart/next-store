@@ -155,7 +155,7 @@ POSTMARK_PASS=
 
 #### Setup Cloudinary
 
-1. Create and access your [**Cloudinary**](https://cloudinary.com/) account.
+1. Create or access your [**Cloudinary**](https://cloudinary.com/) account.
 2. Grab your API key (**CLOUDINARY_API_KEY**) and API secret (**CLOUDINARY_SECRET**) from the [main console page](
 https://cloudinary.com/console).
 3. Create a [folder](https://cloudinary.com/console/media_library/folders/all/) where uploads will be stored.
@@ -208,7 +208,10 @@ $ npm run deploy:dev
 
 #### Setup Stripe
 
-TODO
+1. Create or access your [**Stripe**](https://stripe.com/) account. (Confirm your account in your email if creating an account)
+2. Click the [API keys](https://dashboard.stripe.com/account/apikeys) link under the Developers tab.
+3. Grab the **Publishable Key** and update STRIPE_API_KEY on the **CLIENT SIDE** with this key (aka **./client/config.js**)
+4. Grab the **Secret key** and update STRIPE_SECRET in the .env file on the **SERVER SIDE** (aka **./server/.env**)
 
 -------------
 
@@ -228,7 +231,7 @@ export const PROD_SERVER_URL = 'PUTHERE';
 export const CLOUDINARY_API_KEY = 'PUTHERE';
 export const CLOUDINARY_PRESET = 'PUTHERE';
 export const CLOUDINARY_SECRET = 'PUTHERE';
-export const STRIPE_API_KEY = 'PUTHERE';
+export const STRIPE_API_KEY = 'PUBLISHABLE-KEY-FROM-STRIPE';
 # ...
 ```
 

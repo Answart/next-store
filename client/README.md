@@ -24,10 +24,26 @@ Tech Stack and Key Packages
 Getting Started
 ---------------
 
-Launch client in new tab:
+#### Install dependencies
 ```bash
 # ./client/
 $ npm install
+```
+
+Update config file variables with the environment variables set in **./server/.env** with the same name.
+```bash
+# ./client/config.js
+# ...
+export const PROD_SERVER_URL = 'PUTHERE';
+export const CLOUDINARY_API_KEY = 'PUTHERE';
+export const CLOUDINARY_PRESET = 'PUTHERE';
+export const CLOUDINARY_SECRET = 'PUTHERE';
+export const STRIPE_API_KEY = 'PUBLISHABLE-KEY-FROM-STRIPE';
+# ...
+```
+
+Launch client in new tab:
+```bash
 $ npm run start:dev
 ```
 
