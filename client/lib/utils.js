@@ -25,38 +25,53 @@ const formatMoney = function(amount) {
   return formatter.format(amount);
 }
 
-const getPageTitleProps = function(user, pageQuery = {}) {
+const getPageTitleProps = function(user, pageQuery) {
   let pageLabel = '';
   let titles = [];
+  if (!pageQuery) return { pageLabel, titles };
 
-  if (pageQuery.name) {
-    pageLabel = (user && pageQuery.name === user.name)
+  if (!!pageQuery.name) {
+    pageLabel = (!!user && pageQuery.name === user.name)
       ? 'My Products'
       : capWord(pageQuery.name);
+    titles.push({
+      label: pageLabel,
+      href: {
+        pathname: '/shop',
+        query: { name: pageQuery.name },
+      }
+    })
   }
 
-  if (pageQuery.department) {
-    const query = { ...pageQuery }
-    if (query.category) delete query.category;
-
+  if (!!pageQuery.department) {
+    const query = {};
+    if (!!pageQuery.name) query.name = pageQuery.name;
+    if (!!pageQuery.department) query.department = pageQuery.department;
     titles.push({
       label: capWord(pageQuery.department),
       href: {
         pathname: '/shop',
-        query
-      }
-    })
-  }
-  if (pageQuery.category) {
-    titles.push({
-      label: capWord(pageQuery.category),
-      href: {
-        pathname: '/shop',
-        query: { ...pageQuery }
+        query,
       }
     })
   }
 
+  if (!!pageQuery.category) {
+    const query = {};
+    if (!!pageQuery.name) query.name = pageQuery.name;
+    if (!!pageQuery.department) query.department = pageQuery.department;
+    if (!!pageQuery.category) query.category = pageQuery.category;
+    titles.push({
+      label: capWord(pageQuery.category),
+      href: {
+        pathname: '/shop',
+        query,
+      }
+    })
+  }
+
+  const len = titles.length;
+  if (!pageLabel && !!len || (len-1) >= 0) pageLabel = titles[len-1].label;
   return { pageLabel, titles };
 }
 
