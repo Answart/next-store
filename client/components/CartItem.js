@@ -31,7 +31,7 @@ const CartItem = ({ id, quantity, variant }) => {
       <td className="cart-item-details">
         <div className='cart-item-image'>
           <Link href={{
-            pathname: "shop",
+            pathname: '/shop',
             query: { id: variant.product.id }
           }}>
             <a>
