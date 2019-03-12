@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductsList /> matches the snap shot 1`] = `
+<ProductsList
+  editView={true}
+  products={
+    Array [
+      Object {
+        "__typename": "Product",
+        "brand": "Peggs",
+        "category": "jewelry",
+        "department": "accessories",
+        "description": "Limited Edition watch from the 2018 Fall fashion line.",
+        "id": "pr0duct1d",
+        "image": Object {
+          "__typename": "Image",
+          "cloudinary_id": "111111",
+          "height": 22,
+          "id": "1m4g31d",
+          "image_url": "peggswatch1.jpg",
+          "large_image_url": "peggswatch2.jpg",
+          "name": "peggswatch1",
+          "transformation": "",
+          "width": 22,
+        },
+        "online": false,
+        "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+        "user": Object {
+          "__typename": "User",
+          "id": "us3r1d",
+          "name": "Miss Coleman Berge",
+        },
+        "variants": Array [
+          Object {
+            "__typename": "Variant",
+            "availability": "4 in Stock!",
+            "color": "white",
+            "id": "v4r13nt1d",
+            "image": Object {
+              "__typename": "Image",
+              "cloudinary_id": "111111",
+              "height": 22,
+              "id": "1m4g31d",
+              "image_url": "peggswatch1.jpg",
+              "large_image_url": "peggswatch2.jpg",
+              "name": "peggswatch1",
+              "transformation": "",
+              "width": 22,
+            },
+            "price": 35,
+            "product": Object {
+              "__typename": "Product",
+              "id": "pr0duct1d",
+              "image": Object {
+                "__typename": "Image",
+                "cloudinary_id": "111111",
+                "height": 22,
+                "id": "1m4g31d",
+                "image_url": "peggswatch1.jpg",
+                "large_image_url": "peggswatch2.jpg",
+                "name": "peggswatch1",
+                "transformation": "",
+                "width": 22,
+              },
+            },
+            "quantity": 4,
+            "sale": true,
+            "salePrice": 30,
+            "size": "S",
+          },
+        ],
+      },
+    ]
+  }
+  userId="us3r1d"
+>
+  <ProductStyles__StyledProductsList>
+    <div
+      className="ProductStyles__StyledProductsList-sc-2231u4-2 hbTbkM"
+    >
+      <ProductStyles__StyledProductsListItem
+        key="pr0duct1d"
+      >
+        <div
+          className="ProductStyles__StyledProductsListItem-sc-2231u4-3 eAuhwh"
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "/buy",
+                "query": Object {
+                  "id": "pr0duct1d",
+                },
+              }
+            }
+          >
+            <a
+              href="/buy?id=pr0duct1d"
+              onClick={[Function]}
+            >
+              <img
+                alt="Peggs Gold Edition Analog Watch Peggs Gold Edition Analog "
+                height="610"
+                src="peggswatch1.jpg"
+                width="400"
+              />
+            </a>
+          </Link>
+          <div
+            className="prdct-itm-info"
+          >
+            <Link
+              href={
+                Object {
+                  "pathname": "/buy",
+                  "query": Object {
+                    "id": "pr0duct1d",
+                  },
+                }
+              }
+            >
+              <a
+                className="prdct-itm-title"
+                href="/buy?id=pr0duct1d"
+                onClick={[Function]}
+              >
+                Peggs Gold Edition Analog Watch Peggs Gold Edition Analog 
+              </a>
+            </Link>
+            <div
+              className="prdct-itm-price"
+            >
+              <PriceTag
+                price={35}
+                sale={true}
+                salePrice={30}
+              >
+                <PriceTag__StyledPriceTag>
+                  <div
+                    className="PriceTag__StyledPriceTag-sc-119rsfa-0 ePOheW"
+                  >
+                    <span
+                      className="line-through"
+                    >
+                      $35
+                    </span>
+                    <span
+                      className="price-tag-padding price-tag-priceSale"
+                    >
+                      $30
+                    </span>
+                  </div>
+                </PriceTag__StyledPriceTag>
+              </PriceTag>
+            </div>
+          </div>
+          <span
+            className="prdct-itm-actns"
+          >
+            <Link
+              href={
+                Object {
+                  "pathname": "/product/edit",
+                  "query": Object {
+                    "id": "pr0duct1d",
+                  },
+                }
+              }
+            >
+              <a
+                href="/product/edit?id=pr0duct1d"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+            </Link>
+            <DeleteProduct
+              className="undrln-btn"
+              id="pr0duct1d"
+              userName="Miss Coleman Berge"
+            >
+              <Mutation
+                mutation={
+                  Object {
+                    "definitions": Array [
+                      Object {
+                        "directives": Array [],
+                        "kind": "OperationDefinition",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "DELETE_PRODUCT_MUTATION",
+                        },
+                        "operation": "mutation",
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": undefined,
+                              "arguments": Array [
+                                Object {
+                                  "kind": "Argument",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "id",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "id",
+                                    },
+                                  },
+                                },
+                              ],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "deleteProduct",
+                              },
+                              "selectionSet": Object {
+                                "kind": "SelectionSet",
+                                "selections": Array [
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "id",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                        "variableDefinitions": Array [
+                          Object {
+                            "defaultValue": undefined,
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NonNullType",
+                              "type": Object {
+                                "kind": "NamedType",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "ID",
+                                },
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "id",
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                    "kind": "Document",
+                    "loc": Object {
+                      "end": 96,
+                      "start": 0,
+                    },
+                  }
+                }
+                update={[Function]}
+                variables={
+                  Object {
+                    "id": "pr0duct1d",
+                  }
+                }
+              >
+                <button
+                  className="undrln-btn"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  Delete
+                </button>
+              </Mutation>
+            </DeleteProduct>
+          </span>
+          <span>
+            <i
+              className="prdct-itm-actns"
+            >
+              (Offline)
+            </i>
+          </span>
+        </div>
+      </ProductStyles__StyledProductsListItem>
+    </div>
+  </ProductStyles__StyledProductsList>
+</ProductsList>
+`;
