@@ -14,7 +14,6 @@ function parseCookies(req, options = {}) {
     ? cookie.parse(req.headers.cookie || '')
     : '';
 }
-
 function extractState(apolloClient) {
   let data = null;
 
@@ -68,7 +67,7 @@ export default App => {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          console.error('Error while running `getDataFromTree`', error)
+          console.error(`Error while running 'getDataFromTree': ${error}`)
         }
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
