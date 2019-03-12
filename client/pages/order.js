@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import PageTitle from '../components/PageTitle';
+import RequireSignin from '../components/RequireSignin';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 
 
@@ -16,7 +17,11 @@ const OrderPage = props => (
     />
 
     <div className='order-page-content'>
-      TODO
+      <RequireSignin>
+        {({ me }) => (
+          <p>TODO</p>
+        )}
+      </RequireSignin>
     </div>
   </StyledOrderPage>
 );
