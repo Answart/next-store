@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
 import PageTitle from '../components/PageTitle';
+import RequireSignin from '../components/RequireSignin';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 
 
-const SalesPage = () => (
+const SalesPage = (props) => (
   <StyledOrderPage>
     <PageTitle page='Sales' />
 
     <div className='order-page-content'>
-      TODO
+      <RequireSignin>
+        {({ me }) => {
+          return (
+            <p>TODO</p>
+          )
+        }}
+      </RequireSignin>
     </div>
   </StyledOrderPage>
 );
