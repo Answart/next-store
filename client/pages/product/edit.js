@@ -7,6 +7,7 @@ import PageTitle from '../../components/PageTitle';
 import { DeleteProduct } from '../../components/Buttons';
 import { UpdateProductForm } from '../../components/Forms';
 import RequireSignin from '../../components/RequireSignin';
+import SvgIcon from '../../components/SvgIcon';
 
 
 const EditProductPage = ({ query }) => (
@@ -40,7 +41,7 @@ const EditProductPage = ({ query }) => (
                   query
                 }}>
                   <a className="undrln-btn">
-                    Selections &#8811;
+                    Selections <SvgIcon width={7} name='doubleRightArrow' />
                   </a>
                 </Link>
               </div>
