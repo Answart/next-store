@@ -22,9 +22,6 @@ const StyledCart = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 1rem;
   ${props => props.open && `transform: translateX(0);`};
-  button {
-    float: right;
-  }
   header {
     color: ${props => props.theme.darkBlue};
     text-align: right;
@@ -39,19 +36,6 @@ const StyledCart = styled.div`
     grid-row: 2 / 3;
     grid-column: 1 / 1;
   }
-  .cart-block {
-    display: block;
-  }
-  .cart-overflow {
-    overflow: auto;
-    -webkit-overflow-scrolling: auto;
-    width: 100%;
-  }
-  .cart-body {
-    overflow: auto !important;
-    width: 100%;
-    height:100%;
-  }
   footer {
     grid-row: 3 / 3;
     grid-column: 1 / 1;
@@ -59,6 +43,9 @@ const StyledCart = styled.div`
     font-size: 0.9em;
     font-weight: bold;
     display: grid;
+    button {
+      float: right;
+    }
   }
 `;
 

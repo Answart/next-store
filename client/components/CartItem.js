@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { StyledCartItem } from './styles/TableStyles';
 import PriceTag from './PriceTag';
 import SvgIcon from './SvgIcon';
 import { RemoveFromCart, UpdateCartItem } from './Buttons';
@@ -11,7 +10,7 @@ import { formatMoney, capWord } from '../lib/utils';
 const CartItem = ({ id, quantity, variant }) => {
   if (!variant)
     return (
-      <StyledCartItem>
+      <tr>
         <td className="cart-item-details">
           <p>This Product has been removed</p>
         </td>
@@ -21,14 +20,14 @@ const CartItem = ({ id, quantity, variant }) => {
             <RemoveFromCart id={id} />
           </div>
         </td>
-      </StyledCartItem>
+      </tr>
     );
   const title = variant.product.title;
   const price = variant.sale
     ? variant.salePrice
     : variant.price;
   return (
-    <StyledCartItem key={id}>
+    <tr>
       <td className="cart-item-details">
         <div className='cart-item-image'>
           <Link href={{
@@ -101,7 +100,7 @@ const CartItem = ({ id, quantity, variant }) => {
       <td className="cart-item-total-price">
         {formatMoney(price * quantity)}
       </td>
-    </StyledCartItem>
+    </tr>
   );
 };
 

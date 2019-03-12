@@ -1,6 +1,6 @@
 import { Query } from 'react-apollo';
 import { StyledCart } from './styles/CartStyles';
-import { StyledCartTable, StyledTotalsTable, StyledCartItem } from './styles/TableStyles';
+import { StyledCartTable, StyledTotalsTable } from './styles/TableStyles';
 import User from './User';
 import CartItem from './CartItem';
 import NotFound from './NotFound';
@@ -36,29 +36,26 @@ const Cart = ({ me }) => (
           <div className="cart-container">
             <StyledCartTable>
               <thead>
-                <tr className="cart-block">
+                <tr>
                   <th>Product</th>
                   <th>Quantity</th>
                   <th>Total Price</th>
                 </tr>
               </thead>
 
-              <tbody className="cart-block cart-overflow">
-                {(!me) ? (
-                  <StyledCartItem>
+              <tbody>
+                {!me && (
+                  <tr>
                     <td className="cart-page">
                       <NotFound status={400} />
                     </td>
-                  </StyledCartItem>
-                ) : (
-                  <>
-                    {myCart.map(cartItem =>
-                      <CartItem key={cartItem.id} id={cartItem.id}
-                        quantity={cartItem.quantity}
-                        variant={cartItem.variant}
-                      />
-                    )}
-                  </>
+                  </tr>
+                )}
+                {!!me && myCart.map(cartItem =>
+                  <CartItem key={cartItem.id} id={cartItem.id}
+                    quantity={cartItem.quantity}
+                    variant={cartItem.variant}
+                  />
                 )}
               </tbody>
             </StyledCartTable>
