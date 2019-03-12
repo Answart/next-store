@@ -6,6 +6,7 @@ import SingleProduct from '../../components/SingleProduct';
 import PageTitle from '../../components/PageTitle';
 import EditProductVariants from '../../components/EditProductVariants';
 import RequireSignin from '../../components/RequireSignin';
+import SvgIcon from '../../components/SvgIcon';
 
 
 const EditProductVariantsPage = ({ query }) => (
@@ -49,7 +50,7 @@ const EditProductVariantsPage = ({ query }) => (
                   }
                 }}>
                   <a className="undrln-btn">
-                    Add Selection &#8811;
+                    Add Selection <SvgIcon width={7} name='doubleRightArrow' />
                   </a>
                 </Link>
               </div>
