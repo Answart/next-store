@@ -74,3 +74,30 @@ type CartItem {
   variant: Variant
   user: User! @relation(name: "UserCart")
 }
+
+type OrderItem {
+  id: ID! @unique
+  title: String!
+  price: Int!
+  quantity: Int! @default(value: 1)
+  color: String
+  size: String
+  image_url: String!
+  seller: User
+  variant: Variant
+  order: Order @relation(name: "OrderItems")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Order {
+  id: ID! @unique
+  status: String! @default(value: "processing")
+  quantity: Int! @default(value: 1)
+  total: Int!
+  charge: String!
+  items: [OrderItem!]! @relation(name: "OrderItems", onDelete: CASCADE)
+  buyer: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
