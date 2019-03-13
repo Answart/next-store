@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 
 const StyledForm = styled.form`
-  padding: 20px;
+  padding: 2rem;
   font-size: 1.3rem;
   line-height: 1.5;
   font-weight: 600;
+  overflow: hidden;
   color: ${props => props.theme.darkGrey};
   background-color: ${props => props.theme.beige};
   box-shadow: ${props => props.theme.headerShadow};
