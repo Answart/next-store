@@ -3,6 +3,18 @@ import { Query } from 'react-apollo';
 import { SigninForm } from './Forms';
 import NotFound from './NotFound';
 import User from './User';
+import styled from 'styled-components';
+
+const StyledRequireSignin = styled.div`
+  display: grid;
+  grid-template-rows: 2rem minmax(20rem, 30rem);
+  grid-auto-flow: row;
+  justify-content: center;
+  grid-gap: 2rem;
+  form {
+    max-height: 32rem;
+  }
+`;
 
 
 const RequireSignin = (props) => (
@@ -15,13 +27,11 @@ const RequireSignin = (props) => (
         : data.me;
       if (!me) {
         return (
-          <div>
-            <p>
-              Please Sign In before Continuing
-            </p>
+          <StyledRequireSignin>
+            <h3>Please Sign In before Continuing</h3>
 
             <SigninForm />
-          </div>
+          </StyledRequireSignin>
         );
       }
       return props.children({ me });
