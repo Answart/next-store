@@ -9,7 +9,7 @@ type Query {
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product]!
   productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): ProductConnection!
   variant(where: VariantWhereUniqueInput!): Variant
-  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, first: Int): [Variant!]!
+  variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, first: Int): [Variant]!
 }
 
 type Mutation {
