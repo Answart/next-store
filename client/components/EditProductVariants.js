@@ -51,18 +51,24 @@ class EditProductVariants extends Component {
 
         {!currentVariant ? (
           <div className="edit-prdct-var-choose">
-            <div className="edit-prdct-lbl">1. Choose Selection to Update</div>
+            <div className="edit-prdct-lbl">
+              1. Choose Selection to Update
+            </div>
 
-            <Product
-              product={this.props.product}
-              demoView={true}
-              variantAction={this.selectVariant}
-              variantActionLabel='Select'
-            />
+            <div className="edit-prdct-content">
+              <Product
+                product={this.props.product}
+                demoView={true}
+                variantAction={this.selectVariant}
+                variantActionLabel='Select'
+              />
+            </div>
           </div>
         ) : (
           <div className='edit-prdct-var-form'>
-            <div className="edit-prdct-lbl">2. Update Selection</div>
+            <div className="edit-prdct-lbl">
+              2. Update Selection
+            </div>
 
             <UpdateProductVariantForm
               variant={currentVariant}

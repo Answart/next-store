@@ -171,6 +171,10 @@ const StyledEditProductVariants = styled.div`
     padding: 1rem 0;
     font-weight: bold;
   }
+  .edit-prdct-content {
+    padding: 2rem;
+    margin: 3rem 6rem;
+  }
 `;
 
 export default StyledProduct;
