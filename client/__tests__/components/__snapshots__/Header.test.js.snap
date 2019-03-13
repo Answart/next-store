@@ -458,7 +458,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
           >
             <CartStyles__StyledCart>
               <div
-                className="CartStyles__StyledCart-bnkck5-0 ekVrRN"
+                className="CartStyles__StyledCart-bnkck5-0 iAhZvY"
               >
                 <header>
                   <div
@@ -551,12 +551,10 @@ exports[`<Header /> when logged out renders with components and matches the snap
                 >
                   <TableStyles__StyledCartTable>
                     <table
-                      className="TableStyles__StyledCartTable-nxd3hb-1 hHDrsj"
+                      className="TableStyles__StyledCartTable-nxd3hb-1 eTUxb"
                     >
                       <thead>
-                        <tr
-                          className="cart-block"
-                        >
+                        <tr>
                           <th>
                             Product
                           </th>
@@ -568,58 +566,49 @@ exports[`<Header /> when logged out renders with components and matches the snap
                           </th>
                         </tr>
                       </thead>
-                      <tbody
-                        className="cart-block cart-overflow"
-                      >
-                        <TableStyles__StyledCartItem
-                          id={null}
-                        >
-                          <tr
-                            className="TableStyles__StyledCartItem-nxd3hb-2 dvpIma"
-                            id={null}
+                      <tbody>
+                        <tr>
+                          <td
+                            className="cart-page"
                           >
-                            <td
-                              className="cart-page"
+                            <NotFound
+                              message="Unable to find what you are looking for!"
+                              status={400}
                             >
-                              <NotFound
-                                message="Unable to find what you are looking for!"
-                                status={400}
-                              >
-                                <NotFound__StyledNotFound>
-                                  <div
-                                    className="NotFound__StyledNotFound-sc-1et5pu4-0 iBWtpm"
-                                  >
-                                    <h1>
-                                      Error
-                                    </h1>
-                                    <p>
-                                      An error occured. Please try again later.
-                                    </p>
-                                    <p>
-                                      Go back to
-                                      <Link
-                                        href={
-                                          Object {
-                                            "pathname": "/",
-                                          }
+                              <NotFound__StyledNotFound>
+                                <div
+                                  className="NotFound__StyledNotFound-sc-1et5pu4-0 iBWtpm"
+                                >
+                                  <h1>
+                                    Error
+                                  </h1>
+                                  <p>
+                                    An error occured. Please try again later.
+                                  </p>
+                                  <p>
+                                    Go back to
+                                    <Link
+                                      href={
+                                        Object {
+                                          "pathname": "/",
                                         }
+                                      }
+                                    >
+                                      <a
+                                        className="undrln-btn"
+                                        href="/"
+                                        onClick={[Function]}
                                       >
-                                        <a
-                                          className="undrln-btn"
-                                          href="/"
-                                          onClick={[Function]}
-                                        >
-                                          home
-                                        </a>
-                                      </Link>
-                                      page.
-                                    </p>
-                                  </div>
-                                </NotFound__StyledNotFound>
-                              </NotFound>
-                            </td>
-                          </tr>
-                        </TableStyles__StyledCartItem>
+                                        home
+                                      </a>
+                                    </Link>
+                                    page.
+                                  </p>
+                                </div>
+                              </NotFound__StyledNotFound>
+                            </NotFound>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </TableStyles__StyledCartTable>
@@ -628,7 +617,7 @@ exports[`<Header /> when logged out renders with components and matches the snap
                   <div>
                     <TableStyles__StyledTotalsTable>
                       <table
-                        className="TableStyles__StyledTotalsTable-nxd3hb-3 dvDsua"
+                        className="TableStyles__StyledTotalsTable-nxd3hb-2 iRHNDA"
                       >
                         <tbody>
                           <tr>
