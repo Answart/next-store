@@ -139,6 +139,10 @@ const StyledForm = styled.form`
       margin: 0;
     }
   }
+  button[type='submit'] {
+    margin-top: 4rem;
+    float: right;
+  }
 `;
 
 
