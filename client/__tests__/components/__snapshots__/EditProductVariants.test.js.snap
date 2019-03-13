@@ -96,7 +96,7 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
 >
   <ProductStyles__StyledEditProductVariants>
     <div
-      className="ProductStyles__StyledEditProductVariants-sc-2231u4-4 cnemKC"
+      className="ProductStyles__StyledEditProductVariants-sc-2231u4-4 feaxHC"
     >
       <DisplayMessage
         error={Object {}}
@@ -110,65 +110,49 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
         >
           1. Choose Selection to Update
         </div>
-        <Product
-          demoView={true}
-          product={
-            Object {
-              "__typename": "Product",
-              "brand": "Peggs",
-              "category": "jewelry",
-              "department": "accessories",
-              "description": "Limited Edition watch from the 2018 Fall fashion line.",
-              "id": "pr0duct1d",
-              "image": Object {
-                "__typename": "Image",
-                "cloudinary_id": "111111",
-                "height": 22,
-                "id": "1m4g31d",
-                "image_url": "peggswatch1.jpg",
-                "large_image_url": "peggswatch2.jpg",
-                "name": "peggswatch1",
-                "transformation": "",
-                "width": 22,
-              },
-              "online": false,
-              "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
-              "user": Object {
-                "__typename": "User",
-                "cart": Array [],
-                "email": "Waldo.Yundt@Mosciski.biz",
-                "id": "us3r1d",
-                "name": "Ms. Josue McCullough",
-                "password": "unique-password",
-                "permissions": Array [
-                  "ADMIN",
-                ],
-              },
-              "variants": Array [
-                Object {
-                  "__typename": "Variant",
-                  "availability": "4 in Stock!",
-                  "color": "white",
-                  "id": "v4r13nt1d",
-                  "image": Object {
-                    "__typename": "Image",
-                    "cloudinary_id": "111111",
-                    "height": 22,
-                    "id": "1m4g31d",
-                    "image_url": "peggswatch1.jpg",
-                    "large_image_url": "peggswatch2.jpg",
-                    "name": "peggswatch1",
-                    "transformation": "",
-                    "width": 22,
-                  },
-                  "price": 35,
-                  "product": Object {
-                    "__typename": "Product",
-                    "brand": "Peggs",
-                    "category": "jewelry",
-                    "department": "accessories",
-                    "description": "Limited Edition watch from the 2018 Fall fashion line.",
-                    "id": "pr0duct1d",
+        <div
+          className="edit-prdct-content"
+        >
+          <Product
+            demoView={true}
+            product={
+              Object {
+                "__typename": "Product",
+                "brand": "Peggs",
+                "category": "jewelry",
+                "department": "accessories",
+                "description": "Limited Edition watch from the 2018 Fall fashion line.",
+                "id": "pr0duct1d",
+                "image": Object {
+                  "__typename": "Image",
+                  "cloudinary_id": "111111",
+                  "height": 22,
+                  "id": "1m4g31d",
+                  "image_url": "peggswatch1.jpg",
+                  "large_image_url": "peggswatch2.jpg",
+                  "name": "peggswatch1",
+                  "transformation": "",
+                  "width": 22,
+                },
+                "online": false,
+                "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+                "user": Object {
+                  "__typename": "User",
+                  "cart": Array [],
+                  "email": "Waldo.Yundt@Mosciski.biz",
+                  "id": "us3r1d",
+                  "name": "Ms. Josue McCullough",
+                  "password": "unique-password",
+                  "permissions": Array [
+                    "ADMIN",
+                  ],
+                },
+                "variants": Array [
+                  Object {
+                    "__typename": "Variant",
+                    "availability": "4 in Stock!",
+                    "color": "white",
+                    "id": "v4r13nt1d",
                     "image": Object {
                       "__typename": "Image",
                       "cloudinary_id": "111111",
@@ -180,140 +164,140 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                       "transformation": "",
                       "width": 22,
                     },
-                    "online": false,
-                    "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
-                    "user": Object {
-                      "__typename": "User",
-                      "cart": Array [],
-                      "email": "Princess.Ernser@Dibbert.net",
-                      "id": "us3r1d",
-                      "name": "Dr. Randy Gleason",
-                      "password": "unique-password",
-                      "permissions": Array [
-                        "ADMIN",
-                      ],
+                    "price": 35,
+                    "product": Object {
+                      "__typename": "Product",
+                      "brand": "Peggs",
+                      "category": "jewelry",
+                      "department": "accessories",
+                      "description": "Limited Edition watch from the 2018 Fall fashion line.",
+                      "id": "pr0duct1d",
+                      "image": Object {
+                        "__typename": "Image",
+                        "cloudinary_id": "111111",
+                        "height": 22,
+                        "id": "1m4g31d",
+                        "image_url": "peggswatch1.jpg",
+                        "large_image_url": "peggswatch2.jpg",
+                        "name": "peggswatch1",
+                        "transformation": "",
+                        "width": 22,
+                      },
+                      "online": false,
+                      "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+                      "user": Object {
+                        "__typename": "User",
+                        "cart": Array [],
+                        "email": "Princess.Ernser@Dibbert.net",
+                        "id": "us3r1d",
+                        "name": "Dr. Randy Gleason",
+                        "password": "unique-password",
+                        "permissions": Array [
+                          "ADMIN",
+                        ],
+                      },
+                      "variants": Array [],
                     },
-                    "variants": Array [],
+                    "quantity": 4,
+                    "sale": true,
+                    "salePrice": 30,
+                    "size": "S",
                   },
-                  "quantity": 4,
-                  "sale": true,
-                  "salePrice": 30,
-                  "size": "S",
-                },
-              ],
+                ],
+              }
             }
-          }
-          variantAction={[Function]}
-          variantActionLabel="Select"
-        >
-          <ProductStyles__StyledProduct>
-            <div
-              className="ProductStyles__StyledProduct-sc-2231u4-0 dOvnhj"
-            >
+            variantAction={[Function]}
+            variantActionLabel="Select"
+          >
+            <ProductStyles__StyledProduct>
               <div
-                className="prdct-imgs"
-              >
-                <img
-                  alt="Peggs Gold Edition Analog Watch Peggs Gold Edition Analog "
-                  height="640"
-                  src="peggswatch2.jpg"
-                  width="450"
-                />
-              </div>
-              <div
-                className="prdct-content"
+                className="ProductStyles__StyledProduct-sc-2231u4-0 dOvnhj"
               >
                 <div
-                  className="prdct-padding"
-                  id="prdct-title"
+                  className="prdct-imgs"
                 >
-                  <Link
-                    href={
-                      Object {
-                        "pathname": "/buy",
-                        "query": Object {
-                          "id": "pr0duct1d",
-                        },
-                      }
-                    }
-                  >
-                    <a
-                      className="prdct-title"
-                      href="/buy?id=pr0duct1d"
-                      onClick={[Function]}
-                    >
-                      Peggs Gold Edition Analog Watch Peggs Gold Edition Analog 
-                    </a>
-                  </Link>
+                  <img
+                    alt="Peggs Gold Edition Analog Watch Peggs Gold Edition Analog "
+                    height="640"
+                    src="peggswatch2.jpg"
+                    width="450"
+                  />
                 </div>
-                <ByCreator
-                  name="Ms. Josue McCullough"
-                  online={true}
+                <div
+                  className="prdct-content"
                 >
                   <div
-                    className="prdct-creator prdct-padding"
+                    className="prdct-padding"
+                    id="prdct-title"
                   >
-                    By
                     <Link
                       href={
                         Object {
-                          "pathname": "/shop",
+                          "pathname": "/buy",
                           "query": Object {
-                            "name": "Ms. Josue McCullough",
-                            "online": true,
+                            "id": "pr0duct1d",
                           },
                         }
                       }
                     >
                       <a
-                        className="undrln-btn"
-                        href="/shop?name=Ms.%20Josue%20McCullough&online=true"
+                        className="prdct-title"
+                        href="/buy?id=pr0duct1d"
                         onClick={[Function]}
                       >
-                        Ms. Josue McCullough
+                        Peggs Gold Edition Analog Watch Peggs Gold Edition Analog 
                       </a>
                     </Link>
                   </div>
-                </ByCreator>
-                <div
-                  className="prdct-padding"
-                  id="prdct-online"
-                >
-                  <i>
-                    Offline
-                  </i>
-                </div>
-                <ProductVariants
-                  demoView={true}
-                  online={false}
-                  variantAction={[Function]}
-                  variantActionLabel="Select"
-                  variants={
-                    Array [
-                      Object {
-                        "__typename": "Variant",
-                        "availability": "4 in Stock!",
-                        "color": "white",
-                        "id": "v4r13nt1d",
-                        "image": Object {
-                          "__typename": "Image",
-                          "cloudinary_id": "111111",
-                          "height": 22,
-                          "id": "1m4g31d",
-                          "image_url": "peggswatch1.jpg",
-                          "large_image_url": "peggswatch2.jpg",
-                          "name": "peggswatch1",
-                          "transformation": "",
-                          "width": 22,
-                        },
-                        "price": 35,
-                        "product": Object {
-                          "__typename": "Product",
-                          "brand": "Peggs",
-                          "category": "jewelry",
-                          "department": "accessories",
-                          "description": "Limited Edition watch from the 2018 Fall fashion line.",
-                          "id": "pr0duct1d",
+                  <ByCreator
+                    name="Ms. Josue McCullough"
+                    online={true}
+                  >
+                    <div
+                      className="prdct-creator prdct-padding"
+                    >
+                      By
+                      <Link
+                        href={
+                          Object {
+                            "pathname": "/shop",
+                            "query": Object {
+                              "name": "Ms. Josue McCullough",
+                              "online": true,
+                            },
+                          }
+                        }
+                      >
+                        <a
+                          className="undrln-btn"
+                          href="/shop?name=Ms.%20Josue%20McCullough&online=true"
+                          onClick={[Function]}
+                        >
+                          Ms. Josue McCullough
+                        </a>
+                      </Link>
+                    </div>
+                  </ByCreator>
+                  <div
+                    className="prdct-padding"
+                    id="prdct-online"
+                  >
+                    <i>
+                      Offline
+                    </i>
+                  </div>
+                  <ProductVariants
+                    demoView={true}
+                    online={false}
+                    variantAction={[Function]}
+                    variantActionLabel="Select"
+                    variants={
+                      Array [
+                        Object {
+                          "__typename": "Variant",
+                          "availability": "4 in Stock!",
+                          "color": "white",
+                          "id": "v4r13nt1d",
                           "image": Object {
                             "__typename": "Image",
                             "cloudinary_id": "111111",
@@ -325,159 +309,179 @@ exports[`<EditProductVariants /> matches the snap shot 1`] = `
                             "transformation": "",
                             "width": 22,
                           },
-                          "online": false,
-                          "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
-                          "user": Object {
-                            "__typename": "User",
-                            "cart": Array [],
-                            "email": "Princess.Ernser@Dibbert.net",
-                            "id": "us3r1d",
-                            "name": "Dr. Randy Gleason",
-                            "password": "unique-password",
-                            "permissions": Array [
-                              "ADMIN",
-                            ],
+                          "price": 35,
+                          "product": Object {
+                            "__typename": "Product",
+                            "brand": "Peggs",
+                            "category": "jewelry",
+                            "department": "accessories",
+                            "description": "Limited Edition watch from the 2018 Fall fashion line.",
+                            "id": "pr0duct1d",
+                            "image": Object {
+                              "__typename": "Image",
+                              "cloudinary_id": "111111",
+                              "height": 22,
+                              "id": "1m4g31d",
+                              "image_url": "peggswatch1.jpg",
+                              "large_image_url": "peggswatch2.jpg",
+                              "name": "peggswatch1",
+                              "transformation": "",
+                              "width": 22,
+                            },
+                            "online": false,
+                            "title": "Peggs Gold Edition Analog Watch Peggs Gold Edition Analog ",
+                            "user": Object {
+                              "__typename": "User",
+                              "cart": Array [],
+                              "email": "Princess.Ernser@Dibbert.net",
+                              "id": "us3r1d",
+                              "name": "Dr. Randy Gleason",
+                              "password": "unique-password",
+                              "permissions": Array [
+                                "ADMIN",
+                              ],
+                            },
+                            "variants": Array [],
                           },
-                          "variants": Array [],
+                          "quantity": 4,
+                          "sale": true,
+                          "salePrice": 30,
+                          "size": "S",
                         },
-                        "quantity": 4,
-                        "sale": true,
-                        "salePrice": 30,
-                        "size": "S",
-                      },
-                    ]
-                  }
-                >
-                  <ProductStyles__StyledProductVariants>
-                    <div
-                      className="ProductStyles__StyledProductVariants-sc-2231u4-1 ndRtn"
-                    >
+                      ]
+                    }
+                  >
+                    <ProductStyles__StyledProductVariants>
                       <div
-                        className="prdct-padding"
+                        className="ProductStyles__StyledProductVariants-sc-2231u4-1 ndRtn"
                       >
-                        <PriceTag
-                          price={35}
-                          sale={true}
-                          salePrice={30}
+                        <div
+                          className="prdct-padding"
                         >
-                          <PriceTag__StyledPriceTag>
-                            <div
-                              className="PriceTag__StyledPriceTag-sc-119rsfa-0 ePOheW"
+                          <PriceTag
+                            price={35}
+                            sale={true}
+                            salePrice={30}
+                          >
+                            <PriceTag__StyledPriceTag>
+                              <div
+                                className="PriceTag__StyledPriceTag-sc-119rsfa-0 ePOheW"
+                              >
+                                <span
+                                  className="line-through"
+                                >
+                                  $35
+                                </span>
+                                <span
+                                  className="price-tag-padding price-tag-priceSale"
+                                >
+                                  $30
+                                </span>
+                              </div>
+                            </PriceTag__StyledPriceTag>
+                          </PriceTag>
+                        </div>
+                        <div
+                          className="prdct-padding"
+                          id="prod-var-sizes"
+                        >
+                          <div
+                            className="prdct-padding filter-sizes"
+                          >
+                            <button
+                              className="undrln-btn sample-selected"
+                              id="prod-var-size-S"
+                              key="0"
+                              name="size"
+                              onClick={[Function]}
+                              title="Select size: S"
+                              value="S"
                             >
-                              <span
-                                className="line-through"
-                              >
-                                $35
-                              </span>
-                              <span
-                                className="price-tag-padding price-tag-priceSale"
-                              >
-                                $30
-                              </span>
-                            </div>
-                          </PriceTag__StyledPriceTag>
-                        </PriceTag>
-                      </div>
-                      <div
-                        className="prdct-padding"
-                        id="prod-var-sizes"
-                      >
+                              S
+                            </button>
+                          </div>
+                        </div>
                         <div
-                          className="prdct-padding filter-sizes"
+                          className="prdct-padding"
+                          id="prod-var-colors"
+                        >
+                          <div
+                            id="prod-var-colors-title"
+                          >
+                            White
+                          </div>
+                          <div
+                            className="prdct-padding filter-colors"
+                          >
+                            <button
+                              className="sample-selected"
+                              id="prod-var-color-white"
+                              key="0"
+                              name="color"
+                              onClick={[Function]}
+                              title="Select color: White"
+                              value="white"
+                            >
+                              <div
+                                className="color-sphere-sample white-color-sample"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          className="prdct-padding"
+                          id="prod-var-avail"
+                        >
+                          <i>
+                            4 in Stock!
+                          </i>
+                        </div>
+                        <div
+                          className="prdct-padding"
+                          id="prod-var-action"
                         >
                           <button
-                            className="undrln-btn sample-selected"
-                            id="prod-var-size-S"
-                            key="0"
-                            name="size"
+                            className="big-btn"
+                            disabled={false}
+                            id="prod-var-action-btn"
                             onClick={[Function]}
-                            title="Select size: S"
-                            value="S"
                           >
-                            S
+                            Select
                           </button>
                         </div>
                       </div>
-                      <div
-                        className="prdct-padding"
-                        id="prod-var-colors"
-                      >
-                        <div
-                          id="prod-var-colors-title"
-                        >
-                          White
-                        </div>
-                        <div
-                          className="prdct-padding filter-colors"
-                        >
-                          <button
-                            className="sample-selected"
-                            id="prod-var-color-white"
-                            key="0"
-                            name="color"
-                            onClick={[Function]}
-                            title="Select color: White"
-                            value="white"
-                          >
-                            <div
-                              className="color-sphere-sample white-color-sample"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                      <div
-                        className="prdct-padding"
-                        id="prod-var-avail"
-                      >
-                        <i>
-                          4 in Stock!
-                        </i>
-                      </div>
-                      <div
-                        className="prdct-padding"
-                        id="prod-var-action"
-                      >
-                        <button
-                          className="big-btn"
-                          disabled={false}
-                          id="prod-var-action-btn"
-                          onClick={[Function]}
-                        >
-                          Select
-                        </button>
-                      </div>
+                    </ProductStyles__StyledProductVariants>
+                  </ProductVariants>
+                  <div
+                    className="prdct-desc prdct-padding"
+                    id="prdct-desc"
+                  >
+                    <div
+                      id="prdct-description"
+                    >
+                      <strong>
+                        Description:
+                      </strong>
+                      <p>
+                        Limited Edition watch from the 2018 Fall fashion line.
+                      </p>
                     </div>
-                  </ProductStyles__StyledProductVariants>
-                </ProductVariants>
-                <div
-                  className="prdct-desc prdct-padding"
-                  id="prdct-desc"
-                >
-                  <div
-                    id="prdct-description"
-                  >
-                    <strong>
-                      Description:
-                    </strong>
-                    <p>
-                      Limited Edition watch from the 2018 Fall fashion line.
-                    </p>
-                  </div>
-                  <div
-                    id="prdct-brand"
-                  >
-                    <strong>
-                      Brand:
-                    </strong>
-                    <p>
-                      Peggs
-                    </p>
+                    <div
+                      id="prdct-brand"
+                    >
+                      <strong>
+                        Brand:
+                      </strong>
+                      <p>
+                        Peggs
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </ProductStyles__StyledProduct>
-        </Product>
+            </ProductStyles__StyledProduct>
+          </Product>
+        </div>
       </div>
     </div>
   </ProductStyles__StyledEditProductVariants>
