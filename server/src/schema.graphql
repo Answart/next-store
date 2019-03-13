@@ -4,7 +4,7 @@ type Query {
   me: User
   users: [User!]!
   image(where: ImageWhereInput): Image
-  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, first: Int): [Image!]!
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, first: Int): [Image]!
   product(where: ProductWhereInput): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): [Product!]!
   productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, first: Int): ProductConnection!
