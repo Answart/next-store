@@ -48,16 +48,15 @@ const EditProductPage = ({ query }) => (
 
               <div className="edit-page-content">
                 <UpdateProductForm product={product} />
+              </div>
 
-                <div className="edit-page-content-footer">
-                  <DeleteProduct
-                    id={query.id}
-                    userName={product.user.name}
-                  >
-                    Delete Product
-                  </DeleteProduct>
-                </div>
-
+              <div className="edit-page-content-footer">
+                <DeleteProduct
+                  id={query.id}
+                  userName={product.user.name}
+                >
+                  Delete Product
+                </DeleteProduct>
               </div>
             </StyledEditPage>
           )

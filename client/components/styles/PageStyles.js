@@ -206,23 +206,32 @@ const StyledCreatePage = styled.div`
 
 const StyledEditPage = styled.div`
   display: grid;
-  grid-template-rows: 1.9rem 2rem minmax(50rem, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.9rem 2rem 1fr 4rem;
+  grid-auto-flow: row;
   grid-gap: 2.5rem;
   max-width: ${props => props.theme.maxWidth};
   padding-bottom: 5rem;
   margin: 0 auto;
   .edit-page-navi {
     grid-column: 1 / -1;
-    grid-row: 2 / 2;
+    grid-row: 2 / 4;
     text-align: right;
+    justify-content: right;
   }
   .edit-page-content {
-    grid-column: 1 / 1;
-    grid-row: 3 / -1;
-    .edit-page-content-footer {
-      padding: 5rem 0;
-      text-align: center;
-    }
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50rem, 90rem));
+    justify-content: center;
+  }
+  .edit-page-content-footer {
+    grid-column: 1 / -1;
+    grid-row: 4 / 4;
+    padding: 5rem 0;
+    text-align: center;
+    justify-content: center;
   }
 `;
 
