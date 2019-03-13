@@ -246,7 +246,13 @@ const StyledSignupPage = styled.div`
   margin: 0 auto;
   .signup-page-content {
     grid-row: 2 / 2;
-    grid-column: 2 / 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 30rem));
+    grid-gap: 2.5rem;
+    justify-content: center;
+    form {
+      max-height: 32rem;
+    }
   }
 `;
 

@@ -8,8 +8,8 @@ const SignupPage = () => (
     <PageTitle page='Signup' />
 
     <div className="signup-page-content">
-      <SignupForm />
       <SigninForm />
+      <SignupForm />
     </div>
   </StyledSignupPage>
 );
