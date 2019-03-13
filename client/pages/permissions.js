@@ -11,24 +11,28 @@ const PermissionsPage = () => (
   <StyledCreatePage>
     <PageTitle page='Manage Permissions' />
 
-    <div className="create-page-form">
       <RequireSignin>
         {({ me }) => (
           <Query query={ALL_USERS_QUERY}>
             {({ data, loading, error }) => {
               if (loading) return (<p>Loading...</p>);
-              if (error) return (<NotFound status={401} message={error.message} />);
+              if (error) return (
+                <div className="create-page-form">
+                  <NotFound status={401} message={error.message} />
+                </div>
+              );
               const users = (!!data && data.users)
                 ? data.users
                 : [];
               return (
-                <Permissions users={users} />
+                <div className="create-page-form">
+                  <Permissions users={users} />
+                </div>
               );
             }}
           </Query>
         )}
        </RequireSignin>
-    </div>
   </StyledCreatePage>
 );
 

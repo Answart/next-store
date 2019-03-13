@@ -198,6 +198,9 @@ const StyledCreatePage = styled.div`
   .create-page-form {
     grid-row: 2 / 2;
     grid-column: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50rem, 80rem));
+    justify-content: center;
   }
 `;
 
