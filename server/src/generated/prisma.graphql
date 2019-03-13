@@ -804,8 +804,13 @@ type Order {
   id: ID!
   status: String!
   quantity: Int!
-  total: Int!
-  charge: String!
+  subtotal: Float!
+  shipping: Float!
+  tax: Float!
+  total: Float!
+  sales_tax_rate: Float!
+  shipping_rate: Float!
+  payment: String!
   items(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderItem!]
   buyer: User
   createdAt: DateTime!
@@ -821,8 +826,13 @@ type OrderConnection {
 input OrderCreateInput {
   status: String
   quantity: Int
-  total: Int!
-  charge: String!
+  subtotal: Float!
+  shipping: Float!
+  tax: Float!
+  total: Float!
+  sales_tax_rate: Float!
+  shipping_rate: Float!
+  payment: String!
   items: OrderItemCreateManyWithoutOrderInput
   buyer: UserCreateOneInput
 }
@@ -835,8 +845,13 @@ input OrderCreateOneWithoutItemsInput {
 input OrderCreateWithoutItemsInput {
   status: String
   quantity: Int
-  total: Int!
-  charge: String!
+  subtotal: Float!
+  shipping: Float!
+  tax: Float!
+  total: Float!
+  sales_tax_rate: Float!
+  shipping_rate: Float!
+  payment: String!
   buyer: UserCreateOneInput
 }
 
@@ -848,7 +863,7 @@ type OrderEdge {
 type OrderItem {
   id: ID!
   title: String!
-  price: Int!
+  price: Float!
   quantity: Int!
   color: String
   size: String
@@ -868,7 +883,7 @@ type OrderItemConnection {
 
 input OrderItemCreateInput {
   title: String!
-  price: Int!
+  price: Float!
   quantity: Int
   color: String
   size: String
@@ -885,7 +900,7 @@ input OrderItemCreateManyWithoutOrderInput {
 
 input OrderItemCreateWithoutOrderInput {
   title: String!
-  price: Int!
+  price: Float!
   quantity: Int
   color: String
   size: String
@@ -923,7 +938,7 @@ enum OrderItemOrderByInput {
 type OrderItemPreviousValues {
   id: ID!
   title: String!
-  price: Int!
+  price: Float!
   quantity: Int!
   color: String
   size: String
@@ -961,14 +976,14 @@ input OrderItemScalarWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  price: Int
-  price_not: Int
-  price_in: [Int!]
-  price_not_in: [Int!]
-  price_lt: Int
-  price_lte: Int
-  price_gt: Int
-  price_gte: Int
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
   quantity: Int
   quantity_not: Int
   quantity_in: [Int!]
@@ -1060,7 +1075,7 @@ input OrderItemSubscriptionWhereInput {
 
 input OrderItemUpdateInput {
   title: String
-  price: Int
+  price: Float
   quantity: Int
   color: String
   size: String
@@ -1072,7 +1087,7 @@ input OrderItemUpdateInput {
 
 input OrderItemUpdateManyDataInput {
   title: String
-  price: Int
+  price: Float
   quantity: Int
   color: String
   size: String
@@ -1081,7 +1096,7 @@ input OrderItemUpdateManyDataInput {
 
 input OrderItemUpdateManyMutationInput {
   title: String
-  price: Int
+  price: Float
   quantity: Int
   color: String
   size: String
@@ -1107,7 +1122,7 @@ input OrderItemUpdateManyWithWhereNestedInput {
 
 input OrderItemUpdateWithoutOrderDataInput {
   title: String
-  price: Int
+  price: Float
   quantity: Int
   color: String
   size: String
@@ -1156,14 +1171,14 @@ input OrderItemWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  price: Int
-  price_not: Int
-  price_in: [Int!]
-  price_not_in: [Int!]
-  price_lt: Int
-  price_lte: Int
-  price_gt: Int
-  price_gte: Int
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
   quantity: Int
   quantity_not: Int
   quantity_in: [Int!]
@@ -1249,10 +1264,20 @@ enum OrderOrderByInput {
   status_DESC
   quantity_ASC
   quantity_DESC
+  subtotal_ASC
+  subtotal_DESC
+  shipping_ASC
+  shipping_DESC
+  tax_ASC
+  tax_DESC
   total_ASC
   total_DESC
-  charge_ASC
-  charge_DESC
+  sales_tax_rate_ASC
+  sales_tax_rate_DESC
+  shipping_rate_ASC
+  shipping_rate_DESC
+  payment_ASC
+  payment_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1263,8 +1288,13 @@ type OrderPreviousValues {
   id: ID!
   status: String!
   quantity: Int!
-  total: Int!
-  charge: String!
+  subtotal: Float!
+  shipping: Float!
+  tax: Float!
+  total: Float!
+  sales_tax_rate: Float!
+  shipping_rate: Float!
+  payment: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1290,8 +1320,13 @@ input OrderSubscriptionWhereInput {
 input OrderUpdateInput {
   status: String
   quantity: Int
-  total: Int
-  charge: String
+  subtotal: Float
+  shipping: Float
+  tax: Float
+  total: Float
+  sales_tax_rate: Float
+  shipping_rate: Float
+  payment: String
   items: OrderItemUpdateManyWithoutOrderInput
   buyer: UserUpdateOneInput
 }
@@ -1299,8 +1334,13 @@ input OrderUpdateInput {
 input OrderUpdateManyMutationInput {
   status: String
   quantity: Int
-  total: Int
-  charge: String
+  subtotal: Float
+  shipping: Float
+  tax: Float
+  total: Float
+  sales_tax_rate: Float
+  shipping_rate: Float
+  payment: String
 }
 
 input OrderUpdateOneWithoutItemsInput {
@@ -1315,8 +1355,13 @@ input OrderUpdateOneWithoutItemsInput {
 input OrderUpdateWithoutItemsDataInput {
   status: String
   quantity: Int
-  total: Int
-  charge: String
+  subtotal: Float
+  shipping: Float
+  tax: Float
+  total: Float
+  sales_tax_rate: Float
+  shipping_rate: Float
+  payment: String
   buyer: UserUpdateOneInput
 }
 
@@ -1362,28 +1407,68 @@ input OrderWhereInput {
   quantity_lte: Int
   quantity_gt: Int
   quantity_gte: Int
-  total: Int
-  total_not: Int
-  total_in: [Int!]
-  total_not_in: [Int!]
-  total_lt: Int
-  total_lte: Int
-  total_gt: Int
-  total_gte: Int
-  charge: String
-  charge_not: String
-  charge_in: [String!]
-  charge_not_in: [String!]
-  charge_lt: String
-  charge_lte: String
-  charge_gt: String
-  charge_gte: String
-  charge_contains: String
-  charge_not_contains: String
-  charge_starts_with: String
-  charge_not_starts_with: String
-  charge_ends_with: String
-  charge_not_ends_with: String
+  subtotal: Float
+  subtotal_not: Float
+  subtotal_in: [Float!]
+  subtotal_not_in: [Float!]
+  subtotal_lt: Float
+  subtotal_lte: Float
+  subtotal_gt: Float
+  subtotal_gte: Float
+  shipping: Float
+  shipping_not: Float
+  shipping_in: [Float!]
+  shipping_not_in: [Float!]
+  shipping_lt: Float
+  shipping_lte: Float
+  shipping_gt: Float
+  shipping_gte: Float
+  tax: Float
+  tax_not: Float
+  tax_in: [Float!]
+  tax_not_in: [Float!]
+  tax_lt: Float
+  tax_lte: Float
+  tax_gt: Float
+  tax_gte: Float
+  total: Float
+  total_not: Float
+  total_in: [Float!]
+  total_not_in: [Float!]
+  total_lt: Float
+  total_lte: Float
+  total_gt: Float
+  total_gte: Float
+  sales_tax_rate: Float
+  sales_tax_rate_not: Float
+  sales_tax_rate_in: [Float!]
+  sales_tax_rate_not_in: [Float!]
+  sales_tax_rate_lt: Float
+  sales_tax_rate_lte: Float
+  sales_tax_rate_gt: Float
+  sales_tax_rate_gte: Float
+  shipping_rate: Float
+  shipping_rate_not: Float
+  shipping_rate_in: [Float!]
+  shipping_rate_not_in: [Float!]
+  shipping_rate_lt: Float
+  shipping_rate_lte: Float
+  shipping_rate_gt: Float
+  shipping_rate_gte: Float
+  payment: String
+  payment_not: String
+  payment_in: [String!]
+  payment_not_in: [String!]
+  payment_lt: String
+  payment_lte: String
+  payment_gt: String
+  payment_gte: String
+  payment_contains: String
+  payment_not_contains: String
+  payment_starts_with: String
+  payment_not_starts_with: String
+  payment_ends_with: String
+  payment_not_ends_with: String
   items_every: OrderItemWhereInput
   items_some: OrderItemWhereInput
   items_none: OrderItemWhereInput

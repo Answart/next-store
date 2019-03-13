@@ -25,6 +25,10 @@ const {
   updateCartItem,
   removeFromCart,
 } = require('./cartItem');
+const {
+  createOrder,
+} = require('./order');
+
 
 
 const Mutation = {
@@ -44,7 +48,8 @@ const Mutation = {
   deleteProductVariant,
   addToCart,
   removeFromCart,
-  updateCartItem
+  updateCartItem,
+  createOrder,
 };
 
 

@@ -78,7 +78,7 @@ type CartItem {
 type OrderItem {
   id: ID! @unique
   title: String!
-  price: Int!
+  price: Float!
   quantity: Int! @default(value: 1)
   color: String
   size: String
@@ -94,8 +94,13 @@ type Order {
   id: ID! @unique
   status: String! @default(value: "processing")
   quantity: Int! @default(value: 1)
-  total: Int!
-  charge: String!
+  subtotal: Float!
+  shipping: Float!
+  tax: Float!
+  total: Float!
+  sales_tax_rate: Float!
+  shipping_rate: Float!
+  payment: String!
   items: [OrderItem!]! @relation(name: "OrderItems", onDelete: CASCADE)
   buyer: User
   createdAt: DateTime!
