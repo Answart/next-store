@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { Mutation } from 'react-apollo';
-import { CREATE_ORDER_MUTATION } from '../../graphql';
+import { CREATE_ORDER_MUTATION, LOCAL_CARTOPEN_QUERY } from '../../graphql';
 
 
 const CheckoutCart = props => {
@@ -18,8 +18,16 @@ const CheckoutCart = props => {
       });
     });
   };
+  const update = (cache, payload) => {
+    try {
+      const data = cache.readQuery({ query: LOCAL_CARTOPEN_QUERY });
+      data.cartOpen = !data.cartOpen;
+      cache.writeQuery({ query: LOCAL_CARTOPEN_QUERY, data });
+    } catch(e) {}
+  }
   return (
     <Mutation mutation={CREATE_ORDER_MUTATION}
+      update={update}
       onError={(e) => {
         NProgress.done();
         alert(e.message.replace('GraphQL error: ', ''));
