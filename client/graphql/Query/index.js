@@ -7,6 +7,9 @@ export {
   CURRENT_USER_QUERY,
 } from './user';
 export {
+  ORDER_QUERY,
+} from './order';
+export {
   PRODUCT_QUERY,
   SHOP_PRODUCTS_QUERY,
   PAGINATION_QUERY,
