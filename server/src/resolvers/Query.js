@@ -25,7 +25,8 @@ const Query = {
   products: forwardTo('db'),
   productsConnection: forwardTo('db'),
   variant: forwardTo('db'),
-  variants: forwardTo('db')
+  variants: forwardTo('db'),
+  order: forwardTo('db'),
 };
 
 
