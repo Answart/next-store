@@ -27,3 +27,6 @@ export {
   UPDATE_CARTITEM_MUTATION,
   REMOVE_FROM_CART_MUTATION,
 } from './cartItem';
+export {
+  CREATE_ORDER_MUTATION,
+} from './order';
