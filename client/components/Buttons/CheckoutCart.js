@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { Mutation } from 'react-apollo';
-import { CREATE_ORDER_MUTATION, LOCAL_CARTOPEN_QUERY } from '../../graphql';
+import { CREATE_ORDER_MUTATION, CURRENT_USER_QUERY, LOCAL_CARTOPEN_QUERY } from '../../graphql';
 
 
 const CheckoutCart = props => {
@@ -27,6 +27,7 @@ const CheckoutCart = props => {
   }
   return (
     <Mutation mutation={CREATE_ORDER_MUTATION}
+      refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       update={update}
       onError={(e) => {
         NProgress.done();
