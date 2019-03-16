@@ -5,13 +5,15 @@ const jwt = require('jsonwebtoken');
 const { GraphQLServer } = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
 const resolvers = require('./resolvers');
-const endpoint = (process.env.NODE_ENV == 'production')
+
+const node_env = process.env.NODE_ENV;
+const endpoint = (node_env == 'production')
   ? process.env.PRISMA_PROD_ENDPOINT
   : process.env.PRISMA_DEV_ENDPOINT;
-const clientUrl = (process.env.NODE_ENV == 'production')
+const clientUrl = (node_env == 'production')
   ? process.env.PROD_CLIENT_URL
   : process.env.DEV_CLIENT_URL;
-const serverUrl = (process.env.NODE_ENV == 'development')
+const serverUrl = (node_env == 'development')
   ? `${process.env.HOST}:${process.env.PORT}`
   : process.env.PROD_SERVER_URL;
 
@@ -20,7 +22,9 @@ const db = new Prisma({
   typeDefs: 'src/generated/prisma.graphql',
   endpoint,
   secret: process.env.PRISMA_SECRET,
-  debug: false,
+  debug: (node_env == 'development')
+    ? true
+    : false,
 });
 
 const server = new GraphQLServer({
@@ -31,7 +35,6 @@ const server = new GraphQLServer({
   },
   context: req => ({ ...req, db })
 });
-
 
 server.express.use(cookieParser());
 
@@ -65,6 +68,7 @@ server.express.use(async (req, res, next) => {
 // }
 
 
+
 server.start(
   {
     cors: {
@@ -73,11 +77,11 @@ server.start(
     },
   },
   details => {
-    console.log('\nSERVER::    GraphQLServer Starting . . .');
-    console.log(`SERVER::    Environment: ${process.env.NODE_ENV}`);
+    console.log('\nSERVER::    GraphQLServer Starting . . . 🚀  ');
+    console.log(`SERVER::    Environment: ${node_env}`);
     console.info(`SERVER::    Port: ${details.port}`);
     console.info(`SERVER::    CORS origin: ${!!details.cors ? details.cors.origin : ''}`);
     console.info(`SERVER::    DB Endpoint: ${endpoint}`);
-    console.info(`SERVER::    Url: ${serverUrl}\n`);
+    console.info(`SERVER::    Server Url: ${serverUrl}\n`);
   }
 );
