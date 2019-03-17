@@ -17,6 +17,14 @@ const serverUrl = (node_env == 'development')
   ? `${process.env.HOST}:${process.env.PORT}`
   : process.env.PROD_SERVER_URL;
 
+const logs = async (resolve, root, args, context, info) => {
+  const result = await resolve(root, args, context, info)
+  if (!!context.request && !!context.request.body && typeof result == 'object') {
+    console.log(`[${!!context.request.userId ? context.request.userId : 'unknown'}] ${context.request.body.operationName} ${JSON.stringify(context.request.body.variables)}:\n`, result)
+  }
+
+  return result;
+}
 
 const db = new Prisma({
   typeDefs: 'src/generated/prisma.graphql',
@@ -33,7 +41,8 @@ const server = new GraphQLServer({
   resolverValidationOptions: {
     requireResolversForResolveType: false,
   },
-  context: req => ({ ...req, db })
+  context: req => ({ ...req, db }),
+  middlewares: [logs]
 });
 
 server.express.use(cookieParser());
