@@ -16,7 +16,7 @@
 
 :construction: WORK IN PROGRESS :construction:
 
-An **e-commerce app** where a user can browse among products with which they can buy or sell. It contains a client app built in [**React**](https://reactjs.org/) using it's [**Next.js**](https://nextjs.org/) framework and GraphQL's [**Apollo**](https://www.apollographql.com/) framework. The server app uses a [**GraphQL**](https://oss.prisma.io/content/graphql-yoga/01-overview/) server with [**Prisma**](https://www.prisma.io/) as the database interface.
+An **e-commerce app** where a user can browse among products with which they can buy or sell. It contains a client app built in [**React**](https://reactjs.org/) using it's [**Next.js**](https://nextjs.org/) framework and GraphQL's [**Apollo**](https://www.apollographql.com/) framework. The server app uses a [**GraphQL Yoga**](https://oss.prisma.io/content/graphql-yoga/01-overview/) server with [**Prisma**](https://www.prisma.io/) as the database interface.
 
 User stories
 ------------
@@ -24,20 +24,28 @@ User stories
 * [x] As an unauthenticated or authenticated user, I can see and search for items in the store.
 * [x] As an unauthenticated user, I can create an account or sign in.
 * [x] As an unauthenticated user, I can request to reset my account password.
-* [x] As an authenticated user, I can reset my account password.
-* [x] As an authenticated user, I can submit products I want to sell through the store.
-* [x] As an authenticated user, I can edit details, such as title and description, of a submitted product.
-* [x] As an authenticated user, I can add selections to a submitted product.
-* [x] As an authenticated user, I can edit details, such as price and quantity, of a submitted product's selection.
-* [x] As an authenticated user, I can delete an product I have submitted to the store.
-* [x] As an authenticated user, I can add/remove products from cart and come back later to access them.
-* [x] As an authenticated user, I can remove products from cart that I decide I don't want anymore.
+* [x] As an authenticated user, I can create products I want to sell through the store.
+* [x] As an authenticated user, I can update product details such as title and description.
+* [x] As an authenticated user, I can add selections to a product.
+* [x] As an authenticated user, I can update product selection details such as price and quantity.
+* [x] As an authenticated user, I can delete a product I have created in the store.
+* [x] As an authenticated user, I can add/remove products in the cart and come back later to access them.
 * [ ] As an authenticated user, I can use a credit card to buy products in cart.
-* [ ] As an authenticated user, I can view current/previous orders.
+* [ ] As an authenticated user, I can view current/previous orders I have made.
 * [ ] As an authenticated user, I can view current/previous sales where people have ordered my products.
 
 Tech Stack and Key Packages
 ---------------------------
+
+### Client Side
+
+* [React](https://reactjs.org/): Javascript Framework
+* [Next.js](https://nextjs.org/): React Framework for server side rendering/routing/tooling
+* [Apollo](https://www.apollographql.com/): GraphQL Framework for Data Management
+* [Styled-Components](https://www.styled-components.com/): CSS for styling React component systems
+* [Jest](https://facebook.github.io/jest/): Javascript testing
+* [Enzyme](https://github.com/airbnb/enzyme): React testing utility
+* [Cloudinary](https://cloudinary.com/): Image hosting API
 
 ### Server Side
 
@@ -50,16 +58,6 @@ Tech Stack and Key Packages
 * [Postmark](https://postmarkapp.com/): Production emailing
 * [nodemailer](https://nodemailer.com/about/): Sending email with NodeJS
 * [Stripe](https://stripe.com/): E-commerce API
-
-### Client Side
-
-* [React](https://reactjs.org/): Javascript Framework
-* [Next.js](https://nextjs.org/): React Framework for server side rendering/routing/tooling
-* [Apollo](https://www.apollographql.com/): GraphQL Framework for Data Management
-* [Styled-Components](https://www.styled-components.com/): CSS for styling React component systems
-* [Jest](https://facebook.github.io/jest/): Javascript testing
-* [Enzyme](https://github.com/airbnb/enzyme): React testing utility
-* [Cloudinary](https://cloudinary.com/): Image hosting API
 
 App Map
 -------
