@@ -27,6 +27,7 @@ const Query = {
   variant: forwardTo('db'),
   variants: forwardTo('db'),
   order: forwardTo('db'),
+  orders: forwardTo('db'),
 };
 
 
