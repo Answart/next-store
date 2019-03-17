@@ -8,6 +8,7 @@ export {
 } from './user';
 export {
   ORDER_QUERY,
+  ORDERS_QUERY,
 } from './order';
 export {
   PRODUCT_QUERY,
