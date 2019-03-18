@@ -66,7 +66,6 @@ const ShopPage = ({ query }) => (
                           pageQuery={query}
                           results={products.length}
                           count={count}
-                          disabled={!count}
                         />
 
                         {(!!notFound.status || !products.length) ? (
@@ -84,7 +83,6 @@ const ShopPage = ({ query }) => (
                           pageQuery={query}
                           results={products.length}
                           count={count}
-                          disabled={!count}
                         />
                       </div>
                     </div>

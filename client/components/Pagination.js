@@ -131,7 +131,6 @@ class Pagination extends Component {
     pathname: PropTypes.string.isRequired,
     results: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
-    disabled: PropTypes.bool.isRequired,
   };
   state = {
     sortDrpdwn: false,
@@ -143,7 +142,7 @@ class Pagination extends Component {
     this.setState(state => ({ [drpdwn]: !state[drpdwn] }));
   };
   render() {
-    const { pageQuery, pathname, results, count, disabled } = this.props;
+    const { pageQuery, pathname, results, count } = this.props;
     const currentShow = parseFloat(pageQuery.show) || 6;
     const currentPage = parseFloat(pageQuery.page) || 1;
     const currentOrderBy = pageQuery.orderBy || 'newest';
@@ -161,7 +160,7 @@ class Pagination extends Component {
           {!!currentOrderBy && (
             <div className="srt-inline">
               <button id="sortBtn" className="sort-btn"
-                disabled={disabled}
+                disabled={!count}
                 onClick={(e) => this.toggDrpdwn(e, 'sortDrpdwn')}
               >
                 {capWord(currentOrderBy)}
@@ -188,7 +187,7 @@ class Pagination extends Component {
           {!!currentShow && (
             <div className="srt-inline">
               <button id="showBtn" className="sort-btn"
-                disabled={disabled}
+                disabled={!count}
                 onClick={(e) => this.toggDrpdwn(e, 'showDrpdwn')}
               >
                 Show {currentShow}
