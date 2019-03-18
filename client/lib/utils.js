@@ -1,4 +1,4 @@
-import { SALES_TAX_RATE, SHIPPING_COST_PER_ITEM } from '../config';
+import { SALES_TAX_RATE, SHIPPING_COST_PER_ITEM, orderByList } from '../config';
 
 
 const capWord = function(string = "") {
@@ -136,6 +136,23 @@ const getFltrdObjs = function(objs, filter) {
   });
 }
 
+const getQueryVariables = function(pageQuery = {}) {
+  const variables = { ...pageQuery };
+  const show = parseFloat(pageQuery.show) || 6;
+  const page = parseFloat(pageQuery.page) || 1;
+
+  variables.first = show;
+  variables.skip = (page * show - show) || 0;
+  variables.orderBy = (!!pageQuery.orderBy)
+    ? orderByList[pageQuery.orderBy]
+    : orderByList['newest'];
+
+  delete variables.show;
+  delete variables.page;
+
+  return variables;
+}
+
 
 export {
   capWord,
@@ -144,4 +161,5 @@ export {
   getCartTotals,
   getUniqKeyVals,
   getFltrdObjs,
+  getQueryVariables,
 };
