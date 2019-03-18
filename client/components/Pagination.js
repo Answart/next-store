@@ -124,13 +124,11 @@ const getSamplePaginPages = function(page, pages) {
   return list;
 }
 
+
 class Pagination extends Component {
   static propTypes = {
     pageQuery: PropTypes.object.isRequired,
     pathname: PropTypes.string.isRequired,
-    currentShow: PropTypes.number,
-    currentPage: PropTypes.number,
-    currentOrderBy: PropTypes.string,
     results: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
     disabled: PropTypes.bool.isRequired,
@@ -145,10 +143,10 @@ class Pagination extends Component {
     this.setState(state => ({ [drpdwn]: !state[drpdwn] }));
   };
   render() {
-    const {
-      pageQuery, pathname, currentShow, currentPage, currentOrderBy, results, count, disabled
-    } = this.props;
-    const orderByKeys = Object.keys(orderByList);
+    const { pageQuery, pathname, results, count, disabled } = this.props;
+    const currentShow = parseFloat(pageQuery.show) || 6;
+    const currentPage = parseFloat(pageQuery.page) || 1;
+    const currentOrderBy = pageQuery.orderBy || 'newest';
     const pages = Math.ceil(count/currentShow);
     const list = getSamplePaginPages(currentPage, pages);
     const sortDropdownClasses = this.state.sortDrpdwn
@@ -170,7 +168,7 @@ class Pagination extends Component {
               </button>
 
               <div id="sortDropdown" className={sortDropdownClasses}>
-                {orderByKeys.map((orderBy, i) => (
+                {Object.keys(orderByList).map((orderBy, i) => (
                   <Link key={i} href={{
                     pathname,
                     query: {
@@ -220,7 +218,7 @@ class Pagination extends Component {
             {count || 0} Items
           </div>
 
-          {!!currentPage && (
+          {!!currentPage && !!results && (
             <>
               <div id="pagin-d-l-arrow" className="page-btn">
                 <Link prefetch href={{
@@ -230,7 +228,7 @@ class Pagination extends Component {
                     page: 1,
                   },
                 }}>
-                  <a aria-disabled={!results || currentPage == 1}>
+                  <a aria-disabled={currentPage == 1}>
                     <SvgIcon width={10} name='doubleLeftArrow' />
                   </a>
                 </Link>
@@ -244,7 +242,7 @@ class Pagination extends Component {
                     page: currentPage - 1,
                   },
                 }}>
-                  <a aria-disabled={!results || currentPage <= 1}>
+                  <a aria-disabled={currentPage <= 1}>
                     <SvgIcon width={10} name='leftArrow' />
                   </a>
                 </Link>
@@ -274,7 +272,7 @@ class Pagination extends Component {
                     page: currentPage + 1,
                   },
                 }}>
-                  <a aria-disabled={!results || currentPage >= pages}>
+                  <a aria-disabled={currentPage >= pages}>
                     <SvgIcon width={10} name='rightArrow' />
                   </a>
                 </Link>
@@ -288,7 +286,7 @@ class Pagination extends Component {
                     page: pages,
                   },
                 }}>
-                  <a aria-disabled={!results || currentPage == pages}>
+                  <a aria-disabled={currentPage == pages}>
                     <SvgIcon width={10} name='doubleRightArrow' />
                   </a>
                 </Link>

@@ -7,32 +7,8 @@ import ProductsList from '../components/ProductsList';
 import Filter from '../components/Filter';
 import Pagination from '../components/Pagination';
 import User from '../components/User';
-import { capWord, getPageTitleProps } from '../lib/utils';
-import { orderByList } from '../config';
+import { capWord, getPageTitleProps, getQueryVariables } from '../lib/utils';
 import { SHOP_PRODUCTS_QUERY, PAGINATION_QUERY } from '../graphql';
-
-
-function getShopProps(user, pageQuery = {}) {
-  const variables = { ...pageQuery };
-  variables.online = true;
-
-  if (!!user && variables.name && variables.name === user.name) {
-    delete variables.online;
-  }
-
-  const show = parseFloat(pageQuery.show) || 6;
-  variables.first = show;
-  delete variables.show;
-
-  const page = parseFloat(pageQuery.page) || 1;
-  delete variables.page;
-  variables.skip = (page * show - show) || 0;
-
-  const orderBy = pageQuery.orderBy || 'newest';
-  variables.orderBy = orderByList[orderBy];
-
-  return { variables, show, page, orderBy };
-}
 
 
 const ShopPage = ({ query }) => (
@@ -42,7 +18,12 @@ const ShopPage = ({ query }) => (
       if (userError) return (<NotFound status={400} message={userError.message} />);
       const me = !!userData ? userData.me : null;
       const { pageLabel, titles } = getPageTitleProps(me, query);
-      const { variables, show, page, orderBy } = getShopProps(me, query);
+      const variables = getQueryVariables(query);
+      if (!!me && variables.name && variables.name === me.name) {
+        delete variables.online;
+      } else {
+        variables.online = true;
+      }
       return (
         <StyledShopPage>
           <PageTitle
@@ -83,11 +64,8 @@ const ShopPage = ({ query }) => (
                         <Pagination
                           pathname='/shop'
                           pageQuery={query}
-                          currentPage={page}
-                          currentShow={show}
                           results={products.length}
                           count={count}
-                          currentOrderBy={orderBy}
                           disabled={!count}
                         />
 
@@ -104,11 +82,8 @@ const ShopPage = ({ query }) => (
                         <Pagination
                           pathname='/shop'
                           pageQuery={query}
-                          currentPage={page}
-                          currentShow={show}
                           results={products.length}
                           count={count}
-                          currentOrderBy={orderBy}
                           disabled={!count}
                         />
                       </div>
