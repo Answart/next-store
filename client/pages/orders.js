@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import PageTitle from '../components/PageTitle';
 import RequireSignin from '../components/RequireSignin';
 import NotFound from '../components/NotFound';
+import Pagination from '../components/Pagination';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 import { getQueryVariables } from '../lib/utils';
 import { ORDERS_QUERY } from '../graphql';
@@ -30,7 +31,23 @@ const OrdersPage = ({ query }) => (
                 const count = orders.length;
                 if (orders.length < 1) return (<NotFound status={204} message='You do not have any orders yet.' />);
                 return (
-                  <p>TODO</p>
+                  <>
+                    <Pagination
+                      pathname='/orders'
+                      pageQuery={query}
+                      results={orders.length}
+                      count={count}
+                    />
+
+                    <p>TODO</p>
+
+                    <Pagination
+                      pathname='/orders'
+                      pageQuery={query}
+                      results={orders.length}
+                      count={count}
+                    />
+                  </>
                 );
               }}
             </Query>
