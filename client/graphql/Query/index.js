@@ -9,6 +9,7 @@ export {
 export {
   ORDER_QUERY,
   ORDERS_QUERY,
+  ORDER_ITEMS_QUERY,
 } from './order';
 export {
   PRODUCT_QUERY,

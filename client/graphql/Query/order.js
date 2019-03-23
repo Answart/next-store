@@ -78,8 +78,59 @@ const ORDERS_QUERY = gql`
   }
 `;
 
+const ORDER_ITEMS_QUERY = gql`
+  query ORDER_ITEMS_QUERY(
+    $orderBy: OrderItemOrderByInput,
+    $skip: Int,
+    $after: String,
+    $before: String,
+    $first: Int,
+    $last: Int,
+    $sellerId: ID
+  ) {
+    orderItems(
+      where: {
+        seller: { id: $sellerId }
+      },
+      orderBy: $orderBy,
+      skip: $skip,
+      after: $after,
+      before: $before,
+      first: $first,
+      last: $last,
+    ) {
+      id
+      title
+      quantity
+      price
+      color
+      size
+      image_url
+      createdAt
+      seller {
+        id
+      }
+      order {
+        id
+        status
+        buyer {
+          id
+          name
+        }
+      }
+      variant {
+        id
+        product {
+          id
+        }
+      }
+    }
+  }
+`;
+
 
 export {
   ORDER_QUERY,
   ORDERS_QUERY,
+  ORDER_ITEMS_QUERY,
 }
