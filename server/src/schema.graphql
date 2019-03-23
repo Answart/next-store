@@ -12,6 +12,7 @@ type Query {
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, first: Int): [Variant]!
   order(where: OrderWhereInput): Order
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int, buyerId: ID): [Order]!
+  orderItems(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int, sellerId: ID): [OrderItem]!
 }
 
 type Mutation {
