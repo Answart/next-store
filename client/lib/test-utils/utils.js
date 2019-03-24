@@ -62,6 +62,26 @@ const fakeCartItem = overrides => ({
   ...overrides,
 });
 
+const fakeOrder = () => ({
+  __typename: 'Order',
+  id: '0rd3r1d',
+  charge: 'ch_123',
+  total: 4000,
+  status: 'processing',
+  quantity: 3,
+  subtotal: 20,
+  shipping: 1.5,
+  tax: 1.02,
+  total: 20,
+  sales_tax_rate: 1.02,
+  shipping_rate: 1.02,
+  payment: 'some payment',
+  items: [],
+  buyer: fakeUser(),
+  createdAt: '2018-04 - 06T19: 24: 16.000Z',
+  updatedAt: '2018-04 - 06T19: 24: 16.000Z',
+});
+
 
 export {
   fakeUser,
@@ -69,4 +89,5 @@ export {
   fakeProduct,
   fakeVariant,
   fakeCartItem,
+  fakeOrder,
 };
