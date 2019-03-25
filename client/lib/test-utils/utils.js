@@ -82,6 +82,22 @@ const fakeOrder = () => ({
   updatedAt: '2018-04 - 06T19: 24: 16.000Z',
 });
 
+const fakeOrderItem = () => ({
+  __typename: 'OrderItem',
+  id: '0rd3r1t3m1d',
+  title: 'order item title',
+  price: 12,
+  quantity: 2,
+  color: 'green',
+  size: 'L',
+  image_url: 'some_img_url',
+  seller: fakeUser(),
+  variant: fakeVariant(),
+  order: fakeOrder(),
+  createdAt: '2018-04 - 06T19: 24: 16.000Z',
+  updatedAt: '2018-04 - 06T19: 24: 16.000Z',
+});
+
 
 export {
   fakeUser,
@@ -90,4 +106,5 @@ export {
   fakeVariant,
   fakeCartItem,
   fakeOrder,
+  fakeOrderItem,
 };
