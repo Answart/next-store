@@ -8,6 +8,7 @@ export {
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
+  updatePermissionsMutationMock,
 } from './user';
 export {
   createImageMutationMock, createImageMutationErrorMock,

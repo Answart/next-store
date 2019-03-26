@@ -2,7 +2,8 @@ import {
   CURRENT_USER_QUERY,
   SIGNUP_MUTATION, SIGNIN_MUTATION,
   SIGNOUT_MUTATION,
-  REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION
+  REQUEST_PASSWORD_RESET_MUTATION, RESET_PASSWORD_MUTATION,
+  UPDATE_PERMISSIONS_MUTATION,
 } from '../../../../graphql'
 import { mockUser, mockCartItem } from '../typeDefs';
 
@@ -141,6 +142,22 @@ const resetPasswordMutationErrorMock = {
   },
 };
 
+const updatePermissionsMutationMock = {
+  request: { query: UPDATE_PERMISSIONS_MUTATION, variables: {
+    permissions: ['ADMIN'],
+    userId: mockUser.id,
+  }},
+  result: {
+    data: {
+      updatePermissions: {
+        ...mockUser,
+        __typename: 'User',
+        permissions: ['ADMIN']
+      }
+    },
+  },
+};
+
 
 export {
   userQueryEmptyCartMock, userQueryNoUserMock, userQueryCartItemMock,
@@ -149,4 +166,5 @@ export {
   signoutMutationMock,
   requestPasswordResetMutationMock, requestPasswordResetMutationErrorMock,
   resetPasswordMutationMock, resetPasswordMutationErrorMock,
+  updatePermissionsMutationMock,
 };
