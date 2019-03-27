@@ -1,5 +1,5 @@
 import {
-  fakeUser, fakeImage, fakeProduct, fakeVariant, fakeCartItem, fakeOrder,
+  fakeUser, fakeImage, fakeProduct, fakeVariant, fakeCartItem, fakeOrder, fakeOrderItem,
 } from '../utils';
 
 
@@ -10,6 +10,7 @@ const mockProduct = fakeProduct();
 const mockVariant = fakeVariant();
 const mockCartItem = fakeCartItem();
 const mockOrder = fakeOrder();
+const mockOrderItem = fakeOrderItem();
 
 const mockUsers = [
   mockUser,
@@ -61,5 +62,5 @@ export {
   mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,
   mockCartItem,
-  mockOrder,
+  mockOrder, mockOrderItem,
 };

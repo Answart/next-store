@@ -4,7 +4,7 @@ export {
   mockProduct, mockProducts, mockShopProductsVariables,
   mockVariant,
   mockCartItem,
-  mockOrder,
+  mockOrderItem, mockOrder,
 } from './typeDefs';
 export {
   localUserQueryEmptyCartMock, localUserQueryNoUserMock, localUserQueryCartItemMock,
