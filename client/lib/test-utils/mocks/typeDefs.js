@@ -12,6 +12,8 @@ const mockCartItem = fakeCartItem();
 const mockOrder = fakeOrder();
 const mockOrderItem = fakeOrderItem();
 
+mockOrder.items.push(mockOrderItem);
+
 const mockUsers = [
   mockUser,
   {
