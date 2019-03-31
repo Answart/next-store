@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OrdersList /> matches the snap shot 1`] = `
+<div
+  id="orders-list"
+>
+  <OrderStyles__StyledOrderListItems>
+    <div
+      className="OrderStyles__StyledOrderListItems-ai9ngn-1 lbDraH"
+    >
+      <div
+        id="order-list-item-0rd3r1d"
+        key="0rd3r1d"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "/order",
+              "query": Object {
+                "id": "0rd3r1d",
+              },
+            }
+          }
+        >
+          <a
+            className="order-list-item"
+            href="/order?id=0rd3r1d"
+            onClick={[Function]}
+          >
+            <div
+              className="order-list-item-imgs order-list-item-multi-imgs"
+            >
+              <img
+                className="order-list-item-multi-img"
+                key="0rd3r1t3m1d"
+                src="some_img_url"
+              />
+            </div>
+            <div
+              className="order-list-item-details"
+            >
+              <h3
+                className="page-title"
+              >
+                <span>
+                  ID: 
+                  0rd3r1d
+                </span>
+                <span>
+                  <i>
+                    processing
+                  </i>
+                </span>
+              </h3>
+              <p
+                className="page-detail"
+              >
+                <span>
+                  Payment ID: 
+                </span>
+                <span>
+                  some payment
+                </span>
+              </p>
+              <p
+                className="page-detail"
+              >
+                <span>
+                  Items: 
+                </span>
+                <span>
+                  3
+                </span>
+              </p>
+              <p
+                className="page-detail"
+              >
+                <span>
+                  Grand Total: 
+                </span>
+                <span>
+                  $20
+                </span>
+              </p>
+              <p
+                className="page-detail"
+              >
+                <span>
+                  Order Placed: 
+                </span>
+                <span>
+                  March 6, 2018 5:00 pm
+                </span>
+              </p>
+            </div>
+            <div
+              className="order-list-item-plus"
+            />
+          </a>
+        </Link>
+      </div>
+    </div>
+  </OrderStyles__StyledOrderListItems>
+</div>
+`;
