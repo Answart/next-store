@@ -144,9 +144,107 @@ const StyledTotalsTable = styled.table`
   }
 `;
 
+const StyledOrderTable = styled.table`
+  margin: 0;
+  padding: 0.2rem 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+  border-spacing: 0;
+  font-weight: bold;
+  letter-spacing: 0.02rem;
+  table-layout:fixed;
+  .column-one {
+    width: 60%;
+    text-align: left;
+  }
+  .column-two {
+    width: 20%;
+    text-align: center;
+  }
+  .column-three {
+    width: 20%;
+    text-align: center;
+  }
+  thead {
+    tr {
+      th {
+        padding: 0.7rem 0;
+        color: ${props => props.theme.darkBlue};
+        border-bottom: 2px solid ${props => props.theme.coral};
+      }
+    }
+  }
+  tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    tr {
+      padding: 2rem 0;
+    }
+    td {
+      padding: 1.5rem 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      .order-item-details {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 10rem 1fr;
+        grid-gap: 1rem;
+        text-align: left;
+        .order-item-image {
+          grid-column: 1 / 2;
+        }
+        .order-item-meta {
+          grid-column: 2 / 2;
+          text-align: left;
+          .order-item-title {
+            color: ${props => props.theme.darkBlue};
+          }
+          .order-item-detail {
+            padding: 0.1rem 0;
+          }
+        }
+      }
+      .order-item-quantity {
+        text-align: center;
+        justify-content: center;
+        justify-self: center;
+        align-content: start;
+        align-items: start;
+        align-self: start;
+      }
+      .order-item-price {
+        text-align: center;
+        justify-content: center;
+        justify-self: center;
+        align-content: start;
+        align-items: start;
+        align-self: start;
+      }
+    }
+  }
+  tfoot {
+    color: ${props => props.theme.darkBlue};
+    tr {
+      td {
+        border-top: 2px solid ${props => props.theme.coral};
+        text-align: center;
+        padding: 1rem 0;
+        &:first-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+`;
+
 
 export {
   StyledPermissionsTable,
   StyledCartTable,
-  StyledTotalsTable
+  StyledTotalsTable,
+  StyledOrderTable,
 };
