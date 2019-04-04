@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import PageTitle from '../components/PageTitle';
 import NotFound from '../components/NotFound';
 import RequireSignin from '../components/RequireSignin';
+import Order from '../components/Order';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 import { ORDER_QUERY } from '../graphql';
 
@@ -29,7 +30,7 @@ const OrderPage = props => (
               const { order } = data;
               if (!order) return (<NotFound status={404} message='This order does not exist.' />);
               return (
-                <p>TODO</p>
+                <Order order={order} />
               );
             }}
           </Query>
