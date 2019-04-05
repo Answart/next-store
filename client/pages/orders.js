@@ -4,6 +4,7 @@ import PageTitle from '../components/PageTitle';
 import RequireSignin from '../components/RequireSignin';
 import NotFound from '../components/NotFound';
 import Pagination from '../components/Pagination';
+import OrdersList from '../components/OrdersList';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 import { getQueryVariables } from '../lib/utils';
 import { ORDERS_QUERY } from '../graphql';
@@ -39,7 +40,7 @@ const OrdersPage = ({ query }) => (
                       count={count}
                     />
 
-                    <p>TODO</p>
+                    <OrdersList orders={orders} pageQuery={query} />
 
                     <Pagination
                       pathname='/orders'
