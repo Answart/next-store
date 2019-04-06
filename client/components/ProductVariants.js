@@ -80,7 +80,9 @@ class ProductVariants extends Component {
     } = this.props;
     const live = online && !demoView
     const accessible = (demoView || live);
-    let availability = accessible && variant ? variant.availability : "Unavailable";
+    let availability = accessible && variant
+      ? variant.availability
+      : "Unavailable";
     return (
       <StyledProductVariants>
         {variant && (
@@ -89,7 +91,7 @@ class ProductVariants extends Component {
           </div>
         )}
 
-        {sizes && !!sizes.length && (
+        {sizes && !!sizes.length && !!sizes[0] && (
           <div id='prod-var-sizes' className="prdct-padding">
             <div className="prdct-padding filter-sizes">
               {sizes.map((size, i) => (
@@ -106,7 +108,7 @@ class ProductVariants extends Component {
           </div>
         )}
 
-        {colors && !!colors.length && (
+        {colors && !!colors.length && !!colors[0] && (
           <div id='prod-var-colors' className="prdct-padding">
             <div id='prod-var-colors-title'>
               {!variant.color ? 'Colors:' : capWord(variant.color)}
