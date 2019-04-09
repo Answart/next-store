@@ -49,7 +49,32 @@ const StyledCart = styled.div`
   }
 `;
 
+const StyledCartCountAnimation = styled.span`
+  position: relative;
+  .count {
+    display: block;
+    position: relative;
+    transition: all 0.4s;
+    backface-visibility: hidden;
+  }
+  .count-enter {
+    transform: scale(4) rotateX(0.5turn);
+  }
+  .count-enter-active {
+    transform: rotateX(0);
+  }
+  .count-exit {
+    top: 0;
+    position: absolute;
+    transform: rotateX(0);
+  }
+  .count-exit-active {
+    transform: scale(4) rotateX(0.5turn);
+  }
+`;
+
 
 export {
   StyledCart,
+  StyledCartCountAnimation,
 };
