@@ -73,8 +73,27 @@ const StyledCartCountAnimation = styled.span`
   }
 `;
 
+const StyledCartCountDot = styled.div`
+  background-color: transparent;
+  color: transparent;
+  line-height: 1.4rem;
+  min-width: 2rem;
+  padding: 0.2rem 0;
+  margin: 0 0 -0.6rem 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+  .active-count {
+    background-color: ${props => props.theme.redOrange};
+    color: ${props => props.theme.beige};
+    border-radius: 50%;
+  }
+`;
+
 
 export {
   StyledCart,
   StyledCartCountAnimation,
+  StyledCartCountDot
 };
