@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PageTitle from '../components/PageTitle';
 import RequireSignin from '../components/RequireSignin';
 import NotFound from '../components/NotFound';
+import Pagination from '../components/Pagination';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 import { getQueryVariables } from '../lib/utils';
 import { ORDER_ITEMS_QUERY } from '../graphql';
@@ -27,7 +28,23 @@ const SalesPage = ({ query }) => (
                 if (orderItems.length < 1) return (<NotFound status={204} message='You do not have any sales yet.' />);
                 const count = orderItems.length;
                 return (
-                  <p>TODO</p>
+                  <>
+                    <Pagination
+                      pathname='/order'
+                      pageQuery={query}
+                      results={orderItems}
+                      count={count}
+                    />
+
+                    <p>TODO</p>
+
+                    <Pagination
+                      pathname='/order'
+                      pageQuery={query}
+                      results={orderItems}
+                      count={count}
+                    />
+                  </>
                 );
               }}
             </Query>
