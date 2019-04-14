@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PageTitle from '../components/PageTitle';
 import RequireSignin from '../components/RequireSignin';
 import NotFound from '../components/NotFound';
+import SalesList from '../components/SalesList';
 import Pagination from '../components/Pagination';
 import { StyledOrderPage } from '../components/styles/PageStyles';
 import { getQueryVariables } from '../lib/utils';
@@ -36,7 +37,10 @@ const SalesPage = ({ query }) => (
                       count={count}
                     />
 
-                    <p>TODO</p>
+                    <SalesList
+                      orderItems={orderItems}
+                      pageQuery={query}
+                    />
 
                     <Pagination
                       pathname='/order'
