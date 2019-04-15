@@ -21,7 +21,7 @@ An **e-commerce app** where a user can browse among products with which they can
 User stories
 ------------
 
-* [x] As an unauthenticated or authenticated user, I can see and search for items in the store.
+* [x] As an unauthenticated or authenticated user, I can see and search for products in the store.
 * [x] As an unauthenticated user, I can create an account or sign in.
 * [x] As an unauthenticated user, I can request to reset my account password.
 * [x] As an authenticated user, I can create products I want to sell through the store.
@@ -31,8 +31,8 @@ User stories
 * [x] As an authenticated user, I can delete a product I have created in the store.
 * [x] As an authenticated user, I can add/remove products in the cart and come back later to access them.
 * [ ] As an authenticated user, I can use a credit card to buy products in cart.
-* [ ] As an authenticated user, I can view current/previous orders I have made.
-* [ ] As an authenticated user, I can view current/previous sales where people have ordered my products.
+* [x] As an authenticated user, I can view current/previous orders I have made.
+* [x] As an authenticated user, I can view current/previous sales where people have ordered my products.
 
 Tech Stack and Key Packages
 ---------------------------
