@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import User from '../User';
 import SvgIcon from '../SvgIcon';
+import CartCount from '../CartCount';
 import { ToggleCart, Logout } from '../Buttons';
 
 
@@ -9,6 +10,9 @@ const Menu = ({ me, acctDrpdwn, toggAcctDrpdwn }) => {
   const myDropdownClasses = acctDrpdwn
     ? 'hdr-dropdown-content show'
     : 'hdr-dropdown-content';
+  const count = (!!me && !!me.cart)
+    ? me.cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0)
+    : 0;
   if (!me) {
     return (
       <div className="hdr-menu">
@@ -64,6 +68,7 @@ const Menu = ({ me, acctDrpdwn, toggAcctDrpdwn }) => {
       <span className="hdr-inline hdr-pad-cart">
         <ToggleCart>
           <>
+            <CartCount count={count} />
             <SvgIcon width={15} name='cart' title='My Cart' />
           </>
         </ToggleCart>
