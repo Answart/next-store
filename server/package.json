@@ -28,7 +28,7 @@
     "nodemailer": "^5.0.0",
     "nodemon": "1.18.5",
     "prisma": "^1.27.4",
-    "prisma-binding": "^2.3.3"
+    "prisma-binding": "^2.3.10"
   },
   "devDependencies": {},
   "babel": {
