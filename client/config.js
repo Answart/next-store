@@ -1,10 +1,10 @@
 // Client side config only
 export const DEV_SERVER_URL = 'http://localhost:4242';
-export const PROD_SERVER_URL = 'https://next-store-yoga.herokuapp.com/';
-export const CLOUDINARY_API_KEY = '376449995445936';
+export const PROD_SERVER_URL = '';
+export const CLOUDINARY_API_KEY = '';
 export const CLOUDINARY_PRESET = 'nextstore';
-export const CLOUDINARY_SECRET = 'yk-s-3xjvyoZl8B2Ue4E01CqhZ4';
-export const STRIPE_API_KEY = 'pk_test_AXaNXzu6yN6cKOx5y0BCqpYr';
+export const CLOUDINARY_SECRET = '';
+export const STRIPE_API_KEY = '';
 export const SALES_TAX_RATE = 0.0925;
 export const SHIPPING_COST_PER_ITEM = 1.2;
 export const theme = {
