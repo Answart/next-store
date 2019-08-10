@@ -1,0 +1,72 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - babel-plugin-styled-components > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-generator > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-traverse > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-template > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > webpackbar > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-register > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > autodll-webpack-plugin > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/core > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - enzyme > cheerio > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > write-file-webpack-plugin > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-helpers > babel-template > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-template > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-generator > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > styled-jsx > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-plugin-styled-components > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-traverse > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > autodll-webpack-plugin > webpack-merge > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/template > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > webpackbar > consola > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-template > babel-traverse > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > webpackbar > table > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/core > @babel/template > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/core > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > @babel/generator > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
+    - next > @babel/preset-env > @babel/plugin-transform-async-to-generator > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-08-10T10:57:26.884Z'
