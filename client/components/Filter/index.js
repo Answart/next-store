@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { StyledFilter } from '../styles/FilterStyles';
 import FilterSection from './FilterSection';
 import FilterList from './FilterList';
+import FilterRange from './FilterRange';
 import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../../config';
 
 
@@ -123,7 +124,11 @@ class Filter extends Component {
           updateFilter={this.updateFilter}
         >
           {showPrice && (
-            <div>show price range</div>
+            <FilterRange
+              price_gte={pageQuery['price_gte']}
+              price_lte={pageQuery['price_lte']}
+              updateFilter={this.updateFilter}
+            />
           )}
         </FilterSection>
 
