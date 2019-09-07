@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StyledFilterRange } from '../styles/FilterStyles';
 
 
 const FilterRange = (props) => {
@@ -19,7 +20,7 @@ const FilterRange = (props) => {
     }
   }
   return (
-    <div>
+    <StyledFilterRange>
       <div className="filter-range">
         <input
           id="price_gte"
@@ -46,7 +47,7 @@ const FilterRange = (props) => {
         <span>${min}</span>
         <span>${max}</span>
       </div>
-    </div>
+    </StyledFilterRange>
   )
 };
 
