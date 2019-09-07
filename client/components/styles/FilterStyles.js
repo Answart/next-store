@@ -71,6 +71,13 @@ const StyledFilter = styled.div`
     }
     .filter-show-brand {
       padding: 0.5rem 1rem;
+      .filter-brand {
+        padding: 0.2rem 0;
+      }
+      .brand-label {
+        font-weight: bold;
+        padding-left: 0.5rem;
+      }
     }
     .filter-show-price {
       padding: 0.5rem 1rem;
