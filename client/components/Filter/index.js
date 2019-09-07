@@ -43,6 +43,9 @@ class Filter extends Component {
   };
   render() {
     const { pageQuery } = this.props;
+    const {
+      showCategory, showColor, showSize, showPrice, showBrand
+    } = this.state;
     const categoryListType = pageQuery.department
       ? 'category'
       : 'department';
@@ -52,56 +55,73 @@ class Filter extends Component {
     return (
       <StyledFilter data-test="filter">
         <FilterSection
-          name={categoryListType}
-          list={categoryList}
-          currentFilter={pageQuery[categoryListType]}
           showName='showCategory'
-          showFilter={this.state.showCategory}
+          name={categoryListType}
+          currentFilter={pageQuery[categoryListType]}
+          showFilter={showCategory}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
-        />
+        >
+          {showCategory && (
+            <div>show categories</div>
+          )}
+        </FilterSection>
 
         <FilterSection
+          showName='showColor'
           name='color'
           circleHover={true}
-          list={COLORS}
           currentFilter={pageQuery['color']}
-          showName='showColor'
-          showFilter={this.state.showColor}
+          showFilter={showColor}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
-        />
+        >
+          {showColor && (
+            <div>show colors</div>
+          )}
+        </FilterSection>
 
         <FilterSection
+          showName='showSize'
           name='size'
           circleHover={true}
-          list={SIZES}
           currentFilter={pageQuery['size']}
-          showName='showSize'
-          showFilter={this.state.showSize}
+          showFilter={showSize}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
-        />
+        >
+          {showSize && (
+            <div>show sizes</div>
+          )}
+        </FilterSection>
 
         <FilterSection
-          name='price'
-          currentFilter={pageQuery['price']}
           showName='showPrice'
-          showFilter={this.state.showPrice}
+          name='price'
+          circleHover={true}
+          currentFilter={pageQuery['price']}
+          showFilter={showPrice}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
-        />
+        >
+          {showPrice && (
+            <div>show price range</div>
+          )}
+        </FilterSection>
 
         <FilterSection
-          name='brand'
-          list={['brand1', 'brand2']}
-          currentFilter={pageQuery['brand']}
-          pageQuery={pageQuery}
           showName='showBrand'
-          showFilter={this.state.showBrand}
+          name='brand'
+          circleHover={true}
+          currentFilter={pageQuery['brand']}
+          showFilter={showBrand}
           toggleFilter={this.toggleFilter}
           updateFilter={this.updateFilter}
-        />
+        >
+          {showBrand && (
+            <div>show brands</div>
+          )}
+        </FilterSection>
       </StyledFilter>
     );
   }

@@ -1,5 +1,4 @@
 import SvgIcon from '../SvgIcon';
-import { capWord } from '../../lib/utils';
 
 
 const FilterSection = (props) => {
@@ -32,29 +31,10 @@ const FilterSection = (props) => {
           <SvgIcon width={10} name={props.showFilter ? 'downArrow' : 'upArrow'} />
         </button>
       </div>
-
-      {props.showFilter && (
-        <div className={`filter-show filter-show-${name}`}>
-          {!!props.list && !!props.list.length && props.list.map((listItem, i) => (
-            <button key={i} id={`${name}-${listItem}`} className={`undrln-btn ${!!props.circleHover && (listItem == currentFilter ? 'sample-selected' : 'sample-hover')}`}
-              disabled={listItem == currentFilter}
-              title={`Refine by ${name}: ${capWord(listItem)}`}
-              name={name}
-              value={listItem}
-              onClick={props.updateFilter}
-            >
-              {(name == 'color') ? (
-                <div className={`${name}-sphere-sample ${listItem}-${name}-sample`}></div>
-              ) : (
-                capWord(listItem)
-              )}
-            </button>
-          ))}
-        </div>
-      )}
+      {props.children}
     </div>
   )
-};
+}
 
 
 export default FilterSection;
