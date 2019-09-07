@@ -220,7 +220,7 @@ class Pagination extends Component {
           {!!currentPage && !!results && (
             <>
               <div id="pagin-d-l-arrow" className="page-btn">
-                <Link prefetch href={{
+                <Link href={{
                   pathname,
                   query: {
                     ...pageQuery,
@@ -234,7 +234,7 @@ class Pagination extends Component {
               </div>
 
               <div id="pagin-l-arrow" className="page-btn">
-                <Link prefetch href={{
+                <Link href={{
                   pathname,
                   query: {
                     ...pageQuery,
@@ -249,7 +249,7 @@ class Pagination extends Component {
 
               <div id="pagin-preview-pages" className="pagination-padding">
                 {!!list.length && list.map((pageNum, i) => (
-                  <Link key={i} prefetch href={{
+                  <Link key={i} href={{
                     pathname,
                     query: {
                       ...pageQuery,
@@ -264,7 +264,7 @@ class Pagination extends Component {
               </div>
 
               <div id="pagin-r-arrow" className="page-btn">
-                <Link prefetch href={{
+                <Link href={{
                   pathname,
                   query: {
                     ...pageQuery,
@@ -278,7 +278,7 @@ class Pagination extends Component {
               </div>
 
               <div id="pagin-d-r-arrow" className="page-btn">
-                <Link prefetch href={{
+                <Link href={{
                   pathname,
                   query: {
                     ...pageQuery,

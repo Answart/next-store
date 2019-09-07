@@ -20,13 +20,13 @@ class NextApp extends App {
     const { Component, pageProps, apolloClient, apolloState } = this.props;
 
     return (
-      <NextContainer>
+      <>
         <ApolloProvider client={apolloClient}>
           <Page>
             <Component {...pageProps} apolloState={apolloState} client={apolloClient} />
           </Page>
         </ApolloProvider>
-      </NextContainer>
+      </>
     );
   }
 }

@@ -31,7 +31,6 @@ Router.router = {
     format: jest.fn()
   },
   addTransitionHook: jest.fn(),
-  prefetch: () => {},
   preventDefault: () => {}
 };
 
