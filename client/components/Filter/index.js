@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
-import SvgIcon from './SvgIcon';
-import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../config';
-import { capWord } from '../lib/utils';
+import SvgIcon from '../SvgIcon';
+import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../../config';
+import { capWord } from '../../lib/utils';
 
 
 const FilterStyles = styled.div`
