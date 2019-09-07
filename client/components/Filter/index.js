@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { StyledFilter } from '../styles/FilterStyles';
 import FilterSection from './FilterSection';
+import FilterList from './FilterList';
 import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../../config';
 
 
@@ -63,7 +64,12 @@ class Filter extends Component {
           updateFilter={this.updateFilter}
         >
           {showCategory && (
-            <div>show categories</div>
+            <FilterList
+              name={categoryListType}
+              list={categoryList}
+              currentFilter={pageQuery[categoryListType]}
+              updateFilter={this.updateFilter}
+            />
           )}
         </FilterSection>
 
@@ -77,7 +83,13 @@ class Filter extends Component {
           updateFilter={this.updateFilter}
         >
           {showColor && (
-            <div>show colors</div>
+            <FilterList
+              name='color'
+              circleHover={true}
+              list={COLORS}
+              currentFilter={pageQuery['color']}
+              updateFilter={this.updateFilter}
+            />
           )}
         </FilterSection>
 
@@ -91,7 +103,13 @@ class Filter extends Component {
           updateFilter={this.updateFilter}
         >
           {showSize && (
-            <div>show sizes</div>
+            <FilterList
+              name='size'
+              circleHover={true}
+              list={SIZES}
+              currentFilter={pageQuery['size']}
+              updateFilter={this.updateFilter}
+            />
           )}
         </FilterSection>
 
