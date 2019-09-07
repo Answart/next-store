@@ -75,7 +75,9 @@ const SHOP_PRODUCTS_QUERY = gql`
     $category: String,
     $brand: String,
     $color: String,
-    $size: String
+    $size: String,
+    $price_lte: Float,
+    $price_gte: Float
   ) {
     products(
       where: {
@@ -87,10 +89,14 @@ const SHOP_PRODUCTS_QUERY = gql`
         user: {
           name: $name
         },
-        variants_every: {
+        variants_some: {
+          price_lte: $price_lte,
+          price_gte: $price_gte,
+          salePrice_lte: $price_lte,
+          salePrice_gte: $price_gte,
           color: $color,
           size: $size
-        }
+        },
       },
       orderBy: $orderBy,
       skip: $skip,
