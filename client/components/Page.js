@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
-import { ThemeProvider, injectGlobal } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { StyledPage } from './styles/PageStyles';
 import Header from './Header';
 import { theme } from '../config';
 
-
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'guttenbg';
     src: url('/static/fonts/Guttenbg.ttf') format('truetype');
@@ -84,21 +83,24 @@ class Page extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <StyledPage>
-          <Head>
-            <meta name='viewport' content='width=device-width, initial-scale=1' />
-            <meta charSet='utf-8' />
-            <link rel="shortcut icon" href="/static/images/favicon.png" />
-            <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-            <title>Next Store</title>
-          </Head>
+        <>
+          <GlobalStyle />
+          <StyledPage>
+            <Head>
+              <meta name='viewport' content='width=device-width, initial-scale=1' />
+              <meta charSet='utf-8' />
+              <link rel="shortcut icon" href="/static/images/favicon.png" />
+              <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+              <title>Next Store</title>
+            </Head>
 
-          <Header />
+            <Header />
 
-          <div className="inner-page">
-            {this.props.children}
-          </div>
-        </StyledPage>
+            <div className="inner-page">
+              {this.props.children}
+            </div>
+          </StyledPage>
+        </>
       </ThemeProvider>
     );
   }
