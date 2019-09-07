@@ -27,7 +27,7 @@
   "dependencies": {
     "apollo-boost": "^0.1.28",
     "babel-core": "^6.26.3",
-    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-styled-components": "^1.10.6",
     "cookie": "^0.3.1",
     "coveralls": "^3.0.3",
     "date-fns": "^1.30.1",
