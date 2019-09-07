@@ -6,6 +6,7 @@ import FilterSection from './FilterSection';
 import FilterList from './FilterList';
 import FilterRange from './FilterRange';
 import { DEPARTMENTS, CATEGORIES, COLORS, SIZES } from '../../config';
+import { capWord } from '../../lib/utils';
 
 
 class Filter extends Component {
@@ -142,7 +143,22 @@ class Filter extends Component {
           updateFilter={this.updateFilter}
         >
           {showBrand && (
-            <div>show brands</div>
+            <div className={`filter-show filter-show-brand`}>
+              {['Converse', 'brand2'].map((listItem, i) => (
+                <div key={`brand-${listItem}`} className="filter-brand">
+                  <label htmlFor={`brand-${listItem}`}>
+                    <input id={`brand-${listItem}`}
+                      type="radio"
+                      name="brand"
+                      key={name}
+                      value={listItem}
+                      onChange={this.updateFilter}
+                      checked={!!pageQuery['brand'] && pageQuery['brand'] == listItem}
+                    /><span className='brand-label'>{capWord(listItem)}</span>
+                  </label>
+                </div>
+              ))}
+            </div>
           )}
         </FilterSection>
       </StyledFilter>
