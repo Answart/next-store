@@ -8,9 +8,12 @@ import withApolloClient from '../lib/with-apollo-client';
 class NextApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+    if (!!Component.getInitialProps) {
+      try {
+        pageProps = await Component.getInitialProps(ctx);
+      } catch(e) {
+        console.error('Error: getInitialProps failed.', e)
+      }
     }
     pageProps.query = ctx.query;
 
