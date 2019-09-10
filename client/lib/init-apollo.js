@@ -20,6 +20,12 @@ if (!process.browser) {
 function createApolloClient(initialState, options) {
   if (!!options.getToken) tokenObj = options.getToken();
   if (!!options.getHeaders) headers = options.getHeaders();
+  const data = !!initialState
+    ? initialState
+    : {
+        cartOpen: false,
+        me: null,
+      };
 
   const httpLink = new HttpLink({
     uri,
@@ -36,10 +42,7 @@ function createApolloClient(initialState, options) {
   })
 
   const stateLink = withClientState({
-    defaults: {
-      cartOpen: false,
-      me: null,
-    },
+    defaults: data,
     resolvers: {
       Mutation: {
         toggleCart: (_, variables, { cache }) => {
@@ -62,7 +65,7 @@ function createApolloClient(initialState, options) {
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     fetch,
     link: ApolloLink.from([stateLink, httpLink]),
-    cache: new InMemoryCache().restore(initialState || {}),
+    cache: new InMemoryCache().restore(data),
   });
 };
 
