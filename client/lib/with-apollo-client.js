@@ -35,11 +35,15 @@ export default App => {
       const { Component, router, ctx: { req, res, query } } = ctx;
       let pageProps = {};
       let apolloState = {};
-      let apollo = await initApollo({}, {
-        getToken: () => parseCookies(req),
-        getHeaders: () => parseHeaders(req),
-      });
-
+      let apollo = null;
+      try {
+        apollo = await initApollo(apolloState, {
+          getToken: () => parseCookies(req),
+          getHeaders: () => parseHeaders(req),
+        })
+      } catch(e) {
+        console.error('Error: initApollo failed to create apolloClient.', e);
+      }
       ctx.ctx.apolloClient = apollo;
 
       if (!!App && !!App.getInitialProps) {
