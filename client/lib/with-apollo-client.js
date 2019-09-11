@@ -47,7 +47,11 @@ export default App => {
       ctx.ctx.apolloClient = apollo;
 
       if (!!App && !!App.getInitialProps) {
-        pageProps = await App.getInitialProps(ctx);
+        try {
+          pageProps = await App.getInitialProps(ctx)
+        } catch(e) {
+          console.info('Error: getInitialProps failed while getting props.', e)
+        }
       }
       pageProps.query = query;
 
