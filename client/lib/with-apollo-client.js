@@ -59,6 +59,10 @@ export default App => {
         return {};
       }
 
+      // Extract query data from the Apollo store
+      apolloState.data = extractState(apollo);
+      pageProps.apolloState = apolloState;
+
       if (!process.browser || typeof window === 'undefined') {
         try {
           // Run all GraphQL queries
@@ -67,25 +71,21 @@ export default App => {
               {...pageProps}
               Component={Component}
               router={router}
-              apolloState={apolloState}
               apolloClient={apollo}
             />
           )
-        } catch (error) {
+        } catch (e) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-          console.error(`Error while running 'getDataFromTree': ${error}`)
+          console.error(`Error: getDataFromTree error. ${e}`);
         }
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
         Head.rewind();
       }
 
-      // Extract query data from the Apollo store
-      apolloState.data = extractState(apollo);
-
-      return { ...pageProps, apolloState };
+      return { ...pageProps };
     }
     constructor(props) {
       super(props)
