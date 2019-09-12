@@ -59,7 +59,7 @@ export default App => {
         return {};
       }
 
-      if (!process.browser) {
+      if (!process.browser || typeof window === 'undefined') {
         try {
           // Run all GraphQL queries
           await getDataFromTree(
