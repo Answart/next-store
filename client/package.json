@@ -14,7 +14,9 @@
     "test": "NODE_ENV=test jest --coverage --verbose",
     "coveralls": "npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "heroku-logs-client": "cd .. && heroku logs --tail --app answart-next-store",
-    "heroku-push-client": "cd .. && git subtree push --prefix client heroku-client-side master"
+    "heroku-push-client": "cd .. && git subtree push --prefix client heroku-client-side master",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -45,7 +47,8 @@
     "react-transition-group": "^4.3.0",
     "styled-components": "^4.3.2",
     "subscriptions-transport-ws": "^0.9.16",
-    "waait": "^1.0.4"
+    "waait": "^1.0.4",
+    "snyk": "^1.226.0"
   },
   "devDependencies": {
     "babel-jest": "^24.8.0",
@@ -120,5 +123,6 @@
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
     }
-  }
+  },
+  "snyk": true
 }
