@@ -50,9 +50,9 @@ function createApolloClient(initialState, options) {
             query: LOCAL_CARTOPEN_QUERY,
           });
           const data = {
-            data: { cartOpen: !cartOpen },
+            cartOpen: !cartOpen
           };
-          cache.writeData(data);
+          cache.writeData({ data });
 
           return data;
         }
