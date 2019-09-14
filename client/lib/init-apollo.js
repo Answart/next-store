@@ -26,6 +26,7 @@ function createApolloClient(initialState, options) {
         cartOpen: false,
         me: null,
       };
+  const cache = new InMemoryCache().restore(data);
 
   const httpLink = new HttpLink({
     uri,
@@ -42,6 +43,7 @@ function createApolloClient(initialState, options) {
   })
 
   const stateLink = withClientState({
+    cache,
     defaults: data,
     resolvers: {
       Mutation: {
@@ -65,7 +67,7 @@ function createApolloClient(initialState, options) {
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     fetch,
     link: ApolloLink.from([stateLink, httpLink]),
-    cache: new InMemoryCache().restore(data),
+    cache,
   });
 };
 
