@@ -4,20 +4,6 @@ import { getDataFromTree } from 'react-apollo';
 import initApollo from '../lib/init-apollo';
 
 
-function extractState(apolloClient) {
-  let data = null;
-
-  if (!!apolloClient.cache) {
-    data = apolloClient.cache.extract();
-  }
-  if (!data && !!apolloClient.localState && !!apolloClient.localState.cache) {
-    data = apolloClient.localState.cache.extract();
-  }
-
-  return data;
-}
-
-
 export default App => {
   return class Apollo extends React.Component {
     static displayName = 'withApolloClient(App)';
@@ -49,7 +35,7 @@ export default App => {
       }
 
       // Extract query data from the Apollo store
-      apolloState.data = extractState(apollo);
+      apolloState.data = apollo.cache.extract();
       pageProps.apolloState = apolloState;
 
       if (!process.browser || typeof window === 'undefined') {
