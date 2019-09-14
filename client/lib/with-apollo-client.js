@@ -4,16 +4,6 @@ import { getDataFromTree } from 'react-apollo';
 import initApollo from '../lib/init-apollo';
 
 
-function parseHeaders(req, options = {}) {
-  return (!!req)
-    ? req.headers
-    : {};
-}
-function parseCookies(req, options = {}) {
-  return (!!req && !!req.headers)
-    ? cookie.parse(req.headers.cookie || '')
-    : '';
-}
 function extractState(apolloClient) {
   let data = null;
 
@@ -38,7 +28,7 @@ export default App => {
       let apollo = null;
       try {
         apollo = await initApollo(apolloState, {
-          getHeaders: () => parseHeaders(req),
+          getHeaders: () => ((!!req && !!req.headers) ? req.headers : {}),
         })
       } catch(e) {
         console.error('Error: initApollo failed to create apolloClient.', e);
