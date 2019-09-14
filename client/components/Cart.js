@@ -12,7 +12,7 @@ import { LOCAL_CARTOPEN_QUERY } from '../graphql';
 
 const Cart = ({ me }) => (
   <Query query={LOCAL_CARTOPEN_QUERY}>
-    {({ data: localData, error: localError }) => {
+    {({ data }) => {
       const myCart = (!!me && !!me.cart)
         ? me.cart
         : [];
@@ -22,7 +22,7 @@ const Cart = ({ me }) => (
       const { totalQuantity, totalShipping, totalSalesTax, subTotal } = getCartTotals(myCart);
       const totalAmount = (subTotal + totalShipping + totalSalesTax);
       return (
-        <StyledCart open={localData.cartOpen}>
+        <StyledCart open={!!data ? data.cartOpen : false}>
           <header>
             <div className="cart-title">
               <ToggleCart>
