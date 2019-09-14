@@ -1,5 +1,4 @@
-import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from 'apollo-boost';
-import { withClientState } from 'apollo-link-state';
+import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
 import fetch from 'isomorphic-unfetch';
 import { DEV_SERVER_URL, PROD_SERVER_URL } from '../config';
 import { LOCAL_CARTOPEN_QUERY } from '../graphql';
@@ -26,24 +25,24 @@ function createApolloClient(initialState, options) {
         me: null,
       };
   const cache = new InMemoryCache().restore(data);
-
-  const httpLink = new HttpLink({
-    uri,
-    credentials: 'include',
-    headers,
-    request: operation => {
-      operation.setContext({
-        fetchOptions: {
-          credentials: 'include',
-        },
-        headers,
-      });
-    },
-  })
-
-  const stateLink = withClientState({
+  const client = new ApolloClient({
+    connectToDevTools: !!process.browser,
+    ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
+    fetch,
+    link: new HttpLink({
+      uri,
+      credentials: 'include',
+      headers,
+      request: operation => {
+        operation.setContext({
+          fetchOptions: {
+            credentials: 'include',
+          },
+          headers,
+        });
+      },
+    }),
     cache,
-    defaults: data,
     resolvers: {
       Mutation: {
         toggleCart: (_, variables, { cache }) => {
