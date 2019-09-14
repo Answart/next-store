@@ -61,20 +61,20 @@ function createApolloClient(initialState, options) {
     },
   });
 
-  return new ApolloClient({
-    connectToDevTools: process.browser,
-    ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    fetch,
-    link: ApolloLink.from([stateLink, httpLink]),
-    cache,
+  cache.writeData({ data });
+
+  client.onResetStore(() => {
+    cache.writeData({ data });
   });
+
+  return client;
 };
 
 
 export default function initApollo(initialState, options) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (!process.browser) {
+  if (!process.browser || typeof window === 'undefined') {
     apolloClient = createApolloClient(initialState, options);
   }
   // Reuse client on the client-side
