@@ -38,7 +38,6 @@ export default App => {
       let apollo = null;
       try {
         apollo = await initApollo(apolloState, {
-          getToken: () => parseCookies(req),
           getHeaders: () => parseHeaders(req),
         })
       } catch(e) {

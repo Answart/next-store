@@ -18,7 +18,6 @@ if (!process.browser) {
 
 
 function createApolloClient(initialState, options) {
-  if (!!options.getToken) tokenObj = options.getToken();
   if (!!options.getHeaders) headers = options.getHeaders();
   const data = !!initialState && (typeof initialState.cartOpen != 'undefined')
     ? initialState
