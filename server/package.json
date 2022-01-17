@@ -13,7 +13,9 @@
     "deploy": "cross-env NODE_ENV=production prisma deploy --env-file .env",
     "test": "echo \"Error: no test specified\" && exit 0",
     "heroku-logs-server": "cd .. && heroku logs --tail --app next-store-yoga",
-    "heroku-push-server": "cd .. && git subtree push --prefix server heroku-server-side master"
+    "heroku-push-server": "cd .. && git subtree push --prefix server heroku-server-side master",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "babel-preset-env": "^1.7.0",
@@ -22,18 +24,20 @@
     "cross-env": "^5.2.0",
     "dotenv": "^6.1.0",
     "graphql": "^0.13.2",
-    "graphql-cli": "^3.0.14",
-    "graphql-yoga": "1.16.7",
+    "graphql-cli": "^4.0.0",
+    "graphql-yoga": "1.18.1",
     "jsonwebtoken": "^8.5.1",
-    "nodemailer": "^5.0.0",
-    "nodemon": "1.18.5",
+    "nodemailer": "^6.6.1",
+    "nodemon": "2.0.3",
     "prisma": "^1.34.8",
-    "prisma-binding": "^2.3.16"
+    "prisma-binding": "^2.3.16",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {},
   "babel": {
     "presets": [
       "env"
     ]
-  }
+  },
+  "snyk": true
 }
